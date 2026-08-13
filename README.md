@@ -42,13 +42,8 @@ Public Application URL: **`https://cameronnel.github.io/nederpath/`**
      - Article selection
 
 3. **Comprehension (Begrijpend Lezen)**:
-   - Exactly **120 progressive Dutch reading passages** systematically balanced across CEFR levels:
-     - **24 A1 Passages** (Daily routines, markets, cycling, GP appointments, shopping, home life)
-     - **24 A2 Passages** (King's Day, Sinterklaas, waste sorting, houseboats, healthcare system, sports clubs)
-     - **24 B1 Passages** (The Polder Model, Delta Works, housing shortages, Dutch directness, circular economy, Rembrandt)
-     - **24 B2 Passages** (Nitrogen crisis, childcare benefits scandal, AI in workplace, euthanasia ethics, media monopolies)
-     - **24 C1 Passages** (Landscape semiotics, linguistic purism, separation of powers, postcolonial literature, Rhineland model)
-   - Each passage includes side-by-side English translations, key vocabulary glosses, reading times, and 4-question interactive comprehension quizzes with explanations. Full quiz completion is required before persisting completion.
+   - A compact, independently authored A1 reading collection covering daily routines, markets, cycling, and GP appointments. Synthetic topic-swapped padding has been removed; inventory size is not presented as a quality metric.
+   - Each passage includes an English translation, key vocabulary glosses, reading time, grammar targets, and a four-question interactive quiz with explanations. Full quiz completion is required before persisting completion.
 
 ---
 
@@ -124,9 +119,9 @@ npm run serve
 - **100%** of learnable nouns have `displayWord` formatted as `de [word]` or `het [word]`.
 - **100%** of plural nouns and diminutive plurals carry article `de`.
 - **120** grammar lessons with 7 exercise interaction types.
-- **120** comprehension reading passages (24 A1, 24 A2, 24 B1, 24 B2, 24 C1) with quizzes.
+- **4** independently authored A1 comprehension passages with stable IDs and passage-specific quizzes; future levels are added only after editorial review.
 - Automated audit, smoke, regression, offline, browser, build, and artifact checks run on every pull request. Lexical coverage includes full-baseline ID compatibility, append-only allocation, real two-run reproducibility, learnability isolation, article agreement, and immediate stale-reference cleanup.
-- **Initial Runtime Transfer Budget**: ~922 KB uncompressed on Today view (target <= 1.5 MB; ~12.9 MB saved on initial startup via promise-cached lazy loading).
+- **Initial Runtime Transfer Budget**: ~943 KB uncompressed on Today view (target <= 1.5 MB); large curriculum banks are promise-cached and loaded only when needed.
 
 ---
 
@@ -141,4 +136,4 @@ npm run serve
 
 - **Audio/Voice Synthesis**: Pronunciation recordings, custom voice providers, and audio file playback are explicitly omitted and left out of scope for this release.
 - **Server Sync**: NederPath is an offline-first client application; synchronization between multiple physical devices relies on manual JSON progress export and import via the Settings tab.
-- **Supporting Content Review**: The idiom, sentence, and comprehension generators still require dedicated deduplication and editorial-quality batches. Their present row counts must not be read as proof of unique, authentic, or independently curated content.
+- **Supporting Content Review**: The idiom and sentence generators still require dedicated deduplication and editorial-quality batches. Their present row counts must not be read as proof of unique, authentic, or independently curated content.

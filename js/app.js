@@ -1840,24 +1840,26 @@
        ========================================================================== */
     renderComprehensionView() {
       const passages = global.NP_COMPREHENSION || [];
+      const availableLevels = [...new Set(passages.map((passage) => passage.level))];
+      const selectedLevel = availableLevels.includes(this.selectedLevel) ? this.selectedLevel : "all";
 
       if (this.activePassage) {
         return this.renderPassageDetail(this.activePassage);
       }
 
-      const filtered = this.selectedLevel === "all" ? passages : passages.filter((p) => p.level === this.selectedLevel);
+      const filtered = selectedLevel === "all" ? passages : passages.filter((p) => p.level === selectedLevel);
 
       return `
         <div class="comprehension-catalog-container animate-fade">
           <div class="catalog-header">
             <div>
               <h1 class="page-title">Begrijpend Lezen (${passages.length} Teksten)</h1>
-              <p class="page-subtitle">Progressieve Nederlandse leesvaardigheid van A1 tot C1 met woordenschat en begripsvragen.</p>
+              <p class="page-subtitle">Gecureerde Nederlandse leesteksten met woordenschat en begripsvragen.</p>
             </div>
 
             <div class="filter-pills">
-              ${["all", "A1", "A2", "B1", "B2", "C1"].map((lvl) => `
-                <button class="btn btn-sm ${this.selectedLevel === lvl ? 'btn-primary' : 'btn-outline'}" data-filter-comp-lvl="${lvl}">
+              ${["all", ...availableLevels].map((lvl) => `
+                <button class="btn btn-sm ${selectedLevel === lvl ? 'btn-primary' : 'btn-outline'}" data-filter-comp-lvl="${lvl}">
                   ${lvl === 'all' ? 'Alle Niveaus' : lvl}
                 </button>
               `).join("")}

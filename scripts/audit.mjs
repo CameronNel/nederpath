@@ -231,22 +231,53 @@ const fnComp = new Function("globalThis", compSrc + "\nreturn globalThis.NP_COMP
 const comp = fnComp(dummyGlobal);
 
 assert(Array.isArray(comp), "NP_COMPREHENSION is an array");
-assert(comp.length >= 120, `NP_COMPREHENSION count >= 120 (actual: ${comp.length})`);
+assert(comp.length > 0, `NP_COMPREHENSION contains curated passages (actual: ${comp.length})`);
 
 const compLevelCounts = {};
 let invalidPassages = 0;
+let duplicatePassages = 0;
+let templatedPassages = 0;
+const compIds = new Set();
+const compBodies = new Set();
+const correctPositions = new Set();
+const prohibitedComprehensionTemplates = [
+  "fascinerend facet van de maatschappelijke werkelijkheid",
+  "diep geworteld pragmatisme en overleg",
+  "deskundigen en waarnemers zijn het erover eens"
+];
 for (const p of comp) {
   compLevelCounts[p.level] = (compLevelCounts[p.level] || 0) + 1;
-  if (!p.title || !p.paragraphs || p.paragraphs.length < 2 || !p.translation || !p.questions || p.questions.length < 3) {
+  const normalizedBody = (p.paragraphs || []).join(" ").toLocaleLowerCase("nl-NL").replace(/\s+/g, " ").trim();
+  if (compIds.has(p.id) || compBodies.has(normalizedBody)) duplicatePassages++;
+  compIds.add(p.id);
+  compBodies.add(normalizedBody);
+  if (prohibitedComprehensionTemplates.some((fingerprint) => normalizedBody.includes(fingerprint))) templatedPassages++;
+  if (
+    !/^comp-\d{3,}$/.test(p.id || "") ||
+    !["A1", "A2", "B1", "B2", "C1"].includes(p.level) ||
+    !p.title || !p.titleEn || !p.theme ||
+    !p.paragraphs || p.paragraphs.length < 3 ||
+    !p.translation || !p.keyVocabulary || p.keyVocabulary.length < 4 ||
+    !p.grammarTargets || p.grammarTargets.length < 2 ||
+    !p.questions || p.questions.length !== 4
+  ) {
     invalidPassages++;
   }
+  for (const question of p.questions || []) {
+    if (!question.question || !question.explanation || question.options?.length !== 4 ||
+        !Number.isInteger(question.correct) || question.correct < 0 || question.correct >= question.options.length ||
+        new Set(question.options).size !== question.options.length) {
+      invalidPassages++;
+    } else {
+      correctPositions.add(question.correct);
+    }
+  }
 }
-assert(invalidPassages === 0, "All passages have 3+ paragraphs, translations, and 3+ questions");
-assert(compLevelCounts["A1"] >= 24, `A1 passages >= 24 (actual: ${compLevelCounts["A1"]})`);
-assert(compLevelCounts["A2"] >= 24, `A2 passages >= 24 (actual: ${compLevelCounts["A2"]})`);
-assert(compLevelCounts["B1"] >= 24, `B1 passages >= 24 (actual: ${compLevelCounts["B1"]})`);
-assert(compLevelCounts["B2"] >= 24, `B2 passages >= 24 (actual: ${compLevelCounts["B2"]})`);
-assert(compLevelCounts["C1"] >= 24, `C1 passages >= 24 (actual: ${compLevelCounts["C1"]})`);
+assert(invalidPassages === 0, "All comprehension passages satisfy the authored content schema");
+assert(duplicatePassages === 0, "Comprehension IDs and passage bodies are unique");
+assert(templatedPassages === 0, "Zero topic-swapped comprehension template fingerprints");
+assert(correctPositions.size >= 3, `Quiz answers use varied option positions (actual: ${[...correctPositions].sort().join(", ")})`);
+console.log(`  [INFO] Curated comprehension distribution: ${JSON.stringify(compLevelCounts)}`);
 
 // 6. Sentence Bank (data/sentences.js)
 console.log("\n--- 6. Sentence Bank Validation (data/sentences.js) ---");
