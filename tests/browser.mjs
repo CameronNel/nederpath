@@ -16,7 +16,7 @@ const BROWSER_PATHS = [
   "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe"
 ];
 
-const executablePath = BROWSER_PATHS.find(p => existsSync(p));
+const executablePath = BROWSER_PATHS.find((p) => existsSync(p));
 if (!executablePath) {
   console.error("No compatible browser (Edge or Chrome) found for browser tests.");
   process.exit(1);
@@ -242,10 +242,16 @@ async function runBrowserTests() {
     if (verbsNavBtn) {
       await verbsNavBtn.click();
       await page.waitForSelector(".verbs-wrapper");
-      await page.type("#verb-input", "werkt");
+      const expectedHijText = await page.evaluate(() => {
+        return window.NederApp && window.NederApp.session && window.NederApp.session.cards[0]
+          ? window.NederApp.session.cards[0].expectedHij
+          : "werkt";
+      });
+      await page.type("#verb-input", expectedHijText);
       await page.click("#verb-form button[type='submit']");
       await page.waitForSelector(".exercise-feedback");
-      assert(true, "Verb conjugation submitted and feedback shown");
+      const fbText = await page.$eval(".exercise-feedback", (el) => el.textContent);
+      assert(fbText.includes("Juist vervoegd"), "Verb exact conjugation verified and accepted");
     }
 
     // Mode 7: Synonyms
@@ -264,10 +270,16 @@ async function runBrowserTests() {
     if (morphNavBtn) {
       await morphNavBtn.click();
       await page.waitForSelector(".morphology-wrapper");
-      await page.type("#morphology-input", "boeken");
+      const expectedPlural = await page.evaluate(() => {
+        return window.NederApp && window.NederApp.session && window.NederApp.session.cards[0]
+          ? window.NederApp.session.cards[0].expectedPlural
+          : "boeken";
+      });
+      await page.type("#morphology-input", expectedPlural);
       await page.click("#morphology-form button[type='submit']");
       await page.waitForSelector(".exercise-feedback");
-      assert(true, "Morphology plural/diminutive submitted and evaluated");
+      const fbText = await page.$eval(".exercise-feedback", (el) => el.textContent);
+      assert(fbText.includes("Juiste meervoudsvorm"), "Morphology exact verified plural accepted");
     }
 
     // Mode 9: Context Practice

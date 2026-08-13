@@ -5,6 +5,17 @@
   const STORAGE_KEY = "nederpath-v1";
   const CURRENT_VERSION = 1;
 
+  function getDateStr(d = new Date()) {
+    if (global.NederLearning && typeof global.NederLearning.getLocalISODate === "function") {
+      return global.NederLearning.getLocalISODate(d);
+    }
+    const date = d instanceof Date ? d : new Date(d);
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const day = String(date.getDate()).padStart(2, "0");
+    return `${year}-${month}-${day}`;
+  }
+
   const DEFAULT_STATE = {
     version: CURRENT_VERSION,
     user: {
@@ -40,7 +51,7 @@
         mistakes: {} // word -> count
       },
       dailyStats: {
-        date: new Date().toISOString().split("T")[0],
+        date: getDateStr(),
         learnedToday: 0
       }
     }
@@ -58,6 +69,9 @@
         const raw = localStorage.getItem(STORAGE_KEY);
         if (!raw) return JSON.parse(JSON.stringify(DEFAULT_STATE));
         const parsed = JSON.parse(raw);
+        if (global.NederLearning && typeof global.NederLearning.validateAndMergeBackup === "function") {
+          return global.NederLearning.validateAndMergeBackup(parsed, DEFAULT_STATE);
+        }
         return Object.assign({}, DEFAULT_STATE, parsed, {
           user: Object.assign({}, DEFAULT_STATE.user, parsed.user),
           settings: Object.assign({}, DEFAULT_STATE.settings, parsed.settings),
@@ -96,48 +110,59 @@
       }
     }
 
-    checkDailyReset() {
-      const todayStr = new Date().toISOString().split("T")[0];
-      if (this.state.progress.dailyStats.date !== todayStr) {
+    checkDailyReset(skipSave = false) {
+      const todayStr = getDateStr();
+      let changed = false;
+
+      if (!this.state.progress.dailyStats || this.state.progress.dailyStats.date !== todayStr) {
         // Calculate streak
         if (this.state.user.lastActiveDate) {
-          const lastDate = new Date(this.state.user.lastActiveDate);
-          const currDate = new Date(todayStr);
+          const lastParts = this.state.user.lastActiveDate.split("-").map(Number);
+          const currParts = todayStr.split("-").map(Number);
+          const lastDate = new Date(lastParts[0], lastParts[1] - 1, lastParts[2]);
+          const currDate = new Date(currParts[0], currParts[1] - 1, currParts[2]);
           const diffDays = Math.round((currDate - lastDate) / (1000 * 60 * 60 * 24));
-          if (diffDays === 1) {
-            // Consecutive day
-          } else if (diffDays > 1) {
+
+          if (diffDays > 1) {
             // Streak broken
             this.state.user.streak = 0;
+            changed = true;
           }
         }
         this.state.progress.dailyStats = {
           date: todayStr,
           learnedToday: 0
         };
+        changed = true;
+      }
+
+      if (changed && !skipSave) {
         this.save();
       }
     }
 
     recordActivity(xpGained = 5) {
-      const todayStr = new Date().toISOString().split("T")[0];
-      this.checkDailyReset();
+      const todayStr = getDateStr();
+      this.checkDailyReset(true);
 
-      this.state.progress.dailyStats.learnedToday += 1;
+      this.state.progress.dailyStats.learnedToday = (this.state.progress.dailyStats.learnedToday || 0) + 1;
       this.state.user.totalXp = (this.state.user.totalXp || 0) + xpGained;
 
       // Update studyDays heatmap
       this.state.progress.studyDays[todayStr] = (this.state.progress.studyDays[todayStr] || 0) + 1;
 
-      // Update streak
+      // Update streak using calendar-day difference
       if (this.state.user.lastActiveDate !== todayStr) {
-        const lastDate = this.state.user.lastActiveDate ? new Date(this.state.user.lastActiveDate) : null;
-        const currDate = new Date(todayStr);
-        if (lastDate) {
+        if (this.state.user.lastActiveDate) {
+          const lastParts = this.state.user.lastActiveDate.split("-").map(Number);
+          const currParts = todayStr.split("-").map(Number);
+          const lastDate = new Date(lastParts[0], lastParts[1] - 1, lastParts[2]);
+          const currDate = new Date(currParts[0], currParts[1] - 1, currParts[2]);
           const diffDays = Math.round((currDate - lastDate) / (1000 * 60 * 60 * 24));
+
           if (diffDays === 1) {
-            this.state.user.streak += 1;
-          } else if (diffDays > 1) {
+            this.state.user.streak = (this.state.user.streak || 0) + 1;
+          } else {
             this.state.user.streak = 1;
           }
         } else {
@@ -159,7 +184,6 @@
         stats.mistakes[noun] = (stats.mistakes[noun] || 0) + 1;
         this.recordActivity(1);
       }
-      this.save();
     }
 
     toggleBookmark(wordId) {
@@ -177,22 +201,26 @@
     }
 
     completeGrammarRule(ruleId, score = 100) {
-      const prev = this.state.progress.grammarCompleted[ruleId] || { attempts: 0 };
+      const prev = this.state.progress.grammarCompleted[ruleId] || { attempts: 0, score: 0 };
+      const isFirstTime = !this.state.progress.grammarCompleted[ruleId];
       this.state.progress.grammarCompleted[ruleId] = {
         completedAt: new Date().toISOString(),
         score: Math.max(score, prev.score || 0),
-        attempts: prev.attempts + 1
+        attempts: (prev.attempts || 0) + 1
       };
-      this.recordActivity(15);
+      // Award XP for completion (higher XP for first completion, review XP otherwise)
+      this.recordActivity(isFirstTime ? 25 : 10);
     }
 
     completeComprehension(passageId, score, totalQuestions) {
+      const isFirstTime = !this.state.progress.comprehensionCompleted[passageId];
       this.state.progress.comprehensionCompleted[passageId] = {
         completedAt: new Date().toISOString(),
         score,
         totalQuestions
       };
-      this.recordActivity(25);
+      // Award XP for quiz completion
+      this.recordActivity(isFirstTime ? 30 : 15);
     }
 
     exportJSON() {
@@ -202,8 +230,12 @@
     importJSON(jsonString) {
       try {
         const parsed = JSON.parse(jsonString);
-        if (!parsed || typeof parsed !== "object") throw new Error("Invalid format");
-        this.state = Object.assign({}, DEFAULT_STATE, parsed);
+        if (global.NederLearning && typeof global.NederLearning.validateAndMergeBackup === "function") {
+          this.state = global.NederLearning.validateAndMergeBackup(parsed, DEFAULT_STATE);
+        } else {
+          if (!parsed || typeof parsed !== "object" || Array.isArray(parsed)) throw new Error("Invalid format");
+          this.state = Object.assign({}, DEFAULT_STATE, parsed);
+        }
         this.save();
         return true;
       } catch (err) {

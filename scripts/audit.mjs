@@ -27,6 +27,7 @@ console.log("--- 1. File Structure & Assets ---");
 const requiredFiles = [
   "index.html",
   "css/styles.css",
+  "js/learning.js",
   "js/store.js",
   "js/srs.js",
   "js/voice.js",

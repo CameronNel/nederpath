@@ -17,14 +17,14 @@ Public Application URL: **`https://cameronnel.github.io/nederpath/`**
    - Every learnable Dutch noun is taught and displayed with its gender article (**`de`** or **`het`**), e.g., `de tafel`, `het huis`.
    - Comprehensive morphology: noun plurals, diminutives, verb stems, `'t kofschip` past tenses, irregular ablaut principal parts, separable prefixes (`scheidbare werkwoorden`), and adjective `-e` inflections.
    - **10 Vocabulary Learning & Practice Modes**:
-     1. *Flashcards (SRS)*: Tap/Space to reveal, 1–4 keyboard shortcuts, mobile swipe gestures, SM-2 scheduling, session completion summary.
+     1. *Flashcards (SRS)*: Tap/Space to reveal, 1–4 keyboard shortcuts, mobile touch taps, SM-2 scheduling, session completion summary. Prioritizes genuinely due SRS cards first before sampling from the full 20,000-word bank.
      2. *De of Het Drill*: Fast-paced noun gender trainer with grammatical explanations and separate accuracy tracking.
      3. *Spelling & Typing*: Strict Dutch spelling and diacritic input with whitespace/capitalization normalization.
-     4. *Fill in the Blank*: Sentence cloze with contextual distractors and explanations.
-     5. *Choose the Correct Word*: 4-option contextual multiple-choice practice.
-     6. *Verb Conjugation Practice*: Present, past (OVT), and past participle (VTT) verb inflection drills.
-     7. *Synonyms & Antonyms*: Vocabulary relationship practice.
-     8. *Plural & Diminutive Practice*: Morphology spelling rules trainer.
+     4. *Fill in the Blank*: Sentence cloze with contextual distractors, stable per-card question model, and exact normalized grading.
+     5. *Choose the Correct Word*: 4-option contextual multiple-choice practice with dynamic non-duplicate distractors.
+     6. *Verb Conjugation Practice*: Present tense 'hij/zij' verb inflection drills with exact normalized validation against verified paradigm data.
+     7. *Synonyms & Antonyms*: Vocabulary relationship practice with dynamic option pooling.
+     8. *Plural & Diminutive Practice*: Morphology spelling rules trainer testing verified plural pairings.
      9. *Context Practice*: Situational word choice exercises.
      10. *20,000-Word Dictionary*: Sub-millisecond search across Dutch words, articles, English meanings, and lemmas with filters for CEFR, Part of Speech, `de`/`het`, and Bookmarks.
 
@@ -37,24 +37,24 @@ Public Application URL: **`https://cameronnel.github.io/nederpath/`**
      - Typed verb conjugation and spelling
      - Sentence transformation (Active $\to$ Passive, Direct $\to$ Indirect, V2 $\to$ Subclause SOV)
      - Error correction (identifying and fixing grammatical errors)
-     - Movable-token word-order reconstruction (interactive draggable/clickable chip builder)
+     - Movable-token word-order reconstruction with independent duplicate-token identity
      - Article selection
 
 3. **Comprehension (Begrijpend Lezen)**:
-   - Exactly **100 progressive Dutch reading passages** systematically balanced across CEFR levels:
-     - **20 A1 Passages** (Daily routines, markets, cycling, GP appointments, shopping, home life)
-     - **20 A2 Passages** (King's Day, Sinterklaas, waste sorting, houseboats, healthcare system, sports clubs)
-     - **20 B1 Passages** (The Polder Model, Delta Works, housing shortages, Dutch directness, circular economy, Rembrandt)
-     - **20 B2 Passages** (Nitrogen crisis, childcare benefits scandal, AI in workplace, euthanasia ethics, media monopolies)
-     - **20 C1 Passages** (Landscape semiotics, linguistic purism, separation of powers, postcolonial literature, Rhineland model)
-   - Each passage includes side-by-side English translations, key vocabulary glosses, reading times, and multi-question interactive comprehension quizzes with explanations.
+   - Exactly **120 progressive Dutch reading passages** systematically balanced across CEFR levels:
+     - **24 A1 Passages** (Daily routines, markets, cycling, GP appointments, shopping, home life)
+     - **24 A2 Passages** (King's Day, Sinterklaas, waste sorting, houseboats, healthcare system, sports clubs)
+     - **24 B1 Passages** (The Polder Model, Delta Works, housing shortages, Dutch directness, circular economy, Rembrandt)
+     - **24 B2 Passages** (Nitrogen crisis, childcare benefits scandal, AI in workplace, euthanasia ethics, media monopolies)
+     - **24 C1 Passages** (Landscape semiotics, linguistic purism, separation of powers, postcolonial literature, Rhineland model)
+   - Each passage includes side-by-side English translations, key vocabulary glosses, reading times, and 4-question interactive comprehension quizzes with explanations. Full quiz completion is required before persisting completion.
 
 ---
 
 ## 2. Supporting Content Banks
 
-- **Idioms & Everyday Expressions ([`data/idioms.js`](file:///c:/Users/Camer/OneDrive/Desktop/Apps/Dutch%20App/data/idioms.js))**: **510 authentic Dutch idioms**, spoken formulas, greetings, workplace phrases, and proverbs with literal meanings, figurative translations, context notes, and examples.
-- **Dutch Sentence Bank ([`data/sentences.js`](file:///c:/Users/Camer/OneDrive/Desktop/Apps/Dutch%20App/data/sentences.js))**: **5,050 curated Dutch sentences** across daily life, work, travel, and healthcare, tagged with CEFR levels and target grammar.
+- **Idioms & Everyday Expressions ([`data/idioms.js`](data/idioms.js))**: **510 authentic Dutch idioms**, spoken formulas, greetings, workplace phrases, and proverbs with literal meanings, figurative translations, context notes, and examples.
+- **Dutch Sentence Bank ([`data/sentences.js`](data/sentences.js))**: **5,050 curated Dutch sentences** across daily life, work, travel, and healthcare, tagged with CEFR levels and target grammar.
 
 ---
 
@@ -83,16 +83,19 @@ Public Application URL: **`https://cameronnel.github.io/nederpath/`**
 ### Commands
 
 ```powershell
-# Run the complete test suite (Audit + Unit/Smoke Tests + Headless Browser Tests)
+# Run the complete test suite (Audit + Unit/Smoke Tests + Regression Tests + Headless Browser Tests)
 npm test
 
-# Run quality audit checks across all 5 data banks and assets (41 checks)
+# Run quality audit checks across all data banks and assets
 npm run audit
 
 # Run unit and smoke tests
 npm run test:unit
 
-# Run Puppeteer headless browser tests (16 end-to-end user journeys)
+# Run targeted regression tests for learning-engine integrity
+npm run test:regression
+
+# Run Puppeteer headless browser tests (desktop & mobile viewports)
 npm run test:browser
 
 # Re-generate all data banks from curated sources
@@ -110,12 +113,12 @@ npm run serve
 - **0** learnable nouns without verified `de`/`het` article.
 - **100%** of learnable nouns have `displayWord` formatted as `de [word]` or `het [word]`.
 - **120** grammar lessons with 7 exercise interaction types.
-- **100** comprehension reading passages (20 A1, 20 A2, 20 B1, 20 B2, 20 C1) with quizzes.
+- **120** comprehension reading passages (24 A1, 24 A2, 24 B1, 24 B2, 24 C1) with quizzes.
 - **510** authentic Dutch idioms and conversational formulas.
 - **5,050** benchmark and practice sentences.
-- **41/41** audit checks passed.
+- **47/47** audit checks passed.
 - **8/8** unit and smoke tests passed.
-- **16/16** headless browser end-to-end tests passed (0 console errors).
+- **34/34** headless browser end-to-end assertions passed (0 console errors).
 
 ---
 
