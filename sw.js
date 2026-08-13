@@ -1,4 +1,4 @@
-// NederPath Offline Service Worker (Cache version: v3 - Shell Precache & On-Demand Data Runtime Caching)
+// NederPath Offline Service Worker (Cache version: v3 - Shell Precache & Fresh Runtime Caching)
 const CACHE_NAME = "nederpath-v3-cache";
 
 // Core App Shell assets only (data files are runtime-cached on first successful visit)
@@ -47,6 +47,33 @@ self.addEventListener("activate", (event) => {
   );
 });
 
+function isCacheable(response) {
+  return (
+    response &&
+    response.status === 200 &&
+    (response.type === "basic" || response.type === "default")
+  );
+}
+
+function offlineResponse(request) {
+  if (request.headers.get("accept")?.includes("text/html")) {
+    return caches.match("./index.html").then((cachedIndex) => {
+      return cachedIndex || new Response("Offline resource unavailable", {
+        status: 503,
+        statusText: "Service Unavailable",
+        headers: { "Content-Type": "text/plain" }
+      });
+    });
+  }
+  return Promise.resolve(
+    new Response("Offline resource unavailable", {
+      status: 503,
+      statusText: "Service Unavailable",
+      headers: { "Content-Type": "text/plain" }
+    })
+  );
+}
+
 self.addEventListener("fetch", (event) => {
   // Only intercept same-origin GET requests; all others bypass the worker
   if (event.request.method !== "GET") {
@@ -63,10 +90,14 @@ self.addEventListener("fetch", (event) => {
   if (event.request.mode === "navigate") {
     event.respondWith(
       fetch(event.request)
-        .then((response) => {
+        .then(async (response) => {
           if (response && response.status === 200) {
             const responseClone = response.clone();
-            caches.open(CACHE_NAME).then((cache) => cache.put(event.request, responseClone));
+            // A cache-write failure must not hide a valid online response.
+            await caches
+              .open(CACHE_NAME)
+              .then((cache) => cache.put(event.request, responseClone))
+              .catch(() => undefined);
           }
           return response;
         })
@@ -79,40 +110,27 @@ self.addEventListener("fetch", (event) => {
     return;
   }
 
-  // Cache-first strategy for static assets and on-demand runtime data caching
+  // Network-first keeps unversioned shell and data URLs current across
+  // deployments. The last successful response remains available offline.
   event.respondWith(
-    caches.match(event.request).then((cachedResponse) => {
-      if (cachedResponse) {
-        return cachedResponse;
-      }
-      return fetch(event.request)
-        .then((networkResponse) => {
-          // Strictly cache successful 200 OK responses only (never 4xx, 5xx, or error states)
-          if (
-            networkResponse &&
-            networkResponse.status === 200 &&
-            (networkResponse.type === "basic" || networkResponse.type === "default")
-          ) {
-            const responseToCache = networkResponse.clone();
-            event.waitUntil(
-              caches.open(CACHE_NAME).then((cache) => {
-                return cache.put(event.request, responseToCache);
-              })
-            );
-          }
+    fetch(event.request)
+      .then(async (networkResponse) => {
+        if (isCacheable(networkResponse)) {
+          const responseToCache = networkResponse.clone();
+          // Finish the update while the response promise keeps this fetch
+          // event alive. Cache quota failures do not mask fresh content.
+          await caches
+            .open(CACHE_NAME)
+            .then((cache) => cache.put(event.request, responseToCache))
+            .catch(() => undefined);
           return networkResponse;
-        })
-        .catch(() => {
-          // Offline fallback when network is unavailable and resource is not cached
-          if (event.request.headers.get("accept")?.includes("text/html")) {
-            return caches.match("./index.html");
-          }
-          return new Response("Offline resource unavailable", {
-            status: 503,
-            statusText: "Service Unavailable",
-            headers: { "Content-Type": "text/plain" }
-          });
-        });
-    })
+        }
+
+        // A transient server error must not replace a previously valid asset.
+        return (await caches.match(event.request)) || networkResponse;
+      })
+      .catch(async () => {
+        return (await caches.match(event.request)) || offlineResponse(event.request);
+      })
   );
 });
