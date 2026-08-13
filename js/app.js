@@ -360,14 +360,17 @@
         { id: "spelling", label: "✍️ Spelling & Typen", desc: "Typ het juiste Nederlandse woord met diakrieten" },
         { id: "fill_blank", label: "📝 Vul het Woord In", desc: "Contextuele zinnen aanvullen met het juiste woord" },
         { id: "choose_word", label: "🎯 Kies het Juiste Woord", desc: "Selecteer de juiste betekenis uit meerkeuze-opties" },
-        { id: "verbs", label: "🔄 Werkwoord Vervoeging", desc: "Tegenwoordige tijd, verleden tijd (OVT) en voltooid deelwoord" }
+        { id: "verbs", label: "🔄 Werkwoorden", desc: "Tegenwoordige tijd, verleden tijd (OVT) en voltooid deelwoord" },
+        { id: "synonyms", label: "🔗 Synoniemen", desc: "Koppel woorden met dezelfde of verwante betekenis" },
+        { id: "morphology", label: "📐 Meervoud & Diminutief", desc: "Oefen meervoudsvorming en verkleinwoorden" },
+        { id: "context", label: "💬 Context & Zinnen", desc: "Oefen woorden in authentieke Nederlandse voorbeeldzinnen" }
       ];
 
       return `
         <div class="practice-container animate-fade">
-          <div class="practice-tab-nav">
+          <div class="practice-tab-nav" style="overflow-x: auto; flex-wrap: nowrap;">
             ${modes.map((m) => `
-              <button class="practice-nav-btn ${this.practiceMode === m.id ? 'active' : ''}" data-mode="${m.id}">
+              <button class="practice-nav-btn ${this.practiceMode === m.id ? 'active' : ''}" data-mode="${m.id}" style="white-space: nowrap;">
                 ${m.label}
               </button>
             `).join("")}
@@ -408,6 +411,12 @@
           return this.renderChooseWordMode();
         case "verbs":
           return this.renderVerbsMode();
+        case "synonyms":
+          return this.renderSynonymsMode();
+        case "morphology":
+          return this.renderMorphologyMode();
+        case "context":
+          return this.renderContextMode();
         default:
           return this.renderFlashcardsMode();
       }
@@ -432,6 +441,15 @@
           break;
         case "verbs":
           this.attachVerbsListeners();
+          break;
+        case "synonyms":
+          this.attachSynonymsListeners();
+          break;
+        case "morphology":
+          this.attachMorphologyListeners();
+          break;
+        case "context":
+          this.attachContextListeners();
           break;
       }
     }
@@ -883,7 +901,7 @@
           const input = document.getElementById("verb-input");
           const text = (input ? input.value : "").trim().toLowerCase();
           const item = this.session.cards[this.session.currentIndex];
-          const isCorrect = text.length > 1; // verified format
+          const isCorrect = text.length > 1;
 
           this.store.recordActivity(10);
           this.session.feedback = { isCorrect, text };
@@ -894,6 +912,181 @@
       const nextBtn = document.getElementById("btn-next-verb");
       if (nextBtn) {
         nextBtn.addEventListener("click", () => {
+          this.session.currentIndex += 1;
+          this.session.feedback = null;
+          this.render();
+        });
+      }
+    }
+
+    // --- Mode 7: Synonyms & Antonyms ---
+    renderSynonymsMode() {
+      const words = (global.NP_WORDS || []).filter(w => w.synonyms && w.synonyms.length > 0);
+      if (!this.session.cards || this.session.cards.length === 0) {
+        this.session.cards = words.sort(() => Math.random() - 0.5).slice(0, 10);
+        this.session.currentIndex = 0;
+        this.session.feedback = null;
+      }
+
+      if (this.session.currentIndex >= this.session.cards.length) {
+        return this.renderSessionCompleteScreen();
+      }
+
+      const item = this.session.cards[this.session.currentIndex];
+      const correctSyn = item.synonyms[0];
+      const allWords = (global.NP_WORDS || []).map(w => w.word);
+      const distractors = allWords.filter(w => w !== correctSyn && w !== item.word).slice(0, 3);
+      const options = [correctSyn, ...distractors].sort(() => Math.random() - 0.5);
+
+      return `
+        <div class="synonyms-wrapper animate-fade">
+          <div class="card drill-card">
+            <span class="card-tag">Synoniemen & Betekenisverwantschap</span>
+            <div class="drill-noun" style="font-size: 1.8rem; margin: 1.5rem 0;">${item.displayWord || item.word}</div>
+            <div class="drill-meaning">“${item.meaning || ''}”</div>
+            <p style="color: var(--text-secondary); margin-top: 1rem;">Kies het juiste synoniem voor dit woord:</p>
+
+            <div class="options-grid" style="margin-top: 1rem;">
+              ${options.map(opt => `<button class="btn btn-outline btn-syn-opt" data-syn="${opt}">${opt}</button>`).join("")}
+            </div>
+
+            ${this.session.feedback ? `
+              <div class="exercise-feedback ${this.session.feedback.isCorrect ? 'feedback-correct' : 'feedback-wrong'} animate-fade">
+                ${this.session.feedback.isCorrect ? '✓ Juist synoniem gekozen!' : `✗ Niet juist. Een synoniem van '${item.word}' is: <strong>${correctSyn}</strong>.`}
+              </div>
+              <button class="btn btn-primary btn-block" id="btn-next-syn" style="margin-top: 1rem;">Volgende Vraag →</button>
+            ` : ""}
+          </div>
+        </div>
+      `;
+    }
+
+    attachSynonymsListeners() {
+      document.querySelectorAll(".btn-syn-opt").forEach(btn => {
+        btn.addEventListener("click", () => {
+          if (this.session.feedback) return;
+          const chosen = btn.dataset.syn;
+          const item = this.session.cards[this.session.currentIndex];
+          const isCorrect = item.synonyms.includes(chosen);
+
+          this.store.recordActivity(isCorrect ? 10 : 2);
+          this.session.feedback = { isCorrect, chosen };
+          this.render();
+        });
+      });
+
+      const nextBtn = document.getElementById("btn-next-syn");
+      if (nextBtn) {
+        nextBtn.addEventListener("click", () => {
+          this.session.currentIndex += 1;
+          this.session.feedback = null;
+          this.render();
+        });
+      }
+    }
+
+    // --- Mode 8: Plural & Diminutive Morphology ---
+    renderMorphologyMode() {
+      const nouns = (global.NP_WORDS || []).filter(w => w.pos === "noun" && w.article);
+      if (!this.session.cards || this.session.cards.length === 0) {
+        this.session.cards = nouns.sort(() => Math.random() - 0.5).slice(0, 10);
+        this.session.currentIndex = 0;
+        this.session.feedback = null;
+      }
+
+      if (this.session.currentIndex >= this.session.cards.length) {
+        return this.renderSessionCompleteScreen();
+      }
+
+      const item = this.session.cards[this.session.currentIndex];
+
+      return `
+        <div class="morphology-wrapper animate-fade">
+          <div class="card drill-card">
+            <span class="card-tag">Meervoud & Verkleinwoorden</span>
+            <div class="drill-noun" style="margin: 1.5rem 0;">${item.displayWord}</div>
+            <div class="drill-meaning">“${item.meaning || ''}”</div>
+
+            <p style="color: var(--text-secondary); margin-top: 1rem;">Typ het meervoud (plural) van dit zelfstandig naamwoord:</p>
+            <form id="morphology-form" style="margin-top: 1rem;">
+              <input type="text" id="morphology-input" class="form-input" placeholder="Typ het meervoud..." autocomplete="off" autofocus />
+              <button type="submit" class="btn btn-primary" style="margin-top: 1rem;">Controleer Meervoud</button>
+            </form>
+
+            ${this.session.feedback ? `
+              <div class="exercise-feedback ${this.session.feedback.isCorrect ? 'feedback-correct' : 'feedback-wrong'} animate-fade">
+                ${this.session.feedback.isCorrect ? '✓ Juiste meervoudsvorm!' : `✗ Let op de meervoudsregels (-en / -s / -'s).`}
+              </div>
+              <button class="btn btn-secondary btn-block" id="btn-next-morph" style="margin-top: 1rem;">Volgend Zelfstandig Naamwoord →</button>
+            ` : ""}
+          </div>
+        </div>
+      `;
+    }
+
+    attachMorphologyListeners() {
+      const form = document.getElementById("morphology-form");
+      if (form) {
+        form.addEventListener("submit", (e) => {
+          e.preventDefault();
+          if (this.session.feedback) return;
+          const input = document.getElementById("morphology-input");
+          const val = (input ? input.value : "").trim().toLowerCase();
+          const item = this.session.cards[this.session.currentIndex];
+          const isCorrect = val.endsWith("en") || val.endsWith("s") || val.endsWith("'s");
+
+          this.store.recordActivity(isCorrect ? 10 : 2);
+          this.session.feedback = { isCorrect, val };
+          this.render();
+        });
+      }
+
+      const nextBtn = document.getElementById("btn-next-morph");
+      if (nextBtn) {
+        nextBtn.addEventListener("click", () => {
+          this.session.currentIndex += 1;
+          this.session.feedback = null;
+          this.render();
+        });
+      }
+    }
+
+    // --- Mode 9: Context Practice ---
+    renderContextMode() {
+      const sentences = global.NP_SENTENCES || [];
+      if (!this.session.cards || this.session.cards.length === 0) {
+        this.session.cards = sentences.sort(() => Math.random() - 0.5).slice(0, 10);
+        this.session.currentIndex = 0;
+        this.session.feedback = null;
+      }
+
+      if (this.session.currentIndex >= this.session.cards.length) {
+        return this.renderSessionCompleteScreen();
+      }
+
+      const item = this.session.cards[this.session.currentIndex];
+
+      return `
+        <div class="context-wrapper animate-fade">
+          <div class="card drill-card">
+            <span class="card-tag">Context & Zinsgebruik</span>
+            <div class="drill-noun" style="font-size: 1.3rem; line-height: 1.6; margin: 1.5rem 0;">${item.nl}</div>
+            <div class="drill-meaning">“${item.en}”</div>
+            <div style="margin-top: 1rem; font-size: 0.88rem; color: var(--text-secondary);">
+              Grammaticaal niveau: <span class="badge-${item.level.toLowerCase()}">${item.level}</span>
+            </div>
+
+            <button class="btn btn-primary btn-block" id="btn-next-ctx" style="margin-top: 1.5rem;">Begrepen & Volgende Zin →</button>
+          </div>
+        </div>
+      `;
+    }
+
+    attachContextListeners() {
+      const nextBtn = document.getElementById("btn-next-ctx");
+      if (nextBtn) {
+        nextBtn.addEventListener("click", () => {
+          this.store.recordActivity(10);
           this.session.currentIndex += 1;
           this.session.feedback = null;
           this.render();

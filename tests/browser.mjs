@@ -231,6 +231,48 @@ async function runBrowserTests() {
       assert(true, "Choose word option clicked and evaluated");
     }
 
+    // Mode 6: Verbs
+    const verbsNavBtn = await page.$("button[data-mode='verbs']");
+    if (verbsNavBtn) {
+      await verbsNavBtn.click();
+      await page.waitForSelector(".verbs-wrapper");
+      await page.type("#verb-input", "werkt");
+      await page.click("#verb-form button[type='submit']");
+      await page.waitForSelector(".exercise-feedback");
+      assert(true, "Verb conjugation submitted and feedback shown");
+    }
+
+    // Mode 7: Synonyms
+    const synNavBtn = await page.$("button[data-mode='synonyms']");
+    if (synNavBtn) {
+      await synNavBtn.click();
+      await page.waitForSelector(".synonyms-wrapper");
+      const opt = await page.$(".btn-syn-opt");
+      if (opt) await opt.click();
+      await page.waitForSelector(".exercise-feedback");
+      assert(true, "Synonyms practice option clicked and evaluated");
+    }
+
+    // Mode 8: Morphology (Plural & Diminutive)
+    const morphNavBtn = await page.$("button[data-mode='morphology']");
+    if (morphNavBtn) {
+      await morphNavBtn.click();
+      await page.waitForSelector(".morphology-wrapper");
+      await page.type("#morphology-input", "boeken");
+      await page.click("#morphology-form button[type='submit']");
+      await page.waitForSelector(".exercise-feedback");
+      assert(true, "Morphology plural/diminutive submitted and evaluated");
+    }
+
+    // Mode 9: Context Practice
+    const ctxNavBtn = await page.$("button[data-mode='context']");
+    if (ctxNavBtn) {
+      await ctxNavBtn.click();
+      await page.waitForSelector(".context-wrapper");
+      await page.click("#btn-next-ctx");
+      assert(true, "Context practice sentence reviewed and advanced");
+    }
+
     // 7. Navigation: Pad (8-Section Curriculum Path)
     await page.click("#nav-path");
     await page.waitForSelector(".sections-list");
