@@ -3,15 +3,19 @@
   "use strict";
 
   const Learning = global.NederLearning || {
+    escapeHTML: (s) => (typeof s === "string" ? s.replace(/[&<>"']/g, "") : ""),
     getLocalISODate: (d = new Date()) => {
       const date = d instanceof Date ? d : new Date(d);
       return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}-${String(date.getDate()).padStart(2, "0")}`;
     },
-    shuffleArray: (arr) => arr.slice().sort(() => Math.random() - 0.5),
-    sampleArray: (arr, count = 10) => arr.slice().sort(() => Math.random() - 0.5).slice(0, count),
+    shuffleArray: (arr) => (Array.isArray(arr) ? arr.slice().sort(() => Math.random() - 0.5) : []),
+    sampleArray: (arr, count = 10) => (Array.isArray(arr) ? arr.slice().sort(() => Math.random() - 0.5).slice(0, count) : []),
     normalizeAnswer: (str) => (typeof str === "string" ? str.trim().toLowerCase().replace(/[.,/#!$%^&*;:{}=\-_`~()?"']/g, "") : ""),
+    getDutchVerbStem: () => "",
     getVerbHijConjugation: () => null,
+    getEligibleVerbs: () => [],
     getNounPlural: () => null,
+    generateFlashcardSession: ({ wordsBank = [], sessionSize = 10 } = {}) => (Array.isArray(wordsBank) ? wordsBank.slice(0, sessionSize) : []),
     createFillBlankCard: () => null,
     validateAndMergeBackup: (p, d) => Object.assign({}, d, p)
   };
@@ -191,7 +195,7 @@
         <div class="today-container animate-fade">
           <div class="card today-hero">
             <div class="today-hero-left">
-              <span class="greeting-badge">Welkom terug, ${user.name}!</span>
+              <span class="greeting-badge">Welkom terug, ${Learning.escapeHTML(user.name)}!</span>
               <h1 class="today-title">Klaar voor je dagelijkse portie Nederlands?</h1>
               <p class="today-subtitle">Je streak staat op <strong>${user.streak} dagen</strong>. Blijf consistent om vloeiend te worden!</p>
               
@@ -495,35 +499,20 @@
       }
     }
 
-    // --- Mode 1: Flashcards (SRS Due Prioritized, Full 20,000 Word Bank) ---
+    // --- Mode 1: Flashcards (SRS Due Prioritized, Unseen Fillers, Full 20,000 Word Bank) ---
     renderFlashcardsMode() {
       const words = global.NP_WORDS || [];
       const sessionSize = this.store.state.settings.sessionSize || 10;
 
       if (!this.session.cards || this.session.cards.length === 0) {
-        // Prioritize due cards first
         const dueSrs = this.srs.getDueCards("vocab");
-        const dueWords = [];
-        const dueIds = new Set();
-
-        for (const srsCard of dueSrs) {
-          const found = words.find((w) => w.id === srsCard.id);
-          if (found && !dueIds.has(found.id)) {
-            dueWords.push(found);
-            dueIds.add(found.id);
-            if (dueWords.length >= sessionSize) break;
-          }
-        }
-
-        let sessionCards = dueWords.slice();
-        if (sessionCards.length < sessionSize) {
-          const remainingNeeded = sessionSize - sessionCards.length;
-          const eligible = words.filter((w) => w.learnable !== false && !dueIds.has(w.id));
-          const sampled = Learning.sampleArray(eligible, remainingNeeded);
-          sessionCards = sessionCards.concat(sampled);
-        }
-
-        this.session.cards = sessionCards;
+        const srsCards = this.store.state.srs ? this.store.state.srs.cards : {};
+        this.session.cards = Learning.generateFlashcardSession({
+          wordsBank: words,
+          srsCards,
+          dueCards: dueSrs,
+          sessionSize
+        });
         this.session.currentIndex = 0;
         this.session.revealed = false;
       }
@@ -934,23 +923,18 @@
       }
     }
 
-    // --- Mode 6: Verbs (Exact Hij/Zij Present Tense Grading) ---
+    // --- Mode 6: Verbs (Exact Hij/Zij Present Tense Grading from Trusted Lemma Infinitives) ---
     renderVerbsMode() {
       const words = global.NP_WORDS || [];
       const sessionSize = this.store.state.settings.sessionSize || 10;
 
       if (!this.session.cards || this.session.cards.length === 0) {
-        const candidateVerbs = words.filter((w) => w.pos === "verb" && w.word && w.word.endsWith("en"));
-        const validVerbs = [];
-
-        for (const v of candidateVerbs) {
+        const eligibleVerbs = Learning.getEligibleVerbs(words);
+        const sampled = Learning.sampleArray(eligibleVerbs, sessionSize);
+        this.session.cards = sampled.map((v) => {
           const expectedHij = Learning.getVerbHijConjugation(v.word, words);
-          if (expectedHij) {
-            validVerbs.push(Object.assign({}, v, { expectedHij }));
-          }
-        }
-
-        this.session.cards = Learning.sampleArray(validVerbs, sessionSize);
+          return Object.assign({}, v, { expectedHij });
+        });
         this.session.currentIndex = 0;
         this.session.feedback = null;
       }

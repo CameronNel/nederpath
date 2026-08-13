@@ -19,6 +19,23 @@
   };
 
   /**
+   * HTML entity escaper for safe interpolation into innerHTML sinks.
+   */
+  function escapeHTML(str) {
+    if (typeof str !== "string") return "";
+    return str.replace(/[&<>"']/g, (m) => {
+      switch (m) {
+        case "&": return "&amp;";
+        case "<": return "&lt;";
+        case ">": return "&gt;";
+        case '"': return "&quot;";
+        case "'": return "&#39;";
+        default: return m;
+      }
+    });
+  }
+
+  /**
    * Formats a local calendar date as 'YYYY-MM-DD'.
    * Never shifts based on UTC offset.
    */
@@ -29,6 +46,18 @@
     const month = String(d.getMonth() + 1).padStart(2, "0");
     const day = String(d.getDate()).padStart(2, "0");
     return `${year}-${month}-${day}`;
+  }
+
+  /**
+   * Validates if a string is a legitimate, finite ISO date within reasonable range.
+   */
+  function isValidISODateString(str) {
+    if (typeof str !== "string" || str.length > 35) return false;
+    if (!/^\d{4}-\d{2}-\d{2}(T\d{2}:\d{2}:\d{2}(\.\d{1,3})?Z?)?$/.test(str)) return false;
+    const d = new Date(str);
+    if (isNaN(d.getTime())) return false;
+    const year = d.getUTCFullYear();
+    return year >= 2000 && year <= 2100;
   }
 
   /**
@@ -70,26 +99,35 @@
   }
 
   /**
-   * Extracts Dutch verb stem according to spelling rules.
+   * Extracts Dutch verb stem according to standard spelling rules.
    */
   function getDutchVerbStem(infinitive) {
     if (!infinitive || typeof infinitive !== "string") return "";
     const inf = infinitive.toLowerCase().trim();
+    if (inf === "zijn") return "is";
+    if (inf === "doen") return "doe";
+    if (inf === "gaan") return "ga";
+    if (inf === "staan") return "sta";
+    if (inf === "zien") return "zie";
+    if (inf === "slaan") return "sla";
     if (!inf.endsWith("en") || inf.length <= 2) return inf;
 
     let base = inf.slice(0, -2);
 
     // Double consonant at end -> single (e.g. bakken -> bak, pakken -> pak, zetten -> zet)
-    if (base.length >= 2 && base[base.length - 1] === base[base.length - 2] && /[bcdfghjklmnpqrstvwxz]/.test(base[base.length - 1])) {
+    if (
+      base.length >= 2 &&
+      base[base.length - 1] === base[base.length - 2] &&
+      /[bcdfghjklmnpqrstvwxz]/.test(base[base.length - 1])
+    ) {
       base = base.slice(0, -1);
     } else {
-      // Vowel lengthening in open syllables (e.g. maken -> maak, hopen -> hoop, praten -> praat)
-      // Check single vowel followed by single consonant: [aeou] + consonant
-      const match = base.match(/^(.+?)([aeou])([bcdfghjklmnpqrstvwxz])$/);
+      // Vowel lengthening in open syllables (e.g. maken -> maak, hopen -> hoop, praten -> praat, eten -> eet)
+      const match = base.match(/^(.*?)([aeou])([bcdfghjklmnpqrstvwxz])$/);
       if (match) {
         const [, prefix, vowel, consonant] = match;
         // Only double if not already a diphthong or preceded by vowel
-        if (!/[aeiou]/.test(prefix.slice(-1))) {
+        if (!prefix || !/[aeiou]/.test(prefix.slice(-1))) {
           base = `${prefix}${vowel}${vowel}${consonant}`;
         }
       }
@@ -107,6 +145,10 @@
 
   /**
    * Resolves authentic 'hij/zij' present tense form for a verb infinitive.
+   * Priority:
+   * 1. Known irregular verbs dictionary
+   * 2. Explicit lemma present-tense row in wordsBank
+   * 3. Regular Dutch weak verb stem + t
    * Returns string or null if unsupported.
    */
   function getVerbHijConjugation(infinitive, wordsBank = null) {
@@ -123,7 +165,12 @@
       const explicitRow = wordsBank.find((w) => {
         if (w.pos !== "verb") return false;
         if (w.lemma && w.lemma.toLowerCase() === inf) {
-          return w.inflectionType === "hij-form" || (w.meaning && w.meaning.includes("present-tense 'hij/zij' form"));
+          const meaning = (w.meaning || "").toLowerCase();
+          return (
+            w.inflectionType === "hij-form" ||
+            meaning.includes("present-tense 'hij/zij' form") ||
+            meaning.includes("present-tense 'hij' form")
+          );
         }
         return false;
       });
@@ -137,6 +184,25 @@
     if (!stem) return null;
     if (stem.endsWith("t")) return stem;
     return stem + "t";
+  }
+
+  /**
+   * Filters a word bank down to trustworthy infinitive lemma entries for verb practice.
+   * Excludes past tense, participles, and non-lemma forms (e.g. waren, hadden, gezien, gelopen).
+   */
+  function getEligibleVerbs(wordsBank) {
+    if (!Array.isArray(wordsBank)) return [];
+    return wordsBank.filter((w) => {
+      if (!w || w.pos !== "verb") return false;
+      if (w.inflectionType !== "lemma") return false;
+      if (w.learnable === false) return false;
+      const wordStr = (w.word || "").toLowerCase().trim();
+      const isStandardInfinitive =
+        wordStr.endsWith("en") || ["zijn", "gaan", "staan", "doen", "zien", "slaan"].includes(wordStr);
+      if (!isStandardInfinitive) return false;
+      const hij = getVerbHijConjugation(wordStr, wordsBank);
+      return typeof hij === "string" && hij.length > 0;
+    });
   }
 
   /**
@@ -163,6 +229,67 @@
       }
     }
     return null;
+  }
+
+  /**
+   * Generates a deterministic flashcard session.
+   * Prioritizes due SRS cards first, fills remainder exclusively from unseen words (not in srsCards),
+   * and falls back to remaining words only when unseen words are fully exhausted.
+   */
+  function generateFlashcardSession({ wordsBank = [], srsCards = {}, dueCards = [], sessionSize = 10 } = {}) {
+    const size = Math.max(1, sessionSize);
+    const words = Array.isArray(wordsBank) ? wordsBank : [];
+
+    const sessionCards = [];
+    const sessionIds = new Set();
+
+    // Map all tracked card IDs in SRS
+    const allTrackedIds = new Set(
+      Array.isArray(srsCards)
+        ? srsCards.map((c) => c && c.id).filter(Boolean)
+        : Object.keys(srsCards || {})
+    );
+
+    // 1. Genuinely due cards first
+    const dueList = Array.isArray(dueCards) ? dueCards : [];
+    for (const card of dueList) {
+      if (sessionCards.length >= size) break;
+      const cardId = typeof card === "string" ? card : (card && card.id);
+      if (!cardId || sessionIds.has(cardId)) continue;
+      const wordObj = words.find((w) => w.id === cardId);
+      if (wordObj && wordObj.learnable !== false) {
+        sessionCards.push(wordObj);
+        sessionIds.add(wordObj.id);
+      }
+    }
+
+    // 2. Fill remainder from genuinely UNSEEN learnable words (not in allTrackedIds)
+    if (sessionCards.length < size) {
+      const remainingNeeded = size - sessionCards.length;
+      const unseenEligible = words.filter(
+        (w) => w && w.learnable !== false && !allTrackedIds.has(w.id) && !sessionIds.has(w.id)
+      );
+      const sampledUnseen = sampleArray(unseenEligible, remainingNeeded);
+      for (const w of sampledUnseen) {
+        sessionCards.push(w);
+        sessionIds.add(w.id);
+      }
+    }
+
+    // 3. Explicit fallback only if unseen words are completely exhausted
+    if (sessionCards.length < size) {
+      const remainingNeeded = size - sessionCards.length;
+      const fallbackEligible = words.filter(
+        (w) => w && w.learnable !== false && !sessionIds.has(w.id)
+      );
+      const sampledFallback = sampleArray(fallbackEligible, remainingNeeded);
+      for (const w of sampledFallback) {
+        sessionCards.push(w);
+        sessionIds.add(w.id);
+      }
+    }
+
+    return sessionCards;
   }
 
   /**
@@ -247,46 +374,72 @@
   }
 
   /**
+   * Recursively detects dangerous prototype-pollution keys (__proto__, constructor, prototype).
+   */
+  function containsDangerousKeys(value) {
+    if (!value || typeof value !== "object") return false;
+    if (Array.isArray(value)) {
+      for (let i = 0; i < value.length; i++) {
+        if (containsDangerousKeys(value[i])) return true;
+      }
+      return false;
+    }
+    for (const key of Object.getOwnPropertyNames(value)) {
+      if (key === "__proto__" || key === "constructor" || key === "prototype") {
+        return true;
+      }
+      if (containsDangerousKeys(value[key])) return true;
+    }
+    return false;
+  }
+
+  /**
    * Validates imported backup JSON, rejects invalid/dangerous payloads,
-   * and performs a safe deep merge with defaults.
+   * enforces numeric and collection bounds, sanitizes strings, and performs safe deep merge.
    */
   function validateAndMergeBackup(parsed, defaultState) {
     if (!parsed || typeof parsed !== "object" || Array.isArray(parsed)) {
       throw new Error("Import payload must be a non-empty JSON object.");
     }
 
-    // Prototype pollution prevention
-    const dangerousKeys = ["__proto__", "constructor", "prototype"];
-    for (const key of dangerousKeys) {
-      if (Object.prototype.hasOwnProperty.call(parsed, key)) {
-        throw new Error(`Forbidden key '${key}' detected in backup.`);
-      }
+    // Recursive prototype pollution check
+    if (containsDangerousKeys(parsed)) {
+      throw new Error("Forbidden prototype-pollution keys detected in import payload.");
     }
 
     const merged = JSON.parse(JSON.stringify(defaultState));
 
     // Validate and merge user
     if (parsed.user && typeof parsed.user === "object" && !Array.isArray(parsed.user)) {
-      if (typeof parsed.user.name === "string" && parsed.user.name.trim()) {
-        merged.user.name = parsed.user.name.trim().slice(0, 40);
+      if (typeof parsed.user.name === "string") {
+        // Sanitize name: strip HTML tags, preserve normal Unicode letters, numbers, spaces, hyphens
+        const sanitizedName = parsed.user.name
+          .replace(/<[^>]*>/g, "")
+          .replace(/[^a-zA-Z0-9\s\-\.\u00C0-\u024F\u1E00-\u1EFF]/g, "")
+          .replace(/\s+/g, " ")
+          .trim()
+          .slice(0, 40);
+        if (sanitizedName.length > 0) {
+          merged.user.name = sanitizedName;
+        }
       }
       if (["A1", "A2", "B1", "B2", "C1"].includes(parsed.user.level)) {
         merged.user.level = parsed.user.level;
       }
-      if (typeof parsed.user.dailyGoal === "number" && parsed.user.dailyGoal > 0 && parsed.user.dailyGoal <= 200) {
-        merged.user.dailyGoal = Math.round(parsed.user.dailyGoal);
+      if (typeof parsed.user.dailyGoal === "number" && isFinite(parsed.user.dailyGoal)) {
+        merged.user.dailyGoal = Math.max(1, Math.min(500, Math.round(parsed.user.dailyGoal)));
       }
-      if (typeof parsed.user.sessionSize === "number" && parsed.user.sessionSize > 0 && parsed.user.sessionSize <= 100) {
-        merged.user.sessionSize = Math.round(parsed.user.sessionSize);
+      if (typeof parsed.user.sessionSize === "number" && isFinite(parsed.user.sessionSize)) {
+        merged.user.sessionSize = Math.max(1, Math.min(100, Math.round(parsed.user.sessionSize)));
       }
-      if (typeof parsed.user.streak === "number" && parsed.user.streak >= 0) {
-        merged.user.streak = Math.round(parsed.user.streak);
+      if (typeof parsed.user.streak === "number" && isFinite(parsed.user.streak)) {
+        merged.user.streak = Math.max(0, Math.min(100000, Math.round(parsed.user.streak)));
       }
-      if (typeof parsed.user.totalXp === "number" && parsed.user.totalXp >= 0) {
-        merged.user.totalXp = Math.round(parsed.user.totalXp);
+      if (typeof parsed.user.totalXp === "number" && isFinite(parsed.user.totalXp)) {
+        merged.user.totalXp = Math.max(0, Math.min(10000000, Math.round(parsed.user.totalXp)));
       }
-      if (typeof parsed.user.lastActiveDate === "string" && /^\d{4}-\d{2}-\d{2}$/.test(parsed.user.lastActiveDate)) {
-        merged.user.lastActiveDate = parsed.user.lastActiveDate;
+      if (typeof parsed.user.lastActiveDate === "string" && isValidISODateString(parsed.user.lastActiveDate)) {
+        merged.user.lastActiveDate = parsed.user.lastActiveDate.slice(0, 10);
       }
     }
 
@@ -295,11 +448,11 @@
       if (["dark", "light"].includes(parsed.settings.theme)) {
         merged.settings.theme = parsed.settings.theme;
       }
-      if (typeof parsed.settings.sessionSize === "number" && parsed.settings.sessionSize > 0 && parsed.settings.sessionSize <= 100) {
-        merged.settings.sessionSize = Math.round(parsed.settings.sessionSize);
+      if (typeof parsed.settings.sessionSize === "number" && isFinite(parsed.settings.sessionSize)) {
+        merged.settings.sessionSize = Math.max(1, Math.min(100, Math.round(parsed.settings.sessionSize)));
       }
-      if (typeof parsed.settings.dailyGoal === "number" && parsed.settings.dailyGoal > 0 && parsed.settings.dailyGoal <= 200) {
-        merged.settings.dailyGoal = Math.round(parsed.settings.dailyGoal);
+      if (typeof parsed.settings.dailyGoal === "number" && isFinite(parsed.settings.dailyGoal)) {
+        merged.settings.dailyGoal = Math.max(1, Math.min(500, Math.round(parsed.settings.dailyGoal)));
       }
       if (typeof parsed.settings.autoAdvance === "boolean") {
         merged.settings.autoAdvance = parsed.settings.autoAdvance;
@@ -309,85 +462,104 @@
       }
     }
 
+    const SAFE_ID_REGEX = /^[a-zA-Z0-9_\-]+$/;
+    const MAX_ITEMS = 25000;
+
     // Validate and merge progress
     if (parsed.progress && typeof parsed.progress === "object" && !Array.isArray(parsed.progress)) {
       if (parsed.progress.grammarCompleted && typeof parsed.progress.grammarCompleted === "object") {
+        let count = 0;
         for (const [k, v] of Object.entries(parsed.progress.grammarCompleted)) {
-          if (typeof k === "string" && v && typeof v === "object") {
+          if (count++ >= 500) break;
+          if (typeof k === "string" && SAFE_ID_REGEX.test(k) && v && typeof v === "object") {
             merged.progress.grammarCompleted[k] = {
-              completedAt: typeof v.completedAt === "string" ? v.completedAt : new Date().toISOString(),
-              score: typeof v.score === "number" ? Math.max(0, Math.min(100, Math.round(v.score))) : 100,
-              attempts: typeof v.attempts === "number" ? Math.max(1, Math.round(v.attempts)) : 1
+              completedAt: isValidISODateString(v.completedAt) ? v.completedAt : new Date().toISOString(),
+              score: typeof v.score === "number" && isFinite(v.score) ? Math.max(0, Math.min(100, Math.round(v.score))) : 100,
+              attempts: typeof v.attempts === "number" && isFinite(v.attempts) ? Math.max(1, Math.min(10000, Math.round(v.attempts))) : 1
             };
           }
         }
       }
 
       if (parsed.progress.comprehensionCompleted && typeof parsed.progress.comprehensionCompleted === "object") {
+        let count = 0;
         for (const [k, v] of Object.entries(parsed.progress.comprehensionCompleted)) {
-          if (typeof k === "string" && v && typeof v === "object") {
+          if (count++ >= 500) break;
+          if (typeof k === "string" && SAFE_ID_REGEX.test(k) && v && typeof v === "object") {
             merged.progress.comprehensionCompleted[k] = {
-              completedAt: typeof v.completedAt === "string" ? v.completedAt : new Date().toISOString(),
-              score: typeof v.score === "number" ? Math.max(0, Math.min(100, Math.round(v.score))) : 100,
-              totalQuestions: typeof v.totalQuestions === "number" ? Math.max(1, Math.round(v.totalQuestions)) : 4
+              completedAt: isValidISODateString(v.completedAt) ? v.completedAt : new Date().toISOString(),
+              score: typeof v.score === "number" && isFinite(v.score) ? Math.max(0, Math.min(100, Math.round(v.score))) : 100,
+              totalQuestions: typeof v.totalQuestions === "number" && isFinite(v.totalQuestions) ? Math.max(1, Math.min(100, Math.round(v.totalQuestions))) : 4
             };
           }
         }
       }
 
       if (parsed.progress.wordsBookmarked && typeof parsed.progress.wordsBookmarked === "object") {
+        let count = 0;
         for (const [k, v] of Object.entries(parsed.progress.wordsBookmarked)) {
-          if (typeof k === "string" && v === true) {
+          if (count++ >= MAX_ITEMS) break;
+          if (typeof k === "string" && SAFE_ID_REGEX.test(k) && v === true) {
             merged.progress.wordsBookmarked[k] = true;
           }
         }
       }
 
       if (parsed.progress.studyDays && typeof parsed.progress.studyDays === "object") {
-        for (const [dateStr, count] of Object.entries(parsed.progress.studyDays)) {
-          if (/^\d{4}-\d{2}-\d{2}$/.test(dateStr) && typeof count === "number" && count >= 0) {
-            merged.progress.studyDays[dateStr] = Math.round(count);
+        let count = 0;
+        for (const [dateStr, dayCount] of Object.entries(parsed.progress.studyDays)) {
+          if (count++ >= 3650) break;
+          if (/^\d{4}-\d{2}-\d{2}$/.test(dateStr) && isValidISODateString(dateStr) && typeof dayCount === "number" && isFinite(dayCount) && dayCount >= 0) {
+            merged.progress.studyDays[dateStr] = Math.min(100000, Math.round(dayCount));
           }
         }
       }
 
       if (parsed.progress.articleStats && typeof parsed.progress.articleStats === "object") {
         const stats = parsed.progress.articleStats;
-        if (typeof stats.totalDrilled === "number") merged.progress.articleStats.totalDrilled = Math.max(0, Math.round(stats.totalDrilled));
-        if (typeof stats.correct === "number") merged.progress.articleStats.correct = Math.max(0, Math.round(stats.correct));
+        if (typeof stats.totalDrilled === "number" && isFinite(stats.totalDrilled)) {
+          merged.progress.articleStats.totalDrilled = Math.max(0, Math.min(10000000, Math.round(stats.totalDrilled)));
+        }
+        if (typeof stats.correct === "number" && isFinite(stats.correct)) {
+          merged.progress.articleStats.correct = Math.max(0, Math.min(10000000, Math.round(stats.correct)));
+        }
         if (stats.mistakes && typeof stats.mistakes === "object") {
+          let count = 0;
           for (const [noun, mCount] of Object.entries(stats.mistakes)) {
-            if (typeof noun === "string" && typeof mCount === "number") {
-              merged.progress.articleStats.mistakes[noun] = Math.max(0, Math.round(mCount));
+            if (count++ >= MAX_ITEMS) break;
+            if (typeof noun === "string" && noun.length <= 60 && typeof mCount === "number" && isFinite(mCount)) {
+              merged.progress.articleStats.mistakes[noun] = Math.max(0, Math.min(100000, Math.round(mCount)));
             }
           }
         }
       }
 
       if (parsed.progress.dailyStats && typeof parsed.progress.dailyStats === "object") {
-        if (typeof parsed.progress.dailyStats.date === "string") {
-          merged.progress.dailyStats.date = parsed.progress.dailyStats.date;
+        if (typeof parsed.progress.dailyStats.date === "string" && isValidISODateString(parsed.progress.dailyStats.date)) {
+          merged.progress.dailyStats.date = parsed.progress.dailyStats.date.slice(0, 10);
         }
-        if (typeof parsed.progress.dailyStats.learnedToday === "number") {
-          merged.progress.dailyStats.learnedToday = Math.max(0, Math.round(parsed.progress.dailyStats.learnedToday));
+        if (typeof parsed.progress.dailyStats.learnedToday === "number" && isFinite(parsed.progress.dailyStats.learnedToday)) {
+          merged.progress.dailyStats.learnedToday = Math.max(0, Math.min(100000, Math.round(parsed.progress.dailyStats.learnedToday)));
         }
       }
     }
 
     // Validate and merge SRS
     if (parsed.srs && typeof parsed.srs === "object" && parsed.srs.cards && typeof parsed.srs.cards === "object") {
+      let count = 0;
       for (const [cardId, card] of Object.entries(parsed.srs.cards)) {
-        if (typeof cardId === "string" && card && typeof card === "object") {
+        if (count++ >= MAX_ITEMS) break;
+        if (typeof cardId === "string" && SAFE_ID_REGEX.test(cardId) && card && typeof card === "object") {
           merged.srs.cards[cardId] = {
-            id: typeof card.id === "string" ? card.id : cardId,
-            type: typeof card.type === "string" ? card.type : "vocab",
-            interval: typeof card.interval === "number" ? Math.max(0, Math.round(card.interval)) : 0,
-            easeFactor: typeof card.easeFactor === "number" ? Math.max(1.3, Math.min(3.5, card.easeFactor)) : 2.5,
-            repetitions: typeof card.repetitions === "number" ? Math.max(0, Math.round(card.repetitions)) : 0,
-            lapses: typeof card.lapses === "number" ? Math.max(0, Math.round(card.lapses)) : 0,
-            dueDate: typeof card.dueDate === "string" ? card.dueDate : new Date().toISOString(),
+            id: typeof card.id === "string" && SAFE_ID_REGEX.test(card.id) ? card.id : cardId,
+            type: typeof card.type === "string" && ["vocab", "grammar"].includes(card.type) ? card.type : "vocab",
+            interval: typeof card.interval === "number" && isFinite(card.interval) ? Math.max(0, Math.min(36500, Math.round(card.interval))) : 0,
+            easeFactor: typeof card.easeFactor === "number" && isFinite(card.easeFactor) ? Math.max(1.3, Math.min(3.5, card.easeFactor)) : 2.5,
+            repetitions: typeof card.repetitions === "number" && isFinite(card.repetitions) ? Math.max(0, Math.min(100000, Math.round(card.repetitions))) : 0,
+            lapses: typeof card.lapses === "number" && isFinite(card.lapses) ? Math.max(0, Math.min(100000, Math.round(card.lapses))) : 0,
+            dueDate: isValidISODateString(card.dueDate) ? card.dueDate : new Date().toISOString(),
             state: ["new", "learning", "review"].includes(card.state) ? card.state : "new",
-            lastReview: typeof card.lastReview === "string" ? card.lastReview : null
+            lastReview: isValidISODateString(card.lastReview) ? card.lastReview : null
           };
         }
       }
@@ -397,14 +569,19 @@
   }
 
   const NederLearning = {
+    escapeHTML,
     getLocalISODate,
+    isValidISODateString,
     shuffleArray,
     sampleArray,
     normalizeAnswer,
     getDutchVerbStem,
     getVerbHijConjugation,
+    getEligibleVerbs,
     getNounPlural,
+    generateFlashcardSession,
     createFillBlankCard,
+    containsDangerousKeys,
     validateAndMergeBackup
   };
 
