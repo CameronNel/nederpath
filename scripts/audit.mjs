@@ -66,7 +66,7 @@ const ALLOWED_POS = new Set([
 const ALLOWED_LEVELS = new Set(["A1", "A2", "B1", "B2", "C1"]);
 
 assert(Array.isArray(words), "NP_WORDS is an array");
-assert(words.length === 19739, `NP_WORDS count is exactly 19,739 authentic forms (actual: ${words.length})`);
+assert(words.length > 0, `NP_WORDS contains a non-empty conservatively generated bank (actual: ${words.length})`);
 
 // Check unique IDs & words, schema invariants, learnability, and grammatical agreement
 const ids = new Set();
@@ -85,10 +85,14 @@ let impossibleTeVerbs = 0;
 let ordinalCardinalMismatches = 0;
 let pluralNounSingularAgreement = 0;
 let suspiciousInflections = 0;
+let fabricatedSourceFields = 0;
+let invalidCuratedLemmaFlags = 0;
+let invalidRanks = 0;
 
 const FORBIDDEN_WORDS = new Set(["houden vant", "houden vandeen", "piano speelt", "niette", "nietter", "welder", "tochter", "nooiter"]);
 
 for (const w of words) {
+  if (w.rank !== ids.size + 1) invalidRanks++;
   if (ids.has(w.id)) dupIds++;
   ids.add(w.id);
 
@@ -117,9 +121,11 @@ for (const w of words) {
   if (w.pos === "noun" && w.inflectionType === "diminutive" && w.article !== "het") {
     diminutivesWithDe++;
   }
-  if (!w.curated && w.inflectionType !== "cardinal" && w.learnable) {
+  if (!w.curated && w.learnable) {
     derivedMarkedLearnable++;
   }
+  if (w.example !== null || w.exampleEn !== null || w.frequency !== null) fabricatedSourceFields++;
+  if (w.isCuratedLemma && (!w.curated || w.pos === "phrase" || w.inflectionType !== "lemma")) invalidCuratedLemmaFlags++;
   if (FORBIDDEN_WORDS.has(norm)) {
     suspiciousInflections++;
   }
@@ -152,6 +158,9 @@ assert(impossibleTeVerbs === 0, "Zero conjugated verb forms placed in impossible
 assert(ordinalCardinalMismatches === 0, "Zero ordinal numerals generated in cardinal frames");
 assert(pluralNounSingularAgreement === 0, "Zero plural nouns generated with singular verb agreement");
 assert(suspiciousInflections === 0, "Zero forbidden false inflections (houden vant/niette/welder)");
+assert(fabricatedSourceFields === 0, "All word examples and frequency values are null until sourced curation exists");
+assert(invalidCuratedLemmaFlags === 0, "isCuratedLemma marks only curated non-phrase lemmas");
+assert(invalidRanks === 0, "Word ranks are sequential and deterministic");
 
 // Emit Content-Integrity Report
 const curatedCount = words.filter((w) => w.curated).length;

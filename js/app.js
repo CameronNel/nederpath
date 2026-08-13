@@ -251,6 +251,7 @@
       // If another navigation occurred while awaiting, discard stale render
       if (this.navToken !== currentToken) return;
       main.removeAttribute("aria-busy");
+      this.sanitizeLoadedWordReferences();
 
       switch (this.currentTab) {
         case "today":
@@ -635,7 +636,7 @@
       }
     }
 
-    // --- Mode 1: Flashcards (SRS Due Prioritized, Unseen Fillers, Full 20,000 Word Bank) ---
+    // --- Mode 1: Flashcards (SRS Due Prioritized, Unseen Fillers, Full Learnable Bank) ---
     renderFlashcardsMode() {
       const words = global.NP_WORDS || [];
       const sessionSize = this.store.state.settings.sessionSize || 10;
@@ -2037,15 +2038,19 @@
       });
     }
 
-    /* ==========================================================================
-       6. WORDS VIEW (20,000-Word Dictionary & Search Engine)
-       ========================================================================== */
-    renderWordsView() {
-      const words = global.NP_WORDS || [];
-      if (words.length > 0 && !this._wordsSanitized) {
+    sanitizeLoadedWordReferences() {
+      const words = global.NP_WORDS;
+      if (!this._wordsSanitized && Array.isArray(words) && words.length > 0) {
         this.store.sanitizeStaleWordReferences(new Set(words.map((w) => w.id)));
         this._wordsSanitized = true;
       }
+    }
+
+    /* ==========================================================================
+       6. WORDS VIEW (Dictionary & Search Engine)
+       ========================================================================== */
+    renderWordsView() {
+      const words = global.NP_WORDS || [];
 
       const q = (this.searchQuery || "").toLowerCase().trim();
       const totalLearnableCount = words.filter((w) => w.learnable).length;
@@ -2108,7 +2113,7 @@
                   <option value="verb" ${this.selectedPos === 'verb' ? 'selected' : ''}>Werkwoord</option>
                   <option value="adjective" ${this.selectedPos === 'adjective' ? 'selected' : ''}>Bijvoeglijk n.w.</option>
                   <option value="numeral" ${this.selectedPos === 'numeral' ? 'selected' : ''}>Telwoord</option>
-                  <option value="phrase" ${this.selectedPos === 'phrase' ? 'selected' : ''}>Vaste uitdrukking</option>
+                  <option value="phrase" ${this.selectedPos === 'phrase' ? 'selected' : ''}>Gecureerde woordgroep</option>
                 </select>
               </div>
 
@@ -2139,9 +2144,9 @@
               const isStarred = this.store.isBookmarked(w.id);
               const displayTitle = isNoun ? `<span class="badge-${w.article}">${w.article}</span> ${Learning.escapeHTML(w.word)}` : Learning.escapeHTML(w.word);
 
-              const isPhrase = w.pos === "phrase" || w.inflectionType === "phrase";
-              const isLemma = w.isCuratedLemma || w.inflectionType === "lemma";
-              const badgeType = isPhrase ? `<span class="badge-tag badge-phrase">Vaste uitdrukking</span>` : (isLemma ? `<span class="badge-tag badge-lemma">Lemma</span>` : `<span class="badge-tag badge-reference">Afgeleide vorm / referentie</span>`);
+              const isPhrase = w.curated === true && w.pos === "phrase" && w.inflectionType === "phrase";
+              const isLemma = w.isCuratedLemma === true;
+              const badgeType = isPhrase ? `<span class="badge-tag badge-phrase">Gecureerde woordgroep</span>` : (isLemma ? `<span class="badge-tag badge-lemma">Lemma</span>` : `<span class="badge-tag badge-reference">Afgeleide vorm / referentie</span>`);
               const hasLemmaLink = w.lemma && w.lemma.toLowerCase().trim() !== w.word.toLowerCase().trim();
 
               return `

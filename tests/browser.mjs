@@ -216,9 +216,25 @@ async function runBrowserTests() {
     assert(todayNavCurrent === "page", "Active navigation tab carries aria-current='page' and inactive does not");
 
     // 4. Navigation: Woorden (On-Demand Loading & In-Memory Promise Cache & Focus)
+    // Seed retired vocabulary references before the words bank has ever loaded.
+    await page.evaluate(() => {
+      const store = window.NederStore;
+      store.state.progress.wordsBookmarked["nl-99999"] = true;
+      store.state.srs.cards["nl-99999"] = { id: "nl-99999", type: "vocab", interval: 1 };
+      store.state.srs.cards["rule-retain-probe"] = { id: "rule-retain-probe", type: "grammar", interval: 1 };
+      store.save();
+    });
     const countWordsBefore = requestedUrls.filter((u) => u.includes("data/words.js")).length;
     await page.click("#nav-words");
     await page.waitForSelector(".words-search-card");
+
+    const sanitizedReferences = await page.evaluate(() => ({
+      staleBookmark: !!window.NederStore.state.progress.wordsBookmarked["nl-99999"],
+      staleVocab: !!window.NederStore.state.srs.cards["nl-99999"],
+      grammarPreserved: !!window.NederStore.state.srs.cards["rule-retain-probe"]
+    }));
+    assert(!sanitizedReferences.staleBookmark && !sanitizedReferences.staleVocab && sanitizedReferences.grammarPreserved,
+      "Stale word references are sanitized immediately when words load while grammar cards are preserved");
 
     const countWordsAfter = requestedUrls.filter((u) => u.includes("data/words.js")).length;
     assert(countWordsAfter === countWordsBefore + 1, "Navigating to Woorden fetched words.js on-demand");
@@ -302,14 +318,14 @@ async function runBrowserTests() {
     assert(pluralGram.includes("meervoud"), `Plural card indicates meervoud grammatical form: '${pluralGram}'`);
     assert(pluralLemmaLink.includes("huis"), `Plural card links back to base lemma 'huis': '${pluralLemmaLink}'`);
 
-    // 3. Search Diminutive Plural: 'huisjes'
+    // 3. Search the only explicitly sourced diminutive plural: 'eitjes'
     await page.click("#btn-clear-search");
-    await page.type("#words-search-input", "huisjes");
+    await page.type("#words-search-input", "eitjes");
     await new Promise((r) => setTimeout(r, 200));
     const dimPlCard = await page.$(".word-item-card");
     const dimPlTitle = await dimPlCard.$eval(".word-title", (el) => el.textContent.trim());
     const dimPlGram = await dimPlCard.$eval(".word-gram-form", (el) => el.textContent.trim());
-    assert(dimPlTitle.includes("de") && dimPlTitle.includes("huisjes"), `Diminutive plural displays article 'de' (never 'het'): '${dimPlTitle}'`);
+    assert(dimPlTitle.includes("de") && dimPlTitle.includes("eitjes"), `Diminutive plural displays article 'de' (never 'het'): '${dimPlTitle}'`);
     assert(dimPlGram.includes("verkleinwoord meervoud"), `Diminutive plural form indicates verkleinwoord meervoud: '${dimPlGram}'`);
 
     // 4. Search Phrase: 'houden van'
@@ -321,7 +337,7 @@ async function runBrowserTests() {
     const phraseBadge = await phraseCard.$eval(".badge-tag", (el) => el.textContent.trim());
     const phraseLvl = await phraseCard.$eval(".word-level-badge", (el) => el.textContent.trim());
     assert(phraseTitle === "houden van", `Phrase title matches 'houden van': '${phraseTitle}'`);
-    assert(phraseBadge === "Vaste uitdrukking", `Phrase card is badged 'Vaste uitdrukking': '${phraseBadge}'`);
+    assert(phraseBadge === "Gecureerde woordgroep", `Phrase card is badged as a curated phrase: '${phraseBadge}'`);
     assert(["A1", "A2", "B1", "B2", "C1"].includes(phraseLvl), `Phrase card has valid CEFR level (not 'phrase'): '${phraseLvl}'`);
 
     // 5. Search Ordinal: 'eerste'
@@ -334,10 +350,10 @@ async function runBrowserTests() {
     });
     const ordTitle = await ordCard.$eval(".word-title", (el) => el.textContent.trim());
     const ordGram = await ordCard.$eval(".word-gram-form", (el) => el.textContent.trim());
-    const ordEx = await ordCard.$eval(".word-example", (el) => el.textContent.trim());
+    const ordEx = await ordCard.$(".word-example");
     assert(ordTitle === "eerste", `Ordinal card title is 'eerste': '${ordTitle}'`);
     assert(ordGram.includes("rangtelwoord"), `Ordinal card indicates rangtelwoord: '${ordGram}'`);
-    assert(ordEx.includes("keer dat we dit museum bezoeken"), `Ordinal example uses correct authentic frame: '${ordEx}'`);
+    assert(ordEx === null, "Ordinal omits an example because no curated source example exists");
 
     // 5. Navigation: Grammatica (Grammar Curriculum & Word Order Duplicate Tokens Keyboard Flow)
     await page.click("#nav-grammar");

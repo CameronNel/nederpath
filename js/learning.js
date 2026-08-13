@@ -208,12 +208,15 @@
         if (w.lemma) {
           const lKey = w.lemma.toLowerCase();
           const meaning = (w.meaning || "").toLowerCase();
-          // Select only direct plurals of the lemma; never select "plural of the diminutive"
+          // The explicit subtype is authoritative. Meaning text can legitimately
+          // contain "diminutive" (for example, liedje), so it must not override
+          // a direct plural classification. The text fallback is only for legacy
+          // rows that predate inflectionType.
           const isDirectPlural =
-            !meaning.includes("diminutive") &&
-            (w.inflectionType === "plural" ||
-              meaning.startsWith("plural of") ||
-              meaning.includes("(plural of"));
+            w.inflectionType === "plural" ||
+            (!w.inflectionType &&
+              !meaning.includes("diminutive") &&
+              (meaning.startsWith("plural of") || meaning.includes("(plural of")));
           if (isDirectPlural && w.word && !lemmaToPlural.has(lKey)) {
             lemmaToPlural.set(lKey, w.word.toLowerCase().trim());
           }

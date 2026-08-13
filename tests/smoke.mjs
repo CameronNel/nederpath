@@ -75,14 +75,26 @@ test("SRS: Failed review resets interval and records lapse", () => {
 });
 
 // 2. Data Structure Smoke Tests
-test("Data: All 19,739 authentic words load and have valid properties", () => {
+test("Data: Canonical word bank loads with truthful structural invariants", () => {
   const wordsSrc = readFileSync(join(ROOT, "data", "words.js"), "utf8");
   new Function(wordsSrc)();
   const words = globalThis.NP_WORDS;
 
-  if (!Array.isArray(words) || words.length !== 19739) throw new Error(`Word count is ${words.length}, expected 19739`);
-  const first = words[0];
-  if (!first.id || !first.word || first.rank !== 1) throw new Error("First word structure invalid");
+  if (!Array.isArray(words) || words.length === 0) throw new Error("Word bank is missing or empty");
+  const ids = new Set();
+  const normalizedWords = new Set();
+  for (let i = 0; i < words.length; i++) {
+    const w = words[i];
+    const norm = String(w.word || "").toLowerCase().trim();
+    if (!/^nl-\d+$/.test(w.id) || !norm || w.rank !== i + 1) throw new Error(`Invalid word structure at index ${i}`);
+    if (ids.has(w.id) || normalizedWords.has(norm)) throw new Error(`Duplicate ID or normalized word at index ${i}`);
+    ids.add(w.id);
+    normalizedWords.add(norm);
+    if (w.learnable && !w.curated) throw new Error(`Uncurated row '${w.word}' is learnable`);
+    if (w.example !== null || w.exampleEn !== null || w.frequency !== null) {
+      throw new Error(`Unsourced example/frequency remains on '${w.word}'`);
+    }
+  }
 });
 
 test("Data: Grammar curriculum contains exactly 8 sections and >= 120 rules", () => {
