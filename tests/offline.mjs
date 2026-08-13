@@ -367,15 +367,61 @@ assert(
 const wordsAfterFetch = await installedCache.match(wordsDataUrl);
 assert(wordsAfterFetch !== null && wordsAfterFetch.status === 200, "sw.js runtime-cached words.js on first successful 200 response");
 
-// 5.5: Offline reuse of visited data bank
+// 5.5: Online revisits fetch and persist a newer deployed data bank
+customNetworkRoutes.set(
+  wordsDataUrl,
+  new MockResponse("fresh-words-v2", { status: 200, statusText: "OK", type: "basic", url: wordsDataUrl })
+);
+const refreshedWordsResult = await dispatchFetchToWorker(dataFetchReq);
+const refreshedWordsCache = await installedCache.match(wordsDataUrl);
+assert(
+  refreshedWordsResult.response?._body === "fresh-words-v2" && refreshedWordsCache?._body === "fresh-words-v2",
+  "Online revisit returns and caches the freshly deployed words.js instead of a stale runtime copy"
+);
+
+// 5.6: Online shell requests also replace the install-time cached asset
+const appAssetUrl = BASE_URL + "js/app.js";
+customNetworkRoutes.set(
+  appAssetUrl,
+  new MockResponse("fresh-app-v2", { status: 200, statusText: "OK", type: "basic", url: appAssetUrl })
+);
+const refreshedAppResult = await dispatchFetchToWorker({
+  method: "GET",
+  url: appAssetUrl,
+  headers: new Map([["accept", "application/javascript"]]),
+  mode: "cors"
+});
+const refreshedAppCache = await installedCache.match(appAssetUrl);
+assert(
+  refreshedAppResult.response?._body === "fresh-app-v2" && refreshedAppCache?._body === "fresh-app-v2",
+  "Online revisit refreshes an unversioned shell asset and its cached fallback"
+);
+
+customNetworkRoutes.set(
+  appAssetUrl,
+  new MockResponse("broken-deploy", { status: 500, statusText: "Internal Error", type: "basic", url: appAssetUrl })
+);
+const failedAppRefresh = await dispatchFetchToWorker({
+  method: "GET",
+  url: appAssetUrl,
+  headers: new Map([["accept", "application/javascript"]]),
+  mode: "cors"
+});
+const appCacheAfterFailure = await installedCache.match(appAssetUrl);
+assert(
+  failedAppRefresh.response?._body === "fresh-app-v2" && appCacheAfterFailure?._body === "fresh-app-v2",
+  "Transient server failure preserves and serves the last valid cached shell asset"
+);
+
+// 5.7: Offline reuse of visited data bank
 networkOnline = false;
 const offlineVisitedResult = await dispatchFetchToWorker(dataFetchReq);
 assert(
-  offlineVisitedResult.intercepted && offlineVisitedResult.response.status === 200,
-  "Offline request for visited words.js is served directly from runtime cache"
+  offlineVisitedResult.intercepted && offlineVisitedResult.response.status === 200 && offlineVisitedResult.response._body === "fresh-words-v2",
+  "Offline request for visited words.js serves the most recently refreshed runtime copy"
 );
 
-// 5.6: Offline unvisited data bank returns 503
+// 5.8: Offline unvisited data bank returns 503
 const unvisitedDataUrl = BASE_URL + "data/sentences.js";
 const unvisitedReq = {
   method: "GET",
@@ -390,7 +436,7 @@ assert(
   "Offline request for unvisited sentences.js returns 503 Service Unavailable (triggering client retry UI)"
 );
 
-// 5.7: Error responses (404, 500) from network are NEVER cached
+// 5.9: Error responses (404, 500) from network are NEVER cached
 networkOnline = true;
 const notFoundUrl = BASE_URL + "data/missing.js";
 customNetworkRoutes.set(notFoundUrl, new MockResponse("Not Found", { status: 404, statusText: "Not Found", url: notFoundUrl }));
