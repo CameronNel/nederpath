@@ -1,7 +1,8 @@
-// NederPath Offline Service Worker (Cache version: v2)
-const CACHE_NAME = "nederpath-v2-cache";
+// NederPath Offline Service Worker (Cache version: v3 - Shell Precache & On-Demand Data Runtime Caching)
+const CACHE_NAME = "nederpath-v3-cache";
 
-const ASSETS_TO_CACHE = [
+// Core App Shell assets only (data files are runtime-cached on first visit)
+const SHELL_ASSETS = [
   "./",
   "./index.html",
   "./css/styles.css",
@@ -9,12 +10,9 @@ const ASSETS_TO_CACHE = [
   "./js/store.js",
   "./js/srs.js",
   "./js/voice.js",
+  "./js/data-loader.js",
+  "./js/sw-register.js",
   "./js/app.js",
-  "./data/words.js",
-  "./data/grammar.js",
-  "./data/sentences.js",
-  "./data/idioms.js",
-  "./data/comprehension.js",
   "./manifest.webmanifest",
   "./icons/favicon-32.png",
   "./icons/apple-touch-icon.png",
@@ -27,9 +25,7 @@ self.addEventListener("install", (event) => {
   event.waitUntil(
     caches
       .open(CACHE_NAME)
-      .then((cache) => {
-        return cache.addAll(ASSETS_TO_CACHE);
-      })
+      .then((cache) => cache.addAll(SHELL_ASSETS))
       .then(() => self.skipWaiting())
   );
 });
@@ -52,7 +48,7 @@ self.addEventListener("activate", (event) => {
 });
 
 self.addEventListener("fetch", (event) => {
-  // Only intercept safe same-origin GET requests
+  // Only handle safe same-origin GET requests
   if (event.request.method !== "GET") {
     return;
   }
@@ -60,7 +56,11 @@ self.addEventListener("fetch", (event) => {
   const requestUrl = new URL(event.request.url);
   const isSameOrigin = requestUrl.origin === self.location.origin;
 
-  // Handle SPA navigation requests intentionally
+  if (!isSameOrigin) {
+    return;
+  }
+
+  // Handle SPA navigation requests
   if (event.request.mode === "navigate") {
     event.respondWith(
       fetch(event.request)
@@ -78,11 +78,7 @@ self.addEventListener("fetch", (event) => {
     return;
   }
 
-  if (!isSameOrigin) {
-    return;
-  }
-
-  // Cache-first strategy for same-origin static assets
+  // Cache-first strategy with runtime caching for data and static assets
   event.respondWith(
     caches.match(event.request).then((cachedResponse) => {
       if (cachedResponse) {
@@ -105,10 +101,15 @@ self.addEventListener("fetch", (event) => {
           return networkResponse;
         })
         .catch(() => {
-          // Fallback if network fails
+          // Fallback if network fails and not in cache
           if (event.request.headers.get("accept")?.includes("text/html")) {
             return caches.match("./index.html");
           }
+          return new Response("Offline resource unavailable", {
+            status: 503,
+            statusText: "Service Unavailable",
+            headers: { "Content-Type": "text/plain" }
+          });
         });
     })
   );

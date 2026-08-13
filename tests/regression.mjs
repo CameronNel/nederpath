@@ -254,8 +254,53 @@ test("Fill-in-the-Blank: Target equality rejects sentence words that are not the
 });
 
 // -------------------------------------------------------------------
-// 5. Plural Morphology Exact Grading (Preventing suffix-only bug)
+// 5. Plural Morphology Exact Grading & Oracle Equivalence
 // -------------------------------------------------------------------
+test("Morphology: getNounPlural resolves direct plurals and never falls back to diminutive plurals", () => {
+  const directPluralPairs = {
+    oor: "oren",       // not oortjes
+    tand: "tanden",   // not tandjes
+    lip: "lippen",     // not lipjes
+    boek: "boeken",   // not boekjes
+    kind: "kinderen", // not kindjes
+    stad: "steden"    // not stadjes
+  };
+
+  for (const [lemma, expectedPlural] of Object.entries(directPluralPairs)) {
+    const actual = Learning.getNounPlural(lemma, words);
+    if (actual !== expectedPlural) {
+      throw new Error(`getNounPlural('${lemma}') returned '${actual}', expected direct plural '${expectedPlural}'`);
+    }
+  }
+});
+
+test("Morphology: Indexed lookup matches independent direct-plural oracle across all noun lemmas", () => {
+  const nounLemmas = words.filter((w) => w.pos === "noun" && w.inflectionType === "lemma");
+  if (nounLemmas.length === 0) throw new Error("No noun lemmas found in words bank");
+
+  function oraclePlural(lemmaStr) {
+    const l = lemmaStr.toLowerCase().replace(/^(de|het)\s+/, "").trim();
+    const row = words.find((w) => {
+      if (w.pos !== "noun" || !w.lemma) return false;
+      if (w.lemma.toLowerCase() !== l) return false;
+      const m = (w.meaning || "").toLowerCase();
+      if (m.includes("diminutive")) return false;
+      return w.inflectionType === "plural" || m.startsWith("plural of") || m.includes("(plural of");
+    });
+    return row && row.word ? row.word.toLowerCase().trim() : null;
+  }
+
+  for (const n of nounLemmas) {
+    const cleanLemma = n.word.toLowerCase().replace(/^(de|het)\s+/, "").trim();
+    const indexedResult = Learning.getNounPlural(cleanLemma, words);
+    const oracleResult = oraclePlural(cleanLemma);
+
+    if (indexedResult !== oracleResult) {
+      throw new Error(`Indexed getNounPlural mismatch for '${cleanLemma}': indexed '${indexedResult}' vs oracle '${oracleResult}'`);
+    }
+  }
+});
+
 test("Morphology: getNounPlural resolves verified plurals from data bank", () => {
   const tafelPlural = Learning.getNounPlural("tafel", words);
   if (tafelPlural !== "tafels") throw new Error(`Expected 'tafels', got '${tafelPlural}'`);

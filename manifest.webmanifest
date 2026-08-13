@@ -1,11 +1,17 @@
 {
+  "id": "/nederpath/",
   "name": "NederPath - Dutch Language Learning",
   "short_name": "NederPath",
   "description": "A calm, offline-first Dutch language-learning web app (vocabulary, grammar, comprehension).",
+  "lang": "nl",
+  "dir": "ltr",
   "start_url": "./index.html",
+  "scope": "./",
   "display": "standalone",
+  "orientation": "any",
   "background_color": "#121820",
   "theme_color": "#121820",
+  "categories": ["education", "language"],
   "icons": [
     {
       "src": "./icons/favicon-32.png",

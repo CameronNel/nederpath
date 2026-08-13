@@ -1,4 +1,4 @@
-// NederPath Comprehensive End-to-End Headless Browser Test Suite (Puppeteer)
+// NederPath Comprehensive Cross-Platform End-to-End Headless Browser Test Suite (Puppeteer)
 import puppeteer from "puppeteer-core";
 import { createServer } from "node:http";
 import { readFileSync, existsSync, statSync } from "node:fs";
@@ -8,19 +8,42 @@ import { fileURLToPath } from "node:url";
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const PORT = 3456;
 
-// Find Chrome or Edge executable on Windows
-const BROWSER_PATHS = [
-  "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe",
-  "C:\\Program Files\\Microsoft\\Edge\\Application\\msedge.exe",
-  "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
-  "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe"
-];
+// Cross-platform browser executable discovery
+function findBrowserExecutable() {
+  const envPath = process.env.PUPPETEER_EXECUTABLE_PATH || process.env.BROWSER_PATH;
+  if (envPath && existsSync(envPath)) {
+    return envPath;
+  }
 
-const executablePath = BROWSER_PATHS.find((p) => existsSync(p));
-if (!executablePath) {
-  console.error("No compatible browser (Edge or Chrome) found for browser tests.");
+  const CANDIDATES = [
+    // Linux / CI Runner
+    "/usr/bin/google-chrome",
+    "/usr/bin/chromium",
+    "/usr/bin/chromium-browser",
+    "/snap/bin/chromium",
+    "/usr/bin/google-chrome-stable",
+    // macOS
+    "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+    "/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge",
+    "/Applications/Chromium.app/Contents/MacOS/Chromium",
+    // Windows
+    "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+    "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
+    "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe",
+    "C:\\Program Files\\Microsoft\\Edge\\Application\\msedge.exe"
+  ];
+
+  for (const p of CANDIDATES) {
+    if (existsSync(p)) return p;
+  }
+
+  console.error("No compatible browser (Chrome/Chromium/Edge) found for browser tests.");
+  console.error("Attempted the following paths:\n" + CANDIDATES.map((p) => "  - " + p).join("\n"));
+  console.error("Set PUPPETEER_EXECUTABLE_PATH to your browser binary path.");
   process.exit(1);
 }
+
+const executablePath = findBrowserExecutable();
 
 const MIME_TYPES = {
   ".html": "text/html; charset=utf-8",
@@ -91,6 +114,24 @@ async function runBrowserTests() {
     }
   });
 
+  // Track network requests and transfer sizes
+  const requestedUrls = [];
+  let initialTotalBytes = 0;
+  let trackInitial = true;
+
+  page.on("request", (req) => {
+    requestedUrls.push(req.url());
+  });
+
+  page.on("response", async (res) => {
+    if (trackInitial) {
+      try {
+        const buffer = await res.buffer();
+        initialTotalBytes += buffer.length;
+      } catch {}
+    }
+  });
+
   try {
     // -------------------------------------------------------
     // PART 1: DESKTOP VIEWPORT TESTS (1280 x 800)
@@ -98,27 +139,80 @@ async function runBrowserTests() {
     await page.setViewport({ width: 1280, height: 800 });
     console.log("\n--- [Desktop Viewport: 1280x800] ---");
 
-    // 1. Initial Page Load
+    // 1. Initial Page Load & Request Tracking Verification
     await page.goto(`http://localhost:${PORT}/index.html`, { waitUntil: "networkidle0" });
+    trackInitial = false;
+
     const title = await page.title();
     assert(title.includes("NederPath"), "Page title contains 'NederPath'");
     assert(consoleErrors.length === 0, "Zero browser console errors on initial load", consoleErrors.join("; "));
 
-    // 2. Today View verification & HTML escaping check
-    const heroTitle = await page.$eval(".today-title", (el) => el.textContent);
-    assert(heroTitle.length > 5, "Today view hero title rendered");
+    // 2. Lazy Data Loading & Asset Budget Verification
+    const requestedWords = requestedUrls.some((u) => u.includes("data/words.js"));
+    const requestedSentences = requestedUrls.some((u) => u.includes("data/sentences.js"));
+    const requestedComprehension = requestedUrls.some((u) => u.includes("data/comprehension.js"));
+    const requestedGrammar = requestedUrls.some((u) => u.includes("data/grammar.js"));
+    const requestedIdioms = requestedUrls.some((u) => u.includes("data/idioms.js"));
 
-    // 3. Navigation: Woorden (Vocabulary & 20,000-word Dictionary)
+    assert(!requestedWords, "Initial Today view does NOT request words.js (10.5 MB saved)");
+    assert(!requestedSentences, "Initial Today view does NOT request sentences.js (1.9 MB saved)");
+    assert(!requestedComprehension, "Initial Today view does NOT request comprehension.js (0.5 MB saved)");
+    assert(requestedGrammar, "Initial Today view requested grammar.js on demand for spotlight rule");
+    assert(requestedIdioms, "Initial Today view requested idioms.js on demand for idiom of day");
+
+    const maxBudget = 1.5 * 1024 * 1024; // 1.5 MB uncompressed budget
+    assert(
+      initialTotalBytes <= maxBudget,
+      `Initial runtime transfer budget verified: ${(initialTotalBytes / 1024).toFixed(1)} KB (target <= 1.5 MB)`
+    );
+
+    // 3. Accessibility: Skip-Link & ARIA Live Announcer
+    const skipLink = await page.$(".skip-link");
+    assert(skipLink !== null, "Skip link exists in DOM");
+
+    await page.focus(".skip-link");
+    const isSkipFocused = await page.evaluate(() => document.activeElement === document.querySelector(".skip-link"));
+    assert(isSkipFocused, "Skip link is keyboard focusable");
+
+    const liveAnnouncer = await page.$("#live-announcer");
+    assert(liveAnnouncer !== null, "Persistent ARIA live announcer region exists in DOM");
+
+    const todayNavCurrent = await page.$eval("#nav-today", (el) => el.getAttribute("aria-current"));
+    assert(todayNavCurrent === "page", "Active navigation tab carries aria-current='page'");
+
+    // 4. Navigation: Woorden (On-Demand Loading & In-Memory Promise Cache)
+    const countWordsBefore = requestedUrls.filter((u) => u.includes("data/words.js")).length;
     await page.click("#nav-words");
     await page.waitForSelector(".words-search-card");
+
+    const countWordsAfter = requestedUrls.filter((u) => u.includes("data/words.js")).length;
+    assert(countWordsAfter === countWordsBefore + 1, "Navigating to Woorden fetched words.js on-demand");
+
     const wordsPageTitle = await page.$eval(".page-title", (el) => el.textContent);
     assert(wordsPageTitle.includes("Woordenboek"), "Navigated to Words Dictionary view");
 
-    // Test Search input
+    const wordsNavCurrent = await page.$eval("#nav-words", (el) => el.getAttribute("aria-current"));
+    assert(wordsNavCurrent === "page", "Woorden navigation button carries aria-current='page'");
+
+    // Test In-Memory Cache (navigating back to Today and to Words must not re-request words.js)
+    await page.click("#nav-today");
+    await page.waitForSelector(".today-hero");
+    await page.click("#nav-words");
+    await page.waitForSelector(".words-search-card");
+    const countWordsCached = requestedUrls.filter((u) => u.includes("data/words.js")).length;
+    assert(countWordsCached === countWordsAfter, "Re-visiting Woorden reuses in-memory cached bank without network re-fetch");
+
+    // Test Search input & Dynamic Sink Escaping
     await page.type("#words-search-input", "fiets");
     await new Promise((r) => setTimeout(r, 200));
     const firstWordResult = await page.$eval(".word-title", (el) => el.textContent);
     assert(firstWordResult.toLowerCase().includes("fiets"), "Dictionary search filters and finds 'fiets'");
+
+    // Test Search Dynamic Sink XSS resistance
+    await page.click("#btn-clear-search");
+    await page.type("#words-search-input", '"><span id="injected-span-test">xss</span>');
+    const injectedSpan = await page.$("#injected-span-test");
+    assert(injectedSpan === null, "Search input dynamic interpolation escaped (no element injection)");
 
     // Toggle star/bookmark on first word
     const starBtn = await page.$(".btn-star");
@@ -127,7 +221,7 @@ async function runBrowserTests() {
       assert(true, "Toggled word bookmark/star");
     }
 
-    // 4. Navigation: Grammatica (Grammar Curriculum & 7 Exercise Types)
+    // 5. Navigation: Grammatica (Grammar Curriculum & 7 Exercise Types)
     await page.click("#nav-grammar");
     await page.waitForSelector(".grammar-catalog-container");
     const grammarCards = await page.$$(".grammar-item-card");
@@ -158,7 +252,7 @@ async function runBrowserTests() {
       assert(true, "Navigated to next grammar exercise in rule");
     }
 
-    // 5. Navigation: Lezen (Comprehension Passages & Quizzes)
+    // 6. Navigation: Lezen (Comprehension Passages & Quizzes)
     await page.click("#nav-comprehension");
     await page.waitForSelector(".comprehension-catalog-container");
     const passageCards = await page.$$(".passage-item-card");
@@ -182,17 +276,18 @@ async function runBrowserTests() {
       assert(true, "Comprehension quiz question answered and recorded");
     }
 
-    // 6. Navigation: Oefenen (Interactive Practice Modes)
+    // 7. Navigation: Oefenen (Interactive Practice Modes & Keyboard Operability)
     await page.click("#nav-practice");
     await page.waitForSelector(".practice-container");
 
-    // Mode 1: Flashcard Flip & SRS Rating
+    // Mode 1: Flashcard Keyboard Flip & Rating (Space / 3)
     await page.waitForSelector("#interactive-flashcard");
-    await page.click("#interactive-flashcard");
+    await page.keyboard.press("Space");
     await page.waitForSelector(".srs-controls");
-    assert(true, "Flashcard revealed on click");
-    await page.click("#btn-srs-good");
-    assert(true, "Submitted SRS rating and advanced to next card");
+    assert(true, "Flashcard revealed via keyboard Space bar");
+
+    await page.keyboard.press("3");
+    assert(true, "Submitted SRS rating via keyboard key '3' and advanced card");
 
     // Mode 2: De of Het Drill
     const drillNavBtn = await page.$("button[data-mode='article_drill']");
@@ -243,7 +338,6 @@ async function runBrowserTests() {
       await verbsNavBtn.click();
       await page.waitForSelector(".verbs-wrapper");
 
-      // Verify displayed prompt is an infinitive lemma, not a participle/past form
       const displayedVerb = await page.$eval(".drill-noun", (el) => el.textContent.trim().toLowerCase());
       const isValidInfinitive =
         displayedVerb.endsWith("en") || ["zijn", "gaan", "staan", "doen", "zien", "slaan"].includes(displayedVerb);
@@ -252,7 +346,6 @@ async function runBrowserTests() {
       assert(isValidInfinitive, `Verb prompt '${displayedVerb}' is a legitimate infinitive`);
       assert(!isNonLemma, `Verb prompt '${displayedVerb}' is not a past/participle non-lemma`);
 
-      // Submit test conjugation and verify interactive feedback appears
       await page.type("#verb-input", "testvorm");
       await page.click("#verb-form button[type='submit']");
       await page.waitForSelector(".exercise-feedback");
@@ -292,19 +385,19 @@ async function runBrowserTests() {
       assert(true, "Context practice sentence reviewed and advanced");
     }
 
-    // 7. Navigation: Pad (8-Section Curriculum Path)
+    // 8. Navigation: Pad (8-Section Curriculum Path)
     await page.click("#nav-path");
     await page.waitForSelector(".sections-list");
     const sectionCards = await page.$$(".section-card");
     assert(sectionCards.length === 8, `Path view rendered all 8 curriculum sections (found: ${sectionCards.length})`);
 
-    // 8. Navigation: Voortgang (Progress Analytics)
+    // 9. Navigation: Voortgang (Progress Analytics)
     await page.click("#nav-progress");
     await page.waitForSelector(".progress-container");
     const heatmapCells = await page.$$(".heatmap-cell");
     assert(heatmapCells.length === 30, `30-Day Activity heatmap rendered 30 cells (found: ${heatmapCells.length})`);
 
-    // 9. Navigation: Instellingen (Settings & Themes)
+    // 10. Navigation: Instellingen (Settings & Themes)
     await page.click("#btn-open-settings");
     await page.waitForSelector(".settings-container");
     assert(true, "Settings view opened");
@@ -318,11 +411,25 @@ async function runBrowserTests() {
     const darkTheme = await page.evaluate(() => document.documentElement.getAttribute("data-theme"));
     assert(darkTheme === "dark", "Theme switched back to 'dark'");
 
-    // 10. LocalStorage Persistence Verification
+    // 11. Reduced-Motion Media Query Handling
+    await page.emulateMediaFeatures([{ name: "prefers-reduced-motion", value: "reduce" }]);
+    const hasReducedMotionCSS = await page.evaluate(() => {
+      const el = document.createElement("div");
+      el.className = "animate-fade";
+      document.body.appendChild(el);
+      const style = window.getComputedStyle(el);
+      const durationStr = style.animationDuration;
+      const numSec = parseFloat(durationStr);
+      document.body.removeChild(el);
+      return numSec <= 0.001 || durationStr === "0s" || durationStr === "0.001ms";
+    });
+    assert(hasReducedMotionCSS, "prefers-reduced-motion disables nonessential animation durations");
+
+    // 12. LocalStorage Persistence Verification
     const storedState = await page.evaluate(() => localStorage.getItem("nederpath-v1"));
     assert(storedState !== null && storedState.length > 50, "Application state correctly persisted in localStorage (nederpath-v1)");
 
-    // 11. Security / HTML Injection Sink Resistance
+    // 13. Security / HTML Injection Sink Resistance
     await page.evaluate(() => {
       const state = JSON.parse(localStorage.getItem("nederpath-v1") || "{}");
       state.user = state.user || {};

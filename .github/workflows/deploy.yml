@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - master
+  pull_request:
   workflow_dispatch:
 
 permissions:
@@ -12,11 +13,38 @@ permissions:
   id-token: write
 
 concurrency:
-  group: "pages"
-  cancel-in-progress: false
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.ref != 'refs/heads/master' }}
 
 jobs:
-  validate-and-deploy:
+  validate:
+    name: Validate Quality & Artifact Integrity
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 24
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run Quality Audit, Smoke, Regression, and Browser Tests
+        run: npm test
+
+      - name: Build Production Artifact
+        run: npm run build
+
+      - name: Audit Build Artifact
+        run: npm run audit:artifact
+
+  deploy:
+    name: Deploy to GitHub Pages
+    needs: validate
+    if: (github.event_name == 'push' && github.ref == 'refs/heads/master') || github.event_name == 'workflow_dispatch'
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -25,23 +53,25 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Setup Node.js
+      - name: Setup Node.js 24
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 24
 
-      - name: Run Data Audit & Unit Tests
+      - name: Install dependencies & Build
         run: |
-          node scripts/audit.mjs
-          node tests/smoke.mjs
+          npm ci
+          npm run build
 
-      - name: Setup Pages
+      - name: Setup Pages with Enablement
         uses: actions/configure-pages@v5
+        with:
+          enablement: true
 
-      - name: Upload artifact
+      - name: Upload Pages Artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: '.'
+          path: ./dist
 
       - name: Deploy to GitHub Pages
         id: deployment

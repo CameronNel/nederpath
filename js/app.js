@@ -31,6 +31,7 @@
       this.selectedPos = "all";
       this.selectedArticle = "all";
       this.showOnlyBookmarked = false;
+      this.navToken = 0;
 
       // Active interactive session state
       this.session = {
@@ -63,6 +64,27 @@
       this.render();
     }
 
+    announce(message, priority = "polite") {
+      const el = document.getElementById("live-announcer");
+      if (el && message) {
+        el.setAttribute("aria-live", priority);
+        el.textContent = "";
+        setTimeout(() => {
+          el.textContent = message;
+        }, 50);
+      }
+    }
+
+    showInlineStatus(message, type = "info") {
+      const banner = document.getElementById("settings-status-banner") || document.querySelector(".status-banner");
+      if (banner) {
+        banner.className = `status-banner status-${type} animate-fade`;
+        banner.textContent = message;
+        banner.style.display = "block";
+      }
+      this.announce(message, type === "error" ? "assertive" : "polite");
+    }
+
     applyTheme(theme) {
       document.documentElement.setAttribute("data-theme", theme);
     }
@@ -88,7 +110,13 @@
     switchTab(tab) {
       this.currentTab = tab;
       document.querySelectorAll(".nav-btn").forEach((b) => {
-        b.classList.toggle("active", b.dataset.tab === tab);
+        const isActive = b.dataset.tab === tab;
+        b.classList.toggle("active", isActive);
+        if (isActive) {
+          b.setAttribute("aria-current", "page");
+        } else {
+          b.removeAttribute("aria-current");
+        }
       });
       this.render();
       window.scrollTo({ top: 0, behavior: "smooth" });
@@ -128,9 +156,88 @@
       }
     }
 
-    render() {
+    getRequiredBanksForCurrentView() {
+      switch (this.currentTab) {
+        case "today":
+          return ["grammar", "idioms"];
+        case "words":
+          return ["words"];
+        case "grammar":
+        case "path":
+          return ["grammar"];
+        case "comprehension":
+          return ["comprehension"];
+        case "practice": {
+          switch (this.practiceMode) {
+            case "fill_blank":
+              return ["sentences", "words"];
+            case "context":
+              return ["sentences"];
+            case "flashcards":
+            case "article_drill":
+            case "spelling":
+            case "choose_word":
+            case "verbs":
+            case "synonyms":
+            case "morphology":
+              return ["words"];
+            default:
+              return [];
+          }
+        }
+        case "progress":
+        case "settings":
+        default:
+          return [];
+      }
+    }
+
+    async render() {
       const main = document.getElementById("app-main");
       if (!main) return;
+
+      const currentToken = ++this.navToken;
+      const requiredBanks = this.getRequiredBanksForCurrentView();
+      const isAlreadyLoaded = requiredBanks.every((b) =>
+        global.NederDataLoader ? global.NederDataLoader.isBankLoaded(b) : true
+      );
+
+      if (!isAlreadyLoaded && global.NederDataLoader) {
+        main.innerHTML = `
+          <div class="card loading-state animate-fade" role="status" aria-live="polite">
+            <div class="spinner" aria-hidden="true"></div>
+            <p>Gegevens worden geladen...</p>
+          </div>
+        `;
+        main.setAttribute("aria-busy", "true");
+
+        try {
+          await global.NederDataLoader.loadBanks(requiredBanks);
+        } catch (err) {
+          if (this.navToken !== currentToken) return;
+          main.removeAttribute("aria-busy");
+          main.innerHTML = `
+            <div class="card error-state animate-fade" role="alert">
+              <div class="error-icon" aria-hidden="true" style="font-size: 2rem;">⚠️</div>
+              <h2>Gegevens konden niet worden geladen</h2>
+              <p>${Learning.escapeHTML(err.message || "Er is een fout opgetreden bij het laden van de gegevens.")}</p>
+              <button class="btn btn-primary" id="btn-retry-load" type="button" style="margin-top: 1rem;">Opnieuw proberen</button>
+            </div>
+          `;
+          const retryBtn = document.getElementById("btn-retry-load");
+          if (retryBtn) {
+            retryBtn.addEventListener("click", () => {
+              requiredBanks.forEach((b) => global.NederDataLoader.resetBank(b));
+              this.render();
+            });
+          }
+          return;
+        }
+      }
+
+      // If another navigation occurred while awaiting, discard stale render
+      if (this.navToken !== currentToken) return;
+      main.removeAttribute("aria-busy");
 
       switch (this.currentTab) {
         case "today":
@@ -168,6 +275,16 @@
         default:
           main.innerHTML = this.renderTodayView();
           this.attachTodayListeners();
+      }
+
+      // Manage focus gracefully after view render without stealing focus during typing
+      const activeTag = document.activeElement ? document.activeElement.tagName : "";
+      if (activeTag !== "INPUT" && activeTag !== "TEXTAREA") {
+        const pageHeading = main.querySelector("h1, h2");
+        if (pageHeading) {
+          pageHeading.setAttribute("tabindex", "-1");
+          pageHeading.focus({ preventScroll: true });
+        }
       }
     }
 
@@ -1898,13 +2015,14 @@
             <p class="page-subtitle">Doorzoek de complete woordenschat met lidwoorden, vervoegingen en voorbeelden.</p>
 
             <div class="search-input-wrap">
-              <input type="text" id="words-search-input" class="form-input search-input" placeholder="Zoek op Nederlands woord, lidwoord of Engelse betekenis..." value="${this.searchQuery}" />
-              ${this.searchQuery ? `<button class="btn-clear" id="btn-clear-search">✕</button>` : ""}
+              <label for="words-search-input" class="sr-only">Zoekopdracht woordenboek</label>
+              <input type="text" id="words-search-input" class="form-input search-input" placeholder="Zoek op Nederlands woord, lidwoord of Engelse betekenis..." value="${Learning.escapeHTML(this.searchQuery)}" />
+              ${this.searchQuery ? `<button type="button" class="btn-clear" id="btn-clear-search" aria-label="Wis zoekopdracht">✕</button>` : ""}
             </div>
 
             <div class="filter-row">
               <div class="filter-group">
-                <label>Niveau:</label>
+                <label for="select-filter-level">Niveau:</label>
                 <select id="select-filter-level" class="form-select">
                   <option value="all" ${this.selectedLevel === 'all' ? 'selected' : ''}>Alle niveaus</option>
                   <option value="A1" ${this.selectedLevel === 'A1' ? 'selected' : ''}>A1</option>
@@ -1916,7 +2034,7 @@
               </div>
 
               <div class="filter-group">
-                <label>Woordsoort:</label>
+                <label for="select-filter-pos">Woordsoort:</label>
                 <select id="select-filter-pos" class="form-select">
                   <option value="all" ${this.selectedPos === 'all' ? 'selected' : ''}>Alle soorten</option>
                   <option value="noun" ${this.selectedPos === 'noun' ? 'selected' : ''}>Zelfstandig n.w. (de/het)</option>
@@ -1927,7 +2045,7 @@
               </div>
 
               <div class="filter-group">
-                <label>Lidwoord:</label>
+                <label for="select-filter-article">Lidwoord:</label>
                 <select id="select-filter-article" class="form-select">
                   <option value="all" ${this.selectedArticle === 'all' ? 'selected' : ''}>Alles</option>
                   <option value="de" ${this.selectedArticle === 'de' ? 'selected' : ''}>de-woorden</option>
@@ -1936,7 +2054,7 @@
               </div>
 
               <div class="filter-group">
-                <label>
+                <label for="check-bookmarked">
                   <input type="checkbox" id="check-bookmarked" ${this.showOnlyBookmarked ? 'checked' : ''} /> ⭐ Alleen favorieten
                 </label>
               </div>
@@ -2148,13 +2266,15 @@
             </div>
           </div>
 
+          <div id="settings-status-banner" class="status-banner" style="display: none;" role="status" aria-live="polite"></div>
+
           <div class="card settings-card" style="margin-bottom: 1.5rem;">
             <h3>Uiterlijk & Thema</h3>
             <div class="setting-row" style="margin-top: 1rem;">
-              <label>Thema:</label>
-              <div class="theme-select-pills">
-                <button class="btn btn-sm ${settings.theme === 'dark' ? 'btn-primary' : 'btn-outline'}" id="btn-theme-dark">Donker (Dark)</button>
-                <button class="btn btn-sm ${settings.theme === 'light' ? 'btn-primary' : 'btn-outline'}" id="btn-theme-light">Licht (Light)</button>
+              <span id="label-theme">Thema:</span>
+              <div class="theme-select-pills" role="group" aria-labelledby="label-theme">
+                <button type="button" class="btn btn-sm ${settings.theme === 'dark' ? 'btn-primary' : 'btn-outline'}" id="btn-theme-dark">Donker (Dark)</button>
+                <button type="button" class="btn btn-sm ${settings.theme === 'light' ? 'btn-primary' : 'btn-outline'}" id="btn-theme-light">Licht (Light)</button>
               </div>
             </div>
           </div>
@@ -2162,7 +2282,7 @@
           <div class="card settings-card" style="margin-bottom: 1.5rem;">
             <h3>Leerdoelen & Sessies</h3>
             <div class="setting-row" style="margin-top: 1rem;">
-              <label>Dagelijks doel (items per dag):</label>
+              <label for="select-daily-goal">Dagelijks doel (items per dag):</label>
               <select id="select-daily-goal" class="form-select" style="max-width: 200px;">
                 <option value="10" ${settings.dailyGoal === 10 ? 'selected' : ''}>10 items</option>
                 <option value="15" ${settings.dailyGoal === 15 ? 'selected' : ''}>15 items (Aanbevolen)</option>
@@ -2172,7 +2292,7 @@
             </div>
 
             <div class="setting-row" style="margin-top: 1rem;">
-              <label>Sessiegrootte per oefensessie:</label>
+              <label for="select-session-size">Sessiegrootte per oefensessie:</label>
               <select id="select-session-size" class="form-select" style="max-width: 200px;">
                 <option value="5" ${settings.sessionSize === 5 ? 'selected' : ''}>5 kaarten</option>
                 <option value="10" ${settings.sessionSize === 10 ? 'selected' : ''}>10 kaarten</option>
@@ -2188,7 +2308,7 @@
               Alle voortgang wordt lokaal in je browser opgeslagen onder de <code>nederpath-v1</code> namespace.
             </p>
             <div class="backup-actions-row" style="display: flex; gap: 1rem;">
-              <button class="btn btn-secondary" id="btn-export-json">💾 Exporteer Voortgang (JSON)</button>
+              <button type="button" class="btn btn-secondary" id="btn-export-json">💾 Exporteer Voortgang (JSON)</button>
               <label class="btn btn-outline" style="cursor: pointer;">
                 📂 Importeer Back-up (JSON)
                 <input type="file" id="file-import-json" accept=".json" style="display: none;" />
@@ -2201,7 +2321,7 @@
             <p style="font-size: 0.88rem; color: var(--text-secondary); margin-bottom: 1rem;">
               Wis alle lokale opgeslagen voortgang, SRS-geschiedenis en statistieken.
             </p>
-            <button class="btn btn-danger" id="btn-reset-all">⚠️ Reset Alle Voortgang</button>
+            <button type="button" class="btn btn-danger" id="btn-reset-all">⚠️ Reset Alle Voortgang</button>
           </div>
         </div>
       `;
@@ -2214,6 +2334,7 @@
           this.store.state.settings.theme = "dark";
           this.store.save();
           this.applyTheme("dark");
+          this.showInlineStatus("Thema ingesteld op Donker.", "success");
           this.render();
         });
       }
@@ -2224,6 +2345,7 @@
           this.store.state.settings.theme = "light";
           this.store.save();
           this.applyTheme("light");
+          this.showInlineStatus("Thema ingesteld op Licht.", "success");
           this.render();
         });
       }
@@ -2233,6 +2355,7 @@
         goalSelect.addEventListener("change", (e) => {
           this.store.state.settings.dailyGoal = parseInt(e.target.value, 10);
           this.store.save();
+          this.showInlineStatus("Dagelijks doel bijgewerkt.", "success");
         });
       }
 
@@ -2241,6 +2364,7 @@
         sessionSelect.addEventListener("change", (e) => {
           this.store.state.settings.sessionSize = parseInt(e.target.value, 10);
           this.store.save();
+          this.showInlineStatus("Sessiegrootte bijgewerkt.", "success");
         });
       }
 
@@ -2255,23 +2379,34 @@
           a.download = `nederpath-backup-${Learning.getLocalISODate()}.json`;
           a.click();
           URL.revokeObjectURL(url);
+          this.showInlineStatus("Back-up bestand succesvol gegenereerd en gedownload.", "success");
         });
       }
 
       const importInput = document.getElementById("file-import-json");
       if (importInput) {
         importInput.addEventListener("change", (e) => {
-          const file = e.target.files[0];
+          const file = e.target.files && e.target.files[0];
           if (!file) return;
+
+          const MAX_BACKUP_SIZE = 5 * 1024 * 1024; // 5 MB limit
+          if (file.size > MAX_BACKUP_SIZE) {
+            this.showInlineStatus("Bestand is te groot (maximaal 5 MB toegestaan).", "error");
+            return;
+          }
+
           const reader = new FileReader();
           reader.onload = (evt) => {
             const success = this.store.importJSON(evt.target.result);
             if (success) {
-              alert("Voortgang succesvol geïmporteerd!");
+              this.showInlineStatus("Voortgang succesvol geïmporteerd!", "success");
               this.render();
             } else {
-              alert("Fout bij het importeren van het bestand. Ongeldig JSON-formaat.");
+              this.showInlineStatus("Fout bij het importeren: ongeldig of beschadigd JSON-formaat.", "error");
             }
+          };
+          reader.onerror = () => {
+            this.showInlineStatus("Fout bij het lezen van het bestand.", "error");
           };
           reader.readAsText(file);
         });
@@ -2282,7 +2417,7 @@
         resetBtn.addEventListener("click", () => {
           if (confirm("Weet je zeker dat je alle voortgang wilt wissen? Dit kan niet ongedaan worden gemaakt.")) {
             this.store.resetAllData();
-            alert("Alle gegevens zijn gewist.");
+            this.showInlineStatus("Alle voortgang en instellingen zijn gewist.", "info");
             this.switchTab("today");
           }
         });
