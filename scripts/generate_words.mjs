@@ -89,6 +89,21 @@ function nounDim(word, ov) {
   return w + "je";
 }
 
+// inflect base adjective with -e ending
+function inflectAdj(word, ov) {
+  if (ov === "-") return null;
+  if (/e$/.test(word) || /en$/.test(word)) return null;
+  let b = word;
+  if (b.endsWith("f") && /[aeou]/.test(b)) b = b.slice(0, -1) + "v";
+  if (b.endsWith("s") && /[aeou]/.test(b)) b = b.slice(0, -1) + "z";
+  if (/(aa|ee|oo|uu)[bcdfghjklmnpqrstvwxz]$/.test(b)) b = b.replace(/(aa|ee|oo|uu)/, (m) => m[0]);
+  if (/[bcdfghjklmnpqrstvwxz]$/.test(b) && isVowel(b[b.length - 2]) && b.length > 2 && !/(a|e|o|u)[bcdfghjklmnpqrstvwxz]{2}$/.test(b)) {
+    const last = b.slice(-1);
+    if (!b.endsWith(last + last)) b = b + last;
+  }
+  return b + "e";
+}
+
 // adjective/adverb comparison with override
 function comparison(word, ov) {
   if (ov === "-") return [null, null];
@@ -211,6 +226,7 @@ for (const [idx, c] of cores.entries()) {
       const bare = inf.replace(/^(op|af|uit|aan|in|mee|door|tegen|terug|na|voor|weg|om|binnen|buiten|neer|toe|vast|samen|op|af|uit|aan|mee|door|terug|na|voor|weg|om|neer|toe)(.+)$/, "$2");
       const pp = ppO || withGe(weakPp(verbStem(bare)), bare);
       if (!seen.has(pp.toLowerCase())) gen.push({ word: pp, kind: "past-participle" });
+      if (pp && !pp.endsWith("en") && !seen.has((pp + "e").toLowerCase())) gen.push({ word: pp + "e", kind: "attributive-participle" });
     } else {
       // meta: "" (weak) | "ik|hij|past|pastpl|pp" (irregular principal parts; "-" skips pp)
       const parts = meta ? meta.split("|") : [];
@@ -230,21 +246,44 @@ for (const [idx, c] of cores.entries()) {
       if (pastPl && !seen.has(pastPl.toLowerCase())) gen.push({ word: pastPl, kind: "past-plural" });
       const pp = ppOv === "-" ? null : (ppOv || withGe(weakPp(stem), inf));
       if (pp && !seen.has(pp.toLowerCase())) gen.push({ word: pp, kind: "past-participle" });
+      if (pp && !pp.endsWith("en") && !seen.has((pp + "e").toLowerCase())) gen.push({ word: pp + "e", kind: "attributive-participle" });
       const presP = presentParticiple(inf);
       if (!seen.has(presP.toLowerCase())) gen.push({ word: presP, kind: "present-participle" });
+      if (presP && !seen.has((presP + "e").toLowerCase())) gen.push({ word: presP + "e", kind: "attributive-present-participle" });
     }
   } else if (pos === "adjective" || pos === "adverb") {
+    const infl = inflectAdj(word, meta);
+    if (infl && !seen.has(infl.toLowerCase())) gen.push({ word: infl, kind: "inflected-e" });
     const [comp, sup] = comparison(word, meta);
     if (comp && !seen.has(comp.toLowerCase())) gen.push({ word: comp, kind: "comparative" });
+    if (comp && !seen.has((comp + "e").toLowerCase())) gen.push({ word: comp + "e", kind: "inflected-comparative" });
     if (sup && !seen.has(sup.toLowerCase())) gen.push({ word: sup, kind: "superlative" });
+    if (sup && !seen.has((sup + "e").toLowerCase())) gen.push({ word: sup + "e", kind: "inflected-superlative" });
   }
 
   for (const g of gen) {
-    const kindLabel = { plural: "plural of", diminutive: "diminutive of", "diminutive-plural": "plural of the diminutive of", "ik-form": "present-tense 'ik' form of", "hij-form": "present-tense 'hij/zij' form of", "past-singular": "past-tense form of", "past-plural": "past-tense plural form of", "past-participle": "past participle of", "present-participle": "present participle of", comparative: "comparative of", superlative: "superlative of" }[g.kind];
+    const kindLabel = {
+      plural: "plural of",
+      diminutive: "diminutive of",
+      "diminutive-plural": "plural of the diminutive of",
+      "ik-form": "present-tense 'ik' form of",
+      "hij-form": "present-tense 'hij/zij' form of",
+      "past-singular": "past-tense form of",
+      "past-plural": "past-tense plural form of",
+      "past-participle": "past participle of",
+      "attributive-participle": "attributive past participle of",
+      "present-participle": "present participle of",
+      "attributive-present-participle": "attributive present participle of",
+      "inflected-e": "inflected form of",
+      comparative: "comparative of",
+      "inflected-comparative": "inflected comparative of",
+      superlative: "superlative of",
+      "inflected-superlative": "inflected superlative of"
+    }[g.kind] || "form of";
     const art = article ? article + " " : "";
     addRow({
       word: g.word,
-      pos: pos === "noun" ? "noun" : pos,
+      pos: pos === "noun" ? "noun" : pos === "verb" ? "verb" : "adjective",
       level,
       article: pos === "noun" ? article : null,
       meaning: meaning ? `${kindLabel} ${art}${word} (${meaning})` : null,
@@ -295,21 +334,34 @@ for (let n = 0; n <= 999; n++) {
 // Trim or error to exactly TARGET rows
 // ---------------------------------------------------------------------------
 if (rows.length < TARGET) {
-  // write a partial preview so data issues can be inspected while authoring cores
-  const partial = rows.map((r, i) => ({ id: "nl-" + String(i + 1).padStart(5, "0"), rank: i + 1, word: r.word, lemma: r.lemma, frequency: 0, level: r.level, pos: r.pos, article: r.article, meaning: r.meaning, category: r.category, synonyms: r.synonyms, curated: !!r.curated, learnable: r.learnable !== false }));
+  const partial = rows.map((r, i) => ({
+    id: "nl-" + String(i + 1).padStart(5, "0"),
+    rank: i + 1,
+    word: r.word,
+    lemma: r.lemma,
+    frequency: 0,
+    level: r.level,
+    pos: r.pos,
+    article: r.article,
+    meaning: r.meaning,
+    category: r.category,
+    synonyms: r.synonyms,
+    curated: !!r.curated,
+    learnable: r.learnable !== false,
+  }));
   writeFileSync(join(ROOT, "data", "words.js"), "// PARTIAL PREVIEW - incomplete core data\nglobalThis.NP_WORDS = " + JSON.stringify(partial) + ";\n");
   console.error(`ERROR: only ${rows.length} rows generated, target ${TARGET}`);
   process.exit(1);
 }
+
 const surplus = rows.length - TARGET;
 if (surplus > 0) {
-  // Trim deterministically by priority: keep all curated lemmas first, then
-  // preferred generated kinds, then numbers/ordinals, then the rest.
+  // Deterministic priority trimming
   const priority = (r, i) => {
     if (r.curated) return 0;                 // curated lemmas always kept
     if (r.pos === "noun") return 10;         // noun plurals / diminutives
     if (r.pos === "verb") return 20;         // verb forms
-    if (r.pos === "adjective") return 30;    // comparisons
+    if (r.pos === "adjective") return 30;    // adjective inflections
     if (r.pos === "numeral") return 40;      // numbers
     return 50;                               // adverb comparisons last
   };
@@ -322,7 +374,6 @@ if (surplus > 0) {
 // ---------------------------------------------------------------------------
 // Finalise: ids, ranks, frequencies
 // ---------------------------------------------------------------------------
-rows.sort((a, b) => a.word.localeCompare(b.word, "nl") === 0 ? 0 : 0); // stable, keep insertion order
 const freqOf = (seq) => Math.max(1, Math.round(1e9 / Math.pow(seq + 1, 0.85)));
 const final = rows.map((r, i) => ({
   id: "nl-" + String(i + 1).padStart(5, "0"),
