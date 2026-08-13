@@ -31,6 +31,7 @@
       this.selectedPos = "all";
       this.selectedArticle = "all";
       this.showOnlyBookmarked = false;
+      this.navToken = 0;
 
       // Active interactive session state
       this.session = {
@@ -50,17 +51,37 @@
       this.tokenReconstructionPlaced = []; // Array of { poolIndex: number, text: string }
       this.activeGrammarAnswers = {}; // exIndex -> { isCorrect, userAttempt }
       this.activePassageAnswers = {}; // qIdx -> { chosenOptIdx, isCorrect }
+      this.focusIntention = null;
 
       this.init();
     }
 
     init() {
+      this.focusIntention = "heading";
       this.bindNav();
       this.bindGlobalKeyboard();
       this.applyTheme(this.store.state.settings.theme || "dark");
       this.store.subscribe(() => this.updateHeaderStats());
       this.updateHeaderStats();
       this.render();
+    }
+
+    announce(message, priority = "polite") {
+      const el = document.getElementById("live-announcer");
+      if (el && message) {
+        el.setAttribute("aria-live", priority);
+        el.textContent = message;
+      }
+    }
+
+    showInlineStatus(message, type = "info") {
+      const banner = document.getElementById("settings-status-banner") || document.querySelector(".status-banner");
+      if (banner) {
+        banner.className = `status-banner status-${type} animate-fade`;
+        banner.textContent = message;
+        banner.style.display = "block";
+      }
+      this.announce(message, type === "error" ? "assertive" : "polite");
     }
 
     applyTheme(theme) {
@@ -85,31 +106,47 @@
       }
     }
 
+    scrollToTop() {
+      if (typeof window !== "undefined") {
+        const prefersReduced =
+          typeof window.matchMedia === "function" &&
+          window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        const behavior = prefersReduced ? "auto" : "smooth";
+        window.scrollTo({ top: 0, behavior });
+      }
+    }
+
     switchTab(tab) {
       this.currentTab = tab;
+      this.focusIntention = "heading";
       document.querySelectorAll(".nav-btn").forEach((b) => {
-        b.classList.toggle("active", b.dataset.tab === tab);
+        const isActive = b.dataset.tab === tab;
+        b.classList.toggle("active", isActive);
+        if (isActive) {
+          b.setAttribute("aria-current", "page");
+        } else {
+          b.removeAttribute("aria-current");
+        }
       });
       this.render();
-      window.scrollTo({ top: 0, behavior: "smooth" });
+      this.scrollToTop();
     }
 
     bindGlobalKeyboard() {
       window.addEventListener("keydown", (e) => {
-        if (e.target.tagName === "INPUT" || e.target.tagName === "TEXTAREA" || e.target.isContentEditable) return;
+        const tag = e.target && e.target.tagName ? e.target.tagName.toLowerCase() : "";
+        const isFormField =
+          tag === "input" ||
+          tag === "textarea" ||
+          tag === "select" ||
+          (e.target && e.target.isContentEditable);
 
-        // Space or Enter to reveal card
-        if ((e.code === "Space" || e.code === "Enter") && this.currentTab === "practice" && this.practiceMode === "flashcards") {
-          e.preventDefault();
-          this.toggleCardReveal();
-        }
-
-        // 1, 2, 3, 4 for SRS buttons when revealed
+        // 1, 2, 3, 4 shortcuts for SRS ratings when cards are revealed and not in a text field
         if (this.currentTab === "practice" && this.practiceMode === "flashcards" && this.session.revealed) {
-          if (e.key === "1") this.handleSRSRating(1);
-          if (e.key === "2") this.handleSRSRating(2);
-          if (e.key === "3") this.handleSRSRating(3);
-          if (e.key === "4") this.handleSRSRating(4);
+          if (!isFormField && ["1", "2", "3", "4"].includes(e.key)) {
+            e.preventDefault();
+            this.handleSRSRating(parseInt(e.key, 10));
+          }
         }
       });
     }
@@ -128,9 +165,92 @@
       }
     }
 
-    render() {
+    getRequiredBanksForCurrentView() {
+      switch (this.currentTab) {
+        case "today":
+          return ["grammar", "idioms"];
+        case "words":
+          return ["words"];
+        case "grammar":
+        case "path":
+          return ["grammar"];
+        case "comprehension":
+          return ["comprehension"];
+        case "practice": {
+          switch (this.practiceMode) {
+            case "fill_blank":
+              return ["sentences", "words"];
+            case "context":
+              return ["sentences"];
+            case "flashcards":
+            case "article_drill":
+            case "spelling":
+            case "choose_word":
+            case "verbs":
+            case "synonyms":
+            case "morphology":
+              return ["words"];
+            default:
+              return [];
+          }
+        }
+        case "progress":
+        case "settings":
+        default:
+          return [];
+      }
+    }
+
+    async render() {
       const main = document.getElementById("app-main");
       if (!main) return;
+
+      const currentToken = ++this.navToken;
+      const requiredBanks = this.getRequiredBanksForCurrentView();
+      const isAlreadyLoaded = requiredBanks.every((b) =>
+        global.NederDataLoader ? global.NederDataLoader.isBankLoaded(b) : true
+      );
+
+      if (!isAlreadyLoaded && global.NederDataLoader) {
+        main.innerHTML = `
+          <div class="card loading-state animate-fade" role="status" aria-live="polite">
+            <div class="spinner" aria-hidden="true"></div>
+            <p>Gegevens worden geladen...</p>
+          </div>
+        `;
+        main.setAttribute("aria-busy", "true");
+
+        try {
+          await global.NederDataLoader.loadBanks(requiredBanks);
+        } catch (err) {
+          if (this.navToken !== currentToken) return;
+          main.removeAttribute("aria-busy");
+          main.innerHTML = `
+            <div class="card error-state animate-fade" role="alert">
+              <div class="error-icon" aria-hidden="true" style="font-size: 2rem;">⚠️</div>
+              <h2>Gegevens konden niet worden geladen</h2>
+              <p>${Learning.escapeHTML(err.message || "Er is een fout opgetreden bij het laden van de gegevens.")}</p>
+              <button class="btn btn-primary" id="btn-retry-load" type="button" style="margin-top: 1rem;">Opnieuw proberen</button>
+            </div>
+          `;
+          const retryBtn = document.getElementById("btn-retry-load");
+          if (retryBtn) {
+            retryBtn.addEventListener("click", () => {
+              requiredBanks.forEach((b) => {
+                if (global.NederDataLoader && !global.NederDataLoader.isBankLoaded(b)) {
+                  global.NederDataLoader.resetBank(b);
+                }
+              });
+              this.render();
+            });
+          }
+          return;
+        }
+      }
+
+      // If another navigation occurred while awaiting, discard stale render
+      if (this.navToken !== currentToken) return;
+      main.removeAttribute("aria-busy");
 
       switch (this.currentTab) {
         case "today":
@@ -168,6 +288,22 @@
         default:
           main.innerHTML = this.renderTodayView();
           this.attachTodayListeners();
+      }
+
+      // Manage focus only on explicit primary view transitions or intended control, never steal focus to heading during internal updates
+      if (this.focusIntention === "heading") {
+        this.focusIntention = null;
+        const pageHeading = main.querySelector("h1, h2");
+        if (pageHeading) {
+          pageHeading.setAttribute("tabindex", "-1");
+          pageHeading.focus({ preventScroll: true });
+        }
+      } else if (typeof this.focusIntention === "string" && this.focusIntention.startsWith("#")) {
+        const targetEl = document.querySelector(this.focusIntention);
+        this.focusIntention = null;
+        if (targetEl) {
+          targetEl.focus({ preventScroll: true });
+        }
       }
     }
 
@@ -532,38 +668,36 @@
             <span class="word-level-badge badge-${card.level.toLowerCase()}">${card.level}</span>
           </div>
 
-          <div class="flashcard-container" id="interactive-flashcard">
-            <div class="card flashcard ${this.session.revealed ? 'revealed' : ''}">
-              <div class="flashcard-front">
-                <span class="flashcard-pos">${card.pos.toUpperCase()}</span>
-                <div class="flashcard-dutch">${displayDutch}</div>
-                ${card.example ? `<div class="flashcard-example">“${card.example}”</div>` : ""}
-                <div class="flashcard-hint">Tik op de kaart of druk op [Spatie] om het antwoord te zien</div>
-              </div>
+          <button type="button" class="card flashcard flashcard-interactive ${this.session.revealed ? 'revealed' : ''}" id="interactive-flashcard" aria-expanded="${this.session.revealed ? 'true' : 'false'}" aria-label="Flitskaart voor ${card.word}. ${this.session.revealed ? 'Betekenis: ' + (card.meaning || card.word) : 'Druk op spatie of enter om de betekenis te onthullen'}">
+            <span class="flashcard-front">
+              <span class="flashcard-pos">${card.pos.toUpperCase()}</span>
+              <span class="flashcard-dutch">${displayDutch}</span>
+              ${card.example ? `<span class="flashcard-example">“${card.example}”</span>` : ""}
+              <span class="flashcard-hint">Tik op de kaart of druk op [Spatie/Enter] om het antwoord te zien</span>
+            </span>
 
-              ${this.session.revealed ? `
-                <div class="flashcard-back animate-fade">
-                  <div class="flashcard-meaning">${card.meaning || card.word}</div>
-                  ${card.exampleEn ? `<div class="flashcard-example-en">${card.exampleEn}</div>` : ""}
-                  ${card.synonyms && card.synonyms.length > 0 ? `<div class="flashcard-synonyms"><strong>Synoniemen:</strong> ${card.synonyms.join(", ")}</div>` : ""}
-                  <div class="flashcard-category">Categorie: ${card.category}</div>
-                </div>
-              ` : ""}
-            </div>
-          </div>
+            ${this.session.revealed ? `
+              <span class="flashcard-back animate-fade">
+                <span class="flashcard-meaning">${card.meaning || card.word}</span>
+                ${card.exampleEn ? `<span class="flashcard-example-en">${card.exampleEn}</span>` : ""}
+                ${card.synonyms && card.synonyms.length > 0 ? `<span class="flashcard-synonyms"><strong>Synoniemen:</strong> ${card.synonyms.join(", ")}</span>` : ""}
+                <span class="flashcard-category">Categorie: ${card.category}</span>
+              </span>
+            ` : ""}
+          </button>
 
           ${this.session.revealed ? `
             <div class="srs-controls animate-fade">
-              <button class="btn btn-srs btn-again" id="btn-srs-again" data-rating="1">
+              <button type="button" class="btn btn-srs btn-again" id="btn-srs-again" data-rating="1">
                 <span>1</span> Opnieuw<small>(&lt; 1 dag)</small>
               </button>
-              <button class="btn btn-srs btn-hard" id="btn-srs-hard" data-rating="2">
+              <button type="button" class="btn btn-srs btn-hard" id="btn-srs-hard" data-rating="2">
                 <span>2</span> Moeilijk<small>(2 dagen)</small>
               </button>
-              <button class="btn btn-srs btn-good" id="btn-srs-good" data-rating="3">
+              <button type="button" class="btn btn-srs btn-good" id="btn-srs-good" data-rating="3">
                 <span>3</span> Goed<small>(4 dagen)</small>
               </button>
-              <button class="btn btn-srs btn-easy" id="btn-srs-easy" data-rating="4">
+              <button type="button" class="btn btn-srs btn-easy" id="btn-srs-easy" data-rating="4">
                 <span>4</span> Makkelijk<small>(7 dagen)</small>
               </button>
             </div>
@@ -588,6 +722,11 @@
 
     toggleCardReveal() {
       this.session.revealed = !this.session.revealed;
+      if (this.session.revealed && this.session.cards[this.session.currentIndex]) {
+        const c = this.session.cards[this.session.currentIndex];
+        this.announce(`Kaart onthuld: ${c.word}. Betekenis: ${c.meaning || c.en || ""}. Beoordeel met 1 tot 4.`);
+      }
+      this.focusIntention = "#interactive-flashcard";
       this.render();
     }
 
@@ -596,6 +735,14 @@
       this.srs.review(card.id, rating, "vocab");
       this.session.currentIndex += 1;
       this.session.revealed = false;
+      if (this.session.currentIndex >= this.session.cards.length) {
+        this.announce(`Sessie voltooid! ${this.session.cards.length} kaarten geoefend.`);
+        this.focusIntention = "#btn-restart-session";
+      } else {
+        const nextCard = this.session.cards[this.session.currentIndex];
+        this.announce(`Beoordeling opgeslagen. Volgende kaart: ${nextCard.word}`);
+        this.focusIntention = "#interactive-flashcard";
+      }
       this.render();
     }
 
@@ -616,8 +763,8 @@
             </div>
           </div>
           <div class="complete-actions">
-            <button class="btn btn-primary" id="btn-restart-session">🔄 Nog een Sessie</button>
-            <button class="btn btn-outline" id="btn-go-today">Terug naar Vandaag</button>
+            <button type="button" class="btn btn-primary" id="btn-restart-session">🔄 Nog een Sessie</button>
+            <button type="button" class="btn btn-outline" id="btn-go-today">Terug naar Vandaag</button>
           </div>
         </div>
       `;
@@ -657,8 +804,8 @@
             <div class="drill-meaning">${item.meaning || ""}</div>
 
             <div class="drill-options">
-              <button class="btn btn-drill btn-de" data-choice="de" ${this.session.feedback ? 'disabled' : ''}>de</button>
-              <button class="btn btn-drill btn-het" data-choice="het" ${this.session.feedback ? 'disabled' : ''}>het</button>
+              <button type="button" class="btn btn-drill btn-de" data-choice="de" ${this.session.feedback ? 'disabled' : ''}>de</button>
+              <button type="button" class="btn btn-drill btn-het" data-choice="het" ${this.session.feedback ? 'disabled' : ''}>het</button>
             </div>
 
             ${this.session.feedback ? `
@@ -667,7 +814,7 @@
                 Het is <strong>${item.article} ${item.word}</strong>.
                 ${item.word.endsWith("je") ? "<br><small>Tip: Alle verkleinwoorden krijgen 'het'!</small>" : ""}
               </div>
-              <button class="btn btn-primary btn-block" id="btn-next-drill" style="margin-top: 1rem;">Volgende Vraag →</button>
+              <button type="button" class="btn btn-primary btn-block" id="btn-next-drill" style="margin-top: 1rem;">Volgende Vraag →</button>
             ` : ""}
           </div>
         </div>
@@ -684,6 +831,7 @@
 
           this.store.recordArticleDrill(item.word, choice, item.article);
           this.session.feedback = { isCorrect, choice, correct: item.article };
+          this.announce(isCorrect ? `Correct! Het is ${item.article} ${item.word}.` : `Helaas, het is ${item.article} ${item.word}.`);
           this.render();
         });
       });
@@ -726,6 +874,7 @@
             ${item.exampleEn ? `<p class="context-hint">Context: ${item.exampleEn}</p>` : ""}
 
             <form id="spelling-form" class="spelling-form">
+              <label for="spelling-input" class="sr-only">Nederlandse spelling</label>
               <input type="text" id="spelling-input" class="form-input" placeholder="Typ hier in het Nederlands..." autocomplete="off" autofocus ${this.session.feedback ? 'disabled' : ''} />
               <button type="submit" class="btn btn-primary" style="margin-top: 1rem;" ${this.session.feedback ? 'disabled' : ''}>Controleer Antwoord</button>
             </form>
@@ -734,7 +883,7 @@
               <div class="exercise-feedback ${this.session.feedback.isCorrect ? 'feedback-correct' : 'feedback-wrong'} animate-fade">
                 ${this.session.feedback.isCorrect ? '✓ Helemaal goed gespeld!' : `✗ Niet helemaal juist. Het juiste antwoord is: <strong>${item.word}</strong>`}
               </div>
-              <button class="btn btn-secondary btn-block" id="btn-next-spelling" style="margin-top: 1rem;">Volgend Woord →</button>
+              <button type="button" class="btn btn-secondary btn-block" id="btn-next-spelling" style="margin-top: 1rem;">Volgend Woord →</button>
             ` : ""}
           </div>
         </div>
@@ -754,6 +903,7 @@
 
           this.store.recordActivity(isCorrect ? 10 : 2);
           this.session.feedback = { isCorrect, userText };
+          this.announce(isCorrect ? `Helemaal goed gespeld: ${item.word}!` : `Niet juist. Het juiste antwoord is: ${item.word}.`);
           this.render();
         });
       }
@@ -802,7 +952,7 @@
               ${(item.options || []).map((opt) => {
                 const isSelected = this.session.feedback && this.session.feedback.chosen === opt;
                 return `
-                  <button class="btn btn-outline btn-option ${isSelected ? (this.session.feedback.isCorrect ? 'btn-success' : 'btn-wrong') : ''}" data-option="${opt}" ${this.session.feedback ? 'disabled' : ''}>
+                  <button type="button" class="btn btn-outline btn-option ${isSelected ? (this.session.feedback.isCorrect ? 'btn-success' : 'btn-wrong') : ''}" data-option="${opt}" ${this.session.feedback ? 'disabled' : ''}>
                     ${opt}
                   </button>
                 `;
@@ -813,7 +963,7 @@
               <div class="exercise-feedback ${this.session.feedback.isCorrect ? 'feedback-correct' : 'feedback-wrong'} animate-fade">
                 ${this.session.feedback.isCorrect ? '✓ Juist gekozen!' : `✗ Helaas. Het juiste woord was: <strong>${item.targetWord}</strong>`}
               </div>
-              <button class="btn btn-primary btn-block" id="btn-next-fill-blank" style="margin-top: 1rem;">Volgende Zin →</button>
+              <button type="button" class="btn btn-primary btn-block" id="btn-next-fill-blank" style="margin-top: 1rem;">Volgende Zin →</button>
             ` : ""}
           </div>
         </div>
@@ -830,6 +980,7 @@
 
           this.store.recordActivity(isCorrect ? 10 : 2);
           this.session.feedback = { isCorrect, chosen };
+          this.announce(isCorrect ? `Correct! "${chosen}" past in de zin.` : `Helaas, het juiste woord was "${item.targetWord}".`);
           this.render();
         });
       });
@@ -881,7 +1032,7 @@
               ${(item.options || []).map((opt) => {
                 const isSelected = this.session.feedback && this.session.feedback.chosenId === opt.id;
                 return `
-                  <button class="btn btn-outline btn-choice-word ${isSelected ? (this.session.feedback.isCorrect ? 'btn-success' : 'btn-wrong') : ''}" data-word-id="${opt.id}" ${this.session.feedback ? 'disabled' : ''}>
+                  <button type="button" class="btn btn-outline btn-choice-word ${isSelected ? (this.session.feedback.isCorrect ? 'btn-success' : 'btn-wrong') : ''}" data-word-id="${opt.id}" ${this.session.feedback ? 'disabled' : ''}>
                     ${opt.displayWord || opt.word}
                   </button>
                 `;
@@ -892,7 +1043,7 @@
               <div class="exercise-feedback ${this.session.feedback.isCorrect ? 'feedback-correct' : 'feedback-wrong'} animate-fade">
                 ${this.session.feedback.isCorrect ? '✓ Uitstekend!' : `✗ Helaas. Het juiste woord is: <strong>${item.displayWord || item.word}</strong>`}
               </div>
-              <button class="btn btn-primary btn-block" id="btn-next-choose" style="margin-top: 1rem;">Volgend Woord →</button>
+              <button type="button" class="btn btn-primary btn-block" id="btn-next-choose" style="margin-top: 1rem;">Volgend Woord →</button>
             ` : ""}
           </div>
         </div>
@@ -909,6 +1060,7 @@
 
           this.store.recordActivity(isCorrect ? 10 : 2);
           this.session.feedback = { isCorrect, chosenId };
+          this.announce(isCorrect ? `Correct! "${item.displayWord || item.word}" is het juiste woord.` : `Helaas, het juiste woord was "${item.displayWord || item.word}".`);
           this.render();
         });
       });
@@ -954,6 +1106,7 @@
 
             <p style="margin: 1.5rem 0 0.5rem; color: var(--text-secondary);">Typ de tegenwoordige tijd voor 'hij/zij':</p>
             <form id="verb-form" class="verb-form">
+              <label for="verb-input" class="sr-only">Werkwoordsvervoeging voor hij/zij</label>
               <input type="text" id="verb-input" class="form-input" placeholder="bijv. werkt, loopt..." autocomplete="off" autofocus ${this.session.feedback ? 'disabled' : ''} />
               <button type="submit" class="btn btn-primary" style="margin-top: 1rem;" ${this.session.feedback ? 'disabled' : ''}>Controleer Vorm</button>
             </form>
@@ -962,7 +1115,7 @@
               <div class="exercise-feedback ${this.session.feedback.isCorrect ? 'feedback-correct' : 'feedback-wrong'} animate-fade">
                 ${this.session.feedback.isCorrect ? `✓ Juist vervoegd: '${item.expectedHij}'!` : `✗ Helaas. De juiste 'hij/zij' vorm is: <strong>${item.expectedHij}</strong>`}
               </div>
-              <button class="btn btn-secondary btn-block" id="btn-next-verb" style="margin-top: 1rem;">Volgend Werkwoord →</button>
+              <button type="button" class="btn btn-secondary btn-block" id="btn-next-verb" style="margin-top: 1rem;">Volgend Werkwoord →</button>
             ` : ""}
           </div>
         </div>
@@ -982,6 +1135,7 @@
 
           this.store.recordActivity(isCorrect ? 10 : 2);
           this.session.feedback = { isCorrect, text };
+          this.announce(isCorrect ? `Correct vervoegd: hij/zij ${item.expectedHij}!` : `Helaas. De juiste vorm is: hij/zij ${item.expectedHij}.`);
           this.render();
         });
       }
@@ -1032,7 +1186,7 @@
               ${(item.options || []).map((opt) => {
                 const isSelected = this.session.feedback && this.session.feedback.chosen === opt;
                 return `
-                  <button class="btn btn-outline btn-syn-opt ${isSelected ? (this.session.feedback.isCorrect ? 'btn-success' : 'btn-wrong') : ''}" data-syn="${opt}" ${this.session.feedback ? 'disabled' : ''}>
+                  <button type="button" class="btn btn-outline btn-syn-opt ${isSelected ? (this.session.feedback.isCorrect ? 'btn-success' : 'btn-wrong') : ''}" data-syn="${opt}" ${this.session.feedback ? 'disabled' : ''}>
                     ${opt}
                   </button>
                 `;
@@ -1043,7 +1197,7 @@
               <div class="exercise-feedback ${this.session.feedback.isCorrect ? 'feedback-correct' : 'feedback-wrong'} animate-fade">
                 ${this.session.feedback.isCorrect ? '✓ Juist synoniem gekozen!' : `✗ Niet juist. Een synoniem van '${item.word}' is: <strong>${item.correctSyn}</strong>.`}
               </div>
-              <button class="btn btn-primary btn-block" id="btn-next-syn" style="margin-top: 1rem;">Volgende Vraag →</button>
+              <button type="button" class="btn btn-primary btn-block" id="btn-next-syn" style="margin-top: 1rem;">Volgende Vraag →</button>
             ` : ""}
           </div>
         </div>
@@ -1060,6 +1214,7 @@
 
           this.store.recordActivity(isCorrect ? 10 : 2);
           this.session.feedback = { isCorrect, chosen };
+          this.announce(isCorrect ? `Correct! "${chosen}" is een synoniem van "${item.word}".` : `Helaas, het juiste synoniem was "${item.correctSyn}".`);
           this.render();
         });
       });
@@ -1110,6 +1265,7 @@
 
             <p style="color: var(--text-secondary); margin-top: 1rem;">Typ het meervoud (plural) van dit zelfstandig naamwoord:</p>
             <form id="morphology-form" style="margin-top: 1rem;">
+              <label for="morphology-input" class="sr-only">Meervoudsvorm</label>
               <input type="text" id="morphology-input" class="form-input" placeholder="Typ het meervoud..." autocomplete="off" autofocus ${this.session.feedback ? 'disabled' : ''} />
               <button type="submit" class="btn btn-primary" style="margin-top: 1rem;" ${this.session.feedback ? 'disabled' : ''}>Controleer Meervoud</button>
             </form>
@@ -1118,7 +1274,7 @@
               <div class="exercise-feedback ${this.session.feedback.isCorrect ? 'feedback-correct' : 'feedback-wrong'} animate-fade">
                 ${this.session.feedback.isCorrect ? `✓ Juiste meervoudsvorm: '${item.expectedPlural}'!` : `✗ Helaas. Het juiste meervoud is: <strong>${item.expectedPlural}</strong>`}
               </div>
-              <button class="btn btn-secondary btn-block" id="btn-next-morph" style="margin-top: 1rem;">Volgend Zelfstandig Naamwoord →</button>
+              <button type="button" class="btn btn-secondary btn-block" id="btn-next-morph" style="margin-top: 1rem;">Volgend Zelfstandig Naamwoord →</button>
             ` : ""}
           </div>
         </div>
@@ -1138,6 +1294,7 @@
 
           this.store.recordActivity(isCorrect ? 10 : 2);
           this.session.feedback = { isCorrect, val };
+          this.announce(isCorrect ? `Correct gevormd: ${item.expectedPlural}!` : `Helaas. De juiste vorm is: ${item.expectedPlural}.`);
           this.render();
         });
       }
@@ -1179,7 +1336,7 @@
               Grammaticaal niveau: <span class="badge-${item.level.toLowerCase()}">${item.level}</span>
             </div>
 
-            <button class="btn btn-primary btn-block" id="btn-next-ctx" style="margin-top: 1.5rem;">Begrepen & Volgende Zin →</button>
+            <button type="button" class="btn btn-primary btn-block" id="btn-next-ctx" style="margin-top: 1.5rem;">Begrepen & Volgende Zin →</button>
           </div>
         </div>
       `;
@@ -1339,40 +1496,41 @@
               <p class="exercise-question">${ex.question}</p>
               <div class="options-grid">
                 ${(ex.options || []).map((opt, i) => {
-                  const isSelected = answeredState && answeredState.userAttempt === i;
+                  const isSelected = Boolean(answeredState && answeredState.userAttempt === i);
                   return `
-                    <button class="btn btn-outline btn-grammar-opt ${isSelected ? (answeredState.isCorrect ? 'btn-success' : 'btn-wrong') : ''}" data-opt-idx="${i}" ${answeredState ? 'disabled' : ''}>
+                    <button type="button" class="btn btn-outline btn-grammar-opt ${isSelected ? (answeredState.isCorrect ? 'btn-success' : 'btn-wrong') : ''}" data-opt-idx="${i}" ${answeredState ? 'disabled' : ''} aria-pressed="${isSelected ? 'true' : 'false'}">
                       ${opt}
                     </button>
                   `;
                 }).join("")}
               </div>
-              <div id="grammar-ex-feedback" class="exercise-feedback ${answeredState ? (answeredState.isCorrect ? 'feedback-correct' : 'feedback-wrong') : ''}" style="${answeredState ? 'display: block;' : 'display: none;'}">
+              <div id="grammar-ex-feedback" class="exercise-feedback ${answeredState ? (answeredState.isCorrect ? 'feedback-correct' : 'feedback-wrong') : ''}" style="${answeredState ? 'display: block;' : 'display: none;'}" role="alert">
                 ${answeredState ? (answeredState.isCorrect ? `✓ Uitstekend! ${ex.explanation}` : `✗ Helaas niet juist. ${ex.explanation}`) : ''}
               </div>
             </div>
           `;
         case "word_order":
+        case "token_reconstruction":
           return `
             <div class="exercise-token-order animate-fade">
               <p class="exercise-question">Zet de woorden in de juiste volgorde:</p>
-              <div class="exercise-translation">“${ex.translation}”</div>
+              <div class="exercise-translation">“${ex.translation || ex.sentence || ''}”</div>
               
-              <div class="tokens-assembled-box" id="tokens-placed-zone">
+              <div class="tokens-assembled-box" id="tokens-placed-zone" role="region" aria-label="Samengestelde zin">
                 ${this.tokenReconstructionPlaced.map((p, idx) => `
-                  <span class="chip-token chip-placed" data-placed-idx="${idx}">${p.text} ✕</span>
+                  <button type="button" class="chip-token chip-placed" data-placed-idx="${idx}" aria-label="Verwijder '${p.text}' van positie ${idx + 1}">${p.text} ✕</button>
                 `).join("")}
               </div>
 
-              <div class="tokens-pool" id="tokens-pool-zone">
+              <div class="tokens-pool" id="tokens-pool-zone" role="region" aria-label="Beschikbare woorden">
                 ${(ex.tokens || []).map((token, idx) => {
                   const isUsed = this.tokenReconstructionPlaced.some((p) => p.poolIndex === idx);
-                  return `<button class="chip-token ${isUsed ? 'token-used' : ''}" data-pool-idx="${idx}" ${isUsed || answeredState ? 'disabled' : ''}>${token}</button>`;
+                  return `<button type="button" class="chip-token ${isUsed ? 'token-used' : ''}" data-pool-idx="${idx}" aria-label="Voeg '${token}' toe" aria-disabled="${isUsed || answeredState ? 'true' : 'false'}" ${isUsed || answeredState ? 'disabled' : ''}>${token}</button>`;
                 }).join("")}
               </div>
 
-              <button class="btn btn-primary" id="btn-check-tokens" style="margin-top: 1rem;" ${answeredState ? 'disabled' : ''}>Controleer Woordvolgorde</button>
-              <div id="grammar-ex-feedback" class="exercise-feedback ${answeredState ? (answeredState.isCorrect ? 'feedback-correct' : 'feedback-wrong') : ''}" style="${answeredState ? 'display: block;' : 'display: none;'}">
+              <button type="button" class="btn btn-primary" id="btn-check-tokens" style="margin-top: 1rem;" ${answeredState ? 'disabled' : ''}>Controleer Woordvolgorde</button>
+              <div id="grammar-ex-feedback" class="exercise-feedback ${answeredState ? (answeredState.isCorrect ? 'feedback-correct' : 'feedback-wrong') : ''}" style="${answeredState ? 'display: block;' : 'display: none;'}" role="alert">
                 ${answeredState ? (answeredState.isCorrect ? `✓ Perfecte woordvolgorde!` : `✗ Niet juist. Correcte volgorde: “${ex.correctSentence}”`) : ''}
               </div>
             </div>
@@ -1382,17 +1540,17 @@
             <div class="exercise-fill animate-fade">
               <p class="exercise-question">${ex.prompt || "Vul het juiste woord in:"}</p>
               <div class="exercise-sentence" style="font-size: 1.2rem; font-weight: 700; margin: 1rem 0;">${ex.sentenceWithBlank}</div>
-              <div class="hint-chips-pool">
+              <div class="hint-chips-pool" role="group" aria-label="Woordopties">
                 ${(ex.hints || []).map((h) => {
-                  const isSelected = answeredState && answeredState.userAttempt === h;
+                  const isSelected = Boolean(answeredState && answeredState.userAttempt === h);
                   return `
-                    <button class="chip-token btn-hint-opt ${isSelected ? (answeredState.isCorrect ? 'btn-success' : 'btn-wrong') : ''}" data-hint="${h}" ${answeredState ? 'disabled' : ''}>
+                    <button type="button" class="chip-token btn-hint-opt ${isSelected ? (answeredState.isCorrect ? 'btn-success' : 'btn-wrong') : ''}" data-hint="${h}" ${answeredState ? 'disabled' : ''} aria-pressed="${isSelected ? 'true' : 'false'}">
                       ${h}
                     </button>
                   `;
                 }).join("")}
               </div>
-              <div id="grammar-ex-feedback" class="exercise-feedback ${answeredState ? (answeredState.isCorrect ? 'feedback-correct' : 'feedback-wrong') : ''}" style="${answeredState ? 'display: block;' : 'display: none;'}">
+              <div id="grammar-ex-feedback" class="exercise-feedback ${answeredState ? (answeredState.isCorrect ? 'feedback-correct' : 'feedback-wrong') : ''}" style="${answeredState ? 'display: block;' : 'display: none;'}" role="alert">
                 ${answeredState ? (answeredState.isCorrect ? `✓ Helemaal juist ingevuld!` : `✗ Niet juist. Het juiste woord was: <strong>${ex.blankWord}</strong>`) : ''}
               </div>
             </div>
@@ -1402,10 +1560,11 @@
             <div class="exercise-typed-conj animate-fade">
               <p class="exercise-question">Vervoeg het werkwoord '<strong>${ex.infinitive}</strong>' voor '<strong>${ex.subject}</strong>' (${ex.targetTense}):</p>
               <form id="form-grammar-conj" style="margin-top: 1rem;">
+                <label for="input-grammar-conj" class="sr-only">Grammatica vervoeging</label>
                 <input type="text" id="input-grammar-conj" class="form-input" placeholder="Typ de juiste vervoeging..." autocomplete="off" ${answeredState ? 'disabled' : ''} />
                 <button type="submit" class="btn btn-primary" style="margin-top: 0.75rem;" ${answeredState ? 'disabled' : ''}>Controleer Vervoeging</button>
               </form>
-              <div id="grammar-ex-feedback" class="exercise-feedback ${answeredState ? (answeredState.isCorrect ? 'feedback-correct' : 'feedback-wrong') : ''}" style="${answeredState ? 'display: block;' : 'display: none;'}">
+              <div id="grammar-ex-feedback" class="exercise-feedback ${answeredState ? (answeredState.isCorrect ? 'feedback-correct' : 'feedback-wrong') : ''}" style="${answeredState ? 'display: block;' : 'display: none;'}" role="alert">
                 ${answeredState ? (answeredState.isCorrect ? `✓ Uitstekend vervoegd! ${ex.explanation}` : `✗ Niet juist. De juiste vorm is '<strong>${ex.correctForm}</strong>'. ${ex.explanation}`) : ''}
               </div>
             </div>
@@ -1418,10 +1577,11 @@
                 “${ex.original}”
               </div>
               <form id="form-grammar-transform" style="margin-top: 1rem;">
+                <label for="input-grammar-transform" class="sr-only">Getransformeerde zin</label>
                 <input type="text" id="input-grammar-transform" class="form-input" placeholder="Typ de getransformeerde zin..." autocomplete="off" ${answeredState ? 'disabled' : ''} />
                 <button type="submit" class="btn btn-primary" style="margin-top: 0.75rem;" ${answeredState ? 'disabled' : ''}>Controleer Transformatie</button>
               </form>
-              <div id="grammar-ex-feedback" class="exercise-feedback ${answeredState ? (answeredState.isCorrect ? 'feedback-correct' : 'feedback-wrong') : ''}" style="${answeredState ? 'display: block;' : 'display: none;'}">
+              <div id="grammar-ex-feedback" class="exercise-feedback ${answeredState ? (answeredState.isCorrect ? 'feedback-correct' : 'feedback-wrong') : ''}" style="${answeredState ? 'display: block;' : 'display: none;'}" role="alert">
                 ${answeredState ? (answeredState.isCorrect ? `✓ Perfecte transformatie!` : `✗ Niet helemaal juist. Modelzin: “<strong>${ex.transformed}</strong>”`) : ''}
               </div>
             </div>
@@ -1434,10 +1594,11 @@
                 “${ex.sentenceWithError}”
               </div>
               <form id="form-grammar-error" style="margin-top: 1rem;">
+                <label for="input-grammar-error" class="sr-only">Gecorrigeerde zin</label>
                 <input type="text" id="input-grammar-error" class="form-input" placeholder="Typ de gecorrigeerde zin..." autocomplete="off" ${answeredState ? 'disabled' : ''} />
                 <button type="submit" class="btn btn-primary" style="margin-top: 0.75rem;" ${answeredState ? 'disabled' : ''}>Controleer Correctie</button>
               </form>
-              <div id="grammar-ex-feedback" class="exercise-feedback ${answeredState ? (answeredState.isCorrect ? 'feedback-correct' : 'feedback-wrong') : ''}" style="${answeredState ? 'display: block;' : 'display: none;'}">
+              <div id="grammar-ex-feedback" class="exercise-feedback ${answeredState ? (answeredState.isCorrect ? 'feedback-correct' : 'feedback-wrong') : ''}" style="${answeredState ? 'display: block;' : 'display: none;'}" role="alert">
                 ${answeredState ? (answeredState.isCorrect ? `✓ Foutloos gecorrigeerd! ${ex.explanation}` : `✗ Niet helemaal juist. Correcte zin: “<strong>${ex.correctedSentence}</strong>”. ${ex.explanation}`) : ''}
               </div>
             </div>
@@ -1447,10 +1608,10 @@
             <div class="exercise-article-select animate-fade">
               <p class="exercise-question">Kies het juiste lidwoord voor: <strong>${ex.noun}</strong> <em>(${ex.meaning})</em></p>
               <div class="options-grid" style="grid-template-columns: 1fr 1fr; margin-top: 1rem;">
-                <button class="btn btn-drill btn-de btn-grammar-art ${answeredState && answeredState.userAttempt === 'de' ? (answeredState.isCorrect ? 'btn-success' : 'btn-wrong') : ''}" data-art="de" ${answeredState ? 'disabled' : ''}>de</button>
-                <button class="btn btn-drill btn-het btn-grammar-art ${answeredState && answeredState.userAttempt === 'het' ? (answeredState.isCorrect ? 'btn-success' : 'btn-wrong') : ''}" data-art="het" ${answeredState ? 'disabled' : ''}>het</button>
+                <button type="button" class="btn btn-drill btn-de btn-grammar-art ${answeredState && answeredState.userAttempt === 'de' ? (answeredState.isCorrect ? 'btn-success' : 'btn-wrong') : ''}" data-art="de" ${answeredState ? 'disabled' : ''} aria-pressed="${Boolean(answeredState && answeredState.userAttempt === 'de') ? 'true' : 'false'}">de</button>
+                <button type="button" class="btn btn-drill btn-het btn-grammar-art ${answeredState && answeredState.userAttempt === 'het' ? (answeredState.isCorrect ? 'btn-success' : 'btn-wrong') : ''}" data-art="het" ${answeredState ? 'disabled' : ''} aria-pressed="${Boolean(answeredState && answeredState.userAttempt === 'het') ? 'true' : 'false'}">het</button>
               </div>
-              <div id="grammar-ex-feedback" class="exercise-feedback ${answeredState ? (answeredState.isCorrect ? 'feedback-correct' : 'feedback-wrong') : ''}" style="${answeredState ? 'display: block;' : 'display: none;'}">
+              <div id="grammar-ex-feedback" class="exercise-feedback ${answeredState ? (answeredState.isCorrect ? 'feedback-correct' : 'feedback-wrong') : ''}" style="${answeredState ? 'display: block;' : 'display: none;'}" role="alert">
                 ${answeredState ? (answeredState.isCorrect ? `✓ Juist! Het is <strong>${ex.correct} ${ex.noun}</strong>. ${ex.explanation || ''}` : `✗ Niet juist. Het is <strong>${ex.correct} ${ex.noun}</strong>. ${ex.explanation || ''}`) : ''}
               </div>
             </div>
@@ -1459,7 +1620,7 @@
           return `
             <div class="exercise-default animate-fade">
               <p class="exercise-question">${ex.question || ex.prompt || "Beantwoord de vraag:"}</p>
-              <button class="btn btn-primary" id="btn-complete-simple-ex" ${answeredState ? 'disabled' : ''}>Begrepen & Afronden ✓</button>
+              <button type="button" class="btn btn-primary" id="btn-complete-simple-ex" ${answeredState ? 'disabled' : ''}>Begrepen & Afronden ✓</button>
             </div>
           `;
       }
@@ -1472,11 +1633,18 @@
       this.activeGrammarAnswers[this.activeGrammarExIndex] = { isCorrect, userAttempt };
       const exercises = this.activeGrammarRule.exercises || [];
 
+      if (isCorrect) {
+        this.announce("Juist antwoord!");
+      } else {
+        this.announce("Helaas niet juist.");
+      }
+
       // Check if all exercises completed
       if (Object.keys(this.activeGrammarAnswers).length === exercises.length) {
         const numCorrect = Object.values(this.activeGrammarAnswers).filter((a) => a.isCorrect).length;
         const score = Math.round((numCorrect / exercises.length) * 100);
         this.store.completeGrammarRule(this.activeGrammarRule.id, score);
+        this.announce(`Alle oefeningen voor deze regel voltooid! Score: ${score}%.`);
       } else {
         this.store.recordActivity(isCorrect ? 5 : 1);
       }
@@ -1566,7 +1734,7 @@
         });
       }
 
-      // Word Order Pool Tokens (supports duplicate tokens via unique pool indices)
+      // Word Order Pool Tokens (supports duplicate tokens via unique pool indices and keyboard operability)
       document.querySelectorAll(".chip-token:not(.chip-placed)").forEach((btn) => {
         btn.addEventListener("click", () => {
           const poolIdx = parseInt(btn.dataset.poolIdx, 10);
@@ -1575,10 +1743,12 @@
           if (!isNaN(poolIdx) && currentEx && currentEx.tokens && currentEx.tokens[poolIdx]) {
             const alreadyPlaced = this.tokenReconstructionPlaced.some((p) => p.poolIndex === poolIdx);
             if (!alreadyPlaced) {
+              const text = currentEx.tokens[poolIdx];
               this.tokenReconstructionPlaced.push({
                 poolIndex: poolIdx,
-                text: currentEx.tokens[poolIdx]
+                text
               });
+              this.announce(`Woord '${text}' toegevoegd.`);
               this.render();
             }
           }
@@ -1590,7 +1760,10 @@
         chip.addEventListener("click", () => {
           const placedIdx = parseInt(chip.dataset.placedIdx, 10);
           if (!isNaN(placedIdx) && placedIdx >= 0 && placedIdx < this.tokenReconstructionPlaced.length) {
-            this.tokenReconstructionPlaced.splice(placedIdx, 1);
+            const removed = this.tokenReconstructionPlaced.splice(placedIdx, 1)[0];
+            if (removed) {
+              this.announce(`Woord '${removed.text}' verwijderd.`);
+            }
             this.render();
           }
         });
@@ -1656,8 +1829,9 @@
       this.tokenReconstructionPlaced = [];
       this.activeGrammarAnswers = {};
       this.currentTab = "grammar";
+      this.focusIntention = "heading";
       this.render();
-      window.scrollTo({ top: 0, behavior: "smooth" });
+      this.scrollToTop();
     }
 
     /* ==========================================================================
@@ -1821,8 +1995,9 @@
           const passages = global.NP_COMPREHENSION || [];
           this.activePassage = passages.find((p) => p.id === passageId) || passages[0];
           this.activePassageAnswers = {};
+          this.focusIntention = "heading";
           this.render();
-          window.scrollTo({ top: 0, behavior: "smooth" });
+          this.scrollToTop();
         });
       });
 
@@ -1851,8 +2026,10 @@
             const numCorrect = Object.values(this.activePassageAnswers).filter((a) => a.isCorrect).length;
             const score = Math.round((numCorrect / totalQuestions) * 100);
             this.store.completeComprehension(this.activePassage.id, score, totalQuestions);
+            this.announce(`Begrijpend lezen quiz voltooid! Score: ${score}%.`);
           } else {
             this.store.recordActivity(isCorrect ? 5 : 1);
+            this.announce(isCorrect ? `Vraag ${qIdx + 1}: Juist beantwoord!` : `Vraag ${qIdx + 1}: Helaas niet juist.`);
           }
 
           this.render();
@@ -1898,13 +2075,14 @@
             <p class="page-subtitle">Doorzoek de complete woordenschat met lidwoorden, vervoegingen en voorbeelden.</p>
 
             <div class="search-input-wrap">
-              <input type="text" id="words-search-input" class="form-input search-input" placeholder="Zoek op Nederlands woord, lidwoord of Engelse betekenis..." value="${this.searchQuery}" />
-              ${this.searchQuery ? `<button class="btn-clear" id="btn-clear-search">✕</button>` : ""}
+              <label for="words-search-input" class="sr-only">Zoekopdracht woordenboek</label>
+              <input type="text" id="words-search-input" class="form-input search-input" placeholder="Zoek op Nederlands woord, lidwoord of Engelse betekenis..." value="${Learning.escapeHTML(this.searchQuery)}" />
+              ${this.searchQuery ? `<button type="button" class="btn-clear" id="btn-clear-search" aria-label="Wis zoekopdracht">✕</button>` : ""}
             </div>
 
             <div class="filter-row">
               <div class="filter-group">
-                <label>Niveau:</label>
+                <label for="select-filter-level">Niveau:</label>
                 <select id="select-filter-level" class="form-select">
                   <option value="all" ${this.selectedLevel === 'all' ? 'selected' : ''}>Alle niveaus</option>
                   <option value="A1" ${this.selectedLevel === 'A1' ? 'selected' : ''}>A1</option>
@@ -1916,7 +2094,7 @@
               </div>
 
               <div class="filter-group">
-                <label>Woordsoort:</label>
+                <label for="select-filter-pos">Woordsoort:</label>
                 <select id="select-filter-pos" class="form-select">
                   <option value="all" ${this.selectedPos === 'all' ? 'selected' : ''}>Alle soorten</option>
                   <option value="noun" ${this.selectedPos === 'noun' ? 'selected' : ''}>Zelfstandig n.w. (de/het)</option>
@@ -1927,7 +2105,7 @@
               </div>
 
               <div class="filter-group">
-                <label>Lidwoord:</label>
+                <label for="select-filter-article">Lidwoord:</label>
                 <select id="select-filter-article" class="form-select">
                   <option value="all" ${this.selectedArticle === 'all' ? 'selected' : ''}>Alles</option>
                   <option value="de" ${this.selectedArticle === 'de' ? 'selected' : ''}>de-woorden</option>
@@ -1936,7 +2114,7 @@
               </div>
 
               <div class="filter-group">
-                <label>
+                <label for="check-bookmarked">
                   <input type="checkbox" id="check-bookmarked" ${this.showOnlyBookmarked ? 'checked' : ''} /> ⭐ Alleen favorieten
                 </label>
               </div>
@@ -2148,13 +2326,15 @@
             </div>
           </div>
 
+          <div id="settings-status-banner" class="status-banner" style="display: none;" role="status" aria-live="polite"></div>
+
           <div class="card settings-card" style="margin-bottom: 1.5rem;">
             <h3>Uiterlijk & Thema</h3>
             <div class="setting-row" style="margin-top: 1rem;">
-              <label>Thema:</label>
-              <div class="theme-select-pills">
-                <button class="btn btn-sm ${settings.theme === 'dark' ? 'btn-primary' : 'btn-outline'}" id="btn-theme-dark">Donker (Dark)</button>
-                <button class="btn btn-sm ${settings.theme === 'light' ? 'btn-primary' : 'btn-outline'}" id="btn-theme-light">Licht (Light)</button>
+              <span id="label-theme">Thema:</span>
+              <div class="theme-select-pills" role="group" aria-labelledby="label-theme">
+                <button type="button" class="btn btn-sm ${settings.theme === 'dark' ? 'btn-primary' : 'btn-outline'}" id="btn-theme-dark">Donker (Dark)</button>
+                <button type="button" class="btn btn-sm ${settings.theme === 'light' ? 'btn-primary' : 'btn-outline'}" id="btn-theme-light">Licht (Light)</button>
               </div>
             </div>
           </div>
@@ -2162,7 +2342,7 @@
           <div class="card settings-card" style="margin-bottom: 1.5rem;">
             <h3>Leerdoelen & Sessies</h3>
             <div class="setting-row" style="margin-top: 1rem;">
-              <label>Dagelijks doel (items per dag):</label>
+              <label for="select-daily-goal">Dagelijks doel (items per dag):</label>
               <select id="select-daily-goal" class="form-select" style="max-width: 200px;">
                 <option value="10" ${settings.dailyGoal === 10 ? 'selected' : ''}>10 items</option>
                 <option value="15" ${settings.dailyGoal === 15 ? 'selected' : ''}>15 items (Aanbevolen)</option>
@@ -2172,7 +2352,7 @@
             </div>
 
             <div class="setting-row" style="margin-top: 1rem;">
-              <label>Sessiegrootte per oefensessie:</label>
+              <label for="select-session-size">Sessiegrootte per oefensessie:</label>
               <select id="select-session-size" class="form-select" style="max-width: 200px;">
                 <option value="5" ${settings.sessionSize === 5 ? 'selected' : ''}>5 kaarten</option>
                 <option value="10" ${settings.sessionSize === 10 ? 'selected' : ''}>10 kaarten</option>
@@ -2188,7 +2368,7 @@
               Alle voortgang wordt lokaal in je browser opgeslagen onder de <code>nederpath-v1</code> namespace.
             </p>
             <div class="backup-actions-row" style="display: flex; gap: 1rem;">
-              <button class="btn btn-secondary" id="btn-export-json">💾 Exporteer Voortgang (JSON)</button>
+              <button type="button" class="btn btn-secondary" id="btn-export-json">💾 Exporteer Voortgang (JSON)</button>
               <label class="btn btn-outline" style="cursor: pointer;">
                 📂 Importeer Back-up (JSON)
                 <input type="file" id="file-import-json" accept=".json" style="display: none;" />
@@ -2201,7 +2381,7 @@
             <p style="font-size: 0.88rem; color: var(--text-secondary); margin-bottom: 1rem;">
               Wis alle lokale opgeslagen voortgang, SRS-geschiedenis en statistieken.
             </p>
-            <button class="btn btn-danger" id="btn-reset-all">⚠️ Reset Alle Voortgang</button>
+            <button type="button" class="btn btn-danger" id="btn-reset-all">⚠️ Reset Alle Voortgang</button>
           </div>
         </div>
       `;
@@ -2214,6 +2394,7 @@
           this.store.state.settings.theme = "dark";
           this.store.save();
           this.applyTheme("dark");
+          this.showInlineStatus("Thema ingesteld op Donker.", "success");
           this.render();
         });
       }
@@ -2224,6 +2405,7 @@
           this.store.state.settings.theme = "light";
           this.store.save();
           this.applyTheme("light");
+          this.showInlineStatus("Thema ingesteld op Licht.", "success");
           this.render();
         });
       }
@@ -2233,6 +2415,7 @@
         goalSelect.addEventListener("change", (e) => {
           this.store.state.settings.dailyGoal = parseInt(e.target.value, 10);
           this.store.save();
+          this.showInlineStatus("Dagelijks doel bijgewerkt.", "success");
         });
       }
 
@@ -2241,6 +2424,7 @@
         sessionSelect.addEventListener("change", (e) => {
           this.store.state.settings.sessionSize = parseInt(e.target.value, 10);
           this.store.save();
+          this.showInlineStatus("Sessiegrootte bijgewerkt.", "success");
         });
       }
 
@@ -2255,23 +2439,34 @@
           a.download = `nederpath-backup-${Learning.getLocalISODate()}.json`;
           a.click();
           URL.revokeObjectURL(url);
+          this.showInlineStatus("Back-up bestand succesvol gegenereerd en gedownload.", "success");
         });
       }
 
       const importInput = document.getElementById("file-import-json");
       if (importInput) {
         importInput.addEventListener("change", (e) => {
-          const file = e.target.files[0];
+          const file = e.target.files && e.target.files[0];
           if (!file) return;
+
+          const MAX_BACKUP_SIZE = 5 * 1024 * 1024; // 5 MB limit
+          if (file.size > MAX_BACKUP_SIZE) {
+            this.showInlineStatus("Bestand is te groot (maximaal 5 MB toegestaan).", "error");
+            return;
+          }
+
           const reader = new FileReader();
           reader.onload = (evt) => {
             const success = this.store.importJSON(evt.target.result);
             if (success) {
-              alert("Voortgang succesvol geïmporteerd!");
+              this.showInlineStatus("Voortgang succesvol geïmporteerd!", "success");
               this.render();
             } else {
-              alert("Fout bij het importeren van het bestand. Ongeldig JSON-formaat.");
+              this.showInlineStatus("Fout bij het importeren: ongeldig of beschadigd JSON-formaat.", "error");
             }
+          };
+          reader.onerror = () => {
+            this.showInlineStatus("Fout bij het lezen van het bestand.", "error");
           };
           reader.readAsText(file);
         });
@@ -2282,7 +2477,7 @@
         resetBtn.addEventListener("click", () => {
           if (confirm("Weet je zeker dat je alle voortgang wilt wissen? Dit kan niet ongedaan worden gemaakt.")) {
             this.store.resetAllData();
-            alert("Alle gegevens zijn gewist.");
+            this.showInlineStatus("Alle voortgang en instellingen zijn gewist.", "info");
             this.switchTab("today");
           }
         });
@@ -2290,10 +2485,25 @@
     }
   }
 
-  // Initialize App on DOM Ready
-  if (typeof window !== "undefined") {
-    window.addEventListener("DOMContentLoaded", () => {
+  // Initialize App on DOM Ready or immediately if already loaded
+  function bootApp() {
+    const skipLink = document.querySelector(".skip-link");
+    if (skipLink) {
+      skipLink.addEventListener("click", () => {
+        const main = document.getElementById("app-main");
+        if (main) main.focus();
+      });
+    }
+    if (!global.NederApp) {
       global.NederApp = new NederPathApp();
-    });
+    }
+  }
+
+  if (typeof window !== "undefined") {
+    if (document.readyState === "loading") {
+      window.addEventListener("DOMContentLoaded", bootApp);
+    } else {
+      bootApp();
+    }
   }
 })(typeof window !== "undefined" ? window : globalThis);

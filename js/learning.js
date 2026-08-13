@@ -167,6 +167,88 @@
    * 3. Regular Dutch weak verb stem + t
    * Returns string or null if unsupported.
    */
+  /**
+   * Builds or returns cached indexes on the words bank for O(1) lookups.
+   */
+  function getWordBankIndexes(wordsBank) {
+    if (!Array.isArray(wordsBank)) return null;
+    if (wordsBank._np_indexes) return wordsBank._np_indexes;
+
+    const lemmaToHij = new Map();
+    const lemmaToPlural = new Map();
+    const eligibleVerbs = [];
+
+    for (let i = 0; i < wordsBank.length; i++) {
+      const w = wordsBank[i];
+      if (!w) continue;
+
+      if (w.pos === "verb") {
+        if (w.lemma) {
+          const lKey = w.lemma.toLowerCase();
+          const meaning = (w.meaning || "").toLowerCase();
+          if (
+            w.inflectionType === "hij-form" ||
+            meaning.includes("present-tense 'hij/zij' form") ||
+            meaning.includes("present-tense 'hij' form")
+          ) {
+            if (w.word && !lemmaToHij.has(lKey)) {
+              lemmaToHij.set(lKey, w.word.toLowerCase().trim());
+            }
+          }
+        }
+        if (w.inflectionType === "lemma" && w.learnable !== false) {
+          const wordStr = (w.word || "").toLowerCase().trim();
+          const isStandardInfinitive =
+            wordStr.endsWith("en") || ["zijn", "gaan", "staan", "doen", "zien", "slaan"].includes(wordStr);
+          if (isStandardInfinitive) {
+            eligibleVerbs.push(w);
+          }
+        }
+      } else if (w.pos === "noun") {
+        if (w.lemma) {
+          const lKey = w.lemma.toLowerCase();
+          const meaning = (w.meaning || "").toLowerCase();
+          // Select only direct plurals of the lemma; never select "plural of the diminutive"
+          const isDirectPlural =
+            !meaning.includes("diminutive") &&
+            (w.inflectionType === "plural" ||
+              meaning.startsWith("plural of") ||
+              meaning.includes("(plural of"));
+          if (isDirectPlural && w.word && !lemmaToPlural.has(lKey)) {
+            lemmaToPlural.set(lKey, w.word.toLowerCase().trim());
+          }
+        }
+      }
+    }
+
+    const indexes = {
+      lemmaToHij,
+      lemmaToPlural,
+      eligibleVerbs
+    };
+
+    try {
+      Object.defineProperty(wordsBank, "_np_indexes", {
+        value: indexes,
+        writable: true,
+        configurable: true,
+        enumerable: false
+      });
+    } catch {
+      wordsBank._np_indexes = indexes;
+    }
+
+    return indexes;
+  }
+
+  /**
+   * Resolves authentic 'hij/zij' present tense form for a verb infinitive.
+   * Priority:
+   * 1. Known irregular verbs dictionary
+   * 2. Explicit lemma present-tense row in wordsBank
+   * 3. Regular Dutch weak verb stem + t
+   * Returns string or null if unsupported.
+   */
   function getVerbHijConjugation(infinitive, wordsBank = null) {
     if (!infinitive || typeof infinitive !== "string") return null;
     const inf = infinitive.toLowerCase().trim();
@@ -178,20 +260,9 @@
 
     // 2. Check explicit entry in wordsBank if available
     if (Array.isArray(wordsBank)) {
-      const explicitRow = wordsBank.find((w) => {
-        if (w.pos !== "verb") return false;
-        if (w.lemma && w.lemma.toLowerCase() === inf) {
-          const meaning = (w.meaning || "").toLowerCase();
-          return (
-            w.inflectionType === "hij-form" ||
-            meaning.includes("present-tense 'hij/zij' form") ||
-            meaning.includes("present-tense 'hij' form")
-          );
-        }
-        return false;
-      });
-      if (explicitRow && explicitRow.word) {
-        return explicitRow.word.toLowerCase().trim();
+      const indexes = getWordBankIndexes(wordsBank);
+      if (indexes && indexes.lemmaToHij.has(inf)) {
+        return indexes.lemmaToHij.get(inf);
       }
     }
 
@@ -208,14 +279,10 @@
    */
   function getEligibleVerbs(wordsBank) {
     if (!Array.isArray(wordsBank)) return [];
-    return wordsBank.filter((w) => {
-      if (!w || w.pos !== "verb") return false;
-      if (w.inflectionType !== "lemma") return false;
-      if (w.learnable === false) return false;
-      const wordStr = (w.word || "").toLowerCase().trim();
-      const isStandardInfinitive =
-        wordStr.endsWith("en") || ["zijn", "gaan", "staan", "doen", "zien", "slaan"].includes(wordStr);
-      if (!isStandardInfinitive) return false;
+    const indexes = getWordBankIndexes(wordsBank);
+    const candidates = indexes ? indexes.eligibleVerbs : wordsBank.filter((w) => w && w.pos === "verb" && w.inflectionType === "lemma" && w.learnable !== false);
+    return candidates.filter((v) => {
+      const wordStr = (v.word || "").toLowerCase().trim();
       const hij = getVerbHijConjugation(wordStr, wordsBank);
       return typeof hij === "string" && hij.length > 0;
     });
@@ -230,18 +297,9 @@
     const lemma = nounLemma.toLowerCase().replace(/^(de|het)\s+/, "").trim();
 
     if (Array.isArray(wordsBank)) {
-      const explicitRow = wordsBank.find((w) => {
-        if (w.pos !== "noun") return false;
-        if (w.lemma && w.lemma.toLowerCase() === lemma) {
-          return (
-            w.inflectionType === "plural" ||
-            (w.meaning && (w.meaning.startsWith("plural of") || w.meaning.includes("(plural of")))
-          );
-        }
-        return false;
-      });
-      if (explicitRow && explicitRow.word) {
-        return explicitRow.word.toLowerCase().trim();
+      const indexes = getWordBankIndexes(wordsBank);
+      if (indexes && indexes.lemmaToPlural.has(lemma)) {
+        return indexes.lemmaToPlural.get(lemma);
       }
     }
     return null;
@@ -592,6 +650,7 @@
     sampleArray,
     normalizeAnswer,
     getDutchVerbStem,
+    getWordBankIndexes,
     getVerbHijConjugation,
     getEligibleVerbs,
     getNounPlural,

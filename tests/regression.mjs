@@ -26,16 +26,10 @@ const grammar = dummyGlobal.NP_GRAMMAR;
 
 let passed = 0;
 let failed = 0;
+const testQueue = [];
 
 function test(name, fn) {
-  try {
-    fn();
-    passed++;
-    console.log(`  ✓ [PASS] ${name}`);
-  } catch (err) {
-    failed++;
-    console.error(`  ✗ [FAIL] ${name}:`, err.message);
-  }
+  testQueue.push({ name, fn });
 }
 
 console.log("\n=======================================================");
@@ -254,8 +248,53 @@ test("Fill-in-the-Blank: Target equality rejects sentence words that are not the
 });
 
 // -------------------------------------------------------------------
-// 5. Plural Morphology Exact Grading (Preventing suffix-only bug)
+// 5. Plural Morphology Exact Grading & Oracle Equivalence
 // -------------------------------------------------------------------
+test("Morphology: getNounPlural resolves direct plurals and never falls back to diminutive plurals", () => {
+  const directPluralPairs = {
+    oor: "oren",       // not oortjes
+    tand: "tanden",   // not tandjes
+    lip: "lippen",     // not lipjes
+    boek: "boeken",   // not boekjes
+    kind: "kinderen", // not kindjes
+    stad: "steden"    // not stadjes
+  };
+
+  for (const [lemma, expectedPlural] of Object.entries(directPluralPairs)) {
+    const actual = Learning.getNounPlural(lemma, words);
+    if (actual !== expectedPlural) {
+      throw new Error(`getNounPlural('${lemma}') returned '${actual}', expected direct plural '${expectedPlural}'`);
+    }
+  }
+});
+
+test("Morphology: Indexed lookup matches independent direct-plural oracle across all noun lemmas", () => {
+  const nounLemmas = words.filter((w) => w.pos === "noun" && w.inflectionType === "lemma");
+  if (nounLemmas.length === 0) throw new Error("No noun lemmas found in words bank");
+
+  function oraclePlural(lemmaStr) {
+    const l = lemmaStr.toLowerCase().replace(/^(de|het)\s+/, "").trim();
+    const row = words.find((w) => {
+      if (w.pos !== "noun" || !w.lemma) return false;
+      if (w.lemma.toLowerCase() !== l) return false;
+      const m = (w.meaning || "").toLowerCase();
+      if (m.includes("diminutive")) return false;
+      return w.inflectionType === "plural" || m.startsWith("plural of") || m.includes("(plural of");
+    });
+    return row && row.word ? row.word.toLowerCase().trim() : null;
+  }
+
+  for (const n of nounLemmas) {
+    const cleanLemma = n.word.toLowerCase().replace(/^(de|het)\s+/, "").trim();
+    const indexedResult = Learning.getNounPlural(cleanLemma, words);
+    const oracleResult = oraclePlural(cleanLemma);
+
+    if (indexedResult !== oracleResult) {
+      throw new Error(`Indexed getNounPlural mismatch for '${cleanLemma}': indexed '${indexedResult}' vs oracle '${oracleResult}'`);
+    }
+  }
+});
+
 test("Morphology: getNounPlural resolves verified plurals from data bank", () => {
   const tafelPlural = Learning.getNounPlural("tafel", words);
   if (tafelPlural !== "tafels") throw new Error(`Expected 'tafels', got '${tafelPlural}'`);
@@ -596,8 +635,120 @@ test("SRS: getDueCards accurately identifies cards with past due dates", () => {
   }
 });
 
-console.log(`\n=======================================================`);
-console.log(`Regression Tests Complete: ${passed} Passed, ${failed} Failed`);
-console.log(`=======================================================\n`);
+// -------------------------------------------------------------------
+// 12. DataLoader: Partial Multi-Bank Resilience & Retry Isolation
+// -------------------------------------------------------------------
+test("DataLoader: Sibling bank remains loaded when another fails, retry resets only failed bank", async () => {
+  const dataLoaderSrc = readFileSync(join(ROOT, "js", "data-loader.js"), "utf8");
+  const testGlobal = {
+    NP_WORDS: [{ id: "w-1", word: "fiets" }] // simulate already loaded words bank
+  };
+  new Function("globalThis", dataLoaderSrc)(testGlobal);
+  const DataLoader = testGlobal.NederDataLoader;
 
-if (failed > 0) process.exit(1);
+  // 1. Verify words is already loaded
+  if (!DataLoader.isBankLoaded("words")) throw new Error("Expected 'words' to be recognized as loaded");
+
+  // 2. Simulate partial multi-bank retry on ['words', 'sentences']
+  const requiredBanks = ["words", "sentences"];
+  requiredBanks.forEach((b) => {
+    if (!DataLoader.isBankLoaded(b)) {
+      DataLoader.resetBank(b);
+    }
+  });
+
+  // 3. Verify 'words' bank is STILL loaded and its global was NOT deleted
+  if (!DataLoader.isBankLoaded("words") || !testGlobal.NP_WORDS) {
+    throw new Error("'words' bank or global was incorrectly unloaded during sibling failure retry");
+  }
+
+  // 4. Calling resetBank('words') on an already loaded bank does NOT delete its global
+  DataLoader.resetBank("words");
+  if (!DataLoader.isBankLoaded("words") || !testGlobal.NP_WORDS) {
+    throw new Error("resetBank('words') deleted already loaded global NP_WORDS");
+  }
+
+});
+
+// -------------------------------------------------------------------
+// 13. DataLoader: Deterministic Script Timeout & Error Cleanup
+// -------------------------------------------------------------------
+test("DataLoader: loadBank times out, cleans up, and permits a successful retry", async () => {
+  const dataLoaderSrc = readFileSync(join(ROOT, "js", "data-loader.js"), "utf8");
+
+  // Mock DOM environment with controllable script tag
+  let createdScript = null;
+  let appendCount = 0;
+  const mockHead = {
+    appendChild: (s) => {
+      createdScript = s;
+      appendCount++;
+    },
+    removeChild: (s) => { if (createdScript === s) createdScript = null; }
+  };
+
+  const testGlobal = {
+    document: {
+      createElement: (tag) => ({
+        tagName: tag,
+        parentNode: mockHead,
+        src: "",
+        async: false,
+        onload: null,
+        onerror: null
+      }),
+      head: mockHead
+    }
+  };
+
+  new Function("globalThis", dataLoaderSrc)(testGlobal);
+  const DataLoader = testGlobal.NederDataLoader;
+
+  if (DataLoader.DEFAULT_LOAD_TIMEOUT_MS !== 30000) {
+    throw new Error(`Expected named default timeout of 30000ms, got ${DataLoader.DEFAULT_LOAD_TIMEOUT_MS}`);
+  }
+
+  // Use the supported timeout override and allow the real timer path to fire.
+  const loadError = await DataLoader.loadBank("sentences", 10).then(
+    () => null,
+    (err) => err
+  );
+  if (!loadError || !/Time-out/.test(loadError.message)) {
+    throw new Error(`Expected timeout rejection, got '${loadError && loadError.message}'`);
+  }
+  if (createdScript !== null) throw new Error("Timed-out script tag was not removed from DOM");
+  if (DataLoader.isBankLoaded("sentences")) throw new Error("Failed bank was marked as loaded");
+
+  // A timeout must clear the cached promise so the next attempt creates a new script and can succeed.
+  const retryPromise = DataLoader.loadBank("sentences", 1000);
+  if (appendCount !== 2 || !createdScript) {
+    throw new Error("Timed-out promise was not cleared before retry");
+  }
+  testGlobal.NP_SENTENCES = [{ id: "s-1", sentence: "Ik fiets." }];
+  createdScript.onload();
+  const retryResult = await retryPromise;
+  if (retryResult !== testGlobal.NP_SENTENCES || !DataLoader.isBankLoaded("sentences")) {
+    throw new Error("Retry did not resolve with and cache the loaded bank");
+  }
+});
+
+async function runAllTests() {
+  for (const { name, fn } of testQueue) {
+    try {
+      await fn();
+      passed++;
+      console.log(`  ✓ [PASS] ${name}`);
+    } catch (err) {
+      failed++;
+      console.error(`  ✗ [FAIL] ${name}:`, err.message);
+    }
+  }
+
+  console.log(`\n=======================================================`);
+  console.log(`Regression Tests Complete: ${passed} Passed, ${failed} Failed`);
+  console.log(`=======================================================\n`);
+
+  if (failed > 0) process.exit(1);
+}
+
+runAllTests();

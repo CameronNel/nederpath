@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'none'; worker-src 'self'; manifest-src 'self';" />
   <meta name="description" content="NederPath - A calm, comprehensive, offline-first Dutch language learning web application covering Vocabulary, Grammar, and Comprehension." />
   <meta name="theme-color" content="#121820" />
   <title>NederPath - Nederlands Leren & Meesterschap</title>
@@ -16,83 +17,72 @@
   <link rel="stylesheet" href="./css/styles.css" />
 </head>
 <body>
+  <!-- Accessible Skip Link -->
+  <a href="#app-main" class="skip-link">Ga direct naar inhoud</a>
+
+  <!-- Persistent ARIA Live Region for Screen Readers -->
+  <div id="live-announcer" class="sr-only" aria-live="polite" aria-atomic="true"></div>
+
   <!-- Top Navigation Header -->
   <header class="app-header">
     <div class="header-container">
       <a href="#" class="brand" id="brand-link">
-        <img src="./icons/favicon-32.png" alt="NederPath" class="brand-icon" />
+        <img src="./icons/favicon-32.png" alt="NederPath Logo" class="brand-icon" width="32" height="32" />
         <span class="brand-title">NederPath</span>
       </a>
 
       <!-- Primary Navigation: 3 Learning Pillars + Supporting Views -->
-      <nav class="main-nav" aria-label="Main Navigation">
-        <button class="nav-btn active" data-tab="today" id="nav-today">
-          <span class="nav-icon">📅</span> Vandaag
+      <nav class="main-nav" aria-label="Hoofdnavigatie">
+        <button type="button" class="nav-btn active" data-tab="today" id="nav-today" aria-current="page">
+          <span class="nav-icon" aria-hidden="true">📅</span> Vandaag
         </button>
-        <button class="nav-btn" data-tab="words" id="nav-words">
-          <span class="nav-icon">📖</span> Woorden
+        <button type="button" class="nav-btn" data-tab="words" id="nav-words">
+          <span class="nav-icon" aria-hidden="true">📖</span> Woorden
         </button>
-        <button class="nav-btn" data-tab="grammar" id="nav-grammar">
-          <span class="nav-icon">📐</span> Grammatica
+        <button type="button" class="nav-btn" data-tab="grammar" id="nav-grammar">
+          <span class="nav-icon" aria-hidden="true">📐</span> Grammatica
         </button>
-        <button class="nav-btn" data-tab="comprehension" id="nav-comprehension">
-          <span class="nav-icon">📰</span> Lezen
+        <button type="button" class="nav-btn" data-tab="comprehension" id="nav-comprehension">
+          <span class="nav-icon" aria-hidden="true">📰</span> Lezen
         </button>
-        <button class="nav-btn" data-tab="practice" id="nav-practice">
-          <span class="nav-icon">⚡</span> Oefenen
+        <button type="button" class="nav-btn" data-tab="practice" id="nav-practice">
+          <span class="nav-icon" aria-hidden="true">⚡</span> Oefenen
         </button>
-        <button class="nav-btn" data-tab="path" id="nav-path">
-          <span class="nav-icon">🗺️</span> Pad
+        <button type="button" class="nav-btn" data-tab="path" id="nav-path">
+          <span class="nav-icon" aria-hidden="true">🗺️</span> Pad
         </button>
-        <button class="nav-btn" data-tab="progress" id="nav-progress">
-          <span class="nav-icon">📊</span> Voortgang
+        <button type="button" class="nav-btn" data-tab="progress" id="nav-progress">
+          <span class="nav-icon" aria-hidden="true">📊</span> Voortgang
         </button>
       </nav>
 
       <!-- Header Quick Stats -->
-      <div class="header-stats">
+      <div class="header-stats" role="region" aria-label="Dagelijkse statistieken">
         <div class="stat-pill-sm" title="Huidige dagelijkse streak">
-          <span>🔥</span> <span id="header-streak">0</span>
+          <span aria-hidden="true">🔥</span> <span id="header-streak" aria-label="Streak dagen">0</span>
         </div>
         <div class="stat-pill-sm" title="Totaal verdiende XP">
-          <span>🏆</span> <span id="header-xp">0 XP</span>
+          <span aria-hidden="true">🏆</span> <span id="header-xp" aria-label="Totaal verdiende ervaringspunten">0 XP</span>
         </div>
         <div class="stat-pill-sm" title="Vandaag geleerd / Dagdoel">
-          <span>🎯</span> <span id="header-goal">0/15</span>
+          <span aria-hidden="true">🎯</span> <span id="header-goal" aria-label="Dagdoel voortgang">0/15</span>
         </div>
       </div>
     </div>
   </header>
 
   <!-- Main View Container -->
-  <main id="app-main" class="app-main" role="main">
-    <div class="card empty-state">NederPath wordt geladen...</div>
+  <main id="app-main" class="app-main" role="main" tabindex="-1">
+    <div class="card empty-state" role="status">NederPath wordt geladen...</div>
   </main>
 
-  <!-- App Data Scripts -->
-  <script src="./data/words.js"></script>
-  <script src="./data/grammar.js"></script>
-  <script src="./data/sentences.js"></script>
-  <script src="./data/idioms.js"></script>
-  <script src="./data/comprehension.js"></script>
-
-  <!-- App Core Runtime -->
+  <!-- App Core Runtime (Data banks loaded on-demand via NederDataLoader) -->
   <script src="./js/learning.js"></script>
   <script src="./js/store.js"></script>
   <script src="./js/srs.js"></script>
   <script src="./js/voice.js"></script>
+  <script src="./js/data-loader.js"></script>
   <script src="./js/app.js"></script>
-
-  <!-- Service Worker Registration for Offline/PWA support -->
-  <script>
-    if ("serviceWorker" in navigator) {
-      window.addEventListener("load", () => {
-        navigator.serviceWorker.register("./sw.js").then(
-          (reg) => console.log("NederPath ServiceWorker registered:", reg.scope),
-          (err) => console.warn("NederPath ServiceWorker registration failed:", err)
-        );
-      });
-    }
-  </script>
+  <script src="./js/sw-register.js"></script>
 </body>
 </html>

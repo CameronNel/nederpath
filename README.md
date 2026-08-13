@@ -2,7 +2,7 @@
 
 A calm, comprehensive, offline-first Dutch language-learning web application (PWA) designed around three core learning pillars: **Vocabulary**, **Grammar**, and **Comprehension**.
 
-NederPath runs entirely in the browser, stores all state in local storage under the `nederpath-v1` namespace, operates 100% offline via its built-in Service Worker, and deploys automatically to GitHub Pages.
+NederPath runs entirely in the browser, stores all state in local storage under the `nederpath-v1` namespace, and deploys automatically to GitHub Pages. Its Service Worker keeps the app shell and previously visited data banks available offline; a never-visited bank shows a recoverable retry state until connectivity returns.
 
 Public Application URL: **`https://cameronnel.github.io/nederpath/`**
 
@@ -74,17 +74,23 @@ Public Application URL: **`https://cameronnel.github.io/nederpath/`**
 
 ---
 
-## Development and Testing
+## Development, Build, and Testing
 
 ### Prerequisites
-- Node.js (v18+)
-- Google Chrome or Microsoft Edge (for automated headless browser testing)
+- Node.js (v24 recommended; v22.12+ required for puppeteer-core)
+- Google Chrome, Chromium, or Microsoft Edge (cross-platform discovery for headless browser testing)
 
 ### Commands
 
 ```powershell
-# Run the complete test suite (Audit + Unit/Smoke Tests + Regression Tests + Headless Browser Tests)
+# Run the complete test suite (Audit + Unit/Smoke + Regression + Offline/SW + Headless Browser Tests)
 npm test
+
+# Build production distribution bundle into dist/ (runtime assets only)
+npm run build
+
+# Audit the production dist/ artifact for integrity and prohibited file exclusion
+npm run audit:artifact
 
 # Run quality audit checks across all data banks and assets
 npm run audit
@@ -92,8 +98,11 @@ npm run audit
 # Run unit and smoke tests
 npm run test:unit
 
-# Run targeted regression tests for learning-engine integrity
+# Run targeted regression tests for learning-engine and morphology integrity
 npm run test:regression
+
+# Run authoritative Service Worker and offline caching tests in VM sandbox
+npm run test:offline
 
 # Run Puppeteer headless browser tests (desktop & mobile viewports)
 npm run test:browser
@@ -116,9 +125,20 @@ npm run serve
 - **120** comprehension reading passages (24 A1, 24 A2, 24 B1, 24 B2, 24 C1) with quizzes.
 - **510** authentic Dutch idioms and conversational formulas.
 - **5,050** benchmark and practice sentences.
-- **47/47** audit checks passed.
+- **48/48** audit checks passed.
 - **8/8** unit and smoke tests passed.
-- **34/34** headless browser end-to-end assertions passed (0 console errors).
+- **22/22** regression tests passed (including direct noun plurals, oracle equivalence, loader timeout recovery, and partial-bank retry isolation).
+- **23/23** authoritative Service Worker & offline sandbox tests passed.
+- **80/80** headless browser end-to-end assertions passed (0 unexpected console errors), including a controlled Service Worker offline-failure and online-retry flow.
+- **64/64** build artifact integrity checks passed.
+- **Initial Runtime Transfer Budget**: ~918 KB uncompressed on Today view (target <= 1.5 MB; ~12.9 MB saved on initial startup via promise-cached lazy loading).
+
+---
+
+## Deployment & Verification
+
+- **Automated Workflow**: `.github/workflows/deploy.yml` validates pull requests (Audit, Smoke, Regression, Offline, Browser tests, Build, Artifact Audit) and builds a minimal `./dist` artifact deployed to GitHub Pages on `master` pushes with self-enabling `enablement: true`.
+- **Deployment Status**: Production deployment executes automatically upon merge to `master`. Pull requests run validation only.
 
 ---
 
