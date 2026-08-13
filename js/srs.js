@@ -7,9 +7,9 @@
       this.store = store;
     }
 
-    getCard(cardId, type = "vocab") {
+    getCard(cardId, type = "vocab", createIfMissing = true) {
       const cards = this.store.state.srs.cards;
-      if (!cards[cardId]) {
+      if (!cards[cardId] && createIfMissing) {
         cards[cardId] = {
           id: cardId,
           type,
@@ -21,9 +21,8 @@
           state: "new", // 'new' | 'learning' | 'review'
           lastReview: null
         };
-        this.store.save();
       }
-      return cards[cardId];
+      return cards[cardId] || null;
     }
 
     /**
@@ -35,7 +34,7 @@
      * 4: Easy (Perfect instant recall)
      */
     review(cardId, rating, type = "vocab") {
-      const card = this.getCard(cardId, type);
+      let card = this.getCard(cardId, type, true);
       const now = new Date();
 
       if (rating < 2) {
@@ -75,14 +74,14 @@
       card.dueDate = nextDue.toISOString();
       card.lastReview = now.toISOString();
 
-      this.store.save();
+      // Record activity and save state atomically
       this.store.recordActivity(rating >= 2 ? 10 : 3);
       return card;
     }
 
     getDueCards(type = null) {
       const nowIso = new Date().toISOString();
-      const all = Object.values(this.store.state.srs.cards);
+      const all = Object.values(this.store.state.srs.cards || {});
       return all.filter((c) => {
         if (type && c.type !== type) return false;
         return c.dueDate <= nowIso;
@@ -90,7 +89,7 @@
     }
 
     getDeckStats() {
-      const all = Object.values(this.store.state.srs.cards);
+      const all = Object.values(this.store.state.srs.cards || {});
       const nowIso = new Date().toISOString();
       let due = 0;
       let learning = 0;

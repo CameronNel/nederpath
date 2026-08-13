@@ -2,6 +2,24 @@
 (function (global) {
   "use strict";
 
+  const Learning = global.NederLearning || {
+    escapeHTML: (s) => (typeof s === "string" ? s.replace(/[&<>"']/g, "") : ""),
+    getLocalISODate: (d = new Date()) => {
+      const date = d instanceof Date ? d : new Date(d);
+      return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}-${String(date.getDate()).padStart(2, "0")}`;
+    },
+    shuffleArray: (arr) => (Array.isArray(arr) ? arr.slice().sort(() => Math.random() - 0.5) : []),
+    sampleArray: (arr, count = 10) => (Array.isArray(arr) ? arr.slice().sort(() => Math.random() - 0.5).slice(0, count) : []),
+    normalizeAnswer: (str) => (typeof str === "string" ? str.trim().toLowerCase().replace(/[.,/#!$%^&*;:{}=\-_`~()?"']/g, "") : ""),
+    getDutchVerbStem: () => "",
+    getVerbHijConjugation: () => null,
+    getEligibleVerbs: () => [],
+    getNounPlural: () => null,
+    generateFlashcardSession: ({ wordsBank = [], sessionSize = 10 } = {}) => (Array.isArray(wordsBank) ? wordsBank.slice(0, sessionSize) : []),
+    createFillBlankCard: () => null,
+    validateAndMergeBackup: (p, d) => Object.assign({}, d, p)
+  };
+
   class NederPathApp {
     constructor() {
       this.store = global.NederStore;
@@ -21,15 +39,17 @@
         revealed: false,
         score: 0,
         mistakes: [],
-        type: "vocab"
+        type: "vocab",
+        feedback: null
       };
 
       // Grammar & Comprehension active views
       this.activeGrammarRule = null;
       this.activePassage = null;
       this.activeGrammarExIndex = 0;
-      this.activePassageQIndex = 0;
-      this.tokenReconstructionPlaced = [];
+      this.tokenReconstructionPlaced = []; // Array of { poolIndex: number, text: string }
+      this.activeGrammarAnswers = {}; // exIndex -> { isCorrect, userAttempt }
+      this.activePassageAnswers = {}; // qIdx -> { chosenOptIdx, isCorrect }
 
       this.init();
     }
@@ -76,7 +96,7 @@
 
     bindGlobalKeyboard() {
       window.addEventListener("keydown", (e) => {
-        if (e.target.tagName === "INPUT" || e.target.tagName === "TEXTAREA") return;
+        if (e.target.tagName === "INPUT" || e.target.tagName === "TEXTAREA" || e.target.isContentEditable) return;
 
         // Space or Enter to reveal card
         if ((e.code === "Space" || e.code === "Enter") && this.currentTab === "practice" && this.practiceMode === "flashcards") {
@@ -102,7 +122,7 @@
       if (streakEl) streakEl.textContent = this.store.state.user.streak || 0;
       if (xpEl) xpEl.textContent = (this.store.state.user.totalXp || 0) + " XP";
       if (goalEl) {
-        const learned = this.store.state.progress.dailyStats.learnedToday || 0;
+        const learned = this.store.state.progress.dailyStats ? this.store.state.progress.dailyStats.learnedToday || 0 : 0;
         const target = this.store.state.settings.dailyGoal || 15;
         goalEl.textContent = `${learned}/${target}`;
       }
@@ -156,7 +176,7 @@
        ========================================================================== */
     renderTodayView() {
       const user = this.store.state.user;
-      const dailyStats = this.store.state.progress.dailyStats;
+      const dailyStats = this.store.state.progress.dailyStats || { learnedToday: 0 };
       const targetGoal = this.store.state.settings.dailyGoal || 15;
       const pct = Math.min(100, Math.round((dailyStats.learnedToday / targetGoal) * 100));
 
@@ -164,8 +184,10 @@
       const grammarRules = global.NP_GRAMMAR || [];
       const idioms = global.NP_IDIOMS || [];
 
-      // Spotlight rule & idiom of the day
-      const dayOfYear = Math.floor((new Date() - new Date(new Date().getFullYear(), 0, 0)) / 1000 / 60 / 60 / 24);
+      // Spotlight rule & idiom of the day based on local day of year
+      const now = new Date();
+      const startOfYear = new Date(now.getFullYear(), 0, 0);
+      const dayOfYear = Math.floor((now - startOfYear) / 1000 / 60 / 60 / 24);
       const spotlightRule = grammarRules[dayOfYear % (grammarRules.length || 1)] || grammarRules[0];
       const todayIdiom = idioms[dayOfYear % (idioms.length || 1)] || idioms[0];
 
@@ -173,7 +195,7 @@
         <div class="today-container animate-fade">
           <div class="card today-hero">
             <div class="today-hero-left">
-              <span class="greeting-badge">Welkom terug, ${user.name}!</span>
+              <span class="greeting-badge">Welkom terug, ${Learning.escapeHTML(user.name)}!</span>
               <h1 class="today-title">Klaar voor je dagelijkse portie Nederlands?</h1>
               <p class="today-subtitle">Je streak staat op <strong>${user.streak} dagen</strong>. Blijf consistent om vloeiend te worden!</p>
               
@@ -197,7 +219,7 @@
               <div class="stat-pill">
                 <span class="stat-icon">📚</span>
                 <div>
-                  <div class="stat-val">${deckStats.due || 5} Kaarten</div>
+                  <div class="stat-val">${deckStats.due} ${deckStats.due === 1 ? 'Kaart' : 'Kaarten'}</div>
                   <div class="stat-lbl">Klaar voor herhaling</div>
                 </div>
               </div>
@@ -255,81 +277,86 @@
       const startBtn = document.getElementById("btn-start-daily-review");
       if (startBtn) {
         startBtn.addEventListener("click", () => {
-          this.practiceMode = "flashcards";
           this.switchTab("practice");
         });
       }
 
       const pathBtn = document.getElementById("btn-explore-path");
       if (pathBtn) {
-        pathBtn.addEventListener("click", () => this.switchTab("path"));
+        pathBtn.addEventListener("click", () => {
+          this.switchTab("path");
+        });
       }
 
-      const grammarSpotlightBtn = document.getElementById("btn-open-spotlight-grammar");
-      if (grammarSpotlightBtn) {
-        grammarSpotlightBtn.addEventListener("click", () => {
-          const ruleId = grammarSpotlightBtn.dataset.ruleId;
+      const spotGrammarBtn = document.getElementById("btn-open-spotlight-grammar");
+      if (spotGrammarBtn) {
+        spotGrammarBtn.addEventListener("click", () => {
+          const ruleId = spotGrammarBtn.dataset.ruleId;
           this.openGrammarRule(ruleId);
         });
       }
     }
 
     /* ==========================================================================
-       2. PATH VIEW (Structured 8-Section Curriculum)
+       2. CURRICULUM PATH VIEW (8 Distinct Sections)
        ========================================================================== */
     renderPathView() {
       const grammarRules = global.NP_GRAMMAR || [];
       const sections = [
-        { num: 1, title: "A0–A1 Fundamentals", level: "A1", desc: "Spelling, V2 woordvolgorde, lidwoorden (de/het), en basiswerkwoorden." },
-        { num: 2, title: "A1–A2 Core Grammar", level: "A2", desc: "Scheidbare werkwoorden, modale hulpwerkwoorden, verkleinwoorden en bijvoeglijke naamwoorden." },
-        { num: 3, title: "A2 Verb Systems & Tenses", level: "A2", desc: "'t kofschip, verleden tijd (OVT), voltooid tegenwoordige tijd (VTT) en sterke werkwoorden." },
-        { num: 4, title: "A2–B1 Sentence Structure & Clauses", level: "B1", desc: "Bijzinnen met SOV-volgorde, betrekkelijke voornaamwoorden en pronominaal 'er'." },
-        { num: 5, title: "B1 Intermediate Expansion", level: "B1", desc: "Passieve vorm met worden/zijn, voorwaardelijke wijs (zou), en modale partikels." },
-        { num: 6, title: "B1–B2 Complex Syntax & Modality", level: "B2", desc: "Indirecte rede, rode/groene werkwoordclusters en het vervangingsinfinitief (IPP)." },
-        { num: 7, title: "B2 Advanced Register & Nuance", level: "B2", desc: "Formeel taalgebruik, gekloofde zinnen, stilistische inversie en pragmatiek." },
-        { num: 8, title: "C1 Mastery & Stylistics", level: "C1", desc: "Complexe tangconstructies, juridisch en ambtelijk register, en retorische syntaxis." }
+        { num: 1, title: "Fundamentals & Klankleer", level: "A0–A1", desc: "Uitspraak, spelling, lidwoorden (de/het), persoonsvorm en ontkenning.", icon: "🌱" },
+        { num: 2, title: "Basisgrammatica & Zinsbouw", level: "A1–A2", desc: "Scheidbare werkwoorden, modale hulpwoorden, bijvoeglijke naamwoorden en verkleinwoorden.", icon: "🧱" },
+        { num: 3, title: "Werkwoordsystemen & Tijden", level: "A2", desc: "'t kofschip, OVT (verleden tijd), VTT (voltooid tegenwoordige tijd) en continuïteit.", icon: "⏳" },
+        { num: 4, title: "Complexe Zinnen & Voegwoorden", level: "A2–B1", desc: "Bijzinnen (SOV-volgorde), relatieve bijzinnen, om...te constructies en het woordje 'er'.", icon: "🔗" },
+        { num: 5, title: "Middelniveau Verdieping", level: "B1", desc: "Lijdende vorm (passief), voorwaardelijke zinnen (zou/zouden) en modale partikels.", icon: "🌊" },
+        { num: 6, title: "Gevorderde Syntaxis & Modus", level: "B1–B2", desc: "Indirecte rede, werkwoordclusters (rode/groene volgorde) en Infinitivus pro Participio (IPP).", icon: "🏛️" },
+        { num: 7, title: "Stijl, Register & Pragmatiek", level: "B2", desc: "Formeel versus informeel register, cleft-zinnen, stilistische inversie en tekstsamenhang.", icon: "💎" },
+        { num: 8, title: "Meesterschap & Nuance", level: "C1", desc: "Complexe nominalisaties, archaïsche constructies, retoriek en idiomatische precisie.", icon: "👑" }
       ];
 
       return `
         <div class="path-container animate-fade">
-          <div class="path-header">
-            <h1 class="page-title">Nederlands Leerpad</h1>
-            <p class="page-subtitle">Een gestructureerd curriculum van A0 tot C1 verdeeld over 8 leerniveaus.</p>
+          <div class="catalog-header">
+            <div>
+              <h1 class="page-title">NederPath Leerpad</h1>
+              <p class="page-subtitle">Een gestructureerde weg naar vloeiendheid via 8 thematische niveausecties.</p>
+            </div>
           </div>
 
           <div class="sections-list">
             ${sections.map((sec) => {
-              const secRules = grammarRules.filter((r) => r.section === sec.num);
-              const completedCount = secRules.filter((r) => this.store.state.progress.grammarCompleted[r.id]).length;
-              const secPct = secRules.length > 0 ? Math.round((completedCount / secRules.length) * 100) : 0;
+              const secRules = grammarRules.filter(r => r.section === sec.num);
+              const completedCount = secRules.filter(r => this.store.state.progress.grammarCompleted[r.id]).length;
+              const pct = secRules.length > 0 ? Math.round((completedCount / secRules.length) * 100) : 0;
 
               return `
                 <div class="card section-card">
                   <div class="section-card-header">
-                    <div>
-                      <span class="section-badge badge-${sec.level.toLowerCase()}">${sec.level}</span>
-                      <h2 class="section-title">Sectie ${sec.num}: ${sec.title}</h2>
-                      <p class="section-desc">${sec.desc}</p>
-                    </div>
-                    <div class="section-progress-pill">
-                      <span>${completedCount}/${secRules.length} Voltooid</span>
-                      <div class="progress-bar-track" style="width: 100px; height: 6px;">
-                        <div class="progress-bar-fill" style="width: ${secPct}%"></div>
+                    <div class="section-badge-wrap">
+                      <span class="section-icon">${sec.icon}</span>
+                      <div>
+                        <span class="section-num">SECTIE ${sec.num}</span>
+                        <h2 class="section-title">${sec.title}</h2>
                       </div>
                     </div>
+                    <span class="section-level-badge">${sec.level}</span>
                   </div>
 
-                  <div class="rules-grid">
-                    ${secRules.map((rule) => {
-                      const isDone = !!this.store.state.progress.grammarCompleted[rule.id];
+                  <p class="section-desc">${sec.desc}</p>
+
+                  <div class="section-progress-row">
+                    <div class="progress-bar-track">
+                      <div class="progress-bar-fill" style="width: ${pct}%"></div>
+                    </div>
+                    <span class="section-progress-txt">${completedCount} / ${secRules.length} Regels (${pct}%)</span>
+                  </div>
+
+                  <div class="section-rules-subgrid">
+                    ${secRules.map(r => {
+                      const isDone = !!this.store.state.progress.grammarCompleted[r.id];
                       return `
-                        <div class="rule-chip ${isDone ? 'rule-completed' : ''}" data-rule-id="${rule.id}">
-                          <span class="rule-status-icon">${isDone ? '✓' : '📖'}</span>
-                          <div class="rule-chip-info">
-                            <span class="rule-chip-title">${rule.title}</span>
-                            <span class="rule-chip-nl">${rule.titleNl}</span>
-                          </div>
-                        </div>
+                        <button class="rule-chip-btn ${isDone ? 'done' : ''}" data-rule-id="${r.id}">
+                          <span>${isDone ? '✓' : '○'}</span> ${r.title}
+                        </button>
                       `;
                     }).join("")}
                   </div>
@@ -342,59 +369,47 @@
     }
 
     attachPathListeners() {
-      document.querySelectorAll(".rule-chip").forEach((chip) => {
-        chip.addEventListener("click", () => {
-          const ruleId = chip.dataset.ruleId;
+      document.querySelectorAll(".rule-chip-btn").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const ruleId = btn.dataset.ruleId;
           this.openGrammarRule(ruleId);
         });
       });
     }
 
     /* ==========================================================================
-       3. PRACTICE VIEW (10 Interactive Vocabulary & Drill Modes)
+       3. PRACTICE HUB & 10 INTERACTIVE MODES
        ========================================================================== */
     renderPracticeView() {
       const modes = [
-        { id: "flashcards", label: "🗂️ Flashcards (SRS)", desc: "Spaced repetition geheugentraining met tap/swipe" },
-        { id: "article_drill", label: "⚡ De of Het Drill", desc: "Oefen razendsnel het juiste lidwoord voor elk zelfstandig naamwoord" },
-        { id: "spelling", label: "✍️ Spelling & Typen", desc: "Typ het juiste Nederlandse woord met diakrieten" },
-        { id: "fill_blank", label: "📝 Vul het Woord In", desc: "Contextuele zinnen aanvullen met het juiste woord" },
-        { id: "choose_word", label: "🎯 Kies het Juiste Woord", desc: "Selecteer de juiste betekenis uit meerkeuze-opties" },
-        { id: "verbs", label: "🔄 Werkwoorden", desc: "Tegenwoordige tijd, verleden tijd (OVT) en voltooid deelwoord" },
-        { id: "synonyms", label: "🔗 Synoniemen", desc: "Koppel woorden met dezelfde of verwante betekenis" },
-        { id: "morphology", label: "📐 Meervoud & Diminutief", desc: "Oefen meervoudsvorming en verkleinwoorden" },
-        { id: "context", label: "💬 Context & Zinnen", desc: "Oefen woorden in authentieke Nederlandse voorbeeldzinnen" }
+        { id: "flashcards", name: "SRS Flitskaarten", icon: "🃏", desc: "Spaced repetition geheugentraining" },
+        { id: "article_drill", name: "De of Het Drill", icon: "🎯", desc: "Bliksemsnelle lidwoord training" },
+        { id: "spelling", name: "Spelling & Typen", icon: "✍️", desc: "Actieve woordproductie en spelling" },
+        { id: "fill_blank", name: "Zin Aanvullen", icon: "📝", desc: "Contextuele woordkeuze in voorbeeldzinnen" },
+        { id: "choose_word", name: "Woord Kiezen", icon: "🔤", desc: "Meerkeuze betekenisassociatie" },
+        { id: "verbs", name: "Werkwoorden", icon: "⚙️", desc: "Tegenwoordige tijd en stam+t vervoegingen" },
+        { id: "synonyms", name: "Synoniemen", icon: "🔄", desc: "Woordenschat uitbreiding & verwantschap" },
+        { id: "morphology", name: "Meervoud & Verklein", icon: "📐", desc: "Zelfstandige naamwoorden transformaties" },
+        { id: "context", name: "Zinscontext", icon: "💬", desc: "Authentieke zinnen en voorbeeldgebruik" }
       ];
 
       return `
         <div class="practice-container animate-fade">
-          <div class="practice-tab-nav" style="overflow-x: auto; flex-wrap: nowrap;">
+          <!-- Practice Mode Selector Bar -->
+          <div class="practice-nav-bar">
             ${modes.map((m) => `
-              <button class="practice-nav-btn ${this.practiceMode === m.id ? 'active' : ''}" data-mode="${m.id}" style="white-space: nowrap;">
-                ${m.label}
+              <button class="btn btn-sm ${this.practiceMode === m.id ? 'btn-primary' : 'btn-outline'}" data-mode="${m.id}">
+                ${m.icon} ${m.name}
               </button>
             `).join("")}
           </div>
 
-          <div class="practice-content" id="practice-runtime-container">
+          <!-- Active Practice Mode Container -->
+          <div class="practice-active-zone" id="practice-zone">
             ${this.renderActivePracticeMode()}
           </div>
         </div>
       `;
-    }
-
-    attachPracticeListeners() {
-      document.querySelectorAll(".practice-nav-btn").forEach((btn) => {
-        btn.addEventListener("click", () => {
-          this.practiceMode = btn.dataset.mode;
-          this.session.currentIndex = 0;
-          this.session.revealed = false;
-          this.session.cards = [];
-          this.render();
-        });
-      });
-
-      this.attachActiveModeListeners();
     }
 
     renderActivePracticeMode() {
@@ -422,7 +437,37 @@
       }
     }
 
-    attachActiveModeListeners() {
+    attachPracticeListeners() {
+      document.querySelectorAll("[data-mode]").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          this.practiceMode = btn.dataset.mode;
+          this.session.cards = [];
+          this.session.currentIndex = 0;
+          this.session.revealed = false;
+          this.session.feedback = null;
+          this.render();
+        });
+      });
+
+      const restartBtn = document.getElementById("btn-restart-session");
+      if (restartBtn) {
+        restartBtn.addEventListener("click", () => {
+          this.session.cards = [];
+          this.session.currentIndex = 0;
+          this.session.revealed = false;
+          this.session.feedback = null;
+          this.render();
+        });
+      }
+
+      const goTodayBtn = document.getElementById("btn-go-today");
+      if (goTodayBtn) {
+        goTodayBtn.addEventListener("click", () => {
+          this.switchTab("today");
+        });
+      }
+
+      // Mode-specific listeners
       switch (this.practiceMode) {
         case "flashcards":
           this.attachFlashcardListeners();
@@ -454,12 +499,20 @@
       }
     }
 
-    // --- Mode 1: Flashcards ---
+    // --- Mode 1: Flashcards (SRS Due Prioritized, Unseen Fillers, Full 20,000 Word Bank) ---
     renderFlashcardsMode() {
       const words = global.NP_WORDS || [];
+      const sessionSize = this.store.state.settings.sessionSize || 10;
+
       if (!this.session.cards || this.session.cards.length === 0) {
-        const sessionSize = this.store.state.settings.sessionSize || 10;
-        this.session.cards = words.slice(0, 100).sort(() => Math.random() - 0.5).slice(0, sessionSize);
+        const dueSrs = this.srs.getDueCards("vocab");
+        const srsCards = this.store.state.srs ? this.store.state.srs.cards : {};
+        this.session.cards = Learning.generateFlashcardSession({
+          wordsBank: words,
+          srsCards,
+          dueCards: dueSrs,
+          sessionSize
+        });
         this.session.currentIndex = 0;
         this.session.revealed = false;
       }
@@ -573,10 +626,11 @@
     // --- Mode 2: Article Drill ---
     renderArticleDrillMode() {
       const words = global.NP_WORDS || [];
-      const nouns = words.filter((w) => w.pos === "noun" && w.article);
+      const sessionSize = this.store.state.settings.sessionSize || 10;
+      const nouns = words.filter((w) => w.pos === "noun" && w.article && w.learnable !== false);
 
       if (!this.session.cards || this.session.cards.length === 0) {
-        this.session.cards = nouns.sort(() => Math.random() - 0.5).slice(0, 10);
+        this.session.cards = Learning.sampleArray(nouns, sessionSize);
         this.session.currentIndex = 0;
         this.session.score = 0;
         this.session.feedback = null;
@@ -603,8 +657,8 @@
             <div class="drill-meaning">${item.meaning || ""}</div>
 
             <div class="drill-options">
-              <button class="btn btn-drill btn-de" data-choice="de">de</button>
-              <button class="btn btn-drill btn-het" data-choice="het">het</button>
+              <button class="btn btn-drill btn-de" data-choice="de" ${this.session.feedback ? 'disabled' : ''}>de</button>
+              <button class="btn btn-drill btn-het" data-choice="het" ${this.session.feedback ? 'disabled' : ''}>het</button>
             </div>
 
             ${this.session.feedback ? `
@@ -647,8 +701,11 @@
     // --- Mode 3: Spelling ---
     renderSpellingMode() {
       const words = global.NP_WORDS || [];
+      const sessionSize = this.store.state.settings.sessionSize || 10;
+      const eligible = words.filter((w) => w.learnable !== false);
+
       if (!this.session.cards || this.session.cards.length === 0) {
-        this.session.cards = words.slice(0, 150).sort(() => Math.random() - 0.5).slice(0, 10);
+        this.session.cards = Learning.sampleArray(eligible, sessionSize);
         this.session.currentIndex = 0;
         this.session.feedback = null;
       }
@@ -669,15 +726,15 @@
             ${item.exampleEn ? `<p class="context-hint">Context: ${item.exampleEn}</p>` : ""}
 
             <form id="spelling-form" class="spelling-form">
-              <input type="text" id="spelling-input" class="form-input" placeholder="Typ hier in het Nederlands..." autocomplete="off" autofocus />
-              <button type="submit" class="btn btn-primary" style="margin-top: 1rem;">Controleer Antwoord</button>
+              <input type="text" id="spelling-input" class="form-input" placeholder="Typ hier in het Nederlands..." autocomplete="off" autofocus ${this.session.feedback ? 'disabled' : ''} />
+              <button type="submit" class="btn btn-primary" style="margin-top: 1rem;" ${this.session.feedback ? 'disabled' : ''}>Controleer Antwoord</button>
             </form>
 
             ${this.session.feedback ? `
               <div class="exercise-feedback ${this.session.feedback.isCorrect ? 'feedback-correct' : 'feedback-wrong'} animate-fade">
                 ${this.session.feedback.isCorrect ? '✓ Helemaal goed gespeld!' : `✗ Niet helemaal juist. Het juiste antwoord is: <strong>${item.word}</strong>`}
               </div>
-              <button class="btn btn-secondary btn-block" id="btn-next-spelling" style="margin-top: 1rem;">Volgende Woord →</button>
+              <button class="btn btn-secondary btn-block" id="btn-next-spelling" style="margin-top: 1rem;">Volgend Woord →</button>
             ` : ""}
           </div>
         </div>
@@ -691,9 +748,9 @@
           e.preventDefault();
           if (this.session.feedback) return;
           const input = document.getElementById("spelling-input");
-          const userText = (input ? input.value : "").trim().toLowerCase();
+          const userText = (input ? input.value : "").trim();
           const item = this.session.cards[this.session.currentIndex];
-          const isCorrect = userText === item.word.toLowerCase();
+          const isCorrect = Learning.normalizeAnswer(userText) === Learning.normalizeAnswer(item.word);
 
           this.store.recordActivity(isCorrect ? 10 : 2);
           this.session.feedback = { isCorrect, userText };
@@ -711,11 +768,17 @@
       }
     }
 
-    // --- Mode 4: Fill in the Blank ---
+    // --- Mode 4: Fill in the Blank (Exact Normalized Grading & Stable Target) ---
     renderFillBlankMode() {
       const sentences = global.NP_SENTENCES || [];
+      const words = global.NP_WORDS || [];
+      const sessionSize = this.store.state.settings.sessionSize || 10;
+
       if (!this.session.cards || this.session.cards.length === 0) {
-        this.session.cards = sentences.sort(() => Math.random() - 0.5).slice(0, 10);
+        const sampledSentences = Learning.sampleArray(sentences, sessionSize);
+        this.session.cards = sampledSentences
+          .map((s) => Learning.createFillBlankCard(s, words))
+          .filter(Boolean);
         this.session.currentIndex = 0;
         this.session.feedback = null;
       }
@@ -725,33 +788,30 @@
       }
 
       const item = this.session.cards[this.session.currentIndex];
-      const wordsInSentence = item.nl.replace(/[.,!?]/g, "").split(" ");
-      const targetWord = wordsInSentence[Math.floor(wordsInSentence.length / 2)] || wordsInSentence[0];
-      const sentenceMasked = item.nl.replace(new RegExp(`\\b${targetWord}\\b`, "i"), "_______");
-
-      // Distractors
-      const allWords = (global.NP_WORDS || []).map(w => w.word);
-      const distractors = allWords.filter(w => w !== targetWord).slice(0, 3);
-      const options = [targetWord, ...distractors].sort(() => Math.random() - 0.5);
 
       return `
         <div class="fill-blank-wrapper animate-fade">
           <div class="card drill-card">
             <span class="card-tag">Vul het ontbrekende woord in</span>
             <div class="drill-noun" style="font-size: 1.4rem; line-height: 1.6; margin: 1.5rem 0;">
-              ${sentenceMasked}
+              ${item.maskedSentence}
             </div>
-            <div class="drill-meaning">“${item.en}”</div>
+            <div class="drill-meaning">“${item.translation}”</div>
 
             <div class="options-grid">
-              ${options.map((opt) => `
-                <button class="btn btn-outline btn-option" data-option="${opt}">${opt}</button>
-              `).join("")}
+              ${(item.options || []).map((opt) => {
+                const isSelected = this.session.feedback && this.session.feedback.chosen === opt;
+                return `
+                  <button class="btn btn-outline btn-option ${isSelected ? (this.session.feedback.isCorrect ? 'btn-success' : 'btn-wrong') : ''}" data-option="${opt}" ${this.session.feedback ? 'disabled' : ''}>
+                    ${opt}
+                  </button>
+                `;
+              }).join("")}
             </div>
 
             ${this.session.feedback ? `
               <div class="exercise-feedback ${this.session.feedback.isCorrect ? 'feedback-correct' : 'feedback-wrong'} animate-fade">
-                ${this.session.feedback.isCorrect ? '✓ Juist gekozen!' : `✗ Helaas. Het juiste woord was: <strong>${targetWord}</strong>`}
+                ${this.session.feedback.isCorrect ? '✓ Juist gekozen!' : `✗ Helaas. Het juiste woord was: <strong>${item.targetWord}</strong>`}
               </div>
               <button class="btn btn-primary btn-block" id="btn-next-fill-blank" style="margin-top: 1rem;">Volgende Zin →</button>
             ` : ""}
@@ -766,7 +826,7 @@
           if (this.session.feedback) return;
           const chosen = btn.dataset.option;
           const item = this.session.cards[this.session.currentIndex];
-          const isCorrect = item.nl.toLowerCase().includes(chosen.toLowerCase());
+          const isCorrect = Learning.normalizeAnswer(chosen) === Learning.normalizeAnswer(item.targetWord);
 
           this.store.recordActivity(isCorrect ? 10 : 2);
           this.session.feedback = { isCorrect, chosen };
@@ -784,11 +844,21 @@
       }
     }
 
-    // --- Mode 5: Choose Word ---
+    // --- Mode 5: Choose Word (Dynamic Non-Duplicate Distractors) ---
     renderChooseWordMode() {
-      const words = global.NP_WORDS || [];
+      const words = (global.NP_WORDS || []).filter((w) => w.learnable !== false);
+      const sessionSize = this.store.state.settings.sessionSize || 10;
+
       if (!this.session.cards || this.session.cards.length === 0) {
-        this.session.cards = words.slice(0, 100).sort(() => Math.random() - 0.5).slice(0, 10);
+        const sampledWords = Learning.sampleArray(words, sessionSize);
+        this.session.cards = sampledWords.map((item) => {
+          const sameCategory = words.filter((w) => w.id !== item.id && w.category === item.category);
+          const otherWords = words.filter((w) => w.id !== item.id);
+          const distractorPool = sameCategory.length >= 3 ? sameCategory : otherWords;
+          const sampledDistractors = Learning.sampleArray(distractorPool, 3);
+          const options = Learning.shuffleArray([item, ...sampledDistractors]);
+          return Object.assign({}, item, { options });
+        });
         this.session.currentIndex = 0;
         this.session.feedback = null;
       }
@@ -798,10 +868,6 @@
       }
 
       const item = this.session.cards[this.session.currentIndex];
-      const distractors = words.filter(w => w.id !== item.id && w.category === item.category).slice(0, 3);
-      const fallbackDistractors = words.filter(w => w.id !== item.id).slice(0, 3);
-      const optionsPool = distractors.length === 3 ? distractors : fallbackDistractors;
-      const options = [item, ...optionsPool].sort(() => Math.random() - 0.5);
 
       return `
         <div class="choose-word-wrapper animate-fade">
@@ -812,16 +878,21 @@
             </div>
 
             <div class="options-grid">
-              ${options.map((opt) => `
-                <button class="btn btn-outline btn-choice-word" data-word-id="${opt.id}">${opt.displayWord || opt.word}</button>
-              `).join("")}
+              ${(item.options || []).map((opt) => {
+                const isSelected = this.session.feedback && this.session.feedback.chosenId === opt.id;
+                return `
+                  <button class="btn btn-outline btn-choice-word ${isSelected ? (this.session.feedback.isCorrect ? 'btn-success' : 'btn-wrong') : ''}" data-word-id="${opt.id}" ${this.session.feedback ? 'disabled' : ''}>
+                    ${opt.displayWord || opt.word}
+                  </button>
+                `;
+              }).join("")}
             </div>
 
             ${this.session.feedback ? `
               <div class="exercise-feedback ${this.session.feedback.isCorrect ? 'feedback-correct' : 'feedback-wrong'} animate-fade">
                 ${this.session.feedback.isCorrect ? '✓ Uitstekend!' : `✗ Helaas. Het juiste woord is: <strong>${item.displayWord || item.word}</strong>`}
               </div>
-              <button class="btn btn-primary btn-block" id="btn-next-choose" style="margin-top: 1rem;">Volgende Woord →</button>
+              <button class="btn btn-primary btn-block" id="btn-next-choose" style="margin-top: 1rem;">Volgend Woord →</button>
             ` : ""}
           </div>
         </div>
@@ -837,7 +908,7 @@
           const isCorrect = chosenId === item.id;
 
           this.store.recordActivity(isCorrect ? 10 : 2);
-          this.session.feedback = { isCorrect };
+          this.session.feedback = { isCorrect, chosenId };
           this.render();
         });
       });
@@ -852,12 +923,18 @@
       }
     }
 
-    // --- Mode 6: Verbs ---
+    // --- Mode 6: Verbs (Exact Hij/Zij Present Tense Grading from Trusted Lemma Infinitives) ---
     renderVerbsMode() {
       const words = global.NP_WORDS || [];
-      const verbs = words.filter(w => w.pos === "verb");
+      const sessionSize = this.store.state.settings.sessionSize || 10;
+
       if (!this.session.cards || this.session.cards.length === 0) {
-        this.session.cards = verbs.sort(() => Math.random() - 0.5).slice(0, 10);
+        const eligibleVerbs = Learning.getEligibleVerbs(words);
+        const sampled = Learning.sampleArray(eligibleVerbs, sessionSize);
+        this.session.cards = sampled.map((v) => {
+          const expectedHij = Learning.getVerbHijConjugation(v.word, words);
+          return Object.assign({}, v, { expectedHij });
+        });
         this.session.currentIndex = 0;
         this.session.feedback = null;
       }
@@ -877,13 +954,13 @@
 
             <p style="margin: 1.5rem 0 0.5rem; color: var(--text-secondary);">Typ de tegenwoordige tijd voor 'hij/zij':</p>
             <form id="verb-form" class="verb-form">
-              <input type="text" id="verb-input" class="form-input" placeholder="bijv. werkt, loopt..." autocomplete="off" autofocus />
-              <button type="submit" class="btn btn-primary" style="margin-top: 1rem;">Controleer Vorm</button>
+              <input type="text" id="verb-input" class="form-input" placeholder="bijv. werkt, loopt..." autocomplete="off" autofocus ${this.session.feedback ? 'disabled' : ''} />
+              <button type="submit" class="btn btn-primary" style="margin-top: 1rem;" ${this.session.feedback ? 'disabled' : ''}>Controleer Vorm</button>
             </form>
 
             ${this.session.feedback ? `
               <div class="exercise-feedback ${this.session.feedback.isCorrect ? 'feedback-correct' : 'feedback-wrong'} animate-fade">
-                ${this.session.feedback.isCorrect ? '✓ Juist vervoegd!' : `✗ Let op de stam + t regel.`}
+                ${this.session.feedback.isCorrect ? `✓ Juist vervoegd: '${item.expectedHij}'!` : `✗ Helaas. De juiste 'hij/zij' vorm is: <strong>${item.expectedHij}</strong>`}
               </div>
               <button class="btn btn-secondary btn-block" id="btn-next-verb" style="margin-top: 1rem;">Volgend Werkwoord →</button>
             ` : ""}
@@ -899,11 +976,11 @@
           e.preventDefault();
           if (this.session.feedback) return;
           const input = document.getElementById("verb-input");
-          const text = (input ? input.value : "").trim().toLowerCase();
+          const text = (input ? input.value : "").trim();
           const item = this.session.cards[this.session.currentIndex];
-          const isCorrect = text.length > 1;
+          const isCorrect = Learning.normalizeAnswer(text) === Learning.normalizeAnswer(item.expectedHij);
 
-          this.store.recordActivity(10);
+          this.store.recordActivity(isCorrect ? 10 : 2);
           this.session.feedback = { isCorrect, text };
           this.render();
         });
@@ -919,11 +996,20 @@
       }
     }
 
-    // --- Mode 7: Synonyms & Antonyms ---
+    // --- Mode 7: Synonyms ---
     renderSynonymsMode() {
-      const words = (global.NP_WORDS || []).filter(w => w.synonyms && w.synonyms.length > 0);
+      const words = (global.NP_WORDS || []).filter((w) => w.synonyms && w.synonyms.length > 0);
+      const sessionSize = this.store.state.settings.sessionSize || 10;
+
       if (!this.session.cards || this.session.cards.length === 0) {
-        this.session.cards = words.sort(() => Math.random() - 0.5).slice(0, 10);
+        const sampledWords = Learning.sampleArray(words, sessionSize);
+        this.session.cards = sampledWords.map((item) => {
+          const correctSyn = item.synonyms[0];
+          const otherSyns = words.filter((w) => w.id !== item.id && w.synonyms && w.synonyms.length > 0);
+          const sampledDistractors = Learning.sampleArray(otherSyns, 3).map((w) => w.synonyms[0]);
+          const options = Learning.shuffleArray([correctSyn, ...sampledDistractors]);
+          return Object.assign({}, item, { correctSyn, options });
+        });
         this.session.currentIndex = 0;
         this.session.feedback = null;
       }
@@ -933,10 +1019,6 @@
       }
 
       const item = this.session.cards[this.session.currentIndex];
-      const correctSyn = item.synonyms[0];
-      const allWords = (global.NP_WORDS || []).map(w => w.word);
-      const distractors = allWords.filter(w => w !== correctSyn && w !== item.word).slice(0, 3);
-      const options = [correctSyn, ...distractors].sort(() => Math.random() - 0.5);
 
       return `
         <div class="synonyms-wrapper animate-fade">
@@ -947,12 +1029,19 @@
             <p style="color: var(--text-secondary); margin-top: 1rem;">Kies het juiste synoniem voor dit woord:</p>
 
             <div class="options-grid" style="margin-top: 1rem;">
-              ${options.map(opt => `<button class="btn btn-outline btn-syn-opt" data-syn="${opt}">${opt}</button>`).join("")}
+              ${(item.options || []).map((opt) => {
+                const isSelected = this.session.feedback && this.session.feedback.chosen === opt;
+                return `
+                  <button class="btn btn-outline btn-syn-opt ${isSelected ? (this.session.feedback.isCorrect ? 'btn-success' : 'btn-wrong') : ''}" data-syn="${opt}" ${this.session.feedback ? 'disabled' : ''}>
+                    ${opt}
+                  </button>
+                `;
+              }).join("")}
             </div>
 
             ${this.session.feedback ? `
               <div class="exercise-feedback ${this.session.feedback.isCorrect ? 'feedback-correct' : 'feedback-wrong'} animate-fade">
-                ${this.session.feedback.isCorrect ? '✓ Juist synoniem gekozen!' : `✗ Niet juist. Een synoniem van '${item.word}' is: <strong>${correctSyn}</strong>.`}
+                ${this.session.feedback.isCorrect ? '✓ Juist synoniem gekozen!' : `✗ Niet juist. Een synoniem van '${item.word}' is: <strong>${item.correctSyn}</strong>.`}
               </div>
               <button class="btn btn-primary btn-block" id="btn-next-syn" style="margin-top: 1rem;">Volgende Vraag →</button>
             ` : ""}
@@ -962,12 +1051,12 @@
     }
 
     attachSynonymsListeners() {
-      document.querySelectorAll(".btn-syn-opt").forEach(btn => {
+      document.querySelectorAll(".btn-syn-opt").forEach((btn) => {
         btn.addEventListener("click", () => {
           if (this.session.feedback) return;
           const chosen = btn.dataset.syn;
           const item = this.session.cards[this.session.currentIndex];
-          const isCorrect = item.synonyms.includes(chosen);
+          const isCorrect = (item.synonyms || []).some((s) => Learning.normalizeAnswer(s) === Learning.normalizeAnswer(chosen));
 
           this.store.recordActivity(isCorrect ? 10 : 2);
           this.session.feedback = { isCorrect, chosen };
@@ -985,11 +1074,23 @@
       }
     }
 
-    // --- Mode 8: Plural & Diminutive Morphology ---
+    // --- Mode 8: Plural Morphology (Exact Verified Plural Equality) ---
     renderMorphologyMode() {
-      const nouns = (global.NP_WORDS || []).filter(w => w.pos === "noun" && w.article);
+      const words = global.NP_WORDS || [];
+      const sessionSize = this.store.state.settings.sessionSize || 10;
+
       if (!this.session.cards || this.session.cards.length === 0) {
-        this.session.cards = nouns.sort(() => Math.random() - 0.5).slice(0, 10);
+        const candidateNouns = words.filter((w) => w.pos === "noun" && w.article);
+        const validNouns = [];
+
+        for (const n of candidateNouns) {
+          const expectedPlural = Learning.getNounPlural(n.word, words);
+          if (expectedPlural) {
+            validNouns.push(Object.assign({}, n, { expectedPlural }));
+          }
+        }
+
+        this.session.cards = Learning.sampleArray(validNouns, sessionSize);
         this.session.currentIndex = 0;
         this.session.feedback = null;
       }
@@ -1004,18 +1105,18 @@
         <div class="morphology-wrapper animate-fade">
           <div class="card drill-card">
             <span class="card-tag">Meervoud & Verkleinwoorden</span>
-            <div class="drill-noun" style="margin: 1.5rem 0;">${item.displayWord}</div>
+            <div class="drill-noun" style="margin: 1.5rem 0;">${item.displayWord || item.word}</div>
             <div class="drill-meaning">“${item.meaning || ''}”</div>
 
             <p style="color: var(--text-secondary); margin-top: 1rem;">Typ het meervoud (plural) van dit zelfstandig naamwoord:</p>
             <form id="morphology-form" style="margin-top: 1rem;">
-              <input type="text" id="morphology-input" class="form-input" placeholder="Typ het meervoud..." autocomplete="off" autofocus />
-              <button type="submit" class="btn btn-primary" style="margin-top: 1rem;">Controleer Meervoud</button>
+              <input type="text" id="morphology-input" class="form-input" placeholder="Typ het meervoud..." autocomplete="off" autofocus ${this.session.feedback ? 'disabled' : ''} />
+              <button type="submit" class="btn btn-primary" style="margin-top: 1rem;" ${this.session.feedback ? 'disabled' : ''}>Controleer Meervoud</button>
             </form>
 
             ${this.session.feedback ? `
               <div class="exercise-feedback ${this.session.feedback.isCorrect ? 'feedback-correct' : 'feedback-wrong'} animate-fade">
-                ${this.session.feedback.isCorrect ? '✓ Juiste meervoudsvorm!' : `✗ Let op de meervoudsregels (-en / -s / -'s).`}
+                ${this.session.feedback.isCorrect ? `✓ Juiste meervoudsvorm: '${item.expectedPlural}'!` : `✗ Helaas. Het juiste meervoud is: <strong>${item.expectedPlural}</strong>`}
               </div>
               <button class="btn btn-secondary btn-block" id="btn-next-morph" style="margin-top: 1rem;">Volgend Zelfstandig Naamwoord →</button>
             ` : ""}
@@ -1031,9 +1132,9 @@
           e.preventDefault();
           if (this.session.feedback) return;
           const input = document.getElementById("morphology-input");
-          const val = (input ? input.value : "").trim().toLowerCase();
+          const val = (input ? input.value : "").trim();
           const item = this.session.cards[this.session.currentIndex];
-          const isCorrect = val.endsWith("en") || val.endsWith("s") || val.endsWith("'s");
+          const isCorrect = Learning.normalizeAnswer(val) === Learning.normalizeAnswer(item.expectedPlural);
 
           this.store.recordActivity(isCorrect ? 10 : 2);
           this.session.feedback = { isCorrect, val };
@@ -1054,8 +1155,10 @@
     // --- Mode 9: Context Practice ---
     renderContextMode() {
       const sentences = global.NP_SENTENCES || [];
+      const sessionSize = this.store.state.settings.sessionSize || 10;
+
       if (!this.session.cards || this.session.cards.length === 0) {
-        this.session.cards = sentences.sort(() => Math.random() - 0.5).slice(0, 10);
+        this.session.cards = Learning.sampleArray(sentences, sessionSize);
         this.session.currentIndex = 0;
         this.session.feedback = null;
       }
@@ -1105,7 +1208,7 @@
       }
 
       // Catalog view
-      const filtered = this.selectedLevel === "all" ? grammarRules : grammarRules.filter(r => r.level === this.selectedLevel);
+      const filtered = this.selectedLevel === "all" ? grammarRules : grammarRules.filter((r) => r.level === this.selectedLevel);
 
       return `
         <div class="grammar-catalog-container animate-fade">
@@ -1151,6 +1254,8 @@
     renderGrammarRuleDetail(rule) {
       const exercises = rule.exercises || [];
       const currentEx = exercises[this.activeGrammarExIndex] || exercises[0];
+      const completedExercisesCount = Object.keys(this.activeGrammarAnswers).length;
+      const allDone = completedExercisesCount >= exercises.length;
 
       return `
         <div class="grammar-detail-container animate-fade">
@@ -1171,7 +1276,7 @@
             <div class="lesson-rules-section">
               <h3>Grammaticale Regels</h3>
               <ul class="rules-bullet-list">
-                ${(rule.rules || []).map(r => `<li>${r}</li>`).join("")}
+                ${(rule.rules || []).map((r) => `<li>${r}</li>`).join("")}
               </ul>
             </div>
 
@@ -1183,7 +1288,7 @@
             <div class="lesson-examples-section">
               <h3>Authentieke Voorbeelden</h3>
               <div class="examples-grid">
-                ${(rule.examples || []).map(ex => `
+                ${(rule.examples || []).map((ex) => `
                   <div class="example-item">
                     <div class="example-nl">“${ex.nl}”</div>
                     <div class="example-en">${ex.en}</div>
@@ -1207,6 +1312,15 @@
                   <button class="btn btn-sm btn-outline" id="btn-next-grammar-ex" ${this.activeGrammarExIndex >= exercises.length - 1 ? 'disabled' : ''}>Volgende →</button>
                 </div>
               </div>
+
+              ${allDone ? `
+                <div class="card session-complete-card animate-fade" style="margin-top: 1rem; text-align: center;">
+                  <div class="complete-icon">🌟</div>
+                  <h3>Alle oefeningen voor deze regel voltooid!</h3>
+                  <p>Voortgang succesvol opgeslagen.</p>
+                </div>
+              ` : ""}
+
               ${this.renderGrammarExercise(currentEx)}
             </div>
           </div>
@@ -1216,6 +1330,7 @@
 
     renderGrammarExercise(ex) {
       if (!ex) return "<p>Geen oefeningen beschikbaar.</p>";
+      const answeredState = this.activeGrammarAnswers[this.activeGrammarExIndex];
 
       switch (ex.type) {
         case "multiple_choice":
@@ -1223,11 +1338,18 @@
             <div class="exercise-mc animate-fade">
               <p class="exercise-question">${ex.question}</p>
               <div class="options-grid">
-                ${(ex.options || []).map((opt, i) => `
-                  <button class="btn btn-outline btn-grammar-opt" data-opt-idx="${i}">${opt}</button>
-                `).join("")}
+                ${(ex.options || []).map((opt, i) => {
+                  const isSelected = answeredState && answeredState.userAttempt === i;
+                  return `
+                    <button class="btn btn-outline btn-grammar-opt ${isSelected ? (answeredState.isCorrect ? 'btn-success' : 'btn-wrong') : ''}" data-opt-idx="${i}" ${answeredState ? 'disabled' : ''}>
+                      ${opt}
+                    </button>
+                  `;
+                }).join("")}
               </div>
-              <div id="grammar-ex-feedback" class="exercise-feedback" style="display: none;"></div>
+              <div id="grammar-ex-feedback" class="exercise-feedback ${answeredState ? (answeredState.isCorrect ? 'feedback-correct' : 'feedback-wrong') : ''}" style="${answeredState ? 'display: block;' : 'display: none;'}">
+                ${answeredState ? (answeredState.isCorrect ? `✓ Uitstekend! ${ex.explanation}` : `✗ Helaas niet juist. ${ex.explanation}`) : ''}
+              </div>
             </div>
           `;
         case "word_order":
@@ -1237,20 +1359,22 @@
               <div class="exercise-translation">“${ex.translation}”</div>
               
               <div class="tokens-assembled-box" id="tokens-placed-zone">
-                ${this.tokenReconstructionPlaced.map((t, idx) => `
-                  <span class="chip-token chip-placed" data-placed-idx="${idx}">${t} ✕</span>
+                ${this.tokenReconstructionPlaced.map((p, idx) => `
+                  <span class="chip-token chip-placed" data-placed-idx="${idx}">${p.text} ✕</span>
                 `).join("")}
               </div>
 
               <div class="tokens-pool" id="tokens-pool-zone">
                 ${(ex.tokens || []).map((token, idx) => {
-                  const used = this.tokenReconstructionPlaced.includes(token);
-                  return `<button class="chip-token ${used ? 'token-used' : ''}" data-token="${token}">${token}</button>`;
+                  const isUsed = this.tokenReconstructionPlaced.some((p) => p.poolIndex === idx);
+                  return `<button class="chip-token ${isUsed ? 'token-used' : ''}" data-pool-idx="${idx}" ${isUsed || answeredState ? 'disabled' : ''}>${token}</button>`;
                 }).join("")}
               </div>
 
-              <button class="btn btn-primary" id="btn-check-tokens" style="margin-top: 1rem;">Controleer Woordvolgorde</button>
-              <div id="grammar-ex-feedback" class="exercise-feedback" style="display: none;"></div>
+              <button class="btn btn-primary" id="btn-check-tokens" style="margin-top: 1rem;" ${answeredState ? 'disabled' : ''}>Controleer Woordvolgorde</button>
+              <div id="grammar-ex-feedback" class="exercise-feedback ${answeredState ? (answeredState.isCorrect ? 'feedback-correct' : 'feedback-wrong') : ''}" style="${answeredState ? 'display: block;' : 'display: none;'}">
+                ${answeredState ? (answeredState.isCorrect ? `✓ Perfecte woordvolgorde!` : `✗ Niet juist. Correcte volgorde: “${ex.correctSentence}”`) : ''}
+              </div>
             </div>
           `;
         case "fill_in_the_blank":
@@ -1259,9 +1383,18 @@
               <p class="exercise-question">${ex.prompt || "Vul het juiste woord in:"}</p>
               <div class="exercise-sentence" style="font-size: 1.2rem; font-weight: 700; margin: 1rem 0;">${ex.sentenceWithBlank}</div>
               <div class="hint-chips-pool">
-                ${(ex.hints || []).map(h => `<button class="chip-token btn-hint-opt" data-hint="${h}">${h}</button>`).join("")}
+                ${(ex.hints || []).map((h) => {
+                  const isSelected = answeredState && answeredState.userAttempt === h;
+                  return `
+                    <button class="chip-token btn-hint-opt ${isSelected ? (answeredState.isCorrect ? 'btn-success' : 'btn-wrong') : ''}" data-hint="${h}" ${answeredState ? 'disabled' : ''}>
+                      ${h}
+                    </button>
+                  `;
+                }).join("")}
               </div>
-              <div id="grammar-ex-feedback" class="exercise-feedback" style="display: none;"></div>
+              <div id="grammar-ex-feedback" class="exercise-feedback ${answeredState ? (answeredState.isCorrect ? 'feedback-correct' : 'feedback-wrong') : ''}" style="${answeredState ? 'display: block;' : 'display: none;'}">
+                ${answeredState ? (answeredState.isCorrect ? `✓ Helemaal juist ingevuld!` : `✗ Niet juist. Het juiste woord was: <strong>${ex.blankWord}</strong>`) : ''}
+              </div>
             </div>
           `;
         case "typed_conjugation":
@@ -1269,10 +1402,12 @@
             <div class="exercise-typed-conj animate-fade">
               <p class="exercise-question">Vervoeg het werkwoord '<strong>${ex.infinitive}</strong>' voor '<strong>${ex.subject}</strong>' (${ex.targetTense}):</p>
               <form id="form-grammar-conj" style="margin-top: 1rem;">
-                <input type="text" id="input-grammar-conj" class="form-input" placeholder="Typ de juiste vervoeging..." autocomplete="off" />
-                <button type="submit" class="btn btn-primary" style="margin-top: 0.75rem;">Controleer Vervoeging</button>
+                <input type="text" id="input-grammar-conj" class="form-input" placeholder="Typ de juiste vervoeging..." autocomplete="off" ${answeredState ? 'disabled' : ''} />
+                <button type="submit" class="btn btn-primary" style="margin-top: 0.75rem;" ${answeredState ? 'disabled' : ''}>Controleer Vervoeging</button>
               </form>
-              <div id="grammar-ex-feedback" class="exercise-feedback" style="display: none;"></div>
+              <div id="grammar-ex-feedback" class="exercise-feedback ${answeredState ? (answeredState.isCorrect ? 'feedback-correct' : 'feedback-wrong') : ''}" style="${answeredState ? 'display: block;' : 'display: none;'}">
+                ${answeredState ? (answeredState.isCorrect ? `✓ Uitstekend vervoegd! ${ex.explanation}` : `✗ Niet juist. De juiste vorm is '<strong>${ex.correctForm}</strong>'. ${ex.explanation}`) : ''}
+              </div>
             </div>
           `;
         case "sentence_transformation":
@@ -1283,10 +1418,12 @@
                 “${ex.original}”
               </div>
               <form id="form-grammar-transform" style="margin-top: 1rem;">
-                <input type="text" id="input-grammar-transform" class="form-input" placeholder="Typ de getransformeerde zin..." autocomplete="off" />
-                <button type="submit" class="btn btn-primary" style="margin-top: 0.75rem;">Controleer Transformatie</button>
+                <input type="text" id="input-grammar-transform" class="form-input" placeholder="Typ de getransformeerde zin..." autocomplete="off" ${answeredState ? 'disabled' : ''} />
+                <button type="submit" class="btn btn-primary" style="margin-top: 0.75rem;" ${answeredState ? 'disabled' : ''}>Controleer Transformatie</button>
               </form>
-              <div id="grammar-ex-feedback" class="exercise-feedback" style="display: none;"></div>
+              <div id="grammar-ex-feedback" class="exercise-feedback ${answeredState ? (answeredState.isCorrect ? 'feedback-correct' : 'feedback-wrong') : ''}" style="${answeredState ? 'display: block;' : 'display: none;'}">
+                ${answeredState ? (answeredState.isCorrect ? `✓ Perfecte transformatie!` : `✗ Niet helemaal juist. Modelzin: “<strong>${ex.transformed}</strong>”`) : ''}
+              </div>
             </div>
           `;
         case "error_correction":
@@ -1297,10 +1434,12 @@
                 “${ex.sentenceWithError}”
               </div>
               <form id="form-grammar-error" style="margin-top: 1rem;">
-                <input type="text" id="input-grammar-error" class="form-input" placeholder="Typ de gecorrigeerde zin..." autocomplete="off" />
-                <button type="submit" class="btn btn-primary" style="margin-top: 0.75rem;">Controleer Correctie</button>
+                <input type="text" id="input-grammar-error" class="form-input" placeholder="Typ de gecorrigeerde zin..." autocomplete="off" ${answeredState ? 'disabled' : ''} />
+                <button type="submit" class="btn btn-primary" style="margin-top: 0.75rem;" ${answeredState ? 'disabled' : ''}>Controleer Correctie</button>
               </form>
-              <div id="grammar-ex-feedback" class="exercise-feedback" style="display: none;"></div>
+              <div id="grammar-ex-feedback" class="exercise-feedback ${answeredState ? (answeredState.isCorrect ? 'feedback-correct' : 'feedback-wrong') : ''}" style="${answeredState ? 'display: block;' : 'display: none;'}">
+                ${answeredState ? (answeredState.isCorrect ? `✓ Foutloos gecorrigeerd! ${ex.explanation}` : `✗ Niet helemaal juist. Correcte zin: “<strong>${ex.correctedSentence}</strong>”. ${ex.explanation}`) : ''}
+              </div>
             </div>
           `;
         case "article_selection":
@@ -1308,20 +1447,40 @@
             <div class="exercise-article-select animate-fade">
               <p class="exercise-question">Kies het juiste lidwoord voor: <strong>${ex.noun}</strong> <em>(${ex.meaning})</em></p>
               <div class="options-grid" style="grid-template-columns: 1fr 1fr; margin-top: 1rem;">
-                <button class="btn btn-drill btn-de btn-grammar-art" data-art="de">de</button>
-                <button class="btn btn-drill btn-het btn-grammar-art" data-art="het">het</button>
+                <button class="btn btn-drill btn-de btn-grammar-art ${answeredState && answeredState.userAttempt === 'de' ? (answeredState.isCorrect ? 'btn-success' : 'btn-wrong') : ''}" data-art="de" ${answeredState ? 'disabled' : ''}>de</button>
+                <button class="btn btn-drill btn-het btn-grammar-art ${answeredState && answeredState.userAttempt === 'het' ? (answeredState.isCorrect ? 'btn-success' : 'btn-wrong') : ''}" data-art="het" ${answeredState ? 'disabled' : ''}>het</button>
               </div>
-              <div id="grammar-ex-feedback" class="exercise-feedback" style="display: none;"></div>
+              <div id="grammar-ex-feedback" class="exercise-feedback ${answeredState ? (answeredState.isCorrect ? 'feedback-correct' : 'feedback-wrong') : ''}" style="${answeredState ? 'display: block;' : 'display: none;'}">
+                ${answeredState ? (answeredState.isCorrect ? `✓ Juist! Het is <strong>${ex.correct} ${ex.noun}</strong>. ${ex.explanation || ''}` : `✗ Niet juist. Het is <strong>${ex.correct} ${ex.noun}</strong>. ${ex.explanation || ''}`) : ''}
+              </div>
             </div>
           `;
         default:
           return `
             <div class="exercise-default animate-fade">
               <p class="exercise-question">${ex.question || ex.prompt || "Beantwoord de vraag:"}</p>
-              <button class="btn btn-primary" id="btn-complete-simple-ex">Begrepen & Afronden ✓</button>
+              <button class="btn btn-primary" id="btn-complete-simple-ex" ${answeredState ? 'disabled' : ''}>Begrepen & Afronden ✓</button>
             </div>
           `;
       }
+    }
+
+    recordGrammarExerciseAnswer(isCorrect, userAttempt) {
+      if (!this.activeGrammarRule) return;
+      if (this.activeGrammarAnswers[this.activeGrammarExIndex]) return; // Already recorded
+
+      this.activeGrammarAnswers[this.activeGrammarExIndex] = { isCorrect, userAttempt };
+      const exercises = this.activeGrammarRule.exercises || [];
+
+      // Check if all exercises completed
+      if (Object.keys(this.activeGrammarAnswers).length === exercises.length) {
+        const numCorrect = Object.values(this.activeGrammarAnswers).filter((a) => a.isCorrect).length;
+        const score = Math.round((numCorrect / exercises.length) * 100);
+        this.store.completeGrammarRule(this.activeGrammarRule.id, score);
+      } else {
+        this.store.recordActivity(isCorrect ? 5 : 1);
+      }
+      this.render();
     }
 
     attachGrammarListeners() {
@@ -1354,17 +1513,7 @@
           const exercises = this.activeGrammarRule.exercises || [];
           const currentEx = exercises[this.activeGrammarExIndex];
           const isCorrect = idx === currentEx.correct;
-
-          const fb = document.getElementById("grammar-ex-feedback");
-          if (fb) {
-            fb.style.display = "block";
-            fb.className = `exercise-feedback ${isCorrect ? 'feedback-correct' : 'feedback-wrong'}`;
-            fb.innerHTML = isCorrect ? `✓ Uitstekend! ${currentEx.explanation}` : `✗ Helaas niet juist. ${currentEx.explanation}`;
-          }
-
-          if (isCorrect) {
-            this.store.completeGrammarRule(this.activeGrammarRule.id);
-          }
+          this.recordGrammarExerciseAnswer(isCorrect, idx);
         });
       });
 
@@ -1374,17 +1523,7 @@
           const exercises = this.activeGrammarRule.exercises || [];
           const currentEx = exercises[this.activeGrammarExIndex];
           const isCorrect = chosen.toLowerCase() === currentEx.correct.toLowerCase();
-
-          const fb = document.getElementById("grammar-ex-feedback");
-          if (fb) {
-            fb.style.display = "block";
-            fb.className = `exercise-feedback ${isCorrect ? 'feedback-correct' : 'feedback-wrong'}`;
-            fb.innerHTML = isCorrect ? `✓ Juist! Het is <strong>${currentEx.correct} ${currentEx.noun}</strong>. ${currentEx.explanation || ''}` : `✗ Niet juist. Het is <strong>${currentEx.correct} ${currentEx.noun}</strong>. ${currentEx.explanation || ''}`;
-          }
-
-          if (isCorrect) {
-            this.store.completeGrammarRule(this.activeGrammarRule.id);
-          }
+          this.recordGrammarExerciseAnswer(isCorrect, chosen);
         });
       });
 
@@ -1393,21 +1532,11 @@
         formConj.addEventListener("submit", (e) => {
           e.preventDefault();
           const inp = document.getElementById("input-grammar-conj");
-          const val = (inp ? inp.value : "").trim().toLowerCase();
+          const val = (inp ? inp.value : "").trim();
           const exercises = this.activeGrammarRule.exercises || [];
           const currentEx = exercises[this.activeGrammarExIndex];
-          const isCorrect = val === currentEx.correctForm.toLowerCase();
-
-          const fb = document.getElementById("grammar-ex-feedback");
-          if (fb) {
-            fb.style.display = "block";
-            fb.className = `exercise-feedback ${isCorrect ? 'feedback-correct' : 'feedback-wrong'}`;
-            fb.innerHTML = isCorrect ? `✓ Uitstekend vervoegd! ${currentEx.explanation}` : `✗ Niet juist. De juiste vorm is '<strong>${currentEx.correctForm}</strong>'. ${currentEx.explanation}`;
-          }
-
-          if (isCorrect) {
-            this.store.completeGrammarRule(this.activeGrammarRule.id);
-          }
+          const isCorrect = Learning.normalizeAnswer(val) === Learning.normalizeAnswer(currentEx.correctForm);
+          this.recordGrammarExerciseAnswer(isCorrect, val);
         });
       }
 
@@ -1416,21 +1545,11 @@
         formTransform.addEventListener("submit", (e) => {
           e.preventDefault();
           const inp = document.getElementById("input-grammar-transform");
-          const val = (inp ? inp.value : "").trim().toLowerCase();
+          const val = (inp ? inp.value : "").trim();
           const exercises = this.activeGrammarRule.exercises || [];
           const currentEx = exercises[this.activeGrammarExIndex];
-          const isCorrect = val.replace(/[.,!?]/g, "") === currentEx.transformed.toLowerCase().replace(/[.,!?]/g, "");
-
-          const fb = document.getElementById("grammar-ex-feedback");
-          if (fb) {
-            fb.style.display = "block";
-            fb.className = `exercise-feedback ${isCorrect ? 'feedback-correct' : 'feedback-wrong'}`;
-            fb.innerHTML = isCorrect ? `✓ Perfecte transformatie!` : `✗ Niet helemaal juist. Modelzin: “<strong>${currentEx.transformed}</strong>”`;
-          }
-
-          if (isCorrect) {
-            this.store.completeGrammarRule(this.activeGrammarRule.id);
-          }
+          const isCorrect = Learning.normalizeAnswer(val) === Learning.normalizeAnswer(currentEx.transformed);
+          this.recordGrammarExerciseAnswer(isCorrect, val);
         });
       }
 
@@ -1439,39 +1558,41 @@
         formError.addEventListener("submit", (e) => {
           e.preventDefault();
           const inp = document.getElementById("input-grammar-error");
-          const val = (inp ? inp.value : "").trim().toLowerCase();
+          const val = (inp ? inp.value : "").trim();
           const exercises = this.activeGrammarRule.exercises || [];
           const currentEx = exercises[this.activeGrammarExIndex];
-          const isCorrect = val.replace(/[.,!?]/g, "") === currentEx.correctedSentence.toLowerCase().replace(/[.,!?]/g, "");
-
-          const fb = document.getElementById("grammar-ex-feedback");
-          if (fb) {
-            fb.style.display = "block";
-            fb.className = `exercise-feedback ${isCorrect ? 'feedback-correct' : 'feedback-wrong'}`;
-            fb.innerHTML = isCorrect ? `✓ Foutloos gecorrigeerd! ${currentEx.explanation}` : `✗ Niet helemaal juist. Correcte zin: “<strong>${currentEx.correctedSentence}</strong>”. ${currentEx.explanation}`;
-          }
-
-          if (isCorrect) {
-            this.store.completeGrammarRule(this.activeGrammarRule.id);
-          }
+          const isCorrect = Learning.normalizeAnswer(val) === Learning.normalizeAnswer(currentEx.correctedSentence);
+          this.recordGrammarExerciseAnswer(isCorrect, val);
         });
       }
 
+      // Word Order Pool Tokens (supports duplicate tokens via unique pool indices)
       document.querySelectorAll(".chip-token:not(.chip-placed)").forEach((btn) => {
         btn.addEventListener("click", () => {
-          const token = btn.dataset.token;
-          if (token && !this.tokenReconstructionPlaced.includes(token)) {
-            this.tokenReconstructionPlaced.push(token);
-            this.render();
+          const poolIdx = parseInt(btn.dataset.poolIdx, 10);
+          const exercises = this.activeGrammarRule ? this.activeGrammarRule.exercises || [] : [];
+          const currentEx = exercises[this.activeGrammarExIndex];
+          if (!isNaN(poolIdx) && currentEx && currentEx.tokens && currentEx.tokens[poolIdx]) {
+            const alreadyPlaced = this.tokenReconstructionPlaced.some((p) => p.poolIndex === poolIdx);
+            if (!alreadyPlaced) {
+              this.tokenReconstructionPlaced.push({
+                poolIndex: poolIdx,
+                text: currentEx.tokens[poolIdx]
+              });
+              this.render();
+            }
           }
         });
       });
 
+      // Placed Word Order Tokens
       document.querySelectorAll(".chip-placed").forEach((chip) => {
         chip.addEventListener("click", () => {
-          const idx = parseInt(chip.dataset.placedIdx, 10);
-          this.tokenReconstructionPlaced.splice(idx, 1);
-          this.render();
+          const placedIdx = parseInt(chip.dataset.placedIdx, 10);
+          if (!isNaN(placedIdx) && placedIdx >= 0 && placedIdx < this.tokenReconstructionPlaced.length) {
+            this.tokenReconstructionPlaced.splice(placedIdx, 1);
+            this.render();
+          }
         });
       });
 
@@ -1480,19 +1601,9 @@
         checkTokensBtn.addEventListener("click", () => {
           const exercises = this.activeGrammarRule.exercises || [];
           const currentEx = exercises[this.activeGrammarExIndex];
-          const assembled = this.tokenReconstructionPlaced.join(" ");
-          const isCorrect = assembled.toLowerCase() === currentEx.correctSentence.toLowerCase();
-
-          const fb = document.getElementById("grammar-ex-feedback");
-          if (fb) {
-            fb.style.display = "block";
-            fb.className = `exercise-feedback ${isCorrect ? 'feedback-correct' : 'feedback-wrong'}`;
-            fb.innerHTML = isCorrect ? `✓ Perfecte woordvolgorde!` : `✗ Niet juist. Correcte volgorde: “${currentEx.correctSentence}”`;
-          }
-
-          if (isCorrect) {
-            this.store.completeGrammarRule(this.activeGrammarRule.id);
-          }
+          const assembled = this.tokenReconstructionPlaced.map((p) => p.text).join(" ").trim();
+          const isCorrect = Learning.normalizeAnswer(assembled) === Learning.normalizeAnswer(currentEx.correctSentence);
+          this.recordGrammarExerciseAnswer(isCorrect, assembled);
         });
       }
 
@@ -1501,25 +1612,24 @@
           const hint = btn.dataset.hint;
           const exercises = this.activeGrammarRule.exercises || [];
           const currentEx = exercises[this.activeGrammarExIndex];
-          const isCorrect = hint.toLowerCase() === currentEx.blankWord.toLowerCase();
-
-          const fb = document.getElementById("grammar-ex-feedback");
-          if (fb) {
-            fb.style.display = "block";
-            fb.className = `exercise-feedback ${isCorrect ? 'feedback-correct' : 'feedback-wrong'}`;
-            fb.innerHTML = isCorrect ? `✓ Helemaal juist ingevuld!` : `✗ Niet juist. Het juiste woord was: <strong>${currentEx.blankWord}</strong>`;
-          }
-
-          if (isCorrect) {
-            this.store.completeGrammarRule(this.activeGrammarRule.id);
-          }
+          const isCorrect = Learning.normalizeAnswer(hint) === Learning.normalizeAnswer(currentEx.blankWord);
+          this.recordGrammarExerciseAnswer(isCorrect, hint);
         });
       });
+
+      const completeSimpleBtn = document.getElementById("btn-complete-simple-ex");
+      if (completeSimpleBtn) {
+        completeSimpleBtn.addEventListener("click", () => {
+          this.recordGrammarExerciseAnswer(true, "completed");
+        });
+      }
 
       const backBtn = document.getElementById("btn-back-grammar");
       if (backBtn) {
         backBtn.addEventListener("click", () => {
           this.activeGrammarRule = null;
+          this.activeGrammarAnswers = {};
+          this.tokenReconstructionPlaced = [];
           this.render();
         });
       }
@@ -1541,16 +1651,17 @@
 
     openGrammarRule(ruleId) {
       const rules = global.NP_GRAMMAR || [];
-      this.activeGrammarRule = rules.find(r => r.id === ruleId) || rules[0];
+      this.activeGrammarRule = rules.find((r) => r.id === ruleId) || rules[0];
       this.activeGrammarExIndex = 0;
       this.tokenReconstructionPlaced = [];
+      this.activeGrammarAnswers = {};
       this.currentTab = "grammar";
       this.render();
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
 
     /* ==========================================================================
-       5. COMPREHENSION VIEW (100 Progressive Passages & Quiz Runner)
+       5. COMPREHENSION VIEW (Progressive Passages & Quiz Runner)
        ========================================================================== */
     renderComprehensionView() {
       const passages = global.NP_COMPREHENSION || [];
@@ -1559,13 +1670,13 @@
         return this.renderPassageDetail(this.activePassage);
       }
 
-      const filtered = this.selectedLevel === "all" ? passages : passages.filter(p => p.level === this.selectedLevel);
+      const filtered = this.selectedLevel === "all" ? passages : passages.filter((p) => p.level === this.selectedLevel);
 
       return `
         <div class="comprehension-catalog-container animate-fade">
           <div class="catalog-header">
             <div>
-              <h1 class="page-title">Begrijpend Lezen (100 Teksten)</h1>
+              <h1 class="page-title">Begrijpend Lezen (${passages.length} Teksten)</h1>
               <p class="page-subtitle">Progressieve Nederlandse leesvaardigheid van A1 tot C1 met woordenschat en begripsvragen.</p>
             </div>
 
@@ -1591,7 +1702,7 @@
                   <div class="passage-en-title">${passage.titleEn}</div>
                   <p class="passage-snippet">${passage.paragraphs[0]}</p>
                   <div class="passage-card-footer">
-                    <span>${passage.questions ? passage.questions.length : 2} Begripsvragen</span>
+                    <span>${passage.questions ? passage.questions.length : 4} Begripsvragen</span>
                     <span class="status-indicator">${isCompleted ? '✓ Gelezen' : 'Start Lezen →'}</span>
                   </div>
                 </div>
@@ -1603,6 +1714,12 @@
     }
 
     renderPassageDetail(passage) {
+      const answeredCount = Object.keys(this.activePassageAnswers).length;
+      const totalQuestions = passage.questions ? passage.questions.length : 0;
+      const allAnswered = totalQuestions > 0 && answeredCount >= totalQuestions;
+      const numCorrect = Object.values(this.activePassageAnswers).filter((a) => a.isCorrect).length;
+      const pctScore = totalQuestions > 0 ? Math.round((numCorrect / totalQuestions) * 100) : 0;
+
       return `
         <div class="passage-detail-container animate-fade">
           <button class="btn btn-outline btn-sm" id="btn-back-comprehension">← Terug naar Teksten Overzicht</button>
@@ -1615,7 +1732,7 @@
             </div>
 
             <div class="passage-paragraphs">
-              ${passage.paragraphs.map(p => `<p class="passage-p">${p}</p>`).join("")}
+              ${passage.paragraphs.map((p) => `<p class="passage-p">${p}</p>`).join("")}
             </div>
 
             <details class="passage-translation-accordion">
@@ -1627,7 +1744,7 @@
               <div class="passage-vocab-box">
                 <h3>Sleutelwoorden uit de Tekst</h3>
                 <div class="vocab-chips-grid">
-                  ${passage.keyVocabulary.map(v => `
+                  ${passage.keyVocabulary.map((v) => `
                     <div class="vocab-chip">
                       <strong>${v.word}</strong> <span class="vocab-chip-en">(${v.en})</span>
                     </div>
@@ -1637,20 +1754,51 @@
             ` : ""}
 
             <div class="passage-quiz-box">
-              <h3>Begripsvragen</h3>
-              ${(passage.questions || []).map((q, qIdx) => `
-                <div class="quiz-question-card" data-q-idx="${qIdx}">
-                  <p class="q-title"><strong>Vraag ${qIdx + 1}:</strong> ${q.question}</p>
-                  <div class="options-grid">
-                    ${(q.options || []).map((opt, oIdx) => `
-                      <button class="btn btn-outline btn-passage-opt" data-q-idx="${qIdx}" data-opt-idx="${oIdx}">
-                        ${opt}
-                      </button>
-                    `).join("")}
-                  </div>
-                  <div class="exercise-feedback q-feedback-${qIdx}" style="display: none;"></div>
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                <h3 style="margin: 0;">Begripsvragen (${answeredCount}/${totalQuestions})</h3>
+                ${allAnswered ? `
+                  <span class="status-indicator">Score: <strong>${pctScore}%</strong> (${numCorrect}/${totalQuestions} juist)</span>
+                ` : ""}
+              </div>
+
+              ${allAnswered ? `
+                <div class="card session-complete-card animate-fade" style="margin-bottom: 1.5rem; text-align: center;">
+                  <div class="complete-icon">🎉</div>
+                  <h3>Tekst & Quiz Voltooid!</h3>
+                  <p>Je hebt <strong>${numCorrect} van de ${totalQuestions}</strong> vragen juist beantwoord (${pctScore}%).</p>
                 </div>
-              `).join("")}
+              ` : ""}
+
+              ${(passage.questions || []).map((q, qIdx) => {
+                const ans = this.activePassageAnswers[qIdx];
+                return `
+                  <div class="quiz-question-card" data-q-idx="${qIdx}">
+                    <p class="q-title"><strong>Vraag ${qIdx + 1}:</strong> ${q.question}</p>
+                    <div class="options-grid">
+                      ${(q.options || []).map((opt, oIdx) => {
+                        const isChosen = ans && ans.chosenOptIdx === oIdx;
+                        const isCorrectOption = ans && oIdx === q.correct;
+                        let btnClass = "btn-outline";
+                        if (ans) {
+                          if (isChosen) {
+                            btnClass = ans.isCorrect ? "btn-success" : "btn-wrong";
+                          } else if (isCorrectOption) {
+                            btnClass = "btn-success";
+                          }
+                        }
+                        return `
+                          <button class="btn ${btnClass} btn-passage-opt" data-q-idx="${qIdx}" data-opt-idx="${oIdx}" ${ans ? 'disabled' : ''}>
+                            ${opt}
+                          </button>
+                        `;
+                      }).join("")}
+                    </div>
+                    <div class="exercise-feedback q-feedback-${qIdx} ${ans ? (ans.isCorrect ? 'feedback-correct' : 'feedback-wrong') : ''}" style="${ans ? 'display: block;' : 'display: none;'}">
+                      ${ans ? (ans.isCorrect ? `✓ Juist! ${q.explanation}` : `✗ Helaas. ${q.explanation}`) : ''}
+                    </div>
+                  </div>
+                `;
+              }).join("")}
             </div>
           </div>
         </div>
@@ -1662,6 +1810,7 @@
       if (backBtn) {
         backBtn.addEventListener("click", () => {
           this.activePassage = null;
+          this.activePassageAnswers = {};
           this.render();
         });
       }
@@ -1670,7 +1819,8 @@
         card.addEventListener("click", () => {
           const passageId = card.dataset.passageId;
           const passages = global.NP_COMPREHENSION || [];
-          this.activePassage = passages.find(p => p.id === passageId) || passages[0];
+          this.activePassage = passages.find((p) => p.id === passageId) || passages[0];
+          this.activePassageAnswers = {};
           this.render();
           window.scrollTo({ top: 0, behavior: "smooth" });
         });
@@ -1687,19 +1837,25 @@
         btn.addEventListener("click", () => {
           const qIdx = parseInt(btn.dataset.qIdx, 10);
           const optIdx = parseInt(btn.dataset.optIdx, 10);
+          if (!this.activePassage || !this.activePassage.questions) return;
+          if (this.activePassageAnswers[qIdx]) return; // Question already answered
+
           const q = this.activePassage.questions[qIdx];
           const isCorrect = optIdx === q.correct;
+          this.activePassageAnswers[qIdx] = { chosenOptIdx: optIdx, isCorrect };
 
-          const fb = document.querySelector(`.q-feedback-${qIdx}`);
-          if (fb) {
-            fb.style.display = "block";
-            fb.className = `exercise-feedback ${isCorrect ? 'feedback-correct' : 'feedback-wrong'}`;
-            fb.innerHTML = isCorrect ? `✓ Juist! ${q.explanation}` : `✗ Helaas. ${q.explanation}`;
+          const totalQuestions = this.activePassage.questions.length;
+          const answeredCount = Object.keys(this.activePassageAnswers).length;
+
+          if (answeredCount === totalQuestions) {
+            const numCorrect = Object.values(this.activePassageAnswers).filter((a) => a.isCorrect).length;
+            const score = Math.round((numCorrect / totalQuestions) * 100);
+            this.store.completeComprehension(this.activePassage.id, score, totalQuestions);
+          } else {
+            this.store.recordActivity(isCorrect ? 5 : 1);
           }
 
-          if (isCorrect) {
-            this.store.completeComprehension(this.activePassage.id, 100, this.activePassage.questions.length);
-          }
+          this.render();
         });
       });
     }
@@ -1713,23 +1869,24 @@
 
       let filtered = words;
       if (q) {
-        filtered = filtered.filter(w => 
-          w.word.toLowerCase().includes(q) || 
-          (w.meaning && w.meaning.toLowerCase().includes(q)) ||
-          (w.lemma && w.lemma.toLowerCase().includes(q))
+        filtered = filtered.filter(
+          (w) =>
+            w.word.toLowerCase().includes(q) ||
+            (w.meaning && w.meaning.toLowerCase().includes(q)) ||
+            (w.lemma && w.lemma.toLowerCase().includes(q))
         );
       }
       if (this.selectedPos !== "all") {
-        filtered = filtered.filter(w => w.pos === this.selectedPos);
+        filtered = filtered.filter((w) => w.pos === this.selectedPos);
       }
       if (this.selectedLevel !== "all") {
-        filtered = filtered.filter(w => w.level === this.selectedLevel);
+        filtered = filtered.filter((w) => w.level === this.selectedLevel);
       }
       if (this.selectedArticle !== "all") {
-        filtered = filtered.filter(w => w.article === this.selectedArticle);
+        filtered = filtered.filter((w) => w.article === this.selectedArticle);
       }
       if (this.showOnlyBookmarked) {
-        filtered = filtered.filter(w => this.store.isBookmarked(w.id));
+        filtered = filtered.filter((w) => this.store.isBookmarked(w.id));
       }
 
       const displayList = filtered.slice(0, 60);
@@ -1895,13 +2052,13 @@
       const articleStats = progress.articleStats || { totalDrilled: 0, correct: 0 };
       const artAcc = articleStats.totalDrilled > 0 ? Math.round((articleStats.correct / articleStats.totalDrilled) * 100) : 100;
 
-      // 30-day activity heatmap
+      // 30-day activity heatmap using local date
       const days = [];
       const now = new Date();
       for (let i = 29; i >= 0; i--) {
-        const d = new Date(now.getTime() - i * 24 * 60 * 60 * 1000);
-        const iso = d.toISOString().split("T")[0];
-        const count = progress.studyDays[iso] || 0;
+        const d = new Date(now.getFullYear(), now.getMonth(), now.getDate() - i);
+        const iso = Learning.getLocalISODate(d);
+        const count = progress.studyDays ? progress.studyDays[iso] || 0 : 0;
         days.push({ iso, count });
       }
 
@@ -1943,7 +2100,7 @@
               <h3>30-Dagen Activiteit</h3>
               <p style="font-size: 0.88rem; color: var(--text-secondary);">Elk blokje vertegenwoordigt je dagelijkse oefenintensiteit.</p>
               <div class="heatmap-grid">
-                ${days.map(d => {
+                ${days.map((d) => {
                   const level = d.count === 0 ? 'heat-0' : d.count < 5 ? 'heat-1' : d.count < 15 ? 'heat-2' : 'heat-3';
                   return `<div class="heatmap-cell ${level}" title="${d.iso}: ${d.count} items"></div>`;
                 }).join("")}
@@ -2095,7 +2252,7 @@
           const url = URL.createObjectURL(blob);
           const a = document.createElement("a");
           a.href = url;
-          a.download = `nederpath-backup-${new Date().toISOString().split("T")[0]}.json`;
+          a.download = `nederpath-backup-${Learning.getLocalISODate()}.json`;
           a.click();
           URL.revokeObjectURL(url);
         });
@@ -2134,7 +2291,9 @@
   }
 
   // Initialize App on DOM Ready
-  window.addEventListener("DOMContentLoaded", () => {
-    global.NederApp = new NederPathApp();
-  });
+  if (typeof window !== "undefined") {
+    window.addEventListener("DOMContentLoaded", () => {
+      global.NederApp = new NederPathApp();
+    });
+  }
 })(typeof window !== "undefined" ? window : globalThis);
