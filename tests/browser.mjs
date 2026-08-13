@@ -189,6 +189,39 @@ async function runBrowserTests() {
     assert(requestedGrammar, "Initial Today view requested grammar.js on demand for spotlight rule");
     assert(requestedIdioms, "Initial Today view requested idioms.js on demand for idiom of day");
 
+    const idiomCard = await page.$(".idiom-card");
+    assert(idiomCard !== null, "Idiom-of-the-day card renders from the loaded expression bank");
+
+    // Exercise the real innerHTML path with hostile learner-visible content.
+    // The app must escape it and remain able to restore the normal card.
+    const escapedIdiom = await page.evaluate(async () => {
+      const original = window.NP_IDIOMS;
+      window.NP_IDIOMS = [{
+        id: "idm-probe",
+        dutch: "<img src=x onerror=window.__idiomXss=1>",
+        meaning: "<b>probe meaning</b>",
+        literal: "<i>probe literal</i>",
+        register: "idiom",
+        level: "A1",
+        example: "<svg onload=window.__idiomXss=2>",
+        exampleEn: "<script>window.__idiomXss=3</script>",
+        contextNote: null,
+        usageWarning: null,
+        tags: ["probe"],
+        related: []
+      }];
+      await window.NederApp.render();
+      const card = document.querySelector(".idiom-card");
+      const result = { html: card ? card.innerHTML : "", text: card ? card.textContent : "", xss: window.__idiomXss || 0 };
+      window.NP_IDIOMS = original;
+      await window.NederApp.render();
+      return result;
+    });
+    assert(!escapedIdiom.html.includes("<img") && escapedIdiom.html.includes("&lt;img"), "Idiom Dutch text is HTML-escaped in the browser");
+    assert(!escapedIdiom.html.includes("<script") && escapedIdiom.html.includes("&lt;script"), "Idiom English example is HTML-escaped in the browser");
+    assert(escapedIdiom.text.includes("<img") && escapedIdiom.xss === 0, "Escaped idiom probe remains text and cannot execute");
+    assert((await page.$(".idiom-card")) !== null, "Idiom-of-the-day card remains functional after escaped-content render");
+
     const maxBudget = 1.5 * 1024 * 1024; // 1.5 MB uncompressed budget
     assert(
       initialTotalBytes <= maxBudget,

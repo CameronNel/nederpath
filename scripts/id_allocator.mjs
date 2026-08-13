@@ -21,7 +21,9 @@ export class RegistryError extends Error {}
  * @param {unknown} registry - parsed JSON content of data/word_ids.json
  * @returns {{ entries: Map<string, string>, owners: Map<string, string>, highWaterMark: number }}
  */
-export function validateRegistry(registry) {
+export function validateRegistry(registry, options = {}) {
+  const idPattern = options.idPattern || ID_PATTERN;
+  const normalize = options.normalize || ((value) => String(value || "").toLowerCase().trim());
   if (
     !registry ||
     typeof registry !== "object" ||
@@ -41,7 +43,7 @@ export function validateRegistry(registry) {
   let maxIdNum = 0;
 
   for (const [norm, id] of Object.entries(registry.entries)) {
-    if (!norm || norm !== norm.toLowerCase().trim() || typeof id !== "string" || !ID_PATTERN.test(id)) {
+    if (!norm || norm !== normalize(norm) || typeof id !== "string" || !idPattern.test(id)) {
       throw new RegistryError(`invalid registry entry '${norm}' -> '${id}'`);
     }
     if (owners.has(id)) {
@@ -49,7 +51,11 @@ export function validateRegistry(registry) {
     }
     owners.set(id, norm);
     entries.set(norm, id);
-    const num = Number(id.slice(3));
+    const match = id.match(idPattern);
+    const num = match ? Number(match[1]) : NaN;
+    if (!Number.isSafeInteger(num) || num < 0) {
+      throw new RegistryError(`invalid numeric portion in historical ID '${id}'`);
+    }
     if (num > maxIdNum) maxIdNum = num;
   }
 
@@ -57,7 +63,7 @@ export function validateRegistry(registry) {
     throw new RegistryError(`registry high-water mark ${registry.highWaterMark} is below historical maximum ${maxIdNum}`);
   }
 
-  return { entries, owners, highWaterMark: registry.highWaterMark };
+  return { entries, owners, highWaterMark: registry.highWaterMark, idPattern, normalize };
 }
 
 /**
@@ -67,7 +73,7 @@ export function validateRegistry(registry) {
  *
  * @param {{ entries: Map<string, string>, owners: Map<string, string>, highWaterMark: number }} validated
  */
-export function createIdAllocator(validated) {
+export function createIdAllocator(validated, options = {}) {
   if (!validated || !(validated.entries instanceof Map) || !(validated.owners instanceof Map) ||
       !Number.isSafeInteger(validated.highWaterMark)) {
     throw new RegistryError("createIdAllocator requires the output of validateRegistry()");
@@ -78,6 +84,9 @@ export function createIdAllocator(validated) {
   const owners = new Map(validated.owners);
   const appended = [];
   let nextNum = validated.highWaterMark;
+  const idPattern = options.idPattern || validated.idPattern || ID_PATTERN;
+  const normalize = options.normalize || validated.normalize || ((value) => String(value || "").toLowerCase().trim());
+  const formatId = options.formatId || ((num) => "nl-" + String(num).padStart(5, "0"));
 
   /**
    * Returns the stable ID for a normalized word, appending a fresh ID above
@@ -86,12 +95,16 @@ export function createIdAllocator(validated) {
    * @param {string} rawWord - the word form (normalized inside)
    */
   function assignId(rawWord) {
-    const norm = String(rawWord || "").toLowerCase().trim();
+    const norm = normalize(rawWord);
     if (!norm) throw new RegistryError("cannot assign an ID to an empty word");
     const existing = entries.get(norm);
     if (existing !== undefined) return existing;
     nextNum++;
-    const id = "nl-" + String(nextNum).padStart(5, "0");
+    const id = formatId(nextNum);
+    const idMatch = typeof id === "string" ? id.match(idPattern) : null;
+    if (!idMatch || Number(idMatch[1]) !== nextNum) {
+      throw new RegistryError(`allocator format produced invalid ID '${id}' for sequence ${nextNum}`);
+    }
     // Monotonic growth above the high-water mark guarantees this ID has no owner.
     if (owners.has(id)) {
       throw new RegistryError(`allocator attempted to recycle owned ID '${id}'`);
@@ -104,7 +117,7 @@ export function createIdAllocator(validated) {
 
   /** Historical ID for a normalized word, or undefined when never assigned. */
   function lookupId(rawWord) {
-    return entries.get(String(rawWord || "").toLowerCase().trim());
+    return entries.get(normalize(rawWord));
   }
 
   /** Owner (normalized word) of an ID, or undefined when the ID is unowned. */

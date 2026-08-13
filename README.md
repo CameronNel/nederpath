@@ -54,7 +54,7 @@ Public Application URL: **`https://cameronnel.github.io/nederpath/`**
 
 ## 2. Supporting Content Banks
 
-- **Idioms & Everyday Expressions ([`data/idioms.js`](data/idioms.js))**: A generated bank of idioms, spoken formulas, greetings, workplace phrases, and proverbs with translations and usage fields. Content deduplication and provenance review remain required; the row count is not a claim of unique or independently curated expressions.
+- **Idioms & Everyday Expressions ([`data/idioms.js`](data/idioms.js))**: A generated, source-audited bank of idioms, spoken formulas, greetings, workplace phrases, and proverbs with translations and usage fields. The runtime count is the number of surviving curated source rows, not a fixed marketing total.
 - **Dutch Sentence Bank ([`data/sentences.js`](data/sentences.js))**: A generated practice-sentence bank across daily life, work, travel, and healthcare, tagged with CEFR levels and target grammar. A separate content-quality pass is required before treating every row as curated material.
 
 ---
@@ -141,4 +141,4 @@ npm run serve
 
 - **Audio/Voice Synthesis**: Pronunciation recordings, custom voice providers, and audio file playback are explicitly omitted and left out of scope for this release.
 - **Server Sync**: NederPath is an offline-first client application; synchronization between multiple physical devices relies on manual JSON progress export and import via the Settings tab.
-- **Supporting Content Review**: The idiom, sentence, and comprehension generators still require dedicated deduplication and editorial-quality batches. Their present row counts must not be read as proof of unique, authentic, or independently curated content.
+- **Supporting Content Review**: Sentence and comprehension generators still require dedicated deduplication and editorial-quality batches. Their present row counts must not be read as proof of unique or independently curated content; the idiom/expression bank now has its own source, uniqueness, and stable-ID audit.

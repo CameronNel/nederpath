@@ -2,6 +2,8 @@
 import { readFileSync, existsSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
+import { validateRegistry, RegistryError } from "./id_allocator.mjs";
+import { exampleDemonstratesExpression, normalizeExpression, validateIdiomRow } from "./idiom_rules.mjs";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 
@@ -36,6 +38,9 @@ const requiredFiles = [
   "data/grammar.js",
   "data/sentences.js",
   "data/idioms.js",
+  "data/idiom_ids.json",
+  "tests/fixtures/idiom_baseline_ids.json",
+  "tests/fixtures/idiom_audit_baseline.json",
   "data/comprehension.js",
   "manifest.webmanifest",
   "sw.js",
@@ -208,21 +213,106 @@ const idiomsSrc = readFileSync(join(ROOT, "data", "idioms.js"), "utf8");
 const fnIdioms = new Function("globalThis", idiomsSrc + "\nreturn globalThis.NP_IDIOMS;");
 const idioms = fnIdioms(dummyGlobal);
 
-assert(Array.isArray(idioms), "NP_IDIOMS is an array");
-assert(idioms.length >= 500, `NP_IDIOMS count >= 500 (actual: ${idioms.length})`);
+let idiomAuditBaseline;
+let idiomAuditBaselineError = "";
+try {
+  idiomAuditBaseline = JSON.parse(readFileSync(join(ROOT, "tests", "fixtures", "idiom_audit_baseline.json"), "utf8"));
+  const requiredEvidence = [
+    "artifactRows", "normalizedExpressions", "duplicateGroups", "duplicateRows", "maxDuplicateGroup",
+    "repeatedExampleGroups", "repeatedExampleRows", "repeatedContextGroups", "repeatedContextRows",
+    "contextSuffixRows", "invalidSchemaRows", "duplicateIds", "survivingExpressions"
+  ];
+  if (!idiomAuditBaseline || requiredEvidence.some((key) => !Number.isSafeInteger(idiomAuditBaseline[key]))) {
+    throw new Error("missing numeric evidence fields");
+  }
+} catch (err) {
+  idiomAuditBaselineError = err.message;
+}
+assert(!idiomAuditBaselineError, "Historical idiom audit evidence parses fail-closed", idiomAuditBaselineError);
+if (!idiomAuditBaselineError) {
+  console.log(`  [INFO] Pre-truth evidence: ${idiomAuditBaseline.artifactRows} rows -> ${idiomAuditBaseline.normalizedExpressions} normalized expressions; ${idiomAuditBaseline.duplicateRows} duplicate rows in ${idiomAuditBaseline.duplicateGroups} groups; ${idiomAuditBaseline.contextSuffixRows} context-suffixed translations.`);
+}
 
+assert(Array.isArray(idioms), "NP_IDIOMS is an array");
+assert(idioms.length > 0, `Idioms & expressions bank is non-empty (actual: ${idioms.length})`);
+
+const idiomNorms = new Map();
+const idiomIds = new Map();
 let invalidIdioms = 0;
 let suspiciousIdiomStrings = 0;
+let unmatchedExamples = 0;
 for (const idm of idioms) {
-  if (!idm.dutch || !idm.meaning || !idm.example) {
-    invalidIdioms++;
-  }
+  const schemaErrors = validateIdiomRow(idm);
+  if (schemaErrors.length) invalidIdioms++;
+  const norm = normalizeExpression(idm.dutch);
+  if (idiomNorms.has(norm)) invalidIdioms++;
+  idiomNorms.set(norm, idm.id);
+  if (idiomIds.has(idm.id)) invalidIdioms++;
+  idiomIds.set(idm.id, norm);
+  if (!exampleDemonstratesExpression(idm.dutch, idm.example)) unmatchedExamples++;
+  if (idm.exampleEn !== null && idm.exampleEn === idm.meaning) invalidIdioms++;
   if (idm.example.includes("rjestig") || idm.example.includes("jew") || idm.example.includes("mevrojew")) {
     suspiciousIdiomStrings++;
   }
 }
-assert(invalidIdioms === 0, "All idioms carry Dutch, meaning, and example sentences");
+assert(invalidIdioms === 0, "All idiom rows satisfy schema, unique-expression, and unique-ID invariants");
+assert(idiomNorms.size === idioms.length, "Normalized Dutch expressions are unique");
+assert(idiomIds.size === idioms.length, "Idiom IDs are unique and well-formed");
+assert(unmatchedExamples === 0, "Every Dutch example contains or contextually demonstrates its expression", `unmatched: ${unmatchedExamples}`);
 assert(suspiciousIdiomStrings === 0, "Zero suspicious substrings in idioms (rjestig/jew/mevrojew)");
+
+const repeatedExamples = new Map();
+const repeatedContexts = new Map();
+for (const idm of idioms) {
+  const exampleKey = normalizeExpression(idm.example);
+  if (!repeatedExamples.has(exampleKey)) repeatedExamples.set(exampleKey, []);
+  repeatedExamples.get(exampleKey).push(idm.id);
+  if (idm.contextNote) {
+    const contextKey = normalizeExpression(idm.contextNote);
+    if (!repeatedContexts.has(contextKey)) repeatedContexts.set(contextKey, []);
+    repeatedContexts.get(contextKey).push(idm.id);
+  }
+}
+assert(![...repeatedExamples.values()].some((ids) => ids.length > 1), "No repeated Dutch examples remain");
+assert(![...repeatedContexts.values()].some((ids) => ids.length > 1), "No repeated context-note clone families remain");
+assert(!idioms.some((idm) => /\((?:at|in|on|with|during) [^)]+\)$/i.test(idm.meaning)), "No context-suffixed translation clones remain");
+assert(!idioms.some((idm) => /authentic|Spoken formula used in context/i.test(JSON.stringify(idm))), "No unsupported authenticity or generated-context claims remain");
+
+// Fail closed on the append-only historical registry and the baseline fixture.
+let idiomRegistry;
+let idiomFixture;
+let registryError = "";
+try {
+  idiomRegistry = JSON.parse(readFileSync(join(ROOT, "data", "idiom_ids.json"), "utf8"));
+  idiomFixture = JSON.parse(readFileSync(join(ROOT, "tests", "fixtures", "idiom_baseline_ids.json"), "utf8"));
+  validateRegistry(idiomRegistry, { idPattern: /^idm-(\d{4,})$/, normalize: normalizeExpression });
+  if (!idiomFixture || typeof idiomFixture !== "object" || Array.isArray(idiomFixture) ||
+      typeof idiomFixture.sourceCommit !== "string" || !idiomFixture.entries ||
+      typeof idiomFixture.entries !== "object" || Array.isArray(idiomFixture.entries)) {
+    throw new Error("idiom baseline fixture has an invalid schema");
+  }
+} catch (err) {
+  registryError = err instanceof RegistryError ? err.message : err.message;
+}
+assert(!registryError, "Idiom historical registry and baseline fixture parse and validate", registryError);
+if (!registryError) {
+  assert(idiomFixture.sourceCommit && typeof idiomFixture.sourceCommit === "string", "Idiom baseline records its source commit");
+  assert(idiomFixture.highWaterMark === idiomRegistry.highWaterMark, "Idiom registry and baseline high-water marks agree");
+  const fixtureEntries = idiomFixture.entries;
+  const registryEntries = idiomRegistry.entries;
+  assert(fixtureEntries && typeof fixtureEntries === "object" && !Array.isArray(fixtureEntries), "Idiom baseline entries are an object");
+  assert(Object.keys(fixtureEntries || {}).length === idioms.length, `Baseline owns every surviving expression (actual: ${Object.keys(fixtureEntries || {}).length})`);
+  assert(Object.keys(registryEntries || {}).length >= Object.keys(fixtureEntries || {}).length, "Registry retains surviving owners and its HWM protects retired duplicate IDs");
+  let stableMismatch = 0;
+  for (const idm of idioms) {
+    const norm = normalizeExpression(idm.dutch);
+    if (fixtureEntries[norm] !== idm.id || registryEntries[norm] !== idm.id) stableMismatch++;
+  }
+  assert(stableMismatch === 0, "Every surviving expression keeps its historical ID", `mismatches: ${stableMismatch}`);
+  const currentNumericIds = idioms.map((idm) => Number(idm.id.slice(4)));
+  assert(Math.max(...currentNumericIds) <= idiomRegistry.highWaterMark, "Current IDs never exceed the historical high-water mark");
+  console.log(`  [INFO] Idiom evidence: ${idioms.length} surviving rows; ${Object.keys(fixtureEntries || {}).length} baseline owners; high-water mark ${idiomRegistry.highWaterMark}.`);
+}
 
 // 5. Comprehension Bank (data/comprehension.js)
 console.log("\n--- 5. Comprehension Passages Validation (data/comprehension.js) ---");

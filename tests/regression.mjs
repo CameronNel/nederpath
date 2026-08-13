@@ -5,6 +5,7 @@ import { fileURLToPath } from "node:url";
 import { execFileSync } from "node:child_process";
 import { createHash } from "node:crypto";
 import { validateRegistry, createIdAllocator } from "../scripts/id_allocator.mjs";
+import { exampleDemonstratesExpression, normalizeExpression, validateIdiomRow } from "../scripts/idiom_rules.mjs";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 
@@ -26,6 +27,11 @@ const words = dummyGlobal.NP_WORDS;
 const grammarSrc = readFileSync(join(ROOT, "data", "grammar.js"), "utf8");
 new Function("globalThis", grammarSrc)(dummyGlobal);
 const grammar = dummyGlobal.NP_GRAMMAR;
+
+const idiomsSrc = readFileSync(join(ROOT, "data", "idioms.js"), "utf8");
+const idiomGlobal = {};
+new Function("globalThis", idiomsSrc)(idiomGlobal);
+const idioms = idiomGlobal.NP_IDIOMS;
 
 // -------------------------------------------------------------------
 // Shared helpers: curated core rows and explicit-form derivation
@@ -959,7 +965,96 @@ test("Stable IDs: Full master fixture is preserved and retired IDs cannot be rec
 });
 
 // -------------------------------------------------------------------
-// 18. Learner-Pool Practice Mode Isolation
+// 18. Idiom/Expression Truthfulness and Stable Ownership
+// -------------------------------------------------------------------
+test("Idioms: source-only bank is unique, semantically linked, and fixture-owned", () => {
+  if (!Array.isArray(idioms) || idioms.length === 0) throw new Error("Idioms & expressions bank is empty");
+  const expressions = new Set();
+  const ids = new Set();
+  const examples = new Set();
+  for (const row of idioms) {
+    const errors = validateIdiomRow(row);
+    if (errors.length) throw new Error(`${row && row.id ? row.id : "row"}: ${errors.join(", ")}`);
+    const norm = normalizeExpression(row.dutch);
+    if (expressions.has(norm)) throw new Error(`Duplicate normalized expression '${norm}'`);
+    if (ids.has(row.id)) throw new Error(`Duplicate ID '${row.id}'`);
+    if (!exampleDemonstratesExpression(row.dutch, row.example)) throw new Error(`Example does not demonstrate '${row.id}'`);
+    const exampleKey = normalizeExpression(row.example);
+    if (examples.has(exampleKey)) throw new Error(`Repeated Dutch example '${exampleKey}'`);
+    expressions.add(norm);
+    ids.add(row.id);
+    examples.add(exampleKey);
+  }
+
+  let fixture;
+  let registry;
+  try {
+    fixture = JSON.parse(readFileSync(join(ROOT, "tests", "fixtures", "idiom_baseline_ids.json"), "utf8"));
+    registry = JSON.parse(readFileSync(join(ROOT, "data", "idiom_ids.json"), "utf8"));
+  } catch (err) {
+    throw new Error(`Idiom fixture/registry is missing or malformed: ${err.message}`);
+  }
+  if (!fixture || typeof fixture !== "object" || typeof fixture.sourceCommit !== "string" || !fixture.entries) {
+    throw new Error("Idiom fixture has an invalid schema");
+  }
+  const validated = validateRegistry(registry, { idPattern: /^idm-(\d{4,})$/, normalize: normalizeExpression });
+  if (Object.keys(fixture.entries).length !== idioms.length) throw new Error("Fixture does not cover every surviving expression");
+  let mismatches = 0;
+  for (const row of idioms) {
+    const norm = normalizeExpression(row.dutch);
+    if (fixture.entries[norm] !== row.id || validated.entries.get(norm) !== row.id) mismatches++;
+  }
+  if (mismatches) throw new Error(`${mismatches} surviving expression IDs differ from fixture/registry`);
+  const maxCurrent = Math.max(...idioms.map((row) => Number(row.id.slice(4))));
+  if (validated.highWaterMark <= maxCurrent) throw new Error("Registry high-water mark does not preserve retired duplicate IDs");
+  const retiredProbe = `idm-${String(validated.highWaterMark).padStart(4, "0")}`;
+  const allocator = createIdAllocator(validated, {
+    idPattern: /^idm-(\d{4,})$/,
+    normalize: normalizeExpression,
+    formatId: (num) => `idm-${String(num).padStart(4, "0")}`
+  });
+  if (allocator.ownerOf(retiredProbe) !== undefined) throw new Error(`Retired probe ${retiredProbe} unexpectedly has a live owner`);
+  const appended = allocator.assignId("__new_idiom_probe__");
+  if (appended !== `idm-${String(validated.highWaterMark + 1).padStart(4, "0")}`) throw new Error("New idiom ID did not append above HWM");
+
+  const generatorSource = readFileSync(join(ROOT, "scripts", "generate_idioms.mjs"), "utf8");
+  if (/while\s*\(\s*idiomList\.length|\bSITUATIONS\b/.test(generatorSource) || /authentic/i.test(generatorSource)) {
+    throw new Error("Generator still contains target padding, situation cloning, or authenticity claims");
+  }
+});
+
+test("Idiom generator: two real runs are byte-identical and checkout starts canonical", () => {
+  const dataPath = join(ROOT, "data", "idioms.js");
+  const registryPath = join(ROOT, "data", "idiom_ids.json");
+  const before = [sha256File(dataPath), sha256File(registryPath)];
+  const run = () => execFileSync(process.execPath, [join(ROOT, "scripts", "generate_idioms.mjs")], {
+    cwd: ROOT,
+    encoding: "utf8",
+    stdio: ["ignore", "pipe", "pipe"]
+  });
+  run();
+  const afterFirst = [sha256File(dataPath), sha256File(registryPath)];
+  run();
+  const afterSecond = [sha256File(dataPath), sha256File(registryPath)];
+  if (before.join(":") !== afterFirst.join(":")) throw new Error("Tracked idiom output was stale before generation");
+  if (afterFirst.join(":") !== afterSecond.join(":")) throw new Error("Consecutive idiom generator runs changed bytes");
+});
+
+test("Idiom registry: malformed and conflicting historical ownership fails closed", () => {
+  const options = { idPattern: /^idm-(\d{4,})$/, normalize: normalizeExpression };
+  for (const invalid of [
+    { version: 1, highWaterMark: 1, entries: { "Bad Key": "idm-0001" } },
+    { version: 1, highWaterMark: 1, entries: { first: "idm-0001", second: "idm-0001" } },
+    { version: 1, highWaterMark: 0, entries: { first: "idm-0001" } }
+  ]) {
+    let threw = false;
+    try { validateRegistry(invalid, options); } catch { threw = true; }
+    if (!threw) throw new Error("Malformed/conflicting registry was accepted");
+  }
+});
+
+// -------------------------------------------------------------------
+// 19. Learner-Pool Practice Mode Isolation
 // -------------------------------------------------------------------
 test("Learner Pools: Derived reference-only rows never surface in practice pools", () => {
   const learnablePool = words.filter((w) => w.learnable === true);

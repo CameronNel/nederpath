@@ -327,6 +327,7 @@
       const dayOfYear = Math.floor((now - startOfYear) / 1000 / 60 / 60 / 24);
       const spotlightRule = grammarRules[dayOfYear % (grammarRules.length || 1)] || grammarRules[0];
       const todayIdiom = idioms[dayOfYear % (idioms.length || 1)] || idioms[0];
+      const idiomLevel = todayIdiom && ["A1", "A2", "B1", "B2", "C1"].includes(todayIdiom.level) ? todayIdiom.level : "A1";
 
       return `
         <div class="today-container animate-fade">
@@ -394,14 +395,14 @@
               <div class="card idiom-card">
                 <div class="idiom-header">
                   <span class="card-tag">Uitdrukking van de Dag</span>
-                  <span class="grammar-level badge-${todayIdiom.level.toLowerCase()}">${todayIdiom.level}</span>
+                  <span class="grammar-level badge-${idiomLevel.toLowerCase()}">${idiomLevel}</span>
                 </div>
-                <h3 class="idiom-dutch">“${todayIdiom.dutch}”</h3>
-                ${todayIdiom.literal ? `<div class="idiom-literal"><strong>Letterlijk:</strong> <em>${todayIdiom.literal}</em></div>` : ""}
-                <div class="idiom-meaning"><strong>Betekenis:</strong> ${todayIdiom.meaning}</div>
+                <h3 class="idiom-dutch">“${Learning.escapeHTML(todayIdiom.dutch)}”</h3>
+                ${todayIdiom.literal ? `<div class="idiom-literal"><strong>Letterlijk:</strong> <em>${Learning.escapeHTML(todayIdiom.literal)}</em></div>` : ""}
+                <div class="idiom-meaning"><strong>Betekenis:</strong> ${Learning.escapeHTML(todayIdiom.meaning)}</div>
                 <div class="idiom-example-box">
-                  <div class="idiom-example-nl">“${todayIdiom.example}”</div>
-                  <div class="idiom-example-en">${todayIdiom.exampleEn}</div>
+                  <div class="idiom-example-nl">“${Learning.escapeHTML(todayIdiom.example)}”</div>
+                  ${todayIdiom.exampleEn ? `<div class="idiom-example-en">${Learning.escapeHTML(todayIdiom.exampleEn)}</div>` : ""}
                 </div>
               </div>
             ` : ""}

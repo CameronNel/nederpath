@@ -2,6 +2,7 @@
 import { readFileSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
+import { exampleDemonstratesExpression, normalizeExpression, validateIdiomRow } from "../scripts/idiom_rules.mjs";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 
@@ -107,12 +108,24 @@ test("Data: Grammar curriculum contains exactly 8 sections and >= 120 rules", ()
   if (sections.size !== 8) throw new Error(`Section count is ${sections.size}, expected 8`);
 });
 
-test("Data: Idioms bank contains >= 500 entries", () => {
+test("Data: Idioms & expressions bank is non-empty, unique, and semantically linked", () => {
   const idiomsSrc = readFileSync(join(ROOT, "data", "idioms.js"), "utf8");
   new Function(idiomsSrc)();
   const idioms = globalThis.NP_IDIOMS;
 
-  if (!Array.isArray(idioms) || idioms.length < 500) throw new Error(`Idioms count is ${idioms.length}, expected >= 500`);
+  if (!Array.isArray(idioms) || idioms.length === 0) throw new Error("Idioms bank is empty or invalid");
+  const expressions = new Set();
+  const ids = new Set();
+  for (const row of idioms) {
+    const errors = validateIdiomRow(row);
+    if (errors.length) throw new Error(`${row && row.id ? row.id : "row"}: ${errors.join(", ")}`);
+    const normalized = normalizeExpression(row.dutch);
+    if (expressions.has(normalized)) throw new Error(`Duplicate normalized expression: ${normalized}`);
+    if (ids.has(row.id)) throw new Error(`Duplicate idiom ID: ${row.id}`);
+    if (!exampleDemonstratesExpression(row.dutch, row.example)) throw new Error(`Example does not demonstrate ${row.id}`);
+    expressions.add(normalized);
+    ids.add(row.id);
+  }
 });
 
 test("Data: Comprehension passages contain >= 120 entries with questions", () => {

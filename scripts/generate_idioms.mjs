@@ -1,11 +1,15 @@
-// NederPath Idioms & Spoken Expressions Generator (500+ authentic Dutch idioms, expressions, and formulas)
-import { writeFileSync } from "node:fs";
+// NederPath Idioms & Spoken Expressions Generator.
+// Only explicit curated source rows are emitted; no target-count padding or
+// context cloning is permitted.
+import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
+import { createIdAllocator, RegistryError, validateRegistry } from "./id_allocator.mjs";
+import { exampleDemonstratesExpression, normalizeExpression, validateIdiomRow } from "./idiom_rules.mjs";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 
-// Curated authentic Dutch idioms, proverbs, conversational formulas, and expressions
+// Curated Dutch idioms, proverbs, conversational formulas, and everyday expressions.
 const RAW_EXPRESSIONS = [
   // 1. Classic Idioms & Figurative Sayings
   ["Nu komt de aap uit de mouw", "Now the truth comes out / the real motive is revealed", "Now the monkey comes out of the sleeve", "idiom", "A2", "Toen hij om geld vroeg, kwam de aap uit de mouw.", "When he asked for money, the real motive was revealed.", "Used when someone's true hidden intention or the truth is finally disclosed.", "Very common in daily speech.", "truth, discovery"],
@@ -40,26 +44,75 @@ const RAW_EXPRESSIONS = [
   ["Beter laat dan nooit", "Better late than never", "Better late than never", "proverb", "A1", "Fijn dat je er bent, beter laat dan nooit!", "Glad you are here, better late than never!", "Universal saying in Dutch.", "", "daily, social"]
 ];
 
-const idiomList = [];
-let counter = 1;
+const idRegistryPath = join(ROOT, "data", "idiom_ids.json");
+if (!existsSync(idRegistryPath)) {
+  throw new Error("FATAL: tracked historical ID registry data/idiom_ids.json is missing.");
+}
 
-for (const expr of RAW_EXPRESSIONS) {
-  const [dutch, meaning, literal, register, level, example, exampleEn, contextNote, usageWarning, tagsStr] = expr;
-  idiomList.push({
-    id: "idm-" + String(counter).padStart(4, "0"),
-    dutch,
-    meaning,
-    literal,
-    register,
-    level,
-    example,
-    exampleEn,
-    contextNote,
-    usageWarning,
-    tags: tagsStr.split(", ").filter(Boolean),
-    related: []
+let idRegistry;
+try {
+  idRegistry = JSON.parse(readFileSync(idRegistryPath, "utf8"));
+} catch (err) {
+  throw new Error(`FATAL: data/idiom_ids.json cannot be parsed: ${err.message}`);
+}
+
+let validatedRegistry;
+try {
+  validatedRegistry = validateRegistry(idRegistry, {
+    idPattern: /^idm-(\d{4,})$/,
+    normalize: normalizeExpression
   });
-  counter++;
+} catch (err) {
+  if (err instanceof RegistryError) throw new Error(`FATAL: data/idiom_ids.json is invalid: ${err.message}`);
+  throw err;
+}
+
+const allocator = createIdAllocator(validatedRegistry, {
+  idPattern: /^idm-(\d{4,})$/,
+  normalize: normalizeExpression,
+  formatId: (num) => `idm-${String(num).padStart(4, "0")}`
+});
+const idiomList = [];
+const sourceExpressions = new Map();
+
+function addSourceRow(row) {
+  const normalized = normalizeExpression(row.dutch);
+  if (!normalized) throw new Error("FATAL: curated idiom source contains an empty Dutch expression.");
+  const previous = sourceExpressions.get(normalized);
+  if (previous) {
+    throw new Error(`FATAL: duplicate normalized idiom source '${normalized}' (${previous} and ${row.source}).`);
+  }
+  sourceExpressions.set(normalized, row.source || "unknown source");
+
+  const output = {
+    id: allocator.assignId(normalized),
+    dutch: row.dutch,
+    meaning: row.meaning,
+    literal: row.literal ?? null,
+    register: row.register,
+    level: row.level,
+    example: row.example,
+    exampleEn: row.exampleEn ?? null,
+    contextNote: row.contextNote ?? null,
+    usageWarning: row.usageWarning ?? null,
+    tags: Array.isArray(row.tags) ? row.tags : [],
+    related: Array.isArray(row.related) ? row.related : []
+  };
+  const errors = validateIdiomRow(output);
+  if (errors.length) throw new Error(`FATAL: invalid idiom source '${normalized}': ${errors.join(", ")}`);
+  const exampleReason = exampleDemonstratesExpression(output.dutch, output.example);
+  if (!exampleReason) {
+    throw new Error(`FATAL: Dutch example does not demonstrate '${output.dutch}' (${output.id}).`);
+  }
+  idiomList.push(output);
+}
+
+for (const [index, expr] of RAW_EXPRESSIONS.entries()) {
+  const [dutch, meaning, literal, register, level, example, exampleEn, contextNote, usageWarning, tagsStr] = expr;
+  addSourceRow({
+    source: `RAW_EXPRESSIONS[${index}]`, dutch, meaning, literal, register, level, example, exampleEn,
+    contextNote, usageWarning, tags: tagsStr.split(", "), related: []
+  });
 }
 
 // Conversational formulas, polite Dutch phrases, meeting & daily templates
@@ -72,10 +125,10 @@ const THEMES = [
       ["Goedemiddag, alles goed?", "Good afternoon, everything good? (informal/neutral)", "standard midday greeting", "Hoi Jan, goedemiddag, alles goed?"],
       ["Goedenavond allemaal", "Good evening everyone", "greeting for groups in the evening", "Goedenavond allemaal, welkom bij de presentatie."],
       ["Prettig weekend gewenst!", "Have a pleasant weekend!", "weekend farewell formula", "Tot maandag en een prettig weekend gewenst!"],
-      ["Fijne dag verder!", "Have a nice day further!", "everyday parting phrase in shops & offices", "Dank u wel voor uw hulp en een fijne dag verder!"],
+      ["Fijne dag verder!", "Have a nice rest of your day!", "everyday parting phrase in shops & offices", "Dank u wel voor uw hulp en een fijne dag verder!"],
       ["Tot ziens en tot de volgende keer", "Goodbye and until next time", "friendly parting formula", "Bedankt voor het gezellige bezoek, tot ziens!"],
       ["Eet smakelijk!", "Enjoy your meal! / Bon appétit!", "universal mealtime phrase in Dutch culture", "Het eten staat op tafel, eet smakelijk allemaal!"],
-      ["Gezondheid! / Proost!", "Bless you! (after sneezing) / Cheers! (drinks)", "polite health or drinking formula", "Proost op het nieuwe jaar!"],
+      ["Gezondheid! / Proost!", "Bless you! (after a sneeze) / Cheers! (when drinking)", "polite health or drinking formula", "Proost op het nieuwe jaar!"],
       ["Hartelijk gefeliciteerd met je verjaardag!", "Warm congratulations on your birthday!", "standard birthday formula", "Hartelijk gefeliciteerd met je 30e verjaardag!"],
       ["Veel succes met het examen!", "Best of luck with the exam!", "wishing success formula", "Zet hem op morgen en veel succes met het examen!"]
     ]
@@ -130,28 +183,20 @@ const THEMES = [
   }
 ];
 
-for (const t of THEMES) {
-  for (const item of t.items) {
+for (const [themeIndex, t] of THEMES.entries()) {
+  for (const [itemIndex, item] of t.items.entries()) {
     const [dutch, meaning, note, example] = item;
-    idiomList.push({
-      id: "idm-" + String(counter).padStart(4, "0"),
-      dutch,
-      meaning,
-      literal: "",
-      register: t.level === "A1" ? "neutral" : "colloquial",
-      level: t.level,
-      example,
-      exampleEn: meaning,
-      contextNote: note,
-      usageWarning: "",
-      tags: [t.category, "spoken"],
-      related: []
+    addSourceRow({
+      source: `THEMES[${themeIndex}].items[${itemIndex}]`, dutch, meaning, literal: null,
+      register: t.level === "A1" ? "neutral" : "colloquial", level: t.level, example,
+      // The old generator copied the gloss into this field; that is not an
+      // English example sentence, so unsupported claims are now null.
+      exampleEn: null, contextNote: note, usageWarning: null, tags: [t.category, "spoken"], related: []
     });
-    counter++;
   }
 }
 
-// Extra 40 authentic expressions
+// Additional explicit idioms and everyday expressions.
 const EXTRA_SAYINGS = [
   ["Iets voor lief nemen", "To take something for granted / accept unavoidable drawbacks", "B1", "Het slechte weer moet je in Nederland maar voor lief nemen."],
   ["Een zucht van verlichting slaken", "To breathe a sigh of relief", "A2", "Toen het examen voorbij was, slaakte iedereen een zucht van verlichting."],
@@ -195,39 +240,17 @@ const EXTRA_SAYINGS = [
   ["Het zonnetje in huis zijn", "To be a ray of sunshine / cheerful person", "A2", "Zij is altijd vrolijk en echt het zonnetje in huis."]
 ];
 
-for (const ex of EXTRA_SAYINGS) {
+for (const [index, ex] of EXTRA_SAYINGS.entries()) {
   const [dutch, meaning, level, example] = ex;
-  idiomList.push({
-    id: "idm-" + String(counter).padStart(4, "0"),
-    dutch,
-    meaning,
-    literal: "",
-    register: "idiom",
-    level,
-    example,
-    exampleEn: meaning,
-    contextNote: "Authentic Dutch idiomatic phrase",
-    usageWarning: "",
-    tags: ["idiom", "communication"],
-    related: []
+  addSourceRow({
+    source: `EXTRA_SAYINGS[${index}]`, dutch, meaning, literal: null, register: "idiom", level, example,
+    // No independently sourced English example exists for these rows.
+    exampleEn: null, contextNote: null, usageWarning: null, tags: ["idiom", "communication"], related: []
   });
-  counter++;
 }
 
-// Generate the remaining authentic formulas across daily situations up to 510+
-const SITUATIONS = [
-  { name: "bij de huisarts", en: "at the doctor", context: "medisch consult" },
-  { name: "op het werk", en: "at work", context: "kantooroverleg" },
-  { name: "in het openbaar vervoer", en: "on public transit", context: "reizen met trein en bus" },
-  { name: "in het restaurant", en: "at the restaurant", context: "horeca en dineren" },
-  { name: "op de markt", en: "at the open-air market", context: "boodschappen doen" },
-  { name: "met de buren", en: "with the neighbours", context: "buurtcontact" },
-  { name: "aan de telefoon", en: "on the phone", context: "telefonisch gesprek" },
-  { name: "in een vergadering", en: "in a meeting", context: "zakelijk overleg" },
-  { name: "tijdens een borrel", en: "during drinks", context: "sociale bijeenkomst" },
-  { name: "bij de gemeente", en: "at city hall", context: "burgerzaken" }
-];
-
+// Additional explicit conversational formulas. They are expressions in their
+// own right, not a template to be cloned across situations.
 const FORMULA_TEMPLATES = [
   ["Mag ik u even iets vragen?", "May I ask you something for a moment?", "A1", "Pardon mevrouw, mag ik u even iets vragen over de bushalte?"],
   ["Kunt u dat alstublieft herhalen?", "Could you please repeat that?", "A1", "Het ging iets te snel, kunt u dat alstublieft herhalen?"],
@@ -241,35 +264,27 @@ const FORMULA_TEMPLATES = [
   ["Alvast heel erg bedankt voor uw medewerking", "Thank you very much in advance for your cooperation", "A2", "Ik zie uw reactie tegemoet, alvast heel erg bedankt voor uw medewerking!"]
 ];
 
-while (idiomList.length < 510) {
-  for (const sit of SITUATIONS) {
-    for (const [dutch, meaning, level, example] of FORMULA_TEMPLATES) {
-      if (idiomList.length >= 510) break;
-      const id = "idm-" + String(counter).padStart(4, "0");
-      counter++;
-      idiomList.push({
-        id,
-        dutch,
-        meaning: `${meaning} (${sit.en})`,
-        literal: "",
-        register: "polite",
-        level,
-        example,
-        exampleEn: `${meaning} (${sit.en})`,
-        contextNote: `Spoken formula used in context: ${sit.name} (${sit.context})`,
-        usageWarning: "",
-        tags: ["conversational", sit.name.split(" ")[0]],
-        related: []
-      });
-    }
-  }
+for (const [index, template] of FORMULA_TEMPLATES.entries()) {
+  const [dutch, meaning, level, example] = template;
+  addSourceRow({
+    source: `FORMULA_TEMPLATES[${index}]`, dutch, meaning, literal: null, register: "polite", level, example,
+    exampleEn: null, contextNote: null, usageWarning: null, tags: ["conversational", "spoken"], related: []
+  });
 }
 
-console.log(`Generated ${idiomList.length} authentic Dutch idioms & expressions.`);
+if (idiomList.length === 0) throw new Error("FATAL: no curated idiom source rows were generated.");
+const outputIds = new Set();
+for (const row of idiomList) {
+  if (outputIds.has(row.id)) throw new Error(`FATAL: duplicate generated idiom ID '${row.id}'.`);
+  outputIds.add(row.id);
+}
+
+console.log(`Generated ${idiomList.length} curated Dutch idioms & everyday expressions.`);
 
 const header = `// AUTO-GENERATED by scripts/generate_idioms.mjs - do not edit by hand.
-// ${idiomList.length} authentic Dutch idioms, everyday expressions, proverbs, and polite formulas.
+// ${idiomList.length} curated Dutch idioms, everyday expressions, proverbs, and polite formulas.
 globalThis.NP_IDIOMS = `;
 
 writeFileSync(join(ROOT, "data", "idioms.js"), header + JSON.stringify(idiomList, null, 2) + ";\n");
+writeFileSync(idRegistryPath, JSON.stringify(allocator.toRegistry()) + "\n");
 console.log("data/idioms.js successfully written!");
