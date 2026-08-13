@@ -1622,7 +1622,7 @@ for (const tmpl of SECTION_TEMPLATES) {
           type: "fill_in_the_blank",
           prompt: `Complete the sentence applying ${title}:`,
           blankWord: "dat",
-          sentenceWithBlank: "Het is belangrijk ___ men deze regel goed begrijpt.",
+          sentenceWithBlank: "Het is belangrijk ___ men deze grammaticale regel goed begrijpt.",
           hints: ["dat", "of", "want", "maar"]
         },
         {
@@ -1630,6 +1630,20 @@ for (const tmpl of SECTION_TEMPLATES) {
           translation: "The professor clearly explains the complex grammar rule.",
           tokens: ["De", "hoogleraar", "legt", "de", "complexe", "regel", "duidelijk", "uit"],
           correctSentence: "De hoogleraar legt de complexe regel duidelijk uit"
+        },
+        {
+          type: "sentence_transformation",
+          original: "De studenten bestuderen de grammaticale structuren aandachtig.",
+          instruction: "Formuleer deze zin in de verleden tijd (OVT):",
+          transformed: "De studenten bestudeerden de grammaticale structuren aandachtig.",
+          hints: ["Gebruik de meervoudsvorm in de OVT: bestudeerden"]
+        },
+        {
+          type: "article_selection",
+          noun: "structuur",
+          meaning: "structure, framework",
+          correct: "de",
+          explanation: "Nouns ending in -uur (like 'structuur', 'cultuur', 'natuur') take the definite article 'de'."
         }
       ]
     });

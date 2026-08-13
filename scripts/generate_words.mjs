@@ -1,7 +1,7 @@
 // NederPath word-bank generator.
 // Reads curated lemma cores from data/words_core_*.js and produces data/words.js
 // with EXACTLY 20,000 unique Dutch word-form rows (id, rank, word, lemma, frequency,
-// level, pos, article, meaning, category, synonyms, curated, learnable).
+// level, pos, article, meaning, category, synonyms, curated, learnable, displayWord, example, exampleEn).
 import { readFileSync, writeFileSync, readdirSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -16,7 +16,6 @@ const KOFSCHIP = "tkfschp".split("");
 const VOWELS = "aeiouyéèêáàâäëïöü".split("");
 
 const isVowel = (c) => !!c && VOWELS.includes(c.toLowerCase());
-const lastVowel = (w) => [...w].reverse().find((c) => isVowel(c));
 
 // stem of a verb infinitive with Dutch spelling rules applied
 function verbStem(inf) {
@@ -41,8 +40,7 @@ const sylCount = (w) => (w.match(/[aeiouyéèêáàâäëïöü]+(?:[aeiouy])*/g
 // noun plural with rules + override
 function nounPlural(word, ov) {
   if (ov === "s") return word + "s";
-  if (ov === "inv") return null;
-  if (ov === "none") return null;
+  if (ov === "inv" || ov === "none" || ov === "pl") return null;
   if (ov === "eren") return word + "eren";
   if (ov && ov.startsWith("=")) return ov.slice(1);
   const w = word;
@@ -57,7 +55,6 @@ function nounPlural(word, ov) {
   if (b.endsWith("f")) b = b.slice(0, -1) + "v";
   if (/(aa|ee|oo|uu)$/.test(b) || /(aa|ee|oo|uu)[bcdfghjklmnpqrstvwxz]$/.test(b)) b = b.replace(/(aa|ee|oo|uu)/, (m) => m[0]);
   if (/[bcdfghjklmnpqrstvwxz]$/.test(b) && isVowel(b[b.length - 2]) && !isVowel(b[b.length - 3]) && b.length > 2 && !/(a|e|o|u)[bcdfghjklmnpqrstvwxz]{2}$/.test(b)) {
-    // closed short-vowel syllable -> double final consonant unless vowel already doubled
     const last = b.slice(-1);
     if (!b.endsWith(last + last)) b = b + last;
   }
@@ -66,6 +63,7 @@ function nounPlural(word, ov) {
 
 // diminutive with rules + override
 function nounDim(word, ov) {
+  if (ov === "inv" || ov === "none" || ov === "pl") return null;
   if (ov && ov.includes("|") && ov.split("|")[1]) return ov.split("|")[1];
   const w = word;
   if (/ing$/.test(w)) return w.slice(0, -1) + "kje";
@@ -89,9 +87,9 @@ function nounDim(word, ov) {
   return w + "je";
 }
 
-// inflect base adjective with -e ending
+// inflect base descriptive adjective with -e ending
 function inflectAdj(word, ov) {
-  if (ov === "-") return null;
+  if (ov === "-" || ov === "none") return null;
   if (/e$/.test(word) || /en$/.test(word)) return null;
   let b = word;
   if (b.endsWith("f") && /[aeou]/.test(b)) b = b.slice(0, -1) + "v";
@@ -104,10 +102,9 @@ function inflectAdj(word, ov) {
   return b + "e";
 }
 
-// adjective/adverb comparison with override
+// adjective comparison with override
 function comparison(word, ov) {
-  if (ov === "-") return [null, null];
-  if (ov === "none") return [null, null];
+  if (ov === "-" || ov === "none") return [null, null];
   if (ov && ov.includes("|")) {
     const [, comp, sup] = ov.split("|");
     return [comp || null, sup || null];
@@ -119,7 +116,7 @@ function comparison(word, ov) {
     const last = b.slice(-1);
     if (!b.endsWith(last + last)) b = b + last;
   }
-  const comp = b + "er";
+  const comp = b.endsWith("r") ? b + "der" : b + "er";
   let sup = null;
   if (/s$/.test(b)) sup = b + "t";
   else sup = b + "st";
@@ -174,7 +171,7 @@ for (const file of readdirSync(join(ROOT, "data")).filter((f) => /^words_core_.*
   cores.push(...(ex.WORDS || []));
 }
 
-// core row: [word, pos, level, article, meaning, category, synonyms, meta]
+// Core row: [word, pos, level, article, meaning, category, synonyms, meta]
 const rows = [];
 const seen = new Map(); // normalized word -> index
 const addRow = (r) => {
@@ -186,7 +183,15 @@ const addRow = (r) => {
   return true;
 };
 
-const coreMeta = []; // lemmaIdx -> core order
+// Words that should NOT produce false inflections
+const NON_INFLECTABLE_ADVERBS = new Set([
+  "niet", "wel", "toch", "geen", "nooit", "altijd", "vaak", "zelden", "soms", "al", "nog",
+  "hier", "daar", "waar", "erg", "heel", "zeer", "tamelijk", "misschien", "zeker", "klaar",
+  "dus", "want", "maar", "en", "of", "echter", "immers", "namelijk", "trouwens", "overigens",
+  "toen", "dan", "nu", "straks", "later", "vroeger", "ineens", "plotseling", "eindelijk",
+  "omlaag", "omhoog", "binnen", "buiten", "boven", "beneden", "vooruit", "achteruit"
+]);
+
 for (const [idx, c] of cores.entries()) {
   const [word, pos, level, article, meaning, category, synonyms, meta = ""] = c;
   const base = {
@@ -204,13 +209,12 @@ for (const [idx, c] of cores.entries()) {
   };
   if (pos === "noun" && !article) {
     base.curated = false;
-    base.learnable = false; // reference-only noun without verified article
+    base.learnable = false;
   }
   addRow(base);
-  coreMeta.push({ idx, word, pos, article, meta });
 
   const gen = []; // generated form rows
-  if (pos === "noun" && article) {
+  if (pos === "noun" && article && meta !== "inv" && meta !== "pl") {
     const pl = nounPlural(word, meta.split("|")[0] || "");
     if (pl && !seen.has(pl.toLowerCase())) gen.push({ word: pl, kind: "plural" });
     const dm = nounDim(word, meta);
@@ -223,12 +227,11 @@ for (const [idx, c] of cores.entries()) {
     const inf = word;
     if (meta.startsWith("sep")) {
       const ppO = meta.includes("=") ? meta.split("=")[1] : null;
-      const bare = inf.replace(/^(op|af|uit|aan|in|mee|door|tegen|terug|na|voor|weg|om|binnen|buiten|neer|toe|vast|samen|op|af|uit|aan|mee|door|terug|na|voor|weg|om|neer|toe)(.+)$/, "$2");
+      const bare = inf.replace(/^(op|af|uit|aan|in|mee|door|tegen|terug|na|voor|weg|om|binnen|buiten|neer|toe|vast|samen)(.+)$/, "$2");
       const pp = ppO || withGe(weakPp(verbStem(bare)), bare);
       if (!seen.has(pp.toLowerCase())) gen.push({ word: pp, kind: "past-participle" });
       if (pp && !pp.endsWith("en") && !seen.has((pp + "e").toLowerCase())) gen.push({ word: pp + "e", kind: "attributive-participle" });
     } else {
-      // meta: "" (weak) | "ik|hij|past|pastpl|pp" (irregular principal parts; "-" skips pp)
       const parts = meta ? meta.split("|") : [];
       const ikOv = parts[0] || null;
       const hijOv = parts[1] || null;
@@ -251,7 +254,7 @@ for (const [idx, c] of cores.entries()) {
       if (!seen.has(presP.toLowerCase())) gen.push({ word: presP, kind: "present-participle" });
       if (presP && !seen.has((presP + "e").toLowerCase())) gen.push({ word: presP + "e", kind: "attributive-present-participle" });
     }
-  } else if (pos === "adjective" || pos === "adverb") {
+  } else if (pos === "adjective" && !NON_INFLECTABLE_ADVERBS.has(word.toLowerCase())) {
     const infl = inflectAdj(word, meta);
     if (infl && !seen.has(infl.toLowerCase())) gen.push({ word: infl, kind: "inflected-e" });
     const [comp, sup] = comparison(word, meta);
@@ -273,7 +276,6 @@ for (const [idx, c] of cores.entries()) {
       "past-participle": "past participle of",
       "attributive-participle": "attributive past participle of",
       "present-participle": "present participle of",
-      "attributive-present-participle": "attributive present participle of",
       "inflected-e": "inflected form of",
       comparative: "comparative of",
       "inflected-comparative": "inflected comparative of",
@@ -285,7 +287,7 @@ for (const [idx, c] of cores.entries()) {
       word: g.word,
       pos: pos === "noun" ? "noun" : pos === "verb" ? "verb" : "adjective",
       level,
-      article: pos === "noun" ? article : null,
+      article: pos === "noun" ? (g.kind.includes("diminutive") ? "het" : (g.kind.includes("plural") ? "de" : article)) : null,
       meaning: meaning ? `${kindLabel} ${art}${word} (${meaning})` : null,
       category,
       synonyms: [],
@@ -297,7 +299,7 @@ for (const [idx, c] of cores.entries()) {
   }
 }
 
-// numerals 0..999 and ordinals 1..999
+// Numerals 0..999 and ordinals 1..999
 for (let n = 0; n <= 999; n++) {
   const name = cardinal(n);
   addRow({
@@ -334,36 +336,19 @@ for (let n = 0; n <= 999; n++) {
 // Trim or error to exactly TARGET rows
 // ---------------------------------------------------------------------------
 if (rows.length < TARGET) {
-  const partial = rows.map((r, i) => ({
-    id: "nl-" + String(i + 1).padStart(5, "0"),
-    rank: i + 1,
-    word: r.word,
-    lemma: r.lemma,
-    frequency: 0,
-    level: r.level,
-    pos: r.pos,
-    article: r.article,
-    meaning: r.meaning,
-    category: r.category,
-    synonyms: r.synonyms,
-    curated: !!r.curated,
-    learnable: r.learnable !== false,
-  }));
-  writeFileSync(join(ROOT, "data", "words.js"), "// PARTIAL PREVIEW - incomplete core data\nglobalThis.NP_WORDS = " + JSON.stringify(partial) + ";\n");
   console.error(`ERROR: only ${rows.length} rows generated, target ${TARGET}`);
   process.exit(1);
 }
 
 const surplus = rows.length - TARGET;
 if (surplus > 0) {
-  // Deterministic priority trimming
   const priority = (r, i) => {
-    if (r.curated) return 0;                 // curated lemmas always kept
-    if (r.pos === "noun") return 10;         // noun plurals / diminutives
-    if (r.pos === "verb") return 20;         // verb forms
-    if (r.pos === "adjective") return 30;    // adjective inflections
-    if (r.pos === "numeral") return 40;      // numbers
-    return 50;                               // adverb comparisons last
+    if (r.curated) return 0;
+    if (r.pos === "noun") return 10;
+    if (r.pos === "verb") return 20;
+    if (r.pos === "adjective") return 30;
+    if (r.pos === "numeral") return 40;
+    return 50;
   };
   const indexed = rows.map((r, i) => ({ r, i, p: priority(r, i) }));
   indexed.sort((a, b) => (a.p - b.p) || (a.i - b.i));
@@ -372,19 +357,93 @@ if (surplus > 0) {
 }
 
 // ---------------------------------------------------------------------------
-// Finalise: ids, ranks, frequencies
+// Generate authentic, category-specific Dutch and English example sentences
 // ---------------------------------------------------------------------------
+function generateSemanticExamples(r) {
+  const w = r.word;
+  const art = r.article || "";
+  const display = art ? `${art} ${w}` : w;
+  const m = r.meaning || w;
+  const cat = r.category || "general";
+
+  if (r.pos === "noun" && art) {
+    const CapArt = art.charAt(0).toUpperCase() + art.slice(1);
+    switch (cat) {
+      case "food":
+      case "culinary":
+        return {
+          nl: `Wij kopen verse ${w} op de zaterdagmarkt.`,
+          en: `We buy fresh ${m} at the Saturday market.`
+        };
+      case "housing":
+      case "home":
+        return {
+          nl: `In het appartement bevindt zich een nette ${w}.`,
+          en: `In the apartment there is a neat ${m}.`
+        };
+      case "transport":
+      case "travel":
+        return {
+          nl: `${CapArt} ${w} vertrekt op tijd vanaf het station.`,
+          en: `The ${m} departs on time from the station.`
+        };
+      case "work":
+      case "business":
+        return {
+          nl: `De collega's bespraken ${display} tijdens het overleg.`,
+          en: `The colleagues discussed the ${m} during the meeting.`
+        };
+      case "nature":
+      case "animals":
+        return {
+          nl: `Tijdens de wandeling zagen we ${display} in het park.`,
+          en: `During the walk we saw the ${m} in the park.`
+        };
+      case "health":
+        return {
+          nl: `De arts gaf advies over ${display}.`,
+          en: `The doctor gave advice regarding the ${m}.`
+        };
+      default:
+        return {
+          nl: `${CapArt} ${w} speelt een belangrijke rol in het dagelijks leven.`,
+          en: `The ${m} plays an important role in daily life.`
+        };
+    }
+  }
+
+  if (r.pos === "verb") {
+    return {
+      nl: `Zij proberen elke dag regelmatig te ${w}.`,
+      en: `They try to ${m} regularly every day.`
+    };
+  }
+
+  if (r.pos === "adjective") {
+    return {
+      nl: `Dit is een ${w} voorbeeld van de Nederlandse cultuur.`,
+      en: `This is a ${m} example of Dutch culture.`
+    };
+  }
+
+  if (r.pos === "numeral") {
+    return {
+      nl: `Er waren ${w} bezoekers aanwezig bij de presentatie.`,
+      en: `There were ${w} visitors present at the presentation.`
+    };
+  }
+
+  return {
+    nl: `In deze context gebruiken Nederlanders vaak het woord '${w}'.`,
+    en: `In this context Dutch speakers often use the word '${w}'.`
+  };
+}
+
+// Finalize
 const freqOf = (seq) => Math.max(1, Math.round(1e9 / Math.pow(seq + 1, 0.85)));
 const final = rows.map((r, i) => {
   const displayWord = r.pos === "noun" && r.article ? `${r.article} ${r.word}` : r.word;
-  const example = r.pos === "noun" && r.article 
-    ? `${r.article.charAt(0).toUpperCase() + r.article.slice(1)} ${r.word} staat in het centrum.` 
-    : r.pos === "verb" 
-    ? `Wij ${r.word} elke dag samen.` 
-    : `Dit is een ${r.word} voorbeeld in het Nederlands.`;
-  const exampleEn = r.meaning 
-    ? `The ${r.meaning} is situated in the centre.` 
-    : `Example usage of ${r.word}.`;
+  const ex = generateSemanticExamples(r);
 
   return {
     id: "nl-" + String(i + 1).padStart(5, "0"),
@@ -399,14 +458,14 @@ const final = rows.map((r, i) => {
     meaning: r.meaning || r.word,
     category: r.category || "general",
     synonyms: r.synonyms || [],
-    example,
-    exampleEn,
+    example: ex.nl,
+    exampleEn: ex.en,
     curated: !!r.curated,
     learnable: r.learnable !== false,
   };
 });
 
-// sanity checks
+// Sanity checks
 const ids = new Set(final.map((r) => r.id));
 const words = new Set(final.map((r) => r.word.toLowerCase().trim()));
 if (ids.size !== final.length) throw new Error("duplicate ids");

@@ -1005,9 +1005,15 @@
               <div class="mistake-correct">✓ ${rule.correction || "Gebruik de juiste standaardvolgorde."}</div>
             </div>
 
-            <!-- Interactive Exercise Runner -->
+            <!-- Interactive Exercise Runner with Multi-Exercise Stepper -->
             <div class="exercise-runner-box" id="grammar-exercise-runner">
-              <h3>Interactieve Oefening (${this.activeGrammarExIndex + 1}/${exercises.length})</h3>
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                <h3 style="margin: 0;">Interactieve Oefening (${this.activeGrammarExIndex + 1}/${exercises.length})</h3>
+                <div class="exercise-stepper-btns">
+                  <button class="btn btn-sm btn-outline" id="btn-prev-grammar-ex" ${this.activeGrammarExIndex === 0 ? 'disabled' : ''}>← Vorige</button>
+                  <button class="btn btn-sm btn-outline" id="btn-next-grammar-ex" ${this.activeGrammarExIndex >= exercises.length - 1 ? 'disabled' : ''}>Volgende →</button>
+                </div>
+              </div>
               ${this.renderGrammarExercise(currentEx)}
             </div>
           </div>
@@ -1058,9 +1064,59 @@
           return `
             <div class="exercise-fill animate-fade">
               <p class="exercise-question">${ex.prompt || "Vul het juiste woord in:"}</p>
-              <div class="exercise-sentence">${ex.sentenceWithBlank}</div>
+              <div class="exercise-sentence" style="font-size: 1.2rem; font-weight: 700; margin: 1rem 0;">${ex.sentenceWithBlank}</div>
               <div class="hint-chips-pool">
                 ${(ex.hints || []).map(h => `<button class="chip-token btn-hint-opt" data-hint="${h}">${h}</button>`).join("")}
+              </div>
+              <div id="grammar-ex-feedback" class="exercise-feedback" style="display: none;"></div>
+            </div>
+          `;
+        case "typed_conjugation":
+          return `
+            <div class="exercise-typed-conj animate-fade">
+              <p class="exercise-question">Vervoeg het werkwoord '<strong>${ex.infinitive}</strong>' voor '<strong>${ex.subject}</strong>' (${ex.targetTense}):</p>
+              <form id="form-grammar-conj" style="margin-top: 1rem;">
+                <input type="text" id="input-grammar-conj" class="form-input" placeholder="Typ de juiste vervoeging..." autocomplete="off" />
+                <button type="submit" class="btn btn-primary" style="margin-top: 0.75rem;">Controleer Vervoeging</button>
+              </form>
+              <div id="grammar-ex-feedback" class="exercise-feedback" style="display: none;"></div>
+            </div>
+          `;
+        case "sentence_transformation":
+          return `
+            <div class="exercise-transform animate-fade">
+              <p class="exercise-question">${ex.instruction || "Herschrijf de zin:"}</p>
+              <div class="original-sentence-box" style="background: var(--bg-surface-elevated); padding: 0.75rem; border-radius: var(--radius-sm); margin: 0.75rem 0;">
+                “${ex.original}”
+              </div>
+              <form id="form-grammar-transform" style="margin-top: 1rem;">
+                <input type="text" id="input-grammar-transform" class="form-input" placeholder="Typ de getransformeerde zin..." autocomplete="off" />
+                <button type="submit" class="btn btn-primary" style="margin-top: 0.75rem;">Controleer Transformatie</button>
+              </form>
+              <div id="grammar-ex-feedback" class="exercise-feedback" style="display: none;"></div>
+            </div>
+          `;
+        case "error_correction":
+          return `
+            <div class="exercise-error-corr animate-fade">
+              <p class="exercise-question">Zoek de fout in de zin en corrigeer deze:</p>
+              <div class="original-sentence-box" style="background: var(--bg-surface-elevated); padding: 0.75rem; border-radius: var(--radius-sm); margin: 0.75rem 0;">
+                “${ex.sentenceWithError}”
+              </div>
+              <form id="form-grammar-error" style="margin-top: 1rem;">
+                <input type="text" id="input-grammar-error" class="form-input" placeholder="Typ de gecorrigeerde zin..." autocomplete="off" />
+                <button type="submit" class="btn btn-primary" style="margin-top: 0.75rem;">Controleer Correctie</button>
+              </form>
+              <div id="grammar-ex-feedback" class="exercise-feedback" style="display: none;"></div>
+            </div>
+          `;
+        case "article_selection":
+          return `
+            <div class="exercise-article-select animate-fade">
+              <p class="exercise-question">Kies het juiste lidwoord voor: <strong>${ex.noun}</strong> <em>(${ex.meaning})</em></p>
+              <div class="options-grid" style="grid-template-columns: 1fr 1fr; margin-top: 1rem;">
+                <button class="btn btn-drill btn-de btn-grammar-art" data-art="de">de</button>
+                <button class="btn btn-drill btn-het btn-grammar-art" data-art="het">het</button>
               </div>
               <div id="grammar-ex-feedback" class="exercise-feedback" style="display: none;"></div>
             </div>
@@ -1076,6 +1132,29 @@
     }
 
     attachGrammarListeners() {
+      const prevExBtn = document.getElementById("btn-prev-grammar-ex");
+      if (prevExBtn) {
+        prevExBtn.addEventListener("click", () => {
+          if (this.activeGrammarExIndex > 0) {
+            this.activeGrammarExIndex -= 1;
+            this.tokenReconstructionPlaced = [];
+            this.render();
+          }
+        });
+      }
+
+      const nextExBtn = document.getElementById("btn-next-grammar-ex");
+      if (nextExBtn) {
+        nextExBtn.addEventListener("click", () => {
+          const exercises = this.activeGrammarRule ? this.activeGrammarRule.exercises || [] : [];
+          if (this.activeGrammarExIndex < exercises.length - 1) {
+            this.activeGrammarExIndex += 1;
+            this.tokenReconstructionPlaced = [];
+            this.render();
+          }
+        });
+      }
+
       document.querySelectorAll(".btn-grammar-opt").forEach((btn) => {
         btn.addEventListener("click", () => {
           const idx = parseInt(btn.dataset.optIdx, 10);
@@ -1095,6 +1174,95 @@
           }
         });
       });
+
+      document.querySelectorAll(".btn-grammar-art").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const chosen = btn.dataset.art;
+          const exercises = this.activeGrammarRule.exercises || [];
+          const currentEx = exercises[this.activeGrammarExIndex];
+          const isCorrect = chosen.toLowerCase() === currentEx.correct.toLowerCase();
+
+          const fb = document.getElementById("grammar-ex-feedback");
+          if (fb) {
+            fb.style.display = "block";
+            fb.className = `exercise-feedback ${isCorrect ? 'feedback-correct' : 'feedback-wrong'}`;
+            fb.innerHTML = isCorrect ? `✓ Juist! Het is <strong>${currentEx.correct} ${currentEx.noun}</strong>. ${currentEx.explanation || ''}` : `✗ Niet juist. Het is <strong>${currentEx.correct} ${currentEx.noun}</strong>. ${currentEx.explanation || ''}`;
+          }
+
+          if (isCorrect) {
+            this.store.completeGrammarRule(this.activeGrammarRule.id);
+          }
+        });
+      });
+
+      const formConj = document.getElementById("form-grammar-conj");
+      if (formConj) {
+        formConj.addEventListener("submit", (e) => {
+          e.preventDefault();
+          const inp = document.getElementById("input-grammar-conj");
+          const val = (inp ? inp.value : "").trim().toLowerCase();
+          const exercises = this.activeGrammarRule.exercises || [];
+          const currentEx = exercises[this.activeGrammarExIndex];
+          const isCorrect = val === currentEx.correctForm.toLowerCase();
+
+          const fb = document.getElementById("grammar-ex-feedback");
+          if (fb) {
+            fb.style.display = "block";
+            fb.className = `exercise-feedback ${isCorrect ? 'feedback-correct' : 'feedback-wrong'}`;
+            fb.innerHTML = isCorrect ? `✓ Uitstekend vervoegd! ${currentEx.explanation}` : `✗ Niet juist. De juiste vorm is '<strong>${currentEx.correctForm}</strong>'. ${currentEx.explanation}`;
+          }
+
+          if (isCorrect) {
+            this.store.completeGrammarRule(this.activeGrammarRule.id);
+          }
+        });
+      }
+
+      const formTransform = document.getElementById("form-grammar-transform");
+      if (formTransform) {
+        formTransform.addEventListener("submit", (e) => {
+          e.preventDefault();
+          const inp = document.getElementById("input-grammar-transform");
+          const val = (inp ? inp.value : "").trim().toLowerCase();
+          const exercises = this.activeGrammarRule.exercises || [];
+          const currentEx = exercises[this.activeGrammarExIndex];
+          const isCorrect = val.replace(/[.,!?]/g, "") === currentEx.transformed.toLowerCase().replace(/[.,!?]/g, "");
+
+          const fb = document.getElementById("grammar-ex-feedback");
+          if (fb) {
+            fb.style.display = "block";
+            fb.className = `exercise-feedback ${isCorrect ? 'feedback-correct' : 'feedback-wrong'}`;
+            fb.innerHTML = isCorrect ? `✓ Perfecte transformatie!` : `✗ Niet helemaal juist. Modelzin: “<strong>${currentEx.transformed}</strong>”`;
+          }
+
+          if (isCorrect) {
+            this.store.completeGrammarRule(this.activeGrammarRule.id);
+          }
+        });
+      }
+
+      const formError = document.getElementById("form-grammar-error");
+      if (formError) {
+        formError.addEventListener("submit", (e) => {
+          e.preventDefault();
+          const inp = document.getElementById("input-grammar-error");
+          const val = (inp ? inp.value : "").trim().toLowerCase();
+          const exercises = this.activeGrammarRule.exercises || [];
+          const currentEx = exercises[this.activeGrammarExIndex];
+          const isCorrect = val.replace(/[.,!?]/g, "") === currentEx.correctedSentence.toLowerCase().replace(/[.,!?]/g, "");
+
+          const fb = document.getElementById("grammar-ex-feedback");
+          if (fb) {
+            fb.style.display = "block";
+            fb.className = `exercise-feedback ${isCorrect ? 'feedback-correct' : 'feedback-wrong'}`;
+            fb.innerHTML = isCorrect ? `✓ Foutloos gecorrigeerd! ${currentEx.explanation}` : `✗ Niet helemaal juist. Correcte zin: “<strong>${currentEx.correctedSentence}</strong>”. ${currentEx.explanation}`;
+          }
+
+          if (isCorrect) {
+            this.store.completeGrammarRule(this.activeGrammarRule.id);
+          }
+        });
+      }
 
       document.querySelectorAll(".chip-token:not(.chip-placed)").forEach((btn) => {
         btn.addEventListener("click", () => {

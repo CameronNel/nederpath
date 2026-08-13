@@ -2793,7 +2793,7 @@ globalThis.NP_GRAMMAR = [
         "type": "fill_in_the_blank",
         "prompt": "Complete the sentence applying Past Perfect Tense (VVT): 'hadden' and 'waren':",
         "blankWord": "dat",
-        "sentenceWithBlank": "Het is belangrijk ___ men deze regel goed begrijpt.",
+        "sentenceWithBlank": "Het is belangrijk ___ men deze grammaticale regel goed begrijpt.",
         "hints": [
           "dat",
           "of",
@@ -2815,6 +2815,22 @@ globalThis.NP_GRAMMAR = [
           "uit"
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
+      },
+      {
+        "type": "sentence_transformation",
+        "original": "De studenten bestuderen de grammaticale structuren aandachtig.",
+        "instruction": "Formuleer deze zin in de verleden tijd (OVT):",
+        "transformed": "De studenten bestudeerden de grammaticale structuren aandachtig.",
+        "hints": [
+          "Gebruik de meervoudsvorm in de OVT: bestudeerden"
+        ]
+      },
+      {
+        "type": "article_selection",
+        "noun": "structuur",
+        "meaning": "structure, framework",
+        "correct": "de",
+        "explanation": "Nouns ending in -uur (like 'structuur', 'cultuur', 'natuur') take the definite article 'de'."
       }
     ],
     "difficulty": "intermediate",
@@ -2875,7 +2891,7 @@ globalThis.NP_GRAMMAR = [
         "type": "fill_in_the_blank",
         "prompt": "Complete the sentence applying Modal Auxiliaries in the Past Tense:",
         "blankWord": "dat",
-        "sentenceWithBlank": "Het is belangrijk ___ men deze regel goed begrijpt.",
+        "sentenceWithBlank": "Het is belangrijk ___ men deze grammaticale regel goed begrijpt.",
         "hints": [
           "dat",
           "of",
@@ -2897,6 +2913,22 @@ globalThis.NP_GRAMMAR = [
           "uit"
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
+      },
+      {
+        "type": "sentence_transformation",
+        "original": "De studenten bestuderen de grammaticale structuren aandachtig.",
+        "instruction": "Formuleer deze zin in de verleden tijd (OVT):",
+        "transformed": "De studenten bestudeerden de grammaticale structuren aandachtig.",
+        "hints": [
+          "Gebruik de meervoudsvorm in de OVT: bestudeerden"
+        ]
+      },
+      {
+        "type": "article_selection",
+        "noun": "structuur",
+        "meaning": "structure, framework",
+        "correct": "de",
+        "explanation": "Nouns ending in -uur (like 'structuur', 'cultuur', 'natuur') take the definite article 'de'."
       }
     ],
     "difficulty": "intermediate",
@@ -2957,7 +2989,7 @@ globalThis.NP_GRAMMAR = [
         "type": "fill_in_the_blank",
         "prompt": "Complete the sentence applying Separable Verbs in Compound Tenses:",
         "blankWord": "dat",
-        "sentenceWithBlank": "Het is belangrijk ___ men deze regel goed begrijpt.",
+        "sentenceWithBlank": "Het is belangrijk ___ men deze grammaticale regel goed begrijpt.",
         "hints": [
           "dat",
           "of",
@@ -2979,6 +3011,22 @@ globalThis.NP_GRAMMAR = [
           "uit"
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
+      },
+      {
+        "type": "sentence_transformation",
+        "original": "De studenten bestuderen de grammaticale structuren aandachtig.",
+        "instruction": "Formuleer deze zin in de verleden tijd (OVT):",
+        "transformed": "De studenten bestudeerden de grammaticale structuren aandachtig.",
+        "hints": [
+          "Gebruik de meervoudsvorm in de OVT: bestudeerden"
+        ]
+      },
+      {
+        "type": "article_selection",
+        "noun": "structuur",
+        "meaning": "structure, framework",
+        "correct": "de",
+        "explanation": "Nouns ending in -uur (like 'structuur', 'cultuur', 'natuur') take the definite article 'de'."
       }
     ],
     "difficulty": "intermediate",
@@ -3039,7 +3087,7 @@ globalThis.NP_GRAMMAR = [
         "type": "fill_in_the_blank",
         "prompt": "Complete the sentence applying Reflexive Verbs in Past and Perfect Tenses:",
         "blankWord": "dat",
-        "sentenceWithBlank": "Het is belangrijk ___ men deze regel goed begrijpt.",
+        "sentenceWithBlank": "Het is belangrijk ___ men deze grammaticale regel goed begrijpt.",
         "hints": [
           "dat",
           "of",
@@ -3061,6 +3109,22 @@ globalThis.NP_GRAMMAR = [
           "uit"
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
+      },
+      {
+        "type": "sentence_transformation",
+        "original": "De studenten bestuderen de grammaticale structuren aandachtig.",
+        "instruction": "Formuleer deze zin in de verleden tijd (OVT):",
+        "transformed": "De studenten bestudeerden de grammaticale structuren aandachtig.",
+        "hints": [
+          "Gebruik de meervoudsvorm in de OVT: bestudeerden"
+        ]
+      },
+      {
+        "type": "article_selection",
+        "noun": "structuur",
+        "meaning": "structure, framework",
+        "correct": "de",
+        "explanation": "Nouns ending in -uur (like 'structuur', 'cultuur', 'natuur') take the definite article 'de'."
       }
     ],
     "difficulty": "intermediate",
@@ -3121,7 +3185,7 @@ globalThis.NP_GRAMMAR = [
         "type": "fill_in_the_blank",
         "prompt": "Complete the sentence applying Prepositional Verbs (Vaste Voorzetsels):",
         "blankWord": "dat",
-        "sentenceWithBlank": "Het is belangrijk ___ men deze regel goed begrijpt.",
+        "sentenceWithBlank": "Het is belangrijk ___ men deze grammaticale regel goed begrijpt.",
         "hints": [
           "dat",
           "of",
@@ -3143,6 +3207,22 @@ globalThis.NP_GRAMMAR = [
           "uit"
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
+      },
+      {
+        "type": "sentence_transformation",
+        "original": "De studenten bestuderen de grammaticale structuren aandachtig.",
+        "instruction": "Formuleer deze zin in de verleden tijd (OVT):",
+        "transformed": "De studenten bestudeerden de grammaticale structuren aandachtig.",
+        "hints": [
+          "Gebruik de meervoudsvorm in de OVT: bestudeerden"
+        ]
+      },
+      {
+        "type": "article_selection",
+        "noun": "structuur",
+        "meaning": "structure, framework",
+        "correct": "de",
+        "explanation": "Nouns ending in -uur (like 'structuur', 'cultuur', 'natuur') take the definite article 'de'."
       }
     ],
     "difficulty": "intermediate",
@@ -3203,7 +3283,7 @@ globalThis.NP_GRAMMAR = [
         "type": "fill_in_the_blank",
         "prompt": "Complete the sentence applying Imperfectum (OVT) vs Perfectum (VTT) Usage:",
         "blankWord": "dat",
-        "sentenceWithBlank": "Het is belangrijk ___ men deze regel goed begrijpt.",
+        "sentenceWithBlank": "Het is belangrijk ___ men deze grammaticale regel goed begrijpt.",
         "hints": [
           "dat",
           "of",
@@ -3225,6 +3305,22 @@ globalThis.NP_GRAMMAR = [
           "uit"
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
+      },
+      {
+        "type": "sentence_transformation",
+        "original": "De studenten bestuderen de grammaticale structuren aandachtig.",
+        "instruction": "Formuleer deze zin in de verleden tijd (OVT):",
+        "transformed": "De studenten bestudeerden de grammaticale structuren aandachtig.",
+        "hints": [
+          "Gebruik de meervoudsvorm in de OVT: bestudeerden"
+        ]
+      },
+      {
+        "type": "article_selection",
+        "noun": "structuur",
+        "meaning": "structure, framework",
+        "correct": "de",
+        "explanation": "Nouns ending in -uur (like 'structuur', 'cultuur', 'natuur') take the definite article 'de'."
       }
     ],
     "difficulty": "intermediate",
@@ -3285,7 +3381,7 @@ globalThis.NP_GRAMMAR = [
         "type": "fill_in_the_blank",
         "prompt": "Complete the sentence applying Verbs with Multiple Prefixes and Suffixes:",
         "blankWord": "dat",
-        "sentenceWithBlank": "Het is belangrijk ___ men deze regel goed begrijpt.",
+        "sentenceWithBlank": "Het is belangrijk ___ men deze grammaticale regel goed begrijpt.",
         "hints": [
           "dat",
           "of",
@@ -3307,6 +3403,22 @@ globalThis.NP_GRAMMAR = [
           "uit"
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
+      },
+      {
+        "type": "sentence_transformation",
+        "original": "De studenten bestuderen de grammaticale structuren aandachtig.",
+        "instruction": "Formuleer deze zin in de verleden tijd (OVT):",
+        "transformed": "De studenten bestudeerden de grammaticale structuren aandachtig.",
+        "hints": [
+          "Gebruik de meervoudsvorm in de OVT: bestudeerden"
+        ]
+      },
+      {
+        "type": "article_selection",
+        "noun": "structuur",
+        "meaning": "structure, framework",
+        "correct": "de",
+        "explanation": "Nouns ending in -uur (like 'structuur', 'cultuur', 'natuur') take the definite article 'de'."
       }
     ],
     "difficulty": "intermediate",
@@ -3367,7 +3479,7 @@ globalThis.NP_GRAMMAR = [
         "type": "fill_in_the_blank",
         "prompt": "Complete the sentence applying Passive Voice Basics with 'worden':",
         "blankWord": "dat",
-        "sentenceWithBlank": "Het is belangrijk ___ men deze regel goed begrijpt.",
+        "sentenceWithBlank": "Het is belangrijk ___ men deze grammaticale regel goed begrijpt.",
         "hints": [
           "dat",
           "of",
@@ -3389,6 +3501,22 @@ globalThis.NP_GRAMMAR = [
           "uit"
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
+      },
+      {
+        "type": "sentence_transformation",
+        "original": "De studenten bestuderen de grammaticale structuren aandachtig.",
+        "instruction": "Formuleer deze zin in de verleden tijd (OVT):",
+        "transformed": "De studenten bestudeerden de grammaticale structuren aandachtig.",
+        "hints": [
+          "Gebruik de meervoudsvorm in de OVT: bestudeerden"
+        ]
+      },
+      {
+        "type": "article_selection",
+        "noun": "structuur",
+        "meaning": "structure, framework",
+        "correct": "de",
+        "explanation": "Nouns ending in -uur (like 'structuur', 'cultuur', 'natuur') take the definite article 'de'."
       }
     ],
     "difficulty": "intermediate",
@@ -3449,7 +3577,7 @@ globalThis.NP_GRAMMAR = [
         "type": "fill_in_the_blank",
         "prompt": "Complete the sentence applying Past Passive with 'werd / werden':",
         "blankWord": "dat",
-        "sentenceWithBlank": "Het is belangrijk ___ men deze regel goed begrijpt.",
+        "sentenceWithBlank": "Het is belangrijk ___ men deze grammaticale regel goed begrijpt.",
         "hints": [
           "dat",
           "of",
@@ -3471,6 +3599,22 @@ globalThis.NP_GRAMMAR = [
           "uit"
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
+      },
+      {
+        "type": "sentence_transformation",
+        "original": "De studenten bestuderen de grammaticale structuren aandachtig.",
+        "instruction": "Formuleer deze zin in de verleden tijd (OVT):",
+        "transformed": "De studenten bestudeerden de grammaticale structuren aandachtig.",
+        "hints": [
+          "Gebruik de meervoudsvorm in de OVT: bestudeerden"
+        ]
+      },
+      {
+        "type": "article_selection",
+        "noun": "structuur",
+        "meaning": "structure, framework",
+        "correct": "de",
+        "explanation": "Nouns ending in -uur (like 'structuur', 'cultuur', 'natuur') take the definite article 'de'."
       }
     ],
     "difficulty": "intermediate",
@@ -3531,7 +3675,7 @@ globalThis.NP_GRAMMAR = [
         "type": "fill_in_the_blank",
         "prompt": "Complete the sentence applying Infinitive Clauses with 'te + infinitive':",
         "blankWord": "dat",
-        "sentenceWithBlank": "Het is belangrijk ___ men deze regel goed begrijpt.",
+        "sentenceWithBlank": "Het is belangrijk ___ men deze grammaticale regel goed begrijpt.",
         "hints": [
           "dat",
           "of",
@@ -3553,6 +3697,22 @@ globalThis.NP_GRAMMAR = [
           "uit"
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
+      },
+      {
+        "type": "sentence_transformation",
+        "original": "De studenten bestuderen de grammaticale structuren aandachtig.",
+        "instruction": "Formuleer deze zin in de verleden tijd (OVT):",
+        "transformed": "De studenten bestudeerden de grammaticale structuren aandachtig.",
+        "hints": [
+          "Gebruik de meervoudsvorm in de OVT: bestudeerden"
+        ]
+      },
+      {
+        "type": "article_selection",
+        "noun": "structuur",
+        "meaning": "structure, framework",
+        "correct": "de",
+        "explanation": "Nouns ending in -uur (like 'structuur', 'cultuur', 'natuur') take the definite article 'de'."
       }
     ],
     "difficulty": "intermediate",
@@ -3613,7 +3773,7 @@ globalThis.NP_GRAMMAR = [
         "type": "fill_in_the_blank",
         "prompt": "Complete the sentence applying Subordinating Conjunctions and Verb-Final Order:",
         "blankWord": "dat",
-        "sentenceWithBlank": "Het is belangrijk ___ men deze regel goed begrijpt.",
+        "sentenceWithBlank": "Het is belangrijk ___ men deze grammaticale regel goed begrijpt.",
         "hints": [
           "dat",
           "of",
@@ -3635,6 +3795,22 @@ globalThis.NP_GRAMMAR = [
           "uit"
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
+      },
+      {
+        "type": "sentence_transformation",
+        "original": "De studenten bestuderen de grammaticale structuren aandachtig.",
+        "instruction": "Formuleer deze zin in de verleden tijd (OVT):",
+        "transformed": "De studenten bestudeerden de grammaticale structuren aandachtig.",
+        "hints": [
+          "Gebruik de meervoudsvorm in de OVT: bestudeerden"
+        ]
+      },
+      {
+        "type": "article_selection",
+        "noun": "structuur",
+        "meaning": "structure, framework",
+        "correct": "de",
+        "explanation": "Nouns ending in -uur (like 'structuur', 'cultuur', 'natuur') take the definite article 'de'."
       }
     ],
     "difficulty": "intermediate",
@@ -3695,7 +3871,7 @@ globalThis.NP_GRAMMAR = [
         "type": "fill_in_the_blank",
         "prompt": "Complete the sentence applying Inversion after Fronted Adverbial Clauses:",
         "blankWord": "dat",
-        "sentenceWithBlank": "Het is belangrijk ___ men deze regel goed begrijpt.",
+        "sentenceWithBlank": "Het is belangrijk ___ men deze grammaticale regel goed begrijpt.",
         "hints": [
           "dat",
           "of",
@@ -3717,6 +3893,22 @@ globalThis.NP_GRAMMAR = [
           "uit"
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
+      },
+      {
+        "type": "sentence_transformation",
+        "original": "De studenten bestuderen de grammaticale structuren aandachtig.",
+        "instruction": "Formuleer deze zin in de verleden tijd (OVT):",
+        "transformed": "De studenten bestudeerden de grammaticale structuren aandachtig.",
+        "hints": [
+          "Gebruik de meervoudsvorm in de OVT: bestudeerden"
+        ]
+      },
+      {
+        "type": "article_selection",
+        "noun": "structuur",
+        "meaning": "structure, framework",
+        "correct": "de",
+        "explanation": "Nouns ending in -uur (like 'structuur', 'cultuur', 'natuur') take the definite article 'de'."
       }
     ],
     "difficulty": "intermediate",
@@ -3777,7 +3969,7 @@ globalThis.NP_GRAMMAR = [
         "type": "fill_in_the_blank",
         "prompt": "Complete the sentence applying Relative Clauses with 'die' and 'dat':",
         "blankWord": "dat",
-        "sentenceWithBlank": "Het is belangrijk ___ men deze regel goed begrijpt.",
+        "sentenceWithBlank": "Het is belangrijk ___ men deze grammaticale regel goed begrijpt.",
         "hints": [
           "dat",
           "of",
@@ -3799,6 +3991,22 @@ globalThis.NP_GRAMMAR = [
           "uit"
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
+      },
+      {
+        "type": "sentence_transformation",
+        "original": "De studenten bestuderen de grammaticale structuren aandachtig.",
+        "instruction": "Formuleer deze zin in de verleden tijd (OVT):",
+        "transformed": "De studenten bestudeerden de grammaticale structuren aandachtig.",
+        "hints": [
+          "Gebruik de meervoudsvorm in de OVT: bestudeerden"
+        ]
+      },
+      {
+        "type": "article_selection",
+        "noun": "structuur",
+        "meaning": "structure, framework",
+        "correct": "de",
+        "explanation": "Nouns ending in -uur (like 'structuur', 'cultuur', 'natuur') take the definite article 'de'."
       }
     ],
     "difficulty": "intermediate",
@@ -3859,7 +4067,7 @@ globalThis.NP_GRAMMAR = [
         "type": "fill_in_the_blank",
         "prompt": "Complete the sentence applying Infinitive Constructions with 'om ... te + inf':",
         "blankWord": "dat",
-        "sentenceWithBlank": "Het is belangrijk ___ men deze regel goed begrijpt.",
+        "sentenceWithBlank": "Het is belangrijk ___ men deze grammaticale regel goed begrijpt.",
         "hints": [
           "dat",
           "of",
@@ -3881,6 +4089,22 @@ globalThis.NP_GRAMMAR = [
           "uit"
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
+      },
+      {
+        "type": "sentence_transformation",
+        "original": "De studenten bestuderen de grammaticale structuren aandachtig.",
+        "instruction": "Formuleer deze zin in de verleden tijd (OVT):",
+        "transformed": "De studenten bestudeerden de grammaticale structuren aandachtig.",
+        "hints": [
+          "Gebruik de meervoudsvorm in de OVT: bestudeerden"
+        ]
+      },
+      {
+        "type": "article_selection",
+        "noun": "structuur",
+        "meaning": "structure, framework",
+        "correct": "de",
+        "explanation": "Nouns ending in -uur (like 'structuur', 'cultuur', 'natuur') take the definite article 'de'."
       }
     ],
     "difficulty": "intermediate",
@@ -3941,7 +4165,7 @@ globalThis.NP_GRAMMAR = [
         "type": "fill_in_the_blank",
         "prompt": "Complete the sentence applying Pronominal Adverbs with 'er' + Preposition:",
         "blankWord": "dat",
-        "sentenceWithBlank": "Het is belangrijk ___ men deze regel goed begrijpt.",
+        "sentenceWithBlank": "Het is belangrijk ___ men deze grammaticale regel goed begrijpt.",
         "hints": [
           "dat",
           "of",
@@ -3963,6 +4187,22 @@ globalThis.NP_GRAMMAR = [
           "uit"
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
+      },
+      {
+        "type": "sentence_transformation",
+        "original": "De studenten bestuderen de grammaticale structuren aandachtig.",
+        "instruction": "Formuleer deze zin in de verleden tijd (OVT):",
+        "transformed": "De studenten bestudeerden de grammaticale structuren aandachtig.",
+        "hints": [
+          "Gebruik de meervoudsvorm in de OVT: bestudeerden"
+        ]
+      },
+      {
+        "type": "article_selection",
+        "noun": "structuur",
+        "meaning": "structure, framework",
+        "correct": "de",
+        "explanation": "Nouns ending in -uur (like 'structuur', 'cultuur', 'natuur') take the definite article 'de'."
       }
     ],
     "difficulty": "intermediate",
@@ -4023,7 +4263,7 @@ globalThis.NP_GRAMMAR = [
         "type": "fill_in_the_blank",
         "prompt": "Complete the sentence applying Quantitative 'er':",
         "blankWord": "dat",
-        "sentenceWithBlank": "Het is belangrijk ___ men deze regel goed begrijpt.",
+        "sentenceWithBlank": "Het is belangrijk ___ men deze grammaticale regel goed begrijpt.",
         "hints": [
           "dat",
           "of",
@@ -4045,6 +4285,22 @@ globalThis.NP_GRAMMAR = [
           "uit"
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
+      },
+      {
+        "type": "sentence_transformation",
+        "original": "De studenten bestuderen de grammaticale structuren aandachtig.",
+        "instruction": "Formuleer deze zin in de verleden tijd (OVT):",
+        "transformed": "De studenten bestudeerden de grammaticale structuren aandachtig.",
+        "hints": [
+          "Gebruik de meervoudsvorm in de OVT: bestudeerden"
+        ]
+      },
+      {
+        "type": "article_selection",
+        "noun": "structuur",
+        "meaning": "structure, framework",
+        "correct": "de",
+        "explanation": "Nouns ending in -uur (like 'structuur', 'cultuur', 'natuur') take the definite article 'de'."
       }
     ],
     "difficulty": "intermediate",
@@ -4105,7 +4361,7 @@ globalThis.NP_GRAMMAR = [
         "type": "fill_in_the_blank",
         "prompt": "Complete the sentence applying Existential and Locative 'er':",
         "blankWord": "dat",
-        "sentenceWithBlank": "Het is belangrijk ___ men deze regel goed begrijpt.",
+        "sentenceWithBlank": "Het is belangrijk ___ men deze grammaticale regel goed begrijpt.",
         "hints": [
           "dat",
           "of",
@@ -4127,6 +4383,22 @@ globalThis.NP_GRAMMAR = [
           "uit"
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
+      },
+      {
+        "type": "sentence_transformation",
+        "original": "De studenten bestuderen de grammaticale structuren aandachtig.",
+        "instruction": "Formuleer deze zin in de verleden tijd (OVT):",
+        "transformed": "De studenten bestudeerden de grammaticale structuren aandachtig.",
+        "hints": [
+          "Gebruik de meervoudsvorm in de OVT: bestudeerden"
+        ]
+      },
+      {
+        "type": "article_selection",
+        "noun": "structuur",
+        "meaning": "structure, framework",
+        "correct": "de",
+        "explanation": "Nouns ending in -uur (like 'structuur', 'cultuur', 'natuur') take the definite article 'de'."
       }
     ],
     "difficulty": "intermediate",
@@ -4187,7 +4459,7 @@ globalThis.NP_GRAMMAR = [
         "type": "fill_in_the_blank",
         "prompt": "Complete the sentence applying Indirect Questions (Indirecte Vraagzinnen):",
         "blankWord": "dat",
-        "sentenceWithBlank": "Het is belangrijk ___ men deze regel goed begrijpt.",
+        "sentenceWithBlank": "Het is belangrijk ___ men deze grammaticale regel goed begrijpt.",
         "hints": [
           "dat",
           "of",
@@ -4209,6 +4481,22 @@ globalThis.NP_GRAMMAR = [
           "uit"
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
+      },
+      {
+        "type": "sentence_transformation",
+        "original": "De studenten bestuderen de grammaticale structuren aandachtig.",
+        "instruction": "Formuleer deze zin in de verleden tijd (OVT):",
+        "transformed": "De studenten bestudeerden de grammaticale structuren aandachtig.",
+        "hints": [
+          "Gebruik de meervoudsvorm in de OVT: bestudeerden"
+        ]
+      },
+      {
+        "type": "article_selection",
+        "noun": "structuur",
+        "meaning": "structure, framework",
+        "correct": "de",
+        "explanation": "Nouns ending in -uur (like 'structuur', 'cultuur', 'natuur') take the definite article 'de'."
       }
     ],
     "difficulty": "intermediate",
@@ -4269,7 +4557,7 @@ globalThis.NP_GRAMMAR = [
         "type": "fill_in_the_blank",
         "prompt": "Complete the sentence applying Temporal Subclauses: 'voordat', 'nadat', 'sinds', 'totdat':",
         "blankWord": "dat",
-        "sentenceWithBlank": "Het is belangrijk ___ men deze regel goed begrijpt.",
+        "sentenceWithBlank": "Het is belangrijk ___ men deze grammaticale regel goed begrijpt.",
         "hints": [
           "dat",
           "of",
@@ -4291,6 +4579,22 @@ globalThis.NP_GRAMMAR = [
           "uit"
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
+      },
+      {
+        "type": "sentence_transformation",
+        "original": "De studenten bestuderen de grammaticale structuren aandachtig.",
+        "instruction": "Formuleer deze zin in de verleden tijd (OVT):",
+        "transformed": "De studenten bestudeerden de grammaticale structuren aandachtig.",
+        "hints": [
+          "Gebruik de meervoudsvorm in de OVT: bestudeerden"
+        ]
+      },
+      {
+        "type": "article_selection",
+        "noun": "structuur",
+        "meaning": "structure, framework",
+        "correct": "de",
+        "explanation": "Nouns ending in -uur (like 'structuur', 'cultuur', 'natuur') take the definite article 'de'."
       }
     ],
     "difficulty": "intermediate",
@@ -4351,7 +4655,7 @@ globalThis.NP_GRAMMAR = [
         "type": "fill_in_the_blank",
         "prompt": "Complete the sentence applying Conditional Subclauses: 'als ... (dan)' and 'indien':",
         "blankWord": "dat",
-        "sentenceWithBlank": "Het is belangrijk ___ men deze regel goed begrijpt.",
+        "sentenceWithBlank": "Het is belangrijk ___ men deze grammaticale regel goed begrijpt.",
         "hints": [
           "dat",
           "of",
@@ -4373,6 +4677,22 @@ globalThis.NP_GRAMMAR = [
           "uit"
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
+      },
+      {
+        "type": "sentence_transformation",
+        "original": "De studenten bestuderen de grammaticale structuren aandachtig.",
+        "instruction": "Formuleer deze zin in de verleden tijd (OVT):",
+        "transformed": "De studenten bestudeerden de grammaticale structuren aandachtig.",
+        "hints": [
+          "Gebruik de meervoudsvorm in de OVT: bestudeerden"
+        ]
+      },
+      {
+        "type": "article_selection",
+        "noun": "structuur",
+        "meaning": "structure, framework",
+        "correct": "de",
+        "explanation": "Nouns ending in -uur (like 'structuur', 'cultuur', 'natuur') take the definite article 'de'."
       }
     ],
     "difficulty": "intermediate",
@@ -4433,7 +4753,7 @@ globalThis.NP_GRAMMAR = [
         "type": "fill_in_the_blank",
         "prompt": "Complete the sentence applying Causal vs Consequential Clauses: 'doordat' vs 'omdat':",
         "blankWord": "dat",
-        "sentenceWithBlank": "Het is belangrijk ___ men deze regel goed begrijpt.",
+        "sentenceWithBlank": "Het is belangrijk ___ men deze grammaticale regel goed begrijpt.",
         "hints": [
           "dat",
           "of",
@@ -4455,6 +4775,22 @@ globalThis.NP_GRAMMAR = [
           "uit"
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
+      },
+      {
+        "type": "sentence_transformation",
+        "original": "De studenten bestuderen de grammaticale structuren aandachtig.",
+        "instruction": "Formuleer deze zin in de verleden tijd (OVT):",
+        "transformed": "De studenten bestudeerden de grammaticale structuren aandachtig.",
+        "hints": [
+          "Gebruik de meervoudsvorm in de OVT: bestudeerden"
+        ]
+      },
+      {
+        "type": "article_selection",
+        "noun": "structuur",
+        "meaning": "structure, framework",
+        "correct": "de",
+        "explanation": "Nouns ending in -uur (like 'structuur', 'cultuur', 'natuur') take the definite article 'de'."
       }
     ],
     "difficulty": "intermediate",
@@ -4515,7 +4851,7 @@ globalThis.NP_GRAMMAR = [
         "type": "fill_in_the_blank",
         "prompt": "Complete the sentence applying Concessive Subclauses: 'hoewel', 'alhoewel', 'ofschoon':",
         "blankWord": "dat",
-        "sentenceWithBlank": "Het is belangrijk ___ men deze regel goed begrijpt.",
+        "sentenceWithBlank": "Het is belangrijk ___ men deze grammaticale regel goed begrijpt.",
         "hints": [
           "dat",
           "of",
@@ -4537,6 +4873,22 @@ globalThis.NP_GRAMMAR = [
           "uit"
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
+      },
+      {
+        "type": "sentence_transformation",
+        "original": "De studenten bestuderen de grammaticale structuren aandachtig.",
+        "instruction": "Formuleer deze zin in de verleden tijd (OVT):",
+        "transformed": "De studenten bestudeerden de grammaticale structuren aandachtig.",
+        "hints": [
+          "Gebruik de meervoudsvorm in de OVT: bestudeerden"
+        ]
+      },
+      {
+        "type": "article_selection",
+        "noun": "structuur",
+        "meaning": "structure, framework",
+        "correct": "de",
+        "explanation": "Nouns ending in -uur (like 'structuur', 'cultuur', 'natuur') take the definite article 'de'."
       }
     ],
     "difficulty": "intermediate",
@@ -4597,7 +4949,7 @@ globalThis.NP_GRAMMAR = [
         "type": "fill_in_the_blank",
         "prompt": "Complete the sentence applying Comparative Subclauses: 'hoe ... des te / hoe':",
         "blankWord": "dat",
-        "sentenceWithBlank": "Het is belangrijk ___ men deze regel goed begrijpt.",
+        "sentenceWithBlank": "Het is belangrijk ___ men deze grammaticale regel goed begrijpt.",
         "hints": [
           "dat",
           "of",
@@ -4619,6 +4971,22 @@ globalThis.NP_GRAMMAR = [
           "uit"
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
+      },
+      {
+        "type": "sentence_transformation",
+        "original": "De studenten bestuderen de grammaticale structuren aandachtig.",
+        "instruction": "Formuleer deze zin in de verleden tijd (OVT):",
+        "transformed": "De studenten bestudeerden de grammaticale structuren aandachtig.",
+        "hints": [
+          "Gebruik de meervoudsvorm in de OVT: bestudeerden"
+        ]
+      },
+      {
+        "type": "article_selection",
+        "noun": "structuur",
+        "meaning": "structure, framework",
+        "correct": "de",
+        "explanation": "Nouns ending in -uur (like 'structuur', 'cultuur', 'natuur') take the definite article 'de'."
       }
     ],
     "difficulty": "intermediate",
@@ -4679,7 +5047,7 @@ globalThis.NP_GRAMMAR = [
         "type": "fill_in_the_blank",
         "prompt": "Complete the sentence applying Double Subordinate Clause Nesting:",
         "blankWord": "dat",
-        "sentenceWithBlank": "Het is belangrijk ___ men deze regel goed begrijpt.",
+        "sentenceWithBlank": "Het is belangrijk ___ men deze grammaticale regel goed begrijpt.",
         "hints": [
           "dat",
           "of",
@@ -4701,6 +5069,22 @@ globalThis.NP_GRAMMAR = [
           "uit"
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
+      },
+      {
+        "type": "sentence_transformation",
+        "original": "De studenten bestuderen de grammaticale structuren aandachtig.",
+        "instruction": "Formuleer deze zin in de verleden tijd (OVT):",
+        "transformed": "De studenten bestudeerden de grammaticale structuren aandachtig.",
+        "hints": [
+          "Gebruik de meervoudsvorm in de OVT: bestudeerden"
+        ]
+      },
+      {
+        "type": "article_selection",
+        "noun": "structuur",
+        "meaning": "structure, framework",
+        "correct": "de",
+        "explanation": "Nouns ending in -uur (like 'structuur', 'cultuur', 'natuur') take the definite article 'de'."
       }
     ],
     "difficulty": "intermediate",
@@ -4761,7 +5145,7 @@ globalThis.NP_GRAMMAR = [
         "type": "fill_in_the_blank",
         "prompt": "Complete the sentence applying Position of Negation 'niet' in Subordinate Clauses:",
         "blankWord": "dat",
-        "sentenceWithBlank": "Het is belangrijk ___ men deze regel goed begrijpt.",
+        "sentenceWithBlank": "Het is belangrijk ___ men deze grammaticale regel goed begrijpt.",
         "hints": [
           "dat",
           "of",
@@ -4783,6 +5167,22 @@ globalThis.NP_GRAMMAR = [
           "uit"
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
+      },
+      {
+        "type": "sentence_transformation",
+        "original": "De studenten bestuderen de grammaticale structuren aandachtig.",
+        "instruction": "Formuleer deze zin in de verleden tijd (OVT):",
+        "transformed": "De studenten bestudeerden de grammaticale structuren aandachtig.",
+        "hints": [
+          "Gebruik de meervoudsvorm in de OVT: bestudeerden"
+        ]
+      },
+      {
+        "type": "article_selection",
+        "noun": "structuur",
+        "meaning": "structure, framework",
+        "correct": "de",
+        "explanation": "Nouns ending in -uur (like 'structuur', 'cultuur', 'natuur') take the definite article 'de'."
       }
     ],
     "difficulty": "intermediate",
@@ -4843,7 +5243,7 @@ globalThis.NP_GRAMMAR = [
         "type": "fill_in_the_blank",
         "prompt": "Complete the sentence applying Passive Voice: 'worden' (Dynamic) vs 'zijn' (Stative):",
         "blankWord": "dat",
-        "sentenceWithBlank": "Het is belangrijk ___ men deze regel goed begrijpt.",
+        "sentenceWithBlank": "Het is belangrijk ___ men deze grammaticale regel goed begrijpt.",
         "hints": [
           "dat",
           "of",
@@ -4865,6 +5265,22 @@ globalThis.NP_GRAMMAR = [
           "uit"
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
+      },
+      {
+        "type": "sentence_transformation",
+        "original": "De studenten bestuderen de grammaticale structuren aandachtig.",
+        "instruction": "Formuleer deze zin in de verleden tijd (OVT):",
+        "transformed": "De studenten bestudeerden de grammaticale structuren aandachtig.",
+        "hints": [
+          "Gebruik de meervoudsvorm in de OVT: bestudeerden"
+        ]
+      },
+      {
+        "type": "article_selection",
+        "noun": "structuur",
+        "meaning": "structure, framework",
+        "correct": "de",
+        "explanation": "Nouns ending in -uur (like 'structuur', 'cultuur', 'natuur') take the definite article 'de'."
       }
     ],
     "difficulty": "intermediate",
@@ -4925,7 +5341,7 @@ globalThis.NP_GRAMMAR = [
         "type": "fill_in_the_blank",
         "prompt": "Complete the sentence applying Impersonal Passive Constructions: 'Er wordt...':",
         "blankWord": "dat",
-        "sentenceWithBlank": "Het is belangrijk ___ men deze regel goed begrijpt.",
+        "sentenceWithBlank": "Het is belangrijk ___ men deze grammaticale regel goed begrijpt.",
         "hints": [
           "dat",
           "of",
@@ -4947,6 +5363,22 @@ globalThis.NP_GRAMMAR = [
           "uit"
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
+      },
+      {
+        "type": "sentence_transformation",
+        "original": "De studenten bestuderen de grammaticale structuren aandachtig.",
+        "instruction": "Formuleer deze zin in de verleden tijd (OVT):",
+        "transformed": "De studenten bestudeerden de grammaticale structuren aandachtig.",
+        "hints": [
+          "Gebruik de meervoudsvorm in de OVT: bestudeerden"
+        ]
+      },
+      {
+        "type": "article_selection",
+        "noun": "structuur",
+        "meaning": "structure, framework",
+        "correct": "de",
+        "explanation": "Nouns ending in -uur (like 'structuur', 'cultuur', 'natuur') take the definite article 'de'."
       }
     ],
     "difficulty": "intermediate",
@@ -5007,7 +5439,7 @@ globalThis.NP_GRAMMAR = [
         "type": "fill_in_the_blank",
         "prompt": "Complete the sentence applying The Conditional Mood with 'zou / zouden':",
         "blankWord": "dat",
-        "sentenceWithBlank": "Het is belangrijk ___ men deze regel goed begrijpt.",
+        "sentenceWithBlank": "Het is belangrijk ___ men deze grammaticale regel goed begrijpt.",
         "hints": [
           "dat",
           "of",
@@ -5029,6 +5461,22 @@ globalThis.NP_GRAMMAR = [
           "uit"
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
+      },
+      {
+        "type": "sentence_transformation",
+        "original": "De studenten bestuderen de grammaticale structuren aandachtig.",
+        "instruction": "Formuleer deze zin in de verleden tijd (OVT):",
+        "transformed": "De studenten bestudeerden de grammaticale structuren aandachtig.",
+        "hints": [
+          "Gebruik de meervoudsvorm in de OVT: bestudeerden"
+        ]
+      },
+      {
+        "type": "article_selection",
+        "noun": "structuur",
+        "meaning": "structure, framework",
+        "correct": "de",
+        "explanation": "Nouns ending in -uur (like 'structuur', 'cultuur', 'natuur') take the definite article 'de'."
       }
     ],
     "difficulty": "intermediate",
@@ -5089,7 +5537,7 @@ globalThis.NP_GRAMMAR = [
         "type": "fill_in_the_blank",
         "prompt": "Complete the sentence applying Past Conditional: 'zou hebben' / 'zou zijn + pp':",
         "blankWord": "dat",
-        "sentenceWithBlank": "Het is belangrijk ___ men deze regel goed begrijpt.",
+        "sentenceWithBlank": "Het is belangrijk ___ men deze grammaticale regel goed begrijpt.",
         "hints": [
           "dat",
           "of",
@@ -5111,6 +5559,22 @@ globalThis.NP_GRAMMAR = [
           "uit"
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
+      },
+      {
+        "type": "sentence_transformation",
+        "original": "De studenten bestuderen de grammaticale structuren aandachtig.",
+        "instruction": "Formuleer deze zin in de verleden tijd (OVT):",
+        "transformed": "De studenten bestudeerden de grammaticale structuren aandachtig.",
+        "hints": [
+          "Gebruik de meervoudsvorm in de OVT: bestudeerden"
+        ]
+      },
+      {
+        "type": "article_selection",
+        "noun": "structuur",
+        "meaning": "structure, framework",
+        "correct": "de",
+        "explanation": "Nouns ending in -uur (like 'structuur', 'cultuur', 'natuur') take the definite article 'de'."
       }
     ],
     "difficulty": "intermediate",
@@ -5171,7 +5635,7 @@ globalThis.NP_GRAMMAR = [
         "type": "fill_in_the_blank",
         "prompt": "Complete the sentence applying Dutch Modal Particles: 'wel', 'toch', 'maar', 'eens', 'even', 'hoor':",
         "blankWord": "dat",
-        "sentenceWithBlank": "Het is belangrijk ___ men deze regel goed begrijpt.",
+        "sentenceWithBlank": "Het is belangrijk ___ men deze grammaticale regel goed begrijpt.",
         "hints": [
           "dat",
           "of",
@@ -5193,6 +5657,22 @@ globalThis.NP_GRAMMAR = [
           "uit"
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
+      },
+      {
+        "type": "sentence_transformation",
+        "original": "De studenten bestuderen de grammaticale structuren aandachtig.",
+        "instruction": "Formuleer deze zin in de verleden tijd (OVT):",
+        "transformed": "De studenten bestudeerden de grammaticale structuren aandachtig.",
+        "hints": [
+          "Gebruik de meervoudsvorm in de OVT: bestudeerden"
+        ]
+      },
+      {
+        "type": "article_selection",
+        "noun": "structuur",
+        "meaning": "structure, framework",
+        "correct": "de",
+        "explanation": "Nouns ending in -uur (like 'structuur', 'cultuur', 'natuur') take the definite article 'de'."
       }
     ],
     "difficulty": "intermediate",
@@ -5253,7 +5733,7 @@ globalThis.NP_GRAMMAR = [
         "type": "fill_in_the_blank",
         "prompt": "Complete the sentence applying Causative Constructions with 'laten' and 'doen':",
         "blankWord": "dat",
-        "sentenceWithBlank": "Het is belangrijk ___ men deze regel goed begrijpt.",
+        "sentenceWithBlank": "Het is belangrijk ___ men deze grammaticale regel goed begrijpt.",
         "hints": [
           "dat",
           "of",
@@ -5275,6 +5755,22 @@ globalThis.NP_GRAMMAR = [
           "uit"
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
+      },
+      {
+        "type": "sentence_transformation",
+        "original": "De studenten bestuderen de grammaticale structuren aandachtig.",
+        "instruction": "Formuleer deze zin in de verleden tijd (OVT):",
+        "transformed": "De studenten bestudeerden de grammaticale structuren aandachtig.",
+        "hints": [
+          "Gebruik de meervoudsvorm in de OVT: bestudeerden"
+        ]
+      },
+      {
+        "type": "article_selection",
+        "noun": "structuur",
+        "meaning": "structure, framework",
+        "correct": "de",
+        "explanation": "Nouns ending in -uur (like 'structuur', 'cultuur', 'natuur') take the definite article 'de'."
       }
     ],
     "difficulty": "intermediate",
@@ -5335,7 +5831,7 @@ globalThis.NP_GRAMMAR = [
         "type": "fill_in_the_blank",
         "prompt": "Complete the sentence applying Perception Verbs with Bare Infinitive:",
         "blankWord": "dat",
-        "sentenceWithBlank": "Het is belangrijk ___ men deze regel goed begrijpt.",
+        "sentenceWithBlank": "Het is belangrijk ___ men deze grammaticale regel goed begrijpt.",
         "hints": [
           "dat",
           "of",
@@ -5357,6 +5853,22 @@ globalThis.NP_GRAMMAR = [
           "uit"
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
+      },
+      {
+        "type": "sentence_transformation",
+        "original": "De studenten bestuderen de grammaticale structuren aandachtig.",
+        "instruction": "Formuleer deze zin in de verleden tijd (OVT):",
+        "transformed": "De studenten bestudeerden de grammaticale structuren aandachtig.",
+        "hints": [
+          "Gebruik de meervoudsvorm in de OVT: bestudeerden"
+        ]
+      },
+      {
+        "type": "article_selection",
+        "noun": "structuur",
+        "meaning": "structure, framework",
+        "correct": "de",
+        "explanation": "Nouns ending in -uur (like 'structuur', 'cultuur', 'natuur') take the definite article 'de'."
       }
     ],
     "difficulty": "intermediate",
@@ -5417,7 +5929,7 @@ globalThis.NP_GRAMMAR = [
         "type": "fill_in_the_blank",
         "prompt": "Complete the sentence applying Expressing Purpose: 'opdat' and 'teneinde':",
         "blankWord": "dat",
-        "sentenceWithBlank": "Het is belangrijk ___ men deze regel goed begrijpt.",
+        "sentenceWithBlank": "Het is belangrijk ___ men deze grammaticale regel goed begrijpt.",
         "hints": [
           "dat",
           "of",
@@ -5439,6 +5951,22 @@ globalThis.NP_GRAMMAR = [
           "uit"
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
+      },
+      {
+        "type": "sentence_transformation",
+        "original": "De studenten bestuderen de grammaticale structuren aandachtig.",
+        "instruction": "Formuleer deze zin in de verleden tijd (OVT):",
+        "transformed": "De studenten bestudeerden de grammaticale structuren aandachtig.",
+        "hints": [
+          "Gebruik de meervoudsvorm in de OVT: bestudeerden"
+        ]
+      },
+      {
+        "type": "article_selection",
+        "noun": "structuur",
+        "meaning": "structure, framework",
+        "correct": "de",
+        "explanation": "Nouns ending in -uur (like 'structuur', 'cultuur', 'natuur') take the definite article 'de'."
       }
     ],
     "difficulty": "intermediate",
@@ -5499,7 +6027,7 @@ globalThis.NP_GRAMMAR = [
         "type": "fill_in_the_blank",
         "prompt": "Complete the sentence applying Expressing Concession: 'ondanks dat' and 'hoezeer ook':",
         "blankWord": "dat",
-        "sentenceWithBlank": "Het is belangrijk ___ men deze regel goed begrijpt.",
+        "sentenceWithBlank": "Het is belangrijk ___ men deze grammaticale regel goed begrijpt.",
         "hints": [
           "dat",
           "of",
@@ -5521,6 +6049,22 @@ globalThis.NP_GRAMMAR = [
           "uit"
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
+      },
+      {
+        "type": "sentence_transformation",
+        "original": "De studenten bestuderen de grammaticale structuren aandachtig.",
+        "instruction": "Formuleer deze zin in de verleden tijd (OVT):",
+        "transformed": "De studenten bestudeerden de grammaticale structuren aandachtig.",
+        "hints": [
+          "Gebruik de meervoudsvorm in de OVT: bestudeerden"
+        ]
+      },
+      {
+        "type": "article_selection",
+        "noun": "structuur",
+        "meaning": "structure, framework",
+        "correct": "de",
+        "explanation": "Nouns ending in -uur (like 'structuur', 'cultuur', 'natuur') take the definite article 'de'."
       }
     ],
     "difficulty": "intermediate",
@@ -5581,7 +6125,7 @@ globalThis.NP_GRAMMAR = [
         "type": "fill_in_the_blank",
         "prompt": "Complete the sentence applying Proportional Clauses with 'naarmate':",
         "blankWord": "dat",
-        "sentenceWithBlank": "Het is belangrijk ___ men deze regel goed begrijpt.",
+        "sentenceWithBlank": "Het is belangrijk ___ men deze grammaticale regel goed begrijpt.",
         "hints": [
           "dat",
           "of",
@@ -5603,6 +6147,22 @@ globalThis.NP_GRAMMAR = [
           "uit"
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
+      },
+      {
+        "type": "sentence_transformation",
+        "original": "De studenten bestuderen de grammaticale structuren aandachtig.",
+        "instruction": "Formuleer deze zin in de verleden tijd (OVT):",
+        "transformed": "De studenten bestudeerden de grammaticale structuren aandachtig.",
+        "hints": [
+          "Gebruik de meervoudsvorm in de OVT: bestudeerden"
+        ]
+      },
+      {
+        "type": "article_selection",
+        "noun": "structuur",
+        "meaning": "structure, framework",
+        "correct": "de",
+        "explanation": "Nouns ending in -uur (like 'structuur', 'cultuur', 'natuur') take the definite article 'de'."
       }
     ],
     "difficulty": "intermediate",
@@ -5663,7 +6223,7 @@ globalThis.NP_GRAMMAR = [
         "type": "fill_in_the_blank",
         "prompt": "Complete the sentence applying Double Infinitive in the Perfect Tense (IPP Preview):",
         "blankWord": "dat",
-        "sentenceWithBlank": "Het is belangrijk ___ men deze regel goed begrijpt.",
+        "sentenceWithBlank": "Het is belangrijk ___ men deze grammaticale regel goed begrijpt.",
         "hints": [
           "dat",
           "of",
@@ -5685,6 +6245,22 @@ globalThis.NP_GRAMMAR = [
           "uit"
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
+      },
+      {
+        "type": "sentence_transformation",
+        "original": "De studenten bestuderen de grammaticale structuren aandachtig.",
+        "instruction": "Formuleer deze zin in de verleden tijd (OVT):",
+        "transformed": "De studenten bestudeerden de grammaticale structuren aandachtig.",
+        "hints": [
+          "Gebruik de meervoudsvorm in de OVT: bestudeerden"
+        ]
+      },
+      {
+        "type": "article_selection",
+        "noun": "structuur",
+        "meaning": "structure, framework",
+        "correct": "de",
+        "explanation": "Nouns ending in -uur (like 'structuur', 'cultuur', 'natuur') take the definite article 'de'."
       }
     ],
     "difficulty": "intermediate",
@@ -5745,7 +6321,7 @@ globalThis.NP_GRAMMAR = [
         "type": "fill_in_the_blank",
         "prompt": "Complete the sentence applying Pronominal Adverbs with 'daar' and 'waar':",
         "blankWord": "dat",
-        "sentenceWithBlank": "Het is belangrijk ___ men deze regel goed begrijpt.",
+        "sentenceWithBlank": "Het is belangrijk ___ men deze grammaticale regel goed begrijpt.",
         "hints": [
           "dat",
           "of",
@@ -5767,6 +6343,22 @@ globalThis.NP_GRAMMAR = [
           "uit"
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
+      },
+      {
+        "type": "sentence_transformation",
+        "original": "De studenten bestuderen de grammaticale structuren aandachtig.",
+        "instruction": "Formuleer deze zin in de verleden tijd (OVT):",
+        "transformed": "De studenten bestudeerden de grammaticale structuren aandachtig.",
+        "hints": [
+          "Gebruik de meervoudsvorm in de OVT: bestudeerden"
+        ]
+      },
+      {
+        "type": "article_selection",
+        "noun": "structuur",
+        "meaning": "structure, framework",
+        "correct": "de",
+        "explanation": "Nouns ending in -uur (like 'structuur', 'cultuur', 'natuur') take the definite article 'de'."
       }
     ],
     "difficulty": "intermediate",
@@ -5827,7 +6419,7 @@ globalThis.NP_GRAMMAR = [
         "type": "fill_in_the_blank",
         "prompt": "Complete the sentence applying Nominalization: 'het + infinitive' and '-ing':",
         "blankWord": "dat",
-        "sentenceWithBlank": "Het is belangrijk ___ men deze regel goed begrijpt.",
+        "sentenceWithBlank": "Het is belangrijk ___ men deze grammaticale regel goed begrijpt.",
         "hints": [
           "dat",
           "of",
@@ -5849,6 +6441,22 @@ globalThis.NP_GRAMMAR = [
           "uit"
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
+      },
+      {
+        "type": "sentence_transformation",
+        "original": "De studenten bestuderen de grammaticale structuren aandachtig.",
+        "instruction": "Formuleer deze zin in de verleden tijd (OVT):",
+        "transformed": "De studenten bestudeerden de grammaticale structuren aandachtig.",
+        "hints": [
+          "Gebruik de meervoudsvorm in de OVT: bestudeerden"
+        ]
+      },
+      {
+        "type": "article_selection",
+        "noun": "structuur",
+        "meaning": "structure, framework",
+        "correct": "de",
+        "explanation": "Nouns ending in -uur (like 'structuur', 'cultuur', 'natuur') take the definite article 'de'."
       }
     ],
     "difficulty": "intermediate",
@@ -5909,7 +6517,7 @@ globalThis.NP_GRAMMAR = [
         "type": "fill_in_the_blank",
         "prompt": "Complete the sentence applying Conjunctional Adverbs: 'daarom', 'immers', 'daarentegen':",
         "blankWord": "dat",
-        "sentenceWithBlank": "Het is belangrijk ___ men deze regel goed begrijpt.",
+        "sentenceWithBlank": "Het is belangrijk ___ men deze grammaticale regel goed begrijpt.",
         "hints": [
           "dat",
           "of",
@@ -5931,6 +6539,22 @@ globalThis.NP_GRAMMAR = [
           "uit"
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
+      },
+      {
+        "type": "sentence_transformation",
+        "original": "De studenten bestuderen de grammaticale structuren aandachtig.",
+        "instruction": "Formuleer deze zin in de verleden tijd (OVT):",
+        "transformed": "De studenten bestudeerden de grammaticale structuren aandachtig.",
+        "hints": [
+          "Gebruik de meervoudsvorm in de OVT: bestudeerden"
+        ]
+      },
+      {
+        "type": "article_selection",
+        "noun": "structuur",
+        "meaning": "structure, framework",
+        "correct": "de",
+        "explanation": "Nouns ending in -uur (like 'structuur', 'cultuur', 'natuur') take the definite article 'de'."
       }
     ],
     "difficulty": "intermediate",
@@ -5991,7 +6615,7 @@ globalThis.NP_GRAMMAR = [
         "type": "fill_in_the_blank",
         "prompt": "Complete the sentence applying Restrictive vs Non-Restrictive Relative Clauses:",
         "blankWord": "dat",
-        "sentenceWithBlank": "Het is belangrijk ___ men deze regel goed begrijpt.",
+        "sentenceWithBlank": "Het is belangrijk ___ men deze grammaticale regel goed begrijpt.",
         "hints": [
           "dat",
           "of",
@@ -6013,6 +6637,22 @@ globalThis.NP_GRAMMAR = [
           "uit"
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
+      },
+      {
+        "type": "sentence_transformation",
+        "original": "De studenten bestuderen de grammaticale structuren aandachtig.",
+        "instruction": "Formuleer deze zin in de verleden tijd (OVT):",
+        "transformed": "De studenten bestudeerden de grammaticale structuren aandachtig.",
+        "hints": [
+          "Gebruik de meervoudsvorm in de OVT: bestudeerden"
+        ]
+      },
+      {
+        "type": "article_selection",
+        "noun": "structuur",
+        "meaning": "structure, framework",
+        "correct": "de",
+        "explanation": "Nouns ending in -uur (like 'structuur', 'cultuur', 'natuur') take the definite article 'de'."
       }
     ],
     "difficulty": "intermediate",
@@ -6073,7 +6713,7 @@ globalThis.NP_GRAMMAR = [
         "type": "fill_in_the_blank",
         "prompt": "Complete the sentence applying Reported Speech (Indirecte Rede) and Tense Consistency:",
         "blankWord": "dat",
-        "sentenceWithBlank": "Het is belangrijk ___ men deze regel goed begrijpt.",
+        "sentenceWithBlank": "Het is belangrijk ___ men deze grammaticale regel goed begrijpt.",
         "hints": [
           "dat",
           "of",
@@ -6095,6 +6735,22 @@ globalThis.NP_GRAMMAR = [
           "uit"
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
+      },
+      {
+        "type": "sentence_transformation",
+        "original": "De studenten bestuderen de grammaticale structuren aandachtig.",
+        "instruction": "Formuleer deze zin in de verleden tijd (OVT):",
+        "transformed": "De studenten bestudeerden de grammaticale structuren aandachtig.",
+        "hints": [
+          "Gebruik de meervoudsvorm in de OVT: bestudeerden"
+        ]
+      },
+      {
+        "type": "article_selection",
+        "noun": "structuur",
+        "meaning": "structure, framework",
+        "correct": "de",
+        "explanation": "Nouns ending in -uur (like 'structuur', 'cultuur', 'natuur') take the definite article 'de'."
       }
     ],
     "difficulty": "advanced",
@@ -6155,7 +6811,7 @@ globalThis.NP_GRAMMAR = [
         "type": "fill_in_the_blank",
         "prompt": "Complete the sentence applying Verb Clusters in Subordinate Clauses: Red vs Green Word Order:",
         "blankWord": "dat",
-        "sentenceWithBlank": "Het is belangrijk ___ men deze regel goed begrijpt.",
+        "sentenceWithBlank": "Het is belangrijk ___ men deze grammaticale regel goed begrijpt.",
         "hints": [
           "dat",
           "of",
@@ -6177,6 +6833,22 @@ globalThis.NP_GRAMMAR = [
           "uit"
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
+      },
+      {
+        "type": "sentence_transformation",
+        "original": "De studenten bestuderen de grammaticale structuren aandachtig.",
+        "instruction": "Formuleer deze zin in de verleden tijd (OVT):",
+        "transformed": "De studenten bestudeerden de grammaticale structuren aandachtig.",
+        "hints": [
+          "Gebruik de meervoudsvorm in de OVT: bestudeerden"
+        ]
+      },
+      {
+        "type": "article_selection",
+        "noun": "structuur",
+        "meaning": "structure, framework",
+        "correct": "de",
+        "explanation": "Nouns ending in -uur (like 'structuur', 'cultuur', 'natuur') take the definite article 'de'."
       }
     ],
     "difficulty": "advanced",
@@ -6237,7 +6909,7 @@ globalThis.NP_GRAMMAR = [
         "type": "fill_in_the_blank",
         "prompt": "Complete the sentence applying The Infinitivus pro Participio (IPP) Rule:",
         "blankWord": "dat",
-        "sentenceWithBlank": "Het is belangrijk ___ men deze regel goed begrijpt.",
+        "sentenceWithBlank": "Het is belangrijk ___ men deze grammaticale regel goed begrijpt.",
         "hints": [
           "dat",
           "of",
@@ -6259,6 +6931,22 @@ globalThis.NP_GRAMMAR = [
           "uit"
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
+      },
+      {
+        "type": "sentence_transformation",
+        "original": "De studenten bestuderen de grammaticale structuren aandachtig.",
+        "instruction": "Formuleer deze zin in de verleden tijd (OVT):",
+        "transformed": "De studenten bestudeerden de grammaticale structuren aandachtig.",
+        "hints": [
+          "Gebruik de meervoudsvorm in de OVT: bestudeerden"
+        ]
+      },
+      {
+        "type": "article_selection",
+        "noun": "structuur",
+        "meaning": "structure, framework",
+        "correct": "de",
+        "explanation": "Nouns ending in -uur (like 'structuur', 'cultuur', 'natuur') take the definite article 'de'."
       }
     ],
     "difficulty": "advanced",
@@ -6319,7 +7007,7 @@ globalThis.NP_GRAMMAR = [
         "type": "fill_in_the_blank",
         "prompt": "Complete the sentence applying Participial Clauses as Adverbial Modifiers:",
         "blankWord": "dat",
-        "sentenceWithBlank": "Het is belangrijk ___ men deze regel goed begrijpt.",
+        "sentenceWithBlank": "Het is belangrijk ___ men deze grammaticale regel goed begrijpt.",
         "hints": [
           "dat",
           "of",
@@ -6341,6 +7029,22 @@ globalThis.NP_GRAMMAR = [
           "uit"
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
+      },
+      {
+        "type": "sentence_transformation",
+        "original": "De studenten bestuderen de grammaticale structuren aandachtig.",
+        "instruction": "Formuleer deze zin in de verleden tijd (OVT):",
+        "transformed": "De studenten bestudeerden de grammaticale structuren aandachtig.",
+        "hints": [
+          "Gebruik de meervoudsvorm in de OVT: bestudeerden"
+        ]
+      },
+      {
+        "type": "article_selection",
+        "noun": "structuur",
+        "meaning": "structure, framework",
+        "correct": "de",
+        "explanation": "Nouns ending in -uur (like 'structuur', 'cultuur', 'natuur') take the definite article 'de'."
       }
     ],
     "difficulty": "advanced",
@@ -6401,7 +7105,7 @@ globalThis.NP_GRAMMAR = [
         "type": "fill_in_the_blank",
         "prompt": "Complete the sentence applying Absolute Participial Constructions in Formal Prose:",
         "blankWord": "dat",
-        "sentenceWithBlank": "Het is belangrijk ___ men deze regel goed begrijpt.",
+        "sentenceWithBlank": "Het is belangrijk ___ men deze grammaticale regel goed begrijpt.",
         "hints": [
           "dat",
           "of",
@@ -6423,6 +7127,22 @@ globalThis.NP_GRAMMAR = [
           "uit"
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
+      },
+      {
+        "type": "sentence_transformation",
+        "original": "De studenten bestuderen de grammaticale structuren aandachtig.",
+        "instruction": "Formuleer deze zin in de verleden tijd (OVT):",
+        "transformed": "De studenten bestudeerden de grammaticale structuren aandachtig.",
+        "hints": [
+          "Gebruik de meervoudsvorm in de OVT: bestudeerden"
+        ]
+      },
+      {
+        "type": "article_selection",
+        "noun": "structuur",
+        "meaning": "structure, framework",
+        "correct": "de",
+        "explanation": "Nouns ending in -uur (like 'structuur', 'cultuur', 'natuur') take the definite article 'de'."
       }
     ],
     "difficulty": "advanced",
@@ -6483,7 +7203,7 @@ globalThis.NP_GRAMMAR = [
         "type": "fill_in_the_blank",
         "prompt": "Complete the sentence applying Prepositional Collocations and Fixed Idioms:",
         "blankWord": "dat",
-        "sentenceWithBlank": "Het is belangrijk ___ men deze regel goed begrijpt.",
+        "sentenceWithBlank": "Het is belangrijk ___ men deze grammaticale regel goed begrijpt.",
         "hints": [
           "dat",
           "of",
@@ -6505,6 +7225,22 @@ globalThis.NP_GRAMMAR = [
           "uit"
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
+      },
+      {
+        "type": "sentence_transformation",
+        "original": "De studenten bestuderen de grammaticale structuren aandachtig.",
+        "instruction": "Formuleer deze zin in de verleden tijd (OVT):",
+        "transformed": "De studenten bestudeerden de grammaticale structuren aandachtig.",
+        "hints": [
+          "Gebruik de meervoudsvorm in de OVT: bestudeerden"
+        ]
+      },
+      {
+        "type": "article_selection",
+        "noun": "structuur",
+        "meaning": "structure, framework",
+        "correct": "de",
+        "explanation": "Nouns ending in -uur (like 'structuur', 'cultuur', 'natuur') take the definite article 'de'."
       }
     ],
     "difficulty": "advanced",
@@ -6565,7 +7301,7 @@ globalThis.NP_GRAMMAR = [
         "type": "fill_in_the_blank",
         "prompt": "Complete the sentence applying Complex Modals: Double Infinitive with Epistemic Meanings:",
         "blankWord": "dat",
-        "sentenceWithBlank": "Het is belangrijk ___ men deze regel goed begrijpt.",
+        "sentenceWithBlank": "Het is belangrijk ___ men deze grammaticale regel goed begrijpt.",
         "hints": [
           "dat",
           "of",
@@ -6587,6 +7323,22 @@ globalThis.NP_GRAMMAR = [
           "uit"
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
+      },
+      {
+        "type": "sentence_transformation",
+        "original": "De studenten bestuderen de grammaticale structuren aandachtig.",
+        "instruction": "Formuleer deze zin in de verleden tijd (OVT):",
+        "transformed": "De studenten bestudeerden de grammaticale structuren aandachtig.",
+        "hints": [
+          "Gebruik de meervoudsvorm in de OVT: bestudeerden"
+        ]
+      },
+      {
+        "type": "article_selection",
+        "noun": "structuur",
+        "meaning": "structure, framework",
+        "correct": "de",
+        "explanation": "Nouns ending in -uur (like 'structuur', 'cultuur', 'natuur') take the definite article 'de'."
       }
     ],
     "difficulty": "advanced",
@@ -6647,7 +7399,7 @@ globalThis.NP_GRAMMAR = [
         "type": "fill_in_the_blank",
         "prompt": "Complete the sentence applying Subjunctive Remnants in Formulaic Expressions:",
         "blankWord": "dat",
-        "sentenceWithBlank": "Het is belangrijk ___ men deze regel goed begrijpt.",
+        "sentenceWithBlank": "Het is belangrijk ___ men deze grammaticale regel goed begrijpt.",
         "hints": [
           "dat",
           "of",
@@ -6669,6 +7421,22 @@ globalThis.NP_GRAMMAR = [
           "uit"
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
+      },
+      {
+        "type": "sentence_transformation",
+        "original": "De studenten bestuderen de grammaticale structuren aandachtig.",
+        "instruction": "Formuleer deze zin in de verleden tijd (OVT):",
+        "transformed": "De studenten bestudeerden de grammaticale structuren aandachtig.",
+        "hints": [
+          "Gebruik de meervoudsvorm in de OVT: bestudeerden"
+        ]
+      },
+      {
+        "type": "article_selection",
+        "noun": "structuur",
+        "meaning": "structure, framework",
+        "correct": "de",
+        "explanation": "Nouns ending in -uur (like 'structuur', 'cultuur', 'natuur') take the definite article 'de'."
       }
     ],
     "difficulty": "advanced",
@@ -6729,7 +7497,7 @@ globalThis.NP_GRAMMAR = [
         "type": "fill_in_the_blank",
         "prompt": "Complete the sentence applying Passive Voice with Modal Auxiliaries:",
         "blankWord": "dat",
-        "sentenceWithBlank": "Het is belangrijk ___ men deze regel goed begrijpt.",
+        "sentenceWithBlank": "Het is belangrijk ___ men deze grammaticale regel goed begrijpt.",
         "hints": [
           "dat",
           "of",
@@ -6751,6 +7519,22 @@ globalThis.NP_GRAMMAR = [
           "uit"
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
+      },
+      {
+        "type": "sentence_transformation",
+        "original": "De studenten bestuderen de grammaticale structuren aandachtig.",
+        "instruction": "Formuleer deze zin in de verleden tijd (OVT):",
+        "transformed": "De studenten bestudeerden de grammaticale structuren aandachtig.",
+        "hints": [
+          "Gebruik de meervoudsvorm in de OVT: bestudeerden"
+        ]
+      },
+      {
+        "type": "article_selection",
+        "noun": "structuur",
+        "meaning": "structure, framework",
+        "correct": "de",
+        "explanation": "Nouns ending in -uur (like 'structuur', 'cultuur', 'natuur') take the definite article 'de'."
       }
     ],
     "difficulty": "advanced",
@@ -6811,7 +7595,7 @@ globalThis.NP_GRAMMAR = [
         "type": "fill_in_the_blank",
         "prompt": "Complete the sentence applying Relative Pronouns with Prepositions: 'op wie' vs 'waarop':",
         "blankWord": "dat",
-        "sentenceWithBlank": "Het is belangrijk ___ men deze regel goed begrijpt.",
+        "sentenceWithBlank": "Het is belangrijk ___ men deze grammaticale regel goed begrijpt.",
         "hints": [
           "dat",
           "of",
@@ -6833,6 +7617,22 @@ globalThis.NP_GRAMMAR = [
           "uit"
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
+      },
+      {
+        "type": "sentence_transformation",
+        "original": "De studenten bestuderen de grammaticale structuren aandachtig.",
+        "instruction": "Formuleer deze zin in de verleden tijd (OVT):",
+        "transformed": "De studenten bestudeerden de grammaticale structuren aandachtig.",
+        "hints": [
+          "Gebruik de meervoudsvorm in de OVT: bestudeerden"
+        ]
+      },
+      {
+        "type": "article_selection",
+        "noun": "structuur",
+        "meaning": "structure, framework",
+        "correct": "de",
+        "explanation": "Nouns ending in -uur (like 'structuur', 'cultuur', 'natuur') take the definite article 'de'."
       }
     ],
     "difficulty": "advanced",
@@ -6893,7 +7693,7 @@ globalThis.NP_GRAMMAR = [
         "type": "fill_in_the_blank",
         "prompt": "Complete the sentence applying Inversion with Restrictive Adverbs and Time Adverbs:",
         "blankWord": "dat",
-        "sentenceWithBlank": "Het is belangrijk ___ men deze regel goed begrijpt.",
+        "sentenceWithBlank": "Het is belangrijk ___ men deze grammaticale regel goed begrijpt.",
         "hints": [
           "dat",
           "of",
@@ -6915,6 +7715,22 @@ globalThis.NP_GRAMMAR = [
           "uit"
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
+      },
+      {
+        "type": "sentence_transformation",
+        "original": "De studenten bestuderen de grammaticale structuren aandachtig.",
+        "instruction": "Formuleer deze zin in de verleden tijd (OVT):",
+        "transformed": "De studenten bestudeerden de grammaticale structuren aandachtig.",
+        "hints": [
+          "Gebruik de meervoudsvorm in de OVT: bestudeerden"
+        ]
+      },
+      {
+        "type": "article_selection",
+        "noun": "structuur",
+        "meaning": "structure, framework",
+        "correct": "de",
+        "explanation": "Nouns ending in -uur (like 'structuur', 'cultuur', 'natuur') take the definite article 'de'."
       }
     ],
     "difficulty": "advanced",
@@ -6975,7 +7791,7 @@ globalThis.NP_GRAMMAR = [
         "type": "fill_in_the_blank",
         "prompt": "Complete the sentence applying Topicalization and Focus Movement in Dutch Clauses:",
         "blankWord": "dat",
-        "sentenceWithBlank": "Het is belangrijk ___ men deze regel goed begrijpt.",
+        "sentenceWithBlank": "Het is belangrijk ___ men deze grammaticale regel goed begrijpt.",
         "hints": [
           "dat",
           "of",
@@ -6997,6 +7813,22 @@ globalThis.NP_GRAMMAR = [
           "uit"
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
+      },
+      {
+        "type": "sentence_transformation",
+        "original": "De studenten bestuderen de grammaticale structuren aandachtig.",
+        "instruction": "Formuleer deze zin in de verleden tijd (OVT):",
+        "transformed": "De studenten bestudeerden de grammaticale structuren aandachtig.",
+        "hints": [
+          "Gebruik de meervoudsvorm in de OVT: bestudeerden"
+        ]
+      },
+      {
+        "type": "article_selection",
+        "noun": "structuur",
+        "meaning": "structure, framework",
+        "correct": "de",
+        "explanation": "Nouns ending in -uur (like 'structuur', 'cultuur', 'natuur') take the definite article 'de'."
       }
     ],
     "difficulty": "advanced",
@@ -7057,7 +7889,7 @@ globalThis.NP_GRAMMAR = [
         "type": "fill_in_the_blank",
         "prompt": "Complete the sentence applying Negative Polarity Items and Subtle Negation:",
         "blankWord": "dat",
-        "sentenceWithBlank": "Het is belangrijk ___ men deze regel goed begrijpt.",
+        "sentenceWithBlank": "Het is belangrijk ___ men deze grammaticale regel goed begrijpt.",
         "hints": [
           "dat",
           "of",
@@ -7079,6 +7911,22 @@ globalThis.NP_GRAMMAR = [
           "uit"
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
+      },
+      {
+        "type": "sentence_transformation",
+        "original": "De studenten bestuderen de grammaticale structuren aandachtig.",
+        "instruction": "Formuleer deze zin in de verleden tijd (OVT):",
+        "transformed": "De studenten bestudeerden de grammaticale structuren aandachtig.",
+        "hints": [
+          "Gebruik de meervoudsvorm in de OVT: bestudeerden"
+        ]
+      },
+      {
+        "type": "article_selection",
+        "noun": "structuur",
+        "meaning": "structure, framework",
+        "correct": "de",
+        "explanation": "Nouns ending in -uur (like 'structuur', 'cultuur', 'natuur') take the definite article 'de'."
       }
     ],
     "difficulty": "advanced",
@@ -7139,7 +7987,7 @@ globalThis.NP_GRAMMAR = [
         "type": "fill_in_the_blank",
         "prompt": "Complete the sentence applying Ellipsis and Syntactic Reduction in Compound Sentences:",
         "blankWord": "dat",
-        "sentenceWithBlank": "Het is belangrijk ___ men deze regel goed begrijpt.",
+        "sentenceWithBlank": "Het is belangrijk ___ men deze grammaticale regel goed begrijpt.",
         "hints": [
           "dat",
           "of",
@@ -7161,6 +8009,22 @@ globalThis.NP_GRAMMAR = [
           "uit"
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
+      },
+      {
+        "type": "sentence_transformation",
+        "original": "De studenten bestuderen de grammaticale structuren aandachtig.",
+        "instruction": "Formuleer deze zin in de verleden tijd (OVT):",
+        "transformed": "De studenten bestudeerden de grammaticale structuren aandachtig.",
+        "hints": [
+          "Gebruik de meervoudsvorm in de OVT: bestudeerden"
+        ]
+      },
+      {
+        "type": "article_selection",
+        "noun": "structuur",
+        "meaning": "structure, framework",
+        "correct": "de",
+        "explanation": "Nouns ending in -uur (like 'structuur', 'cultuur', 'natuur') take the definite article 'de'."
       }
     ],
     "difficulty": "advanced",
@@ -7221,7 +8085,7 @@ globalThis.NP_GRAMMAR = [
         "type": "fill_in_the_blank",
         "prompt": "Complete the sentence applying The Particle 'er' in Complex Passive Clauses:",
         "blankWord": "dat",
-        "sentenceWithBlank": "Het is belangrijk ___ men deze regel goed begrijpt.",
+        "sentenceWithBlank": "Het is belangrijk ___ men deze grammaticale regel goed begrijpt.",
         "hints": [
           "dat",
           "of",
@@ -7243,6 +8107,22 @@ globalThis.NP_GRAMMAR = [
           "uit"
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
+      },
+      {
+        "type": "sentence_transformation",
+        "original": "De studenten bestuderen de grammaticale structuren aandachtig.",
+        "instruction": "Formuleer deze zin in de verleden tijd (OVT):",
+        "transformed": "De studenten bestudeerden de grammaticale structuren aandachtig.",
+        "hints": [
+          "Gebruik de meervoudsvorm in de OVT: bestudeerden"
+        ]
+      },
+      {
+        "type": "article_selection",
+        "noun": "structuur",
+        "meaning": "structure, framework",
+        "correct": "de",
+        "explanation": "Nouns ending in -uur (like 'structuur', 'cultuur', 'natuur') take the definite article 'de'."
       }
     ],
     "difficulty": "advanced",
@@ -7303,7 +8183,7 @@ globalThis.NP_GRAMMAR = [
         "type": "fill_in_the_blank",
         "prompt": "Complete the sentence applying Register Shifts in Formal Correspondence and Business Dutch:",
         "blankWord": "dat",
-        "sentenceWithBlank": "Het is belangrijk ___ men deze regel goed begrijpt.",
+        "sentenceWithBlank": "Het is belangrijk ___ men deze grammaticale regel goed begrijpt.",
         "hints": [
           "dat",
           "of",
@@ -7325,6 +8205,22 @@ globalThis.NP_GRAMMAR = [
           "uit"
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
+      },
+      {
+        "type": "sentence_transformation",
+        "original": "De studenten bestuderen de grammaticale structuren aandachtig.",
+        "instruction": "Formuleer deze zin in de verleden tijd (OVT):",
+        "transformed": "De studenten bestudeerden de grammaticale structuren aandachtig.",
+        "hints": [
+          "Gebruik de meervoudsvorm in de OVT: bestudeerden"
+        ]
+      },
+      {
+        "type": "article_selection",
+        "noun": "structuur",
+        "meaning": "structure, framework",
+        "correct": "de",
+        "explanation": "Nouns ending in -uur (like 'structuur', 'cultuur', 'natuur') take the definite article 'de'."
       }
     ],
     "difficulty": "advanced",
@@ -7385,7 +8281,7 @@ globalThis.NP_GRAMMAR = [
         "type": "fill_in_the_blank",
         "prompt": "Complete the sentence applying Nuance Particles of Discourse: 'immers', 'overigens', 'namelijk', 'trouwens':",
         "blankWord": "dat",
-        "sentenceWithBlank": "Het is belangrijk ___ men deze regel goed begrijpt.",
+        "sentenceWithBlank": "Het is belangrijk ___ men deze grammaticale regel goed begrijpt.",
         "hints": [
           "dat",
           "of",
@@ -7407,6 +8303,22 @@ globalThis.NP_GRAMMAR = [
           "uit"
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
+      },
+      {
+        "type": "sentence_transformation",
+        "original": "De studenten bestuderen de grammaticale structuren aandachtig.",
+        "instruction": "Formuleer deze zin in de verleden tijd (OVT):",
+        "transformed": "De studenten bestudeerden de grammaticale structuren aandachtig.",
+        "hints": [
+          "Gebruik de meervoudsvorm in de OVT: bestudeerden"
+        ]
+      },
+      {
+        "type": "article_selection",
+        "noun": "structuur",
+        "meaning": "structure, framework",
+        "correct": "de",
+        "explanation": "Nouns ending in -uur (like 'structuur', 'cultuur', 'natuur') take the definite article 'de'."
       }
     ],
     "difficulty": "advanced",
@@ -7467,7 +8379,7 @@ globalThis.NP_GRAMMAR = [
         "type": "fill_in_the_blank",
         "prompt": "Complete the sentence applying Cleft Sentences for Thematic Emphasis: 'Het is ... dat/die':",
         "blankWord": "dat",
-        "sentenceWithBlank": "Het is belangrijk ___ men deze regel goed begrijpt.",
+        "sentenceWithBlank": "Het is belangrijk ___ men deze grammaticale regel goed begrijpt.",
         "hints": [
           "dat",
           "of",
@@ -7489,6 +8401,22 @@ globalThis.NP_GRAMMAR = [
           "uit"
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
+      },
+      {
+        "type": "sentence_transformation",
+        "original": "De studenten bestuderen de grammaticale structuren aandachtig.",
+        "instruction": "Formuleer deze zin in de verleden tijd (OVT):",
+        "transformed": "De studenten bestudeerden de grammaticale structuren aandachtig.",
+        "hints": [
+          "Gebruik de meervoudsvorm in de OVT: bestudeerden"
+        ]
+      },
+      {
+        "type": "article_selection",
+        "noun": "structuur",
+        "meaning": "structure, framework",
+        "correct": "de",
+        "explanation": "Nouns ending in -uur (like 'structuur', 'cultuur', 'natuur') take the definite article 'de'."
       }
     ],
     "difficulty": "advanced",
@@ -7549,7 +8477,7 @@ globalThis.NP_GRAMMAR = [
         "type": "fill_in_the_blank",
         "prompt": "Complete the sentence applying Stylistic Inversion and Poetic Word Order:",
         "blankWord": "dat",
-        "sentenceWithBlank": "Het is belangrijk ___ men deze regel goed begrijpt.",
+        "sentenceWithBlank": "Het is belangrijk ___ men deze grammaticale regel goed begrijpt.",
         "hints": [
           "dat",
           "of",
@@ -7571,6 +8499,22 @@ globalThis.NP_GRAMMAR = [
           "uit"
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
+      },
+      {
+        "type": "sentence_transformation",
+        "original": "De studenten bestuderen de grammaticale structuren aandachtig.",
+        "instruction": "Formuleer deze zin in de verleden tijd (OVT):",
+        "transformed": "De studenten bestudeerden de grammaticale structuren aandachtig.",
+        "hints": [
+          "Gebruik de meervoudsvorm in de OVT: bestudeerden"
+        ]
+      },
+      {
+        "type": "article_selection",
+        "noun": "structuur",
+        "meaning": "structure, framework",
+        "correct": "de",
+        "explanation": "Nouns ending in -uur (like 'structuur', 'cultuur', 'natuur') take the definite article 'de'."
       }
     ],
     "difficulty": "advanced",
@@ -7631,7 +8575,7 @@ globalThis.NP_GRAMMAR = [
         "type": "fill_in_the_blank",
         "prompt": "Complete the sentence applying Subtle Semantic Shifts in Separable vs Inseparable Verbs:",
         "blankWord": "dat",
-        "sentenceWithBlank": "Het is belangrijk ___ men deze regel goed begrijpt.",
+        "sentenceWithBlank": "Het is belangrijk ___ men deze grammaticale regel goed begrijpt.",
         "hints": [
           "dat",
           "of",
@@ -7653,6 +8597,22 @@ globalThis.NP_GRAMMAR = [
           "uit"
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
+      },
+      {
+        "type": "sentence_transformation",
+        "original": "De studenten bestuderen de grammaticale structuren aandachtig.",
+        "instruction": "Formuleer deze zin in de verleden tijd (OVT):",
+        "transformed": "De studenten bestudeerden de grammaticale structuren aandachtig.",
+        "hints": [
+          "Gebruik de meervoudsvorm in de OVT: bestudeerden"
+        ]
+      },
+      {
+        "type": "article_selection",
+        "noun": "structuur",
+        "meaning": "structure, framework",
+        "correct": "de",
+        "explanation": "Nouns ending in -uur (like 'structuur', 'cultuur', 'natuur') take the definite article 'de'."
       }
     ],
     "difficulty": "advanced",
@@ -7713,7 +8673,7 @@ globalThis.NP_GRAMMAR = [
         "type": "fill_in_the_blank",
         "prompt": "Complete the sentence applying Compound Noun Spelling: The 'tussen-n' and 'tussen-s' Rules:",
         "blankWord": "dat",
-        "sentenceWithBlank": "Het is belangrijk ___ men deze regel goed begrijpt.",
+        "sentenceWithBlank": "Het is belangrijk ___ men deze grammaticale regel goed begrijpt.",
         "hints": [
           "dat",
           "of",
@@ -7735,6 +8695,22 @@ globalThis.NP_GRAMMAR = [
           "uit"
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
+      },
+      {
+        "type": "sentence_transformation",
+        "original": "De studenten bestuderen de grammaticale structuren aandachtig.",
+        "instruction": "Formuleer deze zin in de verleden tijd (OVT):",
+        "transformed": "De studenten bestudeerden de grammaticale structuren aandachtig.",
+        "hints": [
+          "Gebruik de meervoudsvorm in de OVT: bestudeerden"
+        ]
+      },
+      {
+        "type": "article_selection",
+        "noun": "structuur",
+        "meaning": "structure, framework",
+        "correct": "de",
+        "explanation": "Nouns ending in -uur (like 'structuur', 'cultuur', 'natuur') take the definite article 'de'."
       }
     ],
     "difficulty": "advanced",
@@ -7795,7 +8771,7 @@ globalThis.NP_GRAMMAR = [
         "type": "fill_in_the_blank",
         "prompt": "Complete the sentence applying Alternative Passive Forms: 'vallen te + inf' and 'staan te':",
         "blankWord": "dat",
-        "sentenceWithBlank": "Het is belangrijk ___ men deze regel goed begrijpt.",
+        "sentenceWithBlank": "Het is belangrijk ___ men deze grammaticale regel goed begrijpt.",
         "hints": [
           "dat",
           "of",
@@ -7817,6 +8793,22 @@ globalThis.NP_GRAMMAR = [
           "uit"
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
+      },
+      {
+        "type": "sentence_transformation",
+        "original": "De studenten bestuderen de grammaticale structuren aandachtig.",
+        "instruction": "Formuleer deze zin in de verleden tijd (OVT):",
+        "transformed": "De studenten bestudeerden de grammaticale structuren aandachtig.",
+        "hints": [
+          "Gebruik de meervoudsvorm in de OVT: bestudeerden"
+        ]
+      },
+      {
+        "type": "article_selection",
+        "noun": "structuur",
+        "meaning": "structure, framework",
+        "correct": "de",
+        "explanation": "Nouns ending in -uur (like 'structuur', 'cultuur', 'natuur') take the definite article 'de'."
       }
     ],
     "difficulty": "advanced",
@@ -7877,7 +8869,7 @@ globalThis.NP_GRAMMAR = [
         "type": "fill_in_the_blank",
         "prompt": "Complete the sentence applying Pragmatic Nuances of the Dutch Diminutive:",
         "blankWord": "dat",
-        "sentenceWithBlank": "Het is belangrijk ___ men deze regel goed begrijpt.",
+        "sentenceWithBlank": "Het is belangrijk ___ men deze grammaticale regel goed begrijpt.",
         "hints": [
           "dat",
           "of",
@@ -7899,6 +8891,22 @@ globalThis.NP_GRAMMAR = [
           "uit"
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
+      },
+      {
+        "type": "sentence_transformation",
+        "original": "De studenten bestuderen de grammaticale structuren aandachtig.",
+        "instruction": "Formuleer deze zin in de verleden tijd (OVT):",
+        "transformed": "De studenten bestudeerden de grammaticale structuren aandachtig.",
+        "hints": [
+          "Gebruik de meervoudsvorm in de OVT: bestudeerden"
+        ]
+      },
+      {
+        "type": "article_selection",
+        "noun": "structuur",
+        "meaning": "structure, framework",
+        "correct": "de",
+        "explanation": "Nouns ending in -uur (like 'structuur', 'cultuur', 'natuur') take the definite article 'de'."
       }
     ],
     "difficulty": "advanced",
@@ -7959,7 +8967,7 @@ globalThis.NP_GRAMMAR = [
         "type": "fill_in_the_blank",
         "prompt": "Complete the sentence applying Reflexive Idioms with Fixed Prepositional Complements:",
         "blankWord": "dat",
-        "sentenceWithBlank": "Het is belangrijk ___ men deze regel goed begrijpt.",
+        "sentenceWithBlank": "Het is belangrijk ___ men deze grammaticale regel goed begrijpt.",
         "hints": [
           "dat",
           "of",
@@ -7981,6 +8989,22 @@ globalThis.NP_GRAMMAR = [
           "uit"
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
+      },
+      {
+        "type": "sentence_transformation",
+        "original": "De studenten bestuderen de grammaticale structuren aandachtig.",
+        "instruction": "Formuleer deze zin in de verleden tijd (OVT):",
+        "transformed": "De studenten bestudeerden de grammaticale structuren aandachtig.",
+        "hints": [
+          "Gebruik de meervoudsvorm in de OVT: bestudeerden"
+        ]
+      },
+      {
+        "type": "article_selection",
+        "noun": "structuur",
+        "meaning": "structure, framework",
+        "correct": "de",
+        "explanation": "Nouns ending in -uur (like 'structuur', 'cultuur', 'natuur') take the definite article 'de'."
       }
     ],
     "difficulty": "advanced",
@@ -8041,7 +9065,7 @@ globalThis.NP_GRAMMAR = [
         "type": "fill_in_the_blank",
         "prompt": "Complete the sentence applying Archaic Genitive and Dative Case Remnants:",
         "blankWord": "dat",
-        "sentenceWithBlank": "Het is belangrijk ___ men deze regel goed begrijpt.",
+        "sentenceWithBlank": "Het is belangrijk ___ men deze grammaticale regel goed begrijpt.",
         "hints": [
           "dat",
           "of",
@@ -8063,6 +9087,22 @@ globalThis.NP_GRAMMAR = [
           "uit"
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
+      },
+      {
+        "type": "sentence_transformation",
+        "original": "De studenten bestuderen de grammaticale structuren aandachtig.",
+        "instruction": "Formuleer deze zin in de verleden tijd (OVT):",
+        "transformed": "De studenten bestudeerden de grammaticale structuren aandachtig.",
+        "hints": [
+          "Gebruik de meervoudsvorm in de OVT: bestudeerden"
+        ]
+      },
+      {
+        "type": "article_selection",
+        "noun": "structuur",
+        "meaning": "structure, framework",
+        "correct": "de",
+        "explanation": "Nouns ending in -uur (like 'structuur', 'cultuur', 'natuur') take the definite article 'de'."
       }
     ],
     "difficulty": "advanced",
@@ -8123,7 +9163,7 @@ globalThis.NP_GRAMMAR = [
         "type": "fill_in_the_blank",
         "prompt": "Complete the sentence applying Cohesion and Flow in Academic and Essayistic Dutch:",
         "blankWord": "dat",
-        "sentenceWithBlank": "Het is belangrijk ___ men deze regel goed begrijpt.",
+        "sentenceWithBlank": "Het is belangrijk ___ men deze grammaticale regel goed begrijpt.",
         "hints": [
           "dat",
           "of",
@@ -8145,6 +9185,22 @@ globalThis.NP_GRAMMAR = [
           "uit"
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
+      },
+      {
+        "type": "sentence_transformation",
+        "original": "De studenten bestuderen de grammaticale structuren aandachtig.",
+        "instruction": "Formuleer deze zin in de verleden tijd (OVT):",
+        "transformed": "De studenten bestudeerden de grammaticale structuren aandachtig.",
+        "hints": [
+          "Gebruik de meervoudsvorm in de OVT: bestudeerden"
+        ]
+      },
+      {
+        "type": "article_selection",
+        "noun": "structuur",
+        "meaning": "structure, framework",
+        "correct": "de",
+        "explanation": "Nouns ending in -uur (like 'structuur', 'cultuur', 'natuur') take the definite article 'de'."
       }
     ],
     "difficulty": "advanced",
@@ -8205,7 +9261,7 @@ globalThis.NP_GRAMMAR = [
         "type": "fill_in_the_blank",
         "prompt": "Complete the sentence applying Expressing Epistemic Reservation and Skepticism:",
         "blankWord": "dat",
-        "sentenceWithBlank": "Het is belangrijk ___ men deze regel goed begrijpt.",
+        "sentenceWithBlank": "Het is belangrijk ___ men deze grammaticale regel goed begrijpt.",
         "hints": [
           "dat",
           "of",
@@ -8227,6 +9283,22 @@ globalThis.NP_GRAMMAR = [
           "uit"
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
+      },
+      {
+        "type": "sentence_transformation",
+        "original": "De studenten bestuderen de grammaticale structuren aandachtig.",
+        "instruction": "Formuleer deze zin in de verleden tijd (OVT):",
+        "transformed": "De studenten bestudeerden de grammaticale structuren aandachtig.",
+        "hints": [
+          "Gebruik de meervoudsvorm in de OVT: bestudeerden"
+        ]
+      },
+      {
+        "type": "article_selection",
+        "noun": "structuur",
+        "meaning": "structure, framework",
+        "correct": "de",
+        "explanation": "Nouns ending in -uur (like 'structuur', 'cultuur', 'natuur') take the definite article 'de'."
       }
     ],
     "difficulty": "advanced",
@@ -8287,7 +9359,7 @@ globalThis.NP_GRAMMAR = [
         "type": "fill_in_the_blank",
         "prompt": "Complete the sentence applying Aspectual Distinctions with Combinatory Verb Particles:",
         "blankWord": "dat",
-        "sentenceWithBlank": "Het is belangrijk ___ men deze regel goed begrijpt.",
+        "sentenceWithBlank": "Het is belangrijk ___ men deze grammaticale regel goed begrijpt.",
         "hints": [
           "dat",
           "of",
@@ -8309,6 +9381,22 @@ globalThis.NP_GRAMMAR = [
           "uit"
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
+      },
+      {
+        "type": "sentence_transformation",
+        "original": "De studenten bestuderen de grammaticale structuren aandachtig.",
+        "instruction": "Formuleer deze zin in de verleden tijd (OVT):",
+        "transformed": "De studenten bestudeerden de grammaticale structuren aandachtig.",
+        "hints": [
+          "Gebruik de meervoudsvorm in de OVT: bestudeerden"
+        ]
+      },
+      {
+        "type": "article_selection",
+        "noun": "structuur",
+        "meaning": "structure, framework",
+        "correct": "de",
+        "explanation": "Nouns ending in -uur (like 'structuur', 'cultuur', 'natuur') take the definite article 'de'."
       }
     ],
     "difficulty": "advanced",
@@ -8369,7 +9457,7 @@ globalThis.NP_GRAMMAR = [
         "type": "fill_in_the_blank",
         "prompt": "Complete the sentence applying Register-Specific Formulaic Syntax in Official Documents:",
         "blankWord": "dat",
-        "sentenceWithBlank": "Het is belangrijk ___ men deze regel goed begrijpt.",
+        "sentenceWithBlank": "Het is belangrijk ___ men deze grammaticale regel goed begrijpt.",
         "hints": [
           "dat",
           "of",
@@ -8391,6 +9479,22 @@ globalThis.NP_GRAMMAR = [
           "uit"
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
+      },
+      {
+        "type": "sentence_transformation",
+        "original": "De studenten bestuderen de grammaticale structuren aandachtig.",
+        "instruction": "Formuleer deze zin in de verleden tijd (OVT):",
+        "transformed": "De studenten bestudeerden de grammaticale structuren aandachtig.",
+        "hints": [
+          "Gebruik de meervoudsvorm in de OVT: bestudeerden"
+        ]
+      },
+      {
+        "type": "article_selection",
+        "noun": "structuur",
+        "meaning": "structure, framework",
+        "correct": "de",
+        "explanation": "Nouns ending in -uur (like 'structuur', 'cultuur', 'natuur') take the definite article 'de'."
       }
     ],
     "difficulty": "advanced",
@@ -8451,7 +9555,7 @@ globalThis.NP_GRAMMAR = [
         "type": "fill_in_the_blank",
         "prompt": "Complete the sentence applying The Comparative Conundrum: 'als' vs 'dan' vs 'zoals':",
         "blankWord": "dat",
-        "sentenceWithBlank": "Het is belangrijk ___ men deze regel goed begrijpt.",
+        "sentenceWithBlank": "Het is belangrijk ___ men deze grammaticale regel goed begrijpt.",
         "hints": [
           "dat",
           "of",
@@ -8473,6 +9577,22 @@ globalThis.NP_GRAMMAR = [
           "uit"
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
+      },
+      {
+        "type": "sentence_transformation",
+        "original": "De studenten bestuderen de grammaticale structuren aandachtig.",
+        "instruction": "Formuleer deze zin in de verleden tijd (OVT):",
+        "transformed": "De studenten bestudeerden de grammaticale structuren aandachtig.",
+        "hints": [
+          "Gebruik de meervoudsvorm in de OVT: bestudeerden"
+        ]
+      },
+      {
+        "type": "article_selection",
+        "noun": "structuur",
+        "meaning": "structure, framework",
+        "correct": "de",
+        "explanation": "Nouns ending in -uur (like 'structuur', 'cultuur', 'natuur') take the definite article 'de'."
       }
     ],
     "difficulty": "advanced",
@@ -8533,7 +9653,7 @@ globalThis.NP_GRAMMAR = [
         "type": "fill_in_the_blank",
         "prompt": "Complete the sentence applying Archaic and Formal Administrative Syntax:",
         "blankWord": "dat",
-        "sentenceWithBlank": "Het is belangrijk ___ men deze regel goed begrijpt.",
+        "sentenceWithBlank": "Het is belangrijk ___ men deze grammaticale regel goed begrijpt.",
         "hints": [
           "dat",
           "of",
@@ -8555,6 +9675,22 @@ globalThis.NP_GRAMMAR = [
           "uit"
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
+      },
+      {
+        "type": "sentence_transformation",
+        "original": "De studenten bestuderen de grammaticale structuren aandachtig.",
+        "instruction": "Formuleer deze zin in de verleden tijd (OVT):",
+        "transformed": "De studenten bestudeerden de grammaticale structuren aandachtig.",
+        "hints": [
+          "Gebruik de meervoudsvorm in de OVT: bestudeerden"
+        ]
+      },
+      {
+        "type": "article_selection",
+        "noun": "structuur",
+        "meaning": "structure, framework",
+        "correct": "de",
+        "explanation": "Nouns ending in -uur (like 'structuur', 'cultuur', 'natuur') take the definite article 'de'."
       }
     ],
     "difficulty": "advanced",
@@ -8615,7 +9751,7 @@ globalThis.NP_GRAMMAR = [
         "type": "fill_in_the_blank",
         "prompt": "Complete the sentence applying Advanced Nominal Style vs Verbal Style:",
         "blankWord": "dat",
-        "sentenceWithBlank": "Het is belangrijk ___ men deze regel goed begrijpt.",
+        "sentenceWithBlank": "Het is belangrijk ___ men deze grammaticale regel goed begrijpt.",
         "hints": [
           "dat",
           "of",
@@ -8637,6 +9773,22 @@ globalThis.NP_GRAMMAR = [
           "uit"
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
+      },
+      {
+        "type": "sentence_transformation",
+        "original": "De studenten bestuderen de grammaticale structuren aandachtig.",
+        "instruction": "Formuleer deze zin in de verleden tijd (OVT):",
+        "transformed": "De studenten bestudeerden de grammaticale structuren aandachtig.",
+        "hints": [
+          "Gebruik de meervoudsvorm in de OVT: bestudeerden"
+        ]
+      },
+      {
+        "type": "article_selection",
+        "noun": "structuur",
+        "meaning": "structure, framework",
+        "correct": "de",
+        "explanation": "Nouns ending in -uur (like 'structuur', 'cultuur', 'natuur') take the definite article 'de'."
       }
     ],
     "difficulty": "advanced",
@@ -8697,7 +9849,7 @@ globalThis.NP_GRAMMAR = [
         "type": "fill_in_the_blank",
         "prompt": "Complete the sentence applying Deeply Nested Subordinate Clause Architectures:",
         "blankWord": "dat",
-        "sentenceWithBlank": "Het is belangrijk ___ men deze regel goed begrijpt.",
+        "sentenceWithBlank": "Het is belangrijk ___ men deze grammaticale regel goed begrijpt.",
         "hints": [
           "dat",
           "of",
@@ -8719,6 +9871,22 @@ globalThis.NP_GRAMMAR = [
           "uit"
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
+      },
+      {
+        "type": "sentence_transformation",
+        "original": "De studenten bestuderen de grammaticale structuren aandachtig.",
+        "instruction": "Formuleer deze zin in de verleden tijd (OVT):",
+        "transformed": "De studenten bestudeerden de grammaticale structuren aandachtig.",
+        "hints": [
+          "Gebruik de meervoudsvorm in de OVT: bestudeerden"
+        ]
+      },
+      {
+        "type": "article_selection",
+        "noun": "structuur",
+        "meaning": "structure, framework",
+        "correct": "de",
+        "explanation": "Nouns ending in -uur (like 'structuur', 'cultuur', 'natuur') take the definite article 'de'."
       }
     ],
     "difficulty": "advanced",
@@ -8779,7 +9947,7 @@ globalThis.NP_GRAMMAR = [
         "type": "fill_in_the_blank",
         "prompt": "Complete the sentence applying Rhetorical Parallelism and Chiasmus in Dutch Speeches:",
         "blankWord": "dat",
-        "sentenceWithBlank": "Het is belangrijk ___ men deze regel goed begrijpt.",
+        "sentenceWithBlank": "Het is belangrijk ___ men deze grammaticale regel goed begrijpt.",
         "hints": [
           "dat",
           "of",
@@ -8801,6 +9969,22 @@ globalThis.NP_GRAMMAR = [
           "uit"
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
+      },
+      {
+        "type": "sentence_transformation",
+        "original": "De studenten bestuderen de grammaticale structuren aandachtig.",
+        "instruction": "Formuleer deze zin in de verleden tijd (OVT):",
+        "transformed": "De studenten bestudeerden de grammaticale structuren aandachtig.",
+        "hints": [
+          "Gebruik de meervoudsvorm in de OVT: bestudeerden"
+        ]
+      },
+      {
+        "type": "article_selection",
+        "noun": "structuur",
+        "meaning": "structure, framework",
+        "correct": "de",
+        "explanation": "Nouns ending in -uur (like 'structuur', 'cultuur', 'natuur') take the definite article 'de'."
       }
     ],
     "difficulty": "advanced",
@@ -8861,7 +10045,7 @@ globalThis.NP_GRAMMAR = [
         "type": "fill_in_the_blank",
         "prompt": "Complete the sentence applying Legal Phraseology and Statutory Drafting Style:",
         "blankWord": "dat",
-        "sentenceWithBlank": "Het is belangrijk ___ men deze regel goed begrijpt.",
+        "sentenceWithBlank": "Het is belangrijk ___ men deze grammaticale regel goed begrijpt.",
         "hints": [
           "dat",
           "of",
@@ -8883,6 +10067,22 @@ globalThis.NP_GRAMMAR = [
           "uit"
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
+      },
+      {
+        "type": "sentence_transformation",
+        "original": "De studenten bestuderen de grammaticale structuren aandachtig.",
+        "instruction": "Formuleer deze zin in de verleden tijd (OVT):",
+        "transformed": "De studenten bestudeerden de grammaticale structuren aandachtig.",
+        "hints": [
+          "Gebruik de meervoudsvorm in de OVT: bestudeerden"
+        ]
+      },
+      {
+        "type": "article_selection",
+        "noun": "structuur",
+        "meaning": "structure, framework",
+        "correct": "de",
+        "explanation": "Nouns ending in -uur (like 'structuur', 'cultuur', 'natuur') take the definite article 'de'."
       }
     ],
     "difficulty": "advanced",
@@ -8943,7 +10143,7 @@ globalThis.NP_GRAMMAR = [
         "type": "fill_in_the_blank",
         "prompt": "Complete the sentence applying Optative and Subjunctive Formulaic Invocations:",
         "blankWord": "dat",
-        "sentenceWithBlank": "Het is belangrijk ___ men deze regel goed begrijpt.",
+        "sentenceWithBlank": "Het is belangrijk ___ men deze grammaticale regel goed begrijpt.",
         "hints": [
           "dat",
           "of",
@@ -8965,6 +10165,22 @@ globalThis.NP_GRAMMAR = [
           "uit"
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
+      },
+      {
+        "type": "sentence_transformation",
+        "original": "De studenten bestuderen de grammaticale structuren aandachtig.",
+        "instruction": "Formuleer deze zin in de verleden tijd (OVT):",
+        "transformed": "De studenten bestudeerden de grammaticale structuren aandachtig.",
+        "hints": [
+          "Gebruik de meervoudsvorm in de OVT: bestudeerden"
+        ]
+      },
+      {
+        "type": "article_selection",
+        "noun": "structuur",
+        "meaning": "structure, framework",
+        "correct": "de",
+        "explanation": "Nouns ending in -uur (like 'structuur', 'cultuur', 'natuur') take the definite article 'de'."
       }
     ],
     "difficulty": "advanced",
@@ -9025,7 +10241,7 @@ globalThis.NP_GRAMMAR = [
         "type": "fill_in_the_blank",
         "prompt": "Complete the sentence applying Inverted Conditional Clauses without 'als':",
         "blankWord": "dat",
-        "sentenceWithBlank": "Het is belangrijk ___ men deze regel goed begrijpt.",
+        "sentenceWithBlank": "Het is belangrijk ___ men deze grammaticale regel goed begrijpt.",
         "hints": [
           "dat",
           "of",
@@ -9047,6 +10263,22 @@ globalThis.NP_GRAMMAR = [
           "uit"
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
+      },
+      {
+        "type": "sentence_transformation",
+        "original": "De studenten bestuderen de grammaticale structuren aandachtig.",
+        "instruction": "Formuleer deze zin in de verleden tijd (OVT):",
+        "transformed": "De studenten bestudeerden de grammaticale structuren aandachtig.",
+        "hints": [
+          "Gebruik de meervoudsvorm in de OVT: bestudeerden"
+        ]
+      },
+      {
+        "type": "article_selection",
+        "noun": "structuur",
+        "meaning": "structure, framework",
+        "correct": "de",
+        "explanation": "Nouns ending in -uur (like 'structuur', 'cultuur', 'natuur') take the definite article 'de'."
       }
     ],
     "difficulty": "advanced",
@@ -9107,7 +10339,7 @@ globalThis.NP_GRAMMAR = [
         "type": "fill_in_the_blank",
         "prompt": "Complete the sentence applying Complex Pre-nominal Participial Attributes:",
         "blankWord": "dat",
-        "sentenceWithBlank": "Het is belangrijk ___ men deze regel goed begrijpt.",
+        "sentenceWithBlank": "Het is belangrijk ___ men deze grammaticale regel goed begrijpt.",
         "hints": [
           "dat",
           "of",
@@ -9129,6 +10361,22 @@ globalThis.NP_GRAMMAR = [
           "uit"
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
+      },
+      {
+        "type": "sentence_transformation",
+        "original": "De studenten bestuderen de grammaticale structuren aandachtig.",
+        "instruction": "Formuleer deze zin in de verleden tijd (OVT):",
+        "transformed": "De studenten bestudeerden de grammaticale structuren aandachtig.",
+        "hints": [
+          "Gebruik de meervoudsvorm in de OVT: bestudeerden"
+        ]
+      },
+      {
+        "type": "article_selection",
+        "noun": "structuur",
+        "meaning": "structure, framework",
+        "correct": "de",
+        "explanation": "Nouns ending in -uur (like 'structuur', 'cultuur', 'natuur') take the definite article 'de'."
       }
     ],
     "difficulty": "advanced",
@@ -9189,7 +10437,7 @@ globalThis.NP_GRAMMAR = [
         "type": "fill_in_the_blank",
         "prompt": "Complete the sentence applying Modal Particle Clustering in Native Spoken Discourse:",
         "blankWord": "dat",
-        "sentenceWithBlank": "Het is belangrijk ___ men deze regel goed begrijpt.",
+        "sentenceWithBlank": "Het is belangrijk ___ men deze grammaticale regel goed begrijpt.",
         "hints": [
           "dat",
           "of",
@@ -9211,6 +10459,22 @@ globalThis.NP_GRAMMAR = [
           "uit"
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
+      },
+      {
+        "type": "sentence_transformation",
+        "original": "De studenten bestuderen de grammaticale structuren aandachtig.",
+        "instruction": "Formuleer deze zin in de verleden tijd (OVT):",
+        "transformed": "De studenten bestudeerden de grammaticale structuren aandachtig.",
+        "hints": [
+          "Gebruik de meervoudsvorm in de OVT: bestudeerden"
+        ]
+      },
+      {
+        "type": "article_selection",
+        "noun": "structuur",
+        "meaning": "structure, framework",
+        "correct": "de",
+        "explanation": "Nouns ending in -uur (like 'structuur', 'cultuur', 'natuur') take the definite article 'de'."
       }
     ],
     "difficulty": "advanced",
@@ -9271,7 +10535,7 @@ globalThis.NP_GRAMMAR = [
         "type": "fill_in_the_blank",
         "prompt": "Complete the sentence applying Sociolinguistic Register Shifts Across Dutch Media:",
         "blankWord": "dat",
-        "sentenceWithBlank": "Het is belangrijk ___ men deze regel goed begrijpt.",
+        "sentenceWithBlank": "Het is belangrijk ___ men deze grammaticale regel goed begrijpt.",
         "hints": [
           "dat",
           "of",
@@ -9293,6 +10557,22 @@ globalThis.NP_GRAMMAR = [
           "uit"
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
+      },
+      {
+        "type": "sentence_transformation",
+        "original": "De studenten bestuderen de grammaticale structuren aandachtig.",
+        "instruction": "Formuleer deze zin in de verleden tijd (OVT):",
+        "transformed": "De studenten bestudeerden de grammaticale structuren aandachtig.",
+        "hints": [
+          "Gebruik de meervoudsvorm in de OVT: bestudeerden"
+        ]
+      },
+      {
+        "type": "article_selection",
+        "noun": "structuur",
+        "meaning": "structure, framework",
+        "correct": "de",
+        "explanation": "Nouns ending in -uur (like 'structuur', 'cultuur', 'natuur') take the definite article 'de'."
       }
     ],
     "difficulty": "advanced",
@@ -9353,7 +10633,7 @@ globalThis.NP_GRAMMAR = [
         "type": "fill_in_the_blank",
         "prompt": "Complete the sentence applying Pronominal Splitting (Spijtsing van Voornaamwoordelijke Bijwoorden):",
         "blankWord": "dat",
-        "sentenceWithBlank": "Het is belangrijk ___ men deze regel goed begrijpt.",
+        "sentenceWithBlank": "Het is belangrijk ___ men deze grammaticale regel goed begrijpt.",
         "hints": [
           "dat",
           "of",
@@ -9375,6 +10655,22 @@ globalThis.NP_GRAMMAR = [
           "uit"
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
+      },
+      {
+        "type": "sentence_transformation",
+        "original": "De studenten bestuderen de grammaticale structuren aandachtig.",
+        "instruction": "Formuleer deze zin in de verleden tijd (OVT):",
+        "transformed": "De studenten bestudeerden de grammaticale structuren aandachtig.",
+        "hints": [
+          "Gebruik de meervoudsvorm in de OVT: bestudeerden"
+        ]
+      },
+      {
+        "type": "article_selection",
+        "noun": "structuur",
+        "meaning": "structure, framework",
+        "correct": "de",
+        "explanation": "Nouns ending in -uur (like 'structuur', 'cultuur', 'natuur') take the definite article 'de'."
       }
     ],
     "difficulty": "advanced",
@@ -9435,7 +10731,7 @@ globalThis.NP_GRAMMAR = [
         "type": "fill_in_the_blank",
         "prompt": "Complete the sentence applying Phrasal Verbs with Multiple Particles and Prefixes:",
         "blankWord": "dat",
-        "sentenceWithBlank": "Het is belangrijk ___ men deze regel goed begrijpt.",
+        "sentenceWithBlank": "Het is belangrijk ___ men deze grammaticale regel goed begrijpt.",
         "hints": [
           "dat",
           "of",
@@ -9457,6 +10753,22 @@ globalThis.NP_GRAMMAR = [
           "uit"
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
+      },
+      {
+        "type": "sentence_transformation",
+        "original": "De studenten bestuderen de grammaticale structuren aandachtig.",
+        "instruction": "Formuleer deze zin in de verleden tijd (OVT):",
+        "transformed": "De studenten bestudeerden de grammaticale structuren aandachtig.",
+        "hints": [
+          "Gebruik de meervoudsvorm in de OVT: bestudeerden"
+        ]
+      },
+      {
+        "type": "article_selection",
+        "noun": "structuur",
+        "meaning": "structure, framework",
+        "correct": "de",
+        "explanation": "Nouns ending in -uur (like 'structuur', 'cultuur', 'natuur') take the definite article 'de'."
       }
     ],
     "difficulty": "advanced",
@@ -9517,7 +10829,7 @@ globalThis.NP_GRAMMAR = [
         "type": "fill_in_the_blank",
         "prompt": "Complete the sentence applying Elliptical Comparative Structures in Literary Prose:",
         "blankWord": "dat",
-        "sentenceWithBlank": "Het is belangrijk ___ men deze regel goed begrijpt.",
+        "sentenceWithBlank": "Het is belangrijk ___ men deze grammaticale regel goed begrijpt.",
         "hints": [
           "dat",
           "of",
@@ -9539,6 +10851,22 @@ globalThis.NP_GRAMMAR = [
           "uit"
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
+      },
+      {
+        "type": "sentence_transformation",
+        "original": "De studenten bestuderen de grammaticale structuren aandachtig.",
+        "instruction": "Formuleer deze zin in de verleden tijd (OVT):",
+        "transformed": "De studenten bestudeerden de grammaticale structuren aandachtig.",
+        "hints": [
+          "Gebruik de meervoudsvorm in de OVT: bestudeerden"
+        ]
+      },
+      {
+        "type": "article_selection",
+        "noun": "structuur",
+        "meaning": "structure, framework",
+        "correct": "de",
+        "explanation": "Nouns ending in -uur (like 'structuur', 'cultuur', 'natuur') take the definite article 'de'."
       }
     ],
     "difficulty": "advanced",
@@ -9599,7 +10927,7 @@ globalThis.NP_GRAMMAR = [
         "type": "fill_in_the_blank",
         "prompt": "Complete the sentence applying Discourse Markers of Concession and Refutation in Debates:",
         "blankWord": "dat",
-        "sentenceWithBlank": "Het is belangrijk ___ men deze regel goed begrijpt.",
+        "sentenceWithBlank": "Het is belangrijk ___ men deze grammaticale regel goed begrijpt.",
         "hints": [
           "dat",
           "of",
@@ -9621,6 +10949,22 @@ globalThis.NP_GRAMMAR = [
           "uit"
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
+      },
+      {
+        "type": "sentence_transformation",
+        "original": "De studenten bestuderen de grammaticale structuren aandachtig.",
+        "instruction": "Formuleer deze zin in de verleden tijd (OVT):",
+        "transformed": "De studenten bestudeerden de grammaticale structuren aandachtig.",
+        "hints": [
+          "Gebruik de meervoudsvorm in de OVT: bestudeerden"
+        ]
+      },
+      {
+        "type": "article_selection",
+        "noun": "structuur",
+        "meaning": "structure, framework",
+        "correct": "de",
+        "explanation": "Nouns ending in -uur (like 'structuur', 'cultuur', 'natuur') take the definite article 'de'."
       }
     ],
     "difficulty": "advanced",
@@ -9681,7 +11025,7 @@ globalThis.NP_GRAMMAR = [
         "type": "fill_in_the_blank",
         "prompt": "Complete the sentence applying Stylistic Rhythm, Cadence, and Cadential Balance in Dutch:",
         "blankWord": "dat",
-        "sentenceWithBlank": "Het is belangrijk ___ men deze regel goed begrijpt.",
+        "sentenceWithBlank": "Het is belangrijk ___ men deze grammaticale regel goed begrijpt.",
         "hints": [
           "dat",
           "of",
@@ -9703,6 +11047,22 @@ globalThis.NP_GRAMMAR = [
           "uit"
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
+      },
+      {
+        "type": "sentence_transformation",
+        "original": "De studenten bestuderen de grammaticale structuren aandachtig.",
+        "instruction": "Formuleer deze zin in de verleden tijd (OVT):",
+        "transformed": "De studenten bestudeerden de grammaticale structuren aandachtig.",
+        "hints": [
+          "Gebruik de meervoudsvorm in de OVT: bestudeerden"
+        ]
+      },
+      {
+        "type": "article_selection",
+        "noun": "structuur",
+        "meaning": "structure, framework",
+        "correct": "de",
+        "explanation": "Nouns ending in -uur (like 'structuur', 'cultuur', 'natuur') take the definite article 'de'."
       }
     ],
     "difficulty": "advanced",
