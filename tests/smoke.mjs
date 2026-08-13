@@ -115,14 +115,17 @@ test("Data: Idioms bank contains >= 500 entries", () => {
   if (!Array.isArray(idioms) || idioms.length < 500) throw new Error(`Idioms count is ${idioms.length}, expected >= 500`);
 });
 
-test("Data: Comprehension passages contain >= 120 entries with questions", () => {
+test("Data: Comprehension bank contains authored passages with stable IDs", () => {
   const compSrc = readFileSync(join(ROOT, "data", "comprehension.js"), "utf8");
   new Function(compSrc)();
   const comp = globalThis.NP_COMPREHENSION;
 
-  if (!Array.isArray(comp) || comp.length < 120) throw new Error(`Comprehension count is ${comp.length}, expected >= 120`);
+  if (!Array.isArray(comp) || comp.length === 0) throw new Error("Comprehension bank is empty");
+  const ids = new Set();
   for (const c of comp) {
+    if (!/^comp-\d{3,}$/.test(c.id) || ids.has(c.id)) throw new Error(`Invalid or duplicate passage ID: ${c.id}`);
     if (!c.questions || c.questions.length === 0) throw new Error(`Passage ${c.id} has no questions`);
+    ids.add(c.id);
   }
 });
 

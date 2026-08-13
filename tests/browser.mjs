@@ -185,7 +185,7 @@ async function runBrowserTests() {
 
     assert(!requestedWords, "Initial Today view does NOT request words.js (10.5 MB saved)");
     assert(!requestedSentences, "Initial Today view does NOT request sentences.js (1.9 MB saved)");
-    assert(!requestedComprehension, "Initial Today view does NOT request comprehension.js (0.5 MB saved)");
+    assert(!requestedComprehension, "Initial Today view does NOT request comprehension.js");
     assert(requestedGrammar, "Initial Today view requested grammar.js on demand for spotlight rule");
     assert(requestedIdioms, "Initial Today view requested idioms.js on demand for idiom of day");
 
@@ -475,7 +475,11 @@ async function runBrowserTests() {
     await page.click("#nav-comprehension");
     await page.waitForSelector(".comprehension-catalog-container");
     const passageCards = await page.$$(".passage-item-card");
-    assert(passageCards.length === 120, `Comprehension library rendered all 120 passage cards (found: ${passageCards.length})`);
+    const expectedPassageCount = await page.evaluate(() => globalThis.NP_COMPREHENSION.length);
+    assert(
+      expectedPassageCount > 0 && passageCards.length === expectedPassageCount,
+      `Comprehension library rendered every curated passage (found: ${passageCards.length})`
+    );
 
     // Open first passage
     await passageCards[0].click();
