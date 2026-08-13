@@ -83,7 +83,7 @@ Public Application URL: **`https://cameronnel.github.io/nederpath/`**
 ### Commands
 
 ```powershell
-# Run the complete test suite (Audit + Unit/Smoke + Regression + Headless Browser Tests)
+# Run the complete test suite (Audit + Unit/Smoke + Regression + Offline/SW + Headless Browser Tests)
 npm test
 
 # Build production distribution bundle into dist/ (runtime assets only)
@@ -100,6 +100,9 @@ npm run test:unit
 
 # Run targeted regression tests for learning-engine and morphology integrity
 npm run test:regression
+
+# Run authoritative Service Worker and offline caching tests in VM sandbox
+npm run test:offline
 
 # Run Puppeteer headless browser tests (desktop & mobile viewports)
 npm run test:browser
@@ -125,15 +128,16 @@ npm run serve
 - **48/48** audit checks passed.
 - **8/8** unit and smoke tests passed.
 - **20/20** regression tests passed (including direct noun plurals and oracle equivalence).
-- **50/50** headless browser end-to-end assertions passed (0 console errors).
-- **59/59** build artifact integrity checks passed.
+- **23/23** authoritative Service Worker & offline sandbox tests passed.
+- **55/55** headless browser end-to-end assertions passed (0 console errors).
+- **64/64** build artifact integrity checks passed.
 - **Initial Runtime Transfer Budget**: ~911 KB uncompressed on Today view (target <= 1.5 MB; ~12.9 MB saved on initial startup via promise-cached lazy loading).
 
 ---
 
 ## Deployment & Verification
 
-- **Automated Workflow**: `.github/workflows/deploy.yml` validates pull requests (Audit, Smoke, Regression, Browser tests, Build, Artifact Audit) and builds a minimal `./dist` artifact deployed to GitHub Pages on `master` pushes with self-enabling `enablement: true`.
+- **Automated Workflow**: `.github/workflows/deploy.yml` validates pull requests (Audit, Smoke, Regression, Offline, Browser tests, Build, Artifact Audit) and builds a minimal `./dist` artifact deployed to GitHub Pages on `master` pushes with self-enabling `enablement: true`.
 - **Deployment Status**: Production deployment executes automatically upon merge to `master`. Pull requests run validation only.
 
 ---

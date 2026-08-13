@@ -17,8 +17,9 @@
     "audit:artifact": "node scripts/audit-artifact.mjs",
     "test:unit": "node scripts/audit.mjs && node tests/smoke.mjs",
     "test:regression": "node tests/regression.mjs",
+    "test:offline": "node tests/offline.mjs",
     "test:browser": "node tests/browser.mjs",
-    "test": "node scripts/audit.mjs && node tests/smoke.mjs && node tests/regression.mjs && node tests/browser.mjs",
+    "test": "node scripts/audit.mjs && node tests/smoke.mjs && node tests/regression.mjs && node tests/offline.mjs && node tests/browser.mjs",
     "serve": "node scripts/serve.mjs"
   },
   "keywords": [

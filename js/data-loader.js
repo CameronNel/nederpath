@@ -43,7 +43,14 @@
         script.src = config.path;
         script.async = true;
 
+        const timeoutId = setTimeout(() => {
+          delete loadPromises[bankName];
+          if (script.parentNode) script.parentNode.removeChild(script);
+          reject(new Error(`Time-out bij het laden van ${config.path}. Controleer verbinding.`));
+        }, 3000);
+
         script.onload = () => {
+          clearTimeout(timeoutId);
           if (global[config.globalKey] !== undefined) {
             loadedBanks.add(bankName);
             resolve(global[config.globalKey]);
@@ -54,6 +61,7 @@
         };
 
         script.onerror = () => {
+          clearTimeout(timeoutId);
           delete loadPromises[bankName];
           if (script.parentNode) script.parentNode.removeChild(script);
           reject(new Error(`Fout bij het laden van ${config.path}. Controleer verbinding.`));
@@ -107,6 +115,10 @@
   function resetBank(bankName) {
     delete loadPromises[bankName];
     loadedBanks.delete(bankName);
+    const config = DATA_BANKS[bankName];
+    if (config) {
+      delete global[config.globalKey];
+    }
   }
 
   const DataLoader = {

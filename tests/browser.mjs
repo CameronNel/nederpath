@@ -6,7 +6,8 @@ import { join, extname, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
-const PORT = 3456;
+const PORT = 3458;
+const HOST = "127.0.0.1";
 
 // Cross-platform browser executable discovery
 function findBrowserExecutable() {
@@ -55,27 +56,36 @@ const MIME_TYPES = {
   ".png": "image/png"
 };
 
-// Start local static HTTP server
+// Start local static HTTP server bound to 127.0.0.1
 const server = createServer((req, res) => {
-  let urlPath = req.url.split("?")[0];
-  if (urlPath === "/" || urlPath === "") urlPath = "/index.html";
-
-  const filePath = join(ROOT, urlPath.replace(/^\//, ""));
-  if (!existsSync(filePath) || statSync(filePath).isDirectory()) {
-    res.writeHead(404, { "Content-Type": "text/plain" });
-    res.end("404 Not Found");
-    return;
-  }
-
-  const ext = extname(filePath).toLowerCase();
-  const mime = MIME_TYPES[ext] || "application/octet-stream";
   try {
+    let pathname = "/";
+    try {
+      const parsed = new URL(req.url, `http://${req.headers.host || HOST + ":" + PORT}`);
+      pathname = parsed.pathname;
+    } catch {
+      pathname = (req.url || "").split("?")[0];
+    }
+    if (pathname === "/" || pathname === "") pathname = "/index.html";
+
+    const cleanPath = decodeURIComponent(pathname).replace(/^\//, "");
+    const filePath = join(ROOT, cleanPath);
+    if (!existsSync(filePath) || statSync(filePath).isDirectory()) {
+      res.writeHead(404, { "Content-Type": "text/plain" });
+      res.end("404 Not Found");
+      return;
+    }
+
+    const ext = extname(filePath).toLowerCase();
+    const mime = MIME_TYPES[ext] || "application/octet-stream";
     const data = readFileSync(filePath);
-    res.writeHead(200, { "Content-Type": mime });
+    res.writeHead(200, { "Content-Type": mime, "Content-Length": data.length });
     res.end(data);
   } catch (err) {
-    res.writeHead(500, { "Content-Type": "text/plain" });
-    res.end(err.message);
+    try {
+      res.writeHead(500, { "Content-Type": "text/plain" });
+      res.end(err.message);
+    } catch {}
   }
 });
 
@@ -97,8 +107,8 @@ async function runBrowserTests() {
   console.log("       NederPath Comprehensive Browser Test Suite      ");
   console.log("=======================================================");
 
-  await new Promise((resolve) => server.listen(PORT, resolve));
-  console.log(`Test server running at http://localhost:${PORT}`);
+  await new Promise((resolve) => server.listen(PORT, HOST, resolve));
+  console.log(`Test server running at http://${HOST}:${PORT}`);
 
   const browser = await puppeteer.launch({
     executablePath,
@@ -123,12 +133,12 @@ async function runBrowserTests() {
     requestedUrls.push(req.url());
   });
 
-  page.on("response", async (res) => {
+  page.on("response", (res) => {
     if (trackInitial) {
-      try {
-        const buffer = await res.buffer();
-        initialTotalBytes += buffer.length;
-      } catch {}
+      const len = res.headers()["content-length"];
+      if (len) {
+        initialTotalBytes += parseInt(len, 10);
+      }
     }
   });
 
@@ -140,7 +150,8 @@ async function runBrowserTests() {
     console.log("\n--- [Desktop Viewport: 1280x800] ---");
 
     // 1. Initial Page Load & Request Tracking Verification
-    await page.goto(`http://localhost:${PORT}/index.html`, { waitUntil: "networkidle0" });
+    await page.goto(`http://${HOST}:${PORT}/index.html`, { waitUntil: "domcontentloaded" });
+    await page.waitForSelector(".today-hero");
     trackInitial = false;
 
     const title = await page.title();
@@ -166,7 +177,7 @@ async function runBrowserTests() {
       `Initial runtime transfer budget verified: ${(initialTotalBytes / 1024).toFixed(1)} KB (target <= 1.5 MB)`
     );
 
-    // 3. Accessibility: Skip-Link & ARIA Live Announcer
+    // 3. Accessibility: Skip-Link & ARIA Live Announcer & aria-current Tab Navigation
     const skipLink = await page.$(".skip-link");
     assert(skipLink !== null, "Skip link exists in DOM");
 
@@ -174,13 +185,19 @@ async function runBrowserTests() {
     const isSkipFocused = await page.evaluate(() => document.activeElement === document.querySelector(".skip-link"));
     assert(isSkipFocused, "Skip link is keyboard focusable");
 
+    // Real keyboard Enter activation of skip-link
+    await page.keyboard.press("Enter");
+    const activeElIdAfterSkip = await page.evaluate(() => (document.activeElement ? document.activeElement.id : ""));
+    assert(activeElIdAfterSkip === "app-main", "Activating skip link via keyboard [Enter] moves focus to #app-main container");
+
     const liveAnnouncer = await page.$("#live-announcer");
-    assert(liveAnnouncer !== null, "Persistent ARIA live announcer region exists in DOM");
+    const liveAnnouncerRole = await page.$eval("#live-announcer", (el) => el.getAttribute("aria-live"));
+    assert(liveAnnouncer !== null && liveAnnouncerRole === "polite", "Persistent ARIA live announcer region exists in DOM with aria-live='polite'");
 
     const todayNavCurrent = await page.$eval("#nav-today", (el) => el.getAttribute("aria-current"));
-    assert(todayNavCurrent === "page", "Active navigation tab carries aria-current='page'");
+    assert(todayNavCurrent === "page", "Active navigation tab carries aria-current='page' and inactive does not");
 
-    // 4. Navigation: Woorden (On-Demand Loading & In-Memory Promise Cache)
+    // 4. Navigation: Woorden (On-Demand Loading & In-Memory Promise Cache & Focus)
     const countWordsBefore = requestedUrls.filter((u) => u.includes("data/words.js")).length;
     await page.click("#nav-words");
     await page.waitForSelector(".words-search-card");
@@ -191,8 +208,12 @@ async function runBrowserTests() {
     const wordsPageTitle = await page.$eval(".page-title", (el) => el.textContent);
     assert(wordsPageTitle.includes("Woordenboek"), "Navigated to Words Dictionary view");
 
+    const activeHeadingTag = await page.evaluate(() => (document.activeElement ? document.activeElement.tagName.toLowerCase() : ""));
+    assert(activeHeadingTag === "h1" || activeHeadingTag === "h2", "Primary view navigation sets focus to main heading");
+
     const wordsNavCurrent = await page.$eval("#nav-words", (el) => el.getAttribute("aria-current"));
-    assert(wordsNavCurrent === "page", "Woorden navigation button carries aria-current='page'");
+    const todayNavAfter = await page.$eval("#nav-today", (el) => el.getAttribute("aria-current"));
+    assert(wordsNavCurrent === "page" && todayNavAfter === null, "Woorden button updated to aria-current='page' and Today cleared");
 
     // Test In-Memory Cache (navigating back to Today and to Words must not re-request words.js)
     await page.click("#nav-today");
@@ -221,7 +242,21 @@ async function runBrowserTests() {
       assert(true, "Toggled word bookmark/star");
     }
 
-    // 5. Navigation: Grammatica (Grammar Curriculum & 7 Exercise Types)
+    // Audit accessible label associations on Words view
+    const wordsUnlabeled = await page.evaluate(() => {
+      const inputs = Array.from(document.querySelectorAll("input, select"));
+      return inputs.filter((inp) => {
+        if (inp.type === "hidden") return false;
+        const id = inp.id;
+        const hasLabel = id && document.querySelector(`label[for="${id}"]`);
+        const hasAriaLabel = inp.getAttribute("aria-label") || inp.getAttribute("aria-labelledby");
+        const wrappedLabel = inp.closest("label");
+        return !hasLabel && !hasAriaLabel && !wrappedLabel;
+      }).length;
+    });
+    assert(wordsUnlabeled === 0, "All search and filter controls on Words view have associated accessible labels");
+
+    // 5. Navigation: Grammatica (Grammar Curriculum & Word Order Duplicate Tokens Keyboard Flow)
     await page.click("#nav-grammar");
     await page.waitForSelector(".grammar-catalog-container");
     const grammarCards = await page.$$(".grammar-item-card");
@@ -233,7 +268,7 @@ async function runBrowserTests() {
     const lessonTitle = await page.$eval(".lesson-title", (el) => el.textContent);
     assert(lessonTitle.length > 5, `Opened grammar lesson: '${lessonTitle}'`);
 
-    // Verify structural formula & rules
+    // Verify structural syntax formula & rules
     const syntaxBox = await page.$(".syntax-formula");
     assert(syntaxBox !== null, "Structural syntax formula displayed");
 
@@ -252,7 +287,85 @@ async function runBrowserTests() {
       assert(true, "Navigated to next grammar exercise in rule");
     }
 
-    // 6. Navigation: Lezen (Comprehension Passages & Quizzes)
+    // Deterministic Word-Order Keyboard Test with Duplicate Tokens
+    await page.evaluate(async () => {
+      const app = globalThis.NederApp;
+      if (app && app.activeGrammarRule) {
+        app.activeGrammarRule.exercises = app.activeGrammarRule.exercises || [];
+        app.activeGrammarRule.exercises.unshift({
+          type: "token_reconstruction",
+          instruction: "Zet de woorden in de juiste volgorde:",
+          tokens: ["de", "kat", "ziet", "de", "hond"],
+          correctOrder: ["de", "kat", "ziet", "de", "hond"],
+          sentence: "De kat ziet de hond.",
+          explanation: "Onderwerp + persoonsvorm + lijdend voorwerp."
+        });
+        app.activeGrammarExIndex = 0;
+        app.tokenReconstructionPlaced = [];
+        app.activeGrammarAnswers = {};
+        await app.render();
+      }
+    });
+
+    await page.waitForSelector(".exercise-token-order");
+    const poolBtn0 = await page.$("button[data-pool-idx='0']");
+    const poolBtn3 = await page.$("button[data-pool-idx='3']");
+    assert(poolBtn0 !== null && poolBtn3 !== null, "Found two duplicate token buttons ('de') at distinct pool indices 0 and 3");
+
+    // Activate first token ('de', pool index 0) via keyboard focus + Enter
+    await poolBtn0.focus();
+    await page.keyboard.press("Enter");
+
+    const placedState1 = await page.evaluate(() => {
+      const app = globalThis.NederApp;
+      return app.tokenReconstructionPlaced.slice();
+    });
+    assert(
+      placedState1.length === 1 && placedState1[0].poolIndex === 0 && placedState1[0].text === "de",
+      "Keyboard [Enter] activated first token button ('de', poolIndex 0)"
+    );
+
+    const postTokenHeadingTag = await page.evaluate(() => (document.activeElement ? document.activeElement.tagName.toLowerCase() : ""));
+    assert(postTokenHeadingTag !== "h1" && postTokenHeadingTag !== "h2", "Token placement does not steal focus to page heading");
+
+    // Activate second duplicate token ('de', pool index 3) via keyboard focus + Enter
+    const poolBtn3Fresh = await page.$("button[data-pool-idx='3']");
+    await poolBtn3Fresh.focus();
+    await page.keyboard.press("Enter");
+
+    const placedState2 = await page.evaluate(() => {
+      const app = globalThis.NederApp;
+      return app.tokenReconstructionPlaced.slice();
+    });
+    assert(
+      placedState2.length === 2 &&
+        placedState2[0].poolIndex === 0 &&
+        placedState2[1].poolIndex === 3 &&
+        placedState2[0].text === "de" &&
+        placedState2[1].text === "de",
+      "Keyboard [Enter] activated second duplicate token button ('de', poolIndex 3) while preserving distinct indices"
+    );
+
+    // Remove second placed token via keyboard focus + Enter
+    const placedBtn1 = await page.$("button[data-placed-idx='1']");
+    await placedBtn1.focus();
+    await page.keyboard.press("Enter");
+
+    const placedState3 = await page.evaluate(() => globalThis.NederApp.tokenReconstructionPlaced.slice());
+    assert(
+      placedState3.length === 1 && placedState3[0].poolIndex === 0,
+      "Keyboard [Enter] removed placed token from position 1, returning pool token 3 to available state"
+    );
+
+    // Remove first placed token via keyboard focus + Enter
+    const placedBtn0 = await page.$("button[data-placed-idx='0']");
+    await placedBtn0.focus();
+    await page.keyboard.press("Enter");
+
+    const placedState4 = await page.evaluate(() => globalThis.NederApp.tokenReconstructionPlaced.slice());
+    assert(placedState4.length === 0, "Keyboard [Enter] removed placed token from position 0, resetting pool state");
+
+    // 6. Navigation: Lezen (Comprehension Passages & Quizzes & Translation Accordion)
     await page.click("#nav-comprehension");
     await page.waitForSelector(".comprehension-catalog-container");
     const passageCards = await page.$$(".passage-item-card");
@@ -274,20 +387,41 @@ async function runBrowserTests() {
     if (passageOpt) {
       await passageOpt.click();
       assert(true, "Comprehension quiz question answered and recorded");
+      const compAnnounce = await page.$eval("#live-announcer", (el) => el.textContent);
+      assert(compAnnounce.includes("Vraag 1"), `Comprehension quiz result announced to live region: '${compAnnounce}'`);
     }
 
-    // 7. Navigation: Oefenen (Interactive Practice Modes & Keyboard Operability)
+    // 7. Navigation: Oefenen (Interactive Practice Modes & Semantic Controls)
     await page.click("#nav-practice");
     await page.waitForSelector(".practice-container");
-
-    // Mode 1: Flashcard Keyboard Flip & Rating (Space / 3)
     await page.waitForSelector("#interactive-flashcard");
-    await page.keyboard.press("Space");
-    await page.waitForSelector(".srs-controls");
-    assert(true, "Flashcard revealed via keyboard Space bar");
 
-    await page.keyboard.press("3");
-    assert(true, "Submitted SRS rating via keyboard key '3' and advanced card");
+    // Mode 1: Flashcards Semantic Button & Keyboard Flip
+    const flashcardTag = await page.$eval("#interactive-flashcard", (el) => el.tagName.toLowerCase());
+    const flashcardExpandedBefore = await page.$eval("#interactive-flashcard", (el) => el.getAttribute("aria-expanded"));
+    assert(flashcardTag === "button", "#interactive-flashcard is a semantic <button> element");
+    assert(flashcardExpandedBefore === "false", "#interactive-flashcard has aria-expanded='false' initially");
+
+    // Focus flashcard and activate via keyboard Space bar
+    await page.focus("#interactive-flashcard");
+    await page.keyboard.press("Space");
+    await page.waitForSelector(".flashcard-back");
+
+    const flashcardExpandedAfter = await page.$eval("#interactive-flashcard", (el) => el.getAttribute("aria-expanded"));
+    assert(flashcardExpandedAfter === "true", "#interactive-flashcard updated aria-expanded='true' upon reveal");
+
+    const postFlipHeadingTag = await page.evaluate(() => (document.activeElement ? document.activeElement.tagName.toLowerCase() : ""));
+    assert(postFlipHeadingTag !== "h1" && postFlipHeadingTag !== "h2", "Flashcard reveal does not steal focus to page heading");
+
+    const flashcardAnnounce = await page.$eval("#live-announcer", (el) => el.textContent);
+    assert(flashcardAnnounce.includes("onthuld"), `Flashcard reveal announced to live region: '${flashcardAnnounce}'`);
+
+    // Focus SRS rating button and activate via keyboard Enter
+    await page.focus("#btn-srs-good");
+    await page.keyboard.press("Enter");
+
+    const srsAnnounce = await page.$eval("#live-announcer", (el) => el.textContent);
+    assert(srsAnnounce.includes("opgeslagen") || srsAnnounce.includes("Sessie"), `SRS rating advance announced: '${srsAnnounce}'`);
 
     // Mode 2: De of Het Drill
     const drillNavBtn = await page.$("button[data-mode='article_drill']");
@@ -391,28 +525,57 @@ async function runBrowserTests() {
     const sectionCards = await page.$$(".section-card");
     assert(sectionCards.length === 8, `Path view rendered all 8 curriculum sections (found: ${sectionCards.length})`);
 
-    // 9. Navigation: Voortgang (Progress Analytics)
+    // 9. Navigation: Voortgang (Progress Analytics & 30-Day Heatmap)
     await page.click("#nav-progress");
     await page.waitForSelector(".progress-container");
     const heatmapCells = await page.$$(".heatmap-cell");
     assert(heatmapCells.length === 30, `30-Day Activity heatmap rendered 30 cells (found: ${heatmapCells.length})`);
 
-    // 10. Navigation: Instellingen (Settings & Themes)
+    // 10. Navigation: Instellingen (Settings & Label Association via Voortgang)
     await page.click("#btn-open-settings");
     await page.waitForSelector(".settings-container");
     assert(true, "Settings view opened");
 
-    // Theme switching
+    const settingsUnlabeled = await page.evaluate(() => {
+      const inputs = Array.from(document.querySelectorAll("input, select"));
+      return inputs.filter((inp) => {
+        if (inp.type === "hidden") return false;
+        const id = inp.id;
+        const hasLabel = id && document.querySelector(`label[for="${id}"]`);
+        const hasAriaLabel = inp.getAttribute("aria-label") || inp.getAttribute("aria-labelledby");
+        const wrappedLabel = inp.closest("label");
+        return !hasLabel && !hasAriaLabel && !wrappedLabel;
+      }).length;
+    });
+    assert(settingsUnlabeled === 0, "All settings selects and file inputs have associated accessible labels");
+
+    // Theme switching check
     await page.click("#btn-theme-light");
-    const currentTheme = await page.evaluate(() => document.documentElement.getAttribute("data-theme"));
-    assert(currentTheme === "light", "Theme switched to 'light'");
+    const lightTheme = await page.evaluate(() => document.documentElement.getAttribute("data-theme"));
+    assert(lightTheme === "light", "Theme switched to 'light'");
+
+    const themeAnnounce = await page.$eval("#live-announcer", (el) => el.textContent);
+    assert(themeAnnounce.includes("Licht"), `Theme change announced to live region: '${themeAnnounce}'`);
 
     await page.click("#btn-theme-dark");
     const darkTheme = await page.evaluate(() => document.documentElement.getAttribute("data-theme"));
     assert(darkTheme === "dark", "Theme switched back to 'dark'");
 
-    // 11. Reduced-Motion Media Query Handling
+    // 11. Reduced-Motion: CSS Durations & JavaScript scrollTo Suppression
     await page.emulateMediaFeatures([{ name: "prefers-reduced-motion", value: "reduce" }]);
+    await page.evaluate(() => {
+      window.__scrollToCalls = [];
+      const orig = window.scrollTo.bind(window);
+      window.scrollTo = function (arg1, arg2) {
+        if (typeof arg1 === "object") {
+          window.__scrollToCalls.push(arg1);
+        } else {
+          window.__scrollToCalls.push({ left: arg1, top: arg2 });
+        }
+        return orig(arg1, arg2);
+      };
+    });
+
     const hasReducedMotionCSS = await page.evaluate(() => {
       const el = document.createElement("div");
       el.className = "animate-fade";
@@ -423,7 +586,15 @@ async function runBrowserTests() {
       document.body.removeChild(el);
       return numSec <= 0.001 || durationStr === "0s" || durationStr === "0.001ms";
     });
-    assert(hasReducedMotionCSS, "prefers-reduced-motion disables nonessential animation durations");
+    assert(hasReducedMotionCSS, "prefers-reduced-motion suppresses CSS animation durations");
+
+    // Trigger tab navigation and assert JS scrollTo used behavior: 'auto' (not 'smooth')
+    await page.click("#nav-today");
+    const lastScrollCall = await page.evaluate(() => window.__scrollToCalls[window.__scrollToCalls.length - 1]);
+    assert(
+      lastScrollCall && lastScrollCall.behavior === "auto",
+      `JavaScript scrollToTop respects prefers-reduced-motion (behavior: '${lastScrollCall?.behavior}')`
+    );
 
     // 12. LocalStorage Persistence Verification
     const storedState = await page.evaluate(() => localStorage.getItem("nederpath-v1"));
@@ -436,7 +607,7 @@ async function runBrowserTests() {
       state.user.name = '<img src="x" onerror="window.__xss_executed=true">';
       localStorage.setItem("nederpath-v1", JSON.stringify(state));
     });
-    await page.goto(`http://localhost:${PORT}/index.html`, { waitUntil: "networkidle0" });
+    await page.goto(`http://${HOST}:${PORT}/index.html`, { waitUntil: "domcontentloaded" });
     const xssExecuted = await page.evaluate(() => window.__xss_executed);
     assert(xssExecuted === undefined, "HTML injection in user.name is neutralized and does not execute script");
 
@@ -445,7 +616,8 @@ async function runBrowserTests() {
     // -------------------------------------------------------
     console.log("\n--- [Mobile Viewport: 375x667] ---");
     await page.setViewport({ width: 375, height: 667, isMobile: true, hasTouch: true });
-    await page.goto(`http://localhost:${PORT}/index.html`, { waitUntil: "networkidle0" });
+    await page.goto(`http://${HOST}:${PORT}/index.html`, { waitUntil: "domcontentloaded" });
+    await page.waitForSelector(".today-hero");
 
     const mobileNav = await page.$(".app-header");
     assert(mobileNav !== null, "Mobile layout header rendered");

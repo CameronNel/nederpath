@@ -1,7 +1,7 @@
 // NederPath Offline Service Worker (Cache version: v3 - Shell Precache & On-Demand Data Runtime Caching)
 const CACHE_NAME = "nederpath-v3-cache";
 
-// Core App Shell assets only (data files are runtime-cached on first visit)
+// Core App Shell assets only (data files are runtime-cached on first successful visit)
 const SHELL_ASSETS = [
   "./",
   "./index.html",
@@ -48,14 +48,13 @@ self.addEventListener("activate", (event) => {
 });
 
 self.addEventListener("fetch", (event) => {
-  // Only handle safe same-origin GET requests
+  // Only intercept same-origin GET requests; all others bypass the worker
   if (event.request.method !== "GET") {
     return;
   }
 
   const requestUrl = new URL(event.request.url);
   const isSameOrigin = requestUrl.origin === self.location.origin;
-
   if (!isSameOrigin) {
     return;
   }
@@ -72,13 +71,15 @@ self.addEventListener("fetch", (event) => {
           return response;
         })
         .catch(() => {
-          return caches.match("./index.html") || caches.match("./");
+          return caches.match("./index.html").then((cachedIndex) => {
+            return cachedIndex || caches.match("./");
+          });
         })
     );
     return;
   }
 
-  // Cache-first strategy with runtime caching for data and static assets
+  // Cache-first strategy for static assets and on-demand runtime data caching
   event.respondWith(
     caches.match(event.request).then((cachedResponse) => {
       if (cachedResponse) {
@@ -86,6 +87,7 @@ self.addEventListener("fetch", (event) => {
       }
       return fetch(event.request)
         .then((networkResponse) => {
+          // Strictly cache successful 200 OK responses only (never 4xx, 5xx, or error states)
           if (
             networkResponse &&
             networkResponse.status === 200 &&
@@ -101,7 +103,7 @@ self.addEventListener("fetch", (event) => {
           return networkResponse;
         })
         .catch(() => {
-          // Fallback if network fails and not in cache
+          // Offline fallback when network is unavailable and resource is not cached
           if (event.request.headers.get("accept")?.includes("text/html")) {
             return caches.match("./index.html");
           }

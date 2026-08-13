@@ -106,6 +106,16 @@ if (existsSync(join(DIST, "sw.js"))) {
   }
 }
 
+// 5. Validate Manifest Production Metadata
+if (existsSync(join(DIST, "manifest.webmanifest"))) {
+  const manifest = JSON.parse(readFileSync(join(DIST, "manifest.webmanifest"), "utf8"));
+  check(manifest.id === "./", "manifest.webmanifest has project-relative id: './'");
+  check(manifest.start_url === "./", "manifest.webmanifest has project-relative start_url: './'");
+  check(manifest.scope === "./", "manifest.webmanifest has project-relative scope: './'");
+  check(manifest.lang === "nl", "manifest.webmanifest has lang: 'nl'");
+  check(Array.isArray(manifest.categories) && manifest.categories.includes("education"), "manifest.webmanifest categories includes education");
+}
+
 console.log(`\n=======================================================`);
 console.log(`Artifact Audit Completed: ${passed} Passed, ${failed} Failed`);
 console.log(`=======================================================\n`);
