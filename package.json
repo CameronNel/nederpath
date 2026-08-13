@@ -8,9 +8,14 @@
     "icons": "node scripts/generate_icons.mjs",
     "grammar": "node scripts/generate_grammar.mjs",
     "words": "node scripts/generate_words.mjs",
-    "build:data": "node scripts/generate_icons.mjs && node scripts/generate_grammar.mjs && node scripts/generate_words.mjs",
+    "comprehension": "node scripts/generate_comprehension.mjs",
+    "idioms": "node scripts/generate_idioms.mjs",
+    "sentences": "node scripts/generate_sentences.mjs",
+    "build:data": "node scripts/generate_icons.mjs && node scripts/generate_grammar.mjs && node scripts/generate_words.mjs && node scripts/generate_comprehension.mjs && node scripts/generate_idioms.mjs && node scripts/generate_sentences.mjs",
     "audit": "node scripts/audit.mjs",
-    "test": "node scripts/audit.mjs && node tests/smoke.mjs",
+    "test:unit": "node scripts/audit.mjs && node tests/smoke.mjs",
+    "test:browser": "node tests/browser.mjs",
+    "test": "node scripts/audit.mjs && node tests/smoke.mjs && node tests/browser.mjs",
     "serve": "node scripts/serve.mjs"
   },
   "keywords": [

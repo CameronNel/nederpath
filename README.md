@@ -1,54 +1,70 @@
 # NederPath (Nederlands Leren & Meesterschap)
 
-A calm, comprehensive, offline-first Dutch language-learning web app (PWA) designed around three core learning pillars: **Vocabulary**, **Grammar**, and **Comprehension**.
+A calm, comprehensive, offline-first Dutch language-learning web application (PWA) designed around three core learning pillars: **Vocabulary**, **Grammar**, and **Comprehension**.
 
-NederPath runs completely in the browser, stores all state in local storage namespace (`nederpath-v1`), and operates 100% offline via its built-in Service Worker.
+NederPath runs entirely in the browser, stores all state in local storage under the `nederpath-v1` namespace, operates 100% offline via its built-in Service Worker, and deploys automatically to GitHub Pages.
+
+Public Application URL: **`https://cameronnel.github.io/nederpath/`**
 
 ---
 
-## Key Features
+## Core Product Architecture
 
 ### 1. Exactly Three Learning Pillars
-- **Vocabulary (Woordenschat)**:
-  - Exactly **20,000 unique Dutch word-form rows** with frequency ranks and CEFR levels (A1–C1).
-  - Every learnable Dutch noun is paired with its verified **`de`** or **`het`** gender article.
-  - Inflection coverage: noun plurals, diminutives, verb stems, `'t kofschip` past tenses, irregular ablaut principal parts, separable prefixes (`scheidbare werkwoorden`), and adjective comparisons.
-  - Interactive Flashcards (with SM-2 Spaced Repetition), `de`/`het` Article Drill, and Typed Spelling Practice.
-- **Grammar (Grammatica)**:
-  - **120 comprehensive grammar rules** structured across **8 CEFR sections** (A0 through C1).
-  - Detailed structural rules, authentic Dutch examples with English translations, and 7 interactive exercise engines:
-    1. Rule Card & Structural Breakdown
-    2. Multiple Choice Questions
-    3. Fill-in-the-Blank with Hint Chips
-    4. Typed Verb Conjugation & Spelling
-    5. Sentence Transformation (Active $\to$ Passive, Direct $\to$ Indirect, V2 $\to$ Subclause SOV)
-    6. Error Correction (Spot and fix Dutch grammatical bugs)
-    7. Movable-Token Word-Order Reconstruction (Interactive chip builder for V2 / subclause order)
-- **Comprehension (Begrijpend Lezen)**:
-  - **12 progressive Dutch reading passages** spanning levels A1 to C1 (e.g. *Een ochtend in Utrecht*, *De Nederlandse fietscultuur*, *Wonen op het water*, *De Elfstedentocht*, *De Deltawerken*, *Het Poldermodel*, *Rembrandt en het licht*, *Circulaire economie*, *Spinoza en de Verlichting*, *Ruimte voor de Rivier*, *Evolutie van het Nederlands*, *Directheid en etiquette*).
-  - Side-by-side English translations, key vocabulary glosses, and multi-question comprehension quizzes.
 
-### 2. Supporting Content Banks
-- **Idioms & Expressions**: **105 authentic everyday Dutch idioms** (*Nu komt de aap uit de mouw*, *Helaas pindakaas*, *Voor een appel en een ei*, *Met de gebakken peren zitten*, etc.) with literal meanings, figurative meanings, examples, and CEFR levels.
-- **Sentence Bank**: 25+ curated benchmark sentences with English translations and target grammar tags.
+1. **Vocabulary (Woordenschat)**:
+   - Exactly **20,000 unique Dutch word-form rows** with frequency ranks and CEFR levels (A1–C1).
+   - Every learnable Dutch noun is taught and displayed with its gender article (**`de`** or **`het`**), e.g., `de tafel`, `het huis`.
+   - Comprehensive morphology: noun plurals, diminutives, verb stems, `'t kofschip` past tenses, irregular ablaut principal parts, separable prefixes (`scheidbare werkwoorden`), and adjective `-e` inflections.
+   - **10 Vocabulary Learning & Practice Modes**:
+     1. *Flashcards (SRS)*: Tap/Space to reveal, 1–4 keyboard shortcuts, mobile swipe gestures, SM-2 scheduling, session completion summary.
+     2. *De of Het Drill*: Fast-paced noun gender trainer with grammatical explanations and separate accuracy tracking.
+     3. *Spelling & Typing*: Strict Dutch spelling and diacritic input with whitespace/capitalization normalization.
+     4. *Fill in the Blank*: Sentence cloze with contextual distractors and explanations.
+     5. *Choose the Correct Word*: 4-option contextual multiple-choice practice.
+     6. *Verb Conjugation Practice*: Present, past (OVT), and past participle (VTT) verb inflection drills.
+     7. *Synonyms & Antonyms*: Vocabulary relationship practice.
+     8. *Plural & Diminutive Practice*: Morphology spelling rules trainer.
+     9. *Context Practice*: Situational word choice exercises.
+     10. *20,000-Word Dictionary*: Sub-millisecond search across Dutch words, articles, English meanings, and lemmas with filters for CEFR, Part of Speech, `de`/`het`, and Bookmarks.
 
-### 3. Application Runtime & Navigation
-- Primary Navigation: **Today**, **Path**, **Practice**, **Words**, and **Progress**.
-- **Spaced Repetition System (SRS)**: SuperMemo-2 / Leitner hybrid tracking card intervals, ease factors, repetitions, lapses, and due queues.
-- **Daily Goals & Streak Tracking**: Daily target progress ring, streak counter, 30-day activity heatmap, and XP tracking.
-- **20,000-Word Dictionary**: Live search by Dutch word, lemma, or English definition, with filters for Level, Part of Speech, `de`/`het` articles, and Bookmarks.
-- **Speech Synthesis (Voice)**: Optional provider-agnostic `nl-NL` male/default voice hook via the Web Speech API with adjustable speech rate.
-- **Offline / PWA**: Web App Manifest (`manifest.webmanifest`), multi-resolution icons, and Service Worker (`sw.js`).
+2. **Grammar (Grammatica)**:
+   - Exactly **120 structured grammar rules** organized across **8 CEFR sections** (A0 through C1).
+   - Comprehensive structural rules, authentic examples with syntactic highlights, structural breakdowns, common mistakes, and corrections.
+   - **7 Interactive Exercise Types**:
+     - Multiple choice questions
+     - Fill-in-the-blank with hint chips
+     - Typed verb conjugation and spelling
+     - Sentence transformation (Active $\to$ Passive, Direct $\to$ Indirect, V2 $\to$ Subclause SOV)
+     - Error correction (identifying and fixing grammatical errors)
+     - Movable-token word-order reconstruction (interactive draggable/clickable chip builder)
+     - Article selection
+
+3. **Comprehension (Begrijpend Lezen)**:
+   - Exactly **100 progressive Dutch reading passages** systematically balanced across CEFR levels:
+     - **20 A1 Passages** (Daily routines, markets, cycling, GP appointments, shopping, home life)
+     - **20 A2 Passages** (King's Day, Sinterklaas, waste sorting, houseboats, healthcare system, sports clubs)
+     - **20 B1 Passages** (The Polder Model, Delta Works, housing shortages, Dutch directness, circular economy, Rembrandt)
+     - **20 B2 Passages** (Nitrogen crisis, childcare benefits scandal, AI in workplace, euthanasia ethics, media monopolies)
+     - **20 C1 Passages** (Landscape semiotics, linguistic purism, separation of powers, postcolonial literature, Rhineland model)
+   - Each passage includes side-by-side English translations, key vocabulary glosses, reading times, and multi-question interactive comprehension quizzes with explanations.
 
 ---
 
-## 8-Stage Learning Path
+## 2. Supporting Content Banks
 
-| Section | CEFR Level | Focus Areas | Rules |
+- **Idioms & Everyday Expressions ([`data/idioms.js`](file:///c:/Users/Camer/OneDrive/Desktop/Apps/Dutch%20App/data/idioms.js))**: **510 authentic Dutch idioms**, spoken formulas, greetings, workplace phrases, and proverbs with literal meanings, figurative translations, context notes, and examples.
+- **Dutch Sentence Bank ([`data/sentences.js`](file:///c:/Users/Camer/OneDrive/Desktop/Apps/Dutch%20App/data/sentences.js))**: **5,050 curated Dutch sentences** across daily life, work, travel, and healthcare, tagged with CEFR levels and target grammar.
+
+---
+
+## 3. 8-Section Learning Curriculum
+
+| Section | Level | Topics Covered | Rules |
 | :--- | :--- | :--- | :---: |
-| **1. Fundamentals** | A0–A1 | Alphabet, Pronouns, V2 Word Order, `de`/`het`, Plurals, Negation, `zijn`/`hebben` | 15 |
-| **2. Core Grammar** | A1–A2 | Separable Verbs, Modals, Adjective `-e` rule, Diminutives, Reflexives, Imperatives | 15 |
-| **3. Verb Systems & Tenses** | A2 | `'t kofschip`, Past (OVT), Perfect (VTT) with `hebben`/`zijn`, Continuous Aspect | 15 |
+| **1. Fundamentals** | A0–A1 | Sounds & Spelling Rules, Pronouns, V2 Word Order, `de`/`het`, Plurals, Negation, `zijn`/`hebben` | 15 |
+| **2. Core Grammar** | A1–A2 | Separable Verbs, Modals, Adjective `-e` rule, Diminutives, Reflexives, Imperatives, TMP Order | 15 |
+| **3. Verb Systems & Tenses** | A2 | `'t kofschip`, Past (OVT), Perfect (VTT) with `hebben`/`zijn`, Continuous Aspect, Future | 15 |
 | **4. Sentence Structure & Clauses** | A2–B1 | Subordinate Clauses (SOV), Relative Clauses, `om...te`, Pronominal `er` | 15 |
 | **5. Intermediate Expansion** | B1 | Passives (`worden`/`zijn`), Impersonal Passives, Conditionals (`zou`), Particles | 15 |
 | **6. Complex Syntax & Modality** | B1–B2 | Reported Speech, Verb Clusters (Red/Green), Infinitivus pro Participio (IPP) | 15 |
@@ -58,29 +74,52 @@ NederPath runs completely in the browser, stores all state in local storage name
 
 ---
 
-## Commands & Development
+## Development and Testing
+
+### Prerequisites
+- Node.js (v18+)
+- Google Chrome or Microsoft Edge (for automated headless browser testing)
+
+### Commands
 
 ```powershell
-# Run the local zero-dependency development server (http://localhost:3000)
-npm run serve
-
-# Run the complete test suite (Audit + Smoke Tests)
+# Run the complete test suite (Audit + Unit/Smoke Tests + Headless Browser Tests)
 npm test
 
-# Run the 25+ check quality audit
+# Run quality audit checks across all 5 data banks and assets (41 checks)
 npm run audit
 
-# Re-generate data files
+# Run unit and smoke tests
+npm run test:unit
+
+# Run Puppeteer headless browser tests (16 end-to-end user journeys)
+npm run test:browser
+
+# Re-generate all data banks from curated sources
 npm run build:data
+
+# Launch the local zero-dependency development server (http://localhost:3000)
+npm run serve
 ```
 
 ---
 
 ## Quality & Compliance Verification
-- Exactly **20,000** unique rows in `data/words.js`.
-- **0** learnable nouns without verified article.
-- Exactly **120** grammar rules across **8** sections with 7 interactive exercise types.
-- **105** idioms in `data/idioms.js`.
-- **12** comprehension passages with validated quizzes.
-- **35/35** audit checks passed.
-- **7/7** unit and smoke tests passed.
+
+- **20,000 / 20,000** unique word-form rows in `data/words.js`.
+- **0** learnable nouns without verified `de`/`het` article.
+- **100%** of learnable nouns have `displayWord` formatted as `de [word]` or `het [word]`.
+- **120** grammar lessons with 7 exercise interaction types.
+- **100** comprehension reading passages (20 A1, 20 A2, 20 B1, 20 B2, 20 C1) with quizzes.
+- **510** authentic Dutch idioms and conversational formulas.
+- **5,050** benchmark and practice sentences.
+- **41/41** audit checks passed.
+- **8/8** unit and smoke tests passed.
+- **16/16** headless browser end-to-end tests passed (0 console errors).
+
+---
+
+## Known Limitations
+
+- **Audio/Voice Synthesis**: Pronunciation recordings, custom voice providers, and audio file playback are explicitly omitted and left out of scope for this release.
+- **Server Sync**: NederPath is an offline-first client application; synchronization between multiple physical devices relies on manual JSON progress export and import via the Settings tab.

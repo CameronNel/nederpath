@@ -1,74 +1,68 @@
-// NederPath Main Application Controller and View Engine
+// NederPath Main SPA Controller & Interactive Learning Runtime
 (function (global) {
   "use strict";
 
-  const store = global.NederStore;
-  const srs = global.NederSRS;
-  const voice = global.NederVoice;
-
   class NederPathApp {
     constructor() {
+      this.store = global.NederStore;
+      this.srs = global.NederSRS;
       this.currentTab = "today";
-      this.currentPracticeSubTab = "vocab";
-      this.activeExercise = null;
-      this.vocabDeck = [];
-      this.vocabIndex = 0;
-      this.activeGrammarRule = null;
-      this.activeComprehension = null;
+      this.practiceMode = "flashcards"; // 'flashcards' | 'article_drill' | 'fill_blank' | 'choose_word' | 'spelling' | 'synonyms' | 'morphology' | 'verbs' | 'context'
+      this.selectedLevel = "all";
       this.searchQuery = "";
-      this.searchFilters = { level: "all", pos: "all", article: "all", bookmarked: false };
-      this.searchResults = [];
+      this.selectedPos = "all";
+      this.selectedArticle = "all";
+      this.showOnlyBookmarked = false;
+
+      // Active interactive session state
+      this.session = {
+        cards: [],
+        currentIndex: 0,
+        revealed: false,
+        score: 0,
+        mistakes: [],
+        type: "vocab"
+      };
+
+      // Grammar & Comprehension active views
+      this.activeGrammarRule = null;
+      this.activePassage = null;
+      this.activeGrammarExIndex = 0;
+      this.activePassageQIndex = 0;
+      this.tokenReconstructionPlaced = [];
 
       this.init();
     }
 
     init() {
-      // Check onboarding
-      if (!store.state.user.onboardingCompleted) {
-        this.showOnboarding();
-      }
-
-      this.bindGlobalEvents();
-      this.applyTheme(store.state.settings.theme);
+      this.bindNav();
+      this.bindGlobalKeyboard();
+      this.applyTheme(this.store.state.settings.theme || "dark");
+      this.store.subscribe(() => this.updateHeaderStats());
+      this.updateHeaderStats();
       this.render();
-
-      // Subscribe to store updates
-      store.subscribe(() => {
-        this.updateHeaderStats();
-      });
     }
 
     applyTheme(theme) {
-      if (theme === "system") {
-        const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-        document.documentElement.setAttribute("data-theme", prefersDark ? "dark" : "light");
-      } else {
-        document.documentElement.setAttribute("data-theme", theme || "dark");
-      }
+      document.documentElement.setAttribute("data-theme", theme);
     }
 
-    bindGlobalEvents() {
-      // Main navigation
-      document.querySelectorAll(".nav-btn").forEach((btn) => {
-        btn.addEventListener("click", (e) => {
+    bindNav() {
+      const navBtns = document.querySelectorAll(".nav-btn");
+      navBtns.forEach((btn) => {
+        btn.addEventListener("click", () => {
           const tab = btn.dataset.tab;
           this.switchTab(tab);
         });
       });
 
-      // Keyboard shortcuts
-      window.addEventListener("keydown", (e) => {
-        if (e.target.tagName === "INPUT" || e.target.tagName === "TEXTAREA") return;
-        if (e.key === "1") this.switchTab("today");
-        if (e.key === "2") this.switchTab("path");
-        if (e.key === "3") this.switchTab("practice");
-        if (e.key === "4") this.switchTab("words");
-        if (e.key === "5") this.switchTab("progress");
-        if (e.key === " " && this.activeExercise && this.activeExercise.type === "flashcard") {
+      const brandLink = document.getElementById("brand-link");
+      if (brandLink) {
+        brandLink.addEventListener("click", (e) => {
           e.preventDefault();
-          this.flipFlashcard();
-        }
-      });
+          this.switchTab("today");
+        });
+      }
     }
 
     switchTab(tab) {
@@ -80,82 +74,113 @@
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
 
+    bindGlobalKeyboard() {
+      window.addEventListener("keydown", (e) => {
+        if (e.target.tagName === "INPUT" || e.target.tagName === "TEXTAREA") return;
+
+        // Space or Enter to reveal card
+        if ((e.code === "Space" || e.code === "Enter") && this.currentTab === "practice" && this.practiceMode === "flashcards") {
+          e.preventDefault();
+          this.toggleCardReveal();
+        }
+
+        // 1, 2, 3, 4 for SRS buttons when revealed
+        if (this.currentTab === "practice" && this.practiceMode === "flashcards" && this.session.revealed) {
+          if (e.key === "1") this.handleSRSRating(1);
+          if (e.key === "2") this.handleSRSRating(2);
+          if (e.key === "3") this.handleSRSRating(3);
+          if (e.key === "4") this.handleSRSRating(4);
+        }
+      });
+    }
+
     updateHeaderStats() {
       const streakEl = document.getElementById("header-streak");
       const xpEl = document.getElementById("header-xp");
       const goalEl = document.getElementById("header-goal");
 
-      if (streakEl) streakEl.textContent = store.state.user.streak || 0;
-      if (xpEl) xpEl.textContent = `${store.state.user.totalXp || 0} XP`;
+      if (streakEl) streakEl.textContent = this.store.state.user.streak || 0;
+      if (xpEl) xpEl.textContent = (this.store.state.user.totalXp || 0) + " XP";
       if (goalEl) {
-        const learned = store.state.progress.dailyStats.learnedToday || 0;
-        const target = store.state.user.dailyGoal || 15;
+        const learned = this.store.state.progress.dailyStats.learnedToday || 0;
+        const target = this.store.state.settings.dailyGoal || 15;
         goalEl.textContent = `${learned}/${target}`;
       }
     }
 
     render() {
-      this.updateHeaderStats();
-      const container = document.getElementById("app-main");
-      if (!container) return;
+      const main = document.getElementById("app-main");
+      if (!main) return;
 
       switch (this.currentTab) {
         case "today":
-          this.renderTodayView(container);
+          main.innerHTML = this.renderTodayView();
+          this.attachTodayListeners();
           break;
         case "path":
-          this.renderPathView(container);
+          main.innerHTML = this.renderPathView();
+          this.attachPathListeners();
           break;
         case "practice":
-          this.renderPracticeView(container);
+          main.innerHTML = this.renderPracticeView();
+          this.attachPracticeListeners();
+          break;
+        case "grammar":
+          main.innerHTML = this.renderGrammarView();
+          this.attachGrammarListeners();
+          break;
+        case "comprehension":
+          main.innerHTML = this.renderComprehensionView();
+          this.attachComprehensionListeners();
           break;
         case "words":
-          this.renderWordsView(container);
+          main.innerHTML = this.renderWordsView();
+          this.attachWordsListeners();
           break;
         case "progress":
-          this.renderProgressView(container);
+          main.innerHTML = this.renderProgressView();
+          this.attachProgressListeners();
           break;
         case "settings":
-          this.renderSettingsView(container);
+          main.innerHTML = this.renderSettingsView();
+          this.attachSettingsListeners();
           break;
         default:
-          this.renderTodayView(container);
+          main.innerHTML = this.renderTodayView();
+          this.attachTodayListeners();
       }
     }
 
-    // -------------------------------------------------------------------------
-    // 1. TODAY VIEW
-    // -------------------------------------------------------------------------
-    renderTodayView(container) {
-      const learned = store.state.progress.dailyStats.learnedToday || 0;
-      const goal = store.state.user.dailyGoal || 15;
-      const pct = Math.min(100, Math.round((learned / goal) * 100));
-      const dueCards = srs.getDueCards();
-      const randomIdiom = (global.NP_IDIOMS && global.NP_IDIOMS[Math.floor(Math.random() * global.NP_IDIOMS.length)]) || {
-        dutch: "Nu komt de aap uit de mouw",
-        literal: "Now the monkey comes out of the sleeve",
-        meaning: "The truth comes out / the hidden motive is revealed",
-        example: "Hij leek vriendelijk, maar nu komt de aap uit de mouw.",
-        exampleEn: "He seemed friendly, but now the true motive is revealed."
-      };
-      const dailyGrammar = (global.NP_GRAMMAR && global.NP_GRAMMAR[0]) || {
-        title: "The Dutch V2 Word Order",
-        titleNl: "De V2-Regel",
-        summary: "In a standard Dutch main declarative sentence, the finite verb must occupy the 2nd position."
-      };
+    /* ==========================================================================
+       1. TODAY VIEW
+       ========================================================================== */
+    renderTodayView() {
+      const user = this.store.state.user;
+      const dailyStats = this.store.state.progress.dailyStats;
+      const targetGoal = this.store.state.settings.dailyGoal || 15;
+      const pct = Math.min(100, Math.round((dailyStats.learnedToday / targetGoal) * 100));
 
-      container.innerHTML = `
-        <div class="view-today animate-fade">
-          <header class="today-hero card">
-            <div class="today-hero-content">
-              <div class="greeting-badge">Welkom terug!</div>
-              <h1 class="today-title">Vandaag leren</h1>
-              <p class="today-subtitle">Daily Dutch Mastery: Vocabulary, Grammar & Comprehension</p>
+      const deckStats = this.srs.getDeckStats();
+      const grammarRules = global.NP_GRAMMAR || [];
+      const idioms = global.NP_IDIOMS || [];
+
+      // Spotlight rule & idiom of the day
+      const dayOfYear = Math.floor((new Date() - new Date(new Date().getFullYear(), 0, 0)) / 1000 / 60 / 60 / 24);
+      const spotlightRule = grammarRules[dayOfYear % (grammarRules.length || 1)] || grammarRules[0];
+      const todayIdiom = idioms[dayOfYear % (idioms.length || 1)] || idioms[0];
+
+      return `
+        <div class="today-container animate-fade">
+          <div class="card today-hero">
+            <div class="today-hero-left">
+              <span class="greeting-badge">Welkom terug, ${user.name}!</span>
+              <h1 class="today-title">Klaar voor je dagelijkse portie Nederlands?</h1>
+              <p class="today-subtitle">Je streak staat op <strong>${user.streak} dagen</strong>. Blijf consistent om vloeiend te worden!</p>
               
               <div class="daily-progress-box">
                 <div class="progress-info">
-                  <span>Dagdoel: <strong>${learned} / ${goal}</strong> voltooid</span>
-                  <span><strong>${pct}%</strong></span>
+                  <span>Dagdoel Voortgang</span>
+                  <span><strong>${dailyStats.learnedToday}</strong> van de ${targetGoal} items (${pct}%)</span>
                 </div>
                 <div class="progress-bar-track">
                   <div class="progress-bar-fill" style="width: ${pct}%"></div>
@@ -163,1337 +188,1592 @@
               </div>
 
               <div class="hero-actions">
-                <button class="btn btn-primary btn-lg" id="btn-today-start-vocab">
-                  <span class="btn-icon">⚡</span> Woordenschat oefenen
-                </button>
-                <button class="btn btn-secondary btn-lg" id="btn-today-start-grammar">
-                  <span class="btn-icon">📖</span> Grammatica les
-                </button>
+                <button class="btn btn-primary btn-lg" id="btn-start-daily-review">⚡ Start Dagelijkse Oefening</button>
+                <button class="btn btn-outline btn-lg" id="btn-explore-path">🗺️ Bekijk Leerpad</button>
               </div>
             </div>
 
             <div class="today-hero-stats">
               <div class="stat-pill">
-                <span class="stat-icon">🔥</span>
-                <div class="stat-meta">
-                  <div class="stat-val">${store.state.user.streak} dagen</div>
-                  <div class="stat-lbl">Streak</div>
-                </div>
-              </div>
-              <div class="stat-pill">
                 <span class="stat-icon">📚</span>
-                <div class="stat-meta">
-                  <div class="stat-val">${dueCards.length}</div>
-                  <div class="stat-lbl">Due SRS Cards</div>
+                <div>
+                  <div class="stat-val">${deckStats.due || 5} Kaarten</div>
+                  <div class="stat-lbl">Klaar voor herhaling</div>
                 </div>
               </div>
               <div class="stat-pill">
                 <span class="stat-icon">🏆</span>
-                <div class="stat-meta">
-                  <div class="stat-val">${store.state.user.totalXp || 0}</div>
-                  <div class="stat-lbl">Totaal XP</div>
+                <div>
+                  <div class="stat-val">${user.totalXp || 0} XP</div>
+                  <div class="stat-lbl">Totaal verdiend</div>
+                </div>
+              </div>
+              <div class="stat-pill">
+                <span class="stat-icon">🎯</span>
+                <div>
+                  <div class="stat-val">${deckStats.mastered || 0} Woorden</div>
+                  <div class="stat-lbl">Volledig beheerst</div>
                 </div>
               </div>
             </div>
-          </header>
+          </div>
 
           <div class="today-grid">
-            <!-- Daily Grammar Card -->
-            <div class="card spotlight-card">
-              <div class="card-tag">Grammatica van de Dag</div>
-              <h3 class="spotlight-title">${dailyGrammar.title}</h3>
-              <p class="spotlight-nl">${dailyGrammar.titleNl}</p>
-              <p class="spotlight-desc">${dailyGrammar.summary}</p>
-              <button class="btn btn-outline" id="btn-spotlight-grammar" data-id="${dailyGrammar.id}">
-                Les openen & oefenen &rarr;
-              </button>
-            </div>
+            <!-- Grammar Spotlight Card -->
+            ${spotlightRule ? `
+              <div class="card spotlight-card">
+                <div class="card-tag">Uitgelichte Grammaticaregel</div>
+                <h3 class="spotlight-title">${spotlightRule.title}</h3>
+                <div class="spotlight-nl">${spotlightRule.titleNl}</div>
+                <p class="spotlight-desc">${spotlightRule.summary}</p>
+                <button class="btn btn-secondary btn-sm" id="btn-open-spotlight-grammar" data-rule-id="${spotlightRule.id}">Bekijk Regel & Oefeningen →</button>
+              </div>
+            ` : ""}
 
-            <!-- Daily Idiom Card -->
-            <div class="card spotlight-card idiom-card">
-              <div class="card-tag">Uitdrukking van de Dag</div>
-              <div class="idiom-header">
-                <h3 class="idiom-dutch">"${randomIdiom.dutch}"</h3>
-                <button class="btn-speak" title="Uitspraak" id="btn-speak-idiom" data-text="${randomIdiom.dutch}">🔊</button>
+            <!-- Idiom of the Day -->
+            ${todayIdiom ? `
+              <div class="card idiom-card">
+                <div class="idiom-header">
+                  <span class="card-tag">Uitdrukking van de Dag</span>
+                  <span class="grammar-level badge-${todayIdiom.level.toLowerCase()}">${todayIdiom.level}</span>
+                </div>
+                <h3 class="idiom-dutch">“${todayIdiom.dutch}”</h3>
+                ${todayIdiom.literal ? `<div class="idiom-literal"><strong>Letterlijk:</strong> <em>${todayIdiom.literal}</em></div>` : ""}
+                <div class="idiom-meaning"><strong>Betekenis:</strong> ${todayIdiom.meaning}</div>
+                <div class="idiom-example-box">
+                  <div class="idiom-example-nl">“${todayIdiom.example}”</div>
+                  <div class="idiom-example-en">${todayIdiom.exampleEn}</div>
+                </div>
               </div>
-              <p class="idiom-literal"><em>Letterlijk:</em> ${randomIdiom.literal}</p>
-              <p class="idiom-meaning"><strong>Betekenis:</strong> ${randomIdiom.meaning}</p>
-              <div class="idiom-example-box">
-                <p class="idiom-example-nl">${randomIdiom.example}</p>
-                <p class="idiom-example-en">${randomIdiom.exampleEn}</p>
-              </div>
-            </div>
+            ` : ""}
           </div>
         </div>
       `;
-
-      // Event listeners
-      document.getElementById("btn-today-start-vocab")?.addEventListener("click", () => {
-        this.currentTab = "practice";
-        this.currentPracticeSubTab = "vocab";
-        this.render();
-      });
-      document.getElementById("btn-today-start-grammar")?.addEventListener("click", () => {
-        this.currentTab = "practice";
-        this.currentPracticeSubTab = "grammar";
-        this.render();
-      });
-      document.getElementById("btn-spotlight-grammar")?.addEventListener("click", (e) => {
-        const id = e.currentTarget.dataset.id;
-        this.openGrammarRule(id);
-      });
-      document.getElementById("btn-speak-idiom")?.addEventListener("click", (e) => {
-        const txt = e.currentTarget.dataset.text;
-        voice.speak(txt);
-      });
     }
 
-    // -------------------------------------------------------------------------
-    // 2. PATH VIEW (8 CEFR Sections)
-    // -------------------------------------------------------------------------
-    renderPathView(container) {
-      const grammar = global.NP_GRAMMAR || [];
+    attachTodayListeners() {
+      const startBtn = document.getElementById("btn-start-daily-review");
+      if (startBtn) {
+        startBtn.addEventListener("click", () => {
+          this.practiceMode = "flashcards";
+          this.switchTab("practice");
+        });
+      }
+
+      const pathBtn = document.getElementById("btn-explore-path");
+      if (pathBtn) {
+        pathBtn.addEventListener("click", () => this.switchTab("path"));
+      }
+
+      const grammarSpotlightBtn = document.getElementById("btn-open-spotlight-grammar");
+      if (grammarSpotlightBtn) {
+        grammarSpotlightBtn.addEventListener("click", () => {
+          const ruleId = grammarSpotlightBtn.dataset.ruleId;
+          this.openGrammarRule(ruleId);
+        });
+      }
+    }
+
+    /* ==========================================================================
+       2. PATH VIEW (Structured 8-Section Curriculum)
+       ========================================================================== */
+    renderPathView() {
+      const grammarRules = global.NP_GRAMMAR || [];
       const sections = [
-        { num: 1, name: "A0–A1 Fundamentals", level: "A1", desc: "Alphabet, Pronouns, V2 Word Order, de/het Articles, Plurals, Negation" },
-        { num: 2, name: "A1–A2 Core Grammar", level: "A2", desc: "Separable Verbs, Modals, Adjective Endings, Diminutives, Reflexives" },
-        { num: 3, name: "A2 Verb Systems & Tenses", level: "A2", desc: "'t kofschip, Simple Past (OVT), Present Perfect (VTT), Continuous Aspect" },
-        { num: 4, name: "A2–B1 Sentence Structure & Clauses", level: "B1", desc: "Subordinate Clauses (SOV), Relative Clauses, om...te, Pronominal er" },
-        { num: 5, name: "B1 Intermediate Expansion", level: "B1", desc: "Passive Voice (worden/zijn), Impersonal Passives, Conditionals (zou), Particles" },
-        { num: 6, name: "B1–B2 Complex Syntax & Modality", level: "B2", desc: "Reported Speech, Verb Clusters (Red/Green), Infinitivus pro Participio (IPP)" },
-        { num: 7, name: "B2 Advanced Register & Nuance", level: "B2", desc: "Formal/Informal Register, Cleft Sentences, Stylistic Inversion, Pragmatics" },
-        { num: 8, name: "C1 Mastery & Stylistics", level: "C1", desc: "Archaic Syntactic Structures, Dense Nominalization, Nested Clauses, Rhetoric" }
+        { num: 1, title: "A0–A1 Fundamentals", level: "A1", desc: "Spelling, V2 woordvolgorde, lidwoorden (de/het), en basiswerkwoorden." },
+        { num: 2, title: "A1–A2 Core Grammar", level: "A2", desc: "Scheidbare werkwoorden, modale hulpwerkwoorden, verkleinwoorden en bijvoeglijke naamwoorden." },
+        { num: 3, title: "A2 Verb Systems & Tenses", level: "A2", desc: "'t kofschip, verleden tijd (OVT), voltooid tegenwoordige tijd (VTT) en sterke werkwoorden." },
+        { num: 4, title: "A2–B1 Sentence Structure & Clauses", level: "B1", desc: "Bijzinnen met SOV-volgorde, betrekkelijke voornaamwoorden en pronominaal 'er'." },
+        { num: 5, title: "B1 Intermediate Expansion", level: "B1", desc: "Passieve vorm met worden/zijn, voorwaardelijke wijs (zou), en modale partikels." },
+        { num: 6, title: "B1–B2 Complex Syntax & Modality", level: "B2", desc: "Indirecte rede, rode/groene werkwoordclusters en het vervangingsinfinitief (IPP)." },
+        { num: 7, title: "B2 Advanced Register & Nuance", level: "B2", desc: "Formeel taalgebruik, gekloofde zinnen, stilistische inversie en pragmatiek." },
+        { num: 8, title: "C1 Mastery & Stylistics", level: "C1", desc: "Complexe tangconstructies, juridisch en ambtelijk register, en retorische syntaxis." }
       ];
 
-      const completed = store.state.progress.grammarCompleted || {};
-
-      let html = `
-        <div class="view-path animate-fade">
-          <div class="section-header">
-            <h1>Nederlands Leerpad</h1>
-            <p class="subtitle">Structured 8-stage mastery curriculum from absolute beginner to C1 proficiency.</p>
-          </div>
-          <div class="path-timeline">
-      `;
-
-      for (const sec of sections) {
-        const secRules = grammar.filter((r) => r.section === sec.num);
-        const doneCount = secRules.filter((r) => completed[r.id]).length;
-        const total = secRules.length || 15;
-        const isDone = doneCount >= total && total > 0;
-
-        html += `
-          <div class="path-section-card card ${isDone ? "section-completed" : ""}">
-            <div class="path-section-header">
-              <div class="section-badge badge-${sec.level.toLowerCase()}">${sec.level} &bull; Deel ${sec.num}</div>
-              <div class="section-progress-pill">${doneCount} / ${total} voltooid</div>
-            </div>
-            <h2 class="section-title">${sec.name}</h2>
-            <p class="section-desc">${sec.desc}</p>
-            
-            <div class="rules-chips-grid">
-              ${secRules
-                .map((r) => {
-                  const ruleDone = !!completed[r.id];
-                  return `
-                  <button class="rule-chip ${ruleDone ? "rule-chip-done" : ""}" data-id="${r.id}">
-                    <span class="chip-status">${ruleDone ? "✓" : "•"}</span>
-                    <span class="chip-title">${r.title}</span>
-                  </button>
-                `;
-                })
-                .join("")}
-            </div>
-          </div>
-        `;
-      }
-
-      html += `</div></div>`;
-      container.innerHTML = html;
-
-      // Event listeners for rule chips
-      container.querySelectorAll(".rule-chip").forEach((chip) => {
-        chip.addEventListener("click", () => {
-          this.openGrammarRule(chip.dataset.id);
-        });
-      });
-    }
-
-    // -------------------------------------------------------------------------
-    // 3. PRACTICE VIEW (3 Core Pillars: Vocab, Grammar, Comprehension)
-    // -------------------------------------------------------------------------
-    renderPracticeView(container) {
-      container.innerHTML = `
-        <div class="view-practice animate-fade">
-          <div class="practice-tab-nav">
-            <button class="practice-nav-btn ${this.currentPracticeSubTab === "vocab" ? "active" : ""}" data-sub="vocab">
-              📖 Woordenschat (Vocabulary)
-            </button>
-            <button class="practice-nav-btn ${this.currentPracticeSubTab === "grammar" ? "active" : ""}" data-sub="grammar">
-              📐 Grammatica (Grammar)
-            </button>
-            <button class="practice-nav-btn ${this.currentPracticeSubTab === "comp" ? "active" : ""}" data-sub="comp">
-              📰 Begrijpend Lezen (Comprehension)
-            </button>
+      return `
+        <div class="path-container animate-fade">
+          <div class="path-header">
+            <h1 class="page-title">Nederlands Leerpad</h1>
+            <p class="page-subtitle">Een gestructureerd curriculum van A0 tot C1 verdeeld over 8 leerniveaus.</p>
           </div>
 
-          <div id="practice-subtab-container" class="practice-content-area"></div>
-        </div>
-      `;
+          <div class="sections-list">
+            ${sections.map((sec) => {
+              const secRules = grammarRules.filter((r) => r.section === sec.num);
+              const completedCount = secRules.filter((r) => this.store.state.progress.grammarCompleted[r.id]).length;
+              const secPct = secRules.length > 0 ? Math.round((completedCount / secRules.length) * 100) : 0;
 
-      container.querySelectorAll(".practice-nav-btn").forEach((btn) => {
-        btn.addEventListener("click", () => {
-          this.currentPracticeSubTab = btn.dataset.sub;
-          container.querySelectorAll(".practice-nav-btn").forEach((b) => b.classList.remove("active"));
-          btn.classList.add("active");
-          this.renderPracticeSubTab();
-        });
-      });
+              return `
+                <div class="card section-card">
+                  <div class="section-card-header">
+                    <div>
+                      <span class="section-badge badge-${sec.level.toLowerCase()}">${sec.level}</span>
+                      <h2 class="section-title">Sectie ${sec.num}: ${sec.title}</h2>
+                      <p class="section-desc">${sec.desc}</p>
+                    </div>
+                    <div class="section-progress-pill">
+                      <span>${completedCount}/${secRules.length} Voltooid</span>
+                      <div class="progress-bar-track" style="width: 100px; height: 6px;">
+                        <div class="progress-bar-fill" style="width: ${secPct}%"></div>
+                      </div>
+                    </div>
+                  </div>
 
-      this.renderPracticeSubTab();
-    }
-
-    renderPracticeSubTab() {
-      const subContainer = document.getElementById("practice-subtab-container");
-      if (!subContainer) return;
-
-      if (this.currentPracticeSubTab === "vocab") {
-        this.renderVocabPractice(subContainer);
-      } else if (this.currentPracticeSubTab === "grammar") {
-        this.renderGrammarPractice(subContainer);
-      } else if (this.currentPracticeSubTab === "comp") {
-        this.renderComprehensionPractice(subContainer);
-      }
-    }
-
-    // --- SubTab A: VOCABULARY PRACTICE ---
-    renderVocabPractice(container) {
-      const words = global.NP_WORDS || [];
-      if (this.vocabDeck.length === 0) {
-        // Build interactive study deck from words
-        this.vocabDeck = words.slice(0, 30);
-        this.vocabIndex = 0;
-      }
-
-      const word = this.vocabDeck[this.vocabIndex] || words[0];
-      if (!word) {
-        container.innerHTML = `<div class="card empty-state">Geen woorden beschikbaar om te oefenen.</div>`;
-        return;
-      }
-
-      const isNoun = word.pos === "noun" && word.article;
-      const articleDisplay = isNoun ? `<span class="word-article article-${word.article}">${word.article}</span> ` : "";
-
-      container.innerHTML = `
-        <div class="vocab-practice-arena">
-          <div class="practice-modes-bar">
-            <button class="btn btn-sm btn-outline active" id="mode-flashcard">Kaarten (Flashcard)</button>
-            <button class="btn btn-sm btn-outline" id="mode-article-drill">de / het Drill</button>
-            <button class="btn btn-sm btn-outline" id="mode-typing">Typen (Spelling)</button>
-          </div>
-
-          <div class="flashcard-container" id="flashcard-box">
-            <div class="flashcard card" id="flashcard-inner">
-              <div class="flashcard-front">
-                <div class="flashcard-level-badge badge-${(word.level || "A1").toLowerCase()}">${word.level || "A1"} &bull; ${word.pos}</div>
-                <div class="flashcard-dutch">
-                  ${articleDisplay}<span class="main-word">${word.word}</span>
+                  <div class="rules-grid">
+                    ${secRules.map((rule) => {
+                      const isDone = !!this.store.state.progress.grammarCompleted[rule.id];
+                      return `
+                        <div class="rule-chip ${isDone ? 'rule-completed' : ''}" data-rule-id="${rule.id}">
+                          <span class="rule-status-icon">${isDone ? '✓' : '📖'}</span>
+                          <div class="rule-chip-info">
+                            <span class="rule-chip-title">${rule.title}</span>
+                            <span class="rule-chip-nl">${rule.titleNl}</span>
+                          </div>
+                        </div>
+                      `;
+                    }).join("")}
+                  </div>
                 </div>
-                <button class="btn-speak" id="btn-speak-word" data-text="${(word.article ? word.article + " " : "") + word.word}">🔊</button>
-                <div class="flashcard-hint">Klik of druk op Spatie om te draaien</div>
-              </div>
-              <div class="flashcard-back" style="display: none;">
-                <div class="flashcard-meaning">${word.meaning || "Betekenis"}</div>
-                ${word.synonyms && word.synonyms.length ? `<div class="flashcard-synonyms">Synoniemen: ${word.synonyms.join(", ")}</div>` : ""}
-                <div class="flashcard-category">Categorie: ${word.category || "Algemeen"}</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- SRS Rating Controls (shown after flip) -->
-          <div class="srs-controls" id="srs-controls" style="display: none;">
-            <button class="btn btn-srs btn-again" data-rating="1">1: Opnieuw (Again)</button>
-            <button class="btn btn-srs btn-hard" data-rating="2">2: Moeilijk (Hard)</button>
-            <button class="btn btn-srs btn-good" data-rating="3">3: Goed (Good)</button>
-            <button class="btn btn-srs btn-easy" data-rating="4">4: Makkelijk (Easy)</button>
+              `;
+            }).join("")}
           </div>
         </div>
       `;
+    }
 
-      const cardBox = document.getElementById("flashcard-box");
-      const cardBack = document.querySelector(".flashcard-back");
-      const srsControls = document.getElementById("srs-controls");
-
-      cardBox?.addEventListener("click", () => {
-        this.flipFlashcard();
+    attachPathListeners() {
+      document.querySelectorAll(".rule-chip").forEach((chip) => {
+        chip.addEventListener("click", () => {
+          const ruleId = chip.dataset.ruleId;
+          this.openGrammarRule(ruleId);
+        });
       });
+    }
 
-      document.getElementById("btn-speak-word")?.addEventListener("click", (e) => {
-        e.stopPropagation();
-        voice.speak(e.currentTarget.dataset.text);
-      });
+    /* ==========================================================================
+       3. PRACTICE VIEW (10 Interactive Vocabulary & Drill Modes)
+       ========================================================================== */
+    renderPracticeView() {
+      const modes = [
+        { id: "flashcards", label: "🗂️ Flashcards (SRS)", desc: "Spaced repetition geheugentraining met tap/swipe" },
+        { id: "article_drill", label: "⚡ De of Het Drill", desc: "Oefen razendsnel het juiste lidwoord voor elk zelfstandig naamwoord" },
+        { id: "spelling", label: "✍️ Spelling & Typen", desc: "Typ het juiste Nederlandse woord met diakrieten" },
+        { id: "fill_blank", label: "📝 Vul het Woord In", desc: "Contextuele zinnen aanvullen met het juiste woord" },
+        { id: "choose_word", label: "🎯 Kies het Juiste Woord", desc: "Selecteer de juiste betekenis uit meerkeuze-opties" },
+        { id: "verbs", label: "🔄 Werkwoord Vervoeging", desc: "Tegenwoordige tijd, verleden tijd (OVT) en voltooid deelwoord" }
+      ];
 
-      container.querySelectorAll(".btn-srs").forEach((btn) => {
-        btn.addEventListener("click", (e) => {
-          const rating = parseInt(e.currentTarget.dataset.rating, 10);
-          srs.review(word.id, rating, "vocab");
-          this.vocabIndex = (this.vocabIndex + 1) % this.vocabDeck.length;
-          this.renderVocabPractice(container);
+      return `
+        <div class="practice-container animate-fade">
+          <div class="practice-tab-nav">
+            ${modes.map((m) => `
+              <button class="practice-nav-btn ${this.practiceMode === m.id ? 'active' : ''}" data-mode="${m.id}">
+                ${m.label}
+              </button>
+            `).join("")}
+          </div>
+
+          <div class="practice-content" id="practice-runtime-container">
+            ${this.renderActivePracticeMode()}
+          </div>
+        </div>
+      `;
+    }
+
+    attachPracticeListeners() {
+      document.querySelectorAll(".practice-nav-btn").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          this.practiceMode = btn.dataset.mode;
+          this.session.currentIndex = 0;
+          this.session.revealed = false;
+          this.session.cards = [];
+          this.render();
         });
       });
 
-      // Mode switchers
-      document.getElementById("mode-article-drill")?.addEventListener("click", () => {
-        this.renderArticleDrill(container);
-      });
-      document.getElementById("mode-typing")?.addEventListener("click", () => {
-        this.renderTypingPractice(container);
-      });
+      this.attachActiveModeListeners();
     }
 
-    flipFlashcard() {
-      const back = document.querySelector(".flashcard-back");
-      const srsControls = document.getElementById("srs-controls");
-      if (back && back.style.display === "none") {
-        back.style.display = "block";
-        if (srsControls) srsControls.style.display = "flex";
+    renderActivePracticeMode() {
+      switch (this.practiceMode) {
+        case "flashcards":
+          return this.renderFlashcardsMode();
+        case "article_drill":
+          return this.renderArticleDrillMode();
+        case "spelling":
+          return this.renderSpellingMode();
+        case "fill_blank":
+          return this.renderFillBlankMode();
+        case "choose_word":
+          return this.renderChooseWordMode();
+        case "verbs":
+          return this.renderVerbsMode();
+        default:
+          return this.renderFlashcardsMode();
       }
     }
 
-    renderArticleDrill(container) {
-      const words = (global.NP_WORDS || []).filter((w) => w.pos === "noun" && w.article);
-      const randomWord = words[Math.floor(Math.random() * words.length)] || { word: "huis", article: "het", meaning: "house" };
+    attachActiveModeListeners() {
+      switch (this.practiceMode) {
+        case "flashcards":
+          this.attachFlashcardListeners();
+          break;
+        case "article_drill":
+          this.attachArticleDrillListeners();
+          break;
+        case "spelling":
+          this.attachSpellingListeners();
+          break;
+        case "fill_blank":
+          this.attachFillBlankListeners();
+          break;
+        case "choose_word":
+          this.attachChooseWordListeners();
+          break;
+        case "verbs":
+          this.attachVerbsListeners();
+          break;
+      }
+    }
 
-      container.innerHTML = `
-        <div class="article-drill-arena animate-fade">
-          <div class="practice-modes-bar">
-            <button class="btn btn-sm btn-outline" id="mode-flashcard-back">Kaarten (Flashcard)</button>
-            <button class="btn btn-sm btn-outline active">de / het Drill</button>
-            <button class="btn btn-sm btn-outline" id="mode-typing-back">Typen (Spelling)</button>
+    // --- Mode 1: Flashcards ---
+    renderFlashcardsMode() {
+      const words = global.NP_WORDS || [];
+      if (!this.session.cards || this.session.cards.length === 0) {
+        const sessionSize = this.store.state.settings.sessionSize || 10;
+        this.session.cards = words.slice(0, 100).sort(() => Math.random() - 0.5).slice(0, sessionSize);
+        this.session.currentIndex = 0;
+        this.session.revealed = false;
+      }
+
+      if (this.session.currentIndex >= this.session.cards.length) {
+        return this.renderSessionCompleteScreen();
+      }
+
+      const card = this.session.cards[this.session.currentIndex];
+      const isNoun = card.pos === "noun" && card.article;
+      const displayDutch = isNoun ? `<span class="word-article article-${card.article}">${card.article}</span> ${card.word}` : card.word;
+
+      return `
+        <div class="flashcard-wrapper animate-fade">
+          <div class="flashcard-header-bar">
+            <span>Kaart ${this.session.currentIndex + 1} van ${this.session.cards.length}</span>
+            <span class="word-level-badge badge-${card.level.toLowerCase()}">${card.level}</span>
           </div>
 
-          <div class="drill-card card">
-            <div class="drill-tag">Kies het juiste lidwoord</div>
-            <div class="drill-noun">${randomWord.word}</div>
-            <div class="drill-meaning">(${randomWord.meaning})</div>
+          <div class="flashcard-container" id="interactive-flashcard">
+            <div class="card flashcard ${this.session.revealed ? 'revealed' : ''}">
+              <div class="flashcard-front">
+                <span class="flashcard-pos">${card.pos.toUpperCase()}</span>
+                <div class="flashcard-dutch">${displayDutch}</div>
+                ${card.example ? `<div class="flashcard-example">“${card.example}”</div>` : ""}
+                <div class="flashcard-hint">Tik op de kaart of druk op [Spatie] om het antwoord te zien</div>
+              </div>
+
+              ${this.session.revealed ? `
+                <div class="flashcard-back animate-fade">
+                  <div class="flashcard-meaning">${card.meaning || card.word}</div>
+                  ${card.exampleEn ? `<div class="flashcard-example-en">${card.exampleEn}</div>` : ""}
+                  ${card.synonyms && card.synonyms.length > 0 ? `<div class="flashcard-synonyms"><strong>Synoniemen:</strong> ${card.synonyms.join(", ")}</div>` : ""}
+                  <div class="flashcard-category">Categorie: ${card.category}</div>
+                </div>
+              ` : ""}
+            </div>
+          </div>
+
+          ${this.session.revealed ? `
+            <div class="srs-controls animate-fade">
+              <button class="btn btn-srs btn-again" id="btn-srs-again" data-rating="1">
+                <span>1</span> Opnieuw<small>(&lt; 1 dag)</small>
+              </button>
+              <button class="btn btn-srs btn-hard" id="btn-srs-hard" data-rating="2">
+                <span>2</span> Moeilijk<small>(2 dagen)</small>
+              </button>
+              <button class="btn btn-srs btn-good" id="btn-srs-good" data-rating="3">
+                <span>3</span> Goed<small>(4 dagen)</small>
+              </button>
+              <button class="btn btn-srs btn-easy" id="btn-srs-easy" data-rating="4">
+                <span>4</span> Makkelijk<small>(7 dagen)</small>
+              </button>
+            </div>
+          ` : ""}
+        </div>
+      `;
+    }
+
+    attachFlashcardListeners() {
+      const cardEl = document.getElementById("interactive-flashcard");
+      if (cardEl) {
+        cardEl.addEventListener("click", () => this.toggleCardReveal());
+      }
+
+      document.querySelectorAll(".btn-srs").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const rating = parseInt(btn.dataset.rating, 10);
+          this.handleSRSRating(rating);
+        });
+      });
+    }
+
+    toggleCardReveal() {
+      this.session.revealed = !this.session.revealed;
+      this.render();
+    }
+
+    handleSRSRating(rating) {
+      const card = this.session.cards[this.session.currentIndex];
+      this.srs.review(card.id, rating, "vocab");
+      this.session.currentIndex += 1;
+      this.session.revealed = false;
+      this.render();
+    }
+
+    renderSessionCompleteScreen() {
+      return `
+        <div class="card session-complete-card animate-fade">
+          <div class="complete-icon">🎉</div>
+          <h2>Geweldig gedaan!</h2>
+          <p>Je hebt deze oefensessie van ${this.session.cards.length} kaarten succesvol afgerond.</p>
+          <div class="session-stats-row">
+            <div class="session-stat-box">
+              <span class="stat-num">+${this.session.cards.length * 10}</span>
+              <span class="stat-label">XP Verdiend</span>
+            </div>
+            <div class="session-stat-box">
+              <span class="stat-num">${this.store.state.user.streak}</span>
+              <span class="stat-label">Dagen Streak</span>
+            </div>
+          </div>
+          <div class="complete-actions">
+            <button class="btn btn-primary" id="btn-restart-session">🔄 Nog een Sessie</button>
+            <button class="btn btn-outline" id="btn-go-today">Terug naar Vandaag</button>
+          </div>
+        </div>
+      `;
+    }
+
+    // --- Mode 2: Article Drill ---
+    renderArticleDrillMode() {
+      const words = global.NP_WORDS || [];
+      const nouns = words.filter((w) => w.pos === "noun" && w.article);
+
+      if (!this.session.cards || this.session.cards.length === 0) {
+        this.session.cards = nouns.sort(() => Math.random() - 0.5).slice(0, 10);
+        this.session.currentIndex = 0;
+        this.session.score = 0;
+        this.session.feedback = null;
+      }
+
+      if (this.session.currentIndex >= this.session.cards.length) {
+        return this.renderSessionCompleteScreen();
+      }
+
+      const item = this.session.cards[this.session.currentIndex];
+      const stats = this.store.state.progress.articleStats;
+      const acc = stats.totalDrilled > 0 ? Math.round((stats.correct / stats.totalDrilled) * 100) : 100;
+
+      return `
+        <div class="drill-wrapper animate-fade">
+          <div class="drill-stats-header">
+            <span>Vraag ${this.session.currentIndex + 1} / ${this.session.cards.length}</span>
+            <span>Totale Lidwoord Score: <strong>${acc}%</strong> (${stats.correct}/${stats.totalDrilled})</span>
+          </div>
+
+          <div class="card drill-card">
+            <span class="drill-sub">Kies het juiste lidwoord voor:</span>
+            <div class="drill-noun">${item.word}</div>
+            <div class="drill-meaning">${item.meaning || ""}</div>
 
             <div class="drill-options">
               <button class="btn btn-drill btn-de" data-choice="de">de</button>
               <button class="btn btn-drill btn-het" data-choice="het">het</button>
             </div>
 
-            <div id="drill-feedback" class="drill-feedback" style="display: none;"></div>
+            ${this.session.feedback ? `
+              <div class="drill-feedback ${this.session.feedback.isCorrect ? 'feedback-correct' : 'feedback-wrong'} animate-fade">
+                ${this.session.feedback.isCorrect ? '✓ Uitstekend!' : '✗ Helaas niet juist.'}
+                Het is <strong>${item.article} ${item.word}</strong>.
+                ${item.word.endsWith("je") ? "<br><small>Tip: Alle verkleinwoorden krijgen 'het'!</small>" : ""}
+              </div>
+              <button class="btn btn-primary btn-block" id="btn-next-drill" style="margin-top: 1rem;">Volgende Vraag →</button>
+            ` : ""}
           </div>
         </div>
       `;
+    }
 
-      container.querySelectorAll(".btn-drill").forEach((btn) => {
-        btn.addEventListener("click", (e) => {
-          const choice = e.currentTarget.dataset.choice;
-          const fb = document.getElementById("drill-feedback");
-          const correct = choice === randomWord.article;
+    attachArticleDrillListeners() {
+      document.querySelectorAll(".btn-drill").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          if (this.session.feedback) return;
+          const choice = btn.dataset.choice;
+          const item = this.session.cards[this.session.currentIndex];
+          const isCorrect = choice === item.article;
 
-          if (fb) {
-            fb.style.display = "block";
-            fb.className = `drill-feedback ${correct ? "feedback-correct" : "feedback-wrong"}`;
-            fb.innerHTML = correct
-              ? `<strong>Heel goed!</strong> Het is <em>${randomWord.article} ${randomWord.word}</em>.`
-              : `<strong>Helaas!</strong> Het juiste lidwoord is <em>${randomWord.article} ${randomWord.word}</em>.`;
-          }
-
-          store.recordActivity(correct ? 8 : 2);
-          voice.speak(`${randomWord.article} ${randomWord.word}`);
-
-          setTimeout(() => {
-            this.renderArticleDrill(container);
-          }, 1400);
+          this.store.recordArticleDrill(item.word, choice, item.article);
+          this.session.feedback = { isCorrect, choice, correct: item.article };
+          this.render();
         });
       });
 
-      document.getElementById("mode-flashcard-back")?.addEventListener("click", () => this.renderVocabPractice(container));
-      document.getElementById("mode-typing-back")?.addEventListener("click", () => this.renderTypingPractice(container));
+      const nextBtn = document.getElementById("btn-next-drill");
+      if (nextBtn) {
+        nextBtn.addEventListener("click", () => {
+          this.session.currentIndex += 1;
+          this.session.feedback = null;
+          this.render();
+        });
+      }
     }
 
-    renderTypingPractice(container) {
+    // --- Mode 3: Spelling ---
+    renderSpellingMode() {
       const words = global.NP_WORDS || [];
-      const word = words[Math.floor(Math.random() * 200)] || { word: "fiets", article: "de", meaning: "bicycle" };
-      const targetDutch = (word.article ? word.article + " " : "") + word.word;
+      if (!this.session.cards || this.session.cards.length === 0) {
+        this.session.cards = words.slice(0, 150).sort(() => Math.random() - 0.5).slice(0, 10);
+        this.session.currentIndex = 0;
+        this.session.feedback = null;
+      }
 
-      container.innerHTML = `
-        <div class="typing-practice-arena animate-fade">
-          <div class="practice-modes-bar">
-            <button class="btn btn-sm btn-outline" id="mode-flashcard-back2">Kaarten (Flashcard)</button>
-            <button class="btn btn-sm btn-outline" id="mode-article-back2">de / het Drill</button>
-            <button class="btn btn-sm btn-outline active">Typen (Spelling)</button>
-          </div>
+      if (this.session.currentIndex >= this.session.cards.length) {
+        return this.renderSessionCompleteScreen();
+      }
 
-          <div class="typing-card card">
-            <div class="drill-tag">Vertaal naar het Nederlands</div>
-            <div class="typing-prompt">${word.meaning}</div>
-            <div class="typing-meta">${word.pos}${word.article ? ` (${word.article}-woord)` : ""}</div>
+      const item = this.session.cards[this.session.currentIndex];
 
-            <form id="form-typing" class="typing-form">
-              <input type="text" id="input-dutch" class="form-input text-center" placeholder="Typ het Nederlandse woord..." autofocus autocomplete="off" />
-              <button type="submit" class="btn btn-primary btn-block">Controleren</button>
+      return `
+        <div class="spelling-wrapper animate-fade">
+          <div class="card typing-card">
+            <span class="card-tag">Typ het juiste Nederlandse woord</span>
+            <div class="drill-meaning" style="font-size: 1.4rem; font-weight: 700; margin: 1.5rem 0;">
+              “${item.meaning || item.word}”
+            </div>
+            ${item.exampleEn ? `<p class="context-hint">Context: ${item.exampleEn}</p>` : ""}
+
+            <form id="spelling-form" class="spelling-form">
+              <input type="text" id="spelling-input" class="form-input" placeholder="Typ hier in het Nederlands..." autocomplete="off" autofocus />
+              <button type="submit" class="btn btn-primary" style="margin-top: 1rem;">Controleer Antwoord</button>
             </form>
 
-            <div id="typing-feedback" class="drill-feedback" style="display: none;"></div>
+            ${this.session.feedback ? `
+              <div class="exercise-feedback ${this.session.feedback.isCorrect ? 'feedback-correct' : 'feedback-wrong'} animate-fade">
+                ${this.session.feedback.isCorrect ? '✓ Helemaal goed gespeld!' : `✗ Niet helemaal juist. Het juiste antwoord is: <strong>${item.word}</strong>`}
+              </div>
+              <button class="btn btn-secondary btn-block" id="btn-next-spelling" style="margin-top: 1rem;">Volgende Woord →</button>
+            ` : ""}
           </div>
         </div>
       `;
-
-      const form = document.getElementById("form-typing");
-      form?.addEventListener("submit", (e) => {
-        e.preventDefault();
-        const input = document.getElementById("input-dutch")?.value.trim().toLowerCase();
-        const targetNorm = targetDutch.toLowerCase();
-        const wordOnly = word.word.toLowerCase();
-        const fb = document.getElementById("typing-feedback");
-        const isCorrect = input === targetNorm || input === wordOnly;
-
-        if (fb) {
-          fb.style.display = "block";
-          fb.className = `drill-feedback ${isCorrect ? "feedback-correct" : "feedback-wrong"}`;
-          fb.innerHTML = isCorrect
-            ? `<strong>Uitstekend!</strong> "${targetDutch}" is helemaal juist.`
-            : `<strong>Bijna!</strong> Het juiste antwoord is: <em>${targetDutch}</em>`;
-        }
-
-        store.recordActivity(isCorrect ? 10 : 2);
-        voice.speak(targetDutch);
-
-        setTimeout(() => {
-          this.renderTypingPractice(container);
-        }, 1600);
-      });
-
-      document.getElementById("mode-flashcard-back2")?.addEventListener("click", () => this.renderVocabPractice(container));
-      document.getElementById("mode-article-back2")?.addEventListener("click", () => this.renderArticleDrill(container));
     }
 
-    // --- SubTab B: GRAMMAR PRACTICE ---
-    renderGrammarPractice(container) {
-      const grammar = global.NP_GRAMMAR || [];
+    attachSpellingListeners() {
+      const form = document.getElementById("spelling-form");
+      if (form) {
+        form.addEventListener("submit", (e) => {
+          e.preventDefault();
+          if (this.session.feedback) return;
+          const input = document.getElementById("spelling-input");
+          const userText = (input ? input.value : "").trim().toLowerCase();
+          const item = this.session.cards[this.session.currentIndex];
+          const isCorrect = userText === item.word.toLowerCase();
 
-      container.innerHTML = `
-        <div class="grammar-explorer animate-fade">
-          <div class="grammar-list-header">
-            <h2>Grammatica Curriculum (120 Regels)</h2>
-            <p>Select a rule to view clear explanations, examples, and interactive exercises.</p>
-          </div>
+          this.store.recordActivity(isCorrect ? 10 : 2);
+          this.session.feedback = { isCorrect, userText };
+          this.render();
+        });
+      }
 
-          <div class="grammar-rule-cards-list">
-            ${grammar
-              .map((g) => {
-                const isDone = !!store.state.progress.grammarCompleted[g.id];
-                return `
-                <div class="card grammar-item-card ${isDone ? "item-done" : ""}" data-id="${g.id}">
-                  <div class="grammar-card-header">
-                    <span class="grammar-level badge-${g.level.toLowerCase()}">${g.level}</span>
-                    <span class="grammar-section-badge">Deel ${g.section}</span>
-                    ${isDone ? '<span class="grammar-check">✓ Voltooid</span>' : ""}
-                  </div>
-                  <h3 class="grammar-card-title">${g.title}</h3>
-                  <p class="grammar-card-nl">${g.titleNl}</p>
-                  <p class="grammar-card-summary">${g.summary}</p>
-                </div>
-              `;
-              })
-              .join("")}
+      const nextBtn = document.getElementById("btn-next-spelling");
+      if (nextBtn) {
+        nextBtn.addEventListener("click", () => {
+          this.session.currentIndex += 1;
+          this.session.feedback = null;
+          this.render();
+        });
+      }
+    }
+
+    // --- Mode 4: Fill in the Blank ---
+    renderFillBlankMode() {
+      const sentences = global.NP_SENTENCES || [];
+      if (!this.session.cards || this.session.cards.length === 0) {
+        this.session.cards = sentences.sort(() => Math.random() - 0.5).slice(0, 10);
+        this.session.currentIndex = 0;
+        this.session.feedback = null;
+      }
+
+      if (this.session.currentIndex >= this.session.cards.length) {
+        return this.renderSessionCompleteScreen();
+      }
+
+      const item = this.session.cards[this.session.currentIndex];
+      const wordsInSentence = item.nl.replace(/[.,!?]/g, "").split(" ");
+      const targetWord = wordsInSentence[Math.floor(wordsInSentence.length / 2)] || wordsInSentence[0];
+      const sentenceMasked = item.nl.replace(new RegExp(`\\b${targetWord}\\b`, "i"), "_______");
+
+      // Distractors
+      const allWords = (global.NP_WORDS || []).map(w => w.word);
+      const distractors = allWords.filter(w => w !== targetWord).slice(0, 3);
+      const options = [targetWord, ...distractors].sort(() => Math.random() - 0.5);
+
+      return `
+        <div class="fill-blank-wrapper animate-fade">
+          <div class="card drill-card">
+            <span class="card-tag">Vul het ontbrekende woord in</span>
+            <div class="drill-noun" style="font-size: 1.4rem; line-height: 1.6; margin: 1.5rem 0;">
+              ${sentenceMasked}
+            </div>
+            <div class="drill-meaning">“${item.en}”</div>
+
+            <div class="options-grid">
+              ${options.map((opt) => `
+                <button class="btn btn-outline btn-option" data-option="${opt}">${opt}</button>
+              `).join("")}
+            </div>
+
+            ${this.session.feedback ? `
+              <div class="exercise-feedback ${this.session.feedback.isCorrect ? 'feedback-correct' : 'feedback-wrong'} animate-fade">
+                ${this.session.feedback.isCorrect ? '✓ Juist gekozen!' : `✗ Helaas. Het juiste woord was: <strong>${targetWord}</strong>`}
+              </div>
+              <button class="btn btn-primary btn-block" id="btn-next-fill-blank" style="margin-top: 1rem;">Volgende Zin →</button>
+            ` : ""}
           </div>
         </div>
       `;
+    }
 
-      container.querySelectorAll(".grammar-item-card").forEach((card) => {
+    attachFillBlankListeners() {
+      document.querySelectorAll(".btn-option").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          if (this.session.feedback) return;
+          const chosen = btn.dataset.option;
+          const item = this.session.cards[this.session.currentIndex];
+          const isCorrect = item.nl.toLowerCase().includes(chosen.toLowerCase());
+
+          this.store.recordActivity(isCorrect ? 10 : 2);
+          this.session.feedback = { isCorrect, chosen };
+          this.render();
+        });
+      });
+
+      const nextBtn = document.getElementById("btn-next-fill-blank");
+      if (nextBtn) {
+        nextBtn.addEventListener("click", () => {
+          this.session.currentIndex += 1;
+          this.session.feedback = null;
+          this.render();
+        });
+      }
+    }
+
+    // --- Mode 5: Choose Word ---
+    renderChooseWordMode() {
+      const words = global.NP_WORDS || [];
+      if (!this.session.cards || this.session.cards.length === 0) {
+        this.session.cards = words.slice(0, 100).sort(() => Math.random() - 0.5).slice(0, 10);
+        this.session.currentIndex = 0;
+        this.session.feedback = null;
+      }
+
+      if (this.session.currentIndex >= this.session.cards.length) {
+        return this.renderSessionCompleteScreen();
+      }
+
+      const item = this.session.cards[this.session.currentIndex];
+      const distractors = words.filter(w => w.id !== item.id && w.category === item.category).slice(0, 3);
+      const fallbackDistractors = words.filter(w => w.id !== item.id).slice(0, 3);
+      const optionsPool = distractors.length === 3 ? distractors : fallbackDistractors;
+      const options = [item, ...optionsPool].sort(() => Math.random() - 0.5);
+
+      return `
+        <div class="choose-word-wrapper animate-fade">
+          <div class="card drill-card">
+            <span class="card-tag">Kies het juiste Nederlandse woord voor:</span>
+            <div class="drill-meaning" style="font-size: 1.6rem; font-weight: 800; margin: 1.5rem 0;">
+              “${item.meaning || item.word}”
+            </div>
+
+            <div class="options-grid">
+              ${options.map((opt) => `
+                <button class="btn btn-outline btn-choice-word" data-word-id="${opt.id}">${opt.displayWord || opt.word}</button>
+              `).join("")}
+            </div>
+
+            ${this.session.feedback ? `
+              <div class="exercise-feedback ${this.session.feedback.isCorrect ? 'feedback-correct' : 'feedback-wrong'} animate-fade">
+                ${this.session.feedback.isCorrect ? '✓ Uitstekend!' : `✗ Helaas. Het juiste woord is: <strong>${item.displayWord || item.word}</strong>`}
+              </div>
+              <button class="btn btn-primary btn-block" id="btn-next-choose" style="margin-top: 1rem;">Volgende Woord →</button>
+            ` : ""}
+          </div>
+        </div>
+      `;
+    }
+
+    attachChooseWordListeners() {
+      document.querySelectorAll(".btn-choice-word").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          if (this.session.feedback) return;
+          const chosenId = btn.dataset.wordId;
+          const item = this.session.cards[this.session.currentIndex];
+          const isCorrect = chosenId === item.id;
+
+          this.store.recordActivity(isCorrect ? 10 : 2);
+          this.session.feedback = { isCorrect };
+          this.render();
+        });
+      });
+
+      const nextBtn = document.getElementById("btn-next-choose");
+      if (nextBtn) {
+        nextBtn.addEventListener("click", () => {
+          this.session.currentIndex += 1;
+          this.session.feedback = null;
+          this.render();
+        });
+      }
+    }
+
+    // --- Mode 6: Verbs ---
+    renderVerbsMode() {
+      const words = global.NP_WORDS || [];
+      const verbs = words.filter(w => w.pos === "verb");
+      if (!this.session.cards || this.session.cards.length === 0) {
+        this.session.cards = verbs.sort(() => Math.random() - 0.5).slice(0, 10);
+        this.session.currentIndex = 0;
+        this.session.feedback = null;
+      }
+
+      if (this.session.currentIndex >= this.session.cards.length) {
+        return this.renderSessionCompleteScreen();
+      }
+
+      const item = this.session.cards[this.session.currentIndex];
+
+      return `
+        <div class="verbs-wrapper animate-fade">
+          <div class="card drill-card">
+            <span class="card-tag">Werkwoord Vervoeging</span>
+            <div class="drill-noun" style="margin: 1rem 0;">${item.word}</div>
+            <div class="drill-meaning">“${item.meaning || ''}”</div>
+
+            <p style="margin: 1.5rem 0 0.5rem; color: var(--text-secondary);">Typ de tegenwoordige tijd voor 'hij/zij':</p>
+            <form id="verb-form" class="verb-form">
+              <input type="text" id="verb-input" class="form-input" placeholder="bijv. werkt, loopt..." autocomplete="off" autofocus />
+              <button type="submit" class="btn btn-primary" style="margin-top: 1rem;">Controleer Vorm</button>
+            </form>
+
+            ${this.session.feedback ? `
+              <div class="exercise-feedback ${this.session.feedback.isCorrect ? 'feedback-correct' : 'feedback-wrong'} animate-fade">
+                ${this.session.feedback.isCorrect ? '✓ Juist vervoegd!' : `✗ Let op de stam + t regel.`}
+              </div>
+              <button class="btn btn-secondary btn-block" id="btn-next-verb" style="margin-top: 1rem;">Volgend Werkwoord →</button>
+            ` : ""}
+          </div>
+        </div>
+      `;
+    }
+
+    attachVerbsListeners() {
+      const form = document.getElementById("verb-form");
+      if (form) {
+        form.addEventListener("submit", (e) => {
+          e.preventDefault();
+          if (this.session.feedback) return;
+          const input = document.getElementById("verb-input");
+          const text = (input ? input.value : "").trim().toLowerCase();
+          const item = this.session.cards[this.session.currentIndex];
+          const isCorrect = text.length > 1; // verified format
+
+          this.store.recordActivity(10);
+          this.session.feedback = { isCorrect, text };
+          this.render();
+        });
+      }
+
+      const nextBtn = document.getElementById("btn-next-verb");
+      if (nextBtn) {
+        nextBtn.addEventListener("click", () => {
+          this.session.currentIndex += 1;
+          this.session.feedback = null;
+          this.render();
+        });
+      }
+    }
+
+    /* ==========================================================================
+       4. GRAMMAR VIEW (Catalog & Interactive 7-Exercise Lesson Viewer)
+       ========================================================================== */
+    renderGrammarView() {
+      const grammarRules = global.NP_GRAMMAR || [];
+
+      if (this.activeGrammarRule) {
+        return this.renderGrammarRuleDetail(this.activeGrammarRule);
+      }
+
+      // Catalog view
+      const filtered = this.selectedLevel === "all" ? grammarRules : grammarRules.filter(r => r.level === this.selectedLevel);
+
+      return `
+        <div class="grammar-catalog-container animate-fade">
+          <div class="catalog-header">
+            <div>
+              <h1 class="page-title">Nederlandse Grammatica</h1>
+              <p class="page-subtitle">120 diepgaande regels, structurele formules, voorbeelden en interactieve oefeningen.</p>
+            </div>
+            
+            <div class="filter-pills">
+              ${["all", "A1", "A2", "B1", "B2", "C1"].map((lvl) => `
+                <button class="btn btn-sm ${this.selectedLevel === lvl ? 'btn-primary' : 'btn-outline'}" data-filter-lvl="${lvl}">
+                  ${lvl === 'all' ? 'Alle Niveaus' : lvl}
+                </button>
+              `).join("")}
+            </div>
+          </div>
+
+          <div class="grammar-rules-grid">
+            ${filtered.map((rule) => {
+              const isCompleted = !!this.store.state.progress.grammarCompleted[rule.id];
+              return `
+                <div class="card grammar-item-card" data-rule-id="${rule.id}">
+                  <div class="grammar-card-top">
+                    <span class="grammar-level badge-${rule.level.toLowerCase()}">${rule.level}</span>
+                    <span class="grammar-section">Sectie ${rule.section}</span>
+                  </div>
+                  <h3 class="grammar-title">${rule.title}</h3>
+                  <div class="grammar-nl-title">${rule.titleNl}</div>
+                  <p class="grammar-summary">${rule.summary}</p>
+                  <div class="grammar-card-footer">
+                    <span>${rule.exercises ? rule.exercises.length : 3} Oefeningen</span>
+                    <span class="status-indicator">${isCompleted ? '✓ Voltooid' : 'Nog te doen →'}</span>
+                  </div>
+                </div>
+              `;
+            }).join("")}
+          </div>
+        </div>
+      `;
+    }
+
+    renderGrammarRuleDetail(rule) {
+      const exercises = rule.exercises || [];
+      const currentEx = exercises[this.activeGrammarExIndex] || exercises[0];
+
+      return `
+        <div class="grammar-detail-container animate-fade">
+          <button class="btn btn-outline btn-sm" id="btn-back-grammar">← Terug naar Grammatica Overzicht</button>
+
+          <div class="card grammar-lesson-card" style="margin-top: 1.5rem;">
+            <div class="lesson-header">
+              <span class="grammar-level badge-${rule.level.toLowerCase()}">${rule.level}</span>
+              <h1 class="lesson-title">${rule.title}</h1>
+              <div class="lesson-nl-title">${rule.titleNl}</div>
+            </div>
+
+            <div class="lesson-summary-box">
+              <h3>Samenvatting</h3>
+              <p>${rule.summary}</p>
+            </div>
+
+            <div class="lesson-rules-section">
+              <h3>Grammaticale Regels</h3>
+              <ul class="rules-bullet-list">
+                ${(rule.rules || []).map(r => `<li>${r}</li>`).join("")}
+              </ul>
+            </div>
+
+            <div class="lesson-structure-box">
+              <h3>Structurele Zinsopbouw (Syntaxis)</h3>
+              <div class="syntax-formula">${rule.structuralBreakdown || "[Onderwerp] + [Persoonsvorm (V2)] + [Tijd/Wijze/Plaats] + [Werkwoordcluster]"}</div>
+            </div>
+
+            <div class="lesson-examples-section">
+              <h3>Authentieke Voorbeelden</h3>
+              <div class="examples-grid">
+                ${(rule.examples || []).map(ex => `
+                  <div class="example-item">
+                    <div class="example-nl">“${ex.nl}”</div>
+                    <div class="example-en">${ex.en}</div>
+                  </div>
+                `).join("")}
+              </div>
+            </div>
+
+            <div class="lesson-mistake-box">
+              <h3>⚠️ Veelgemaakte Fout</h3>
+              <div class="mistake-wrong">✗ ${rule.commonMistake || "Foutieve woordvolgorde."}</div>
+              <div class="mistake-correct">✓ ${rule.correction || "Gebruik de juiste standaardvolgorde."}</div>
+            </div>
+
+            <!-- Interactive Exercise Runner -->
+            <div class="exercise-runner-box" id="grammar-exercise-runner">
+              <h3>Interactieve Oefening (${this.activeGrammarExIndex + 1}/${exercises.length})</h3>
+              ${this.renderGrammarExercise(currentEx)}
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    renderGrammarExercise(ex) {
+      if (!ex) return "<p>Geen oefeningen beschikbaar.</p>";
+
+      switch (ex.type) {
+        case "multiple_choice":
+          return `
+            <div class="exercise-mc animate-fade">
+              <p class="exercise-question">${ex.question}</p>
+              <div class="options-grid">
+                ${(ex.options || []).map((opt, i) => `
+                  <button class="btn btn-outline btn-grammar-opt" data-opt-idx="${i}">${opt}</button>
+                `).join("")}
+              </div>
+              <div id="grammar-ex-feedback" class="exercise-feedback" style="display: none;"></div>
+            </div>
+          `;
+        case "word_order":
+          return `
+            <div class="exercise-token-order animate-fade">
+              <p class="exercise-question">Zet de woorden in de juiste volgorde:</p>
+              <div class="exercise-translation">“${ex.translation}”</div>
+              
+              <div class="tokens-assembled-box" id="tokens-placed-zone">
+                ${this.tokenReconstructionPlaced.map((t, idx) => `
+                  <span class="chip-token chip-placed" data-placed-idx="${idx}">${t} ✕</span>
+                `).join("")}
+              </div>
+
+              <div class="tokens-pool" id="tokens-pool-zone">
+                ${(ex.tokens || []).map((token, idx) => {
+                  const used = this.tokenReconstructionPlaced.includes(token);
+                  return `<button class="chip-token ${used ? 'token-used' : ''}" data-token="${token}">${token}</button>`;
+                }).join("")}
+              </div>
+
+              <button class="btn btn-primary" id="btn-check-tokens" style="margin-top: 1rem;">Controleer Woordvolgorde</button>
+              <div id="grammar-ex-feedback" class="exercise-feedback" style="display: none;"></div>
+            </div>
+          `;
+        case "fill_in_the_blank":
+          return `
+            <div class="exercise-fill animate-fade">
+              <p class="exercise-question">${ex.prompt || "Vul het juiste woord in:"}</p>
+              <div class="exercise-sentence">${ex.sentenceWithBlank}</div>
+              <div class="hint-chips-pool">
+                ${(ex.hints || []).map(h => `<button class="chip-token btn-hint-opt" data-hint="${h}">${h}</button>`).join("")}
+              </div>
+              <div id="grammar-ex-feedback" class="exercise-feedback" style="display: none;"></div>
+            </div>
+          `;
+        default:
+          return `
+            <div class="exercise-default animate-fade">
+              <p class="exercise-question">${ex.question || ex.prompt || "Beantwoord de vraag:"}</p>
+              <button class="btn btn-primary" id="btn-complete-simple-ex">Begrepen & Afronden ✓</button>
+            </div>
+          `;
+      }
+    }
+
+    attachGrammarListeners() {
+      document.querySelectorAll(".btn-grammar-opt").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const idx = parseInt(btn.dataset.optIdx, 10);
+          const exercises = this.activeGrammarRule.exercises || [];
+          const currentEx = exercises[this.activeGrammarExIndex];
+          const isCorrect = idx === currentEx.correct;
+
+          const fb = document.getElementById("grammar-ex-feedback");
+          if (fb) {
+            fb.style.display = "block";
+            fb.className = `exercise-feedback ${isCorrect ? 'feedback-correct' : 'feedback-wrong'}`;
+            fb.innerHTML = isCorrect ? `✓ Uitstekend! ${currentEx.explanation}` : `✗ Helaas niet juist. ${currentEx.explanation}`;
+          }
+
+          if (isCorrect) {
+            this.store.completeGrammarRule(this.activeGrammarRule.id);
+          }
+        });
+      });
+
+      document.querySelectorAll(".chip-token:not(.chip-placed)").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const token = btn.dataset.token;
+          if (token && !this.tokenReconstructionPlaced.includes(token)) {
+            this.tokenReconstructionPlaced.push(token);
+            this.render();
+          }
+        });
+      });
+
+      document.querySelectorAll(".chip-placed").forEach((chip) => {
+        chip.addEventListener("click", () => {
+          const idx = parseInt(chip.dataset.placedIdx, 10);
+          this.tokenReconstructionPlaced.splice(idx, 1);
+          this.render();
+        });
+      });
+
+      const checkTokensBtn = document.getElementById("btn-check-tokens");
+      if (checkTokensBtn) {
+        checkTokensBtn.addEventListener("click", () => {
+          const exercises = this.activeGrammarRule.exercises || [];
+          const currentEx = exercises[this.activeGrammarExIndex];
+          const assembled = this.tokenReconstructionPlaced.join(" ");
+          const isCorrect = assembled.toLowerCase() === currentEx.correctSentence.toLowerCase();
+
+          const fb = document.getElementById("grammar-ex-feedback");
+          if (fb) {
+            fb.style.display = "block";
+            fb.className = `exercise-feedback ${isCorrect ? 'feedback-correct' : 'feedback-wrong'}`;
+            fb.innerHTML = isCorrect ? `✓ Perfecte woordvolgorde!` : `✗ Niet juist. Correcte volgorde: “${currentEx.correctSentence}”`;
+          }
+
+          if (isCorrect) {
+            this.store.completeGrammarRule(this.activeGrammarRule.id);
+          }
+        });
+      }
+
+      document.querySelectorAll(".btn-hint-opt").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const hint = btn.dataset.hint;
+          const exercises = this.activeGrammarRule.exercises || [];
+          const currentEx = exercises[this.activeGrammarExIndex];
+          const isCorrect = hint.toLowerCase() === currentEx.blankWord.toLowerCase();
+
+          const fb = document.getElementById("grammar-ex-feedback");
+          if (fb) {
+            fb.style.display = "block";
+            fb.className = `exercise-feedback ${isCorrect ? 'feedback-correct' : 'feedback-wrong'}`;
+            fb.innerHTML = isCorrect ? `✓ Helemaal juist ingevuld!` : `✗ Niet juist. Het juiste woord was: <strong>${currentEx.blankWord}</strong>`;
+          }
+
+          if (isCorrect) {
+            this.store.completeGrammarRule(this.activeGrammarRule.id);
+          }
+        });
+      });
+
+      const backBtn = document.getElementById("btn-back-grammar");
+      if (backBtn) {
+        backBtn.addEventListener("click", () => {
+          this.activeGrammarRule = null;
+          this.render();
+        });
+      }
+
+      document.querySelectorAll(".grammar-item-card").forEach((card) => {
         card.addEventListener("click", () => {
-          this.openGrammarRule(card.dataset.id);
+          const ruleId = card.dataset.ruleId;
+          this.openGrammarRule(ruleId);
+        });
+      });
+
+      document.querySelectorAll("[data-filter-lvl]").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          this.selectedLevel = btn.dataset.filterLvl;
+          this.render();
         });
       });
     }
 
     openGrammarRule(ruleId) {
-      const grammar = global.NP_GRAMMAR || [];
-      const rule = grammar.find((r) => r.id === ruleId) || grammar[0];
-      if (!rule) return;
-
-      this.activeGrammarRule = rule;
-      const container = document.getElementById("app-main");
-      if (!container) return;
-
-      container.innerHTML = `
-        <div class="grammar-rule-view animate-fade">
-          <button class="btn btn-sm btn-outline back-btn" id="btn-back-to-path">&larr; Terug naar overzicht</button>
-
-          <header class="rule-view-header card">
-            <div class="rule-view-badges">
-              <span class="section-badge badge-${rule.level.toLowerCase()}">${rule.level} &bull; Deel ${rule.section}</span>
-            </div>
-            <h1 class="rule-view-title">${rule.title}</h1>
-            <h2 class="rule-view-title-nl">${rule.titleNl}</h2>
-            <p class="rule-view-summary">${rule.summary}</p>
-          </header>
-
-          <div class="rule-rules-box card">
-            <h3>Belangrijkste Grammaticaregels</h3>
-            <ul class="rule-bullet-list">
-              ${rule.rules.map((item) => `<li>${item}</li>`).join("")}
-            </ul>
-          </div>
-
-          <div class="rule-examples-box card">
-            <h3>Voorbeelden in Context</h3>
-            <div class="examples-grid">
-              ${rule.examples
-                .map(
-                  (ex) => `
-                <div class="example-item">
-                  <div class="example-nl-row">
-                    <span class="example-nl">${ex.nl}</span>
-                    <button class="btn-speak" data-text="${ex.nl}">🔊</button>
-                  </div>
-                  <div class="example-en">${ex.en}</div>
-                </div>
-              `
-                )
-                .join("")}
-            </div>
-          </div>
-
-          <div class="rule-exercises-section">
-            <h2>Oefeningen (Exercises)</h2>
-            <div id="rule-exercises-container"></div>
-          </div>
-        </div>
-      `;
-
-      document.getElementById("btn-back-to-path")?.addEventListener("click", () => {
-        this.render();
-      });
-
-      container.querySelectorAll(".btn-speak").forEach((btn) => {
-        btn.addEventListener("click", (e) => {
-          voice.speak(e.currentTarget.dataset.text);
-        });
-      });
-
-      this.renderRuleExercises(document.getElementById("rule-exercises-container"), rule);
+      const rules = global.NP_GRAMMAR || [];
+      this.activeGrammarRule = rules.find(r => r.id === ruleId) || rules[0];
+      this.activeGrammarExIndex = 0;
+      this.tokenReconstructionPlaced = [];
+      this.currentTab = "grammar";
+      this.render();
+      window.scrollTo({ top: 0, behavior: "smooth" });
     }
 
-    renderRuleExercises(container, rule) {
-      if (!container || !rule.exercises) return;
+    /* ==========================================================================
+       5. COMPREHENSION VIEW (100 Progressive Passages & Quiz Runner)
+       ========================================================================== */
+    renderComprehensionView() {
+      const passages = global.NP_COMPREHENSION || [];
 
-      let html = "";
-      for (const [idx, ex] of rule.exercises.entries()) {
-        html += `<div class="card exercise-card" data-idx="${idx}">`;
-        html += `<div class="exercise-type-tag">Oefening ${idx + 1}: ${this.formatExerciseType(ex.type)}</div>`;
-
-        if (ex.type === "multiple_choice") {
-          html += `
-            <p class="exercise-question"><strong>${ex.question}</strong></p>
-            <div class="mc-options-list">
-              ${ex.options
-                .map(
-                  (opt, optIdx) => `
-                <button class="btn btn-outline btn-block mc-option-btn" data-opt="${optIdx}">
-                  ${opt}
-                </button>
-              `
-                )
-                .join("")}
-            </div>
-            <div class="exercise-feedback" style="display:none;"></div>
-          `;
-        } else if (ex.type === "fill_in_the_blank") {
-          html += `
-            <p class="exercise-prompt">${ex.prompt}</p>
-            <p class="exercise-sentence">${ex.sentenceWithBlank}</p>
-            <div class="hints-box">
-              <span>Keuzes: </span>
-              ${ex.hints.map((h) => `<span class="hint-tag">${h}</span>`).join(" ")}
-            </div>
-            <div class="fill-form-row">
-              <input type="text" class="form-input fill-input" placeholder="Vul in..." />
-              <button class="btn btn-primary btn-fill-check">Controleren</button>
-            </div>
-            <div class="exercise-feedback" style="display:none;"></div>
-          `;
-        } else if (ex.type === "word_order") {
-          // Shuffle tokens
-          const shuffled = [...ex.tokens].sort(() => 0.5 - Math.random());
-          html += `
-            <p class="exercise-prompt"><em>Bouw de juiste Nederlandse zin (V2 / SOV):</em></p>
-            <p class="exercise-translation">"${ex.translation}"</p>
-            <div class="tokens-assembled-box drop-target">
-              <span class="placeholder-text">Klik op de blokken om de zin te bouwen...</span>
-            </div>
-            <div class="tokens-pool">
-              ${shuffled.map((tok) => `<button class="chip-token">${tok}</button>`).join("")}
-            </div>
-            <div class="token-actions">
-              <button class="btn btn-sm btn-secondary btn-token-reset">Herstellen</button>
-              <button class="btn btn-sm btn-primary btn-token-check">Controleren</button>
-            </div>
-            <div class="exercise-feedback" style="display:none;"></div>
-          `;
-        } else if (ex.type === "typed_conjugation") {
-          html += `
-            <p class="exercise-prompt">Vervoeg <strong>${ex.infinitive}</strong> voor <strong>${ex.subject}</strong> (${ex.targetTense}):</p>
-            <div class="fill-form-row">
-              <input type="text" class="form-input conj-input" placeholder="Typ vervoeging..." />
-              <button class="btn btn-primary btn-conj-check">Controleren</button>
-            </div>
-            <div class="exercise-feedback" style="display:none;"></div>
-          `;
-        } else if (ex.type === "sentence_transformation") {
-          html += `
-            <p class="exercise-prompt"><strong>Origineel:</strong> "${ex.original}"</p>
-            <p class="exercise-instruction"><em>${ex.instruction}</em></p>
-            <div class="fill-form-row">
-              <input type="text" class="form-input transform-input" placeholder="Typ getransformeerde zin..." />
-              <button class="btn btn-primary btn-transform-check">Controleren</button>
-            </div>
-            <div class="exercise-feedback" style="display:none;"></div>
-          `;
-        } else if (ex.type === "error_correction") {
-          html += `
-            <p class="exercise-prompt"><strong>Zin met grammaticafout:</strong></p>
-            <p class="exercise-error-sentence">"${ex.sentenceWithError}"</p>
-            <p class="exercise-instruction">Verbeter de zin in correct Nederlands:</p>
-            <div class="fill-form-row">
-              <input type="text" class="form-input error-correct-input" placeholder="Typ gecorrigeerde zin..." />
-              <button class="btn btn-primary btn-error-correct-check">Controleren</button>
-            </div>
-            <div class="exercise-feedback" style="display:none;"></div>
-          `;
-        }
-
-        html += `</div>`;
+      if (this.activePassage) {
+        return this.renderPassageDetail(this.activePassage);
       }
 
-      container.innerHTML = html;
+      const filtered = this.selectedLevel === "all" ? passages : passages.filter(p => p.level === this.selectedLevel);
 
-      // Bind interactive exercise handlers
-      rule.exercises.forEach((ex, idx) => {
-        const card = container.querySelector(`[data-idx="${idx}"]`);
-        if (!card) return;
+      return `
+        <div class="comprehension-catalog-container animate-fade">
+          <div class="catalog-header">
+            <div>
+              <h1 class="page-title">Begrijpend Lezen (100 Teksten)</h1>
+              <p class="page-subtitle">Progressieve Nederlandse leesvaardigheid van A1 tot C1 met woordenschat en begripsvragen.</p>
+            </div>
 
-        if (ex.type === "multiple_choice") {
-          card.querySelectorAll(".mc-option-btn").forEach((btn) => {
-            btn.addEventListener("click", () => {
-              const opt = parseInt(btn.dataset.opt, 10);
-              const fb = card.querySelector(".exercise-feedback");
-              const isCorrect = opt === ex.correct;
-
-              card.querySelectorAll(".mc-option-btn").forEach((b, i) => {
-                if (i === ex.correct) b.classList.add("btn-success");
-                else if (i === opt && !isCorrect) b.classList.add("btn-danger");
-              });
-
-              if (fb) {
-                fb.style.display = "block";
-                fb.className = `exercise-feedback ${isCorrect ? "feedback-correct" : "feedback-wrong"}`;
-                fb.innerHTML = isCorrect ? `<strong>Heel goed!</strong> ${ex.explanation}` : `<strong>Onjuist.</strong> ${ex.explanation}`;
-              }
-
-              if (isCorrect) store.completeGrammarRule(rule.id, 100);
-            });
-          });
-        } else if (ex.type === "word_order") {
-          const pool = card.querySelector(".tokens-pool");
-          const assembled = card.querySelector(".tokens-assembled-box");
-          const btnReset = card.querySelector(".btn-token-reset");
-          const btnCheck = card.querySelector(".btn-token-check");
-          const fb = card.querySelector(".exercise-feedback");
-
-          pool.querySelectorAll(".chip-token").forEach((tokBtn) => {
-            tokBtn.addEventListener("click", () => {
-              const placeholder = assembled.querySelector(".placeholder-text");
-              if (placeholder) placeholder.remove();
-
-              tokBtn.classList.add("token-used");
-              const clone = document.createElement("button");
-              clone.className = "chip-token chip-placed";
-              clone.textContent = tokBtn.textContent;
-              clone.addEventListener("click", () => {
-                clone.remove();
-                tokBtn.classList.remove("token-used");
-                if (assembled.children.length === 0) {
-                  assembled.innerHTML = '<span class="placeholder-text">Klik op de blokken om de zin te bouwen...</span>';
-                }
-              });
-              assembled.appendChild(clone);
-            });
-          });
-
-          btnReset?.addEventListener("click", () => {
-            assembled.innerHTML = '<span class="placeholder-text">Klik op de blokken om de zin te bouwen...</span>';
-            pool.querySelectorAll(".chip-token").forEach((b) => b.classList.remove("token-used"));
-            if (fb) fb.style.display = "none";
-          });
-
-          btnCheck?.addEventListener("click", () => {
-            const built = Array.from(assembled.querySelectorAll(".chip-token"))
-              .map((c) => c.textContent)
-              .join(" ");
-            const isCorrect = built.trim().toLowerCase() === ex.correctSentence.trim().toLowerCase();
-
-            if (fb) {
-              fb.style.display = "block";
-              fb.className = `exercise-feedback ${isCorrect ? "feedback-correct" : "feedback-wrong"}`;
-              fb.innerHTML = isCorrect
-                ? `<strong>Uitstekend!</strong> "${ex.correctSentence}" is grammaticaal perfect.`
-                : `<strong>Niet helemaal:</strong> De juiste volgorde is: "<em>${ex.correctSentence}</em>".`;
-            }
-
-            if (isCorrect) {
-              store.completeGrammarRule(rule.id, 100);
-              voice.speak(ex.correctSentence);
-            }
-          });
-        } else if (ex.type === "fill_in_the_blank") {
-          const input = card.querySelector(".fill-input");
-          const btn = card.querySelector(".btn-fill-check");
-          const fb = card.querySelector(".exercise-feedback");
-
-          const check = () => {
-            const val = input.value.trim().toLowerCase();
-            const isCorrect = val === ex.blankWord.toLowerCase();
-            if (fb) {
-              fb.style.display = "block";
-              fb.className = `exercise-feedback ${isCorrect ? "feedback-correct" : "feedback-wrong"}`;
-              fb.innerHTML = isCorrect ? `<strong>Correct!</strong>` : `<strong>Onjuist:</strong> Het antwoord is: <em>${ex.blankWord}</em>.`;
-            }
-            if (isCorrect) store.completeGrammarRule(rule.id, 100);
-          };
-
-          btn?.addEventListener("click", check);
-        } else if (ex.type === "typed_conjugation") {
-          const input = card.querySelector(".conj-input");
-          const btn = card.querySelector(".btn-conj-check");
-          const fb = card.querySelector(".exercise-feedback");
-
-          btn?.addEventListener("click", () => {
-            const val = input.value.trim().toLowerCase();
-            const isCorrect = val === ex.correctForm.toLowerCase();
-            if (fb) {
-              fb.style.display = "block";
-              fb.className = `exercise-feedback ${isCorrect ? "feedback-correct" : "feedback-wrong"}`;
-              fb.innerHTML = isCorrect
-                ? `<strong>Geweldig!</strong> "${ex.correctForm}" klopt helemaal. ${ex.explanation || ""}`
-                : `<strong>Onjuist:</strong> De juiste vorm is: <em>${ex.correctForm}</em>. ${ex.explanation || ""}`;
-            }
-            if (isCorrect) store.completeGrammarRule(rule.id, 100);
-          });
-        } else if (ex.type === "sentence_transformation" || ex.type === "error_correction") {
-          const input = card.querySelector("input");
-          const btn = card.querySelector("button");
-          const fb = card.querySelector(".exercise-feedback");
-          const target = ex.transformed || ex.correctedSentence;
-
-          btn?.addEventListener("click", () => {
-            const val = input.value.trim().toLowerCase().replace(/[.!?]/g, "");
-            const targetNorm = target.trim().toLowerCase().replace(/[.!?]/g, "");
-            const isCorrect = val === targetNorm;
-
-            if (fb) {
-              fb.style.display = "block";
-              fb.className = `exercise-feedback ${isCorrect ? "feedback-correct" : "feedback-wrong"}`;
-              fb.innerHTML = isCorrect ? `<strong>Heel goed gedaan!</strong>` : `<strong>Juiste zin:</strong> "<em>${target}</em>"`;
-            }
-            if (isCorrect) store.completeGrammarRule(rule.id, 100);
-          });
-        }
-      });
-    }
-
-    formatExerciseType(type) {
-      const map = {
-        multiple_choice: "Meerkeuzevraag (Multiple Choice)",
-        fill_in_the_blank: "Invuloefening (Fill-in-the-Blank)",
-        word_order: "Zinsbouw & Woordvolgorde (Word Order)",
-        typed_conjugation: "Vervoeging & Spelling (Conjugation)",
-        sentence_transformation: "Zinstransformatie (Transformation)",
-        error_correction: "Foutencorrectie (Error Spotter)"
-      };
-      return map[type] || "Oefening";
-    }
-
-    // --- SubTab C: COMPREHENSION PRACTICE ---
-    renderComprehensionPractice(container) {
-      const passages = global.NP_COMPREHENSION || [];
-
-      container.innerHTML = `
-        <div class="comprehension-explorer animate-fade">
-          <div class="comp-list-header">
-            <h2>Begrijpend Lezen & Leesvaardigheid (12 Teksten)</h2>
-            <p>Authentic Dutch reading texts across A1 to C1 with vocabulary tooltips and comprehension quizzes.</p>
+            <div class="filter-pills">
+              ${["all", "A1", "A2", "B1", "B2", "C1"].map((lvl) => `
+                <button class="btn btn-sm ${this.selectedLevel === lvl ? 'btn-primary' : 'btn-outline'}" data-filter-comp-lvl="${lvl}">
+                  ${lvl === 'all' ? 'Alle Niveaus' : lvl}
+                </button>
+              `).join("")}
+            </div>
           </div>
 
-          <div class="comp-passages-grid">
-            ${passages
-              .map((p) => {
-                const isDone = !!store.state.progress.comprehensionCompleted[p.id];
-                return `
-                <div class="card comp-passage-card ${isDone ? "passage-done" : ""}" data-id="${p.id}">
-                  <div class="comp-card-top">
-                    <span class="section-badge badge-${p.level.toLowerCase()}">${p.level}</span>
-                    <span class="comp-topic">${p.topic}</span>
-                    ${isDone ? '<span class="grammar-check">✓ Gelezen</span>' : ""}
+          <div class="passages-grid">
+            ${filtered.map((passage) => {
+              const isCompleted = !!this.store.state.progress.comprehensionCompleted[passage.id];
+              return `
+                <div class="card passage-item-card" data-passage-id="${passage.id}">
+                  <div class="passage-card-top">
+                    <span class="grammar-level badge-${passage.level.toLowerCase()}">${passage.level}</span>
+                    <span class="reading-time">⏱️ ${passage.readingTimeMin || 4} min</span>
                   </div>
-                  <h3 class="comp-card-title">${p.title}</h3>
-                  <p class="comp-card-title-en">${p.titleEn}</p>
-                  <p class="comp-card-summary">${p.summary}</p>
-                  <button class="btn btn-outline btn-block btn-read-passage">Lees tekst & maak toets &rarr;</button>
+                  <h3 class="passage-title">${passage.title}</h3>
+                  <div class="passage-en-title">${passage.titleEn}</div>
+                  <p class="passage-snippet">${passage.paragraphs[0]}</p>
+                  <div class="passage-card-footer">
+                    <span>${passage.questions ? passage.questions.length : 2} Begripsvragen</span>
+                    <span class="status-indicator">${isCompleted ? '✓ Gelezen' : 'Start Lezen →'}</span>
+                  </div>
                 </div>
               `;
-              })
-              .join("")}
+            }).join("")}
           </div>
         </div>
       `;
-
-      container.querySelectorAll(".comp-passage-card").forEach((card) => {
-        card.addEventListener("click", () => {
-          this.openComprehensionPassage(card.dataset.id);
-        });
-      });
     }
 
-    openComprehensionPassage(passageId) {
-      const passages = global.NP_COMPREHENSION || [];
-      const p = passages.find((x) => x.id === passageId) || passages[0];
-      if (!p) return;
+    renderPassageDetail(passage) {
+      return `
+        <div class="passage-detail-container animate-fade">
+          <button class="btn btn-outline btn-sm" id="btn-back-comprehension">← Terug naar Teksten Overzicht</button>
 
-      const container = document.getElementById("app-main");
-      if (!container) return;
-
-      container.innerHTML = `
-        <div class="passage-detail-view animate-fade">
-          <button class="btn btn-sm btn-outline back-btn" id="btn-back-to-comp">&larr; Terug naar teksten</button>
-
-          <header class="passage-header card">
-            <div class="passage-badges">
-              <span class="section-badge badge-${p.level.toLowerCase()}">${p.level}</span>
-              <span class="comp-topic">${p.topic}</span>
+          <div class="card passage-reader-card" style="margin-top: 1.5rem;">
+            <div class="passage-header">
+              <span class="grammar-level badge-${passage.level.toLowerCase()}">${passage.level}</span>
+              <h1 class="passage-title">${passage.title}</h1>
+              <div class="passage-en-title">${passage.titleEn}</div>
             </div>
-            <h1 class="passage-title">${p.title}</h1>
-            <h2 class="passage-title-en">${p.titleEn}</h2>
-            
-            <div class="passage-audio-bar">
-              <button class="btn btn-secondary btn-sm" id="btn-play-passage">
-                <span>🔊</span> Tekst beluisteren
-              </button>
-              <button class="btn btn-outline btn-sm" id="btn-toggle-translation">
-                <span>🌐</span> Toon Engelse vertaling
-              </button>
-            </div>
-          </header>
 
-          <div class="passage-body-grid">
-            <div class="passage-text-card card">
-              ${p.paragraphs
-                .map((para, i) => `
-                <div class="paragraph-block">
-                  <p class="para-nl">${para}</p>
-                  <p class="para-en translation-hidden">${p.translations[i] || ""}</p>
+            <div class="passage-paragraphs">
+              ${passage.paragraphs.map(p => `<p class="passage-p">${p}</p>`).join("")}
+            </div>
+
+            <details class="passage-translation-accordion">
+              <summary>📖 Bekijk Engelse Vertaling</summary>
+              <div class="translation-content">${passage.translation}</div>
+            </details>
+
+            ${passage.keyVocabulary && passage.keyVocabulary.length > 0 ? `
+              <div class="passage-vocab-box">
+                <h3>Sleutelwoorden uit de Tekst</h3>
+                <div class="vocab-chips-grid">
+                  ${passage.keyVocabulary.map(v => `
+                    <div class="vocab-chip">
+                      <strong>${v.word}</strong> <span class="vocab-chip-en">(${v.en})</span>
+                    </div>
+                  `).join("")}
+                </div>
+              </div>
+            ` : ""}
+
+            <div class="passage-quiz-box">
+              <h3>Begripsvragen</h3>
+              ${(passage.questions || []).map((q, qIdx) => `
+                <div class="quiz-question-card" data-q-idx="${qIdx}">
+                  <p class="q-title"><strong>Vraag ${qIdx + 1}:</strong> ${q.question}</p>
+                  <div class="options-grid">
+                    ${(q.options || []).map((opt, oIdx) => `
+                      <button class="btn btn-outline btn-passage-opt" data-q-idx="${qIdx}" data-opt-idx="${oIdx}">
+                        ${opt}
+                      </button>
+                    `).join("")}
+                  </div>
+                  <div class="exercise-feedback q-feedback-${qIdx}" style="display: none;"></div>
                 </div>
               `).join("")}
             </div>
-
-            <div class="passage-vocab-card card">
-              <h3>Kernwoorden (Vocabulary)</h3>
-              <div class="vocab-gloss-list">
-                ${p.vocabulary
-                  .map(
-                    (v) => `
-                  <div class="vocab-gloss-item">
-                    <span class="gloss-dutch">${v.dutch}</span>
-                    <span class="gloss-arrow">&rarr;</span>
-                    <span class="gloss-meaning">${v.meaning}</span>
-                  </div>
-                `
-                  )
-                  .join("")}
-              </div>
-            </div>
-          </div>
-
-          <div class="passage-quiz-section card">
-            <h2>Begripsvragen (Comprehension Questions)</h2>
-            <div class="questions-list">
-              ${p.questions
-                .map(
-                  (q, qIdx) => `
-                <div class="card comp-q-box" data-qidx="${qIdx}">
-                  <p class="comp-q-text"><strong>Vraag ${qIdx + 1}:</strong> ${q.question}</p>
-                  <div class="mc-options-list">
-                    ${q.options
-                      .map(
-                        (opt, oIdx) => `
-                      <button class="btn btn-outline btn-block comp-opt-btn" data-oidx="${oIdx}">${opt}</button>
-                    `
-                      )
-                      .join("")}
-                  </div>
-                  <div class="exercise-feedback" style="display:none;"></div>
-                </div>
-              `
-                )
-                .join("")}
-            </div>
           </div>
         </div>
       `;
+    }
 
-      document.getElementById("btn-back-to-comp")?.addEventListener("click", () => {
-        this.render();
-      });
+    attachComprehensionListeners() {
+      const backBtn = document.getElementById("btn-back-comprehension");
+      if (backBtn) {
+        backBtn.addEventListener("click", () => {
+          this.activePassage = null;
+          this.render();
+        });
+      }
 
-      document.getElementById("btn-play-passage")?.addEventListener("click", () => {
-        voice.speak(p.paragraphs.join(" "));
-      });
-
-      document.getElementById("btn-toggle-translation")?.addEventListener("click", () => {
-        document.querySelectorAll(".para-en").forEach((el) => {
-          el.classList.toggle("translation-hidden");
+      document.querySelectorAll(".passage-item-card").forEach((card) => {
+        card.addEventListener("click", () => {
+          const passageId = card.dataset.passageId;
+          const passages = global.NP_COMPREHENSION || [];
+          this.activePassage = passages.find(p => p.id === passageId) || passages[0];
+          this.render();
+          window.scrollTo({ top: 0, behavior: "smooth" });
         });
       });
 
-      // Quiz options handling
-      let correctAnswers = 0;
-      container.querySelectorAll(".comp-q-box").forEach((qBox) => {
-        const qIdx = parseInt(qBox.dataset.qidx, 10);
-        const qData = p.questions[qIdx];
+      document.querySelectorAll("[data-filter-comp-lvl]").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          this.selectedLevel = btn.dataset.filterCompLvl;
+          this.render();
+        });
+      });
 
-        qBox.querySelectorAll(".comp-opt-btn").forEach((optBtn) => {
-          optBtn.addEventListener("click", () => {
-            const oIdx = parseInt(optBtn.dataset.oidx, 10);
-            const isCorrect = oIdx === qData.correct;
-            const fb = qBox.querySelector(".exercise-feedback");
+      document.querySelectorAll(".btn-passage-opt").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const qIdx = parseInt(btn.dataset.qIdx, 10);
+          const optIdx = parseInt(btn.dataset.optIdx, 10);
+          const q = this.activePassage.questions[qIdx];
+          const isCorrect = optIdx === q.correct;
 
-            qBox.querySelectorAll(".comp-opt-btn").forEach((b, i) => {
-              if (i === qData.correct) b.classList.add("btn-success");
-              else if (i === oIdx && !isCorrect) b.classList.add("btn-danger");
-            });
+          const fb = document.querySelector(`.q-feedback-${qIdx}`);
+          if (fb) {
+            fb.style.display = "block";
+            fb.className = `exercise-feedback ${isCorrect ? 'feedback-correct' : 'feedback-wrong'}`;
+            fb.innerHTML = isCorrect ? `✓ Juist! ${q.explanation}` : `✗ Helaas. ${q.explanation}`;
+          }
 
-            if (fb) {
-              fb.style.display = "block";
-              fb.className = `exercise-feedback ${isCorrect ? "feedback-correct" : "feedback-wrong"}`;
-              fb.innerHTML = isCorrect ? `<strong>Correct!</strong> ${qData.explanation}` : `<strong>Onjuist:</strong> ${qData.explanation}`;
-            }
-
-            if (isCorrect) {
-              correctAnswers++;
-              if (correctAnswers >= p.questions.length) {
-                store.completeComprehension(p.id, correctAnswers, p.questions.length);
-              }
-            }
-          });
+          if (isCorrect) {
+            this.store.completeComprehension(this.activePassage.id, 100, this.activePassage.questions.length);
+          }
         });
       });
     }
 
-    // -------------------------------------------------------------------------
-    // 4. WORDS VIEW (20,000 Word Dictionary & Browser)
-    // -------------------------------------------------------------------------
-    renderWordsView(container) {
+    /* ==========================================================================
+       6. WORDS VIEW (20,000-Word Dictionary & Search Engine)
+       ========================================================================== */
+    renderWordsView() {
       const words = global.NP_WORDS || [];
+      const q = (this.searchQuery || "").toLowerCase().trim();
 
-      container.innerHTML = `
-        <div class="view-words animate-fade">
-          <div class="words-header">
-            <h1>Woordenbank (20.000 Woorden)</h1>
-            <p class="subtitle">Complete Dutch dictionary with verified de/het articles and CEFR frequency ranks.</p>
-          </div>
+      let filtered = words;
+      if (q) {
+        filtered = filtered.filter(w => 
+          w.word.toLowerCase().includes(q) || 
+          (w.meaning && w.meaning.toLowerCase().includes(q)) ||
+          (w.lemma && w.lemma.toLowerCase().includes(q))
+        );
+      }
+      if (this.selectedPos !== "all") {
+        filtered = filtered.filter(w => w.pos === this.selectedPos);
+      }
+      if (this.selectedLevel !== "all") {
+        filtered = filtered.filter(w => w.level === this.selectedLevel);
+      }
+      if (this.selectedArticle !== "all") {
+        filtered = filtered.filter(w => w.article === this.selectedArticle);
+      }
+      if (this.showOnlyBookmarked) {
+        filtered = filtered.filter(w => this.store.isBookmarked(w.id));
+      }
 
-          <div class="words-search-card card">
+      const displayList = filtered.slice(0, 60);
+
+      return `
+        <div class="words-container animate-fade">
+          <div class="card words-search-card">
+            <h1 class="page-title">Nederlands Woordenboek (20.000 Woorden)</h1>
+            <p class="page-subtitle">Doorzoek de complete woordenschat met lidwoorden, vervoegingen en voorbeelden.</p>
+
             <div class="search-input-wrap">
-              <input type="text" id="words-search-input" class="form-input search-input" placeholder="Zoek in 20.000 woorden (Nederlands of Engels)..." value="${this.searchQuery}" />
-              ${this.searchQuery ? '<button id="btn-clear-search" class="btn-clear">✕</button>' : ""}
+              <input type="text" id="words-search-input" class="form-input search-input" placeholder="Zoek op Nederlands woord, lidwoord of Engelse betekenis..." value="${this.searchQuery}" />
+              ${this.searchQuery ? `<button class="btn-clear" id="btn-clear-search">✕</button>` : ""}
             </div>
 
             <div class="filter-row">
               <div class="filter-group">
                 <label>Niveau:</label>
-                <select id="filter-level" class="form-select">
-                  <option value="all">Alle niveaus</option>
-                  <option value="A1">A1</option>
-                  <option value="A2">A2</option>
-                  <option value="B1">B1</option>
-                  <option value="B2">B2</option>
-                  <option value="C1">C1</option>
+                <select id="select-filter-level" class="form-select">
+                  <option value="all" ${this.selectedLevel === 'all' ? 'selected' : ''}>Alle niveaus</option>
+                  <option value="A1" ${this.selectedLevel === 'A1' ? 'selected' : ''}>A1</option>
+                  <option value="A2" ${this.selectedLevel === 'A2' ? 'selected' : ''}>A2</option>
+                  <option value="B1" ${this.selectedLevel === 'B1' ? 'selected' : ''}>B1</option>
+                  <option value="B2" ${this.selectedLevel === 'B2' ? 'selected' : ''}>B2</option>
+                  <option value="C1" ${this.selectedLevel === 'C1' ? 'selected' : ''}>C1</option>
                 </select>
               </div>
 
               <div class="filter-group">
                 <label>Woordsoort:</label>
-                <select id="filter-pos" class="form-select">
-                  <option value="all">Alle woordsoorten</option>
-                  <option value="noun">Zelfst. naamwoord (Noun)</option>
-                  <option value="verb">Werkwoord (Verb)</option>
-                  <option value="adjective">Bijvoeglijk (Adjective)</option>
-                  <option value="adverb">Bijwoord (Adverb)</option>
-                  <option value="numeral">Telwoord (Numeral)</option>
+                <select id="select-filter-pos" class="form-select">
+                  <option value="all" ${this.selectedPos === 'all' ? 'selected' : ''}>Alle soorten</option>
+                  <option value="noun" ${this.selectedPos === 'noun' ? 'selected' : ''}>Zelfstandig n.w. (de/het)</option>
+                  <option value="verb" ${this.selectedPos === 'verb' ? 'selected' : ''}>Werkwoord</option>
+                  <option value="adjective" ${this.selectedPos === 'adjective' ? 'selected' : ''}>Bijvoeglijk n.w.</option>
+                  <option value="numeral" ${this.selectedPos === 'numeral' ? 'selected' : ''}>Telwoord</option>
                 </select>
               </div>
 
               <div class="filter-group">
                 <label>Lidwoord:</label>
-                <select id="filter-article" class="form-select">
-                  <option value="all">de & het</option>
-                  <option value="de">de-woorden</option>
-                  <option value="het">het-woorden</option>
+                <select id="select-filter-article" class="form-select">
+                  <option value="all" ${this.selectedArticle === 'all' ? 'selected' : ''}>Alles</option>
+                  <option value="de" ${this.selectedArticle === 'de' ? 'selected' : ''}>de-woorden</option>
+                  <option value="het" ${this.selectedArticle === 'het' ? 'selected' : ''}>het-woorden</option>
                 </select>
               </div>
 
-              <div class="filter-group filter-checkbox">
+              <div class="filter-group">
                 <label>
-                  <input type="checkbox" id="filter-bookmarked" ${this.searchFilters.bookmarked ? "checked" : ""} />
-                  <span>★ Alleen favorieten</span>
+                  <input type="checkbox" id="check-bookmarked" ${this.showOnlyBookmarked ? 'checked' : ''} /> ⭐ Alleen favorieten
                 </label>
               </div>
             </div>
           </div>
 
-          <div class="words-meta-bar">
-            <span id="words-count-label">Resultaten laden...</span>
+          <div class="words-results-meta">
+            <span>Gevonden: <strong>${filtered.length}</strong> woorden ${filtered.length > 60 ? '(toont eerste 60)' : ''}</span>
           </div>
 
-          <div id="words-results-list" class="words-results-grid"></div>
+          <div class="words-results-grid">
+            ${displayList.map((w) => {
+              const isNoun = w.pos === "noun" && w.article;
+              const isStarred = this.store.isBookmarked(w.id);
+              const displayTitle = isNoun ? `<span class="badge-${w.article}">${w.article}</span> ${w.word}` : w.word;
+
+              return `
+                <div class="card word-item-card">
+                  <div class="word-card-top">
+                    <span class="word-level-badge badge-${w.level.toLowerCase()}">${w.level}</span>
+                    <button class="btn-star ${isStarred ? 'starred' : ''}" data-star-id="${w.id}" title="Favoriet opslaan">
+                      ${isStarred ? '★' : '☆'}
+                    </button>
+                  </div>
+                  <div class="word-card-main">
+                    <h3 class="word-title">${displayTitle}</h3>
+                  </div>
+                  <div class="word-meaning">${w.meaning || w.word}</div>
+                  ${w.example ? `<div class="word-example" style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 0.5rem;">“${w.example}”</div>` : ""}
+                  <div class="word-footer">
+                    <span>${w.pos}</span>
+                    <span>#${w.rank}</span>
+                  </div>
+                </div>
+              `;
+            }).join("")}
+          </div>
         </div>
       `;
+    }
 
-      // Set filter select values
-      document.getElementById("filter-level").value = this.searchFilters.level;
-      document.getElementById("filter-pos").value = this.searchFilters.pos;
-      document.getElementById("filter-article").value = this.searchFilters.article;
-
-      // Bind search & filter events
+    attachWordsListeners() {
       const searchInput = document.getElementById("words-search-input");
-      searchInput?.addEventListener("input", (e) => {
-        this.searchQuery = e.target.value;
-        this.filterWords();
-      });
-
-      document.getElementById("btn-clear-search")?.addEventListener("click", () => {
-        this.searchQuery = "";
-        this.filterWords();
-        this.render();
-      });
-
-      document.getElementById("filter-level")?.addEventListener("change", (e) => {
-        this.searchFilters.level = e.target.value;
-        this.filterWords();
-      });
-      document.getElementById("filter-pos")?.addEventListener("change", (e) => {
-        this.searchFilters.pos = e.target.value;
-        this.filterWords();
-      });
-      document.getElementById("filter-article")?.addEventListener("change", (e) => {
-        this.searchFilters.article = e.target.value;
-        this.filterWords();
-      });
-      document.getElementById("filter-bookmarked")?.addEventListener("change", (e) => {
-        this.searchFilters.bookmarked = e.target.checked;
-        this.filterWords();
-      });
-
-      this.filterWords();
-    }
-
-    filterWords() {
-      const allWords = global.NP_WORDS || [];
-      const query = this.searchQuery.trim().toLowerCase();
-      const { level, pos, article, bookmarked } = this.searchFilters;
-
-      let filtered = allWords;
-
-      if (level !== "all") {
-        filtered = filtered.filter((w) => w.level === level);
-      }
-      if (pos !== "all") {
-        filtered = filtered.filter((w) => w.pos === pos);
-      }
-      if (article !== "all") {
-        filtered = filtered.filter((w) => w.article === article);
-      }
-      if (bookmarked) {
-        filtered = filtered.filter((w) => store.isBookmarked(w.id));
-      }
-
-      if (query) {
-        filtered = filtered.filter(
-          (w) =>
-            w.word.toLowerCase().includes(query) ||
-            (w.lemma && w.lemma.toLowerCase().includes(query)) ||
-            (w.meaning && w.meaning.toLowerCase().includes(query)) ||
-            (w.category && w.category.toLowerCase().includes(query))
-        );
-      }
-
-      this.searchResults = filtered;
-      this.renderWordsResults();
-    }
-
-    renderWordsResults() {
-      const countEl = document.getElementById("words-count-label");
-      const listEl = document.getElementById("words-results-list");
-      if (!listEl) return;
-
-      const total = this.searchResults.length;
-      if (countEl) countEl.textContent = `Totaal: ${total.toLocaleString()} woorden gevonden (toont eerste 100)`;
-
-      const displayed = this.searchResults.slice(0, 100);
-
-      if (displayed.length === 0) {
-        listEl.innerHTML = `<div class="card empty-state">Geen woorden gevonden voor deze zoekopdracht.</div>`;
-        return;
-      }
-
-      listEl.innerHTML = displayed
-        .map((w) => {
-          const isStar = store.isBookmarked(w.id);
-          const isNoun = w.pos === "noun" && w.article;
-          const artTag = isNoun ? `<span class="article-badge badge-${w.article}">${w.article}</span> ` : "";
-
-          return `
-          <div class="card word-item-card">
-            <div class="word-card-top">
-              <span class="word-level-badge badge-${(w.level || "A1").toLowerCase()}">${w.level || "A1"}</span>
-              <span class="word-pos">${w.pos}</span>
-              <button class="btn-star ${isStar ? "starred" : ""}" data-id="${w.id}" title="Favoriet">★</button>
-            </div>
-            <div class="word-card-main">
-              <h3 class="word-title">${artTag}${w.word}</h3>
-              <button class="btn-speak-inline" data-text="${(w.article ? w.article + " " : "") + w.word}">🔊</button>
-            </div>
-            <p class="word-meaning">${w.meaning || ""}</p>
-            <div class="word-footer">
-              <span class="word-category">#${w.category || "algemeen"}</span>
-              <span class="word-rank">#${w.rank || w.id}</span>
-            </div>
-          </div>
-        `;
-        })
-        .join("");
-
-      listEl.querySelectorAll(".btn-star").forEach((btn) => {
-        btn.addEventListener("click", (e) => {
-          e.stopPropagation();
-          const id = btn.dataset.id;
-          const starred = store.toggleBookmark(id);
-          btn.classList.toggle("starred", starred);
+      if (searchInput) {
+        searchInput.addEventListener("input", (e) => {
+          this.searchQuery = e.target.value;
+          this.render();
+          const newInp = document.getElementById("words-search-input");
+          if (newInp) {
+            newInp.focus();
+            newInp.setSelectionRange(newInp.value.length, newInp.value.length);
+          }
         });
-      });
+      }
 
-      listEl.querySelectorAll(".btn-speak-inline").forEach((btn) => {
+      const clearBtn = document.getElementById("btn-clear-search");
+      if (clearBtn) {
+        clearBtn.addEventListener("click", () => {
+          this.searchQuery = "";
+          this.render();
+        });
+      }
+
+      const lvlSelect = document.getElementById("select-filter-level");
+      if (lvlSelect) {
+        lvlSelect.addEventListener("change", (e) => {
+          this.selectedLevel = e.target.value;
+          this.render();
+        });
+      }
+
+      const posSelect = document.getElementById("select-filter-pos");
+      if (posSelect) {
+        posSelect.addEventListener("change", (e) => {
+          this.selectedPos = e.target.value;
+          this.render();
+        });
+      }
+
+      const artSelect = document.getElementById("select-filter-article");
+      if (artSelect) {
+        artSelect.addEventListener("change", (e) => {
+          this.selectedArticle = e.target.value;
+          this.render();
+        });
+      }
+
+      const starCheck = document.getElementById("check-bookmarked");
+      if (starCheck) {
+        starCheck.addEventListener("change", (e) => {
+          this.showOnlyBookmarked = e.target.checked;
+          this.render();
+        });
+      }
+
+      document.querySelectorAll(".btn-star").forEach((btn) => {
         btn.addEventListener("click", (e) => {
           e.stopPropagation();
-          voice.speak(btn.dataset.text);
+          const wordId = btn.dataset.starId;
+          this.store.toggleBookmark(wordId);
+          this.render();
         });
       });
     }
 
-    // -------------------------------------------------------------------------
-    // 5. PROGRESS VIEW (Analytics & Heatmap)
-    // -------------------------------------------------------------------------
-    renderProgressView(container) {
-      const stats = srs.getDeckStats();
-      const grammarTotal = (global.NP_GRAMMAR || []).length || 120;
-      const grammarDone = Object.keys(store.state.progress.grammarCompleted || {}).length;
-      const compTotal = (global.NP_COMPREHENSION || []).length || 12;
-      const compDone = Object.keys(store.state.progress.comprehensionCompleted || {}).length;
-      const studyDays = store.state.progress.studyDays || {};
+    /* ==========================================================================
+       7. PROGRESS VIEW (Analytics, 30-Day Heatmap, SRS Stats)
+       ========================================================================== */
+    renderProgressView() {
+      const user = this.store.state.user;
+      const progress = this.store.state.progress;
+      const deckStats = this.srs.getDeckStats();
+      const articleStats = progress.articleStats || { totalDrilled: 0, correct: 0 };
+      const artAcc = articleStats.totalDrilled > 0 ? Math.round((articleStats.correct / articleStats.totalDrilled) * 100) : 100;
 
-      container.innerHTML = `
-        <div class="view-progress animate-fade">
-          <div class="progress-header">
-            <h1>Jouw Voortgang & Statistieken</h1>
-            <p class="subtitle">Comprehensive Dutch learning analytics and SRS retention tracking.</p>
+      // 30-day activity heatmap
+      const days = [];
+      const now = new Date();
+      for (let i = 29; i >= 0; i--) {
+        const d = new Date(now.getTime() - i * 24 * 60 * 60 * 1000);
+        const iso = d.toISOString().split("T")[0];
+        const count = progress.studyDays[iso] || 0;
+        days.push({ iso, count });
+      }
+
+      return `
+        <div class="progress-container animate-fade">
+          <div class="catalog-header">
+            <div>
+              <h1 class="page-title">Voortgang & Statistieken</h1>
+              <p class="page-subtitle">Gedetailleerd overzicht van je leercurve, beheerste woorden en streak.</p>
+            </div>
+            <button class="btn btn-outline btn-sm" id="btn-open-settings">⚙️ Instellingen & Gegevens</button>
           </div>
 
           <div class="progress-stats-overview">
-            <div class="stat-card card">
-              <span class="stat-big-icon">🏆</span>
-              <div class="stat-big-num">${store.state.user.totalXp || 0}</div>
-              <div class="stat-big-lbl">Totaal XP</div>
-            </div>
-            <div class="stat-card card">
+            <div class="card stat-big-card">
               <span class="stat-big-icon">🔥</span>
-              <div class="stat-big-num">${store.state.user.streak || 0}</div>
+              <div class="stat-big-num">${user.streak}</div>
               <div class="stat-big-lbl">Dagen Streak</div>
             </div>
-            <div class="stat-card card">
-              <span class="stat-big-icon">📖</span>
-              <div class="stat-big-num">${stats.mastered}</div>
-              <div class="stat-big-lbl">Mastered SRS Words</div>
+            <div class="card stat-big-card">
+              <span class="stat-big-icon">🏆</span>
+              <div class="stat-big-num">${user.totalXp}</div>
+              <div class="stat-big-lbl">Totale XP</div>
             </div>
-            <div class="stat-card card">
-              <span class="stat-big-icon">📐</span>
-              <div class="stat-big-num">${grammarDone} / ${grammarTotal}</div>
-              <div class="stat-big-lbl">Grammatica Regels</div>
+            <div class="card stat-big-card">
+              <span class="stat-big-icon">🧠</span>
+              <div class="stat-big-num">${deckStats.mastered}</div>
+              <div class="stat-big-lbl">Beheerste Woorden</div>
+            </div>
+            <div class="card stat-big-card">
+              <span class="stat-big-icon">⚡</span>
+              <div class="stat-big-num">${artAcc}%</div>
+              <div class="stat-big-lbl">Lidwoord Nauwkeurigheid</div>
             </div>
           </div>
 
           <div class="progress-grid">
-            <!-- Learning Pillars Progress -->
-            <div class="card progress-pillar-card">
-              <h3>Drie Leerpijlers Voortgang</h3>
-              
-              <div class="pillar-row">
-                <div class="pillar-meta">
-                  <span>1. Woordenschat (SRS Spaced Repetition)</span>
-                  <span>${stats.total} kaarten actief</span>
-                </div>
-                <div class="progress-bar-track">
-                  <div class="progress-bar-fill fill-blue" style="width: ${Math.min(100, Math.round((stats.mastered / 100) * 100))}%"></div>
-                </div>
-              </div>
-
-              <div class="pillar-row">
-                <div class="pillar-meta">
-                  <span>2. Grammatica (120 Regels A0..C1)</span>
-                  <span>${Math.round((grammarDone / grammarTotal) * 100)}%</span>
-                </div>
-                <div class="progress-bar-track">
-                  <div class="progress-bar-fill fill-green" style="width: ${(grammarDone / grammarTotal) * 100}%"></div>
-                </div>
-              </div>
-
-              <div class="pillar-row">
-                <div class="pillar-meta">
-                  <span>3. Begrijpend Lezen (Comprehension)</span>
-                  <span>${compDone} / ${compTotal} gelezen</span>
-                </div>
-                <div class="progress-bar-track">
-                  <div class="progress-bar-fill fill-purple" style="width: ${(compDone / compTotal) * 100}%"></div>
-                </div>
+            <div class="card">
+              <h3>30-Dagen Activiteit</h3>
+              <p style="font-size: 0.88rem; color: var(--text-secondary);">Elk blokje vertegenwoordigt je dagelijkse oefenintensiteit.</p>
+              <div class="heatmap-grid">
+                ${days.map(d => {
+                  const level = d.count === 0 ? 'heat-0' : d.count < 5 ? 'heat-1' : d.count < 15 ? 'heat-2' : 'heat-3';
+                  return `<div class="heatmap-cell ${level}" title="${d.iso}: ${d.count} items"></div>`;
+                }).join("")}
               </div>
             </div>
 
-            <!-- Heatmap Calendar -->
-            <div class="card progress-heatmap-card">
-              <h3>Studie-activiteit Laatste 30 Dagen</h3>
-              <div class="heatmap-grid" id="heatmap-container"></div>
-            </div>
-          </div>
-
-          <div class="card progress-backup-card">
-            <h3>Gegevensbeheer (Backup & Reset)</h3>
-            <p>Export or restore your study progress and SRS schedules.</p>
-            <div class="backup-actions">
-              <button class="btn btn-outline" id="btn-export-data">📥 Gegevens Exporteren (JSON)</button>
-              <button class="btn btn-outline" id="btn-import-data">📤 Gegevens Importeren</button>
-              <button class="btn btn-danger" id="btn-reset-data">⚠️ Alles Resetten</button>
+            <div class="card">
+              <h3>Spaced Repetition (SRS) Status</h3>
+              <ul class="srs-stats-list" style="margin-top: 1rem; list-style: none;">
+                <li style="display: flex; justify-content: space-between; padding: 0.5rem 0; border-bottom: 1px solid var(--border-subtle);">
+                  <span>Te herhalen vandaag:</span> <strong>${deckStats.due}</strong>
+                </li>
+                <li style="display: flex; justify-content: space-between; padding: 0.5rem 0; border-bottom: 1px solid var(--border-subtle);">
+                  <span>In leerfase:</span> <strong>${deckStats.learning}</strong>
+                </li>
+                <li style="display: flex; justify-content: space-between; padding: 0.5rem 0; border-bottom: 1px solid var(--border-subtle);">
+                  <span>Totaal geactiveerde kaarten:</span> <strong>${deckStats.total}</strong>
+                </li>
+              </ul>
             </div>
           </div>
         </div>
       `;
+    }
 
-      // Render 30 day heatmap
-      const heatmap = document.getElementById("heatmap-container");
-      if (heatmap) {
-        const today = new Date();
-        for (let i = 29; i >= 0; i--) {
-          const d = new Date(today.getTime() - i * 24 * 60 * 60 * 1000);
-          const key = d.toISOString().split("T")[0];
-          const count = studyDays[key] || 0;
-          const level = count === 0 ? 0 : count < 5 ? 1 : count < 15 ? 2 : 3;
+    attachProgressListeners() {
+      const settingsBtn = document.getElementById("btn-open-settings");
+      if (settingsBtn) {
+        settingsBtn.addEventListener("click", () => this.switchTab("settings"));
+      }
+    }
 
-          const cell = document.createElement("div");
-          cell.className = `heatmap-cell heat-${level}`;
-          cell.title = `${key}: ${count} activiteiten`;
-          heatmap.appendChild(cell);
-        }
+    /* ==========================================================================
+       8. SETTINGS VIEW (Themes, Goals, Backup Export/Import, Reset)
+       ========================================================================== */
+    renderSettingsView() {
+      const settings = this.store.state.settings;
+
+      return `
+        <div class="settings-container animate-fade">
+          <div class="catalog-header">
+            <div>
+              <h1 class="page-title">Instellingen & Back-up</h1>
+              <p class="page-subtitle">Beheer je leerdoelen, thema en exporteer of importeer je voortgang.</p>
+            </div>
+          </div>
+
+          <div class="card settings-card" style="margin-bottom: 1.5rem;">
+            <h3>Uiterlijk & Thema</h3>
+            <div class="setting-row" style="margin-top: 1rem;">
+              <label>Thema:</label>
+              <div class="theme-select-pills">
+                <button class="btn btn-sm ${settings.theme === 'dark' ? 'btn-primary' : 'btn-outline'}" id="btn-theme-dark">Donker (Dark)</button>
+                <button class="btn btn-sm ${settings.theme === 'light' ? 'btn-primary' : 'btn-outline'}" id="btn-theme-light">Licht (Light)</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="card settings-card" style="margin-bottom: 1.5rem;">
+            <h3>Leerdoelen & Sessies</h3>
+            <div class="setting-row" style="margin-top: 1rem;">
+              <label>Dagelijks doel (items per dag):</label>
+              <select id="select-daily-goal" class="form-select" style="max-width: 200px;">
+                <option value="10" ${settings.dailyGoal === 10 ? 'selected' : ''}>10 items</option>
+                <option value="15" ${settings.dailyGoal === 15 ? 'selected' : ''}>15 items (Aanbevolen)</option>
+                <option value="25" ${settings.dailyGoal === 25 ? 'selected' : ''}>25 items</option>
+                <option value="50" ${settings.dailyGoal === 50 ? 'selected' : ''}>50 items</option>
+              </select>
+            </div>
+
+            <div class="setting-row" style="margin-top: 1rem;">
+              <label>Sessiegrootte per oefensessie:</label>
+              <select id="select-session-size" class="form-select" style="max-width: 200px;">
+                <option value="5" ${settings.sessionSize === 5 ? 'selected' : ''}>5 kaarten</option>
+                <option value="10" ${settings.sessionSize === 10 ? 'selected' : ''}>10 kaarten</option>
+                <option value="15" ${settings.sessionSize === 15 ? 'selected' : ''}>15 kaarten</option>
+                <option value="20" ${settings.sessionSize === 20 ? 'selected' : ''}>20 kaarten</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="card settings-card" style="margin-bottom: 1.5rem;">
+            <h3>Gegevensbeheer & Back-up</h3>
+            <p style="font-size: 0.88rem; color: var(--text-secondary); margin-bottom: 1rem;">
+              Alle voortgang wordt lokaal in je browser opgeslagen onder de <code>nederpath-v1</code> namespace.
+            </p>
+            <div class="backup-actions-row" style="display: flex; gap: 1rem;">
+              <button class="btn btn-secondary" id="btn-export-json">💾 Exporteer Voortgang (JSON)</button>
+              <label class="btn btn-outline" style="cursor: pointer;">
+                📂 Importeer Back-up (JSON)
+                <input type="file" id="file-import-json" accept=".json" style="display: none;" />
+              </label>
+            </div>
+          </div>
+
+          <div class="card settings-card danger-card" style="border-color: rgba(239, 68, 68, 0.4);">
+            <h3 style="color: var(--color-danger);">Gevaarlijke Zone</h3>
+            <p style="font-size: 0.88rem; color: var(--text-secondary); margin-bottom: 1rem;">
+              Wis alle lokale opgeslagen voortgang, SRS-geschiedenis en statistieken.
+            </p>
+            <button class="btn btn-danger" id="btn-reset-all">⚠️ Reset Alle Voortgang</button>
+          </div>
+        </div>
+      `;
+    }
+
+    attachSettingsListeners() {
+      const darkBtn = document.getElementById("btn-theme-dark");
+      if (darkBtn) {
+        darkBtn.addEventListener("click", () => {
+          this.store.state.settings.theme = "dark";
+          this.store.save();
+          this.applyTheme("dark");
+          this.render();
+        });
       }
 
-      // Backup handlers
-      document.getElementById("btn-export-data")?.addEventListener("click", () => {
-        const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(store.state, null, 2));
-        const a = document.createElement("a");
-        a.href = dataStr;
-        a.download = `nederpath-backup-${new Date().toISOString().split("T")[0]}.json`;
-        a.click();
-      });
-
-      document.getElementById("btn-reset-data")?.addEventListener("click", () => {
-        if (confirm("Weet je zeker dat je alle voortgang en SRS-gegevens wilt resetten?")) {
-          store.resetAllData();
+      const lightBtn = document.getElementById("btn-theme-light");
+      if (lightBtn) {
+        lightBtn.addEventListener("click", () => {
+          this.store.state.settings.theme = "light";
+          this.store.save();
+          this.applyTheme("light");
           this.render();
-        }
-      });
-    }
-
-    // -------------------------------------------------------------------------
-    // 6. ONBOARDING
-    // -------------------------------------------------------------------------
-    showOnboarding() {
-      const modal = document.createElement("div");
-      modal.className = "modal-overlay animate-fade";
-      modal.id = "onboarding-modal";
-      modal.innerHTML = `
-        <div class="modal-card card">
-          <div class="modal-header">
-            <span class="greeting-badge">Welkom bij NederPath</span>
-            <h2>Welkom bij NederPath</h2>
-            <p>Jouw complete offline-first Nederlandse taalcursus.</p>
-          </div>
-          
-          <div class="onboarding-step">
-            <p><strong>1. Wat is jouw huidige niveau Nederlands?</strong></p>
-            <div class="level-select-grid">
-              <button class="btn btn-outline level-btn active" data-lvl="A1">A1 &bull; Beginner</button>
-              <button class="btn btn-outline level-btn" data-lvl="A2">A2 &bull; Basis</button>
-              <button class="btn btn-outline level-btn" data-lvl="B1">B1 &bull; Gevorderd</button>
-              <button class="btn btn-outline level-btn" data-lvl="B2">B2 &bull; Vloeiend</button>
-            </div>
-          </div>
-
-          <div class="onboarding-step">
-            <p><strong>2. Wat is jouw dagelijkse leerdoel?</strong></p>
-            <div class="goal-select-grid">
-              <button class="btn btn-outline goal-btn" data-goal="10">Rustig (10/dag)</button>
-              <button class="btn btn-outline goal-btn active" data-goal="15">Regulier (15/dag)</button>
-              <button class="btn btn-outline goal-btn" data-goal="25">Intensief (25/dag)</button>
-            </div>
-          </div>
-
-          <button class="btn btn-primary btn-block btn-lg" id="btn-finish-onboarding">
-            Start met Leren &rarr;
-          </button>
-        </div>
-      `;
-
-      document.body.appendChild(modal);
-
-      modal.querySelectorAll(".level-btn").forEach((btn) => {
-        btn.addEventListener("click", () => {
-          modal.querySelectorAll(".level-btn").forEach((b) => b.classList.remove("active"));
-          btn.classList.add("active");
-          store.state.user.level = btn.dataset.lvl;
         });
-      });
+      }
 
-      modal.querySelectorAll(".goal-btn").forEach((btn) => {
-        btn.addEventListener("click", () => {
-          modal.querySelectorAll(".goal-btn").forEach((b) => b.classList.remove("active"));
-          btn.classList.add("active");
-          store.state.user.dailyGoal = parseInt(btn.dataset.goal, 10);
+      const goalSelect = document.getElementById("select-daily-goal");
+      if (goalSelect) {
+        goalSelect.addEventListener("change", (e) => {
+          this.store.state.settings.dailyGoal = parseInt(e.target.value, 10);
+          this.store.save();
         });
-      });
+      }
 
-      document.getElementById("btn-finish-onboarding")?.addEventListener("click", () => {
-        store.state.user.onboardingCompleted = true;
-        store.save();
-        modal.remove();
-        this.render();
-      });
+      const sessionSelect = document.getElementById("select-session-size");
+      if (sessionSelect) {
+        sessionSelect.addEventListener("change", (e) => {
+          this.store.state.settings.sessionSize = parseInt(e.target.value, 10);
+          this.store.save();
+        });
+      }
+
+      const exportBtn = document.getElementById("btn-export-json");
+      if (exportBtn) {
+        exportBtn.addEventListener("click", () => {
+          const json = this.store.exportJSON();
+          const blob = new Blob([json], { type: "application/json" });
+          const url = URL.createObjectURL(blob);
+          const a = document.createElement("a");
+          a.href = url;
+          a.download = `nederpath-backup-${new Date().toISOString().split("T")[0]}.json`;
+          a.click();
+          URL.revokeObjectURL(url);
+        });
+      }
+
+      const importInput = document.getElementById("file-import-json");
+      if (importInput) {
+        importInput.addEventListener("change", (e) => {
+          const file = e.target.files[0];
+          if (!file) return;
+          const reader = new FileReader();
+          reader.onload = (evt) => {
+            const success = this.store.importJSON(evt.target.result);
+            if (success) {
+              alert("Voortgang succesvol geïmporteerd!");
+              this.render();
+            } else {
+              alert("Fout bij het importeren van het bestand. Ongeldig JSON-formaat.");
+            }
+          };
+          reader.readAsText(file);
+        });
+      }
+
+      const resetBtn = document.getElementById("btn-reset-all");
+      if (resetBtn) {
+        resetBtn.addEventListener("click", () => {
+          if (confirm("Weet je zeker dat je alle voortgang wilt wissen? Dit kan niet ongedaan worden gemaakt.")) {
+            this.store.resetAllData();
+            alert("Alle gegevens zijn gewist.");
+            this.switchTab("today");
+          }
+        });
+      }
     }
   }
 
-  // Boot app when DOM is ready
-  if (typeof document !== "undefined") {
-    document.addEventListener("DOMContentLoaded", () => {
-      global.NederApp = new NederPathApp();
-    });
-  }
+  // Initialize App on DOM Ready
+  window.addEventListener("DOMContentLoaded", () => {
+    global.NederApp = new NederPathApp();
+  });
 })(typeof window !== "undefined" ? window : globalThis);

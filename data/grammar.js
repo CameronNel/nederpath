@@ -4,9 +4,9 @@
 globalThis.NP_GRAMMAR = [
   {
     "id": "g-001",
-    "title": "The Dutch Alphabet and Pronunciation",
-    "titleNl": "Het Nederlandse Alfabet en Klankleer",
-    "summary": "Dutch uses the 26 standard Latin letters plus the digraph 'ij'. Vowels can be short or long depending on syllable structure.",
+    "title": "Dutch Sounds, Syllable Structure, and Spelling Rules",
+    "titleNl": "Nederlandse Klankleer en Spellingsregels",
+    "summary": "Dutch vowels can be short or long depending on syllable structure (open vs closed syllables) and vowel doubling.",
     "rules": [
       "Single vowels in closed syllables are short: 'man' [ɑ], 'pen' [ɛ], 'vis' [ɪ], 'pot' [ɔ], 'bus' [ʏ].",
       "Double vowels ('aa', 'ee', 'oo', 'uu') are always long: 'maan' [a:], 'been' [e:], 'boom' [o:], 'buur' [y:].",
@@ -67,7 +67,20 @@ globalThis.NP_GRAMMAR = [
     ],
     "section": 1,
     "sectionTitle": "A0–A1 Fundamentals",
-    "level": "A1"
+    "level": "A1",
+    "difficulty": "beginner",
+    "estimatedTimeMin": 5,
+    "tags": [
+      "a0_a1_fundamentals",
+      "a1"
+    ],
+    "prerequisites": [],
+    "relatedRules": [
+      "g-002"
+    ],
+    "structuralBreakdown": "[Topic / Fronted Element] + [Finite Verb (V2)] + [Subject] + [Middle Field: TMP] + [Verb Cluster / Separable Prefix]",
+    "commonMistake": "Incorrect word order or inappropriate ending when applying nederlandse klankleer en spellingsregels.",
+    "correction": "Strictly adhere to the standard Dutch placement and conjugation rules described above."
   },
   {
     "id": "g-002",
@@ -128,7 +141,22 @@ globalThis.NP_GRAMMAR = [
     ],
     "section": 1,
     "sectionTitle": "A0–A1 Fundamentals",
-    "level": "A1"
+    "level": "A1",
+    "difficulty": "beginner",
+    "estimatedTimeMin": 5,
+    "tags": [
+      "a0_a1_fundamentals",
+      "a1"
+    ],
+    "prerequisites": [
+      "g-001"
+    ],
+    "relatedRules": [
+      "g-003"
+    ],
+    "structuralBreakdown": "[Topic / Fronted Element] + [Finite Verb (V2)] + [Subject] + [Middle Field: TMP] + [Verb Cluster / Separable Prefix]",
+    "commonMistake": "Incorrect word order or inappropriate ending when applying persoonlijke voornaamwoorden.",
+    "correction": "Strictly adhere to the standard Dutch placement and conjugation rules described above."
   },
   {
     "id": "g-003",
@@ -186,7 +214,22 @@ globalThis.NP_GRAMMAR = [
     ],
     "section": 1,
     "sectionTitle": "A0–A1 Fundamentals",
-    "level": "A1"
+    "level": "A1",
+    "difficulty": "beginner",
+    "estimatedTimeMin": 5,
+    "tags": [
+      "a0_a1_fundamentals",
+      "a1"
+    ],
+    "prerequisites": [
+      "g-002"
+    ],
+    "relatedRules": [
+      "g-004"
+    ],
+    "structuralBreakdown": "[Topic / Fronted Element] + [Finite Verb (V2)] + [Subject] + [Middle Field: TMP] + [Verb Cluster / Separable Prefix]",
+    "commonMistake": "Incorrect word order or inappropriate ending when applying woordvolgorde in de hoofdzin: v2-regel.",
+    "correction": "Strictly adhere to the standard Dutch placement and conjugation rules described above."
   },
   {
     "id": "g-004",
@@ -255,7 +298,22 @@ globalThis.NP_GRAMMAR = [
     ],
     "section": 1,
     "sectionTitle": "A0–A1 Fundamentals",
-    "level": "A1"
+    "level": "A1",
+    "difficulty": "beginner",
+    "estimatedTimeMin": 5,
+    "tags": [
+      "a0_a1_fundamentals",
+      "a1"
+    ],
+    "prerequisites": [
+      "g-003"
+    ],
+    "relatedRules": [
+      "g-005"
+    ],
+    "structuralBreakdown": "[Topic / Fronted Element] + [Finite Verb (V2)] + [Subject] + [Middle Field: TMP] + [Verb Cluster / Separable Prefix]",
+    "commonMistake": "Incorrect word order or inappropriate ending when applying bepaalde en onbepaalde lidwoorden.",
+    "correction": "Strictly adhere to the standard Dutch placement and conjugation rules described above."
   },
   {
     "id": "g-005",
@@ -308,7 +366,22 @@ globalThis.NP_GRAMMAR = [
     ],
     "section": 1,
     "sectionTitle": "A0–A1 Fundamentals",
-    "level": "A1"
+    "level": "A1",
+    "difficulty": "beginner",
+    "estimatedTimeMin": 5,
+    "tags": [
+      "a0_a1_fundamentals",
+      "a1"
+    ],
+    "prerequisites": [
+      "g-004"
+    ],
+    "relatedRules": [
+      "g-006"
+    ],
+    "structuralBreakdown": "[Topic / Fronted Element] + [Finite Verb (V2)] + [Subject] + [Middle Field: TMP] + [Verb Cluster / Separable Prefix]",
+    "commonMistake": "Incorrect word order or inappropriate ending when applying tegenwoordige tijd: regelmatige werkwoorden.",
+    "correction": "Strictly adhere to the standard Dutch placement and conjugation rules described above."
   },
   {
     "id": "g-006",
@@ -367,7 +440,22 @@ globalThis.NP_GRAMMAR = [
     ],
     "section": 1,
     "sectionTitle": "A0–A1 Fundamentals",
-    "level": "A1"
+    "level": "A1",
+    "difficulty": "beginner",
+    "estimatedTimeMin": 5,
+    "tags": [
+      "a0_a1_fundamentals",
+      "a1"
+    ],
+    "prerequisites": [
+      "g-005"
+    ],
+    "relatedRules": [
+      "g-007"
+    ],
+    "structuralBreakdown": "[Topic / Fronted Element] + [Finite Verb (V2)] + [Subject] + [Middle Field: TMP] + [Verb Cluster / Separable Prefix]",
+    "commonMistake": "Incorrect word order or inappropriate ending when applying onregelmatige werkwoorden: zijn en hebben.",
+    "correction": "Strictly adhere to the standard Dutch placement and conjugation rules described above."
   },
   {
     "id": "g-007",
@@ -426,7 +514,22 @@ globalThis.NP_GRAMMAR = [
     ],
     "section": 1,
     "sectionTitle": "A0–A1 Fundamentals",
-    "level": "A1"
+    "level": "A1",
+    "difficulty": "beginner",
+    "estimatedTimeMin": 5,
+    "tags": [
+      "a0_a1_fundamentals",
+      "a1"
+    ],
+    "prerequisites": [
+      "g-006"
+    ],
+    "relatedRules": [
+      "g-008"
+    ],
+    "structuralBreakdown": "[Topic / Fronted Element] + [Finite Verb (V2)] + [Subject] + [Middle Field: TMP] + [Verb Cluster / Separable Prefix]",
+    "commonMistake": "Incorrect word order or inappropriate ending when applying ontkenning: niet en geen.",
+    "correction": "Strictly adhere to the standard Dutch placement and conjugation rules described above."
   },
   {
     "id": "g-008",
@@ -489,7 +592,22 @@ globalThis.NP_GRAMMAR = [
     ],
     "section": 1,
     "sectionTitle": "A0–A1 Fundamentals",
-    "level": "A1"
+    "level": "A1",
+    "difficulty": "beginner",
+    "estimatedTimeMin": 5,
+    "tags": [
+      "a0_a1_fundamentals",
+      "a1"
+    ],
+    "prerequisites": [
+      "g-007"
+    ],
+    "relatedRules": [
+      "g-009"
+    ],
+    "structuralBreakdown": "[Topic / Fronted Element] + [Finite Verb (V2)] + [Subject] + [Middle Field: TMP] + [Verb Cluster / Separable Prefix]",
+    "commonMistake": "Incorrect word order or inappropriate ending when applying meervoudsvorming van zelfstandige naamwoorden.",
+    "correction": "Strictly adhere to the standard Dutch placement and conjugation rules described above."
   },
   {
     "id": "g-009",
@@ -551,7 +669,22 @@ globalThis.NP_GRAMMAR = [
     ],
     "section": 1,
     "sectionTitle": "A0–A1 Fundamentals",
-    "level": "A1"
+    "level": "A1",
+    "difficulty": "beginner",
+    "estimatedTimeMin": 5,
+    "tags": [
+      "a0_a1_fundamentals",
+      "a1"
+    ],
+    "prerequisites": [
+      "g-008"
+    ],
+    "relatedRules": [
+      "g-010"
+    ],
+    "structuralBreakdown": "[Topic / Fronted Element] + [Finite Verb (V2)] + [Subject] + [Middle Field: TMP] + [Verb Cluster / Separable Prefix]",
+    "commonMistake": "Incorrect word order or inappropriate ending when applying vraagzinnen en vraagwoorden.",
+    "correction": "Strictly adhere to the standard Dutch placement and conjugation rules described above."
   },
   {
     "id": "g-010",
@@ -615,7 +748,22 @@ globalThis.NP_GRAMMAR = [
     ],
     "section": 1,
     "sectionTitle": "A0–A1 Fundamentals",
-    "level": "A1"
+    "level": "A1",
+    "difficulty": "beginner",
+    "estimatedTimeMin": 5,
+    "tags": [
+      "a0_a1_fundamentals",
+      "a1"
+    ],
+    "prerequisites": [
+      "g-009"
+    ],
+    "relatedRules": [
+      "g-011"
+    ],
+    "structuralBreakdown": "[Topic / Fronted Element] + [Finite Verb (V2)] + [Subject] + [Middle Field: TMP] + [Verb Cluster / Separable Prefix]",
+    "commonMistake": "Incorrect word order or inappropriate ending when applying bezittelijke voornaamwoorden.",
+    "correction": "Strictly adhere to the standard Dutch placement and conjugation rules described above."
   },
   {
     "id": "g-011",
@@ -683,7 +831,22 @@ globalThis.NP_GRAMMAR = [
     ],
     "section": 1,
     "sectionTitle": "A0–A1 Fundamentals",
-    "level": "A1"
+    "level": "A1",
+    "difficulty": "beginner",
+    "estimatedTimeMin": 5,
+    "tags": [
+      "a0_a1_fundamentals",
+      "a1"
+    ],
+    "prerequisites": [
+      "g-010"
+    ],
+    "relatedRules": [
+      "g-012"
+    ],
+    "structuralBreakdown": "[Topic / Fronted Element] + [Finite Verb (V2)] + [Subject] + [Middle Field: TMP] + [Verb Cluster / Separable Prefix]",
+    "commonMistake": "Incorrect word order or inappropriate ending when applying aanwijzende voornaamwoorden.",
+    "correction": "Strictly adhere to the standard Dutch placement and conjugation rules described above."
   },
   {
     "id": "g-012",
@@ -750,7 +913,22 @@ globalThis.NP_GRAMMAR = [
     ],
     "section": 1,
     "sectionTitle": "A0–A1 Fundamentals",
-    "level": "A1"
+    "level": "A1",
+    "difficulty": "beginner",
+    "estimatedTimeMin": 5,
+    "tags": [
+      "a0_a1_fundamentals",
+      "a1"
+    ],
+    "prerequisites": [
+      "g-011"
+    ],
+    "relatedRules": [
+      "g-013"
+    ],
+    "structuralBreakdown": "[Topic / Fronted Element] + [Finite Verb (V2)] + [Subject] + [Middle Field: TMP] + [Verb Cluster / Separable Prefix]",
+    "commonMistake": "Incorrect word order or inappropriate ending when applying getallen en klokkijken.",
+    "correction": "Strictly adhere to the standard Dutch placement and conjugation rules described above."
   },
   {
     "id": "g-013",
@@ -817,7 +995,22 @@ globalThis.NP_GRAMMAR = [
     ],
     "section": 1,
     "sectionTitle": "A0–A1 Fundamentals",
-    "level": "A1"
+    "level": "A1",
+    "difficulty": "beginner",
+    "estimatedTimeMin": 5,
+    "tags": [
+      "a0_a1_fundamentals",
+      "a1"
+    ],
+    "prerequisites": [
+      "g-012"
+    ],
+    "relatedRules": [
+      "g-014"
+    ],
+    "structuralBreakdown": "[Topic / Fronted Element] + [Finite Verb (V2)] + [Subject] + [Middle Field: TMP] + [Verb Cluster / Separable Prefix]",
+    "commonMistake": "Incorrect word order or inappropriate ending when applying voorzetsels van plaats en richting.",
+    "correction": "Strictly adhere to the standard Dutch placement and conjugation rules described above."
   },
   {
     "id": "g-014",
@@ -886,7 +1079,22 @@ globalThis.NP_GRAMMAR = [
     ],
     "section": 1,
     "sectionTitle": "A0–A1 Fundamentals",
-    "level": "A1"
+    "level": "A1",
+    "difficulty": "beginner",
+    "estimatedTimeMin": 5,
+    "tags": [
+      "a0_a1_fundamentals",
+      "a1"
+    ],
+    "prerequisites": [
+      "g-013"
+    ],
+    "relatedRules": [
+      "g-015"
+    ],
+    "structuralBreakdown": "[Topic / Fronted Element] + [Finite Verb (V2)] + [Subject] + [Middle Field: TMP] + [Verb Cluster / Separable Prefix]",
+    "commonMistake": "Incorrect word order or inappropriate ending when applying nevenschikkende voegwoorden.",
+    "correction": "Strictly adhere to the standard Dutch placement and conjugation rules described above."
   },
   {
     "id": "g-015",
@@ -944,7 +1152,22 @@ globalThis.NP_GRAMMAR = [
     ],
     "section": 1,
     "sectionTitle": "A0–A1 Fundamentals",
-    "level": "A1"
+    "level": "A1",
+    "difficulty": "beginner",
+    "estimatedTimeMin": 5,
+    "tags": [
+      "a0_a1_fundamentals",
+      "a1"
+    ],
+    "prerequisites": [
+      "g-014"
+    ],
+    "relatedRules": [
+      "g-016"
+    ],
+    "structuralBreakdown": "[Topic / Fronted Element] + [Finite Verb (V2)] + [Subject] + [Middle Field: TMP] + [Verb Cluster / Separable Prefix]",
+    "commonMistake": "Incorrect word order or inappropriate ending when applying volgorde van bepalingen: tijd, wijze, plaats.",
+    "correction": "Strictly adhere to the standard Dutch placement and conjugation rules described above."
   },
   {
     "id": "g-016",
@@ -1005,7 +1228,22 @@ globalThis.NP_GRAMMAR = [
     ],
     "section": 2,
     "sectionTitle": "A1–A2 Core Grammar",
-    "level": "A2"
+    "level": "A2",
+    "difficulty": "intermediate",
+    "estimatedTimeMin": 7,
+    "tags": [
+      "a1_a2_core_grammar",
+      "a2"
+    ],
+    "prerequisites": [
+      "g-015"
+    ],
+    "relatedRules": [
+      "g-017"
+    ],
+    "structuralBreakdown": "[Topic / Fronted Element] + [Finite Verb (V2)] + [Subject] + [Middle Field: TMP] + [Verb Cluster / Separable Prefix]",
+    "commonMistake": "Incorrect word order or inappropriate ending when applying scheidbare werkwoorden.",
+    "correction": "Strictly adhere to the standard Dutch placement and conjugation rules described above."
   },
   {
     "id": "g-017",
@@ -1074,7 +1312,22 @@ globalThis.NP_GRAMMAR = [
     ],
     "section": 2,
     "sectionTitle": "A1–A2 Core Grammar",
-    "level": "A2"
+    "level": "A2",
+    "difficulty": "intermediate",
+    "estimatedTimeMin": 7,
+    "tags": [
+      "a1_a2_core_grammar",
+      "a2"
+    ],
+    "prerequisites": [
+      "g-016"
+    ],
+    "relatedRules": [
+      "g-018"
+    ],
+    "structuralBreakdown": "[Topic / Fronted Element] + [Finite Verb (V2)] + [Subject] + [Middle Field: TMP] + [Verb Cluster / Separable Prefix]",
+    "commonMistake": "Incorrect word order or inappropriate ending when applying modale hulpwerkwoorden.",
+    "correction": "Strictly adhere to the standard Dutch placement and conjugation rules described above."
   },
   {
     "id": "g-018",
@@ -1134,7 +1387,22 @@ globalThis.NP_GRAMMAR = [
     ],
     "section": 2,
     "sectionTitle": "A1–A2 Core Grammar",
-    "level": "A2"
+    "level": "A2",
+    "difficulty": "intermediate",
+    "estimatedTimeMin": 7,
+    "tags": [
+      "a1_a2_core_grammar",
+      "a2"
+    ],
+    "prerequisites": [
+      "g-017"
+    ],
+    "relatedRules": [
+      "g-019"
+    ],
+    "structuralBreakdown": "[Topic / Fronted Element] + [Finite Verb (V2)] + [Subject] + [Middle Field: TMP] + [Verb Cluster / Separable Prefix]",
+    "commonMistake": "Incorrect word order or inappropriate ending when applying buiging van het bijvoeglijk naamwoord: de '-e' regel.",
+    "correction": "Strictly adhere to the standard Dutch placement and conjugation rules described above."
   },
   {
     "id": "g-019",
@@ -1198,7 +1466,22 @@ globalThis.NP_GRAMMAR = [
     ],
     "section": 2,
     "sectionTitle": "A1–A2 Core Grammar",
-    "level": "A2"
+    "level": "A2",
+    "difficulty": "intermediate",
+    "estimatedTimeMin": 7,
+    "tags": [
+      "a1_a2_core_grammar",
+      "a2"
+    ],
+    "prerequisites": [
+      "g-018"
+    ],
+    "relatedRules": [
+      "g-020"
+    ],
+    "structuralBreakdown": "[Topic / Fronted Element] + [Finite Verb (V2)] + [Subject] + [Middle Field: TMP] + [Verb Cluster / Separable Prefix]",
+    "commonMistake": "Incorrect word order or inappropriate ending when applying verkleinwoorden: vorming en gebruik.",
+    "correction": "Strictly adhere to the standard Dutch placement and conjugation rules described above."
   },
   {
     "id": "g-020",
@@ -1265,7 +1548,22 @@ globalThis.NP_GRAMMAR = [
     ],
     "section": 2,
     "sectionTitle": "A1–A2 Core Grammar",
-    "level": "A2"
+    "level": "A2",
+    "difficulty": "intermediate",
+    "estimatedTimeMin": 7,
+    "tags": [
+      "a1_a2_core_grammar",
+      "a2"
+    ],
+    "prerequisites": [
+      "g-019"
+    ],
+    "relatedRules": [
+      "g-021"
+    ],
+    "structuralBreakdown": "[Topic / Fronted Element] + [Finite Verb (V2)] + [Subject] + [Middle Field: TMP] + [Verb Cluster / Separable Prefix]",
+    "commonMistake": "Incorrect word order or inappropriate ending when applying wederkerende werkwoorden.",
+    "correction": "Strictly adhere to the standard Dutch placement and conjugation rules described above."
   },
   {
     "id": "g-021",
@@ -1329,7 +1627,22 @@ globalThis.NP_GRAMMAR = [
     ],
     "section": 2,
     "sectionTitle": "A1–A2 Core Grammar",
-    "level": "A2"
+    "level": "A2",
+    "difficulty": "intermediate",
+    "estimatedTimeMin": 7,
+    "tags": [
+      "a1_a2_core_grammar",
+      "a2"
+    ],
+    "prerequisites": [
+      "g-020"
+    ],
+    "relatedRules": [
+      "g-022"
+    ],
+    "structuralBreakdown": "[Topic / Fronted Element] + [Finite Verb (V2)] + [Subject] + [Middle Field: TMP] + [Verb Cluster / Separable Prefix]",
+    "commonMistake": "Incorrect word order or inappropriate ending when applying de gebiedende wijs.",
+    "correction": "Strictly adhere to the standard Dutch placement and conjugation rules described above."
   },
   {
     "id": "g-022",
@@ -1386,7 +1699,22 @@ globalThis.NP_GRAMMAR = [
     ],
     "section": 2,
     "sectionTitle": "A1–A2 Core Grammar",
-    "level": "A2"
+    "level": "A2",
+    "difficulty": "intermediate",
+    "estimatedTimeMin": 7,
+    "tags": [
+      "a1_a2_core_grammar",
+      "a2"
+    ],
+    "prerequisites": [
+      "g-021"
+    ],
+    "relatedRules": [
+      "g-023"
+    ],
+    "structuralBreakdown": "[Topic / Fronted Element] + [Finite Verb (V2)] + [Subject] + [Middle Field: TMP] + [Verb Cluster / Separable Prefix]",
+    "commonMistake": "Incorrect word order or inappropriate ending when applying vergrotende en overtreffende trap.",
+    "correction": "Strictly adhere to the standard Dutch placement and conjugation rules described above."
   },
   {
     "id": "g-023",
@@ -1449,7 +1777,22 @@ globalThis.NP_GRAMMAR = [
     ],
     "section": 2,
     "sectionTitle": "A1–A2 Core Grammar",
-    "level": "A2"
+    "level": "A2",
+    "difficulty": "intermediate",
+    "estimatedTimeMin": 7,
+    "tags": [
+      "a1_a2_core_grammar",
+      "a2"
+    ],
+    "prerequisites": [
+      "g-022"
+    ],
+    "relatedRules": [
+      "g-024"
+    ],
+    "structuralBreakdown": "[Topic / Fronted Element] + [Finite Verb (V2)] + [Subject] + [Middle Field: TMP] + [Verb Cluster / Separable Prefix]",
+    "commonMistake": "Incorrect word order or inappropriate ending when applying bijwoorden van frequentie en graad.",
+    "correction": "Strictly adhere to the standard Dutch placement and conjugation rules described above."
   },
   {
     "id": "g-024",
@@ -1519,7 +1862,22 @@ globalThis.NP_GRAMMAR = [
     ],
     "section": 2,
     "sectionTitle": "A1–A2 Core Grammar",
-    "level": "A2"
+    "level": "A2",
+    "difficulty": "intermediate",
+    "estimatedTimeMin": 7,
+    "tags": [
+      "a1_a2_core_grammar",
+      "a2"
+    ],
+    "prerequisites": [
+      "g-023"
+    ],
+    "relatedRules": [
+      "g-025"
+    ],
+    "structuralBreakdown": "[Topic / Fronted Element] + [Finite Verb (V2)] + [Subject] + [Middle Field: TMP] + [Verb Cluster / Separable Prefix]",
+    "commonMistake": "Incorrect word order or inappropriate ending when applying voorzetsels van tijd.",
+    "correction": "Strictly adhere to the standard Dutch placement and conjugation rules described above."
   },
   {
     "id": "g-025",
@@ -1582,7 +1940,22 @@ globalThis.NP_GRAMMAR = [
     ],
     "section": 2,
     "sectionTitle": "A1–A2 Core Grammar",
-    "level": "A2"
+    "level": "A2",
+    "difficulty": "intermediate",
+    "estimatedTimeMin": 7,
+    "tags": [
+      "a1_a2_core_grammar",
+      "a2"
+    ],
+    "prerequisites": [
+      "g-024"
+    ],
+    "relatedRules": [
+      "g-026"
+    ],
+    "structuralBreakdown": "[Topic / Fronted Element] + [Finite Verb (V2)] + [Subject] + [Middle Field: TMP] + [Verb Cluster / Separable Prefix]",
+    "commonMistake": "Incorrect word order or inappropriate ending when applying aanspreekvormen: u versus jij.",
+    "correction": "Strictly adhere to the standard Dutch placement and conjugation rules described above."
   },
   {
     "id": "g-026",
@@ -1649,7 +2022,22 @@ globalThis.NP_GRAMMAR = [
     ],
     "section": 2,
     "sectionTitle": "A1–A2 Core Grammar",
-    "level": "A2"
+    "level": "A2",
+    "difficulty": "intermediate",
+    "estimatedTimeMin": 7,
+    "tags": [
+      "a1_a2_core_grammar",
+      "a2"
+    ],
+    "prerequisites": [
+      "g-025"
+    ],
+    "relatedRules": [
+      "g-027"
+    ],
+    "structuralBreakdown": "[Topic / Fronted Element] + [Finite Verb (V2)] + [Subject] + [Middle Field: TMP] + [Verb Cluster / Separable Prefix]",
+    "commonMistake": "Incorrect word order or inappropriate ending when applying kwantoren en onbepaalde voornaamwoorden.",
+    "correction": "Strictly adhere to the standard Dutch placement and conjugation rules described above."
   },
   {
     "id": "g-027",
@@ -1712,7 +2100,22 @@ globalThis.NP_GRAMMAR = [
     ],
     "section": 2,
     "sectionTitle": "A1–A2 Core Grammar",
-    "level": "A2"
+    "level": "A2",
+    "difficulty": "intermediate",
+    "estimatedTimeMin": 7,
+    "tags": [
+      "a1_a2_core_grammar",
+      "a2"
+    ],
+    "prerequisites": [
+      "g-026"
+    ],
+    "relatedRules": [
+      "g-028"
+    ],
+    "structuralBreakdown": "[Topic / Fronted Element] + [Finite Verb (V2)] + [Subject] + [Middle Field: TMP] + [Verb Cluster / Separable Prefix]",
+    "commonMistake": "Incorrect word order or inappropriate ending when applying bijwoorden die inversie veroorzaken.",
+    "correction": "Strictly adhere to the standard Dutch placement and conjugation rules described above."
   },
   {
     "id": "g-028",
@@ -1776,7 +2179,22 @@ globalThis.NP_GRAMMAR = [
     ],
     "section": 2,
     "sectionTitle": "A1–A2 Core Grammar",
-    "level": "A2"
+    "level": "A2",
+    "difficulty": "intermediate",
+    "estimatedTimeMin": 7,
+    "tags": [
+      "a1_a2_core_grammar",
+      "a2"
+    ],
+    "prerequisites": [
+      "g-027"
+    ],
+    "relatedRules": [
+      "g-029"
+    ],
+    "structuralBreakdown": "[Topic / Fronted Element] + [Finite Verb (V2)] + [Subject] + [Middle Field: TMP] + [Verb Cluster / Separable Prefix]",
+    "commonMistake": "Incorrect word order or inappropriate ending when applying vraagstructuren en vragende voornaamwoorden.",
+    "correction": "Strictly adhere to the standard Dutch placement and conjugation rules described above."
   },
   {
     "id": "g-029",
@@ -1841,7 +2259,22 @@ globalThis.NP_GRAMMAR = [
     ],
     "section": 2,
     "sectionTitle": "A1–A2 Core Grammar",
-    "level": "A2"
+    "level": "A2",
+    "difficulty": "intermediate",
+    "estimatedTimeMin": 7,
+    "tags": [
+      "a1_a2_core_grammar",
+      "a2"
+    ],
+    "prerequisites": [
+      "g-028"
+    ],
+    "relatedRules": [
+      "g-030"
+    ],
+    "structuralBreakdown": "[Topic / Fronted Element] + [Finite Verb (V2)] + [Subject] + [Middle Field: TMP] + [Verb Cluster / Separable Prefix]",
+    "commonMistake": "Incorrect word order or inappropriate ending when applying wederkerige voornaamwoorden: elkaar.",
+    "correction": "Strictly adhere to the standard Dutch placement and conjugation rules described above."
   },
   {
     "id": "g-030",
@@ -1906,7 +2339,22 @@ globalThis.NP_GRAMMAR = [
     ],
     "section": 2,
     "sectionTitle": "A1–A2 Core Grammar",
-    "level": "A2"
+    "level": "A2",
+    "difficulty": "intermediate",
+    "estimatedTimeMin": 7,
+    "tags": [
+      "a1_a2_core_grammar",
+      "a2"
+    ],
+    "prerequisites": [
+      "g-029"
+    ],
+    "relatedRules": [
+      "g-031"
+    ],
+    "structuralBreakdown": "[Topic / Fronted Element] + [Finite Verb (V2)] + [Subject] + [Middle Field: TMP] + [Verb Cluster / Separable Prefix]",
+    "commonMistake": "Incorrect word order or inappropriate ending when applying rangtelwoorden en datumvermelding.",
+    "correction": "Strictly adhere to the standard Dutch placement and conjugation rules described above."
   },
   {
     "id": "g-031",
@@ -1963,7 +2411,22 @@ globalThis.NP_GRAMMAR = [
     ],
     "section": 3,
     "sectionTitle": "A2 Verb Systems & Tenses",
-    "level": "A2"
+    "level": "A2",
+    "difficulty": "intermediate",
+    "estimatedTimeMin": 7,
+    "tags": [
+      "a2_verb_systems_tenses",
+      "a2"
+    ],
+    "prerequisites": [
+      "g-030"
+    ],
+    "relatedRules": [
+      "g-032"
+    ],
+    "structuralBreakdown": "[Topic / Fronted Element] + [Finite Verb (V2)] + [Subject] + [Middle Field: TMP] + [Verb Cluster / Separable Prefix]",
+    "commonMistake": "Incorrect word order or inappropriate ending when applying de 't kofschip-regel voor de verleden tijd.",
+    "correction": "Strictly adhere to the standard Dutch placement and conjugation rules described above."
   },
   {
     "id": "g-032",
@@ -2029,7 +2492,22 @@ globalThis.NP_GRAMMAR = [
     ],
     "section": 3,
     "sectionTitle": "A2 Verb Systems & Tenses",
-    "level": "A2"
+    "level": "A2",
+    "difficulty": "intermediate",
+    "estimatedTimeMin": 7,
+    "tags": [
+      "a2_verb_systems_tenses",
+      "a2"
+    ],
+    "prerequisites": [
+      "g-031"
+    ],
+    "relatedRules": [
+      "g-033"
+    ],
+    "structuralBreakdown": "[Topic / Fronted Element] + [Finite Verb (V2)] + [Subject] + [Middle Field: TMP] + [Verb Cluster / Separable Prefix]",
+    "commonMistake": "Incorrect word order or inappropriate ending when applying voltooid tegenwoordige tijd: hebben of zijn.",
+    "correction": "Strictly adhere to the standard Dutch placement and conjugation rules described above."
   },
   {
     "id": "g-033",
@@ -2091,7 +2569,22 @@ globalThis.NP_GRAMMAR = [
     ],
     "section": 3,
     "sectionTitle": "A2 Verb Systems & Tenses",
-    "level": "A2"
+    "level": "A2",
+    "difficulty": "intermediate",
+    "estimatedTimeMin": 7,
+    "tags": [
+      "a2_verb_systems_tenses",
+      "a2"
+    ],
+    "prerequisites": [
+      "g-032"
+    ],
+    "relatedRules": [
+      "g-034"
+    ],
+    "structuralBreakdown": "[Topic / Fronted Element] + [Finite Verb (V2)] + [Subject] + [Middle Field: TMP] + [Verb Cluster / Separable Prefix]",
+    "commonMistake": "Incorrect word order or inappropriate ending when applying sterke werkwoorden en klinkerwisseling.",
+    "correction": "Strictly adhere to the standard Dutch placement and conjugation rules described above."
   },
   {
     "id": "g-034",
@@ -2160,7 +2653,22 @@ globalThis.NP_GRAMMAR = [
     ],
     "section": 3,
     "sectionTitle": "A2 Verb Systems & Tenses",
-    "level": "A2"
+    "level": "A2",
+    "difficulty": "intermediate",
+    "estimatedTimeMin": 7,
+    "tags": [
+      "a2_verb_systems_tenses",
+      "a2"
+    ],
+    "prerequisites": [
+      "g-033"
+    ],
+    "relatedRules": [
+      "g-035"
+    ],
+    "structuralBreakdown": "[Topic / Fronted Element] + [Finite Verb (V2)] + [Subject] + [Middle Field: TMP] + [Verb Cluster / Separable Prefix]",
+    "commonMistake": "Incorrect word order or inappropriate ending when applying de duurvorm: aan het + infinitief.",
+    "correction": "Strictly adhere to the standard Dutch placement and conjugation rules described above."
   },
   {
     "id": "g-035",
@@ -2226,7 +2734,22 @@ globalThis.NP_GRAMMAR = [
     ],
     "section": 3,
     "sectionTitle": "A2 Verb Systems & Tenses",
-    "level": "A2"
+    "level": "A2",
+    "difficulty": "intermediate",
+    "estimatedTimeMin": 7,
+    "tags": [
+      "a2_verb_systems_tenses",
+      "a2"
+    ],
+    "prerequisites": [
+      "g-034"
+    ],
+    "relatedRules": [
+      "g-036"
+    ],
+    "structuralBreakdown": "[Topic / Fronted Element] + [Finite Verb (V2)] + [Subject] + [Middle Field: TMP] + [Verb Cluster / Separable Prefix]",
+    "commonMistake": "Incorrect word order or inappropriate ending when applying de toekomende tijd: zullen, gaan en presens.",
+    "correction": "Strictly adhere to the standard Dutch placement and conjugation rules described above."
   },
   {
     "id": "g-036",
@@ -2293,7 +2816,22 @@ globalThis.NP_GRAMMAR = [
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
       }
-    ]
+    ],
+    "difficulty": "intermediate",
+    "estimatedTimeMin": 7,
+    "tags": [
+      "a2_verb_systems_tenses",
+      "a2"
+    ],
+    "prerequisites": [
+      "g-035"
+    ],
+    "relatedRules": [
+      "g-037"
+    ],
+    "structuralBreakdown": "[Topic / Fronted Element] + [Finite Verb (V2)] + [Subject] + [Middle Field: TMP] + [Verb Cluster / Separable Prefix]",
+    "commonMistake": "Incorrect word order or inappropriate ending when applying voltooid verleden tijd.",
+    "correction": "Strictly adhere to the standard Dutch placement and conjugation rules described above."
   },
   {
     "id": "g-037",
@@ -2360,7 +2898,22 @@ globalThis.NP_GRAMMAR = [
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
       }
-    ]
+    ],
+    "difficulty": "intermediate",
+    "estimatedTimeMin": 7,
+    "tags": [
+      "a2_verb_systems_tenses",
+      "a2"
+    ],
+    "prerequisites": [
+      "g-036"
+    ],
+    "relatedRules": [
+      "g-038"
+    ],
+    "structuralBreakdown": "[Topic / Fronted Element] + [Finite Verb (V2)] + [Subject] + [Middle Field: TMP] + [Verb Cluster / Separable Prefix]",
+    "commonMistake": "Incorrect word order or inappropriate ending when applying modale werkwoorden in de verleden tijd.",
+    "correction": "Strictly adhere to the standard Dutch placement and conjugation rules described above."
   },
   {
     "id": "g-038",
@@ -2427,7 +2980,22 @@ globalThis.NP_GRAMMAR = [
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
       }
-    ]
+    ],
+    "difficulty": "intermediate",
+    "estimatedTimeMin": 7,
+    "tags": [
+      "a2_verb_systems_tenses",
+      "a2"
+    ],
+    "prerequisites": [
+      "g-037"
+    ],
+    "relatedRules": [
+      "g-039"
+    ],
+    "structuralBreakdown": "[Topic / Fronted Element] + [Finite Verb (V2)] + [Subject] + [Middle Field: TMP] + [Verb Cluster / Separable Prefix]",
+    "commonMistake": "Incorrect word order or inappropriate ending when applying scheidbare werkwoorden in voltooide tijden.",
+    "correction": "Strictly adhere to the standard Dutch placement and conjugation rules described above."
   },
   {
     "id": "g-039",
@@ -2494,7 +3062,22 @@ globalThis.NP_GRAMMAR = [
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
       }
-    ]
+    ],
+    "difficulty": "intermediate",
+    "estimatedTimeMin": 7,
+    "tags": [
+      "a2_verb_systems_tenses",
+      "a2"
+    ],
+    "prerequisites": [
+      "g-038"
+    ],
+    "relatedRules": [
+      "g-040"
+    ],
+    "structuralBreakdown": "[Topic / Fronted Element] + [Finite Verb (V2)] + [Subject] + [Middle Field: TMP] + [Verb Cluster / Separable Prefix]",
+    "commonMistake": "Incorrect word order or inappropriate ending when applying wederkerende werkwoorden in verleden tijden.",
+    "correction": "Strictly adhere to the standard Dutch placement and conjugation rules described above."
   },
   {
     "id": "g-040",
@@ -2561,7 +3144,22 @@ globalThis.NP_GRAMMAR = [
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
       }
-    ]
+    ],
+    "difficulty": "intermediate",
+    "estimatedTimeMin": 7,
+    "tags": [
+      "a2_verb_systems_tenses",
+      "a2"
+    ],
+    "prerequisites": [
+      "g-039"
+    ],
+    "relatedRules": [
+      "g-041"
+    ],
+    "structuralBreakdown": "[Topic / Fronted Element] + [Finite Verb (V2)] + [Subject] + [Middle Field: TMP] + [Verb Cluster / Separable Prefix]",
+    "commonMistake": "Incorrect word order or inappropriate ending when applying werkwoorden met een vast voorzetsel.",
+    "correction": "Strictly adhere to the standard Dutch placement and conjugation rules described above."
   },
   {
     "id": "g-041",
@@ -2628,7 +3226,22 @@ globalThis.NP_GRAMMAR = [
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
       }
-    ]
+    ],
+    "difficulty": "intermediate",
+    "estimatedTimeMin": 7,
+    "tags": [
+      "a2_verb_systems_tenses",
+      "a2"
+    ],
+    "prerequisites": [
+      "g-040"
+    ],
+    "relatedRules": [
+      "g-042"
+    ],
+    "structuralBreakdown": "[Topic / Fronted Element] + [Finite Verb (V2)] + [Subject] + [Middle Field: TMP] + [Verb Cluster / Separable Prefix]",
+    "commonMistake": "Incorrect word order or inappropriate ending when applying gebruik van ovt versus vtt.",
+    "correction": "Strictly adhere to the standard Dutch placement and conjugation rules described above."
   },
   {
     "id": "g-042",
@@ -2695,7 +3308,22 @@ globalThis.NP_GRAMMAR = [
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
       }
-    ]
+    ],
+    "difficulty": "intermediate",
+    "estimatedTimeMin": 7,
+    "tags": [
+      "a2_verb_systems_tenses",
+      "a2"
+    ],
+    "prerequisites": [
+      "g-041"
+    ],
+    "relatedRules": [
+      "g-043"
+    ],
+    "structuralBreakdown": "[Topic / Fronted Element] + [Finite Verb (V2)] + [Subject] + [Middle Field: TMP] + [Verb Cluster / Separable Prefix]",
+    "commonMistake": "Incorrect word order or inappropriate ending when applying afleidingen en prefixen bij werkwoorden.",
+    "correction": "Strictly adhere to the standard Dutch placement and conjugation rules described above."
   },
   {
     "id": "g-043",
@@ -2762,7 +3390,22 @@ globalThis.NP_GRAMMAR = [
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
       }
-    ]
+    ],
+    "difficulty": "intermediate",
+    "estimatedTimeMin": 7,
+    "tags": [
+      "a2_verb_systems_tenses",
+      "a2"
+    ],
+    "prerequisites": [
+      "g-042"
+    ],
+    "relatedRules": [
+      "g-044"
+    ],
+    "structuralBreakdown": "[Topic / Fronted Element] + [Finite Verb (V2)] + [Subject] + [Middle Field: TMP] + [Verb Cluster / Separable Prefix]",
+    "commonMistake": "Incorrect word order or inappropriate ending when applying de lijdende vorm met worden.",
+    "correction": "Strictly adhere to the standard Dutch placement and conjugation rules described above."
   },
   {
     "id": "g-044",
@@ -2829,7 +3472,22 @@ globalThis.NP_GRAMMAR = [
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
       }
-    ]
+    ],
+    "difficulty": "intermediate",
+    "estimatedTimeMin": 7,
+    "tags": [
+      "a2_verb_systems_tenses",
+      "a2"
+    ],
+    "prerequisites": [
+      "g-043"
+    ],
+    "relatedRules": [
+      "g-045"
+    ],
+    "structuralBreakdown": "[Topic / Fronted Element] + [Finite Verb (V2)] + [Subject] + [Middle Field: TMP] + [Verb Cluster / Separable Prefix]",
+    "commonMistake": "Incorrect word order or inappropriate ending when applying de onvoltooid verleden lijdende vorm.",
+    "correction": "Strictly adhere to the standard Dutch placement and conjugation rules described above."
   },
   {
     "id": "g-045",
@@ -2896,7 +3554,22 @@ globalThis.NP_GRAMMAR = [
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
       }
-    ]
+    ],
+    "difficulty": "intermediate",
+    "estimatedTimeMin": 7,
+    "tags": [
+      "a2_verb_systems_tenses",
+      "a2"
+    ],
+    "prerequisites": [
+      "g-044"
+    ],
+    "relatedRules": [
+      "g-046"
+    ],
+    "structuralBreakdown": "[Topic / Fronted Element] + [Finite Verb (V2)] + [Subject] + [Middle Field: TMP] + [Verb Cluster / Separable Prefix]",
+    "commonMistake": "Incorrect word order or inappropriate ending when applying beknopte bijzinnen met te.",
+    "correction": "Strictly adhere to the standard Dutch placement and conjugation rules described above."
   },
   {
     "id": "g-046",
@@ -2963,7 +3636,22 @@ globalThis.NP_GRAMMAR = [
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
       }
-    ]
+    ],
+    "difficulty": "intermediate",
+    "estimatedTimeMin": 7,
+    "tags": [
+      "a2_b1_sentence_structure_clauses",
+      "b1"
+    ],
+    "prerequisites": [
+      "g-045"
+    ],
+    "relatedRules": [
+      "g-047"
+    ],
+    "structuralBreakdown": "[Topic / Fronted Element] + [Finite Verb (V2)] + [Subject] + [Middle Field: TMP] + [Verb Cluster / Separable Prefix]",
+    "commonMistake": "Incorrect word order or inappropriate ending when applying onderschikkende voegwoorden en bijzin-volgorde.",
+    "correction": "Strictly adhere to the standard Dutch placement and conjugation rules described above."
   },
   {
     "id": "g-047",
@@ -3030,7 +3718,22 @@ globalThis.NP_GRAMMAR = [
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
       }
-    ]
+    ],
+    "difficulty": "intermediate",
+    "estimatedTimeMin": 7,
+    "tags": [
+      "a2_b1_sentence_structure_clauses",
+      "b1"
+    ],
+    "prerequisites": [
+      "g-046"
+    ],
+    "relatedRules": [
+      "g-048"
+    ],
+    "structuralBreakdown": "[Topic / Fronted Element] + [Finite Verb (V2)] + [Subject] + [Middle Field: TMP] + [Verb Cluster / Separable Prefix]",
+    "commonMistake": "Incorrect word order or inappropriate ending when applying inversie na een aanloopbijzin.",
+    "correction": "Strictly adhere to the standard Dutch placement and conjugation rules described above."
   },
   {
     "id": "g-048",
@@ -3097,7 +3800,22 @@ globalThis.NP_GRAMMAR = [
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
       }
-    ]
+    ],
+    "difficulty": "intermediate",
+    "estimatedTimeMin": 7,
+    "tags": [
+      "a2_b1_sentence_structure_clauses",
+      "b1"
+    ],
+    "prerequisites": [
+      "g-047"
+    ],
+    "relatedRules": [
+      "g-049"
+    ],
+    "structuralBreakdown": "[Topic / Fronted Element] + [Finite Verb (V2)] + [Subject] + [Middle Field: TMP] + [Verb Cluster / Separable Prefix]",
+    "commonMistake": "Incorrect word order or inappropriate ending when applying betrekkelijke bijzinnen met die en dat.",
+    "correction": "Strictly adhere to the standard Dutch placement and conjugation rules described above."
   },
   {
     "id": "g-049",
@@ -3164,7 +3882,22 @@ globalThis.NP_GRAMMAR = [
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
       }
-    ]
+    ],
+    "difficulty": "intermediate",
+    "estimatedTimeMin": 7,
+    "tags": [
+      "a2_b1_sentence_structure_clauses",
+      "b1"
+    ],
+    "prerequisites": [
+      "g-048"
+    ],
+    "relatedRules": [
+      "g-050"
+    ],
+    "structuralBreakdown": "[Topic / Fronted Element] + [Finite Verb (V2)] + [Subject] + [Middle Field: TMP] + [Verb Cluster / Separable Prefix]",
+    "commonMistake": "Incorrect word order or inappropriate ending when applying doel- en bepalingszinnen met om ... te.",
+    "correction": "Strictly adhere to the standard Dutch placement and conjugation rules described above."
   },
   {
     "id": "g-050",
@@ -3231,7 +3964,22 @@ globalThis.NP_GRAMMAR = [
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
       }
-    ]
+    ],
+    "difficulty": "intermediate",
+    "estimatedTimeMin": 7,
+    "tags": [
+      "a2_b1_sentence_structure_clauses",
+      "b1"
+    ],
+    "prerequisites": [
+      "g-049"
+    ],
+    "relatedRules": [
+      "g-051"
+    ],
+    "structuralBreakdown": "[Topic / Fronted Element] + [Finite Verb (V2)] + [Subject] + [Middle Field: TMP] + [Verb Cluster / Separable Prefix]",
+    "commonMistake": "Incorrect word order or inappropriate ending when applying voornaamwoordelijke bijwoorden: er + voorzetsel.",
+    "correction": "Strictly adhere to the standard Dutch placement and conjugation rules described above."
   },
   {
     "id": "g-051",
@@ -3298,7 +4046,22 @@ globalThis.NP_GRAMMAR = [
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
       }
-    ]
+    ],
+    "difficulty": "intermediate",
+    "estimatedTimeMin": 7,
+    "tags": [
+      "a2_b1_sentence_structure_clauses",
+      "b1"
+    ],
+    "prerequisites": [
+      "g-050"
+    ],
+    "relatedRules": [
+      "g-052"
+    ],
+    "structuralBreakdown": "[Topic / Fronted Element] + [Finite Verb (V2)] + [Subject] + [Middle Field: TMP] + [Verb Cluster / Separable Prefix]",
+    "commonMistake": "Incorrect word order or inappropriate ending when applying kwantitatief er.",
+    "correction": "Strictly adhere to the standard Dutch placement and conjugation rules described above."
   },
   {
     "id": "g-052",
@@ -3365,7 +4128,22 @@ globalThis.NP_GRAMMAR = [
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
       }
-    ]
+    ],
+    "difficulty": "intermediate",
+    "estimatedTimeMin": 7,
+    "tags": [
+      "a2_b1_sentence_structure_clauses",
+      "b1"
+    ],
+    "prerequisites": [
+      "g-051"
+    ],
+    "relatedRules": [
+      "g-053"
+    ],
+    "structuralBreakdown": "[Topic / Fronted Element] + [Finite Verb (V2)] + [Subject] + [Middle Field: TMP] + [Verb Cluster / Separable Prefix]",
+    "commonMistake": "Incorrect word order or inappropriate ending when applying existentieel en plaatsaanduidend er.",
+    "correction": "Strictly adhere to the standard Dutch placement and conjugation rules described above."
   },
   {
     "id": "g-053",
@@ -3432,7 +4210,22 @@ globalThis.NP_GRAMMAR = [
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
       }
-    ]
+    ],
+    "difficulty": "intermediate",
+    "estimatedTimeMin": 7,
+    "tags": [
+      "a2_b1_sentence_structure_clauses",
+      "b1"
+    ],
+    "prerequisites": [
+      "g-052"
+    ],
+    "relatedRules": [
+      "g-054"
+    ],
+    "structuralBreakdown": "[Topic / Fronted Element] + [Finite Verb (V2)] + [Subject] + [Middle Field: TMP] + [Verb Cluster / Separable Prefix]",
+    "commonMistake": "Incorrect word order or inappropriate ending when applying indirecte vragen.",
+    "correction": "Strictly adhere to the standard Dutch placement and conjugation rules described above."
   },
   {
     "id": "g-054",
@@ -3499,7 +4292,22 @@ globalThis.NP_GRAMMAR = [
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
       }
-    ]
+    ],
+    "difficulty": "intermediate",
+    "estimatedTimeMin": 7,
+    "tags": [
+      "a2_b1_sentence_structure_clauses",
+      "b1"
+    ],
+    "prerequisites": [
+      "g-053"
+    ],
+    "relatedRules": [
+      "g-055"
+    ],
+    "structuralBreakdown": "[Topic / Fronted Element] + [Finite Verb (V2)] + [Subject] + [Middle Field: TMP] + [Verb Cluster / Separable Prefix]",
+    "commonMistake": "Incorrect word order or inappropriate ending when applying tijdsbepalende bijzinnen.",
+    "correction": "Strictly adhere to the standard Dutch placement and conjugation rules described above."
   },
   {
     "id": "g-055",
@@ -3566,7 +4374,22 @@ globalThis.NP_GRAMMAR = [
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
       }
-    ]
+    ],
+    "difficulty": "intermediate",
+    "estimatedTimeMin": 7,
+    "tags": [
+      "a2_b1_sentence_structure_clauses",
+      "b1"
+    ],
+    "prerequisites": [
+      "g-054"
+    ],
+    "relatedRules": [
+      "g-056"
+    ],
+    "structuralBreakdown": "[Topic / Fronted Element] + [Finite Verb (V2)] + [Subject] + [Middle Field: TMP] + [Verb Cluster / Separable Prefix]",
+    "commonMistake": "Incorrect word order or inappropriate ending when applying voorwaardelijke bijzinnen.",
+    "correction": "Strictly adhere to the standard Dutch placement and conjugation rules described above."
   },
   {
     "id": "g-056",
@@ -3633,7 +4456,22 @@ globalThis.NP_GRAMMAR = [
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
       }
-    ]
+    ],
+    "difficulty": "intermediate",
+    "estimatedTimeMin": 7,
+    "tags": [
+      "a2_b1_sentence_structure_clauses",
+      "b1"
+    ],
+    "prerequisites": [
+      "g-055"
+    ],
+    "relatedRules": [
+      "g-057"
+    ],
+    "structuralBreakdown": "[Topic / Fronted Element] + [Finite Verb (V2)] + [Subject] + [Middle Field: TMP] + [Verb Cluster / Separable Prefix]",
+    "commonMistake": "Incorrect word order or inappropriate ending when applying redengevende en oorzaking bijzinnen.",
+    "correction": "Strictly adhere to the standard Dutch placement and conjugation rules described above."
   },
   {
     "id": "g-057",
@@ -3700,7 +4538,22 @@ globalThis.NP_GRAMMAR = [
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
       }
-    ]
+    ],
+    "difficulty": "intermediate",
+    "estimatedTimeMin": 7,
+    "tags": [
+      "a2_b1_sentence_structure_clauses",
+      "b1"
+    ],
+    "prerequisites": [
+      "g-056"
+    ],
+    "relatedRules": [
+      "g-058"
+    ],
+    "structuralBreakdown": "[Topic / Fronted Element] + [Finite Verb (V2)] + [Subject] + [Middle Field: TMP] + [Verb Cluster / Separable Prefix]",
+    "commonMistake": "Incorrect word order or inappropriate ending when applying toegevende bijzinnen.",
+    "correction": "Strictly adhere to the standard Dutch placement and conjugation rules described above."
   },
   {
     "id": "g-058",
@@ -3767,7 +4620,22 @@ globalThis.NP_GRAMMAR = [
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
       }
-    ]
+    ],
+    "difficulty": "intermediate",
+    "estimatedTimeMin": 7,
+    "tags": [
+      "a2_b1_sentence_structure_clauses",
+      "b1"
+    ],
+    "prerequisites": [
+      "g-057"
+    ],
+    "relatedRules": [
+      "g-059"
+    ],
+    "structuralBreakdown": "[Topic / Fronted Element] + [Finite Verb (V2)] + [Subject] + [Middle Field: TMP] + [Verb Cluster / Separable Prefix]",
+    "commonMistake": "Incorrect word order or inappropriate ending when applying evenredige bijzinnen.",
+    "correction": "Strictly adhere to the standard Dutch placement and conjugation rules described above."
   },
   {
     "id": "g-059",
@@ -3834,7 +4702,22 @@ globalThis.NP_GRAMMAR = [
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
       }
-    ]
+    ],
+    "difficulty": "intermediate",
+    "estimatedTimeMin": 7,
+    "tags": [
+      "a2_b1_sentence_structure_clauses",
+      "b1"
+    ],
+    "prerequisites": [
+      "g-058"
+    ],
+    "relatedRules": [
+      "g-060"
+    ],
+    "structuralBreakdown": "[Topic / Fronted Element] + [Finite Verb (V2)] + [Subject] + [Middle Field: TMP] + [Verb Cluster / Separable Prefix]",
+    "commonMistake": "Incorrect word order or inappropriate ending when applying geneste bijzinnen.",
+    "correction": "Strictly adhere to the standard Dutch placement and conjugation rules described above."
   },
   {
     "id": "g-060",
@@ -3901,7 +4784,22 @@ globalThis.NP_GRAMMAR = [
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
       }
-    ]
+    ],
+    "difficulty": "intermediate",
+    "estimatedTimeMin": 7,
+    "tags": [
+      "a2_b1_sentence_structure_clauses",
+      "b1"
+    ],
+    "prerequisites": [
+      "g-059"
+    ],
+    "relatedRules": [
+      "g-061"
+    ],
+    "structuralBreakdown": "[Topic / Fronted Element] + [Finite Verb (V2)] + [Subject] + [Middle Field: TMP] + [Verb Cluster / Separable Prefix]",
+    "commonMistake": "Incorrect word order or inappropriate ending when applying plaats van niet in de bijzin.",
+    "correction": "Strictly adhere to the standard Dutch placement and conjugation rules described above."
   },
   {
     "id": "g-061",
@@ -3968,7 +4866,22 @@ globalThis.NP_GRAMMAR = [
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
       }
-    ]
+    ],
+    "difficulty": "intermediate",
+    "estimatedTimeMin": 7,
+    "tags": [
+      "b1_intermediate_expansion",
+      "b1"
+    ],
+    "prerequisites": [
+      "g-060"
+    ],
+    "relatedRules": [
+      "g-062"
+    ],
+    "structuralBreakdown": "[Topic / Fronted Element] + [Finite Verb (V2)] + [Subject] + [Middle Field: TMP] + [Verb Cluster / Separable Prefix]",
+    "commonMistake": "Incorrect word order or inappropriate ending when applying passief: worden versus zijn.",
+    "correction": "Strictly adhere to the standard Dutch placement and conjugation rules described above."
   },
   {
     "id": "g-062",
@@ -4035,7 +4948,22 @@ globalThis.NP_GRAMMAR = [
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
       }
-    ]
+    ],
+    "difficulty": "intermediate",
+    "estimatedTimeMin": 7,
+    "tags": [
+      "b1_intermediate_expansion",
+      "b1"
+    ],
+    "prerequisites": [
+      "g-061"
+    ],
+    "relatedRules": [
+      "g-063"
+    ],
+    "structuralBreakdown": "[Topic / Fronted Element] + [Finite Verb (V2)] + [Subject] + [Middle Field: TMP] + [Verb Cluster / Separable Prefix]",
+    "commonMistake": "Incorrect word order or inappropriate ending when applying het onpersoonlijk passief.",
+    "correction": "Strictly adhere to the standard Dutch placement and conjugation rules described above."
   },
   {
     "id": "g-063",
@@ -4102,7 +5030,22 @@ globalThis.NP_GRAMMAR = [
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
       }
-    ]
+    ],
+    "difficulty": "intermediate",
+    "estimatedTimeMin": 7,
+    "tags": [
+      "b1_intermediate_expansion",
+      "b1"
+    ],
+    "prerequisites": [
+      "g-062"
+    ],
+    "relatedRules": [
+      "g-064"
+    ],
+    "structuralBreakdown": "[Topic / Fronted Element] + [Finite Verb (V2)] + [Subject] + [Middle Field: TMP] + [Verb Cluster / Separable Prefix]",
+    "commonMistake": "Incorrect word order or inappropriate ending when applying de voorwaardelijke wijs met zou/zouden.",
+    "correction": "Strictly adhere to the standard Dutch placement and conjugation rules described above."
   },
   {
     "id": "g-064",
@@ -4169,7 +5112,22 @@ globalThis.NP_GRAMMAR = [
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
       }
-    ]
+    ],
+    "difficulty": "intermediate",
+    "estimatedTimeMin": 7,
+    "tags": [
+      "b1_intermediate_expansion",
+      "b1"
+    ],
+    "prerequisites": [
+      "g-063"
+    ],
+    "relatedRules": [
+      "g-065"
+    ],
+    "structuralBreakdown": "[Topic / Fronted Element] + [Finite Verb (V2)] + [Subject] + [Middle Field: TMP] + [Verb Cluster / Separable Prefix]",
+    "commonMistake": "Incorrect word order or inappropriate ending when applying de voltooid verleden toekomende tijd.",
+    "correction": "Strictly adhere to the standard Dutch placement and conjugation rules described above."
   },
   {
     "id": "g-065",
@@ -4236,7 +5194,22 @@ globalThis.NP_GRAMMAR = [
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
       }
-    ]
+    ],
+    "difficulty": "intermediate",
+    "estimatedTimeMin": 7,
+    "tags": [
+      "b1_intermediate_expansion",
+      "b1"
+    ],
+    "prerequisites": [
+      "g-064"
+    ],
+    "relatedRules": [
+      "g-066"
+    ],
+    "structuralBreakdown": "[Topic / Fronted Element] + [Finite Verb (V2)] + [Subject] + [Middle Field: TMP] + [Verb Cluster / Separable Prefix]",
+    "commonMistake": "Incorrect word order or inappropriate ending when applying modale partikels.",
+    "correction": "Strictly adhere to the standard Dutch placement and conjugation rules described above."
   },
   {
     "id": "g-066",
@@ -4303,7 +5276,22 @@ globalThis.NP_GRAMMAR = [
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
       }
-    ]
+    ],
+    "difficulty": "intermediate",
+    "estimatedTimeMin": 7,
+    "tags": [
+      "b1_intermediate_expansion",
+      "b1"
+    ],
+    "prerequisites": [
+      "g-065"
+    ],
+    "relatedRules": [
+      "g-067"
+    ],
+    "structuralBreakdown": "[Topic / Fronted Element] + [Finite Verb (V2)] + [Subject] + [Middle Field: TMP] + [Verb Cluster / Separable Prefix]",
+    "commonMistake": "Incorrect word order or inappropriate ending when applying causatieve werkwoorden: laten en doen.",
+    "correction": "Strictly adhere to the standard Dutch placement and conjugation rules described above."
   },
   {
     "id": "g-067",
@@ -4370,7 +5358,22 @@ globalThis.NP_GRAMMAR = [
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
       }
-    ]
+    ],
+    "difficulty": "intermediate",
+    "estimatedTimeMin": 7,
+    "tags": [
+      "b1_intermediate_expansion",
+      "b1"
+    ],
+    "prerequisites": [
+      "g-066"
+    ],
+    "relatedRules": [
+      "g-068"
+    ],
+    "structuralBreakdown": "[Topic / Fronted Element] + [Finite Verb (V2)] + [Subject] + [Middle Field: TMP] + [Verb Cluster / Separable Prefix]",
+    "commonMistake": "Incorrect word order or inappropriate ending when applying waarnemingswerkwoorden met infinitief.",
+    "correction": "Strictly adhere to the standard Dutch placement and conjugation rules described above."
   },
   {
     "id": "g-068",
@@ -4437,7 +5440,22 @@ globalThis.NP_GRAMMAR = [
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
       }
-    ]
+    ],
+    "difficulty": "intermediate",
+    "estimatedTimeMin": 7,
+    "tags": [
+      "b1_intermediate_expansion",
+      "b1"
+    ],
+    "prerequisites": [
+      "g-067"
+    ],
+    "relatedRules": [
+      "g-069"
+    ],
+    "structuralBreakdown": "[Topic / Fronted Element] + [Finite Verb (V2)] + [Subject] + [Middle Field: TMP] + [Verb Cluster / Separable Prefix]",
+    "commonMistake": "Incorrect word order or inappropriate ending when applying doelzinnen met opdat en teneinde.",
+    "correction": "Strictly adhere to the standard Dutch placement and conjugation rules described above."
   },
   {
     "id": "g-069",
@@ -4504,7 +5522,22 @@ globalThis.NP_GRAMMAR = [
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
       }
-    ]
+    ],
+    "difficulty": "intermediate",
+    "estimatedTimeMin": 7,
+    "tags": [
+      "b1_intermediate_expansion",
+      "b1"
+    ],
+    "prerequisites": [
+      "g-068"
+    ],
+    "relatedRules": [
+      "g-070"
+    ],
+    "structuralBreakdown": "[Topic / Fronted Element] + [Finite Verb (V2)] + [Subject] + [Middle Field: TMP] + [Verb Cluster / Separable Prefix]",
+    "commonMistake": "Incorrect word order or inappropriate ending when applying geavanceerde toegeving.",
+    "correction": "Strictly adhere to the standard Dutch placement and conjugation rules described above."
   },
   {
     "id": "g-070",
@@ -4571,7 +5604,22 @@ globalThis.NP_GRAMMAR = [
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
       }
-    ]
+    ],
+    "difficulty": "intermediate",
+    "estimatedTimeMin": 7,
+    "tags": [
+      "b1_intermediate_expansion",
+      "b1"
+    ],
+    "prerequisites": [
+      "g-069"
+    ],
+    "relatedRules": [
+      "g-071"
+    ],
+    "structuralBreakdown": "[Topic / Fronted Element] + [Finite Verb (V2)] + [Subject] + [Middle Field: TMP] + [Verb Cluster / Separable Prefix]",
+    "commonMistake": "Incorrect word order or inappropriate ending when applying verhoudingszinnen met naarmate.",
+    "correction": "Strictly adhere to the standard Dutch placement and conjugation rules described above."
   },
   {
     "id": "g-071",
@@ -4638,7 +5686,22 @@ globalThis.NP_GRAMMAR = [
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
       }
-    ]
+    ],
+    "difficulty": "intermediate",
+    "estimatedTimeMin": 7,
+    "tags": [
+      "b1_intermediate_expansion",
+      "b1"
+    ],
+    "prerequisites": [
+      "g-070"
+    ],
+    "relatedRules": [
+      "g-072"
+    ],
+    "structuralBreakdown": "[Topic / Fronted Element] + [Finite Verb (V2)] + [Subject] + [Middle Field: TMP] + [Verb Cluster / Separable Prefix]",
+    "commonMistake": "Incorrect word order or inappropriate ending when applying dubbele infinitief in het perfectum.",
+    "correction": "Strictly adhere to the standard Dutch placement and conjugation rules described above."
   },
   {
     "id": "g-072",
@@ -4705,7 +5768,22 @@ globalThis.NP_GRAMMAR = [
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
       }
-    ]
+    ],
+    "difficulty": "intermediate",
+    "estimatedTimeMin": 7,
+    "tags": [
+      "b1_intermediate_expansion",
+      "b1"
+    ],
+    "prerequisites": [
+      "g-071"
+    ],
+    "relatedRules": [
+      "g-073"
+    ],
+    "structuralBreakdown": "[Topic / Fronted Element] + [Finite Verb (V2)] + [Subject] + [Middle Field: TMP] + [Verb Cluster / Separable Prefix]",
+    "commonMistake": "Incorrect word order or inappropriate ending when applying voornaamwoordelijke bijwoorden met daar en waar.",
+    "correction": "Strictly adhere to the standard Dutch placement and conjugation rules described above."
   },
   {
     "id": "g-073",
@@ -4772,7 +5850,22 @@ globalThis.NP_GRAMMAR = [
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
       }
-    ]
+    ],
+    "difficulty": "intermediate",
+    "estimatedTimeMin": 7,
+    "tags": [
+      "b1_intermediate_expansion",
+      "b1"
+    ],
+    "prerequisites": [
+      "g-072"
+    ],
+    "relatedRules": [
+      "g-074"
+    ],
+    "structuralBreakdown": "[Topic / Fronted Element] + [Finite Verb (V2)] + [Subject] + [Middle Field: TMP] + [Verb Cluster / Separable Prefix]",
+    "commonMistake": "Incorrect word order or inappropriate ending when applying zelfstandig gebruik van werkwoorden.",
+    "correction": "Strictly adhere to the standard Dutch placement and conjugation rules described above."
   },
   {
     "id": "g-074",
@@ -4839,7 +5932,22 @@ globalThis.NP_GRAMMAR = [
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
       }
-    ]
+    ],
+    "difficulty": "intermediate",
+    "estimatedTimeMin": 7,
+    "tags": [
+      "b1_intermediate_expansion",
+      "b1"
+    ],
+    "prerequisites": [
+      "g-073"
+    ],
+    "relatedRules": [
+      "g-075"
+    ],
+    "structuralBreakdown": "[Topic / Fronted Element] + [Finite Verb (V2)] + [Subject] + [Middle Field: TMP] + [Verb Cluster / Separable Prefix]",
+    "commonMistake": "Incorrect word order or inappropriate ending when applying voegwoordelijke bijwoorden.",
+    "correction": "Strictly adhere to the standard Dutch placement and conjugation rules described above."
   },
   {
     "id": "g-075",
@@ -4906,7 +6014,22 @@ globalThis.NP_GRAMMAR = [
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
       }
-    ]
+    ],
+    "difficulty": "intermediate",
+    "estimatedTimeMin": 7,
+    "tags": [
+      "b1_intermediate_expansion",
+      "b1"
+    ],
+    "prerequisites": [
+      "g-074"
+    ],
+    "relatedRules": [
+      "g-076"
+    ],
+    "structuralBreakdown": "[Topic / Fronted Element] + [Finite Verb (V2)] + [Subject] + [Middle Field: TMP] + [Verb Cluster / Separable Prefix]",
+    "commonMistake": "Incorrect word order or inappropriate ending when applying beperkende en uitbreidende bijzinnen.",
+    "correction": "Strictly adhere to the standard Dutch placement and conjugation rules described above."
   },
   {
     "id": "g-076",
@@ -4973,7 +6096,22 @@ globalThis.NP_GRAMMAR = [
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
       }
-    ]
+    ],
+    "difficulty": "advanced",
+    "estimatedTimeMin": 10,
+    "tags": [
+      "b1_b2_complex_syntax_modality",
+      "b2"
+    ],
+    "prerequisites": [
+      "g-075"
+    ],
+    "relatedRules": [
+      "g-077"
+    ],
+    "structuralBreakdown": "[Topic / Fronted Element] + [Finite Verb (V2)] + [Subject] + [Middle Field: TMP] + [Verb Cluster / Separable Prefix]",
+    "commonMistake": "Incorrect word order or inappropriate ending when applying de indirecte rede.",
+    "correction": "Strictly adhere to the standard Dutch placement and conjugation rules described above."
   },
   {
     "id": "g-077",
@@ -5040,7 +6178,22 @@ globalThis.NP_GRAMMAR = [
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
       }
-    ]
+    ],
+    "difficulty": "advanced",
+    "estimatedTimeMin": 10,
+    "tags": [
+      "b1_b2_complex_syntax_modality",
+      "b2"
+    ],
+    "prerequisites": [
+      "g-076"
+    ],
+    "relatedRules": [
+      "g-078"
+    ],
+    "structuralBreakdown": "[Topic / Fronted Element] + [Finite Verb (V2)] + [Subject] + [Middle Field: TMP] + [Verb Cluster / Separable Prefix]",
+    "commonMistake": "Incorrect word order or inappropriate ending when applying werkwoordclusters: rode en groene volgorde.",
+    "correction": "Strictly adhere to the standard Dutch placement and conjugation rules described above."
   },
   {
     "id": "g-078",
@@ -5107,7 +6260,22 @@ globalThis.NP_GRAMMAR = [
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
       }
-    ]
+    ],
+    "difficulty": "advanced",
+    "estimatedTimeMin": 10,
+    "tags": [
+      "b1_b2_complex_syntax_modality",
+      "b2"
+    ],
+    "prerequisites": [
+      "g-077"
+    ],
+    "relatedRules": [
+      "g-079"
+    ],
+    "structuralBreakdown": "[Topic / Fronted Element] + [Finite Verb (V2)] + [Subject] + [Middle Field: TMP] + [Verb Cluster / Separable Prefix]",
+    "commonMistake": "Incorrect word order or inappropriate ending when applying het vervangingsinfinitief (ipp).",
+    "correction": "Strictly adhere to the standard Dutch placement and conjugation rules described above."
   },
   {
     "id": "g-079",
@@ -5174,7 +6342,22 @@ globalThis.NP_GRAMMAR = [
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
       }
-    ]
+    ],
+    "difficulty": "advanced",
+    "estimatedTimeMin": 10,
+    "tags": [
+      "b1_b2_complex_syntax_modality",
+      "b2"
+    ],
+    "prerequisites": [
+      "g-078"
+    ],
+    "relatedRules": [
+      "g-080"
+    ],
+    "structuralBreakdown": "[Topic / Fronted Element] + [Finite Verb (V2)] + [Subject] + [Middle Field: TMP] + [Verb Cluster / Separable Prefix]",
+    "commonMistake": "Incorrect word order or inappropriate ending when applying deelwoordconstructies.",
+    "correction": "Strictly adhere to the standard Dutch placement and conjugation rules described above."
   },
   {
     "id": "g-080",
@@ -5241,7 +6424,22 @@ globalThis.NP_GRAMMAR = [
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
       }
-    ]
+    ],
+    "difficulty": "advanced",
+    "estimatedTimeMin": 10,
+    "tags": [
+      "b1_b2_complex_syntax_modality",
+      "b2"
+    ],
+    "prerequisites": [
+      "g-079"
+    ],
+    "relatedRules": [
+      "g-081"
+    ],
+    "structuralBreakdown": "[Topic / Fronted Element] + [Finite Verb (V2)] + [Subject] + [Middle Field: TMP] + [Verb Cluster / Separable Prefix]",
+    "commonMistake": "Incorrect word order or inappropriate ending when applying beknopte deelwoordzinnen.",
+    "correction": "Strictly adhere to the standard Dutch placement and conjugation rules described above."
   },
   {
     "id": "g-081",
@@ -5308,7 +6506,22 @@ globalThis.NP_GRAMMAR = [
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
       }
-    ]
+    ],
+    "difficulty": "advanced",
+    "estimatedTimeMin": 10,
+    "tags": [
+      "b1_b2_complex_syntax_modality",
+      "b2"
+    ],
+    "prerequisites": [
+      "g-080"
+    ],
+    "relatedRules": [
+      "g-082"
+    ],
+    "structuralBreakdown": "[Topic / Fronted Element] + [Finite Verb (V2)] + [Subject] + [Middle Field: TMP] + [Verb Cluster / Separable Prefix]",
+    "commonMistake": "Incorrect word order or inappropriate ending when applying vaste voorzetselverbindingen.",
+    "correction": "Strictly adhere to the standard Dutch placement and conjugation rules described above."
   },
   {
     "id": "g-082",
@@ -5375,7 +6588,22 @@ globalThis.NP_GRAMMAR = [
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
       }
-    ]
+    ],
+    "difficulty": "advanced",
+    "estimatedTimeMin": 10,
+    "tags": [
+      "b1_b2_complex_syntax_modality",
+      "b2"
+    ],
+    "prerequisites": [
+      "g-081"
+    ],
+    "relatedRules": [
+      "g-083"
+    ],
+    "structuralBreakdown": "[Topic / Fronted Element] + [Finite Verb (V2)] + [Subject] + [Middle Field: TMP] + [Verb Cluster / Separable Prefix]",
+    "commonMistake": "Incorrect word order or inappropriate ending when applying epistemische modaliteit.",
+    "correction": "Strictly adhere to the standard Dutch placement and conjugation rules described above."
   },
   {
     "id": "g-083",
@@ -5442,7 +6670,22 @@ globalThis.NP_GRAMMAR = [
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
       }
-    ]
+    ],
+    "difficulty": "advanced",
+    "estimatedTimeMin": 10,
+    "tags": [
+      "b1_b2_complex_syntax_modality",
+      "b2"
+    ],
+    "prerequisites": [
+      "g-082"
+    ],
+    "relatedRules": [
+      "g-084"
+    ],
+    "structuralBreakdown": "[Topic / Fronted Element] + [Finite Verb (V2)] + [Subject] + [Middle Field: TMP] + [Verb Cluster / Separable Prefix]",
+    "commonMistake": "Incorrect word order or inappropriate ending when applying overblijfselen van de aanvoegende wijs.",
+    "correction": "Strictly adhere to the standard Dutch placement and conjugation rules described above."
   },
   {
     "id": "g-084",
@@ -5509,7 +6752,22 @@ globalThis.NP_GRAMMAR = [
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
       }
-    ]
+    ],
+    "difficulty": "advanced",
+    "estimatedTimeMin": 10,
+    "tags": [
+      "b1_b2_complex_syntax_modality",
+      "b2"
+    ],
+    "prerequisites": [
+      "g-083"
+    ],
+    "relatedRules": [
+      "g-085"
+    ],
+    "structuralBreakdown": "[Topic / Fronted Element] + [Finite Verb (V2)] + [Subject] + [Middle Field: TMP] + [Verb Cluster / Separable Prefix]",
+    "commonMistake": "Incorrect word order or inappropriate ending when applying lijdende vorm met modale werkwoorden.",
+    "correction": "Strictly adhere to the standard Dutch placement and conjugation rules described above."
   },
   {
     "id": "g-085",
@@ -5576,7 +6834,22 @@ globalThis.NP_GRAMMAR = [
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
       }
-    ]
+    ],
+    "difficulty": "advanced",
+    "estimatedTimeMin": 10,
+    "tags": [
+      "b1_b2_complex_syntax_modality",
+      "b2"
+    ],
+    "prerequisites": [
+      "g-084"
+    ],
+    "relatedRules": [
+      "g-086"
+    ],
+    "structuralBreakdown": "[Topic / Fronted Element] + [Finite Verb (V2)] + [Subject] + [Middle Field: TMP] + [Verb Cluster / Separable Prefix]",
+    "commonMistake": "Incorrect word order or inappropriate ending when applying betrekkelijke voornaamwoorden met voorzetsels.",
+    "correction": "Strictly adhere to the standard Dutch placement and conjugation rules described above."
   },
   {
     "id": "g-086",
@@ -5643,7 +6916,22 @@ globalThis.NP_GRAMMAR = [
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
       }
-    ]
+    ],
+    "difficulty": "advanced",
+    "estimatedTimeMin": 10,
+    "tags": [
+      "b1_b2_complex_syntax_modality",
+      "b2"
+    ],
+    "prerequisites": [
+      "g-085"
+    ],
+    "relatedRules": [
+      "g-087"
+    ],
+    "structuralBreakdown": "[Topic / Fronted Element] + [Finite Verb (V2)] + [Subject] + [Middle Field: TMP] + [Verb Cluster / Separable Prefix]",
+    "commonMistake": "Incorrect word order or inappropriate ending when applying inversie bij beperkende bijwoorden.",
+    "correction": "Strictly adhere to the standard Dutch placement and conjugation rules described above."
   },
   {
     "id": "g-087",
@@ -5710,7 +6998,22 @@ globalThis.NP_GRAMMAR = [
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
       }
-    ]
+    ],
+    "difficulty": "advanced",
+    "estimatedTimeMin": 10,
+    "tags": [
+      "b1_b2_complex_syntax_modality",
+      "b2"
+    ],
+    "prerequisites": [
+      "g-086"
+    ],
+    "relatedRules": [
+      "g-088"
+    ],
+    "structuralBreakdown": "[Topic / Fronted Element] + [Finite Verb (V2)] + [Subject] + [Middle Field: TMP] + [Verb Cluster / Separable Prefix]",
+    "commonMistake": "Incorrect word order or inappropriate ending when applying topicalisatie en zinsfocus.",
+    "correction": "Strictly adhere to the standard Dutch placement and conjugation rules described above."
   },
   {
     "id": "g-088",
@@ -5777,7 +7080,22 @@ globalThis.NP_GRAMMAR = [
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
       }
-    ]
+    ],
+    "difficulty": "advanced",
+    "estimatedTimeMin": 10,
+    "tags": [
+      "b1_b2_complex_syntax_modality",
+      "b2"
+    ],
+    "prerequisites": [
+      "g-087"
+    ],
+    "relatedRules": [
+      "g-089"
+    ],
+    "structuralBreakdown": "[Topic / Fronted Element] + [Finite Verb (V2)] + [Subject] + [Middle Field: TMP] + [Verb Cluster / Separable Prefix]",
+    "commonMistake": "Incorrect word order or inappropriate ending when applying negatieve polariteit.",
+    "correction": "Strictly adhere to the standard Dutch placement and conjugation rules described above."
   },
   {
     "id": "g-089",
@@ -5844,7 +7162,22 @@ globalThis.NP_GRAMMAR = [
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
       }
-    ]
+    ],
+    "difficulty": "advanced",
+    "estimatedTimeMin": 10,
+    "tags": [
+      "b1_b2_complex_syntax_modality",
+      "b2"
+    ],
+    "prerequisites": [
+      "g-088"
+    ],
+    "relatedRules": [
+      "g-090"
+    ],
+    "structuralBreakdown": "[Topic / Fronted Element] + [Finite Verb (V2)] + [Subject] + [Middle Field: TMP] + [Verb Cluster / Separable Prefix]",
+    "commonMistake": "Incorrect word order or inappropriate ending when applying ellips en nevenschikking.",
+    "correction": "Strictly adhere to the standard Dutch placement and conjugation rules described above."
   },
   {
     "id": "g-090",
@@ -5911,7 +7244,22 @@ globalThis.NP_GRAMMAR = [
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
       }
-    ]
+    ],
+    "difficulty": "advanced",
+    "estimatedTimeMin": 10,
+    "tags": [
+      "b1_b2_complex_syntax_modality",
+      "b2"
+    ],
+    "prerequisites": [
+      "g-089"
+    ],
+    "relatedRules": [
+      "g-091"
+    ],
+    "structuralBreakdown": "[Topic / Fronted Element] + [Finite Verb (V2)] + [Subject] + [Middle Field: TMP] + [Verb Cluster / Separable Prefix]",
+    "commonMistake": "Incorrect word order or inappropriate ending when applying er in passieve zinnen.",
+    "correction": "Strictly adhere to the standard Dutch placement and conjugation rules described above."
   },
   {
     "id": "g-091",
@@ -5978,7 +7326,22 @@ globalThis.NP_GRAMMAR = [
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
       }
-    ]
+    ],
+    "difficulty": "advanced",
+    "estimatedTimeMin": 10,
+    "tags": [
+      "b2_advanced_register_nuance",
+      "b2"
+    ],
+    "prerequisites": [
+      "g-090"
+    ],
+    "relatedRules": [
+      "g-092"
+    ],
+    "structuralBreakdown": "[Topic / Fronted Element] + [Finite Verb (V2)] + [Subject] + [Middle Field: TMP] + [Verb Cluster / Separable Prefix]",
+    "commonMistake": "Incorrect word order or inappropriate ending when applying formeel taalgebruik en correspondentie.",
+    "correction": "Strictly adhere to the standard Dutch placement and conjugation rules described above."
   },
   {
     "id": "g-092",
@@ -6045,7 +7408,22 @@ globalThis.NP_GRAMMAR = [
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
       }
-    ]
+    ],
+    "difficulty": "advanced",
+    "estimatedTimeMin": 10,
+    "tags": [
+      "b2_advanced_register_nuance",
+      "b2"
+    ],
+    "prerequisites": [
+      "g-091"
+    ],
+    "relatedRules": [
+      "g-093"
+    ],
+    "structuralBreakdown": "[Topic / Fronted Element] + [Finite Verb (V2)] + [Subject] + [Middle Field: TMP] + [Verb Cluster / Separable Prefix]",
+    "commonMistake": "Incorrect word order or inappropriate ending when applying nuancepartikels in betogen.",
+    "correction": "Strictly adhere to the standard Dutch placement and conjugation rules described above."
   },
   {
     "id": "g-093",
@@ -6112,7 +7490,22 @@ globalThis.NP_GRAMMAR = [
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
       }
-    ]
+    ],
+    "difficulty": "advanced",
+    "estimatedTimeMin": 10,
+    "tags": [
+      "b2_advanced_register_nuance",
+      "b2"
+    ],
+    "prerequisites": [
+      "g-092"
+    ],
+    "relatedRules": [
+      "g-094"
+    ],
+    "structuralBreakdown": "[Topic / Fronted Element] + [Finite Verb (V2)] + [Subject] + [Middle Field: TMP] + [Verb Cluster / Separable Prefix]",
+    "commonMistake": "Incorrect word order or inappropriate ending when applying gekloofde zinnen (clefting).",
+    "correction": "Strictly adhere to the standard Dutch placement and conjugation rules described above."
   },
   {
     "id": "g-094",
@@ -6179,7 +7572,22 @@ globalThis.NP_GRAMMAR = [
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
       }
-    ]
+    ],
+    "difficulty": "advanced",
+    "estimatedTimeMin": 10,
+    "tags": [
+      "b2_advanced_register_nuance",
+      "b2"
+    ],
+    "prerequisites": [
+      "g-093"
+    ],
+    "relatedRules": [
+      "g-095"
+    ],
+    "structuralBreakdown": "[Topic / Fronted Element] + [Finite Verb (V2)] + [Subject] + [Middle Field: TMP] + [Verb Cluster / Separable Prefix]",
+    "commonMistake": "Incorrect word order or inappropriate ending when applying stilistische inversie.",
+    "correction": "Strictly adhere to the standard Dutch placement and conjugation rules described above."
   },
   {
     "id": "g-095",
@@ -6246,7 +7654,22 @@ globalThis.NP_GRAMMAR = [
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
       }
-    ]
+    ],
+    "difficulty": "advanced",
+    "estimatedTimeMin": 10,
+    "tags": [
+      "b2_advanced_register_nuance",
+      "b2"
+    ],
+    "prerequisites": [
+      "g-094"
+    ],
+    "relatedRules": [
+      "g-096"
+    ],
+    "structuralBreakdown": "[Topic / Fronted Element] + [Finite Verb (V2)] + [Subject] + [Middle Field: TMP] + [Verb Cluster / Separable Prefix]",
+    "commonMistake": "Incorrect word order or inappropriate ending when applying scheidbaar versus onscheidbaar met betekenisverschil.",
+    "correction": "Strictly adhere to the standard Dutch placement and conjugation rules described above."
   },
   {
     "id": "g-096",
@@ -6313,7 +7736,22 @@ globalThis.NP_GRAMMAR = [
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
       }
-    ]
+    ],
+    "difficulty": "advanced",
+    "estimatedTimeMin": 10,
+    "tags": [
+      "b2_advanced_register_nuance",
+      "b2"
+    ],
+    "prerequisites": [
+      "g-095"
+    ],
+    "relatedRules": [
+      "g-097"
+    ],
+    "structuralBreakdown": "[Topic / Fronted Element] + [Finite Verb (V2)] + [Subject] + [Middle Field: TMP] + [Verb Cluster / Separable Prefix]",
+    "commonMistake": "Incorrect word order or inappropriate ending when applying tussenklanken in samenstellingen.",
+    "correction": "Strictly adhere to the standard Dutch placement and conjugation rules described above."
   },
   {
     "id": "g-097",
@@ -6380,7 +7818,22 @@ globalThis.NP_GRAMMAR = [
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
       }
-    ]
+    ],
+    "difficulty": "advanced",
+    "estimatedTimeMin": 10,
+    "tags": [
+      "b2_advanced_register_nuance",
+      "b2"
+    ],
+    "prerequisites": [
+      "g-096"
+    ],
+    "relatedRules": [
+      "g-098"
+    ],
+    "structuralBreakdown": "[Topic / Fronted Element] + [Finite Verb (V2)] + [Subject] + [Middle Field: TMP] + [Verb Cluster / Separable Prefix]",
+    "commonMistake": "Incorrect word order or inappropriate ending when applying passiefvarianten met vallen en staan.",
+    "correction": "Strictly adhere to the standard Dutch placement and conjugation rules described above."
   },
   {
     "id": "g-098",
@@ -6447,7 +7900,22 @@ globalThis.NP_GRAMMAR = [
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
       }
-    ]
+    ],
+    "difficulty": "advanced",
+    "estimatedTimeMin": 10,
+    "tags": [
+      "b2_advanced_register_nuance",
+      "b2"
+    ],
+    "prerequisites": [
+      "g-097"
+    ],
+    "relatedRules": [
+      "g-099"
+    ],
+    "structuralBreakdown": "[Topic / Fronted Element] + [Finite Verb (V2)] + [Subject] + [Middle Field: TMP] + [Verb Cluster / Separable Prefix]",
+    "commonMistake": "Incorrect word order or inappropriate ending when applying pragmatiek van het verkleinwoord.",
+    "correction": "Strictly adhere to the standard Dutch placement and conjugation rules described above."
   },
   {
     "id": "g-099",
@@ -6514,7 +7982,22 @@ globalThis.NP_GRAMMAR = [
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
       }
-    ]
+    ],
+    "difficulty": "advanced",
+    "estimatedTimeMin": 10,
+    "tags": [
+      "b2_advanced_register_nuance",
+      "b2"
+    ],
+    "prerequisites": [
+      "g-098"
+    ],
+    "relatedRules": [
+      "g-100"
+    ],
+    "structuralBreakdown": "[Topic / Fronted Element] + [Finite Verb (V2)] + [Subject] + [Middle Field: TMP] + [Verb Cluster / Separable Prefix]",
+    "commonMistake": "Incorrect word order or inappropriate ending when applying complexe wederkerende constructies.",
+    "correction": "Strictly adhere to the standard Dutch placement and conjugation rules described above."
   },
   {
     "id": "g-100",
@@ -6581,7 +8064,22 @@ globalThis.NP_GRAMMAR = [
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
       }
-    ]
+    ],
+    "difficulty": "advanced",
+    "estimatedTimeMin": 10,
+    "tags": [
+      "b2_advanced_register_nuance",
+      "b2"
+    ],
+    "prerequisites": [
+      "g-099"
+    ],
+    "relatedRules": [
+      "g-101"
+    ],
+    "structuralBreakdown": "[Topic / Fronted Element] + [Finite Verb (V2)] + [Subject] + [Middle Field: TMP] + [Verb Cluster / Separable Prefix]",
+    "commonMistake": "Incorrect word order or inappropriate ending when applying naamvalsoverblijfselen in vaste uitdrukkingen.",
+    "correction": "Strictly adhere to the standard Dutch placement and conjugation rules described above."
   },
   {
     "id": "g-101",
@@ -6648,7 +8146,22 @@ globalThis.NP_GRAMMAR = [
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
       }
-    ]
+    ],
+    "difficulty": "advanced",
+    "estimatedTimeMin": 10,
+    "tags": [
+      "b2_advanced_register_nuance",
+      "b2"
+    ],
+    "prerequisites": [
+      "g-100"
+    ],
+    "relatedRules": [
+      "g-102"
+    ],
+    "structuralBreakdown": "[Topic / Fronted Element] + [Finite Verb (V2)] + [Subject] + [Middle Field: TMP] + [Verb Cluster / Separable Prefix]",
+    "commonMistake": "Incorrect word order or inappropriate ending when applying samenhang in betogende teksten.",
+    "correction": "Strictly adhere to the standard Dutch placement and conjugation rules described above."
   },
   {
     "id": "g-102",
@@ -6715,7 +8228,22 @@ globalThis.NP_GRAMMAR = [
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
       }
-    ]
+    ],
+    "difficulty": "advanced",
+    "estimatedTimeMin": 10,
+    "tags": [
+      "b2_advanced_register_nuance",
+      "b2"
+    ],
+    "prerequisites": [
+      "g-101"
+    ],
+    "relatedRules": [
+      "g-103"
+    ],
+    "structuralBreakdown": "[Topic / Fronted Element] + [Finite Verb (V2)] + [Subject] + [Middle Field: TMP] + [Verb Cluster / Separable Prefix]",
+    "commonMistake": "Incorrect word order or inappropriate ending when applying voorbehoud en nuancering.",
+    "correction": "Strictly adhere to the standard Dutch placement and conjugation rules described above."
   },
   {
     "id": "g-103",
@@ -6782,7 +8310,22 @@ globalThis.NP_GRAMMAR = [
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
       }
-    ]
+    ],
+    "difficulty": "advanced",
+    "estimatedTimeMin": 10,
+    "tags": [
+      "b2_advanced_register_nuance",
+      "b2"
+    ],
+    "prerequisites": [
+      "g-102"
+    ],
+    "relatedRules": [
+      "g-104"
+    ],
+    "structuralBreakdown": "[Topic / Fronted Element] + [Finite Verb (V2)] + [Subject] + [Middle Field: TMP] + [Verb Cluster / Separable Prefix]",
+    "commonMistake": "Incorrect word order or inappropriate ending when applying aspectuele partikelcombinaties.",
+    "correction": "Strictly adhere to the standard Dutch placement and conjugation rules described above."
   },
   {
     "id": "g-104",
@@ -6849,7 +8392,22 @@ globalThis.NP_GRAMMAR = [
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
       }
-    ]
+    ],
+    "difficulty": "advanced",
+    "estimatedTimeMin": 10,
+    "tags": [
+      "b2_advanced_register_nuance",
+      "b2"
+    ],
+    "prerequisites": [
+      "g-103"
+    ],
+    "relatedRules": [
+      "g-105"
+    ],
+    "structuralBreakdown": "[Topic / Fronted Element] + [Finite Verb (V2)] + [Subject] + [Middle Field: TMP] + [Verb Cluster / Separable Prefix]",
+    "commonMistake": "Incorrect word order or inappropriate ending when applying formuletaal in officiële documenten.",
+    "correction": "Strictly adhere to the standard Dutch placement and conjugation rules described above."
   },
   {
     "id": "g-105",
@@ -6916,7 +8474,22 @@ globalThis.NP_GRAMMAR = [
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
       }
-    ]
+    ],
+    "difficulty": "advanced",
+    "estimatedTimeMin": 10,
+    "tags": [
+      "b2_advanced_register_nuance",
+      "b2"
+    ],
+    "prerequisites": [
+      "g-104"
+    ],
+    "relatedRules": [
+      "g-106"
+    ],
+    "structuralBreakdown": "[Topic / Fronted Element] + [Finite Verb (V2)] + [Subject] + [Middle Field: TMP] + [Verb Cluster / Separable Prefix]",
+    "commonMistake": "Incorrect word order or inappropriate ending when applying vergelijkingsconstructies: als versus dan.",
+    "correction": "Strictly adhere to the standard Dutch placement and conjugation rules described above."
   },
   {
     "id": "g-106",
@@ -6983,7 +8556,22 @@ globalThis.NP_GRAMMAR = [
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
       }
-    ]
+    ],
+    "difficulty": "advanced",
+    "estimatedTimeMin": 10,
+    "tags": [
+      "c1_mastery_stylistics",
+      "c1"
+    ],
+    "prerequisites": [
+      "g-105"
+    ],
+    "relatedRules": [
+      "g-107"
+    ],
+    "structuralBreakdown": "[Topic / Fronted Element] + [Finite Verb (V2)] + [Subject] + [Middle Field: TMP] + [Verb Cluster / Separable Prefix]",
+    "commonMistake": "Incorrect word order or inappropriate ending when applying ambtelijk en plechtstatig nederlands.",
+    "correction": "Strictly adhere to the standard Dutch placement and conjugation rules described above."
   },
   {
     "id": "g-107",
@@ -7050,7 +8638,22 @@ globalThis.NP_GRAMMAR = [
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
       }
-    ]
+    ],
+    "difficulty": "advanced",
+    "estimatedTimeMin": 10,
+    "tags": [
+      "c1_mastery_stylistics",
+      "c1"
+    ],
+    "prerequisites": [
+      "g-106"
+    ],
+    "relatedRules": [
+      "g-108"
+    ],
+    "structuralBreakdown": "[Topic / Fronted Element] + [Finite Verb (V2)] + [Subject] + [Middle Field: TMP] + [Verb Cluster / Separable Prefix]",
+    "commonMistake": "Incorrect word order or inappropriate ending when applying naamwoordstijl versus werkwoordstijl.",
+    "correction": "Strictly adhere to the standard Dutch placement and conjugation rules described above."
   },
   {
     "id": "g-108",
@@ -7117,7 +8720,22 @@ globalThis.NP_GRAMMAR = [
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
       }
-    ]
+    ],
+    "difficulty": "advanced",
+    "estimatedTimeMin": 10,
+    "tags": [
+      "c1_mastery_stylistics",
+      "c1"
+    ],
+    "prerequisites": [
+      "g-107"
+    ],
+    "relatedRules": [
+      "g-109"
+    ],
+    "structuralBreakdown": "[Topic / Fronted Element] + [Finite Verb (V2)] + [Subject] + [Middle Field: TMP] + [Verb Cluster / Separable Prefix]",
+    "commonMistake": "Incorrect word order or inappropriate ending when applying complexe zinsconstructies en tangconstructies.",
+    "correction": "Strictly adhere to the standard Dutch placement and conjugation rules described above."
   },
   {
     "id": "g-109",
@@ -7184,7 +8802,22 @@ globalThis.NP_GRAMMAR = [
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
       }
-    ]
+    ],
+    "difficulty": "advanced",
+    "estimatedTimeMin": 10,
+    "tags": [
+      "c1_mastery_stylistics",
+      "c1"
+    ],
+    "prerequisites": [
+      "g-108"
+    ],
+    "relatedRules": [
+      "g-110"
+    ],
+    "structuralBreakdown": "[Topic / Fronted Element] + [Finite Verb (V2)] + [Subject] + [Middle Field: TMP] + [Verb Cluster / Separable Prefix]",
+    "commonMistake": "Incorrect word order or inappropriate ending when applying retorische stijlmiddelen in betogen.",
+    "correction": "Strictly adhere to the standard Dutch placement and conjugation rules described above."
   },
   {
     "id": "g-110",
@@ -7251,7 +8884,22 @@ globalThis.NP_GRAMMAR = [
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
       }
-    ]
+    ],
+    "difficulty": "advanced",
+    "estimatedTimeMin": 10,
+    "tags": [
+      "c1_mastery_stylistics",
+      "c1"
+    ],
+    "prerequisites": [
+      "g-109"
+    ],
+    "relatedRules": [
+      "g-111"
+    ],
+    "structuralBreakdown": "[Topic / Fronted Element] + [Finite Verb (V2)] + [Subject] + [Middle Field: TMP] + [Verb Cluster / Separable Prefix]",
+    "commonMistake": "Incorrect word order or inappropriate ending when applying juridisch nederlands en wetsformulering.",
+    "correction": "Strictly adhere to the standard Dutch placement and conjugation rules described above."
   },
   {
     "id": "g-111",
@@ -7318,7 +8966,22 @@ globalThis.NP_GRAMMAR = [
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
       }
-    ]
+    ],
+    "difficulty": "advanced",
+    "estimatedTimeMin": 10,
+    "tags": [
+      "c1_mastery_stylistics",
+      "c1"
+    ],
+    "prerequisites": [
+      "g-110"
+    ],
+    "relatedRules": [
+      "g-112"
+    ],
+    "structuralBreakdown": "[Topic / Fronted Element] + [Finite Verb (V2)] + [Subject] + [Middle Field: TMP] + [Verb Cluster / Separable Prefix]",
+    "commonMistake": "Incorrect word order or inappropriate ending when applying de wensende wijs in traditionele teksten.",
+    "correction": "Strictly adhere to the standard Dutch placement and conjugation rules described above."
   },
   {
     "id": "g-112",
@@ -7385,7 +9048,22 @@ globalThis.NP_GRAMMAR = [
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
       }
-    ]
+    ],
+    "difficulty": "advanced",
+    "estimatedTimeMin": 10,
+    "tags": [
+      "c1_mastery_stylistics",
+      "c1"
+    ],
+    "prerequisites": [
+      "g-111"
+    ],
+    "relatedRules": [
+      "g-113"
+    ],
+    "structuralBreakdown": "[Topic / Fronted Element] + [Finite Verb (V2)] + [Subject] + [Middle Field: TMP] + [Verb Cluster / Separable Prefix]",
+    "commonMistake": "Incorrect word order or inappropriate ending when applying voorwaardelijke zinnen zonder als (inversie-conditie).",
+    "correction": "Strictly adhere to the standard Dutch placement and conjugation rules described above."
   },
   {
     "id": "g-113",
@@ -7452,7 +9130,22 @@ globalThis.NP_GRAMMAR = [
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
       }
-    ]
+    ],
+    "difficulty": "advanced",
+    "estimatedTimeMin": 10,
+    "tags": [
+      "c1_mastery_stylistics",
+      "c1"
+    ],
+    "prerequisites": [
+      "g-112"
+    ],
+    "relatedRules": [
+      "g-114"
+    ],
+    "structuralBreakdown": "[Topic / Fronted Element] + [Finite Verb (V2)] + [Subject] + [Middle Field: TMP] + [Verb Cluster / Separable Prefix]",
+    "commonMistake": "Incorrect word order or inappropriate ending when applying uitgebreide bijvoeglijke bepalingen.",
+    "correction": "Strictly adhere to the standard Dutch placement and conjugation rules described above."
   },
   {
     "id": "g-114",
@@ -7519,7 +9212,22 @@ globalThis.NP_GRAMMAR = [
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
       }
-    ]
+    ],
+    "difficulty": "advanced",
+    "estimatedTimeMin": 10,
+    "tags": [
+      "c1_mastery_stylistics",
+      "c1"
+    ],
+    "prerequisites": [
+      "g-113"
+    ],
+    "relatedRules": [
+      "g-115"
+    ],
+    "structuralBreakdown": "[Topic / Fronted Element] + [Finite Verb (V2)] + [Subject] + [Middle Field: TMP] + [Verb Cluster / Separable Prefix]",
+    "commonMistake": "Incorrect word order or inappropriate ending when applying stapeling van modale partikels.",
+    "correction": "Strictly adhere to the standard Dutch placement and conjugation rules described above."
   },
   {
     "id": "g-115",
@@ -7586,7 +9294,22 @@ globalThis.NP_GRAMMAR = [
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
       }
-    ]
+    ],
+    "difficulty": "advanced",
+    "estimatedTimeMin": 10,
+    "tags": [
+      "c1_mastery_stylistics",
+      "c1"
+    ],
+    "prerequisites": [
+      "g-114"
+    ],
+    "relatedRules": [
+      "g-116"
+    ],
+    "structuralBreakdown": "[Topic / Fronted Element] + [Finite Verb (V2)] + [Subject] + [Middle Field: TMP] + [Verb Cluster / Separable Prefix]",
+    "commonMistake": "Incorrect word order or inappropriate ending when applying registers in media en literatuur.",
+    "correction": "Strictly adhere to the standard Dutch placement and conjugation rules described above."
   },
   {
     "id": "g-116",
@@ -7653,7 +9376,22 @@ globalThis.NP_GRAMMAR = [
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
       }
-    ]
+    ],
+    "difficulty": "advanced",
+    "estimatedTimeMin": 10,
+    "tags": [
+      "c1_mastery_stylistics",
+      "c1"
+    ],
+    "prerequisites": [
+      "g-115"
+    ],
+    "relatedRules": [
+      "g-117"
+    ],
+    "structuralBreakdown": "[Topic / Fronted Element] + [Finite Verb (V2)] + [Subject] + [Middle Field: TMP] + [Verb Cluster / Separable Prefix]",
+    "commonMistake": "Incorrect word order or inappropriate ending when applying splitsing van voornaamwoordelijke bijwoorden.",
+    "correction": "Strictly adhere to the standard Dutch placement and conjugation rules described above."
   },
   {
     "id": "g-117",
@@ -7720,7 +9458,22 @@ globalThis.NP_GRAMMAR = [
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
       }
-    ]
+    ],
+    "difficulty": "advanced",
+    "estimatedTimeMin": 10,
+    "tags": [
+      "c1_mastery_stylistics",
+      "c1"
+    ],
+    "prerequisites": [
+      "g-116"
+    ],
+    "relatedRules": [
+      "g-118"
+    ],
+    "structuralBreakdown": "[Topic / Fronted Element] + [Finite Verb (V2)] + [Subject] + [Middle Field: TMP] + [Verb Cluster / Separable Prefix]",
+    "commonMistake": "Incorrect word order or inappropriate ending when applying werkwoorden met meervoudige partikels.",
+    "correction": "Strictly adhere to the standard Dutch placement and conjugation rules described above."
   },
   {
     "id": "g-118",
@@ -7787,7 +9540,22 @@ globalThis.NP_GRAMMAR = [
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
       }
-    ]
+    ],
+    "difficulty": "advanced",
+    "estimatedTimeMin": 10,
+    "tags": [
+      "c1_mastery_stylistics",
+      "c1"
+    ],
+    "prerequisites": [
+      "g-117"
+    ],
+    "relatedRules": [
+      "g-119"
+    ],
+    "structuralBreakdown": "[Topic / Fronted Element] + [Finite Verb (V2)] + [Subject] + [Middle Field: TMP] + [Verb Cluster / Separable Prefix]",
+    "commonMistake": "Incorrect word order or inappropriate ending when applying elliptische vergelijkingen in literatuur.",
+    "correction": "Strictly adhere to the standard Dutch placement and conjugation rules described above."
   },
   {
     "id": "g-119",
@@ -7854,7 +9622,22 @@ globalThis.NP_GRAMMAR = [
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
       }
-    ]
+    ],
+    "difficulty": "advanced",
+    "estimatedTimeMin": 10,
+    "tags": [
+      "c1_mastery_stylistics",
+      "c1"
+    ],
+    "prerequisites": [
+      "g-118"
+    ],
+    "relatedRules": [
+      "g-120"
+    ],
+    "structuralBreakdown": "[Topic / Fronted Element] + [Finite Verb (V2)] + [Subject] + [Middle Field: TMP] + [Verb Cluster / Separable Prefix]",
+    "commonMistake": "Incorrect word order or inappropriate ending when applying tegenspraak en weerlegging in debatten.",
+    "correction": "Strictly adhere to the standard Dutch placement and conjugation rules described above."
   },
   {
     "id": "g-120",
@@ -7921,6 +9704,19 @@ globalThis.NP_GRAMMAR = [
         ],
         "correctSentence": "De hoogleraar legt de complexe regel duidelijk uit"
       }
-    ]
+    ],
+    "difficulty": "advanced",
+    "estimatedTimeMin": 10,
+    "tags": [
+      "c1_mastery_stylistics",
+      "c1"
+    ],
+    "prerequisites": [
+      "g-119"
+    ],
+    "relatedRules": [],
+    "structuralBreakdown": "[Topic / Fronted Element] + [Finite Verb (V2)] + [Subject] + [Middle Field: TMP] + [Verb Cluster / Separable Prefix]",
+    "commonMistake": "Incorrect word order or inappropriate ending when applying ritme en zinsmelodie in geschreven nederlands.",
+    "correction": "Strictly adhere to the standard Dutch placement and conjugation rules described above."
   }
 ];

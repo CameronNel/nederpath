@@ -375,21 +375,36 @@ if (surplus > 0) {
 // Finalise: ids, ranks, frequencies
 // ---------------------------------------------------------------------------
 const freqOf = (seq) => Math.max(1, Math.round(1e9 / Math.pow(seq + 1, 0.85)));
-const final = rows.map((r, i) => ({
-  id: "nl-" + String(i + 1).padStart(5, "0"),
-  rank: i + 1,
-  word: r.word,
-  lemma: r.lemma,
-  frequency: freqOf(i),
-  level: r.level,
-  pos: r.pos,
-  article: r.article,
-  meaning: r.meaning,
-  category: r.category,
-  synonyms: r.synonyms,
-  curated: !!r.curated,
-  learnable: r.learnable !== false,
-}));
+const final = rows.map((r, i) => {
+  const displayWord = r.pos === "noun" && r.article ? `${r.article} ${r.word}` : r.word;
+  const example = r.pos === "noun" && r.article 
+    ? `${r.article.charAt(0).toUpperCase() + r.article.slice(1)} ${r.word} staat in het centrum.` 
+    : r.pos === "verb" 
+    ? `Wij ${r.word} elke dag samen.` 
+    : `Dit is een ${r.word} voorbeeld in het Nederlands.`;
+  const exampleEn = r.meaning 
+    ? `The ${r.meaning} is situated in the centre.` 
+    : `Example usage of ${r.word}.`;
+
+  return {
+    id: "nl-" + String(i + 1).padStart(5, "0"),
+    rank: i + 1,
+    word: r.word,
+    article: r.article || null,
+    displayWord,
+    lemma: r.lemma || r.word,
+    frequency: freqOf(i),
+    level: r.level || "A1",
+    pos: r.pos,
+    meaning: r.meaning || r.word,
+    category: r.category || "general",
+    synonyms: r.synonyms || [],
+    example,
+    exampleEn,
+    curated: !!r.curated,
+    learnable: r.learnable !== false,
+  };
+});
 
 // sanity checks
 const ids = new Set(final.map((r) => r.id));

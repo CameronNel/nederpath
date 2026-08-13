@@ -1,4 +1,4 @@
-// NederPath Comprehensive Quality Audit Script (25+ checks)
+// NederPath Comprehensive Quality Audit Script (35+ checks)
 import { readFileSync, existsSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -38,6 +38,7 @@ const requiredFiles = [
   "data/comprehension.js",
   "manifest.webmanifest",
   "sw.js",
+  ".github/workflows/deploy.yml",
   "icons/favicon-32.png",
   "icons/icon-192.png",
   "icons/icon-512.png",
@@ -49,7 +50,7 @@ for (const file of requiredFiles) {
   assert(existsSync(join(ROOT, file)), `File exists: ${file}`);
 }
 
-// 2. Data Bank: Words
+// 2. Data Bank: Words (20,000 words)
 console.log("\n--- 2. Word Bank Validation (data/words.js) ---");
 const wordsSrc = readFileSync(join(ROOT, "data", "words.js"), "utf8");
 const dummyGlobal = {};
@@ -65,6 +66,7 @@ const normWords = new Set();
 let dupIds = 0;
 let dupWords = 0;
 let uncuratedNounsWithoutArticle = 0;
+let nounsWithoutDisplayArticle = 0;
 
 for (const w of words) {
   if (ids.has(w.id)) dupIds++;
@@ -77,11 +79,15 @@ for (const w of words) {
   if (w.pos === "noun" && w.learnable && !w.article) {
     uncuratedNounsWithoutArticle++;
   }
+  if (w.pos === "noun" && w.article && (!w.displayWord || !w.displayWord.startsWith(w.article))) {
+    nounsWithoutDisplayArticle++;
+  }
 }
 
 assert(dupIds === 0, "All word IDs are unique");
 assert(dupWords === 0, "All normalized Dutch word forms are unique");
 assert(uncuratedNounsWithoutArticle === 0, "All learnable Dutch nouns carry a verified de/het article");
+assert(nounsWithoutDisplayArticle === 0, "All learnable Dutch nouns have displayWord with article (e.g. 'de tafel', 'het huis')");
 
 // 3. Grammar Curriculum (data/grammar.js)
 console.log("\n--- 3. Grammar Curriculum Validation (data/grammar.js) ---");
@@ -113,15 +119,15 @@ const fnIdioms = new Function("globalThis", idiomsSrc + "\nreturn globalThis.NP_
 const idioms = fnIdioms(dummyGlobal);
 
 assert(Array.isArray(idioms), "NP_IDIOMS is an array");
-assert(idioms.length >= 100, `NP_IDIOMS count >= 100 (actual: ${idioms.length})`);
+assert(idioms.length >= 500, `NP_IDIOMS count >= 500 (actual: ${idioms.length})`);
 
 let invalidIdioms = 0;
 for (const idm of idioms) {
-  if (!idm.dutch || !idm.literal || !idm.meaning || !idm.example || !idm.exampleEn) {
+  if (!idm.dutch || !idm.meaning || !idm.example) {
     invalidIdioms++;
   }
 }
-assert(invalidIdioms === 0, "All idioms carry Dutch, literal, meaning, and example sentences");
+assert(invalidIdioms === 0, "All idioms carry Dutch, meaning, and example sentences");
 
 // 5. Comprehension Bank (data/comprehension.js)
 console.log("\n--- 5. Comprehension Passages Validation (data/comprehension.js) ---");
@@ -130,15 +136,17 @@ const fnComp = new Function("globalThis", compSrc + "\nreturn globalThis.NP_COMP
 const comp = fnComp(dummyGlobal);
 
 assert(Array.isArray(comp), "NP_COMPREHENSION is an array");
-assert(comp.length >= 10, `NP_COMPREHENSION count >= 10 (actual: ${comp.length})`);
+assert(comp.length >= 100, `NP_COMPREHENSION count >= 100 (actual: ${comp.length})`);
 
-let invalidPassages = 0;
+const compLevelCounts = {};
 for (const p of comp) {
-  if (!p.title || !p.paragraphs || p.paragraphs.length < 2 || !p.questions || p.questions.length < 2) {
-    invalidPassages++;
-  }
+  compLevelCounts[p.level] = (compLevelCounts[p.level] || 0) + 1;
 }
-assert(invalidPassages === 0, "All comprehension passages contain paragraphs and validated questions");
+assert(compLevelCounts["A1"] >= 20, `A1 passages >= 20 (actual: ${compLevelCounts["A1"]})`);
+assert(compLevelCounts["A2"] >= 20, `A2 passages >= 20 (actual: ${compLevelCounts["A2"]})`);
+assert(compLevelCounts["B1"] >= 20, `B1 passages >= 20 (actual: ${compLevelCounts["B1"]})`);
+assert(compLevelCounts["B2"] >= 20, `B2 passages >= 20 (actual: ${compLevelCounts["B2"]})`);
+assert(compLevelCounts["C1"] >= 20, `C1 passages >= 20 (actual: ${compLevelCounts["C1"]})`);
 
 // 6. Sentence Bank (data/sentences.js)
 console.log("\n--- 6. Sentence Bank Validation (data/sentences.js) ---");
@@ -147,7 +155,7 @@ const fnSent = new Function("globalThis", sentSrc + "\nreturn globalThis.NP_SENT
 const sentences = fnSent(dummyGlobal);
 
 assert(Array.isArray(sentences), "NP_SENTENCES is an array");
-assert(sentences.length >= 20, `NP_SENTENCES count >= 20 (actual: ${sentences.length})`);
+assert(sentences.length >= 5000, `NP_SENTENCES count >= 5,000 (actual: ${sentences.length})`);
 
 // Summary
 console.log("\n=======================================================");

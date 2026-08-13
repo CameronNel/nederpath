@@ -95,23 +95,31 @@ test("Data: Grammar curriculum contains exactly 8 sections and >= 120 rules", ()
   if (sections.size !== 8) throw new Error(`Section count is ${sections.size}, expected 8`);
 });
 
-test("Data: Idioms bank contains >= 100 entries", () => {
+test("Data: Idioms bank contains >= 500 entries", () => {
   const idiomsSrc = readFileSync(join(ROOT, "data", "idioms.js"), "utf8");
   new Function(idiomsSrc)();
   const idioms = globalThis.NP_IDIOMS;
 
-  if (!Array.isArray(idioms) || idioms.length < 100) throw new Error(`Idioms count is ${idioms.length}, expected >= 100`);
+  if (!Array.isArray(idioms) || idioms.length < 500) throw new Error(`Idioms count is ${idioms.length}, expected >= 500`);
 });
 
-test("Data: Comprehension passages contain >= 10 entries with questions", () => {
+test("Data: Comprehension passages contain >= 100 entries with questions", () => {
   const compSrc = readFileSync(join(ROOT, "data", "comprehension.js"), "utf8");
   new Function(compSrc)();
   const comp = globalThis.NP_COMPREHENSION;
 
-  if (!Array.isArray(comp) || comp.length < 10) throw new Error(`Comprehension count is ${comp.length}, expected >= 10`);
+  if (!Array.isArray(comp) || comp.length < 100) throw new Error(`Comprehension count is ${comp.length}, expected >= 100`);
   for (const c of comp) {
     if (!c.questions || c.questions.length === 0) throw new Error(`Passage ${c.id} has no questions`);
   }
+});
+
+test("Data: Sentence bank contains >= 5,000 entries", () => {
+  const sentSrc = readFileSync(join(ROOT, "data", "sentences.js"), "utf8");
+  new Function(sentSrc)();
+  const sents = globalThis.NP_SENTENCES;
+
+  if (!Array.isArray(sents) || sents.length < 5000) throw new Error(`Sentences count is ${sents.length}, expected >= 5000`);
 });
 
 console.log(`\nSmoke Tests Complete: ${passed} passed, ${failed} failed.\n`);

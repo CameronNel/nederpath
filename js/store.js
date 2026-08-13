@@ -3,29 +3,30 @@
   "use strict";
 
   const STORAGE_KEY = "nederpath-v1";
+  const CURRENT_VERSION = 1;
 
   const DEFAULT_STATE = {
-    version: 1,
+    version: CURRENT_VERSION,
     user: {
       name: "Learner",
       level: "A1",
       dailyGoal: 15, // target review/study items per day
-      onboardingCompleted: false,
+      sessionSize: 10, // cards per practice session
+      onboardingCompleted: true,
       streak: 0,
       lastActiveDate: null,
       totalXp: 0,
       createdAt: new Date().toISOString()
     },
     settings: {
-      theme: "dark", // dark, light, system
-      voiceEnabled: true,
-      voiceSpeed: 0.9,
-      voicePitch: 1.0,
+      theme: "dark", // 'dark' | 'light'
+      sessionSize: 10,
+      dailyGoal: 15,
       autoAdvance: true,
       hapticFeedback: true
     },
     srs: {
-      // cardId -> { id, type: 'vocab'|'grammar'|'comprehension', interval, easeFactor, repetitions, dueDate, lapses, state: 'new'|'learning'|'review' }
+      // cardId -> { id, type: 'vocab'|'grammar'|'comprehension'|'article', interval, easeFactor, repetitions, dueDate, lapses, state: 'new'|'learning'|'review' }
       cards: {}
     },
     progress: {
@@ -33,6 +34,11 @@
       comprehensionCompleted: {}, // passageId -> { completedAt, score, totalQuestions }
       wordsBookmarked: {}, // wordId -> true
       studyDays: {}, // 'YYYY-MM-DD' -> count of items reviewed/learned
+      articleStats: {
+        totalDrilled: 0,
+        correct: 0,
+        mistakes: {} // word -> count
+      },
       dailyStats: {
         date: new Date().toISOString().split("T")[0],
         learnedToday: 0
@@ -55,7 +61,9 @@
         return Object.assign({}, DEFAULT_STATE, parsed, {
           user: Object.assign({}, DEFAULT_STATE.user, parsed.user),
           settings: Object.assign({}, DEFAULT_STATE.settings, parsed.settings),
-          progress: Object.assign({}, DEFAULT_STATE.progress, parsed.progress),
+          progress: Object.assign({}, DEFAULT_STATE.progress, parsed.progress, {
+            articleStats: Object.assign({}, DEFAULT_STATE.progress.articleStats, parsed.progress ? parsed.progress.articleStats : {})
+          }),
           srs: Object.assign({}, DEFAULT_STATE.srs, parsed.srs)
         });
       } catch (e) {
@@ -97,7 +105,7 @@
           const currDate = new Date(todayStr);
           const diffDays = Math.round((currDate - lastDate) / (1000 * 60 * 60 * 24));
           if (diffDays === 1) {
-            // Consecutive day: keep streak intact until activity completes it today
+            // Consecutive day
           } else if (diffDays > 1) {
             // Streak broken
             this.state.user.streak = 0;
@@ -141,6 +149,19 @@
       this.save();
     }
 
+    recordArticleDrill(noun, chosen, correct) {
+      const stats = this.state.progress.articleStats;
+      stats.totalDrilled += 1;
+      if (chosen === correct) {
+        stats.correct += 1;
+        this.recordActivity(5);
+      } else {
+        stats.mistakes[noun] = (stats.mistakes[noun] || 0) + 1;
+        this.recordActivity(1);
+      }
+      this.save();
+    }
+
     toggleBookmark(wordId) {
       if (this.state.progress.wordsBookmarked[wordId]) {
         delete this.state.progress.wordsBookmarked[wordId];
@@ -172,6 +193,36 @@
         totalQuestions
       };
       this.recordActivity(25);
+    }
+
+    exportJSON() {
+      return JSON.stringify(this.state, null, 2);
+    }
+
+    importJSON(jsonString) {
+      try {
+        const parsed = JSON.parse(jsonString);
+        if (!parsed || typeof parsed !== "object") throw new Error("Invalid format");
+        this.state = Object.assign({}, DEFAULT_STATE, parsed);
+        this.save();
+        return true;
+      } catch (err) {
+        console.error("Import failed:", err);
+        return false;
+      }
+    }
+
+    resetItem(itemId) {
+      if (this.state.srs.cards[itemId]) {
+        delete this.state.srs.cards[itemId];
+      }
+      if (this.state.progress.grammarCompleted[itemId]) {
+        delete this.state.progress.grammarCompleted[itemId];
+      }
+      if (this.state.progress.comprehensionCompleted[itemId]) {
+        delete this.state.progress.comprehensionCompleted[itemId];
+      }
+      this.save();
     }
 
     resetAllData() {
