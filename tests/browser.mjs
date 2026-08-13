@@ -638,68 +638,103 @@ async function runBrowserTests() {
 
     // 14. Browser-Level Service Worker Readiness, Offline Fallback & Retry Recovery Flow
     console.log("\n--- [Browser Offline Simulation & Retry Recovery] ---");
-    const swActive = await page.evaluate(async () => {
-      if (!("serviceWorker" in navigator)) return false;
-      try {
-        const reg = await navigator.serviceWorker.ready;
-        return !!(reg && (reg.active || reg.installing || reg.waiting));
-      } catch {
-        return false;
-      }
-    });
-    assert(swActive, "Service Worker is active and controlling the browser client");
-
-    // Switch practice mode back to flashcards and open practice tab
-    await page.evaluate(() => {
-      if (globalThis.NederApp) globalThis.NederApp.practiceMode = "flashcards";
-    });
-    await page.click("#nav-practice");
-    await page.waitForSelector(".practice-container");
-
-    // Force unload 'sentences' bank from memory and purge from SW caches
-    await page.evaluate(async () => {
-      if (globalThis.NederDataLoader) {
-        globalThis.NederDataLoader.__forceUnloadBankForTest("sentences");
-      }
-      if (typeof caches !== "undefined") {
-        const keys = await caches.keys();
-        for (const key of keys) {
-          const cache = await caches.open(key);
-          await cache.delete("./data/sentences.js");
-          await cache.delete("/data/sentences.js");
+    // Purge this bank from every runtime cache by inspecting canonical request URLs.
+    // A fresh page then gives us a clean JS global scope without shipping test-only
+    // eviction APIs in production code.
+    const sentencesStillCached = await page.evaluate(async () => {
+      if (typeof caches === "undefined") return false;
+      const keys = await caches.keys();
+      for (const key of keys) {
+        const cache = await caches.open(key);
+        for (const request of await cache.keys()) {
+          if (new URL(request.url).pathname.endsWith("/data/sentences.js")) {
+            await cache.delete(request);
+          }
         }
       }
+      for (const key of await caches.keys()) {
+        const cache = await caches.open(key);
+        const requests = await cache.keys();
+        if (requests.some((request) => new URL(request.url).pathname.endsWith("/data/sentences.js"))) {
+          return true;
+        }
+      }
+      return false;
     });
+    assert(!sentencesStillCached, "Sentences bank is absent from CacheStorage before offline first-use test");
+
+    const offlinePage = await browser.newPage();
+    const offlineUnhandledErrors = [];
+    const offlineConsoleErrors = [];
+    const offlineRequestedUrls = [];
+    offlinePage.on("pageerror", (err) => offlineUnhandledErrors.push(err.message));
+    offlinePage.on("console", (msg) => {
+      if (msg.type() !== "error") return;
+      const txt = msg.text();
+      if (!txt.includes("503") && !txt.includes("Failed to load resource") && !txt.includes("net::ERR")) {
+        offlineConsoleErrors.push(txt);
+      }
+    });
+    offlinePage.on("request", (req) => offlineRequestedUrls.push(req.url()));
+
+    await offlinePage.setViewport({ width: 1280, height: 800 });
+    await offlinePage.goto(`http://${HOST}:${PORT}/index.html`, { waitUntil: "domcontentloaded" });
+    await offlinePage.waitForSelector(".today-hero");
+    const swControlled = await offlinePage.evaluate(async () => {
+      if (!("serviceWorker" in navigator)) return false;
+      await navigator.serviceWorker.ready;
+      return navigator.serviceWorker.controller !== null;
+    });
+    assert(swControlled, "Service Worker is active and controlling the fresh browser client");
+
+    // Load the successful sibling bank while online; sentences remains a first-use load.
+    await offlinePage.click("#nav-practice");
+    await offlinePage.waitForSelector(".practice-container");
+    const wordsLoadedBeforeFailure = await offlinePage.evaluate(() => globalThis.NederDataLoader.isBankLoaded("words"));
+    assert(wordsLoadedBeforeFailure, "Words sibling bank is loaded before sentences fails");
 
     // Go offline in browser and server
     isSimulatedOffline = true;
-    await page.setOfflineMode(true);
+    await offlinePage.setOfflineMode(true);
 
     // Click practice context mode (which requires unvisited sentences bank)
-    const contextModeBtn = await page.$("button[data-mode='context']");
+    const contextModeBtn = await offlinePage.$("button[data-mode='context']");
     assert(contextModeBtn !== null, "Found context mode button on practice tab");
     await contextModeBtn.click();
 
-    await page.waitForSelector(".error-state", { timeout: 10000 });
-    const errorCard = await page.$(".error-state");
+    await offlinePage.waitForSelector(".error-state", { timeout: 10000 });
+    const errorCard = await offlinePage.$(".error-state");
     assert(errorCard !== null, "Offline request for unvisited data bank renders accessible error card with retry button");
 
-    const retryBtn = await page.$("#btn-retry-load");
+    const retryBtn = await offlinePage.$("#btn-retry-load");
     assert(retryBtn !== null, "Retry button is present and accessible on error card");
-    assert(unhandledErrors.length === 0 && jsConsoleErrors.length === 0, "Zero unhandled exceptions or script console errors during offline error state", jsConsoleErrors.join("; "));
+    assert(offlineUnhandledErrors.length === 0 && offlineConsoleErrors.length === 0, "Zero unhandled exceptions or script console errors during offline error state", offlineConsoleErrors.join("; "));
+
+    const wordsStillLoaded = await offlinePage.evaluate(() => globalThis.NederDataLoader.isBankLoaded("words"));
+    assert(wordsStillLoaded, "Successful words sibling remains loaded after sentences failure");
+    const retryRequestStart = offlineRequestedUrls.length;
 
     // Bring network back online
     isSimulatedOffline = false;
-    await page.setOfflineMode(false);
+    await offlinePage.setOfflineMode(false);
 
     // Click retry button
-    await page.click("#btn-retry-load");
-    await page.waitForSelector(".context-wrapper", { timeout: 10000 });
-    const recoveredContext = await page.$(".context-wrapper");
+    await offlinePage.click("#btn-retry-load");
+    await offlinePage.waitForSelector(".context-wrapper", { timeout: 10000 });
+    const recoveredContext = await offlinePage.$(".context-wrapper");
     assert(recoveredContext !== null, "Clicking retry button successfully recovered and rendered context practice once online");
 
-    const sentencesLoaded = await page.evaluate(() => globalThis.NederDataLoader.isBankLoaded("sentences"));
-    assert(sentencesLoaded, "Only the failed bank (sentences) was fetched on retry and marked loaded");
+    const sentencesLoaded = await offlinePage.evaluate(() => globalThis.NederDataLoader.isBankLoaded("sentences"));
+    assert(sentencesLoaded, "Failed sentences bank is marked loaded after retry");
+    const retryDataRequests = offlineRequestedUrls
+      .slice(retryRequestStart)
+      .filter((url) => new URL(url).pathname.includes("/data/"));
+    assert(
+      retryDataRequests.length === 1 && new URL(retryDataRequests[0]).pathname.endsWith("/data/sentences.js"),
+      "Retry fetches only the failed sentences bank and does not re-download words",
+      retryDataRequests.join(", ")
+    );
+    await offlinePage.close();
 
     // -------------------------------------------------------
     // PART 2: MOBILE VIEWPORT TESTS (375 x 667)

@@ -127,27 +127,12 @@
     }
   }
 
-  /**
-   * Test-only helper to forcibly evict a bank from memory and global scope.
-   * NEVER used in normal UI error retry flow.
-   * @param {string} bankName
-   */
-  function __forceUnloadBankForTest(bankName) {
-    delete loadPromises[bankName];
-    loadedBanks.delete(bankName);
-    const config = DATA_BANKS[bankName];
-    if (config) {
-      delete global[config.globalKey];
-    }
-  }
-
   const DataLoader = {
     DEFAULT_LOAD_TIMEOUT_MS,
     loadBank,
     loadBanks,
     isBankLoaded,
     resetBank,
-    __forceUnloadBankForTest,
     DATA_BANKS
   };
 

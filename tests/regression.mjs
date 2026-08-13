@@ -668,23 +668,22 @@ test("DataLoader: Sibling bank remains loaded when another fails, retry resets o
     throw new Error("resetBank('words') deleted already loaded global NP_WORDS");
   }
 
-  // 5. Test-only helper __forceUnloadBankForTest explicitly unloads
-  DataLoader.__forceUnloadBankForTest("words");
-  if (DataLoader.isBankLoaded("words") || testGlobal.NP_WORDS !== undefined) {
-    throw new Error("__forceUnloadBankForTest failed to evict words bank");
-  }
 });
 
 // -------------------------------------------------------------------
 // 13. DataLoader: Deterministic Script Timeout & Error Cleanup
 // -------------------------------------------------------------------
-test("DataLoader: loadBank handles script errors/timeouts with proper cleanup", async () => {
+test("DataLoader: loadBank times out, cleans up, and permits a successful retry", async () => {
   const dataLoaderSrc = readFileSync(join(ROOT, "js", "data-loader.js"), "utf8");
 
   // Mock DOM environment with controllable script tag
   let createdScript = null;
+  let appendCount = 0;
   const mockHead = {
-    appendChild: (s) => { createdScript = s; },
+    appendChild: (s) => {
+      createdScript = s;
+      appendCount++;
+    },
     removeChild: (s) => { if (createdScript === s) createdScript = null; }
   };
 
@@ -705,21 +704,32 @@ test("DataLoader: loadBank handles script errors/timeouts with proper cleanup", 
   new Function("globalThis", dataLoaderSrc)(testGlobal);
   const DataLoader = testGlobal.NederDataLoader;
 
-  // Trigger load with 10ms timeout override for deterministic execution
-  let loadError = null;
-  const promise = DataLoader.loadBank("sentences", 10).catch((err) => {
-    loadError = err;
-  });
-
-  // Fast-forward timeout or trigger onerror
-  if (createdScript && typeof createdScript.onerror === "function") {
-    createdScript.onerror();
+  if (DataLoader.DEFAULT_LOAD_TIMEOUT_MS !== 30000) {
+    throw new Error(`Expected named default timeout of 30000ms, got ${DataLoader.DEFAULT_LOAD_TIMEOUT_MS}`);
   }
 
-  await promise;
-  if (!loadError) throw new Error("Expected loadBank to reject on script error");
-  if (createdScript !== null) throw new Error("Failed script tag was not removed from DOM on error");
+  // Use the supported timeout override and allow the real timer path to fire.
+  const loadError = await DataLoader.loadBank("sentences", 10).then(
+    () => null,
+    (err) => err
+  );
+  if (!loadError || !/Time-out/.test(loadError.message)) {
+    throw new Error(`Expected timeout rejection, got '${loadError && loadError.message}'`);
+  }
+  if (createdScript !== null) throw new Error("Timed-out script tag was not removed from DOM");
   if (DataLoader.isBankLoaded("sentences")) throw new Error("Failed bank was marked as loaded");
+
+  // A timeout must clear the cached promise so the next attempt creates a new script and can succeed.
+  const retryPromise = DataLoader.loadBank("sentences", 1000);
+  if (appendCount !== 2 || !createdScript) {
+    throw new Error("Timed-out promise was not cleared before retry");
+  }
+  testGlobal.NP_SENTENCES = [{ id: "s-1", sentence: "Ik fiets." }];
+  createdScript.onload();
+  const retryResult = await retryPromise;
+  if (retryResult !== testGlobal.NP_SENTENCES || !DataLoader.isBankLoaded("sentences")) {
+    throw new Error("Retry did not resolve with and cache the loaded bank");
+  }
 });
 
 async function runAllTests() {
