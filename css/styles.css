@@ -826,6 +826,59 @@ body {
   margin-bottom: 0.75rem;
 }
 
+.word-card-badges {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+
+.badge-tag {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 0.15rem 0.45rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+}
+
+.badge-lemma {
+  background-color: rgba(16, 185, 129, 0.15);
+  color: #10b981;
+  border-color: rgba(16, 185, 129, 0.3);
+}
+
+.badge-phrase {
+  background-color: rgba(59, 130, 246, 0.15);
+  color: #3b82f6;
+  border-color: rgba(59, 130, 246, 0.3);
+}
+
+.badge-reference {
+  background-color: rgba(148, 163, 184, 0.15);
+  color: var(--text-secondary);
+  border-color: rgba(148, 163, 184, 0.3);
+}
+
+.word-gram-form {
+  font-size: 0.76rem;
+  color: var(--text-muted);
+  font-style: italic;
+  margin-bottom: 0.35rem;
+  display: block;
+}
+
+.word-lemma-link {
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.5rem;
+}
+
+.word-lemma-link strong {
+  color: var(--color-primary);
+}
+
 .word-footer {
   display: flex;
   justify-content: space-between;

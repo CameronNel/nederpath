@@ -1,7 +1,10 @@
 // NederPath Dedicated Learning Engine Regression Test Suite
-import { readFileSync } from "node:fs";
+import { readFileSync, readdirSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
+import { execFileSync } from "node:child_process";
+import { createHash } from "node:crypto";
+import { validateRegistry, createIdAllocator } from "../scripts/id_allocator.mjs";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 
@@ -23,6 +26,49 @@ const words = dummyGlobal.NP_WORDS;
 const grammarSrc = readFileSync(join(ROOT, "data", "grammar.js"), "utf8");
 new Function("globalThis", grammarSrc)(dummyGlobal);
 const grammar = dummyGlobal.NP_GRAMMAR;
+
+// -------------------------------------------------------------------
+// Shared helpers: curated core rows and explicit-form derivation
+// -------------------------------------------------------------------
+function loadCoreRows() {
+  const files = readdirSync(join(ROOT, "data")).filter((f) => /^words_core_.*\.js$/.test(f)).sort();
+  const rows = [];
+  for (const file of files) {
+    const src = readFileSync(join(ROOT, "data", file), "utf8");
+    const mod = { exports: {} };
+    new Function("module", "exports", src + "\nreturn module.exports;")(mod, mod.exports);
+    for (const c of mod.exports.WORDS || []) rows.push(c);
+  }
+  return rows;
+}
+
+// Mirrors the conservative explicit plural markers in scripts/generate_words.mjs.
+function explicitCorePlural(word, meta) {
+  const [spec = ""] = String(meta || "").split("|");
+  if (spec === "s") return `${word}s`;
+  if (spec === "'s") return `${word}'s`;
+  if (spec === "eren") return `${word}eren`;
+  if (spec.startsWith("=") && spec.length > 1) return spec.slice(1);
+  return null;
+}
+
+function expectedPluralForms() {
+  const forms = new Map();
+  for (const c of loadCoreRows()) {
+    const [word, pos, , , , , , meta = ""] = c;
+    if (pos !== "noun") continue;
+    const lemma = word.toLowerCase().trim();
+    const plural = explicitCorePlural(word, meta);
+    if (!plural) continue;
+    if (!forms.has(lemma)) forms.set(lemma, new Set());
+    forms.get(lemma).add(plural.toLowerCase().trim());
+  }
+  return forms;
+}
+
+function sha256File(p) {
+  return createHash("sha256").update(readFileSync(p)).digest("hex");
+}
 
 let passed = 0;
 let failed = 0;
@@ -54,7 +100,7 @@ test("Sampling: sampleArray and shuffleArray do not mutate source array", () => 
   if (shuffled.length !== 10) throw new Error(`Shuffled length was ${shuffled.length}, expected 10`);
 });
 
-test("Sampling: Full 20,000-word bank is accessible (no first-100 bias)", () => {
+test("Sampling: Entire word bank is accessible (no first-100 bias)", () => {
   const sample = Learning.sampleArray(words, 20);
   if (sample.length !== 20) throw new Error("Expected 20 sampled items");
 
@@ -67,7 +113,7 @@ test("Sampling: Full 20,000-word bank is accessible (no first-100 bias)", () => 
 // -------------------------------------------------------------------
 // 2. Verb Source Integrity (Lemma Infinitive Enforcement)
 // -------------------------------------------------------------------
-test("Verb Source Integrity: getEligibleVerbs admits ONLY lemma infinitives from 20k bank", () => {
+test("Verb Source Integrity: getEligibleVerbs admits ONLY curated lemma infinitives", () => {
   const eligible = Learning.getEligibleVerbs(words);
   if (!Array.isArray(eligible) || eligible.length === 0) {
     throw new Error("getEligibleVerbs returned empty array");
@@ -250,21 +296,42 @@ test("Fill-in-the-Blank: Target equality rejects sentence words that are not the
 // -------------------------------------------------------------------
 // 5. Plural Morphology Exact Grading & Oracle Equivalence
 // -------------------------------------------------------------------
-test("Morphology: getNounPlural resolves direct plurals and never falls back to diminutive plurals", () => {
-  const directPluralPairs = {
-    oor: "oren",       // not oortjes
-    tand: "tanden",   // not tandjes
-    lip: "lippen",     // not lipjes
-    boek: "boeken",   // not boekjes
-    kind: "kinderen", // not kindjes
-    stad: "steden"    // not stadjes
-  };
+test("Morphology: Every generated plural is licensed by explicit core metadata", () => {
+  const forms = expectedPluralForms();
+  if (forms.size === 0) throw new Error("No explicit plural markers found in curated cores");
 
-  for (const [lemma, expectedPlural] of Object.entries(directPluralPairs)) {
-    const actual = Learning.getNounPlural(lemma, words);
-    if (actual !== expectedPlural) {
-      throw new Error(`getNounPlural('${lemma}') returned '${actual}', expected direct plural '${expectedPlural}'`);
+  // Representative anchors that must survive (verified present in the bank).
+  const anchors = { oor: "oren", tand: "tanden", kind: "kinderen", stad: "steden" };
+  for (const [lemma, expected] of Object.entries(anchors)) {
+    if (!forms.get(lemma)?.has(expected)) {
+      throw new Error(`Curated cores no longer carry the explicit plural '${lemma}' -> '${expected}'`);
     }
+  }
+
+  // An explicit form may collide with another curated surface form (for example,
+  // noun plural "vragen" and verb lemma "vragen"). The globally unique bank
+  // conservatively omits that ambiguous derived row. Every row it does emit must
+  // still be licensed by source metadata.
+  const pluralRows = words.filter((w) => w.pos === "noun" && w.inflectionType === "plural");
+  for (const row of pluralRows) {
+    const lemma = row.lemma.toLowerCase().trim();
+    if (!forms.get(lemma)?.has(row.word.toLowerCase().trim())) {
+      throw new Error(`Generated plural '${row.word}' for '${row.lemma}' lacks explicit source metadata`);
+    }
+    if (row.article !== "de") throw new Error(`Plural row '${row.word}' carries article '${row.article}', must be 'de'`);
+    if (row.curated || row.learnable) throw new Error(`Derived plural row '${row.word}' must be uncurated reference-only`);
+  }
+});
+
+test("Morphology: No plural is fabricated for noun lemmas without explicit plural metadata", () => {
+  // 'lip' is curated without an explicit plural marker; Dutch 'lippen' is real, but the
+  // conservative source does not license it, so the bank must not invent it.
+  const resolved = Learning.getNounPlural("lip", words);
+  if (resolved !== null) {
+    throw new Error(`getNounPlural('lip') fabricated '${resolved}' without explicit source metadata`);
+  }
+  if (words.some((w) => w.word.toLowerCase() === "lippen")) {
+    throw new Error("Unsourced plural row 'lippen' present in bank");
   }
 });
 
@@ -277,9 +344,7 @@ test("Morphology: Indexed lookup matches independent direct-plural oracle across
     const row = words.find((w) => {
       if (w.pos !== "noun" || !w.lemma) return false;
       if (w.lemma.toLowerCase() !== l) return false;
-      const m = (w.meaning || "").toLowerCase();
-      if (m.includes("diminutive")) return false;
-      return w.inflectionType === "plural" || m.startsWith("plural of") || m.includes("(plural of");
+      return w.inflectionType === "plural";
     });
     return row && row.word ? row.word.toLowerCase().trim() : null;
   }
@@ -729,6 +794,241 @@ test("DataLoader: loadBank times out, cleans up, and permits a successful retry"
   const retryResult = await retryPromise;
   if (retryResult !== testGlobal.NP_SENTENCES || !DataLoader.isBankLoaded("sentences")) {
     throw new Error("Retry did not resolve with and cache the loaded bank");
+  }
+});
+
+// -------------------------------------------------------------------
+// 14. Lexical Schema, CEFR Levels, and Morphological Invariants
+// -------------------------------------------------------------------
+test("Lexical Integrity: Zero prohibited corruption patterns in word bank", () => {
+  const wordsSrc = readFileSync(join(ROOT, "data", "words.js"), "utf8");
+  const testGlobal = {};
+  new Function("globalThis", wordsSrc)(testGlobal);
+  const words = testGlobal.NP_WORDS;
+
+  const FORBIDDEN_WORDS = new Set(["houden vant", "houden vandeen", "piano speelt", "niette", "nietter", "welder", "tochter", "nooiter"]);
+
+  for (const r of words) {
+    if (r.level === "phrase") {
+      throw new Error(`Prohibited level='phrase' in word ${r.id} (${r.word})`);
+    }
+    if (!["A1", "A2", "B1", "B2", "C1"].includes(r.level)) {
+      throw new Error(`Invalid CEFR level '${r.level}' in word ${r.id} (${r.word})`);
+    }
+    if (r.word.includes(" ") && r.pos === "verb") {
+      throw new Error(`Multiword verb '${r.word}' found in word bank; must be pos='phrase'`);
+    }
+    if (r.pos === "noun" && (r.inflectionType === "plural" || r.inflectionType === "diminutive-plural") && r.article !== "de") {
+      throw new Error(`Plural noun '${r.word}' has article '${r.article}', expected 'de'`);
+    }
+    if (r.pos === "noun" && r.inflectionType === "diminutive" && r.article !== "het") {
+      throw new Error(`Diminutive noun '${r.word}' has article '${r.article}', expected 'het'`);
+    }
+    if (!r.curated && r.inflectionType !== "cardinal" && r.learnable) {
+      throw new Error(`Derived inflection '${r.word}' marked learnable=true without curation`);
+    }
+    if (FORBIDDEN_WORDS.has(r.word.toLowerCase().trim())) {
+      throw new Error(`Forbidden corruption row present in word bank: ${r.word}`);
+    }
+    if (r.example) {
+      if (/\bte (ben|is|was|waren|geweest)\b/.test(r.example)) {
+        throw new Error(`Impossible frame 'te ...' in word ${r.id}: ${r.example}`);
+      }
+      if (/Er waren (eerste|tweede|derde|vierde|vijfde)/.test(r.example)) {
+        throw new Error(`Impossible ordinal frame in word ${r.id}: ${r.example}`);
+      }
+      if (r.pos === "noun" && (r.inflectionType === "plural" || r.inflectionType === "diminutive-plural")) {
+        if (/\bspeelt\b/.test(r.example) || /\bbevindt zich\b/.test(r.example) || /\bvertrekt\b/.test(r.example)) {
+          throw new Error(`Singular verb agreement in plural noun example for '${r.word}': ${r.example}`);
+        }
+      }
+    }
+  }
+});
+
+// -------------------------------------------------------------------
+// 15. Oracle-Style Morphology Checks Over ALL Generated Nouns and Verbs
+// -------------------------------------------------------------------
+test("Morphology Oracle: Every generated plural and hij-form is indexed exactly", () => {
+  const indexes = Learning.getWordBankIndexes(words);
+  if (!indexes || !indexes.lemmaToHij || !indexes.lemmaToPlural) {
+    throw new Error("Failed to build word bank indexes");
+  }
+
+  const pluralRows = words.filter((w) => w.inflectionType === "plural");
+  const hijRows = words.filter((w) => w.inflectionType === "hij-form");
+  if (pluralRows.length === 0 || hijRows.length === 0) {
+    throw new Error("Expected explicit plural and hij-form rows in the generated bank");
+  }
+  const firstPluralByLemma = new Map();
+  for (const row of pluralRows) {
+    const lemma = row.lemma.toLowerCase().trim();
+    if (!firstPluralByLemma.has(lemma)) firstPluralByLemma.set(lemma, row.word.toLowerCase().trim());
+  }
+  for (const [lemma, expected] of firstPluralByLemma) {
+    const actual = indexes.lemmaToPlural.get(lemma);
+    if (actual !== expected) throw new Error(`Plural index mismatch for '${lemma}': '${actual}' vs '${expected}'`);
+  }
+  const firstHijByLemma = new Map();
+  for (const row of hijRows) {
+    const lemma = row.lemma.toLowerCase().trim();
+    if (!firstHijByLemma.has(lemma)) firstHijByLemma.set(lemma, row.word.toLowerCase().trim());
+  }
+  for (const [lemma, expected] of firstHijByLemma) {
+    const actual = indexes.lemmaToHij.get(lemma);
+    if (actual !== expected) throw new Error(`Hij-form index mismatch for '${lemma}': '${actual}' vs '${expected}'`);
+  }
+
+  const prohibitedDerivedTypes = new Set([
+    "present-participle", "attributive-present-participle", "attributive-participle",
+    "inflected-e", "inflected-comparative", "inflected-superlative"
+  ]);
+  const unsupported = words.find((w) => prohibitedDerivedTypes.has(w.inflectionType));
+  if (unsupported) throw new Error(`Unsupported heuristic form '${unsupported.word}' (${unsupported.inflectionType}) remains`);
+});
+
+// -------------------------------------------------------------------
+// 16. Generator Byte-for-Byte Reproducibility
+// -------------------------------------------------------------------
+test("Generator: Two real runs are byte-identical and the checkout starts canonical", () => {
+  const wordsPath = join(ROOT, "data", "words.js");
+  const registryPath = join(ROOT, "data", "word_ids.json");
+  const before = [sha256File(wordsPath), sha256File(registryPath)];
+  const run = () => execFileSync(process.execPath, [join(ROOT, "scripts", "generate_words.mjs")], {
+    cwd: ROOT,
+    encoding: "utf8",
+    stdio: ["ignore", "pipe", "pipe"]
+  });
+
+  run();
+  const afterFirst = [sha256File(wordsPath), sha256File(registryPath)];
+  run();
+  const afterSecond = [sha256File(wordsPath), sha256File(registryPath)];
+  if (before.join(":") !== afterFirst.join(":")) {
+    throw new Error("Tracked word output was stale before generation; commit canonical generated files");
+  }
+  if (afterFirst.join(":") !== afterSecond.join(":")) {
+    throw new Error("Consecutive generator runs changed words.js or word_ids.json bytes");
+  }
+});
+
+// -------------------------------------------------------------------
+// 17. Stable-ID Preservation and Retirement Isolation
+// -------------------------------------------------------------------
+test("Stable IDs: Full master fixture is preserved and retired IDs cannot be recycled", () => {
+  let baseline;
+  let registry;
+  try {
+    baseline = JSON.parse(readFileSync(join(ROOT, "tests", "fixtures", "baseline_ids.json"), "utf8"));
+    registry = JSON.parse(readFileSync(join(ROOT, "data", "word_ids.json"), "utf8"));
+  } catch (err) {
+    throw new Error(`Stable-ID fixture or registry is missing/malformed: ${err.message}`);
+  }
+  if (baseline.sourceCommit !== "f417ec110f3e60f02c46ff7b961b5fb8683e0143" ||
+      !Number.isSafeInteger(baseline.highWaterMark) || !baseline.entries) {
+    throw new Error("Baseline fixture schema/source commit is invalid");
+  }
+
+  const validated = validateRegistry(registry);
+  const current = new Map(words.map((w) => [w.word.toLowerCase().trim(), w.id]));
+  const baselineEntries = Object.entries(baseline.entries);
+  if (baselineEntries.length !== baseline.highWaterMark) {
+    throw new Error(`Baseline fixture has ${baselineEntries.length} owners but HWM ${baseline.highWaterMark}`);
+  }
+  for (const [norm, historicalId] of baselineEntries) {
+    if (validated.entries.get(norm) !== historicalId) {
+      throw new Error(`Registry changed historical owner '${norm}': expected ${historicalId}, got ${validated.entries.get(norm)}`);
+    }
+    if (current.has(norm) && current.get(norm) !== historicalId) {
+      throw new Error(`Surviving word '${norm}' changed ID: expected ${historicalId}, got ${current.get(norm)}`);
+    }
+  }
+
+  const retired = baselineEntries.find(([norm]) => !current.has(norm));
+  if (!retired) throw new Error("Fixture contains no retired word for allocator simulation");
+  const allocator = createIdAllocator(validated);
+  const simulatedNorm = "__nederpath_retired_id_non_reuse_probe__";
+  const newId = allocator.assignId(simulatedNorm);
+  const newNum = Number(newId.slice(3));
+  if (newNum !== registry.highWaterMark + 1) {
+    throw new Error(`New ID ${newId} did not append above HWM ${registry.highWaterMark}`);
+  }
+  if (newId === retired[1] || allocator.ownerOf(retired[1]) !== retired[0]) {
+    throw new Error(`Retired ID ${retired[1]} was recycled or lost its historical owner`);
+  }
+});
+
+// -------------------------------------------------------------------
+// 18. Learner-Pool Practice Mode Isolation
+// -------------------------------------------------------------------
+test("Learner Pools: Derived reference-only rows never surface in practice pools", () => {
+  const learnablePool = words.filter((w) => w.learnable === true);
+  const referencePool = words.filter((w) => w.learnable === false);
+  if (learnablePool.length === 0 || referencePool.length === 0) throw new Error("Expected both learnable and reference pools");
+  const uncuratedLearner = learnablePool.find((w) => !w.curated);
+  if (uncuratedLearner) throw new Error(`Uncurated row '${uncuratedLearner.word}' is learnable`);
+  const derivedLearner = learnablePool.find((w) => !["lemma", "phrase"].includes(w.inflectionType));
+  if (derivedLearner) throw new Error(`Derived row '${derivedLearner.word}' surfaced in learnable pool`);
+  const falseLemma = words.find((w) => w.isCuratedLemma && (!w.curated || w.pos === "phrase" || w.inflectionType !== "lemma"));
+  if (falseLemma) throw new Error(`Invalid isCuratedLemma classification for '${falseLemma.word}'`);
+  const sourcedExample = words.find((w) => w.example !== null || w.exampleEn !== null || w.frequency !== null);
+  if (sourcedExample) throw new Error(`Unsourced example/frequency remains on '${sourcedExample.word}'`);
+
+  // Flashcards session generator must NEVER select from referencePool
+  const session = Learning.generateFlashcardSession([], words, 30, new Set());
+  for (const card of session) {
+    if (card.learnable === false) {
+      throw new Error(`Reference-only word '${card.word}' surfaced in flashcard session`);
+    }
+  }
+});
+
+// -------------------------------------------------------------------
+// 19. Store Stale Word Reference Sanitization
+// -------------------------------------------------------------------
+test("Store: sanitizeStaleWordReferences prunes retired IDs safely", () => {
+  const mockStorage = {};
+  const mockLocalStorage = {
+    getItem: (k) => mockStorage[k] || null,
+    setItem: (k, v) => { mockStorage[k] = String(v); },
+    removeItem: (k) => { delete mockStorage[k]; }
+  };
+
+  const oldStorage = globalThis.localStorage;
+  const oldConsoleError = console.error;
+  const errors = [];
+  globalThis.localStorage = mockLocalStorage;
+  console.error = (...args) => errors.push(args.map(String).join(" "));
+
+  try {
+    const storeModule = { localStorage: mockLocalStorage };
+    new Function("globalThis", storeSrc)(storeModule);
+    const StoreClass = storeModule.NederStore.constructor;
+
+    const s = new StoreClass();
+    s.state.progress.wordsBookmarked = {
+      "nl-00001": true, // valid ('ik')
+      "nl-99999": true  // retired/invalid
+    };
+    s.state.srs.cards = {
+      "nl-00001": { id: "nl-00001", type: "vocab", interval: 1 },
+      "nl-99999": { id: "nl-99999", type: "vocab", interval: 1 },
+      "rule-01": { id: "rule-01", type: "grammar", interval: 1 } // non-vocab card should stay
+    };
+
+    const validSet = new Set(["nl-00001", "nl-00002", "nl-00003"]);
+    const modified = s.sanitizeStaleWordReferences(validSet);
+
+    if (!modified) throw new Error("Expected sanitizeStaleWordReferences to modify stale state");
+    if (!s.state.progress.wordsBookmarked["nl-00001"]) throw new Error("Valid bookmark was removed");
+    if (s.state.progress.wordsBookmarked["nl-99999"]) throw new Error("Stale bookmark was not pruned");
+    if (!s.state.srs.cards["nl-00001"]) throw new Error("Valid SRS card was removed");
+    if (s.state.srs.cards["nl-99999"]) throw new Error("Stale SRS card was not pruned");
+    if (!s.state.srs.cards["rule-01"]) throw new Error("Non-vocab SRS card was incorrectly pruned");
+    if (errors.length) throw new Error(`Store emitted unexpected storage diagnostics: ${errors.join(" | ")}`);
+  } finally {
+    globalThis.localStorage = oldStorage;
+    console.error = oldConsoleError;
   }
 });
 

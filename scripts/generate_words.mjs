@@ -1,130 +1,163 @@
 // NederPath word-bank generator.
 // Reads curated lemma cores from data/words_core_*.js and produces data/words.js
-// with EXACTLY 20,000 unique Dutch word-form rows (id, rank, word, lemma, frequency,
-// level, pos, article, meaning, category, synonyms, curated, learnable, displayWord, example, exampleEn).
-import { readFileSync, writeFileSync, readdirSync } from "node:fs";
+// with the conservative set of Dutch word forms derived from curated cores and validated rules.
+// No fabricated examples, no synthetic frequency, no target-count padding.
+// Enforces schema invariants, safe learnability policies,
+// and deterministic stable ID assignment with high-water mark across regeneration.
+import { readFileSync, writeFileSync, readdirSync, existsSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
+import { validateRegistry, createIdAllocator, RegistryError } from "./id_allocator.mjs";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
-const TARGET = 20000;
+
+// Allowed schema constants
+const ALLOWED_POS = new Set([
+  "noun", "verb", "adjective", "adverb", "pronoun", "determiner",
+  "preposition", "conjunction", "interjection", "numeral", "phrase", "particle"
+]);
+const ALLOWED_LEVELS = new Set(["A1", "A2", "B1", "B2", "C1"]);
 
 // ---------------------------------------------------------------------------
-// Dutch inflection helpers
+// 1. Load Baseline Compatibility Map for Stable IDs (Fail-Closed)
 // ---------------------------------------------------------------------------
-const KOFSCHIP = "tkfschp".split("");
-const VOWELS = "aeiouyéèêáàâäëïöü".split("");
-
-const isVowel = (c) => !!c && VOWELS.includes(c.toLowerCase());
-
-// stem of a verb infinitive with Dutch spelling rules applied
-function verbStem(inf) {
-  if (!inf.endsWith("en")) return inf.replace(/en$/, "");
-  let s = inf.slice(0, -2);
-  if (s.endsWith("v")) s = s.slice(0, -1) + "f";
-  if (s.endsWith("z")) s = s.slice(0, -1) + "s";
-  if (/([bcdfghjklmnpqrstvwxz])\1$/.test(s)) s = s.slice(0, -1);
-  if (/[aeou]$/.test(s)) s = s + s.slice(-1);
-  return s;
-}
-const weakPast = (stem) => (KOFSCHIP.includes(stem.slice(-1).toLowerCase()) ? stem + "te" : stem + "de");
-const weakPp = (stem) => (KOFSCHIP.includes(stem.slice(-1).toLowerCase()) ? stem + "t" : stem + "d");
-const withGe = (pp, inf) => {
-  if (/^(be|ge|ver|ont|her|er)/.test(inf) && inf.length > 4) return pp;
-  return "ge" + pp;
-};
-const presentParticiple = (inf) => (inf.endsWith("en") ? inf.slice(0, -2) : inf) + "end";
-
-const sylCount = (w) => (w.match(/[aeiouyéèêáàâäëïöü]+(?:[aeiouy])*/g) || []).length || 1;
-
-// noun plural with rules + override
-function nounPlural(word, ov) {
-  if (ov === "s") return word + "s";
-  if (ov === "inv" || ov === "none" || ov === "pl") return null;
-  if (ov === "eren") return word + "eren";
-  if (ov && ov.startsWith("=")) return ov.slice(1);
-  const w = word;
-  if (/[aeiouy]$/i.test(w)) {
-    if (/[aiouy]$/i.test(w)) return w + "'s";
-    return w + "s";
-  }
-  if (/e$/.test(w)) return w + "s";
-  if (/(el|em|en|er|erd|aar|je|tje)$/.test(w) && sylCount(w) >= 2) return w + "s";
-  if (/heid$/.test(w)) return w.slice(0, -4) + "heden";
-  let b = w;
-  if (b.endsWith("f")) b = b.slice(0, -1) + "v";
-  if (/(aa|ee|oo|uu)$/.test(b) || /(aa|ee|oo|uu)[bcdfghjklmnpqrstvwxz]$/.test(b)) b = b.replace(/(aa|ee|oo|uu)/, (m) => m[0]);
-  if (/[bcdfghjklmnpqrstvwxz]$/.test(b) && isVowel(b[b.length - 2]) && !isVowel(b[b.length - 3]) && b.length > 2 && !/(a|e|o|u)[bcdfghjklmnpqrstvwxz]{2}$/.test(b)) {
-    const last = b.slice(-1);
-    if (!b.endsWith(last + last)) b = b + last;
-  }
-  return b + "en";
+const idRegistryPath = join(ROOT, "data", "word_ids.json");
+if (!existsSync(idRegistryPath)) {
+  console.error("FATAL: tracked historical ID registry data/word_ids.json is missing.");
+  process.exit(1);
 }
 
-// diminutive with rules + override
-function nounDim(word, ov) {
-  if (ov === "inv" || ov === "none" || ov === "pl") return null;
-  if (ov && ov.includes("|") && ov.split("|")[1]) return ov.split("|")[1];
-  const w = word;
-  if (/ing$/.test(w)) return w.slice(0, -1) + "kje";
-  if (/ie$/.test(w)) return w + "tje";
-  if (/[aou]$/.test(w)) return w + w.slice(-1) + "tje";
-  if (/[éèêáà]$/.test(w)) return w.slice(0, -1) + "eetje";
-  if (/e$/.test(w)) return w + "tje";
-  if (/(em|am|om|um|jm)$/.test(w)) {
-    const longPair = /(aa|ee|oo|uu|oe|ie|ij|ei|ou|au|eu|ui)/.test(w);
-    return longPair ? w + "pje" : w + w.slice(-1) + "etje";
-  }
-  if (/(lm|rm|nm)$/.test(w)) return w + "pje";
-  if (/en$/.test(w) && sylCount(w) >= 2) return w.slice(0, -1) + "tje";
-  if (/(el|er)$/.test(w) && sylCount(w) >= 2) return w + "tje";
-  if (/(l|n|r|w)$/.test(w)) {
-    const longPair = /(aa|ee|oo|uu|oe|ie|ij|ei|ou|au|eu|ui)/.test(w);
-    if (longPair) return w + "tje";
-    if (sylCount(w) === 1) return w + w.slice(-1) + "etje";
-    return w + w.slice(-1) + "etje";
-  }
-  return w + "je";
+let idRegistry;
+try {
+  idRegistry = JSON.parse(readFileSync(idRegistryPath, "utf8"));
+} catch (err) {
+  console.error("FATAL: data/word_ids.json cannot be parsed:", err.message);
+  process.exit(1);
 }
 
-// inflect base descriptive adjective with -e ending
-function inflectAdj(word, ov) {
-  if (ov === "-" || ov === "none") return null;
-  if (/e$/.test(word) || /en$/.test(word)) return null;
-  let b = word;
-  if (b.endsWith("f") && /[aeou]/.test(b)) b = b.slice(0, -1) + "v";
-  if (b.endsWith("s") && /[aeou]/.test(b)) b = b.slice(0, -1) + "z";
-  if (/(aa|ee|oo|uu)[bcdfghjklmnpqrstvwxz]$/.test(b)) b = b.replace(/(aa|ee|oo|uu)/, (m) => m[0]);
-  if (/[bcdfghjklmnpqrstvwxz]$/.test(b) && isVowel(b[b.length - 2]) && b.length > 2 && !/(a|e|o|u)[bcdfghjklmnpqrstvwxz]{2}$/.test(b)) {
-    const last = b.slice(-1);
-    if (!b.endsWith(last + last)) b = b + last;
+let validatedRegistry;
+try {
+  validatedRegistry = validateRegistry(idRegistry);
+} catch (err) {
+  if (err instanceof RegistryError) {
+    console.error(`FATAL: data/word_ids.json is invalid: ${err.message}`);
+  } else {
+    console.error("FATAL: data/word_ids.json could not be validated:", err.message);
   }
-  return b + "e";
+  process.exit(1);
 }
 
-// adjective comparison with override
-function comparison(word, ov) {
-  if (ov === "-" || ov === "none") return [null, null];
-  if (ov && ov.includes("|")) {
-    const [, comp, sup] = ov.split("|");
-    return [comp || null, sup || null];
+const allocator = createIdAllocator(validatedRegistry);
+const existingIdMap = validatedRegistry.entries;
+const registryIdOwners = validatedRegistry.owners;
+
+const wordsPath = join(ROOT, "data", "words.js");
+if (!existsSync(wordsPath)) {
+  console.error("FATAL: tracked compatibility baseline data/words.js is missing. Restore it before generating.");
+  process.exit(1);
+}
+{
+  const wordsSrc = readFileSync(wordsPath, "utf8");
+  let baselineWords;
+  try {
+    const fn = new Function("globalThis", wordsSrc + "\nreturn globalThis.NP_WORDS;");
+    baselineWords = fn({});
+  } catch (err) {
+    console.error("FATAL: data/words.js exists but cannot be parsed:", err.message);
+    process.exit(1);
   }
-  let b = word;
-  if (b.endsWith("f") && /[aeou]/.test(b)) b = b.slice(0, -1) + "v";
-  if (/(aa|ee|oo|uu)[bcdfghjklmnpqrstvwxz]$/.test(b)) b = b.replace(/(aa|ee|oo|uu)/, (m) => m[0]);
-  if (/[bcdfghjklmnpqrstvwxz]$/.test(b) && isVowel(b[b.length - 2]) && b.length > 2 && !/(a|e|o|u)[bcdfghjklmnpqrstvwxz]{2}$/.test(b)) {
-    const last = b.slice(-1);
-    if (!b.endsWith(last + last)) b = b + last;
+  if (!Array.isArray(baselineWords)) {
+    console.error("FATAL: data/words.js parsed but NP_WORDS is not an array.");
+    process.exit(1);
   }
-  const comp = b.endsWith("r") ? b + "der" : b + "er";
-  let sup = null;
-  if (/s$/.test(b)) sup = b + "t";
-  else sup = b + "st";
-  return [comp, sup];
+
+  const seenNorm = new Map();
+  const seenIds = new Map();
+  for (const w of baselineWords) {
+    if (!w || !w.word || !w.id) {
+      console.error("FATAL: data/words.js contains a row with missing word or id:", JSON.stringify(w));
+      process.exit(1);
+    }
+    const norm = w.word.toLowerCase().trim();
+    if (seenNorm.has(norm)) {
+      console.error(`FATAL: data/words.js has duplicate normalized word '${norm}' (IDs: ${seenNorm.get(norm)}, ${w.id}).`);
+      process.exit(1);
+    }
+    seenNorm.set(norm, w.id);
+
+    if (seenIds.has(w.id)) {
+      console.error(`FATAL: data/words.js has duplicate ID '${w.id}' (words: ${seenIds.get(w.id)}, ${norm}).`);
+      process.exit(1);
+    }
+    seenIds.set(w.id, norm);
+
+    const m = w.id.match(/^nl-(\d+)$/);
+    if (!m) {
+      console.error(`FATAL: data/words.js has malformed ID '${w.id}' for word '${norm}'.`);
+      process.exit(1);
+    }
+    const registeredId = existingIdMap.get(norm);
+    const registeredOwner = registryIdOwners.get(w.id);
+    if (registeredId === undefined) {
+      console.error(`FATAL: data/words.js contains '${norm}' (${w.id}), which is absent from the historical registry. Restore the registry; never silently recreate IDs.`);
+      process.exit(1);
+    }
+    if (registeredId !== w.id) {
+      console.error(`FATAL: data/words.js maps '${norm}' to '${w.id}', but the registry owns '${registeredId}'.`);
+      process.exit(1);
+    }
+    if (registeredOwner && registeredOwner !== norm) {
+      console.error(`FATAL: data/words.js assigns historical ID '${w.id}' to '${norm}', owned by '${registeredOwner}'.`);
+      process.exit(1);
+    }
+  }
 }
 
 // ---------------------------------------------------------------------------
-// Dutch number names (0-999) and ordinals (1-999)
+// 2. Conservative Explicit-Form Helpers
+// ---------------------------------------------------------------------------
+function explicitNounForms(word, meta) {
+  const [pluralSpec = "", diminutiveSpec = ""] = String(meta || "").split("|");
+  let plural = null;
+  if (pluralSpec === "s") plural = `${word}s`;
+  else if (pluralSpec === "'s") plural = `${word}'s`;
+  else if (pluralSpec === "eren") plural = `${word}eren`;
+  else if (pluralSpec.startsWith("=") && pluralSpec.length > 1) plural = pluralSpec.slice(1);
+
+  const diminutive = diminutiveSpec || null;
+  const diminutivePlural = diminutive ? `${diminutive}s` : null;
+  return { plural, diminutive, diminutivePlural };
+}
+
+function explicitVerbForms(meta) {
+  const value = String(meta || "");
+  if (value.startsWith("sep=")) {
+    const participle = value.slice(4).trim();
+    return participle ? [{ word: participle, kind: "past-participle", grammaticalForm: "voltooid deelwoord" }] : [];
+  }
+  if (!value.includes("|")) return [];
+  const [ik, hij, pastSingular, pastPlural, pastParticiple] = value.split("|");
+  return [
+    { word: ik, kind: "ik-form", grammaticalForm: "tegenwoordige tijd (ik)" },
+    { word: hij, kind: "hij-form", grammaticalForm: "tegenwoordige tijd (hij/zij)" },
+    { word: pastSingular, kind: "past-singular", grammaticalForm: "verleden tijd enkelvoud" },
+    { word: pastPlural, kind: "past-plural", grammaticalForm: "verleden tijd meervoud" },
+    { word: pastParticiple === "-" ? "" : pastParticiple, kind: "past-participle", grammaticalForm: "voltooid deelwoord" }
+  ].filter((form) => form.word);
+}
+
+function explicitAdjectiveForms(meta) {
+  const value = String(meta || "");
+  if (!value.includes("|")) return [];
+  const [, comparative, superlative] = value.split("|");
+  return [
+    { word: comparative, kind: "comparative", grammaticalForm: "vergrotende trap (comparatief)" },
+    { word: superlative, kind: "superlative", grammaticalForm: "overtreffende trap (superlatief)" }
+  ].filter((form) => form.word);
+}
+
+// ---------------------------------------------------------------------------
+// 3. Numerals (Cardinals 0..999 & Ordinals 1..999)
 // ---------------------------------------------------------------------------
 const UNITS = ["nul", "een", "twee", "drie", "vier", "vijf", "zes", "zeven", "acht", "negen", "tien", "elf", "twaalf", "dertien", "veertien", "vijftien", "zestien", "zeventien", "achttien", "negentien"];
 const TENS = ["", "", "twintig", "dertig", "veertig", "vijftig", "zestig", "zeventig", "tachtig", "negentig"];
@@ -135,6 +168,7 @@ const ORD_BASE = {
   19: "negentiende", 20: "twintigste", 30: "dertigste", 40: "veertigste", 50: "vijftigste",
   60: "zestigste", 70: "zeventigste", 80: "tachtigste", 90: "negentigste", 100: "honderdste",
 };
+
 function cardinal(n) {
   if (n < 20) return UNITS[n];
   if (n < 100) {
@@ -147,6 +181,7 @@ function cardinal(n) {
   const hName = h === 1 ? "honderd" : UNITS[h] + "honderd";
   return rest === 0 ? hName : hName + cardinal(rest);
 }
+
 function ordinal(n) {
   if (n < 20) return ORD_BASE[n];
   if (n < 100) {
@@ -159,8 +194,18 @@ function ordinal(n) {
   return hName + (rest === 0 ? "ste" : ordinal(rest));
 }
 
+function ordinalSuffixEn(n) {
+  const last2 = n % 100;
+  if (last2 >= 11 && last2 <= 13) return `${n}th`;
+  const last = n % 10;
+  if (last === 1) return `${n}st`;
+  if (last === 2) return `${n}nd`;
+  if (last === 3) return `${n}rd`;
+  return `${n}th`;
+}
+
 // ---------------------------------------------------------------------------
-// Load curated cores
+// 4. Load & Validate Curated Cores
 // ---------------------------------------------------------------------------
 const cores = [];
 for (const file of readdirSync(join(ROOT, "data")).filter((f) => /^words_core_.*\.js$/.test(f)).sort()) {
@@ -168,32 +213,55 @@ for (const file of readdirSync(join(ROOT, "data")).filter((f) => /^words_core_.*
   const mod = { exports: {} };
   const fn = new Function("module", "exports", src + "\nreturn module.exports;");
   const ex = fn(mod, mod.exports);
-  cores.push(...(ex.WORDS || []));
+  const words = ex.WORDS || [];
+  for (const [idx, c] of words.entries()) {
+    if (!Array.isArray(c) || c.length !== 8) {
+      throw new Error(`Invalid core row in ${file} at index ${idx}: expected array of 8 elements`);
+    }
+    const [word, pos, level, article, meaning, category] = c;
+    if (!word || typeof word !== "string" || !word.trim()) {
+      throw new Error(`Empty word in ${file} at index ${idx}`);
+    }
+    if (!ALLOWED_POS.has(pos)) {
+      throw new Error(`Invalid POS '${pos}' in ${file} at index ${idx} for word '${word}'`);
+    }
+    if (!ALLOWED_LEVELS.has(level)) {
+      throw new Error(`Invalid CEFR level '${level}' in ${file} at index ${idx} for word '${word}'`);
+    }
+    if (!meaning || typeof meaning !== "string") {
+      throw new Error(`Missing meaning in ${file} at index ${idx} for word '${word}'`);
+    }
+    if (!category || typeof category !== "string") {
+      throw new Error(`Missing category in ${file} at index ${idx} for word '${word}'`);
+    }
+    if (word.includes(" ") && pos === "verb") {
+      throw new Error(`Multiword verb phrase '${word}' in ${file} must be pos='phrase'`);
+    }
+    if (pos === "noun" && !["de", "het"].includes(article)) {
+      throw new Error(`Noun '${word}' in ${file} must carry article='de' or article='het'`);
+    }
+    cores.push(c);
+  }
 }
 
-// Core row: [word, pos, level, article, meaning, category, synonyms, meta]
+// ---------------------------------------------------------------------------
+// 5. Expand Lemmas & Generate Inflectional Subtypes
+// ---------------------------------------------------------------------------
 const rows = [];
-const seen = new Map(); // normalized word -> index
+const seen = new Map(); // normalized word -> index in rows
+
 const addRow = (r) => {
   const norm = r.word.toLowerCase().trim();
-  const prev = seen.get(norm);
-  if (prev !== undefined) return false;
+  if (seen.has(norm)) return false;
   seen.set(norm, rows.length);
   rows.push(r);
   return true;
 };
 
-// Words that should NOT produce false inflections
-const NON_INFLECTABLE_ADVERBS = new Set([
-  "niet", "wel", "toch", "geen", "nooit", "altijd", "vaak", "zelden", "soms", "al", "nog",
-  "hier", "daar", "waar", "erg", "heel", "zeer", "tamelijk", "misschien", "zeker", "klaar",
-  "dus", "want", "maar", "en", "of", "echter", "immers", "namelijk", "trouwens", "overigens",
-  "toen", "dan", "nu", "straks", "later", "vroeger", "ineens", "plotseling", "eindelijk",
-  "omlaag", "omhoog", "binnen", "buiten", "boven", "beneden", "vooruit", "achteruit"
-]);
-
-for (const [idx, c] of cores.entries()) {
+for (const c of cores) {
   const [word, pos, level, article, meaning, category, synonyms, meta = ""] = c;
+  const isPhrase = pos === "phrase";
+
   const base = {
     word,
     pos,
@@ -201,67 +269,31 @@ for (const [idx, c] of cores.entries()) {
     article: article || null,
     meaning: meaning || null,
     category,
-    synonyms: synonyms ? synonyms.split(";").filter(Boolean) : [],
+    synonyms: synonyms ? (Array.isArray(synonyms) ? synonyms : synonyms.split(";").filter(Boolean)) : [],
     curated: true,
     learnable: true,
     lemma: word,
     meta,
+    inflectionType: isPhrase ? "phrase" : "lemma",
+    grammaticalForm: isPhrase ? "gecureerde woordgroep / frase" : "basisvorm / lemma"
   };
-  if (pos === "noun" && !article) {
-    base.curated = false;
-    base.learnable = false;
-  }
+
   addRow(base);
 
-  const gen = []; // generated form rows
-  if (pos === "noun" && article && meta !== "inv" && meta !== "pl") {
-    const pl = nounPlural(word, meta.split("|")[0] || "");
-    if (pl && !seen.has(pl.toLowerCase())) gen.push({ word: pl, kind: "plural" });
-    const dm = nounDim(word, meta);
-    if (dm && !seen.has(dm.toLowerCase())) gen.push({ word: dm, kind: "diminutive" });
-    if (pl && dm) {
-      const dmPl = nounPlural(dm, "s");
-      if (dmPl && !seen.has(dmPl.toLowerCase())) gen.push({ word: dmPl, kind: "diminutive-plural" });
-    }
+  // Multiword phrases never enter single-word inflection engines
+  if (isPhrase) continue;
+
+  const gen = [];
+
+  if (pos === "noun") {
+    const { plural, diminutive, diminutivePlural } = explicitNounForms(word, meta);
+    if (plural) gen.push({ word: plural, kind: "plural", grammaticalForm: "meervoud (mv.)" });
+    if (diminutive) gen.push({ word: diminutive, kind: "diminutive", grammaticalForm: "verkleinwoord (o.)" });
+    if (diminutivePlural) gen.push({ word: diminutivePlural, kind: "diminutive-plural", grammaticalForm: "verkleinwoord meervoud" });
   } else if (pos === "verb") {
-    const inf = word;
-    if (meta.startsWith("sep")) {
-      const ppO = meta.includes("=") ? meta.split("=")[1] : null;
-      const bare = inf.replace(/^(op|af|uit|aan|in|mee|door|tegen|terug|na|voor|weg|om|binnen|buiten|neer|toe|vast|samen)(.+)$/, "$2");
-      const pp = ppO || withGe(weakPp(verbStem(bare)), bare);
-      if (!seen.has(pp.toLowerCase())) gen.push({ word: pp, kind: "past-participle" });
-      if (pp && !pp.endsWith("en") && !seen.has((pp + "e").toLowerCase())) gen.push({ word: pp + "e", kind: "attributive-participle" });
-    } else {
-      const parts = meta ? meta.split("|") : [];
-      const ikOv = parts[0] || null;
-      const hijOv = parts[1] || null;
-      const pastOv = parts[2] || null;
-      const pastPlOv = parts[3] || null;
-      const ppOv = parts.length > 4 ? parts[4] : null;
-      const stem = verbStem(inf);
-      const ik = ikOv || stem;
-      const hij = hijOv || (stem.endsWith("t") ? stem : stem + "t");
-      if (!seen.has(ik.toLowerCase())) gen.push({ word: ik, kind: "ik-form" });
-      if (!seen.has(hij.toLowerCase()) && hij !== ik) gen.push({ word: hij, kind: "hij-form" });
-      const past = pastOv || weakPast(stem);
-      if (!seen.has(past.toLowerCase())) gen.push({ word: past, kind: "past-singular" });
-      const pastPl = pastPlOv || (pastOv ? null : past + "en");
-      if (pastPl && !seen.has(pastPl.toLowerCase())) gen.push({ word: pastPl, kind: "past-plural" });
-      const pp = ppOv === "-" ? null : (ppOv || withGe(weakPp(stem), inf));
-      if (pp && !seen.has(pp.toLowerCase())) gen.push({ word: pp, kind: "past-participle" });
-      if (pp && !pp.endsWith("en") && !seen.has((pp + "e").toLowerCase())) gen.push({ word: pp + "e", kind: "attributive-participle" });
-      const presP = presentParticiple(inf);
-      if (!seen.has(presP.toLowerCase())) gen.push({ word: presP, kind: "present-participle" });
-      if (presP && !seen.has((presP + "e").toLowerCase())) gen.push({ word: presP + "e", kind: "attributive-present-participle" });
-    }
-  } else if (pos === "adjective" && !NON_INFLECTABLE_ADVERBS.has(word.toLowerCase())) {
-    const infl = inflectAdj(word, meta);
-    if (infl && !seen.has(infl.toLowerCase())) gen.push({ word: infl, kind: "inflected-e" });
-    const [comp, sup] = comparison(word, meta);
-    if (comp && !seen.has(comp.toLowerCase())) gen.push({ word: comp, kind: "comparative" });
-    if (comp && !seen.has((comp + "e").toLowerCase())) gen.push({ word: comp + "e", kind: "inflected-comparative" });
-    if (sup && !seen.has(sup.toLowerCase())) gen.push({ word: sup, kind: "superlative" });
-    if (sup && !seen.has((sup + "e").toLowerCase())) gen.push({ word: sup + "e", kind: "inflected-superlative" });
+    gen.push(...explicitVerbForms(meta));
+  } else if (pos === "adjective") {
+    gen.push(...explicitAdjectiveForms(meta));
   }
 
   for (const g of gen) {
@@ -276,6 +308,7 @@ for (const [idx, c] of cores.entries()) {
       "past-participle": "past participle of",
       "attributive-participle": "attributive past participle of",
       "present-participle": "present participle of",
+      "attributive-present-participle": "attributive present participle of",
       "inflected-e": "inflected form of",
       comparative: "comparative of",
       "inflected-comparative": "inflected comparative of",
@@ -283,23 +316,32 @@ for (const [idx, c] of cores.entries()) {
       "inflected-superlative": "inflected superlative of"
     }[g.kind] || "form of";
     const art = article ? article + " " : "";
+
+    // Strictly enforce diminutive singular het, every plural de
+    const derivedArticle = pos === "noun"
+      ? (g.kind === "plural" || g.kind === "diminutive-plural" ? "de" : (g.kind === "diminutive" ? "het" : article))
+      : null;
+
     addRow({
       word: g.word,
       pos: pos === "noun" ? "noun" : pos === "verb" ? "verb" : "adjective",
       level,
-      article: pos === "noun" ? (g.kind.includes("diminutive") ? "het" : (g.kind.includes("plural") ? "de" : article)) : null,
+      article: derivedArticle,
       meaning: meaning ? `${kindLabel} ${art}${word} (${meaning})` : null,
       category,
       synonyms: [],
       curated: false,
-      learnable: pos !== "noun" || !!article,
+      learnable: false, // Generated inflections are reference-only
       lemma: word,
       meta: "",
+      inflectionType: g.kind,
+      grammaticalForm: g.grammaticalForm
     });
   }
 }
 
-// Numerals 0..999 and ordinals 1..999
+// Add numerals 0..999 and ordinals 1..999
+// All numerals are uncurated and therefore learnable: false
 for (let n = 0; n <= 999; n++) {
   const name = cardinal(n);
   addRow({
@@ -311,180 +353,137 @@ for (let n = 0; n <= 999; n++) {
     category: "numbers",
     synonyms: [],
     curated: false,
-    learnable: true,
+    learnable: false, // Uncurated: learnable must be false
     lemma: name,
     meta: "",
+    inflectionType: "cardinal",
+    grammaticalForm: "hoofdtelwoord (cardinaal)",
+    numVal: n
   });
   if (n >= 1) {
+    const ordSuffix = ordinalSuffixEn(n);
     addRow({
       word: ordinal(n),
       pos: "numeral",
       level: n <= 20 ? "A1" : n <= 100 ? "A2" : "B1",
       article: null,
-      meaning: `${n}th`,
+      meaning: `${ordSuffix} (${n}e)`,
       category: "numbers",
       synonyms: [],
       curated: false,
-      learnable: true,
+      learnable: false,
       lemma: ordinal(n),
       meta: "",
+      inflectionType: "ordinal",
+      grammaticalForm: "rangtelwoord (ordinaal)",
+      numVal: n
     });
   }
 }
 
 // ---------------------------------------------------------------------------
-// Trim or error to exactly TARGET rows
+// 6. Finalize Word Bank with Stable IDs
 // ---------------------------------------------------------------------------
-if (rows.length < TARGET) {
-  console.error(`ERROR: only ${rows.length} rows generated, target ${TARGET}`);
-  process.exit(1);
-}
+// No fabricated frequency — set to null (unknown).
+// No fabricated examples — set to null.
 
-const surplus = rows.length - TARGET;
-if (surplus > 0) {
-  const priority = (r, i) => {
-    if (r.curated) return 0;
-    if (r.pos === "noun") return 10;
-    if (r.pos === "verb") return 20;
-    if (r.pos === "adjective") return 30;
-    if (r.pos === "numeral") return 40;
-    return 50;
-  };
-  const indexed = rows.map((r, i) => ({ r, i, p: priority(r, i) }));
-  indexed.sort((a, b) => (a.p - b.p) || (a.i - b.i));
-  const keep = new Set(indexed.slice(0, TARGET).map((x) => x.i));
-  for (let i = rows.length - 1; i >= 0; i--) if (!keep.has(i)) rows.splice(i, 1);
-}
-
-// ---------------------------------------------------------------------------
-// Generate authentic, category-specific Dutch and English example sentences
-// ---------------------------------------------------------------------------
-function generateSemanticExamples(r) {
-  const w = r.word;
-  const art = r.article || "";
-  const display = art ? `${art} ${w}` : w;
-  const m = r.meaning || w;
-  const cat = r.category || "general";
-
-  if (r.pos === "noun" && art) {
-    const CapArt = art.charAt(0).toUpperCase() + art.slice(1);
-    switch (cat) {
-      case "food":
-      case "culinary":
-        return {
-          nl: `Wij kopen verse ${w} op de zaterdagmarkt.`,
-          en: `We buy fresh ${m} at the Saturday market.`
-        };
-      case "housing":
-      case "home":
-        return {
-          nl: `In het appartement bevindt zich een nette ${w}.`,
-          en: `In the apartment there is a neat ${m}.`
-        };
-      case "transport":
-      case "travel":
-        return {
-          nl: `${CapArt} ${w} vertrekt op tijd vanaf het station.`,
-          en: `The ${m} departs on time from the station.`
-        };
-      case "work":
-      case "business":
-        return {
-          nl: `De collega's bespraken ${display} tijdens het overleg.`,
-          en: `The colleagues discussed the ${m} during the meeting.`
-        };
-      case "nature":
-      case "animals":
-        return {
-          nl: `Tijdens de wandeling zagen we ${display} in het park.`,
-          en: `During the walk we saw the ${m} in the park.`
-        };
-      case "health":
-        return {
-          nl: `De arts gaf advies over ${display}.`,
-          en: `The doctor gave advice regarding the ${m}.`
-        };
-      default:
-        return {
-          nl: `${CapArt} ${w} speelt een belangrijke rol in het dagelijks leven.`,
-          en: `The ${m} plays an important role in daily life.`
-        };
-    }
-  }
-
-  if (r.pos === "verb") {
-    return {
-      nl: `Zij proberen elke dag regelmatig te ${w}.`,
-      en: `They try to ${m} regularly every day.`
-    };
-  }
-
-  if (r.pos === "adjective") {
-    return {
-      nl: `Dit is een ${w} voorbeeld van de Nederlandse cultuur.`,
-      en: `This is a ${m} example of Dutch culture.`
-    };
-  }
-
-  if (r.pos === "numeral") {
-    return {
-      nl: `Er waren ${w} bezoekers aanwezig bij de presentatie.`,
-      en: `There were ${w} visitors present at the presentation.`
-    };
-  }
-
-  return {
-    nl: `In deze context gebruiken Nederlanders vaak het woord '${w}'.`,
-    en: `In this context Dutch speakers often use the word '${w}'.`
-  };
-}
-
-// Finalize
-const freqOf = (seq) => Math.max(1, Math.round(1e9 / Math.pow(seq + 1, 0.85)));
 const final = rows.map((r, i) => {
+  const norm = r.word.toLowerCase().trim();
+  const assignedId = allocator.assignId(norm);
+
   const displayWord = r.pos === "noun" && r.article ? `${r.article} ${r.word}` : r.word;
-  const ex = generateSemanticExamples(r);
 
   return {
-    id: "nl-" + String(i + 1).padStart(5, "0"),
+    id: assignedId,
     rank: i + 1,
     word: r.word,
     article: r.article || null,
     displayWord,
     lemma: r.lemma || r.word,
-    isCuratedLemma: !!r.curated,
-    inflectionType: r.inflectionType || (r.curated ? "lemma" : "inflected_form"),
-    grammaticalForm: r.grammaticalForm || (r.curated ? "basisvorm / lemma" : "verbogen vorm"),
-    frequency: freqOf(i),
+    isCuratedLemma: !!(r.curated && r.inflectionType === "lemma"),
+    inflectionType: r.inflectionType,
+    grammaticalForm: r.grammaticalForm,
+    frequency: null, // No sourced corpus frequency available
     level: r.level || "A1",
     pos: r.pos,
     meaning: r.meaning || r.word,
     category: r.category || "general",
     synonyms: r.synonyms || [],
-    example: ex.nl,
-    exampleEn: ex.en,
+    example: null, // No hand-authored examples in cores
+    exampleEn: null,
     curated: !!r.curated,
-    learnable: r.learnable !== false,
+    learnable: r.learnable === true,
   };
 });
 
-// Sanity checks
+// Invariant assertions
 const ids = new Set(final.map((r) => r.id));
-const words = new Set(final.map((r) => r.word.toLowerCase().trim()));
-if (ids.size !== final.length) throw new Error("duplicate ids");
-if (words.size !== final.length) throw new Error("duplicate normalized words");
-if (final.length !== TARGET) throw new Error(`count ${final.length} != ${TARGET}`);
+const finalWords = new Set(final.map((r) => r.word.toLowerCase().trim()));
+if (ids.size !== final.length) throw new Error("duplicate ids in generated word bank");
+if (finalWords.size !== final.length) throw new Error("duplicate normalized words in generated word bank");
 
+// Schema and policy invariants
+for (const r of final) {
+  if (r.level === "phrase") throw new Error(`Prohibited level='phrase' in row ${r.id} (${r.word})`);
+  if (!ALLOWED_LEVELS.has(r.level)) throw new Error(`Invalid level='${r.level}' in row ${r.id} (${r.word})`);
+  if (r.word.includes(" ") && r.pos === "verb") throw new Error(`Multiword verb '${r.word}' found in final bank`);
+  if (r.pos === "noun" && (r.inflectionType === "plural" || r.inflectionType === "diminutive-plural") && r.article !== "de") {
+    throw new Error(`Plural noun '${r.word}' has article '${r.article}', must be 'de'`);
+  }
+  if (r.pos === "noun" && r.inflectionType === "diminutive" && r.article !== "het") {
+    throw new Error(`Diminutive noun '${r.word}' has article '${r.article}', must be 'het'`);
+  }
+  // Invariant: learnable implies curated (no exceptions for cardinals or anything else)
+  if (r.learnable && !r.curated) {
+    throw new Error(`Invariant violation: learnable=true but curated=false for '${r.word}' (${r.id})`);
+  }
+  // isCuratedLemma must not be true for phrases
+  if (r.isCuratedLemma && r.pos === "phrase") {
+    throw new Error(`isCuratedLemma must not be true for phrase '${r.word}' (${r.id})`);
+  }
+}
+
+// ---------------------------------------------------------------------------
+// 7. Write words.js, Historical ID Registry & Emit Content-Integrity Report
+// ---------------------------------------------------------------------------
 const header = `// AUTO-GENERATED by scripts/generate_words.mjs - do not edit by hand.
-// ${final.length} unique Dutch word-form rows. Verbs/nouns/adjectives are lemmas plus
-// generated inflected forms; every learnable noun carries a verified de/het article.
-// Source of truth: data/words_core_*.js (curated lemmas) + inflection rules here.
+// ${final.length} unique Dutch word-form rows derived from curated cores and inflection rules.
+// Curated headwords and phrases are learnable; derived inflectional forms are searchable reference items.
+// Frequency and example fields are null (no sourced data available).
+// Source of truth: data/words_core_*.js (curated lemmas) + inflection rules.
 globalThis.NP_WORDS = `;
+
 writeFileSync(join(ROOT, "data", "words.js"), header + JSON.stringify(final) + ";\n");
-console.log(`words.js: ${final.length} rows`);
-console.log(`  lemmas curated: ${final.filter((r) => r.curated).length}`);
-console.log(`  nouns: ${final.filter((r) => r.pos === "noun").length} (learnable without article: ${final.filter((r) => r.pos === "noun" && r.learnable && !r.article).length})`);
-console.log(`  verbs: ${final.filter((r) => r.pos === "verb").length}`);
-console.log(`  adjectives: ${final.filter((r) => r.pos === "adjective").length}`);
-console.log(`  numerals: ${final.filter((r) => r.pos === "numeral").length}`);
-console.log(`  levels: ${["A1", "A2", "B1", "B2", "C1"].map((l) => l + "=" + final.filter((r) => r.level === l).length).join(" ")}`);
+
+// Persist all historical owners and the monotonic high-water mark.
+writeFileSync(idRegistryPath, JSON.stringify(allocator.toRegistry()) + "\n");
+
+// Content-Integrity Report
+const curatedCount = final.filter((r) => r.curated).length;
+const learnableCount = final.filter((r) => r.learnable).length;
+const referenceCount = final.filter((r) => !r.learnable).length;
+
+console.log("\n=======================================================");
+console.log("             NederPath Word Bank Generation            ");
+console.log("=======================================================");
+console.log(`Total word forms generated: ${final.length}`);
+console.log(`  Curated headwords / phrases: ${curatedCount}`);
+console.log(`  Learnable entries:           ${learnableCount}`);
+console.log(`  Derived reference-only rows: ${referenceCount}`);
+console.log("\n--- Breakdown by Part of Speech ---");
+const posCounts = {};
+for (const r of final) posCounts[r.pos] = (posCounts[r.pos] || 0) + 1;
+for (const [p, c] of Object.entries(posCounts).sort((a, b) => b[1] - a[1])) {
+  console.log(`  ${p.padEnd(14)}: ${c}`);
+}
+console.log("\n--- Breakdown by CEFR Level ---");
+for (const lvl of ["A1", "A2", "B1", "B2", "C1"]) {
+  console.log(`  ${lvl.padEnd(14)}: ${final.filter((r) => r.level === lvl).length}`);
+}
+console.log("\n--- Breakdown by Inflection Subtype ---");
+const inflCounts = {};
+for (const r of final) inflCounts[r.inflectionType] = (inflCounts[r.inflectionType] || 0) + 1;
+for (const [inf, c] of Object.entries(inflCounts).sort((a, b) => b[1] - a[1])) {
+  console.log(`  ${inf.padEnd(30)}: ${c}`);
+}
+console.log("=======================================================\n");

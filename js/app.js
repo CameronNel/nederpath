@@ -251,6 +251,7 @@
       // If another navigation occurred while awaiting, discard stale render
       if (this.navToken !== currentToken) return;
       main.removeAttribute("aria-busy");
+      this.sanitizeLoadedWordReferences();
 
       switch (this.currentTab) {
         case "today":
@@ -635,7 +636,7 @@
       }
     }
 
-    // --- Mode 1: Flashcards (SRS Due Prioritized, Unseen Fillers, Full 20,000 Word Bank) ---
+    // --- Mode 1: Flashcards (SRS Due Prioritized, Unseen Fillers, Full Learnable Bank) ---
     renderFlashcardsMode() {
       const words = global.NP_WORDS || [];
       const sessionSize = this.store.state.settings.sessionSize || 10;
@@ -2037,12 +2038,22 @@
       });
     }
 
+    sanitizeLoadedWordReferences() {
+      const words = global.NP_WORDS;
+      if (!this._wordsSanitized && Array.isArray(words) && words.length > 0) {
+        this.store.sanitizeStaleWordReferences(new Set(words.map((w) => w.id)));
+        this._wordsSanitized = true;
+      }
+    }
+
     /* ==========================================================================
-       6. WORDS VIEW (20,000-Word Dictionary & Search Engine)
+       6. WORDS VIEW (Dictionary & Search Engine)
        ========================================================================== */
     renderWordsView() {
       const words = global.NP_WORDS || [];
+
       const q = (this.searchQuery || "").toLowerCase().trim();
+      const totalLearnableCount = words.filter((w) => w.learnable).length;
 
       let filtered = words;
       if (q) {
@@ -2067,12 +2078,13 @@
       }
 
       const displayList = filtered.slice(0, 60);
+      const filteredLearnableCount = filtered.filter((w) => w.learnable).length;
 
       return `
         <div class="words-container animate-fade">
           <div class="card words-search-card">
-            <h1 class="page-title">Nederlands Woordenboek (20.000 Woorden)</h1>
-            <p class="page-subtitle">Doorzoek de complete woordenschat met lidwoorden, vervoegingen en voorbeelden.</p>
+            <h1 class="page-title">Nederlands Woordenboek (${words.length.toLocaleString('nl-NL')} Vormen)</h1>
+            <p class="page-subtitle">Doorzoek ${words.length.toLocaleString('nl-NL')} Nederlandse woordvormen, inclusief ${totalLearnableCount.toLocaleString('nl-NL')} gecureerde leerwoorden en uitdrukkingen met lidwoorden en vervoegingen.</p>
 
             <div class="search-input-wrap">
               <label for="words-search-input" class="sr-only">Zoekopdracht woordenboek</label>
@@ -2101,6 +2113,7 @@
                   <option value="verb" ${this.selectedPos === 'verb' ? 'selected' : ''}>Werkwoord</option>
                   <option value="adjective" ${this.selectedPos === 'adjective' ? 'selected' : ''}>Bijvoeglijk n.w.</option>
                   <option value="numeral" ${this.selectedPos === 'numeral' ? 'selected' : ''}>Telwoord</option>
+                  <option value="phrase" ${this.selectedPos === 'phrase' ? 'selected' : ''}>Gecureerde woordgroep</option>
                 </select>
               </div>
 
@@ -2122,19 +2135,27 @@
           </div>
 
           <div class="words-results-meta">
-            <span>Gevonden: <strong>${filtered.length}</strong> woorden ${filtered.length > 60 ? '(toont eerste 60)' : ''}</span>
+            <span>Gevonden: <strong>${filtered.length}</strong> woordvormen (${filteredLearnableCount} leerwoorden) ${filtered.length > 60 ? '(toont eerste 60)' : ''}</span>
           </div>
 
           <div class="words-results-grid">
             ${displayList.map((w) => {
               const isNoun = w.pos === "noun" && w.article;
               const isStarred = this.store.isBookmarked(w.id);
-              const displayTitle = isNoun ? `<span class="badge-${w.article}">${w.article}</span> ${w.word}` : w.word;
+              const displayTitle = isNoun ? `<span class="badge-${w.article}">${w.article}</span> ${Learning.escapeHTML(w.word)}` : Learning.escapeHTML(w.word);
+
+              const isPhrase = w.curated === true && w.pos === "phrase" && w.inflectionType === "phrase";
+              const isLemma = w.isCuratedLemma === true;
+              const badgeType = isPhrase ? `<span class="badge-tag badge-phrase">Gecureerde woordgroep</span>` : (isLemma ? `<span class="badge-tag badge-lemma">Lemma</span>` : `<span class="badge-tag badge-reference">Afgeleide vorm / referentie</span>`);
+              const hasLemmaLink = w.lemma && w.lemma.toLowerCase().trim() !== w.word.toLowerCase().trim();
 
               return `
                 <div class="card word-item-card">
                   <div class="word-card-top">
-                    <span class="word-level-badge badge-${w.level.toLowerCase()}">${w.level}</span>
+                    <div class="word-card-badges">
+                      <span class="word-level-badge badge-${w.level.toLowerCase()}">${w.level}</span>
+                      ${badgeType}
+                    </div>
                     <button class="btn-star ${isStarred ? 'starred' : ''}" data-star-id="${w.id}" title="Favoriet opslaan">
                       ${isStarred ? '★' : '☆'}
                     </button>
@@ -2142,10 +2163,12 @@
                   <div class="word-card-main">
                     <h3 class="word-title">${displayTitle}</h3>
                   </div>
-                  <div class="word-meaning">${w.meaning || w.word}</div>
-                  ${w.example ? `<div class="word-example" style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 0.5rem;">“${w.example}”</div>` : ""}
+                  ${w.grammaticalForm ? `<span class="word-gram-form">${Learning.escapeHTML(w.grammaticalForm)}</span>` : ""}
+                  ${hasLemmaLink ? `<div class="word-lemma-link">Basislemma: <strong>${Learning.escapeHTML(w.lemma)}</strong></div>` : ""}
+                  <div class="word-meaning">${Learning.escapeHTML(w.meaning || w.word)}</div>
+                  ${w.example ? `<div class="word-example" style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 0.5rem;">“${Learning.escapeHTML(w.example)}”</div>` : ""}
                   <div class="word-footer">
-                    <span>${w.pos}</span>
+                    <span>${Learning.escapeHTML(w.pos)}</span>
                     <span>#${w.rank}</span>
                   </div>
                 </div>

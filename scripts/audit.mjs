@@ -52,28 +52,47 @@ for (const file of requiredFiles) {
   assert(existsSync(join(ROOT, file)), `File exists: ${file}`);
 }
 
-// 2. Data Bank: Words (20,000 words)
+// 2. Data Bank: Words
 console.log("\n--- 2. Word Bank Validation (data/words.js) ---");
 const wordsSrc = readFileSync(join(ROOT, "data", "words.js"), "utf8");
 const dummyGlobal = {};
 const fnWords = new Function("globalThis", wordsSrc + "\nreturn globalThis.NP_WORDS;");
 const words = fnWords(dummyGlobal);
 
-assert(Array.isArray(words), "NP_WORDS is an array");
-assert(words.length === 20000, `NP_WORDS count is exactly 20,000 (actual: ${words.length})`);
+const ALLOWED_POS = new Set([
+  "noun", "verb", "adjective", "adverb", "pronoun", "determiner",
+  "preposition", "conjunction", "interjection", "numeral", "phrase", "particle"
+]);
+const ALLOWED_LEVELS = new Set(["A1", "A2", "B1", "B2", "C1"]);
 
-// Check unique IDs & words
+assert(Array.isArray(words), "NP_WORDS is an array");
+assert(words.length > 0, `NP_WORDS contains a non-empty conservatively generated bank (actual: ${words.length})`);
+
+// Check unique IDs & words, schema invariants, learnability, and grammatical agreement
 const ids = new Set();
 const normWords = new Set();
 let dupIds = 0;
 let dupWords = 0;
+let invalidLevels = 0;
+let invalidPos = 0;
+let multiwordVerbs = 0;
 let uncuratedNounsWithoutArticle = 0;
 let nounsWithoutDisplayArticle = 0;
+let pluralsWithHet = 0;
+let diminutivesWithDe = 0;
+let derivedMarkedLearnable = 0;
+let impossibleTeVerbs = 0;
+let ordinalCardinalMismatches = 0;
+let pluralNounSingularAgreement = 0;
 let suspiciousInflections = 0;
+let fabricatedSourceFields = 0;
+let invalidCuratedLemmaFlags = 0;
+let invalidRanks = 0;
 
-const FORBIDDEN_ADVERBS_INFLECTED = ["niette", "nietter", "welder", "tochter", "nooiter"];
+const FORBIDDEN_WORDS = new Set(["houden vant", "houden vandeen", "piano speelt", "niette", "nietter", "welder", "tochter", "nooiter"]);
 
 for (const w of words) {
+  if (w.rank !== ids.size + 1) invalidRanks++;
   if (ids.has(w.id)) dupIds++;
   ids.add(w.id);
 
@@ -81,22 +100,78 @@ for (const w of words) {
   if (normWords.has(norm)) dupWords++;
   normWords.add(norm);
 
+  if (!ALLOWED_LEVELS.has(w.level) || w.level === "phrase") {
+    invalidLevels++;
+  }
+  if (!ALLOWED_POS.has(w.pos)) {
+    invalidPos++;
+  }
+  if (w.word.includes(" ") && w.pos === "verb") {
+    multiwordVerbs++;
+  }
   if (w.pos === "noun" && w.learnable && !w.article) {
     uncuratedNounsWithoutArticle++;
   }
   if (w.pos === "noun" && w.article && (!w.displayWord || !w.displayWord.startsWith(w.article))) {
     nounsWithoutDisplayArticle++;
   }
-  if (FORBIDDEN_ADVERBS_INFLECTED.includes(norm)) {
+  if (w.pos === "noun" && (w.inflectionType === "plural" || w.inflectionType === "diminutive-plural") && w.article !== "de") {
+    pluralsWithHet++;
+  }
+  if (w.pos === "noun" && w.inflectionType === "diminutive" && w.article !== "het") {
+    diminutivesWithDe++;
+  }
+  if (!w.curated && w.learnable) {
+    derivedMarkedLearnable++;
+  }
+  if (w.example !== null || w.exampleEn !== null || w.frequency !== null) fabricatedSourceFields++;
+  if (w.isCuratedLemma && (!w.curated || w.pos === "phrase" || w.inflectionType !== "lemma")) invalidCuratedLemmaFlags++;
+  if (FORBIDDEN_WORDS.has(norm)) {
     suspiciousInflections++;
+  }
+  if (w.example) {
+    if (/\bte (ben|is|was|waren|geweest)\b/.test(w.example)) {
+      impossibleTeVerbs++;
+    }
+    if (/Er waren (eerste|tweede|derde|vierde|vijfde)/.test(w.example)) {
+      ordinalCardinalMismatches++;
+    }
+    if (w.pos === "noun" && (w.inflectionType === "plural" || w.inflectionType === "diminutive-plural")) {
+      if (/\bspeelt\b/.test(w.example) || /\bbevindt zich\b/.test(w.example) || /\bvertrekt\b/.test(w.example)) {
+        pluralNounSingularAgreement++;
+      }
+    }
   }
 }
 
 assert(dupIds === 0, "All word IDs are unique");
 assert(dupWords === 0, "All normalized Dutch word forms are unique");
+assert(invalidLevels === 0, "Zero invalid CEFR levels (level=phrase rejected; only A1/A2/B1/B2/C1)");
+assert(invalidPos === 0, "All parts of speech match allowed POS schema");
+assert(multiwordVerbs === 0, "Zero multiword verbs passed to inflection engine (phrases treated as phrases)");
 assert(uncuratedNounsWithoutArticle === 0, "All learnable Dutch nouns carry a verified de/het article");
 assert(nounsWithoutDisplayArticle === 0, "All learnable Dutch nouns have displayWord with article (e.g. 'de tafel', 'het huis')");
-assert(suspiciousInflections === 0, "Zero forbidden false inflections (niette/nietter/welder)");
+assert(pluralsWithHet === 0, "All plural nouns and diminutive-plurals carry article 'de' (branch-order fixed)");
+assert(diminutivesWithDe === 0, "All singular diminutive nouns carry article 'het'");
+assert(derivedMarkedLearnable === 0, "Zero derived inflectional rows marked learnable without verified curation");
+assert(impossibleTeVerbs === 0, "Zero conjugated verb forms placed in impossible 'te ...' frames");
+assert(ordinalCardinalMismatches === 0, "Zero ordinal numerals generated in cardinal frames");
+assert(pluralNounSingularAgreement === 0, "Zero plural nouns generated with singular verb agreement");
+assert(suspiciousInflections === 0, "Zero forbidden false inflections (houden vant/niette/welder)");
+assert(fabricatedSourceFields === 0, "All word examples and frequency values are null until sourced curation exists");
+assert(invalidCuratedLemmaFlags === 0, "isCuratedLemma marks only curated non-phrase lemmas");
+assert(invalidRanks === 0, "Word ranks are sequential and deterministic");
+
+// Emit Content-Integrity Report
+const curatedCount = words.filter((w) => w.curated).length;
+const learnableCount = words.filter((w) => w.learnable).length;
+const referenceCount = words.filter((w) => !w.learnable).length;
+console.log(`\n  [INFO] Word Bank Integrity Summary:`);
+console.log(`         Total unique forms:          ${words.length}`);
+console.log(`         Curated headwords / phrases: ${curatedCount}`);
+console.log(`         Learnable entries:           ${learnableCount}`);
+console.log(`         Derived reference-only rows: ${referenceCount}`);
+console.log(`         Nouns: ${words.filter((w) => w.pos === "noun").length}, Verbs: ${words.filter((w) => w.pos === "verb").length}, Adjectives: ${words.filter((w) => w.pos === "adjective").length}`);
 
 // 3. Grammar Curriculum (data/grammar.js)
 console.log("\n--- 3. Grammar Curriculum Validation (data/grammar.js) ---");
