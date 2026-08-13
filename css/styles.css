@@ -976,6 +976,19 @@ body {
   justify-content: space-between;
 }
 
+.catalog-card-button {
+  width: 100%;
+  font: inherit;
+  color: inherit;
+  text-align: left;
+  appearance: none;
+}
+
+.catalog-card-button:focus-visible {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 2px var(--color-primary-surface);
+}
+
 .grammar-card-top, .passage-card-top {
   display: flex;
   justify-content: space-between;

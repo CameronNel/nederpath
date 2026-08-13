@@ -1389,7 +1389,7 @@
             ${filtered.map((rule) => {
               const isCompleted = !!this.store.state.progress.grammarCompleted[rule.id];
               return `
-                <div class="card grammar-item-card" data-rule-id="${rule.id}">
+                <button type="button" class="card catalog-card-button grammar-item-card" data-rule-id="${rule.id}" aria-label="Open grammaticales: ${rule.title}">
                   <div class="grammar-card-top">
                     <span class="grammar-level badge-${rule.level.toLowerCase()}">${rule.level}</span>
                     <span class="grammar-section">Sectie ${rule.section}</span>
@@ -1401,7 +1401,7 @@
                     <span>${rule.exercises ? rule.exercises.length : 3} Oefeningen</span>
                     <span class="status-indicator">${isCompleted ? '✓ Voltooid' : 'Nog te doen →'}</span>
                   </div>
-                </div>
+                </button>
               `;
             }).join("")}
           </div>
@@ -1870,7 +1870,7 @@
             ${filtered.map((passage) => {
               const isCompleted = !!this.store.state.progress.comprehensionCompleted[passage.id];
               return `
-                <div class="card passage-item-card" data-passage-id="${passage.id}">
+                <button type="button" class="card catalog-card-button passage-item-card" data-passage-id="${passage.id}" aria-label="Open leestekst: ${passage.title}">
                   <div class="passage-card-top">
                     <span class="grammar-level badge-${passage.level.toLowerCase()}">${passage.level}</span>
                     <span class="reading-time">⏱️ ${passage.readingTimeMin || 4} min</span>
@@ -1882,7 +1882,7 @@
                     <span>${passage.questions ? passage.questions.length : 4} Begripsvragen</span>
                     <span class="status-indicator">${isCompleted ? '✓ Gelezen' : 'Start Lezen →'}</span>
                   </div>
-                </div>
+                </button>
               `;
             }).join("")}
           </div>

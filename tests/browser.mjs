@@ -360,9 +360,12 @@ async function runBrowserTests() {
     await page.waitForSelector(".grammar-catalog-container");
     const grammarCards = await page.$$(".grammar-item-card");
     assert(grammarCards.length === 120, `Grammar catalog rendered all 120 rule cards (found: ${grammarCards.length})`);
+    const grammarCardTag = await page.$eval(".grammar-item-card", (el) => el.tagName.toLowerCase());
+    assert(grammarCardTag === "button", "Grammar catalog cards use native keyboard-operable buttons");
 
-    // Open first grammar rule
-    await grammarCards[0].click();
+    // Open first grammar rule by keyboard
+    await grammarCards[0].focus();
+    await page.keyboard.press("Enter");
     await page.waitForSelector(".grammar-lesson-card");
     const lessonTitle = await page.$eval(".lesson-title", (el) => el.textContent);
     assert(lessonTitle.length > 5, `Opened grammar lesson: '${lessonTitle}'`);
@@ -480,9 +483,12 @@ async function runBrowserTests() {
       expectedPassageCount > 0 && passageCards.length === expectedPassageCount,
       `Comprehension library rendered every curated passage (found: ${passageCards.length})`
     );
+    const passageCardTag = await page.$eval(".passage-item-card", (el) => el.tagName.toLowerCase());
+    assert(passageCardTag === "button", "Comprehension catalog cards use native keyboard-operable buttons");
 
-    // Open first passage
-    await passageCards[0].click();
+    // Open first passage by keyboard
+    await passageCards[0].focus();
+    await page.keyboard.press("Enter");
     await page.waitForSelector(".passage-reader-card");
     const passageTitle = await page.$eval(".passage-title", (el) => el.textContent);
     assert(passageTitle.length > 5, `Opened reading passage: '${passageTitle}'`);
