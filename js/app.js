@@ -236,7 +236,11 @@
           const retryBtn = document.getElementById("btn-retry-load");
           if (retryBtn) {
             retryBtn.addEventListener("click", () => {
-              requiredBanks.forEach((b) => global.NederDataLoader.resetBank(b));
+              requiredBanks.forEach((b) => {
+                if (global.NederDataLoader && !global.NederDataLoader.isBankLoaded(b)) {
+                  global.NederDataLoader.resetBank(b);
+                }
+              });
               this.render();
             });
           }
@@ -1492,9 +1496,9 @@
               <p class="exercise-question">${ex.question}</p>
               <div class="options-grid">
                 ${(ex.options || []).map((opt, i) => {
-                  const isSelected = answeredState && answeredState.userAttempt === i;
+                  const isSelected = Boolean(answeredState && answeredState.userAttempt === i);
                   return `
-                    <button type="button" class="btn btn-outline btn-grammar-opt ${isSelected ? (answeredState.isCorrect ? 'btn-success' : 'btn-wrong') : ''}" data-opt-idx="${i}" ${answeredState ? 'disabled' : ''} aria-pressed="${isSelected}">
+                    <button type="button" class="btn btn-outline btn-grammar-opt ${isSelected ? (answeredState.isCorrect ? 'btn-success' : 'btn-wrong') : ''}" data-opt-idx="${i}" ${answeredState ? 'disabled' : ''} aria-pressed="${isSelected ? 'true' : 'false'}">
                       ${opt}
                     </button>
                   `;
@@ -1538,9 +1542,9 @@
               <div class="exercise-sentence" style="font-size: 1.2rem; font-weight: 700; margin: 1rem 0;">${ex.sentenceWithBlank}</div>
               <div class="hint-chips-pool" role="group" aria-label="Woordopties">
                 ${(ex.hints || []).map((h) => {
-                  const isSelected = answeredState && answeredState.userAttempt === h;
+                  const isSelected = Boolean(answeredState && answeredState.userAttempt === h);
                   return `
-                    <button type="button" class="chip-token btn-hint-opt ${isSelected ? (answeredState.isCorrect ? 'btn-success' : 'btn-wrong') : ''}" data-hint="${h}" ${answeredState ? 'disabled' : ''} aria-pressed="${isSelected}">
+                    <button type="button" class="chip-token btn-hint-opt ${isSelected ? (answeredState.isCorrect ? 'btn-success' : 'btn-wrong') : ''}" data-hint="${h}" ${answeredState ? 'disabled' : ''} aria-pressed="${isSelected ? 'true' : 'false'}">
                       ${h}
                     </button>
                   `;
@@ -1604,8 +1608,8 @@
             <div class="exercise-article-select animate-fade">
               <p class="exercise-question">Kies het juiste lidwoord voor: <strong>${ex.noun}</strong> <em>(${ex.meaning})</em></p>
               <div class="options-grid" style="grid-template-columns: 1fr 1fr; margin-top: 1rem;">
-                <button type="button" class="btn btn-drill btn-de btn-grammar-art ${answeredState && answeredState.userAttempt === 'de' ? (answeredState.isCorrect ? 'btn-success' : 'btn-wrong') : ''}" data-art="de" ${answeredState ? 'disabled' : ''} aria-pressed="${answeredState && answeredState.userAttempt === 'de'}">de</button>
-                <button type="button" class="btn btn-drill btn-het btn-grammar-art ${answeredState && answeredState.userAttempt === 'het' ? (answeredState.isCorrect ? 'btn-success' : 'btn-wrong') : ''}" data-art="het" ${answeredState ? 'disabled' : ''} aria-pressed="${answeredState && answeredState.userAttempt === 'het'}">het</button>
+                <button type="button" class="btn btn-drill btn-de btn-grammar-art ${answeredState && answeredState.userAttempt === 'de' ? (answeredState.isCorrect ? 'btn-success' : 'btn-wrong') : ''}" data-art="de" ${answeredState ? 'disabled' : ''} aria-pressed="${Boolean(answeredState && answeredState.userAttempt === 'de') ? 'true' : 'false'}">de</button>
+                <button type="button" class="btn btn-drill btn-het btn-grammar-art ${answeredState && answeredState.userAttempt === 'het' ? (answeredState.isCorrect ? 'btn-success' : 'btn-wrong') : ''}" data-art="het" ${answeredState ? 'disabled' : ''} aria-pressed="${Boolean(answeredState && answeredState.userAttempt === 'het') ? 'true' : 'false'}">het</button>
               </div>
               <div id="grammar-ex-feedback" class="exercise-feedback ${answeredState ? (answeredState.isCorrect ? 'feedback-correct' : 'feedback-wrong') : ''}" style="${answeredState ? 'display: block;' : 'display: none;'}" role="alert">
                 ${answeredState ? (answeredState.isCorrect ? `✓ Juist! Het is <strong>${ex.correct} ${ex.noun}</strong>. ${ex.explanation || ''}` : `✗ Niet juist. Het is <strong>${ex.correct} ${ex.noun}</strong>. ${ex.explanation || ''}`) : ''}

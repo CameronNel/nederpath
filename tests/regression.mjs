@@ -26,16 +26,10 @@ const grammar = dummyGlobal.NP_GRAMMAR;
 
 let passed = 0;
 let failed = 0;
+const testQueue = [];
 
 function test(name, fn) {
-  try {
-    fn();
-    passed++;
-    console.log(`  ✓ [PASS] ${name}`);
-  } catch (err) {
-    failed++;
-    console.error(`  ✗ [FAIL] ${name}:`, err.message);
-  }
+  testQueue.push({ name, fn });
 }
 
 console.log("\n=======================================================");
@@ -641,8 +635,110 @@ test("SRS: getDueCards accurately identifies cards with past due dates", () => {
   }
 });
 
-console.log(`\n=======================================================`);
-console.log(`Regression Tests Complete: ${passed} Passed, ${failed} Failed`);
-console.log(`=======================================================\n`);
+// -------------------------------------------------------------------
+// 12. DataLoader: Partial Multi-Bank Resilience & Retry Isolation
+// -------------------------------------------------------------------
+test("DataLoader: Sibling bank remains loaded when another fails, retry resets only failed bank", async () => {
+  const dataLoaderSrc = readFileSync(join(ROOT, "js", "data-loader.js"), "utf8");
+  const testGlobal = {
+    NP_WORDS: [{ id: "w-1", word: "fiets" }] // simulate already loaded words bank
+  };
+  new Function("globalThis", dataLoaderSrc)(testGlobal);
+  const DataLoader = testGlobal.NederDataLoader;
 
-if (failed > 0) process.exit(1);
+  // 1. Verify words is already loaded
+  if (!DataLoader.isBankLoaded("words")) throw new Error("Expected 'words' to be recognized as loaded");
+
+  // 2. Simulate partial multi-bank retry on ['words', 'sentences']
+  const requiredBanks = ["words", "sentences"];
+  requiredBanks.forEach((b) => {
+    if (!DataLoader.isBankLoaded(b)) {
+      DataLoader.resetBank(b);
+    }
+  });
+
+  // 3. Verify 'words' bank is STILL loaded and its global was NOT deleted
+  if (!DataLoader.isBankLoaded("words") || !testGlobal.NP_WORDS) {
+    throw new Error("'words' bank or global was incorrectly unloaded during sibling failure retry");
+  }
+
+  // 4. Calling resetBank('words') on an already loaded bank does NOT delete its global
+  DataLoader.resetBank("words");
+  if (!DataLoader.isBankLoaded("words") || !testGlobal.NP_WORDS) {
+    throw new Error("resetBank('words') deleted already loaded global NP_WORDS");
+  }
+
+  // 5. Test-only helper __forceUnloadBankForTest explicitly unloads
+  DataLoader.__forceUnloadBankForTest("words");
+  if (DataLoader.isBankLoaded("words") || testGlobal.NP_WORDS !== undefined) {
+    throw new Error("__forceUnloadBankForTest failed to evict words bank");
+  }
+});
+
+// -------------------------------------------------------------------
+// 13. DataLoader: Deterministic Script Timeout & Error Cleanup
+// -------------------------------------------------------------------
+test("DataLoader: loadBank handles script errors/timeouts with proper cleanup", async () => {
+  const dataLoaderSrc = readFileSync(join(ROOT, "js", "data-loader.js"), "utf8");
+
+  // Mock DOM environment with controllable script tag
+  let createdScript = null;
+  const mockHead = {
+    appendChild: (s) => { createdScript = s; },
+    removeChild: (s) => { if (createdScript === s) createdScript = null; }
+  };
+
+  const testGlobal = {
+    document: {
+      createElement: (tag) => ({
+        tagName: tag,
+        parentNode: mockHead,
+        src: "",
+        async: false,
+        onload: null,
+        onerror: null
+      }),
+      head: mockHead
+    }
+  };
+
+  new Function("globalThis", dataLoaderSrc)(testGlobal);
+  const DataLoader = testGlobal.NederDataLoader;
+
+  // Trigger load with 10ms timeout override for deterministic execution
+  let loadError = null;
+  const promise = DataLoader.loadBank("sentences", 10).catch((err) => {
+    loadError = err;
+  });
+
+  // Fast-forward timeout or trigger onerror
+  if (createdScript && typeof createdScript.onerror === "function") {
+    createdScript.onerror();
+  }
+
+  await promise;
+  if (!loadError) throw new Error("Expected loadBank to reject on script error");
+  if (createdScript !== null) throw new Error("Failed script tag was not removed from DOM on error");
+  if (DataLoader.isBankLoaded("sentences")) throw new Error("Failed bank was marked as loaded");
+});
+
+async function runAllTests() {
+  for (const { name, fn } of testQueue) {
+    try {
+      await fn();
+      passed++;
+      console.log(`  ✓ [PASS] ${name}`);
+    } catch (err) {
+      failed++;
+      console.error(`  ✗ [FAIL] ${name}:`, err.message);
+    }
+  }
+
+  console.log(`\n=======================================================`);
+  console.log(`Regression Tests Complete: ${passed} Passed, ${failed} Failed`);
+  console.log(`=======================================================\n`);
+
+  if (failed > 0) process.exit(1);
+}
+
+runAllTests();

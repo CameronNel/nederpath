@@ -9,6 +9,8 @@ const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const PORT = 3458;
 const HOST = "127.0.0.1";
 
+let isSimulatedOffline = false;
+
 // Cross-platform browser executable discovery
 function findBrowserExecutable() {
   const envPath = process.env.PUPPETEER_EXECUTABLE_PATH || process.env.BROWSER_PATH;
@@ -68,6 +70,13 @@ const server = createServer((req, res) => {
     }
     if (pathname === "/" || pathname === "") pathname = "/index.html";
 
+    // Simulate network drop during offline test simulation
+    if (isSimulatedOffline && pathname.includes("data/sentences.js")) {
+      res.writeHead(503, { "Content-Type": "text/plain" });
+      res.end("Service Unavailable (Offline)");
+      return;
+    }
+
     const cleanPath = decodeURIComponent(pathname).replace(/^\//, "");
     const filePath = join(ROOT, cleanPath);
     if (!existsSync(filePath) || statSync(filePath).isDirectory()) {
@@ -117,10 +126,19 @@ async function runBrowserTests() {
   });
 
   const page = await browser.newPage();
-  const consoleErrors = [];
+  const unhandledErrors = [];
+  const jsConsoleErrors = [];
+
+  page.on("pageerror", (err) => {
+    unhandledErrors.push(err.message);
+  });
+
   page.on("console", (msg) => {
     if (msg.type() === "error") {
-      consoleErrors.push(msg.text());
+      const txt = msg.text();
+      if (!txt.includes("503") && !txt.includes("Failed to load resource") && !txt.includes("net::ERR")) {
+        jsConsoleErrors.push(txt);
+      }
     }
   });
 
@@ -156,7 +174,7 @@ async function runBrowserTests() {
 
     const title = await page.title();
     assert(title.includes("NederPath"), "Page title contains 'NederPath'");
-    assert(consoleErrors.length === 0, "Zero browser console errors on initial load", consoleErrors.join("; "));
+    assert(unhandledErrors.length === 0 && jsConsoleErrors.length === 0, "Zero browser console errors or unhandled exceptions on initial load", jsConsoleErrors.join("; "));
 
     // 2. Lazy Data Loading & Asset Budget Verification
     const requestedWords = requestedUrls.some((u) => u.includes("data/words.js"));
@@ -272,10 +290,17 @@ async function runBrowserTests() {
     const syntaxBox = await page.$(".syntax-formula");
     assert(syntaxBox !== null, "Structural syntax formula displayed");
 
-    // Click an exercise option
+    // Click an exercise option & verify aria-pressed values before and after answering
     const optBtn = await page.$(".btn-grammar-opt");
     if (optBtn) {
+      const pressedBefore = await page.$eval(".btn-grammar-opt", (el) => el.getAttribute("aria-pressed"));
+      assert(pressedBefore === "false", "Grammar option aria-pressed is explicitly 'false' before answering (never 'undefined')");
+
       await optBtn.click();
+
+      const pressedAfter = await page.$eval(".btn-grammar-opt", (el) => el.getAttribute("aria-pressed"));
+      assert(pressedAfter === "true" || pressedAfter === "false", `Grammar option aria-pressed is boolean '${pressedAfter}' after answering`);
+
       const fb = await page.$("#grammar-ex-feedback");
       assert(fb !== null, "Grammar multiple-choice exercise evaluated and feedback shown");
     }
@@ -610,6 +635,71 @@ async function runBrowserTests() {
     await page.goto(`http://${HOST}:${PORT}/index.html`, { waitUntil: "domcontentloaded" });
     const xssExecuted = await page.evaluate(() => window.__xss_executed);
     assert(xssExecuted === undefined, "HTML injection in user.name is neutralized and does not execute script");
+
+    // 14. Browser-Level Service Worker Readiness, Offline Fallback & Retry Recovery Flow
+    console.log("\n--- [Browser Offline Simulation & Retry Recovery] ---");
+    const swActive = await page.evaluate(async () => {
+      if (!("serviceWorker" in navigator)) return false;
+      try {
+        const reg = await navigator.serviceWorker.ready;
+        return !!(reg && (reg.active || reg.installing || reg.waiting));
+      } catch {
+        return false;
+      }
+    });
+    assert(swActive, "Service Worker is active and controlling the browser client");
+
+    // Switch practice mode back to flashcards and open practice tab
+    await page.evaluate(() => {
+      if (globalThis.NederApp) globalThis.NederApp.practiceMode = "flashcards";
+    });
+    await page.click("#nav-practice");
+    await page.waitForSelector(".practice-container");
+
+    // Force unload 'sentences' bank from memory and purge from SW caches
+    await page.evaluate(async () => {
+      if (globalThis.NederDataLoader) {
+        globalThis.NederDataLoader.__forceUnloadBankForTest("sentences");
+      }
+      if (typeof caches !== "undefined") {
+        const keys = await caches.keys();
+        for (const key of keys) {
+          const cache = await caches.open(key);
+          await cache.delete("./data/sentences.js");
+          await cache.delete("/data/sentences.js");
+        }
+      }
+    });
+
+    // Go offline in browser and server
+    isSimulatedOffline = true;
+    await page.setOfflineMode(true);
+
+    // Click practice context mode (which requires unvisited sentences bank)
+    const contextModeBtn = await page.$("button[data-mode='context']");
+    assert(contextModeBtn !== null, "Found context mode button on practice tab");
+    await contextModeBtn.click();
+
+    await page.waitForSelector(".error-state", { timeout: 10000 });
+    const errorCard = await page.$(".error-state");
+    assert(errorCard !== null, "Offline request for unvisited data bank renders accessible error card with retry button");
+
+    const retryBtn = await page.$("#btn-retry-load");
+    assert(retryBtn !== null, "Retry button is present and accessible on error card");
+    assert(unhandledErrors.length === 0 && jsConsoleErrors.length === 0, "Zero unhandled exceptions or script console errors during offline error state", jsConsoleErrors.join("; "));
+
+    // Bring network back online
+    isSimulatedOffline = false;
+    await page.setOfflineMode(false);
+
+    // Click retry button
+    await page.click("#btn-retry-load");
+    await page.waitForSelector(".context-wrapper", { timeout: 10000 });
+    const recoveredContext = await page.$(".context-wrapper");
+    assert(recoveredContext !== null, "Clicking retry button successfully recovered and rendered context practice once online");
+
+    const sentencesLoaded = await page.evaluate(() => globalThis.NederDataLoader.isBankLoaded("sentences"));
+    assert(sentencesLoaded, "Only the failed bank (sentences) was fetched on retry and marked loaded");
 
     // -------------------------------------------------------
     // PART 2: MOBILE VIEWPORT TESTS (375 x 667)

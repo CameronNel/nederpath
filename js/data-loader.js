@@ -2,6 +2,8 @@
 (function (global) {
   "use strict";
 
+  const DEFAULT_LOAD_TIMEOUT_MS = 30000; // 30s safe timeout for large data banks on slow networks
+
   const DATA_BANKS = {
     words: { path: "./data/words.js", globalKey: "NP_WORDS" },
     grammar: { path: "./data/grammar.js", globalKey: "NP_GRAMMAR" },
@@ -17,9 +19,10 @@
    * Loads a single data bank script on demand.
    * Caches in-flight and fulfilled promises to prevent duplicate network/script evaluation.
    * @param {string} bankName - 'words' | 'grammar' | 'sentences' | 'idioms' | 'comprehension'
+   * @param {number} [timeoutMs=DEFAULT_LOAD_TIMEOUT_MS]
    * @returns {Promise<any>}
    */
-  function loadBank(bankName) {
+  function loadBank(bankName, timeoutMs = DEFAULT_LOAD_TIMEOUT_MS) {
     const config = DATA_BANKS[bankName];
     if (!config) {
       return Promise.reject(new Error(`Onbekende databank: ${bankName}`));
@@ -37,17 +40,19 @@
     }
 
     const promise = new Promise((resolve, reject) => {
+      const doc = typeof document !== "undefined" ? document : global.document;
       // In browser environment, load via dynamic script tag
-      if (typeof document !== "undefined" && document.createElement) {
-        const script = document.createElement("script");
+      if (doc && doc.createElement && doc.head) {
+        const script = doc.createElement("script");
         script.src = config.path;
         script.async = true;
 
+        const effectiveTimeout = typeof timeoutMs === "number" && timeoutMs > 0 ? timeoutMs : DEFAULT_LOAD_TIMEOUT_MS;
         const timeoutId = setTimeout(() => {
           delete loadPromises[bankName];
           if (script.parentNode) script.parentNode.removeChild(script);
           reject(new Error(`Time-out bij het laden van ${config.path}. Controleer verbinding.`));
-        }, 3000);
+        }, effectiveTimeout);
 
         script.onload = () => {
           clearTimeout(timeoutId);
@@ -56,6 +61,7 @@
             resolve(global[config.globalKey]);
           } else {
             delete loadPromises[bankName];
+            if (script.parentNode) script.parentNode.removeChild(script);
             reject(new Error(`Databank ${bankName} geladen maar ${config.globalKey} niet gevonden.`));
           }
         };
@@ -67,11 +73,10 @@
           reject(new Error(`Fout bij het laden van ${config.path}. Controleer verbinding.`));
         };
 
-        document.head.appendChild(script);
+        doc.head.appendChild(script);
       } else {
         // Node / test environment fallback
         try {
-          // If in Node, dynamic evaluation or resolution if injected
           if (global[config.globalKey] !== undefined) {
             loadedBanks.add(bankName);
             resolve(global[config.globalKey]);
@@ -92,10 +97,11 @@
   /**
    * Loads multiple data banks concurrently.
    * @param {string[]} bankNames
+   * @param {number} [timeoutMs=DEFAULT_LOAD_TIMEOUT_MS]
    * @returns {Promise<any[]>}
    */
-  function loadBanks(bankNames = []) {
-    return Promise.all(bankNames.map((name) => loadBank(name)));
+  function loadBanks(bankNames = [], timeoutMs = DEFAULT_LOAD_TIMEOUT_MS) {
+    return Promise.all(bankNames.map((name) => loadBank(name, timeoutMs)));
   }
 
   /**
@@ -109,10 +115,24 @@
   }
 
   /**
-   * Clears a failed bank promise so subsequent calls can retry.
+   * Clears a failed in-flight bank promise so subsequent calls can retry.
+   * Safely preserves successfully loaded banks in memory without unloading global data.
    * @param {string} bankName
    */
   function resetBank(bankName) {
+    delete loadPromises[bankName];
+    const config = DATA_BANKS[bankName];
+    if (config && global[config.globalKey] === undefined) {
+      loadedBanks.delete(bankName);
+    }
+  }
+
+  /**
+   * Test-only helper to forcibly evict a bank from memory and global scope.
+   * NEVER used in normal UI error retry flow.
+   * @param {string} bankName
+   */
+  function __forceUnloadBankForTest(bankName) {
     delete loadPromises[bankName];
     loadedBanks.delete(bankName);
     const config = DATA_BANKS[bankName];
@@ -122,10 +142,12 @@
   }
 
   const DataLoader = {
+    DEFAULT_LOAD_TIMEOUT_MS,
     loadBank,
     loadBanks,
     isBankLoaded,
     resetBank,
+    __forceUnloadBankForTest,
     DATA_BANKS
   };
 
