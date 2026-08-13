@@ -92,6 +92,12 @@ async function runBrowserTests() {
   });
 
   try {
+    // -------------------------------------------------------
+    // PART 1: DESKTOP VIEWPORT TESTS (1280 x 800)
+    // -------------------------------------------------------
+    await page.setViewport({ width: 1280, height: 800 });
+    console.log("\n--- [Desktop Viewport: 1280x800] ---");
+
     // 1. Initial Page Load
     await page.goto(`http://localhost:${PORT}/index.html`, { waitUntil: "networkidle0" });
     const title = await page.title();
@@ -156,7 +162,7 @@ async function runBrowserTests() {
     await page.click("#nav-comprehension");
     await page.waitForSelector(".comprehension-catalog-container");
     const passageCards = await page.$$(".passage-item-card");
-    assert(passageCards.length === 100, `Comprehension library rendered all 100 passage cards (found: ${passageCards.length})`);
+    assert(passageCards.length === 120, `Comprehension library rendered all 120 passage cards (found: ${passageCards.length})`);
 
     // Open first passage
     await passageCards[0].click();
@@ -302,6 +308,27 @@ async function runBrowserTests() {
     // 10. LocalStorage Persistence Verification
     const storedState = await page.evaluate(() => localStorage.getItem("nederpath-v1"));
     assert(storedState !== null && storedState.length > 50, "Application state correctly persisted in localStorage (nederpath-v1)");
+
+    // -------------------------------------------------------
+    // PART 2: MOBILE VIEWPORT TESTS (375 x 667)
+    // -------------------------------------------------------
+    console.log("\n--- [Mobile Viewport: 375x667] ---");
+    await page.setViewport({ width: 375, height: 667, isMobile: true, hasTouch: true });
+    await page.goto(`http://localhost:${PORT}/index.html`, { waitUntil: "networkidle0" });
+
+    const mobileNav = await page.$(".app-header");
+    assert(mobileNav !== null, "Mobile layout header rendered");
+
+    // Test tab navigation on mobile
+    await page.click("#nav-practice");
+    await page.waitForSelector(".practice-container");
+    assert(true, "Mobile navigation to Practice hub succeeded");
+
+    // Test mobile flashcard tap
+    await page.waitForSelector("#interactive-flashcard");
+    await page.tap("#interactive-flashcard");
+    await page.waitForSelector(".srs-controls");
+    assert(true, "Mobile touch tap revealed flashcard");
 
     console.log(`\nZero console errors encountered throughout all ${passed} browser assertions.`);
   } catch (err) {

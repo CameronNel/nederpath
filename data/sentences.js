@@ -233,7 +233,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00015",
     "nl": "Elke ochtend leest Jan een interessant boek.",
-    "en": "Elke ochtend jan reads an interesting book.",
+    "en": "Every morning, Jan reads an interesting book.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -279,8 +279,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00018",
-    "nl": "Wij weten dat jan elke ochtend een interessant boek leest.",
-    "en": "We know that jan reads an interesting book every morning.",
+    "nl": "Wij weten dat Jan elke ochtend een interessant boek leest.",
+    "en": "We know that Jan reads an interesting book every morning.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -312,7 +312,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00020",
     "nl": "Gisterenmiddag leest Jan een interessant boek.",
-    "en": "Gisterenmiddag jan reads an interesting book.",
+    "en": "Yesterday afternoon, Jan reads an interesting book.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -358,8 +358,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00023",
-    "nl": "Wij weten dat jan gisterenmiddag een interessant boek leest.",
-    "en": "We know that jan reads an interesting book yesterday afternoon.",
+    "nl": "Wij weten dat Jan gisterenmiddag een interessant boek leest.",
+    "en": "We know that Jan reads an interesting book yesterday afternoon.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -391,7 +391,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00025",
     "nl": "Volgende week leest Jan een interessant boek.",
-    "en": "Volgende week jan reads an interesting book.",
+    "en": "Next week, Jan reads an interesting book.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -437,8 +437,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00028",
-    "nl": "Wij weten dat jan volgende week een interessant boek leest.",
-    "en": "We know that jan reads an interesting book next week.",
+    "nl": "Wij weten dat Jan volgende week een interessant boek leest.",
+    "en": "We know that Jan reads an interesting book next week.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -470,7 +470,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00030",
     "nl": "In het weekend leest Jan een interessant boek.",
-    "en": "In het weekend jan reads an interesting book.",
+    "en": "At the weekend, Jan reads an interesting book.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -516,8 +516,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00033",
-    "nl": "Wij weten dat jan in het weekend een interessant boek leest.",
-    "en": "We know that jan reads an interesting book at the weekend.",
+    "nl": "Wij weten dat Jan in het weekend een interessant boek leest.",
+    "en": "We know that Jan reads an interesting book at the weekend.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -549,7 +549,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00035",
     "nl": "Om acht uur leest Jan een interessant boek.",
-    "en": "Om acht uur jan reads an interesting book.",
+    "en": "At eight o'clock, Jan reads an interesting book.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -595,8 +595,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00038",
-    "nl": "Wij weten dat jan om acht uur een interessant boek leest.",
-    "en": "We know that jan reads an interesting book at eight o'clock.",
+    "nl": "Wij weten dat Jan om acht uur een interessant boek leest.",
+    "en": "We know that Jan reads an interesting book at eight o'clock.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -628,7 +628,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00040",
     "nl": "Regelmatig leest Jan een interessant boek.",
-    "en": "Regelmatig jan reads an interesting book.",
+    "en": "Regularly, Jan reads an interesting book.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -674,8 +674,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00043",
-    "nl": "Wij weten dat jan regelmatig een interessant boek leest.",
-    "en": "We know that jan reads an interesting book regularly.",
+    "nl": "Wij weten dat Jan regelmatig een interessant boek leest.",
+    "en": "We know that Jan reads an interesting book regularly.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -707,7 +707,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00045",
     "nl": "Vaak leest Jan een interessant boek.",
-    "en": "Vaak jan reads an interesting book.",
+    "en": "Often, Jan reads an interesting book.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -753,8 +753,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00048",
-    "nl": "Wij weten dat jan vaak een interessant boek leest.",
-    "en": "We know that jan reads an interesting book often.",
+    "nl": "Wij weten dat Jan vaak een interessant boek leest.",
+    "en": "We know that Jan reads an interesting book often.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -786,7 +786,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00050",
     "nl": "Op maandag leest Jan een interessant boek.",
-    "en": "Op maandag jan reads an interesting book.",
+    "en": "On Monday, Jan reads an interesting book.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -832,8 +832,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00053",
-    "nl": "Wij weten dat jan op maandag een interessant boek leest.",
-    "en": "We know that jan reads an interesting book on Monday.",
+    "nl": "Wij weten dat Jan op maandag een interessant boek leest.",
+    "en": "We know that Jan reads an interesting book on Monday.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -865,7 +865,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00055",
     "nl": "Tijdens de lunch leest Jan een interessant boek.",
-    "en": "Tijdens de lunch jan reads an interesting book.",
+    "en": "During lunch, Jan reads an interesting book.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -911,8 +911,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00058",
-    "nl": "Wij weten dat jan tijdens de lunch een interessant boek leest.",
-    "en": "We know that jan reads an interesting book during lunch.",
+    "nl": "Wij weten dat Jan tijdens de lunch een interessant boek leest.",
+    "en": "We know that Jan reads an interesting book during lunch.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -944,7 +944,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00060",
     "nl": "Na het werk leest Jan een interessant boek.",
-    "en": "Na het werk jan reads an interesting book.",
+    "en": "After work, Jan reads an interesting book.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -990,8 +990,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00063",
-    "nl": "Wij weten dat jan na het werk een interessant boek leest.",
-    "en": "We know that jan reads an interesting book after work.",
+    "nl": "Wij weten dat Jan na het werk een interessant boek leest.",
+    "en": "We know that Jan reads an interesting book after work.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -1023,7 +1023,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00065",
     "nl": "Sinds vorige maand leest Jan een interessant boek.",
-    "en": "Sinds vorige maand jan reads an interesting book.",
+    "en": "Since last month, Jan reads an interesting book.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -1069,8 +1069,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00068",
-    "nl": "Wij weten dat jan sinds vorige maand een interessant boek leest.",
-    "en": "We know that jan reads an interesting book since last month.",
+    "nl": "Wij weten dat Jan sinds vorige maand een interessant boek leest.",
+    "en": "We know that Jan reads an interesting book since last month.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -1102,7 +1102,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00070",
     "nl": "Met grote zorgvuldigheid leest Jan een interessant boek.",
-    "en": "Met grote zorgvuldigheid jan reads an interesting book.",
+    "en": "With great care, Jan reads an interesting book.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -1148,8 +1148,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00073",
-    "nl": "Wij weten dat jan met grote zorgvuldigheid een interessant boek leest.",
-    "en": "We know that jan reads an interesting book with great care.",
+    "nl": "Wij weten dat Jan met grote zorgvuldigheid een interessant boek leest.",
+    "en": "We know that Jan reads an interesting book with great care.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -1181,7 +1181,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00075",
     "nl": "Elke ochtend schrijft Jan een belangrijke e-mail.",
-    "en": "Elke ochtend jan writes an important email.",
+    "en": "Every morning, Jan writes an important email.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -1227,8 +1227,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00078",
-    "nl": "Wij weten dat jan elke ochtend een belangrijke e-mail schrijft.",
-    "en": "We know that jan writes an important email every morning.",
+    "nl": "Wij weten dat Jan elke ochtend een belangrijke e-mail schrijft.",
+    "en": "We know that Jan writes an important email every morning.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -1260,7 +1260,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00080",
     "nl": "Gisterenmiddag schrijft Jan een belangrijke e-mail.",
-    "en": "Gisterenmiddag jan writes an important email.",
+    "en": "Yesterday afternoon, Jan writes an important email.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -1306,8 +1306,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00083",
-    "nl": "Wij weten dat jan gisterenmiddag een belangrijke e-mail schrijft.",
-    "en": "We know that jan writes an important email yesterday afternoon.",
+    "nl": "Wij weten dat Jan gisterenmiddag een belangrijke e-mail schrijft.",
+    "en": "We know that Jan writes an important email yesterday afternoon.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -1339,7 +1339,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00085",
     "nl": "Volgende week schrijft Jan een belangrijke e-mail.",
-    "en": "Volgende week jan writes an important email.",
+    "en": "Next week, Jan writes an important email.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -1385,8 +1385,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00088",
-    "nl": "Wij weten dat jan volgende week een belangrijke e-mail schrijft.",
-    "en": "We know that jan writes an important email next week.",
+    "nl": "Wij weten dat Jan volgende week een belangrijke e-mail schrijft.",
+    "en": "We know that Jan writes an important email next week.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -1418,7 +1418,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00090",
     "nl": "In het weekend schrijft Jan een belangrijke e-mail.",
-    "en": "In het weekend jan writes an important email.",
+    "en": "At the weekend, Jan writes an important email.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -1464,8 +1464,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00093",
-    "nl": "Wij weten dat jan in het weekend een belangrijke e-mail schrijft.",
-    "en": "We know that jan writes an important email at the weekend.",
+    "nl": "Wij weten dat Jan in het weekend een belangrijke e-mail schrijft.",
+    "en": "We know that Jan writes an important email at the weekend.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -1497,7 +1497,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00095",
     "nl": "Om acht uur schrijft Jan een belangrijke e-mail.",
-    "en": "Om acht uur jan writes an important email.",
+    "en": "At eight o'clock, Jan writes an important email.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -1543,8 +1543,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00098",
-    "nl": "Wij weten dat jan om acht uur een belangrijke e-mail schrijft.",
-    "en": "We know that jan writes an important email at eight o'clock.",
+    "nl": "Wij weten dat Jan om acht uur een belangrijke e-mail schrijft.",
+    "en": "We know that Jan writes an important email at eight o'clock.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -1576,7 +1576,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00100",
     "nl": "Regelmatig schrijft Jan een belangrijke e-mail.",
-    "en": "Regelmatig jan writes an important email.",
+    "en": "Regularly, Jan writes an important email.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -1622,8 +1622,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00103",
-    "nl": "Wij weten dat jan regelmatig een belangrijke e-mail schrijft.",
-    "en": "We know that jan writes an important email regularly.",
+    "nl": "Wij weten dat Jan regelmatig een belangrijke e-mail schrijft.",
+    "en": "We know that Jan writes an important email regularly.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -1655,7 +1655,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00105",
     "nl": "Vaak schrijft Jan een belangrijke e-mail.",
-    "en": "Vaak jan writes an important email.",
+    "en": "Often, Jan writes an important email.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -1701,8 +1701,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00108",
-    "nl": "Wij weten dat jan vaak een belangrijke e-mail schrijft.",
-    "en": "We know that jan writes an important email often.",
+    "nl": "Wij weten dat Jan vaak een belangrijke e-mail schrijft.",
+    "en": "We know that Jan writes an important email often.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -1734,7 +1734,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00110",
     "nl": "Op maandag schrijft Jan een belangrijke e-mail.",
-    "en": "Op maandag jan writes an important email.",
+    "en": "On Monday, Jan writes an important email.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -1780,8 +1780,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00113",
-    "nl": "Wij weten dat jan op maandag een belangrijke e-mail schrijft.",
-    "en": "We know that jan writes an important email on Monday.",
+    "nl": "Wij weten dat Jan op maandag een belangrijke e-mail schrijft.",
+    "en": "We know that Jan writes an important email on Monday.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -1813,7 +1813,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00115",
     "nl": "Tijdens de lunch schrijft Jan een belangrijke e-mail.",
-    "en": "Tijdens de lunch jan writes an important email.",
+    "en": "During lunch, Jan writes an important email.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -1859,8 +1859,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00118",
-    "nl": "Wij weten dat jan tijdens de lunch een belangrijke e-mail schrijft.",
-    "en": "We know that jan writes an important email during lunch.",
+    "nl": "Wij weten dat Jan tijdens de lunch een belangrijke e-mail schrijft.",
+    "en": "We know that Jan writes an important email during lunch.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -1892,7 +1892,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00120",
     "nl": "Na het werk schrijft Jan een belangrijke e-mail.",
-    "en": "Na het werk jan writes an important email.",
+    "en": "After work, Jan writes an important email.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -1938,8 +1938,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00123",
-    "nl": "Wij weten dat jan na het werk een belangrijke e-mail schrijft.",
-    "en": "We know that jan writes an important email after work.",
+    "nl": "Wij weten dat Jan na het werk een belangrijke e-mail schrijft.",
+    "en": "We know that Jan writes an important email after work.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -1971,7 +1971,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00125",
     "nl": "Sinds vorige maand schrijft Jan een belangrijke e-mail.",
-    "en": "Sinds vorige maand jan writes an important email.",
+    "en": "Since last month, Jan writes an important email.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -2017,8 +2017,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00128",
-    "nl": "Wij weten dat jan sinds vorige maand een belangrijke e-mail schrijft.",
-    "en": "We know that jan writes an important email since last month.",
+    "nl": "Wij weten dat Jan sinds vorige maand een belangrijke e-mail schrijft.",
+    "en": "We know that Jan writes an important email since last month.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -2050,7 +2050,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00130",
     "nl": "Met grote zorgvuldigheid schrijft Jan een belangrijke e-mail.",
-    "en": "Met grote zorgvuldigheid jan writes an important email.",
+    "en": "With great care, Jan writes an important email.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -2096,8 +2096,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00133",
-    "nl": "Wij weten dat jan met grote zorgvuldigheid een belangrijke e-mail schrijft.",
-    "en": "We know that jan writes an important email with great care.",
+    "nl": "Wij weten dat Jan met grote zorgvuldigheid een belangrijke e-mail schrijft.",
+    "en": "We know that Jan writes an important email with great care.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -2129,7 +2129,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00135",
     "nl": "Elke ochtend koopt Jan verse groenten op de markt.",
-    "en": "Elke ochtend jan buys fresh vegetables at the market.",
+    "en": "Every morning, Jan buys fresh vegetables at the market.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -2175,8 +2175,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00138",
-    "nl": "Wij weten dat jan elke ochtend verse groenten op de markt koopt.",
-    "en": "We know that jan buys fresh vegetables at the market every morning.",
+    "nl": "Wij weten dat Jan elke ochtend verse groenten op de markt koopt.",
+    "en": "We know that Jan buys fresh vegetables at the market every morning.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -2208,7 +2208,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00140",
     "nl": "Gisterenmiddag koopt Jan verse groenten op de markt.",
-    "en": "Gisterenmiddag jan buys fresh vegetables at the market.",
+    "en": "Yesterday afternoon, Jan buys fresh vegetables at the market.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -2254,8 +2254,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00143",
-    "nl": "Wij weten dat jan gisterenmiddag verse groenten op de markt koopt.",
-    "en": "We know that jan buys fresh vegetables at the market yesterday afternoon.",
+    "nl": "Wij weten dat Jan gisterenmiddag verse groenten op de markt koopt.",
+    "en": "We know that Jan buys fresh vegetables at the market yesterday afternoon.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -2287,7 +2287,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00145",
     "nl": "Volgende week koopt Jan verse groenten op de markt.",
-    "en": "Volgende week jan buys fresh vegetables at the market.",
+    "en": "Next week, Jan buys fresh vegetables at the market.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -2333,8 +2333,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00148",
-    "nl": "Wij weten dat jan volgende week verse groenten op de markt koopt.",
-    "en": "We know that jan buys fresh vegetables at the market next week.",
+    "nl": "Wij weten dat Jan volgende week verse groenten op de markt koopt.",
+    "en": "We know that Jan buys fresh vegetables at the market next week.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -2366,7 +2366,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00150",
     "nl": "In het weekend koopt Jan verse groenten op de markt.",
-    "en": "In het weekend jan buys fresh vegetables at the market.",
+    "en": "At the weekend, Jan buys fresh vegetables at the market.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -2412,8 +2412,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00153",
-    "nl": "Wij weten dat jan in het weekend verse groenten op de markt koopt.",
-    "en": "We know that jan buys fresh vegetables at the market at the weekend.",
+    "nl": "Wij weten dat Jan in het weekend verse groenten op de markt koopt.",
+    "en": "We know that Jan buys fresh vegetables at the market at the weekend.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -2445,7 +2445,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00155",
     "nl": "Om acht uur koopt Jan verse groenten op de markt.",
-    "en": "Om acht uur jan buys fresh vegetables at the market.",
+    "en": "At eight o'clock, Jan buys fresh vegetables at the market.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -2491,8 +2491,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00158",
-    "nl": "Wij weten dat jan om acht uur verse groenten op de markt koopt.",
-    "en": "We know that jan buys fresh vegetables at the market at eight o'clock.",
+    "nl": "Wij weten dat Jan om acht uur verse groenten op de markt koopt.",
+    "en": "We know that Jan buys fresh vegetables at the market at eight o'clock.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -2524,7 +2524,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00160",
     "nl": "Regelmatig koopt Jan verse groenten op de markt.",
-    "en": "Regelmatig jan buys fresh vegetables at the market.",
+    "en": "Regularly, Jan buys fresh vegetables at the market.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -2570,8 +2570,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00163",
-    "nl": "Wij weten dat jan regelmatig verse groenten op de markt koopt.",
-    "en": "We know that jan buys fresh vegetables at the market regularly.",
+    "nl": "Wij weten dat Jan regelmatig verse groenten op de markt koopt.",
+    "en": "We know that Jan buys fresh vegetables at the market regularly.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -2603,7 +2603,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00165",
     "nl": "Vaak koopt Jan verse groenten op de markt.",
-    "en": "Vaak jan buys fresh vegetables at the market.",
+    "en": "Often, Jan buys fresh vegetables at the market.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -2649,8 +2649,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00168",
-    "nl": "Wij weten dat jan vaak verse groenten op de markt koopt.",
-    "en": "We know that jan buys fresh vegetables at the market often.",
+    "nl": "Wij weten dat Jan vaak verse groenten op de markt koopt.",
+    "en": "We know that Jan buys fresh vegetables at the market often.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -2682,7 +2682,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00170",
     "nl": "Op maandag koopt Jan verse groenten op de markt.",
-    "en": "Op maandag jan buys fresh vegetables at the market.",
+    "en": "On Monday, Jan buys fresh vegetables at the market.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -2728,8 +2728,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00173",
-    "nl": "Wij weten dat jan op maandag verse groenten op de markt koopt.",
-    "en": "We know that jan buys fresh vegetables at the market on Monday.",
+    "nl": "Wij weten dat Jan op maandag verse groenten op de markt koopt.",
+    "en": "We know that Jan buys fresh vegetables at the market on Monday.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -2761,7 +2761,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00175",
     "nl": "Tijdens de lunch koopt Jan verse groenten op de markt.",
-    "en": "Tijdens de lunch jan buys fresh vegetables at the market.",
+    "en": "During lunch, Jan buys fresh vegetables at the market.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -2807,8 +2807,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00178",
-    "nl": "Wij weten dat jan tijdens de lunch verse groenten op de markt koopt.",
-    "en": "We know that jan buys fresh vegetables at the market during lunch.",
+    "nl": "Wij weten dat Jan tijdens de lunch verse groenten op de markt koopt.",
+    "en": "We know that Jan buys fresh vegetables at the market during lunch.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -2840,7 +2840,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00180",
     "nl": "Na het werk koopt Jan verse groenten op de markt.",
-    "en": "Na het werk jan buys fresh vegetables at the market.",
+    "en": "After work, Jan buys fresh vegetables at the market.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -2886,8 +2886,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00183",
-    "nl": "Wij weten dat jan na het werk verse groenten op de markt koopt.",
-    "en": "We know that jan buys fresh vegetables at the market after work.",
+    "nl": "Wij weten dat Jan na het werk verse groenten op de markt koopt.",
+    "en": "We know that Jan buys fresh vegetables at the market after work.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -2919,7 +2919,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00185",
     "nl": "Sinds vorige maand koopt Jan verse groenten op de markt.",
-    "en": "Sinds vorige maand jan buys fresh vegetables at the market.",
+    "en": "Since last month, Jan buys fresh vegetables at the market.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -2965,8 +2965,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00188",
-    "nl": "Wij weten dat jan sinds vorige maand verse groenten op de markt koopt.",
-    "en": "We know that jan buys fresh vegetables at the market since last month.",
+    "nl": "Wij weten dat Jan sinds vorige maand verse groenten op de markt koopt.",
+    "en": "We know that Jan buys fresh vegetables at the market since last month.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -2998,7 +2998,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00190",
     "nl": "Met grote zorgvuldigheid koopt Jan verse groenten op de markt.",
-    "en": "Met grote zorgvuldigheid jan buys fresh vegetables at the market.",
+    "en": "With great care, Jan buys fresh vegetables at the market.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -3044,8 +3044,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00193",
-    "nl": "Wij weten dat jan met grote zorgvuldigheid verse groenten op de markt koopt.",
-    "en": "We know that jan buys fresh vegetables at the market with great care.",
+    "nl": "Wij weten dat Jan met grote zorgvuldigheid verse groenten op de markt koopt.",
+    "en": "We know that Jan buys fresh vegetables at the market with great care.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -3077,7 +3077,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00195",
     "nl": "Elke ochtend maakt Jan een heerlijke lunch.",
-    "en": "Elke ochtend jan makes a delicious lunch.",
+    "en": "Every morning, Jan makes a delicious lunch.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -3123,8 +3123,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00198",
-    "nl": "Wij weten dat jan elke ochtend een heerlijke lunch maakt.",
-    "en": "We know that jan makes a delicious lunch every morning.",
+    "nl": "Wij weten dat Jan elke ochtend een heerlijke lunch maakt.",
+    "en": "We know that Jan makes a delicious lunch every morning.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -3156,7 +3156,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00200",
     "nl": "Gisterenmiddag maakt Jan een heerlijke lunch.",
-    "en": "Gisterenmiddag jan makes a delicious lunch.",
+    "en": "Yesterday afternoon, Jan makes a delicious lunch.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -3202,8 +3202,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00203",
-    "nl": "Wij weten dat jan gisterenmiddag een heerlijke lunch maakt.",
-    "en": "We know that jan makes a delicious lunch yesterday afternoon.",
+    "nl": "Wij weten dat Jan gisterenmiddag een heerlijke lunch maakt.",
+    "en": "We know that Jan makes a delicious lunch yesterday afternoon.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -3235,7 +3235,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00205",
     "nl": "Volgende week maakt Jan een heerlijke lunch.",
-    "en": "Volgende week jan makes a delicious lunch.",
+    "en": "Next week, Jan makes a delicious lunch.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -3281,8 +3281,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00208",
-    "nl": "Wij weten dat jan volgende week een heerlijke lunch maakt.",
-    "en": "We know that jan makes a delicious lunch next week.",
+    "nl": "Wij weten dat Jan volgende week een heerlijke lunch maakt.",
+    "en": "We know that Jan makes a delicious lunch next week.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -3314,7 +3314,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00210",
     "nl": "In het weekend maakt Jan een heerlijke lunch.",
-    "en": "In het weekend jan makes a delicious lunch.",
+    "en": "At the weekend, Jan makes a delicious lunch.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -3360,8 +3360,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00213",
-    "nl": "Wij weten dat jan in het weekend een heerlijke lunch maakt.",
-    "en": "We know that jan makes a delicious lunch at the weekend.",
+    "nl": "Wij weten dat Jan in het weekend een heerlijke lunch maakt.",
+    "en": "We know that Jan makes a delicious lunch at the weekend.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -3393,7 +3393,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00215",
     "nl": "Om acht uur maakt Jan een heerlijke lunch.",
-    "en": "Om acht uur jan makes a delicious lunch.",
+    "en": "At eight o'clock, Jan makes a delicious lunch.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -3439,8 +3439,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00218",
-    "nl": "Wij weten dat jan om acht uur een heerlijke lunch maakt.",
-    "en": "We know that jan makes a delicious lunch at eight o'clock.",
+    "nl": "Wij weten dat Jan om acht uur een heerlijke lunch maakt.",
+    "en": "We know that Jan makes a delicious lunch at eight o'clock.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -3472,7 +3472,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00220",
     "nl": "Regelmatig maakt Jan een heerlijke lunch.",
-    "en": "Regelmatig jan makes a delicious lunch.",
+    "en": "Regularly, Jan makes a delicious lunch.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -3518,8 +3518,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00223",
-    "nl": "Wij weten dat jan regelmatig een heerlijke lunch maakt.",
-    "en": "We know that jan makes a delicious lunch regularly.",
+    "nl": "Wij weten dat Jan regelmatig een heerlijke lunch maakt.",
+    "en": "We know that Jan makes a delicious lunch regularly.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -3551,7 +3551,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00225",
     "nl": "Vaak maakt Jan een heerlijke lunch.",
-    "en": "Vaak jan makes a delicious lunch.",
+    "en": "Often, Jan makes a delicious lunch.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -3597,8 +3597,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00228",
-    "nl": "Wij weten dat jan vaak een heerlijke lunch maakt.",
-    "en": "We know that jan makes a delicious lunch often.",
+    "nl": "Wij weten dat Jan vaak een heerlijke lunch maakt.",
+    "en": "We know that Jan makes a delicious lunch often.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -3630,7 +3630,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00230",
     "nl": "Op maandag maakt Jan een heerlijke lunch.",
-    "en": "Op maandag jan makes a delicious lunch.",
+    "en": "On Monday, Jan makes a delicious lunch.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -3676,8 +3676,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00233",
-    "nl": "Wij weten dat jan op maandag een heerlijke lunch maakt.",
-    "en": "We know that jan makes a delicious lunch on Monday.",
+    "nl": "Wij weten dat Jan op maandag een heerlijke lunch maakt.",
+    "en": "We know that Jan makes a delicious lunch on Monday.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -3709,7 +3709,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00235",
     "nl": "Tijdens de lunch maakt Jan een heerlijke lunch.",
-    "en": "Tijdens de lunch jan makes a delicious lunch.",
+    "en": "During lunch, Jan makes a delicious lunch.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -3755,8 +3755,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00238",
-    "nl": "Wij weten dat jan tijdens de lunch een heerlijke lunch maakt.",
-    "en": "We know that jan makes a delicious lunch during lunch.",
+    "nl": "Wij weten dat Jan tijdens de lunch een heerlijke lunch maakt.",
+    "en": "We know that Jan makes a delicious lunch during lunch.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -3788,7 +3788,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00240",
     "nl": "Na het werk maakt Jan een heerlijke lunch.",
-    "en": "Na het werk jan makes a delicious lunch.",
+    "en": "After work, Jan makes a delicious lunch.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -3834,8 +3834,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00243",
-    "nl": "Wij weten dat jan na het werk een heerlijke lunch maakt.",
-    "en": "We know that jan makes a delicious lunch after work.",
+    "nl": "Wij weten dat Jan na het werk een heerlijke lunch maakt.",
+    "en": "We know that Jan makes a delicious lunch after work.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -3867,7 +3867,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00245",
     "nl": "Sinds vorige maand maakt Jan een heerlijke lunch.",
-    "en": "Sinds vorige maand jan makes a delicious lunch.",
+    "en": "Since last month, Jan makes a delicious lunch.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -3913,8 +3913,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00248",
-    "nl": "Wij weten dat jan sinds vorige maand een heerlijke lunch maakt.",
-    "en": "We know that jan makes a delicious lunch since last month.",
+    "nl": "Wij weten dat Jan sinds vorige maand een heerlijke lunch maakt.",
+    "en": "We know that Jan makes a delicious lunch since last month.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -3946,7 +3946,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00250",
     "nl": "Met grote zorgvuldigheid maakt Jan een heerlijke lunch.",
-    "en": "Met grote zorgvuldigheid jan makes a delicious lunch.",
+    "en": "With great care, Jan makes a delicious lunch.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -3992,8 +3992,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00253",
-    "nl": "Wij weten dat jan met grote zorgvuldigheid een heerlijke lunch maakt.",
-    "en": "We know that jan makes a delicious lunch with great care.",
+    "nl": "Wij weten dat Jan met grote zorgvuldigheid een heerlijke lunch maakt.",
+    "en": "We know that Jan makes a delicious lunch with great care.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -4025,7 +4025,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00255",
     "nl": "Elke ochtend drinkt Jan een kop verse muntthee.",
-    "en": "Elke ochtend jan drinks a cup of fresh mint tea.",
+    "en": "Every morning, Jan drinks a cup of fresh mint tea.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -4071,8 +4071,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00258",
-    "nl": "Wij weten dat jan elke ochtend een kop verse muntthee drinkt.",
-    "en": "We know that jan drinks a cup of fresh mint tea every morning.",
+    "nl": "Wij weten dat Jan elke ochtend een kop verse muntthee drinkt.",
+    "en": "We know that Jan drinks a cup of fresh mint tea every morning.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -4104,7 +4104,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00260",
     "nl": "Gisterenmiddag drinkt Jan een kop verse muntthee.",
-    "en": "Gisterenmiddag jan drinks a cup of fresh mint tea.",
+    "en": "Yesterday afternoon, Jan drinks a cup of fresh mint tea.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -4150,8 +4150,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00263",
-    "nl": "Wij weten dat jan gisterenmiddag een kop verse muntthee drinkt.",
-    "en": "We know that jan drinks a cup of fresh mint tea yesterday afternoon.",
+    "nl": "Wij weten dat Jan gisterenmiddag een kop verse muntthee drinkt.",
+    "en": "We know that Jan drinks a cup of fresh mint tea yesterday afternoon.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -4183,7 +4183,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00265",
     "nl": "Volgende week drinkt Jan een kop verse muntthee.",
-    "en": "Volgende week jan drinks a cup of fresh mint tea.",
+    "en": "Next week, Jan drinks a cup of fresh mint tea.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -4229,8 +4229,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00268",
-    "nl": "Wij weten dat jan volgende week een kop verse muntthee drinkt.",
-    "en": "We know that jan drinks a cup of fresh mint tea next week.",
+    "nl": "Wij weten dat Jan volgende week een kop verse muntthee drinkt.",
+    "en": "We know that Jan drinks a cup of fresh mint tea next week.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -4262,7 +4262,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00270",
     "nl": "In het weekend drinkt Jan een kop verse muntthee.",
-    "en": "In het weekend jan drinks a cup of fresh mint tea.",
+    "en": "At the weekend, Jan drinks a cup of fresh mint tea.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -4308,8 +4308,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00273",
-    "nl": "Wij weten dat jan in het weekend een kop verse muntthee drinkt.",
-    "en": "We know that jan drinks a cup of fresh mint tea at the weekend.",
+    "nl": "Wij weten dat Jan in het weekend een kop verse muntthee drinkt.",
+    "en": "We know that Jan drinks a cup of fresh mint tea at the weekend.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -4341,7 +4341,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00275",
     "nl": "Om acht uur drinkt Jan een kop verse muntthee.",
-    "en": "Om acht uur jan drinks a cup of fresh mint tea.",
+    "en": "At eight o'clock, Jan drinks a cup of fresh mint tea.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -4387,8 +4387,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00278",
-    "nl": "Wij weten dat jan om acht uur een kop verse muntthee drinkt.",
-    "en": "We know that jan drinks a cup of fresh mint tea at eight o'clock.",
+    "nl": "Wij weten dat Jan om acht uur een kop verse muntthee drinkt.",
+    "en": "We know that Jan drinks a cup of fresh mint tea at eight o'clock.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -4420,7 +4420,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00280",
     "nl": "Regelmatig drinkt Jan een kop verse muntthee.",
-    "en": "Regelmatig jan drinks a cup of fresh mint tea.",
+    "en": "Regularly, Jan drinks a cup of fresh mint tea.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -4466,8 +4466,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00283",
-    "nl": "Wij weten dat jan regelmatig een kop verse muntthee drinkt.",
-    "en": "We know that jan drinks a cup of fresh mint tea regularly.",
+    "nl": "Wij weten dat Jan regelmatig een kop verse muntthee drinkt.",
+    "en": "We know that Jan drinks a cup of fresh mint tea regularly.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -4499,7 +4499,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00285",
     "nl": "Vaak drinkt Jan een kop verse muntthee.",
-    "en": "Vaak jan drinks a cup of fresh mint tea.",
+    "en": "Often, Jan drinks a cup of fresh mint tea.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -4545,8 +4545,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00288",
-    "nl": "Wij weten dat jan vaak een kop verse muntthee drinkt.",
-    "en": "We know that jan drinks a cup of fresh mint tea often.",
+    "nl": "Wij weten dat Jan vaak een kop verse muntthee drinkt.",
+    "en": "We know that Jan drinks a cup of fresh mint tea often.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -4578,7 +4578,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00290",
     "nl": "Op maandag drinkt Jan een kop verse muntthee.",
-    "en": "Op maandag jan drinks a cup of fresh mint tea.",
+    "en": "On Monday, Jan drinks a cup of fresh mint tea.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -4624,8 +4624,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00293",
-    "nl": "Wij weten dat jan op maandag een kop verse muntthee drinkt.",
-    "en": "We know that jan drinks a cup of fresh mint tea on Monday.",
+    "nl": "Wij weten dat Jan op maandag een kop verse muntthee drinkt.",
+    "en": "We know that Jan drinks a cup of fresh mint tea on Monday.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -4657,7 +4657,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00295",
     "nl": "Tijdens de lunch drinkt Jan een kop verse muntthee.",
-    "en": "Tijdens de lunch jan drinks a cup of fresh mint tea.",
+    "en": "During lunch, Jan drinks a cup of fresh mint tea.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -4703,8 +4703,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00298",
-    "nl": "Wij weten dat jan tijdens de lunch een kop verse muntthee drinkt.",
-    "en": "We know that jan drinks a cup of fresh mint tea during lunch.",
+    "nl": "Wij weten dat Jan tijdens de lunch een kop verse muntthee drinkt.",
+    "en": "We know that Jan drinks a cup of fresh mint tea during lunch.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -4736,7 +4736,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00300",
     "nl": "Na het werk drinkt Jan een kop verse muntthee.",
-    "en": "Na het werk jan drinks a cup of fresh mint tea.",
+    "en": "After work, Jan drinks a cup of fresh mint tea.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -4782,8 +4782,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00303",
-    "nl": "Wij weten dat jan na het werk een kop verse muntthee drinkt.",
-    "en": "We know that jan drinks a cup of fresh mint tea after work.",
+    "nl": "Wij weten dat Jan na het werk een kop verse muntthee drinkt.",
+    "en": "We know that Jan drinks a cup of fresh mint tea after work.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -4815,7 +4815,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00305",
     "nl": "Sinds vorige maand drinkt Jan een kop verse muntthee.",
-    "en": "Sinds vorige maand jan drinks a cup of fresh mint tea.",
+    "en": "Since last month, Jan drinks a cup of fresh mint tea.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -4861,8 +4861,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00308",
-    "nl": "Wij weten dat jan sinds vorige maand een kop verse muntthee drinkt.",
-    "en": "We know that jan drinks a cup of fresh mint tea since last month.",
+    "nl": "Wij weten dat Jan sinds vorige maand een kop verse muntthee drinkt.",
+    "en": "We know that Jan drinks a cup of fresh mint tea since last month.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -4894,7 +4894,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00310",
     "nl": "Met grote zorgvuldigheid drinkt Jan een kop verse muntthee.",
-    "en": "Met grote zorgvuldigheid jan drinks a cup of fresh mint tea.",
+    "en": "With great care, Jan drinks a cup of fresh mint tea.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -4940,8 +4940,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00313",
-    "nl": "Wij weten dat jan met grote zorgvuldigheid een kop verse muntthee drinkt.",
-    "en": "We know that jan drinks a cup of fresh mint tea with great care.",
+    "nl": "Wij weten dat Jan met grote zorgvuldigheid een kop verse muntthee drinkt.",
+    "en": "We know that Jan drinks a cup of fresh mint tea with great care.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -4973,7 +4973,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00315",
     "nl": "Elke ochtend bezoekt Jan het historische museum.",
-    "en": "Elke ochtend jan visits the historical museum.",
+    "en": "Every morning, Jan visits the historical museum.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -5019,8 +5019,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00318",
-    "nl": "Wij weten dat jan elke ochtend het historische museum bezoekt.",
-    "en": "We know that jan visits the historical museum every morning.",
+    "nl": "Wij weten dat Jan elke ochtend het historische museum bezoekt.",
+    "en": "We know that Jan visits the historical museum every morning.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -5052,7 +5052,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00320",
     "nl": "Gisterenmiddag bezoekt Jan het historische museum.",
-    "en": "Gisterenmiddag jan visits the historical museum.",
+    "en": "Yesterday afternoon, Jan visits the historical museum.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -5098,8 +5098,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00323",
-    "nl": "Wij weten dat jan gisterenmiddag het historische museum bezoekt.",
-    "en": "We know that jan visits the historical museum yesterday afternoon.",
+    "nl": "Wij weten dat Jan gisterenmiddag het historische museum bezoekt.",
+    "en": "We know that Jan visits the historical museum yesterday afternoon.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -5131,7 +5131,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00325",
     "nl": "Volgende week bezoekt Jan het historische museum.",
-    "en": "Volgende week jan visits the historical museum.",
+    "en": "Next week, Jan visits the historical museum.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -5177,8 +5177,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00328",
-    "nl": "Wij weten dat jan volgende week het historische museum bezoekt.",
-    "en": "We know that jan visits the historical museum next week.",
+    "nl": "Wij weten dat Jan volgende week het historische museum bezoekt.",
+    "en": "We know that Jan visits the historical museum next week.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -5210,7 +5210,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00330",
     "nl": "In het weekend bezoekt Jan het historische museum.",
-    "en": "In het weekend jan visits the historical museum.",
+    "en": "At the weekend, Jan visits the historical museum.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -5256,8 +5256,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00333",
-    "nl": "Wij weten dat jan in het weekend het historische museum bezoekt.",
-    "en": "We know that jan visits the historical museum at the weekend.",
+    "nl": "Wij weten dat Jan in het weekend het historische museum bezoekt.",
+    "en": "We know that Jan visits the historical museum at the weekend.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -5289,7 +5289,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00335",
     "nl": "Om acht uur bezoekt Jan het historische museum.",
-    "en": "Om acht uur jan visits the historical museum.",
+    "en": "At eight o'clock, Jan visits the historical museum.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -5335,8 +5335,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00338",
-    "nl": "Wij weten dat jan om acht uur het historische museum bezoekt.",
-    "en": "We know that jan visits the historical museum at eight o'clock.",
+    "nl": "Wij weten dat Jan om acht uur het historische museum bezoekt.",
+    "en": "We know that Jan visits the historical museum at eight o'clock.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -5368,7 +5368,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00340",
     "nl": "Regelmatig bezoekt Jan het historische museum.",
-    "en": "Regelmatig jan visits the historical museum.",
+    "en": "Regularly, Jan visits the historical museum.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -5414,8 +5414,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00343",
-    "nl": "Wij weten dat jan regelmatig het historische museum bezoekt.",
-    "en": "We know that jan visits the historical museum regularly.",
+    "nl": "Wij weten dat Jan regelmatig het historische museum bezoekt.",
+    "en": "We know that Jan visits the historical museum regularly.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -5447,7 +5447,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00345",
     "nl": "Vaak bezoekt Jan het historische museum.",
-    "en": "Vaak jan visits the historical museum.",
+    "en": "Often, Jan visits the historical museum.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -5493,8 +5493,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00348",
-    "nl": "Wij weten dat jan vaak het historische museum bezoekt.",
-    "en": "We know that jan visits the historical museum often.",
+    "nl": "Wij weten dat Jan vaak het historische museum bezoekt.",
+    "en": "We know that Jan visits the historical museum often.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -5526,7 +5526,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00350",
     "nl": "Op maandag bezoekt Jan het historische museum.",
-    "en": "Op maandag jan visits the historical museum.",
+    "en": "On Monday, Jan visits the historical museum.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -5572,8 +5572,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00353",
-    "nl": "Wij weten dat jan op maandag het historische museum bezoekt.",
-    "en": "We know that jan visits the historical museum on Monday.",
+    "nl": "Wij weten dat Jan op maandag het historische museum bezoekt.",
+    "en": "We know that Jan visits the historical museum on Monday.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -5605,7 +5605,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00355",
     "nl": "Tijdens de lunch bezoekt Jan het historische museum.",
-    "en": "Tijdens de lunch jan visits the historical museum.",
+    "en": "During lunch, Jan visits the historical museum.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -5651,8 +5651,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00358",
-    "nl": "Wij weten dat jan tijdens de lunch het historische museum bezoekt.",
-    "en": "We know that jan visits the historical museum during lunch.",
+    "nl": "Wij weten dat Jan tijdens de lunch het historische museum bezoekt.",
+    "en": "We know that Jan visits the historical museum during lunch.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -5684,7 +5684,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00360",
     "nl": "Na het werk bezoekt Jan het historische museum.",
-    "en": "Na het werk jan visits the historical museum.",
+    "en": "After work, Jan visits the historical museum.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -5730,8 +5730,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00363",
-    "nl": "Wij weten dat jan na het werk het historische museum bezoekt.",
-    "en": "We know that jan visits the historical museum after work.",
+    "nl": "Wij weten dat Jan na het werk het historische museum bezoekt.",
+    "en": "We know that Jan visits the historical museum after work.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -5763,7 +5763,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00365",
     "nl": "Sinds vorige maand bezoekt Jan het historische museum.",
-    "en": "Sinds vorige maand jan visits the historical museum.",
+    "en": "Since last month, Jan visits the historical museum.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -5809,8 +5809,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00368",
-    "nl": "Wij weten dat jan sinds vorige maand het historische museum bezoekt.",
-    "en": "We know that jan visits the historical museum since last month.",
+    "nl": "Wij weten dat Jan sinds vorige maand het historische museum bezoekt.",
+    "en": "We know that Jan visits the historical museum since last month.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -5842,7 +5842,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00370",
     "nl": "Met grote zorgvuldigheid bezoekt Jan het historische museum.",
-    "en": "Met grote zorgvuldigheid jan visits the historical museum.",
+    "en": "With great care, Jan visits the historical museum.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -5888,8 +5888,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00373",
-    "nl": "Wij weten dat jan met grote zorgvuldigheid het historische museum bezoekt.",
-    "en": "We know that jan visits the historical museum with great care.",
+    "nl": "Wij weten dat Jan met grote zorgvuldigheid het historische museum bezoekt.",
+    "en": "We know that Jan visits the historical museum with great care.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -5921,7 +5921,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00375",
     "nl": "Elke ochtend zoekt Jan een nieuw appartement.",
-    "en": "Elke ochtend jan looks for a new apartment.",
+    "en": "Every morning, Jan looks for a new apartment.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -5967,8 +5967,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00378",
-    "nl": "Wij weten dat jan elke ochtend een nieuw appartement zoekt.",
-    "en": "We know that jan looks for a new apartment every morning.",
+    "nl": "Wij weten dat Jan elke ochtend een nieuw appartement zoekt.",
+    "en": "We know that Jan looks for a new apartment every morning.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -6000,7 +6000,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00380",
     "nl": "Gisterenmiddag zoekt Jan een nieuw appartement.",
-    "en": "Gisterenmiddag jan looks for a new apartment.",
+    "en": "Yesterday afternoon, Jan looks for a new apartment.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -6046,8 +6046,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00383",
-    "nl": "Wij weten dat jan gisterenmiddag een nieuw appartement zoekt.",
-    "en": "We know that jan looks for a new apartment yesterday afternoon.",
+    "nl": "Wij weten dat Jan gisterenmiddag een nieuw appartement zoekt.",
+    "en": "We know that Jan looks for a new apartment yesterday afternoon.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -6079,7 +6079,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00385",
     "nl": "Volgende week zoekt Jan een nieuw appartement.",
-    "en": "Volgende week jan looks for a new apartment.",
+    "en": "Next week, Jan looks for a new apartment.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -6125,8 +6125,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00388",
-    "nl": "Wij weten dat jan volgende week een nieuw appartement zoekt.",
-    "en": "We know that jan looks for a new apartment next week.",
+    "nl": "Wij weten dat Jan volgende week een nieuw appartement zoekt.",
+    "en": "We know that Jan looks for a new apartment next week.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -6158,7 +6158,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00390",
     "nl": "In het weekend zoekt Jan een nieuw appartement.",
-    "en": "In het weekend jan looks for a new apartment.",
+    "en": "At the weekend, Jan looks for a new apartment.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -6204,8 +6204,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00393",
-    "nl": "Wij weten dat jan in het weekend een nieuw appartement zoekt.",
-    "en": "We know that jan looks for a new apartment at the weekend.",
+    "nl": "Wij weten dat Jan in het weekend een nieuw appartement zoekt.",
+    "en": "We know that Jan looks for a new apartment at the weekend.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -6237,7 +6237,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00395",
     "nl": "Om acht uur zoekt Jan een nieuw appartement.",
-    "en": "Om acht uur jan looks for a new apartment.",
+    "en": "At eight o'clock, Jan looks for a new apartment.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -6283,8 +6283,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00398",
-    "nl": "Wij weten dat jan om acht uur een nieuw appartement zoekt.",
-    "en": "We know that jan looks for a new apartment at eight o'clock.",
+    "nl": "Wij weten dat Jan om acht uur een nieuw appartement zoekt.",
+    "en": "We know that Jan looks for a new apartment at eight o'clock.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -6316,7 +6316,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00400",
     "nl": "Regelmatig zoekt Jan een nieuw appartement.",
-    "en": "Regelmatig jan looks for a new apartment.",
+    "en": "Regularly, Jan looks for a new apartment.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -6362,8 +6362,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00403",
-    "nl": "Wij weten dat jan regelmatig een nieuw appartement zoekt.",
-    "en": "We know that jan looks for a new apartment regularly.",
+    "nl": "Wij weten dat Jan regelmatig een nieuw appartement zoekt.",
+    "en": "We know that Jan looks for a new apartment regularly.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -6395,7 +6395,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00405",
     "nl": "Vaak zoekt Jan een nieuw appartement.",
-    "en": "Vaak jan looks for a new apartment.",
+    "en": "Often, Jan looks for a new apartment.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -6441,8 +6441,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00408",
-    "nl": "Wij weten dat jan vaak een nieuw appartement zoekt.",
-    "en": "We know that jan looks for a new apartment often.",
+    "nl": "Wij weten dat Jan vaak een nieuw appartement zoekt.",
+    "en": "We know that Jan looks for a new apartment often.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -6474,7 +6474,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00410",
     "nl": "Op maandag zoekt Jan een nieuw appartement.",
-    "en": "Op maandag jan looks for a new apartment.",
+    "en": "On Monday, Jan looks for a new apartment.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -6520,8 +6520,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00413",
-    "nl": "Wij weten dat jan op maandag een nieuw appartement zoekt.",
-    "en": "We know that jan looks for a new apartment on Monday.",
+    "nl": "Wij weten dat Jan op maandag een nieuw appartement zoekt.",
+    "en": "We know that Jan looks for a new apartment on Monday.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -6553,7 +6553,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00415",
     "nl": "Tijdens de lunch zoekt Jan een nieuw appartement.",
-    "en": "Tijdens de lunch jan looks for a new apartment.",
+    "en": "During lunch, Jan looks for a new apartment.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -6599,8 +6599,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00418",
-    "nl": "Wij weten dat jan tijdens de lunch een nieuw appartement zoekt.",
-    "en": "We know that jan looks for a new apartment during lunch.",
+    "nl": "Wij weten dat Jan tijdens de lunch een nieuw appartement zoekt.",
+    "en": "We know that Jan looks for a new apartment during lunch.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -6632,7 +6632,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00420",
     "nl": "Na het werk zoekt Jan een nieuw appartement.",
-    "en": "Na het werk jan looks for a new apartment.",
+    "en": "After work, Jan looks for a new apartment.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -6678,8 +6678,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00423",
-    "nl": "Wij weten dat jan na het werk een nieuw appartement zoekt.",
-    "en": "We know that jan looks for a new apartment after work.",
+    "nl": "Wij weten dat Jan na het werk een nieuw appartement zoekt.",
+    "en": "We know that Jan looks for a new apartment after work.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -6711,7 +6711,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00425",
     "nl": "Sinds vorige maand zoekt Jan een nieuw appartement.",
-    "en": "Sinds vorige maand jan looks for a new apartment.",
+    "en": "Since last month, Jan looks for a new apartment.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -6757,8 +6757,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00428",
-    "nl": "Wij weten dat jan sinds vorige maand een nieuw appartement zoekt.",
-    "en": "We know that jan looks for a new apartment since last month.",
+    "nl": "Wij weten dat Jan sinds vorige maand een nieuw appartement zoekt.",
+    "en": "We know that Jan looks for a new apartment since last month.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -6790,7 +6790,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00430",
     "nl": "Met grote zorgvuldigheid zoekt Jan een nieuw appartement.",
-    "en": "Met grote zorgvuldigheid jan looks for a new apartment.",
+    "en": "With great care, Jan looks for a new apartment.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -6836,8 +6836,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00433",
-    "nl": "Wij weten dat jan met grote zorgvuldigheid een nieuw appartement zoekt.",
-    "en": "We know that jan looks for a new apartment with great care.",
+    "nl": "Wij weten dat Jan met grote zorgvuldigheid een nieuw appartement zoekt.",
+    "en": "We know that Jan looks for a new apartment with great care.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -6869,7 +6869,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00435",
     "nl": "Elke ochtend ontmoet Jan goede vrienden in de stad.",
-    "en": "Elke ochtend jan meets good friends in the city.",
+    "en": "Every morning, Jan meets good friends in the city.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -6915,8 +6915,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00438",
-    "nl": "Wij weten dat jan elke ochtend goede vrienden in de stad ontmoet.",
-    "en": "We know that jan meets good friends in the city every morning.",
+    "nl": "Wij weten dat Jan elke ochtend goede vrienden in de stad ontmoet.",
+    "en": "We know that Jan meets good friends in the city every morning.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -6948,7 +6948,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00440",
     "nl": "Gisterenmiddag ontmoet Jan goede vrienden in de stad.",
-    "en": "Gisterenmiddag jan meets good friends in the city.",
+    "en": "Yesterday afternoon, Jan meets good friends in the city.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -6994,8 +6994,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00443",
-    "nl": "Wij weten dat jan gisterenmiddag goede vrienden in de stad ontmoet.",
-    "en": "We know that jan meets good friends in the city yesterday afternoon.",
+    "nl": "Wij weten dat Jan gisterenmiddag goede vrienden in de stad ontmoet.",
+    "en": "We know that Jan meets good friends in the city yesterday afternoon.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -7027,7 +7027,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00445",
     "nl": "Volgende week ontmoet Jan goede vrienden in de stad.",
-    "en": "Volgende week jan meets good friends in the city.",
+    "en": "Next week, Jan meets good friends in the city.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -7073,8 +7073,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00448",
-    "nl": "Wij weten dat jan volgende week goede vrienden in de stad ontmoet.",
-    "en": "We know that jan meets good friends in the city next week.",
+    "nl": "Wij weten dat Jan volgende week goede vrienden in de stad ontmoet.",
+    "en": "We know that Jan meets good friends in the city next week.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -7106,7 +7106,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00450",
     "nl": "In het weekend ontmoet Jan goede vrienden in de stad.",
-    "en": "In het weekend jan meets good friends in the city.",
+    "en": "At the weekend, Jan meets good friends in the city.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -7152,8 +7152,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00453",
-    "nl": "Wij weten dat jan in het weekend goede vrienden in de stad ontmoet.",
-    "en": "We know that jan meets good friends in the city at the weekend.",
+    "nl": "Wij weten dat Jan in het weekend goede vrienden in de stad ontmoet.",
+    "en": "We know that Jan meets good friends in the city at the weekend.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -7185,7 +7185,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00455",
     "nl": "Om acht uur ontmoet Jan goede vrienden in de stad.",
-    "en": "Om acht uur jan meets good friends in the city.",
+    "en": "At eight o'clock, Jan meets good friends in the city.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -7231,8 +7231,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00458",
-    "nl": "Wij weten dat jan om acht uur goede vrienden in de stad ontmoet.",
-    "en": "We know that jan meets good friends in the city at eight o'clock.",
+    "nl": "Wij weten dat Jan om acht uur goede vrienden in de stad ontmoet.",
+    "en": "We know that Jan meets good friends in the city at eight o'clock.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -7264,7 +7264,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00460",
     "nl": "Regelmatig ontmoet Jan goede vrienden in de stad.",
-    "en": "Regelmatig jan meets good friends in the city.",
+    "en": "Regularly, Jan meets good friends in the city.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -7310,8 +7310,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00463",
-    "nl": "Wij weten dat jan regelmatig goede vrienden in de stad ontmoet.",
-    "en": "We know that jan meets good friends in the city regularly.",
+    "nl": "Wij weten dat Jan regelmatig goede vrienden in de stad ontmoet.",
+    "en": "We know that Jan meets good friends in the city regularly.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -7343,7 +7343,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00465",
     "nl": "Vaak ontmoet Jan goede vrienden in de stad.",
-    "en": "Vaak jan meets good friends in the city.",
+    "en": "Often, Jan meets good friends in the city.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -7389,8 +7389,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00468",
-    "nl": "Wij weten dat jan vaak goede vrienden in de stad ontmoet.",
-    "en": "We know that jan meets good friends in the city often.",
+    "nl": "Wij weten dat Jan vaak goede vrienden in de stad ontmoet.",
+    "en": "We know that Jan meets good friends in the city often.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -7422,7 +7422,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00470",
     "nl": "Op maandag ontmoet Jan goede vrienden in de stad.",
-    "en": "Op maandag jan meets good friends in the city.",
+    "en": "On Monday, Jan meets good friends in the city.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -7468,8 +7468,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00473",
-    "nl": "Wij weten dat jan op maandag goede vrienden in de stad ontmoet.",
-    "en": "We know that jan meets good friends in the city on Monday.",
+    "nl": "Wij weten dat Jan op maandag goede vrienden in de stad ontmoet.",
+    "en": "We know that Jan meets good friends in the city on Monday.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -7501,7 +7501,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00475",
     "nl": "Tijdens de lunch ontmoet Jan goede vrienden in de stad.",
-    "en": "Tijdens de lunch jan meets good friends in the city.",
+    "en": "During lunch, Jan meets good friends in the city.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -7547,8 +7547,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00478",
-    "nl": "Wij weten dat jan tijdens de lunch goede vrienden in de stad ontmoet.",
-    "en": "We know that jan meets good friends in the city during lunch.",
+    "nl": "Wij weten dat Jan tijdens de lunch goede vrienden in de stad ontmoet.",
+    "en": "We know that Jan meets good friends in the city during lunch.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -7580,7 +7580,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00480",
     "nl": "Na het werk ontmoet Jan goede vrienden in de stad.",
-    "en": "Na het werk jan meets good friends in the city.",
+    "en": "After work, Jan meets good friends in the city.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -7626,8 +7626,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00483",
-    "nl": "Wij weten dat jan na het werk goede vrienden in de stad ontmoet.",
-    "en": "We know that jan meets good friends in the city after work.",
+    "nl": "Wij weten dat Jan na het werk goede vrienden in de stad ontmoet.",
+    "en": "We know that Jan meets good friends in the city after work.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -7659,7 +7659,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00485",
     "nl": "Sinds vorige maand ontmoet Jan goede vrienden in de stad.",
-    "en": "Sinds vorige maand jan meets good friends in the city.",
+    "en": "Since last month, Jan meets good friends in the city.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -7705,8 +7705,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00488",
-    "nl": "Wij weten dat jan sinds vorige maand goede vrienden in de stad ontmoet.",
-    "en": "We know that jan meets good friends in the city since last month.",
+    "nl": "Wij weten dat Jan sinds vorige maand goede vrienden in de stad ontmoet.",
+    "en": "We know that Jan meets good friends in the city since last month.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -7738,7 +7738,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00490",
     "nl": "Met grote zorgvuldigheid ontmoet Jan goede vrienden in de stad.",
-    "en": "Met grote zorgvuldigheid jan meets good friends in the city.",
+    "en": "With great care, Jan meets good friends in the city.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -7784,8 +7784,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00493",
-    "nl": "Wij weten dat jan met grote zorgvuldigheid goede vrienden in de stad ontmoet.",
-    "en": "We know that jan meets good friends in the city with great care.",
+    "nl": "Wij weten dat Jan met grote zorgvuldigheid goede vrienden in de stad ontmoet.",
+    "en": "We know that Jan meets good friends in the city with great care.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -7817,7 +7817,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00495",
     "nl": "Elke ochtend plant Jan een lange reis naar het buitenland.",
-    "en": "Elke ochtend jan plans a long journey abroad.",
+    "en": "Every morning, Jan plans a long journey abroad.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -7863,8 +7863,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00498",
-    "nl": "Wij weten dat jan elke ochtend een lange reis naar het buitenland plant.",
-    "en": "We know that jan plans a long journey abroad every morning.",
+    "nl": "Wij weten dat Jan elke ochtend een lange reis naar het buitenland plant.",
+    "en": "We know that Jan plans a long journey abroad every morning.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -7896,7 +7896,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00500",
     "nl": "Gisterenmiddag plant Jan een lange reis naar het buitenland.",
-    "en": "Gisterenmiddag jan plans a long journey abroad.",
+    "en": "Yesterday afternoon, Jan plans a long journey abroad.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -7942,8 +7942,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00503",
-    "nl": "Wij weten dat jan gisterenmiddag een lange reis naar het buitenland plant.",
-    "en": "We know that jan plans a long journey abroad yesterday afternoon.",
+    "nl": "Wij weten dat Jan gisterenmiddag een lange reis naar het buitenland plant.",
+    "en": "We know that Jan plans a long journey abroad yesterday afternoon.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -7975,7 +7975,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00505",
     "nl": "Volgende week plant Jan een lange reis naar het buitenland.",
-    "en": "Volgende week jan plans a long journey abroad.",
+    "en": "Next week, Jan plans a long journey abroad.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -8021,8 +8021,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00508",
-    "nl": "Wij weten dat jan volgende week een lange reis naar het buitenland plant.",
-    "en": "We know that jan plans a long journey abroad next week.",
+    "nl": "Wij weten dat Jan volgende week een lange reis naar het buitenland plant.",
+    "en": "We know that Jan plans a long journey abroad next week.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -8054,7 +8054,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00510",
     "nl": "In het weekend plant Jan een lange reis naar het buitenland.",
-    "en": "In het weekend jan plans a long journey abroad.",
+    "en": "At the weekend, Jan plans a long journey abroad.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -8100,8 +8100,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00513",
-    "nl": "Wij weten dat jan in het weekend een lange reis naar het buitenland plant.",
-    "en": "We know that jan plans a long journey abroad at the weekend.",
+    "nl": "Wij weten dat Jan in het weekend een lange reis naar het buitenland plant.",
+    "en": "We know that Jan plans a long journey abroad at the weekend.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -8133,7 +8133,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00515",
     "nl": "Om acht uur plant Jan een lange reis naar het buitenland.",
-    "en": "Om acht uur jan plans a long journey abroad.",
+    "en": "At eight o'clock, Jan plans a long journey abroad.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -8179,8 +8179,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00518",
-    "nl": "Wij weten dat jan om acht uur een lange reis naar het buitenland plant.",
-    "en": "We know that jan plans a long journey abroad at eight o'clock.",
+    "nl": "Wij weten dat Jan om acht uur een lange reis naar het buitenland plant.",
+    "en": "We know that Jan plans a long journey abroad at eight o'clock.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -8212,7 +8212,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00520",
     "nl": "Regelmatig plant Jan een lange reis naar het buitenland.",
-    "en": "Regelmatig jan plans a long journey abroad.",
+    "en": "Regularly, Jan plans a long journey abroad.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -8258,8 +8258,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00523",
-    "nl": "Wij weten dat jan regelmatig een lange reis naar het buitenland plant.",
-    "en": "We know that jan plans a long journey abroad regularly.",
+    "nl": "Wij weten dat Jan regelmatig een lange reis naar het buitenland plant.",
+    "en": "We know that Jan plans a long journey abroad regularly.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -8291,7 +8291,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00525",
     "nl": "Vaak plant Jan een lange reis naar het buitenland.",
-    "en": "Vaak jan plans a long journey abroad.",
+    "en": "Often, Jan plans a long journey abroad.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -8337,8 +8337,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00528",
-    "nl": "Wij weten dat jan vaak een lange reis naar het buitenland plant.",
-    "en": "We know that jan plans a long journey abroad often.",
+    "nl": "Wij weten dat Jan vaak een lange reis naar het buitenland plant.",
+    "en": "We know that Jan plans a long journey abroad often.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -8370,7 +8370,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00530",
     "nl": "Op maandag plant Jan een lange reis naar het buitenland.",
-    "en": "Op maandag jan plans a long journey abroad.",
+    "en": "On Monday, Jan plans a long journey abroad.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -8416,8 +8416,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00533",
-    "nl": "Wij weten dat jan op maandag een lange reis naar het buitenland plant.",
-    "en": "We know that jan plans a long journey abroad on Monday.",
+    "nl": "Wij weten dat Jan op maandag een lange reis naar het buitenland plant.",
+    "en": "We know that Jan plans a long journey abroad on Monday.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -8449,7 +8449,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00535",
     "nl": "Tijdens de lunch plant Jan een lange reis naar het buitenland.",
-    "en": "Tijdens de lunch jan plans a long journey abroad.",
+    "en": "During lunch, Jan plans a long journey abroad.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -8495,8 +8495,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00538",
-    "nl": "Wij weten dat jan tijdens de lunch een lange reis naar het buitenland plant.",
-    "en": "We know that jan plans a long journey abroad during lunch.",
+    "nl": "Wij weten dat Jan tijdens de lunch een lange reis naar het buitenland plant.",
+    "en": "We know that Jan plans a long journey abroad during lunch.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -8528,7 +8528,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00540",
     "nl": "Na het werk plant Jan een lange reis naar het buitenland.",
-    "en": "Na het werk jan plans a long journey abroad.",
+    "en": "After work, Jan plans a long journey abroad.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -8574,8 +8574,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00543",
-    "nl": "Wij weten dat jan na het werk een lange reis naar het buitenland plant.",
-    "en": "We know that jan plans a long journey abroad after work.",
+    "nl": "Wij weten dat Jan na het werk een lange reis naar het buitenland plant.",
+    "en": "We know that Jan plans a long journey abroad after work.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -8607,7 +8607,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00545",
     "nl": "Sinds vorige maand plant Jan een lange reis naar het buitenland.",
-    "en": "Sinds vorige maand jan plans a long journey abroad.",
+    "en": "Since last month, Jan plans a long journey abroad.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -8653,8 +8653,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00548",
-    "nl": "Wij weten dat jan sinds vorige maand een lange reis naar het buitenland plant.",
-    "en": "We know that jan plans a long journey abroad since last month.",
+    "nl": "Wij weten dat Jan sinds vorige maand een lange reis naar het buitenland plant.",
+    "en": "We know that Jan plans a long journey abroad since last month.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -8686,7 +8686,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00550",
     "nl": "Met grote zorgvuldigheid plant Jan een lange reis naar het buitenland.",
-    "en": "Met grote zorgvuldigheid jan plans a long journey abroad.",
+    "en": "With great care, Jan plans a long journey abroad.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -8732,8 +8732,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00553",
-    "nl": "Wij weten dat jan met grote zorgvuldigheid een lange reis naar het buitenland plant.",
-    "en": "We know that jan plans a long journey abroad with great care.",
+    "nl": "Wij weten dat Jan met grote zorgvuldigheid een lange reis naar het buitenland plant.",
+    "en": "We know that Jan plans a long journey abroad with great care.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -8765,7 +8765,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00555",
     "nl": "Elke ochtend organiseert Jan een gezellige buurtbijeenkomst.",
-    "en": "Elke ochtend jan organizes a cosy neighbourhood meeting.",
+    "en": "Every morning, Jan organizes a cosy neighbourhood meeting.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -8811,8 +8811,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00558",
-    "nl": "Wij weten dat jan elke ochtend een gezellige buurtbijeenkomst organiseert.",
-    "en": "We know that jan organizes a cosy neighbourhood meeting every morning.",
+    "nl": "Wij weten dat Jan elke ochtend een gezellige buurtbijeenkomst organiseert.",
+    "en": "We know that Jan organizes a cosy neighbourhood meeting every morning.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -8844,7 +8844,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00560",
     "nl": "Gisterenmiddag organiseert Jan een gezellige buurtbijeenkomst.",
-    "en": "Gisterenmiddag jan organizes a cosy neighbourhood meeting.",
+    "en": "Yesterday afternoon, Jan organizes a cosy neighbourhood meeting.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -8890,8 +8890,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00563",
-    "nl": "Wij weten dat jan gisterenmiddag een gezellige buurtbijeenkomst organiseert.",
-    "en": "We know that jan organizes a cosy neighbourhood meeting yesterday afternoon.",
+    "nl": "Wij weten dat Jan gisterenmiddag een gezellige buurtbijeenkomst organiseert.",
+    "en": "We know that Jan organizes a cosy neighbourhood meeting yesterday afternoon.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -8923,7 +8923,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00565",
     "nl": "Volgende week organiseert Jan een gezellige buurtbijeenkomst.",
-    "en": "Volgende week jan organizes a cosy neighbourhood meeting.",
+    "en": "Next week, Jan organizes a cosy neighbourhood meeting.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -8969,8 +8969,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00568",
-    "nl": "Wij weten dat jan volgende week een gezellige buurtbijeenkomst organiseert.",
-    "en": "We know that jan organizes a cosy neighbourhood meeting next week.",
+    "nl": "Wij weten dat Jan volgende week een gezellige buurtbijeenkomst organiseert.",
+    "en": "We know that Jan organizes a cosy neighbourhood meeting next week.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -9002,7 +9002,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00570",
     "nl": "In het weekend organiseert Jan een gezellige buurtbijeenkomst.",
-    "en": "In het weekend jan organizes a cosy neighbourhood meeting.",
+    "en": "At the weekend, Jan organizes a cosy neighbourhood meeting.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -9048,8 +9048,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00573",
-    "nl": "Wij weten dat jan in het weekend een gezellige buurtbijeenkomst organiseert.",
-    "en": "We know that jan organizes a cosy neighbourhood meeting at the weekend.",
+    "nl": "Wij weten dat Jan in het weekend een gezellige buurtbijeenkomst organiseert.",
+    "en": "We know that Jan organizes a cosy neighbourhood meeting at the weekend.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -9081,7 +9081,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00575",
     "nl": "Om acht uur organiseert Jan een gezellige buurtbijeenkomst.",
-    "en": "Om acht uur jan organizes a cosy neighbourhood meeting.",
+    "en": "At eight o'clock, Jan organizes a cosy neighbourhood meeting.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -9127,8 +9127,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00578",
-    "nl": "Wij weten dat jan om acht uur een gezellige buurtbijeenkomst organiseert.",
-    "en": "We know that jan organizes a cosy neighbourhood meeting at eight o'clock.",
+    "nl": "Wij weten dat Jan om acht uur een gezellige buurtbijeenkomst organiseert.",
+    "en": "We know that Jan organizes a cosy neighbourhood meeting at eight o'clock.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -9160,7 +9160,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00580",
     "nl": "Regelmatig organiseert Jan een gezellige buurtbijeenkomst.",
-    "en": "Regelmatig jan organizes a cosy neighbourhood meeting.",
+    "en": "Regularly, Jan organizes a cosy neighbourhood meeting.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -9206,8 +9206,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00583",
-    "nl": "Wij weten dat jan regelmatig een gezellige buurtbijeenkomst organiseert.",
-    "en": "We know that jan organizes a cosy neighbourhood meeting regularly.",
+    "nl": "Wij weten dat Jan regelmatig een gezellige buurtbijeenkomst organiseert.",
+    "en": "We know that Jan organizes a cosy neighbourhood meeting regularly.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -9239,7 +9239,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00585",
     "nl": "Vaak organiseert Jan een gezellige buurtbijeenkomst.",
-    "en": "Vaak jan organizes a cosy neighbourhood meeting.",
+    "en": "Often, Jan organizes a cosy neighbourhood meeting.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -9285,8 +9285,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00588",
-    "nl": "Wij weten dat jan vaak een gezellige buurtbijeenkomst organiseert.",
-    "en": "We know that jan organizes a cosy neighbourhood meeting often.",
+    "nl": "Wij weten dat Jan vaak een gezellige buurtbijeenkomst organiseert.",
+    "en": "We know that Jan organizes a cosy neighbourhood meeting often.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -9318,7 +9318,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00590",
     "nl": "Op maandag organiseert Jan een gezellige buurtbijeenkomst.",
-    "en": "Op maandag jan organizes a cosy neighbourhood meeting.",
+    "en": "On Monday, Jan organizes a cosy neighbourhood meeting.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -9364,8 +9364,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00593",
-    "nl": "Wij weten dat jan op maandag een gezellige buurtbijeenkomst organiseert.",
-    "en": "We know that jan organizes a cosy neighbourhood meeting on Monday.",
+    "nl": "Wij weten dat Jan op maandag een gezellige buurtbijeenkomst organiseert.",
+    "en": "We know that Jan organizes a cosy neighbourhood meeting on Monday.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -9397,7 +9397,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00595",
     "nl": "Tijdens de lunch organiseert Jan een gezellige buurtbijeenkomst.",
-    "en": "Tijdens de lunch jan organizes a cosy neighbourhood meeting.",
+    "en": "During lunch, Jan organizes a cosy neighbourhood meeting.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -9443,8 +9443,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00598",
-    "nl": "Wij weten dat jan tijdens de lunch een gezellige buurtbijeenkomst organiseert.",
-    "en": "We know that jan organizes a cosy neighbourhood meeting during lunch.",
+    "nl": "Wij weten dat Jan tijdens de lunch een gezellige buurtbijeenkomst organiseert.",
+    "en": "We know that Jan organizes a cosy neighbourhood meeting during lunch.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -9476,7 +9476,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00600",
     "nl": "Na het werk organiseert Jan een gezellige buurtbijeenkomst.",
-    "en": "Na het werk jan organizes a cosy neighbourhood meeting.",
+    "en": "After work, Jan organizes a cosy neighbourhood meeting.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -9522,8 +9522,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00603",
-    "nl": "Wij weten dat jan na het werk een gezellige buurtbijeenkomst organiseert.",
-    "en": "We know that jan organizes a cosy neighbourhood meeting after work.",
+    "nl": "Wij weten dat Jan na het werk een gezellige buurtbijeenkomst organiseert.",
+    "en": "We know that Jan organizes a cosy neighbourhood meeting after work.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -9555,7 +9555,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00605",
     "nl": "Sinds vorige maand organiseert Jan een gezellige buurtbijeenkomst.",
-    "en": "Sinds vorige maand jan organizes a cosy neighbourhood meeting.",
+    "en": "Since last month, Jan organizes a cosy neighbourhood meeting.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -9601,8 +9601,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00608",
-    "nl": "Wij weten dat jan sinds vorige maand een gezellige buurtbijeenkomst organiseert.",
-    "en": "We know that jan organizes a cosy neighbourhood meeting since last month.",
+    "nl": "Wij weten dat Jan sinds vorige maand een gezellige buurtbijeenkomst organiseert.",
+    "en": "We know that Jan organizes a cosy neighbourhood meeting since last month.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -9634,7 +9634,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00610",
     "nl": "Met grote zorgvuldigheid organiseert Jan een gezellige buurtbijeenkomst.",
-    "en": "Met grote zorgvuldigheid jan organizes a cosy neighbourhood meeting.",
+    "en": "With great care, Jan organizes a cosy neighbourhood meeting.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -9680,8 +9680,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00613",
-    "nl": "Wij weten dat jan met grote zorgvuldigheid een gezellige buurtbijeenkomst organiseert.",
-    "en": "We know that jan organizes a cosy neighbourhood meeting with great care.",
+    "nl": "Wij weten dat Jan met grote zorgvuldigheid een gezellige buurtbijeenkomst organiseert.",
+    "en": "We know that Jan organizes a cosy neighbourhood meeting with great care.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -9713,7 +9713,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00615",
     "nl": "Elke ochtend analyseert Jan de complexe financiële resultaten.",
-    "en": "Elke ochtend jan analyzes the complex financial results.",
+    "en": "Every morning, Jan analyzes the complex financial results.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -9759,8 +9759,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00618",
-    "nl": "Wij weten dat jan elke ochtend de complexe financiële resultaten analyseert.",
-    "en": "We know that jan analyzes the complex financial results every morning.",
+    "nl": "Wij weten dat Jan elke ochtend de complexe financiële resultaten analyseert.",
+    "en": "We know that Jan analyzes the complex financial results every morning.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -9792,7 +9792,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00620",
     "nl": "Gisterenmiddag analyseert Jan de complexe financiële resultaten.",
-    "en": "Gisterenmiddag jan analyzes the complex financial results.",
+    "en": "Yesterday afternoon, Jan analyzes the complex financial results.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -9838,8 +9838,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00623",
-    "nl": "Wij weten dat jan gisterenmiddag de complexe financiële resultaten analyseert.",
-    "en": "We know that jan analyzes the complex financial results yesterday afternoon.",
+    "nl": "Wij weten dat Jan gisterenmiddag de complexe financiële resultaten analyseert.",
+    "en": "We know that Jan analyzes the complex financial results yesterday afternoon.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -9871,7 +9871,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00625",
     "nl": "Volgende week analyseert Jan de complexe financiële resultaten.",
-    "en": "Volgende week jan analyzes the complex financial results.",
+    "en": "Next week, Jan analyzes the complex financial results.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -9917,8 +9917,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00628",
-    "nl": "Wij weten dat jan volgende week de complexe financiële resultaten analyseert.",
-    "en": "We know that jan analyzes the complex financial results next week.",
+    "nl": "Wij weten dat Jan volgende week de complexe financiële resultaten analyseert.",
+    "en": "We know that Jan analyzes the complex financial results next week.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -9950,7 +9950,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00630",
     "nl": "In het weekend analyseert Jan de complexe financiële resultaten.",
-    "en": "In het weekend jan analyzes the complex financial results.",
+    "en": "At the weekend, Jan analyzes the complex financial results.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -9996,8 +9996,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00633",
-    "nl": "Wij weten dat jan in het weekend de complexe financiële resultaten analyseert.",
-    "en": "We know that jan analyzes the complex financial results at the weekend.",
+    "nl": "Wij weten dat Jan in het weekend de complexe financiële resultaten analyseert.",
+    "en": "We know that Jan analyzes the complex financial results at the weekend.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -10029,7 +10029,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00635",
     "nl": "Om acht uur analyseert Jan de complexe financiële resultaten.",
-    "en": "Om acht uur jan analyzes the complex financial results.",
+    "en": "At eight o'clock, Jan analyzes the complex financial results.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -10075,8 +10075,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00638",
-    "nl": "Wij weten dat jan om acht uur de complexe financiële resultaten analyseert.",
-    "en": "We know that jan analyzes the complex financial results at eight o'clock.",
+    "nl": "Wij weten dat Jan om acht uur de complexe financiële resultaten analyseert.",
+    "en": "We know that Jan analyzes the complex financial results at eight o'clock.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -10108,7 +10108,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00640",
     "nl": "Regelmatig analyseert Jan de complexe financiële resultaten.",
-    "en": "Regelmatig jan analyzes the complex financial results.",
+    "en": "Regularly, Jan analyzes the complex financial results.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -10154,8 +10154,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00643",
-    "nl": "Wij weten dat jan regelmatig de complexe financiële resultaten analyseert.",
-    "en": "We know that jan analyzes the complex financial results regularly.",
+    "nl": "Wij weten dat Jan regelmatig de complexe financiële resultaten analyseert.",
+    "en": "We know that Jan analyzes the complex financial results regularly.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -10187,7 +10187,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00645",
     "nl": "Vaak analyseert Jan de complexe financiële resultaten.",
-    "en": "Vaak jan analyzes the complex financial results.",
+    "en": "Often, Jan analyzes the complex financial results.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -10233,8 +10233,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00648",
-    "nl": "Wij weten dat jan vaak de complexe financiële resultaten analyseert.",
-    "en": "We know that jan analyzes the complex financial results often.",
+    "nl": "Wij weten dat Jan vaak de complexe financiële resultaten analyseert.",
+    "en": "We know that Jan analyzes the complex financial results often.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -10266,7 +10266,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00650",
     "nl": "Op maandag analyseert Jan de complexe financiële resultaten.",
-    "en": "Op maandag jan analyzes the complex financial results.",
+    "en": "On Monday, Jan analyzes the complex financial results.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -10312,8 +10312,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00653",
-    "nl": "Wij weten dat jan op maandag de complexe financiële resultaten analyseert.",
-    "en": "We know that jan analyzes the complex financial results on Monday.",
+    "nl": "Wij weten dat Jan op maandag de complexe financiële resultaten analyseert.",
+    "en": "We know that Jan analyzes the complex financial results on Monday.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -10345,7 +10345,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00655",
     "nl": "Tijdens de lunch analyseert Jan de complexe financiële resultaten.",
-    "en": "Tijdens de lunch jan analyzes the complex financial results.",
+    "en": "During lunch, Jan analyzes the complex financial results.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -10391,8 +10391,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00658",
-    "nl": "Wij weten dat jan tijdens de lunch de complexe financiële resultaten analyseert.",
-    "en": "We know that jan analyzes the complex financial results during lunch.",
+    "nl": "Wij weten dat Jan tijdens de lunch de complexe financiële resultaten analyseert.",
+    "en": "We know that Jan analyzes the complex financial results during lunch.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -10424,7 +10424,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00660",
     "nl": "Na het werk analyseert Jan de complexe financiële resultaten.",
-    "en": "Na het werk jan analyzes the complex financial results.",
+    "en": "After work, Jan analyzes the complex financial results.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -10470,8 +10470,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00663",
-    "nl": "Wij weten dat jan na het werk de complexe financiële resultaten analyseert.",
-    "en": "We know that jan analyzes the complex financial results after work.",
+    "nl": "Wij weten dat Jan na het werk de complexe financiële resultaten analyseert.",
+    "en": "We know that Jan analyzes the complex financial results after work.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -10503,7 +10503,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00665",
     "nl": "Sinds vorige maand analyseert Jan de complexe financiële resultaten.",
-    "en": "Sinds vorige maand jan analyzes the complex financial results.",
+    "en": "Since last month, Jan analyzes the complex financial results.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -10549,8 +10549,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00668",
-    "nl": "Wij weten dat jan sinds vorige maand de complexe financiële resultaten analyseert.",
-    "en": "We know that jan analyzes the complex financial results since last month.",
+    "nl": "Wij weten dat Jan sinds vorige maand de complexe financiële resultaten analyseert.",
+    "en": "We know that Jan analyzes the complex financial results since last month.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -10582,7 +10582,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00670",
     "nl": "Met grote zorgvuldigheid analyseert Jan de complexe financiële resultaten.",
-    "en": "Met grote zorgvuldigheid jan analyzes the complex financial results.",
+    "en": "With great care, Jan analyzes the complex financial results.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -10628,8 +10628,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00673",
-    "nl": "Wij weten dat jan met grote zorgvuldigheid de complexe financiële resultaten analyseert.",
-    "en": "We know that jan analyzes the complex financial results with great care.",
+    "nl": "Wij weten dat Jan met grote zorgvuldigheid de complexe financiële resultaten analyseert.",
+    "en": "We know that Jan analyzes the complex financial results with great care.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -10661,7 +10661,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00675",
     "nl": "Elke ochtend bespreekt Jan de nieuwe beleidsvoorstellen.",
-    "en": "Elke ochtend jan discusses the new policy proposals.",
+    "en": "Every morning, Jan discusses the new policy proposals.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -10707,8 +10707,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00678",
-    "nl": "Wij weten dat jan elke ochtend de nieuwe beleidsvoorstellen bespreekt.",
-    "en": "We know that jan discusses the new policy proposals every morning.",
+    "nl": "Wij weten dat Jan elke ochtend de nieuwe beleidsvoorstellen bespreekt.",
+    "en": "We know that Jan discusses the new policy proposals every morning.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -10740,7 +10740,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00680",
     "nl": "Gisterenmiddag bespreekt Jan de nieuwe beleidsvoorstellen.",
-    "en": "Gisterenmiddag jan discusses the new policy proposals.",
+    "en": "Yesterday afternoon, Jan discusses the new policy proposals.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -10786,8 +10786,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00683",
-    "nl": "Wij weten dat jan gisterenmiddag de nieuwe beleidsvoorstellen bespreekt.",
-    "en": "We know that jan discusses the new policy proposals yesterday afternoon.",
+    "nl": "Wij weten dat Jan gisterenmiddag de nieuwe beleidsvoorstellen bespreekt.",
+    "en": "We know that Jan discusses the new policy proposals yesterday afternoon.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -10819,7 +10819,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00685",
     "nl": "Volgende week bespreekt Jan de nieuwe beleidsvoorstellen.",
-    "en": "Volgende week jan discusses the new policy proposals.",
+    "en": "Next week, Jan discusses the new policy proposals.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -10865,8 +10865,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00688",
-    "nl": "Wij weten dat jan volgende week de nieuwe beleidsvoorstellen bespreekt.",
-    "en": "We know that jan discusses the new policy proposals next week.",
+    "nl": "Wij weten dat Jan volgende week de nieuwe beleidsvoorstellen bespreekt.",
+    "en": "We know that Jan discusses the new policy proposals next week.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -10898,7 +10898,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00690",
     "nl": "In het weekend bespreekt Jan de nieuwe beleidsvoorstellen.",
-    "en": "In het weekend jan discusses the new policy proposals.",
+    "en": "At the weekend, Jan discusses the new policy proposals.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -10944,8 +10944,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00693",
-    "nl": "Wij weten dat jan in het weekend de nieuwe beleidsvoorstellen bespreekt.",
-    "en": "We know that jan discusses the new policy proposals at the weekend.",
+    "nl": "Wij weten dat Jan in het weekend de nieuwe beleidsvoorstellen bespreekt.",
+    "en": "We know that Jan discusses the new policy proposals at the weekend.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -10977,7 +10977,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00695",
     "nl": "Om acht uur bespreekt Jan de nieuwe beleidsvoorstellen.",
-    "en": "Om acht uur jan discusses the new policy proposals.",
+    "en": "At eight o'clock, Jan discusses the new policy proposals.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -11023,8 +11023,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00698",
-    "nl": "Wij weten dat jan om acht uur de nieuwe beleidsvoorstellen bespreekt.",
-    "en": "We know that jan discusses the new policy proposals at eight o'clock.",
+    "nl": "Wij weten dat Jan om acht uur de nieuwe beleidsvoorstellen bespreekt.",
+    "en": "We know that Jan discusses the new policy proposals at eight o'clock.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -11056,7 +11056,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00700",
     "nl": "Regelmatig bespreekt Jan de nieuwe beleidsvoorstellen.",
-    "en": "Regelmatig jan discusses the new policy proposals.",
+    "en": "Regularly, Jan discusses the new policy proposals.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -11102,8 +11102,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00703",
-    "nl": "Wij weten dat jan regelmatig de nieuwe beleidsvoorstellen bespreekt.",
-    "en": "We know that jan discusses the new policy proposals regularly.",
+    "nl": "Wij weten dat Jan regelmatig de nieuwe beleidsvoorstellen bespreekt.",
+    "en": "We know that Jan discusses the new policy proposals regularly.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -11135,7 +11135,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00705",
     "nl": "Vaak bespreekt Jan de nieuwe beleidsvoorstellen.",
-    "en": "Vaak jan discusses the new policy proposals.",
+    "en": "Often, Jan discusses the new policy proposals.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -11181,8 +11181,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00708",
-    "nl": "Wij weten dat jan vaak de nieuwe beleidsvoorstellen bespreekt.",
-    "en": "We know that jan discusses the new policy proposals often.",
+    "nl": "Wij weten dat Jan vaak de nieuwe beleidsvoorstellen bespreekt.",
+    "en": "We know that Jan discusses the new policy proposals often.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -11214,7 +11214,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00710",
     "nl": "Op maandag bespreekt Jan de nieuwe beleidsvoorstellen.",
-    "en": "Op maandag jan discusses the new policy proposals.",
+    "en": "On Monday, Jan discusses the new policy proposals.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -11260,8 +11260,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00713",
-    "nl": "Wij weten dat jan op maandag de nieuwe beleidsvoorstellen bespreekt.",
-    "en": "We know that jan discusses the new policy proposals on Monday.",
+    "nl": "Wij weten dat Jan op maandag de nieuwe beleidsvoorstellen bespreekt.",
+    "en": "We know that Jan discusses the new policy proposals on Monday.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -11293,7 +11293,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00715",
     "nl": "Tijdens de lunch bespreekt Jan de nieuwe beleidsvoorstellen.",
-    "en": "Tijdens de lunch jan discusses the new policy proposals.",
+    "en": "During lunch, Jan discusses the new policy proposals.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -11339,8 +11339,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00718",
-    "nl": "Wij weten dat jan tijdens de lunch de nieuwe beleidsvoorstellen bespreekt.",
-    "en": "We know that jan discusses the new policy proposals during lunch.",
+    "nl": "Wij weten dat Jan tijdens de lunch de nieuwe beleidsvoorstellen bespreekt.",
+    "en": "We know that Jan discusses the new policy proposals during lunch.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -11372,7 +11372,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00720",
     "nl": "Na het werk bespreekt Jan de nieuwe beleidsvoorstellen.",
-    "en": "Na het werk jan discusses the new policy proposals.",
+    "en": "After work, Jan discusses the new policy proposals.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -11418,8 +11418,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00723",
-    "nl": "Wij weten dat jan na het werk de nieuwe beleidsvoorstellen bespreekt.",
-    "en": "We know that jan discusses the new policy proposals after work.",
+    "nl": "Wij weten dat Jan na het werk de nieuwe beleidsvoorstellen bespreekt.",
+    "en": "We know that Jan discusses the new policy proposals after work.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -11451,7 +11451,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00725",
     "nl": "Sinds vorige maand bespreekt Jan de nieuwe beleidsvoorstellen.",
-    "en": "Sinds vorige maand jan discusses the new policy proposals.",
+    "en": "Since last month, Jan discusses the new policy proposals.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -11497,8 +11497,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00728",
-    "nl": "Wij weten dat jan sinds vorige maand de nieuwe beleidsvoorstellen bespreekt.",
-    "en": "We know that jan discusses the new policy proposals since last month.",
+    "nl": "Wij weten dat Jan sinds vorige maand de nieuwe beleidsvoorstellen bespreekt.",
+    "en": "We know that Jan discusses the new policy proposals since last month.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -11530,7 +11530,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00730",
     "nl": "Met grote zorgvuldigheid bespreekt Jan de nieuwe beleidsvoorstellen.",
-    "en": "Met grote zorgvuldigheid jan discusses the new policy proposals.",
+    "en": "With great care, Jan discusses the new policy proposals.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -11576,8 +11576,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00733",
-    "nl": "Wij weten dat jan met grote zorgvuldigheid de nieuwe beleidsvoorstellen bespreekt.",
-    "en": "We know that jan discusses the new policy proposals with great care.",
+    "nl": "Wij weten dat Jan met grote zorgvuldigheid de nieuwe beleidsvoorstellen bespreekt.",
+    "en": "We know that Jan discusses the new policy proposals with great care.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -11609,7 +11609,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00735",
     "nl": "Elke ochtend presenteert Jan het innovatieve onderzoeksrapport.",
-    "en": "Elke ochtend jan presents the innovative research report.",
+    "en": "Every morning, Jan presents the innovative research report.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -11655,8 +11655,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00738",
-    "nl": "Wij weten dat jan elke ochtend het innovatieve onderzoeksrapport presenteert.",
-    "en": "We know that jan presents the innovative research report every morning.",
+    "nl": "Wij weten dat Jan elke ochtend het innovatieve onderzoeksrapport presenteert.",
+    "en": "We know that Jan presents the innovative research report every morning.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -11688,7 +11688,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00740",
     "nl": "Gisterenmiddag presenteert Jan het innovatieve onderzoeksrapport.",
-    "en": "Gisterenmiddag jan presents the innovative research report.",
+    "en": "Yesterday afternoon, Jan presents the innovative research report.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -11734,8 +11734,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00743",
-    "nl": "Wij weten dat jan gisterenmiddag het innovatieve onderzoeksrapport presenteert.",
-    "en": "We know that jan presents the innovative research report yesterday afternoon.",
+    "nl": "Wij weten dat Jan gisterenmiddag het innovatieve onderzoeksrapport presenteert.",
+    "en": "We know that Jan presents the innovative research report yesterday afternoon.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -11767,7 +11767,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00745",
     "nl": "Volgende week presenteert Jan het innovatieve onderzoeksrapport.",
-    "en": "Volgende week jan presents the innovative research report.",
+    "en": "Next week, Jan presents the innovative research report.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -11813,8 +11813,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00748",
-    "nl": "Wij weten dat jan volgende week het innovatieve onderzoeksrapport presenteert.",
-    "en": "We know that jan presents the innovative research report next week.",
+    "nl": "Wij weten dat Jan volgende week het innovatieve onderzoeksrapport presenteert.",
+    "en": "We know that Jan presents the innovative research report next week.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -11846,7 +11846,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00750",
     "nl": "In het weekend presenteert Jan het innovatieve onderzoeksrapport.",
-    "en": "In het weekend jan presents the innovative research report.",
+    "en": "At the weekend, Jan presents the innovative research report.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -11892,8 +11892,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00753",
-    "nl": "Wij weten dat jan in het weekend het innovatieve onderzoeksrapport presenteert.",
-    "en": "We know that jan presents the innovative research report at the weekend.",
+    "nl": "Wij weten dat Jan in het weekend het innovatieve onderzoeksrapport presenteert.",
+    "en": "We know that Jan presents the innovative research report at the weekend.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -11925,7 +11925,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00755",
     "nl": "Om acht uur presenteert Jan het innovatieve onderzoeksrapport.",
-    "en": "Om acht uur jan presents the innovative research report.",
+    "en": "At eight o'clock, Jan presents the innovative research report.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -11971,8 +11971,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00758",
-    "nl": "Wij weten dat jan om acht uur het innovatieve onderzoeksrapport presenteert.",
-    "en": "We know that jan presents the innovative research report at eight o'clock.",
+    "nl": "Wij weten dat Jan om acht uur het innovatieve onderzoeksrapport presenteert.",
+    "en": "We know that Jan presents the innovative research report at eight o'clock.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -12004,7 +12004,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00760",
     "nl": "Regelmatig presenteert Jan het innovatieve onderzoeksrapport.",
-    "en": "Regelmatig jan presents the innovative research report.",
+    "en": "Regularly, Jan presents the innovative research report.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -12050,8 +12050,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00763",
-    "nl": "Wij weten dat jan regelmatig het innovatieve onderzoeksrapport presenteert.",
-    "en": "We know that jan presents the innovative research report regularly.",
+    "nl": "Wij weten dat Jan regelmatig het innovatieve onderzoeksrapport presenteert.",
+    "en": "We know that Jan presents the innovative research report regularly.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -12083,7 +12083,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00765",
     "nl": "Vaak presenteert Jan het innovatieve onderzoeksrapport.",
-    "en": "Vaak jan presents the innovative research report.",
+    "en": "Often, Jan presents the innovative research report.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -12129,8 +12129,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00768",
-    "nl": "Wij weten dat jan vaak het innovatieve onderzoeksrapport presenteert.",
-    "en": "We know that jan presents the innovative research report often.",
+    "nl": "Wij weten dat Jan vaak het innovatieve onderzoeksrapport presenteert.",
+    "en": "We know that Jan presents the innovative research report often.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -12162,7 +12162,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00770",
     "nl": "Op maandag presenteert Jan het innovatieve onderzoeksrapport.",
-    "en": "Op maandag jan presents the innovative research report.",
+    "en": "On Monday, Jan presents the innovative research report.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -12208,8 +12208,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00773",
-    "nl": "Wij weten dat jan op maandag het innovatieve onderzoeksrapport presenteert.",
-    "en": "We know that jan presents the innovative research report on Monday.",
+    "nl": "Wij weten dat Jan op maandag het innovatieve onderzoeksrapport presenteert.",
+    "en": "We know that Jan presents the innovative research report on Monday.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -12241,7 +12241,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00775",
     "nl": "Tijdens de lunch presenteert Jan het innovatieve onderzoeksrapport.",
-    "en": "Tijdens de lunch jan presents the innovative research report.",
+    "en": "During lunch, Jan presents the innovative research report.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -12287,8 +12287,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00778",
-    "nl": "Wij weten dat jan tijdens de lunch het innovatieve onderzoeksrapport presenteert.",
-    "en": "We know that jan presents the innovative research report during lunch.",
+    "nl": "Wij weten dat Jan tijdens de lunch het innovatieve onderzoeksrapport presenteert.",
+    "en": "We know that Jan presents the innovative research report during lunch.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -12320,7 +12320,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00780",
     "nl": "Na het werk presenteert Jan het innovatieve onderzoeksrapport.",
-    "en": "Na het werk jan presents the innovative research report.",
+    "en": "After work, Jan presents the innovative research report.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -12366,8 +12366,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00783",
-    "nl": "Wij weten dat jan na het werk het innovatieve onderzoeksrapport presenteert.",
-    "en": "We know that jan presents the innovative research report after work.",
+    "nl": "Wij weten dat Jan na het werk het innovatieve onderzoeksrapport presenteert.",
+    "en": "We know that Jan presents the innovative research report after work.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -12399,7 +12399,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00785",
     "nl": "Sinds vorige maand presenteert Jan het innovatieve onderzoeksrapport.",
-    "en": "Sinds vorige maand jan presents the innovative research report.",
+    "en": "Since last month, Jan presents the innovative research report.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -12445,8 +12445,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00788",
-    "nl": "Wij weten dat jan sinds vorige maand het innovatieve onderzoeksrapport presenteert.",
-    "en": "We know that jan presents the innovative research report since last month.",
+    "nl": "Wij weten dat Jan sinds vorige maand het innovatieve onderzoeksrapport presenteert.",
+    "en": "We know that Jan presents the innovative research report since last month.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -12478,7 +12478,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00790",
     "nl": "Met grote zorgvuldigheid presenteert Jan het innovatieve onderzoeksrapport.",
-    "en": "Met grote zorgvuldigheid jan presents the innovative research report.",
+    "en": "With great care, Jan presents the innovative research report.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -12524,8 +12524,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00793",
-    "nl": "Wij weten dat jan met grote zorgvuldigheid het innovatieve onderzoeksrapport presenteert.",
-    "en": "We know that jan presents the innovative research report with great care.",
+    "nl": "Wij weten dat Jan met grote zorgvuldigheid het innovatieve onderzoeksrapport presenteert.",
+    "en": "We know that Jan presents the innovative research report with great care.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -12557,7 +12557,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00795",
     "nl": "Elke ochtend controleert Jan de veiligheidsvoorschriften in het gebouw.",
-    "en": "Elke ochtend jan checks the safety regulations in the building.",
+    "en": "Every morning, Jan checks the safety regulations in the building.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -12603,8 +12603,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00798",
-    "nl": "Wij weten dat jan elke ochtend de veiligheidsvoorschriften in het gebouw controleert.",
-    "en": "We know that jan checks the safety regulations in the building every morning.",
+    "nl": "Wij weten dat Jan elke ochtend de veiligheidsvoorschriften in het gebouw controleert.",
+    "en": "We know that Jan checks the safety regulations in the building every morning.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -12636,7 +12636,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00800",
     "nl": "Gisterenmiddag controleert Jan de veiligheidsvoorschriften in het gebouw.",
-    "en": "Gisterenmiddag jan checks the safety regulations in the building.",
+    "en": "Yesterday afternoon, Jan checks the safety regulations in the building.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -12682,8 +12682,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00803",
-    "nl": "Wij weten dat jan gisterenmiddag de veiligheidsvoorschriften in het gebouw controleert.",
-    "en": "We know that jan checks the safety regulations in the building yesterday afternoon.",
+    "nl": "Wij weten dat Jan gisterenmiddag de veiligheidsvoorschriften in het gebouw controleert.",
+    "en": "We know that Jan checks the safety regulations in the building yesterday afternoon.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -12715,7 +12715,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00805",
     "nl": "Volgende week controleert Jan de veiligheidsvoorschriften in het gebouw.",
-    "en": "Volgende week jan checks the safety regulations in the building.",
+    "en": "Next week, Jan checks the safety regulations in the building.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -12761,8 +12761,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00808",
-    "nl": "Wij weten dat jan volgende week de veiligheidsvoorschriften in het gebouw controleert.",
-    "en": "We know that jan checks the safety regulations in the building next week.",
+    "nl": "Wij weten dat Jan volgende week de veiligheidsvoorschriften in het gebouw controleert.",
+    "en": "We know that Jan checks the safety regulations in the building next week.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -12794,7 +12794,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00810",
     "nl": "In het weekend controleert Jan de veiligheidsvoorschriften in het gebouw.",
-    "en": "In het weekend jan checks the safety regulations in the building.",
+    "en": "At the weekend, Jan checks the safety regulations in the building.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -12840,8 +12840,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00813",
-    "nl": "Wij weten dat jan in het weekend de veiligheidsvoorschriften in het gebouw controleert.",
-    "en": "We know that jan checks the safety regulations in the building at the weekend.",
+    "nl": "Wij weten dat Jan in het weekend de veiligheidsvoorschriften in het gebouw controleert.",
+    "en": "We know that Jan checks the safety regulations in the building at the weekend.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -12873,7 +12873,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00815",
     "nl": "Om acht uur controleert Jan de veiligheidsvoorschriften in het gebouw.",
-    "en": "Om acht uur jan checks the safety regulations in the building.",
+    "en": "At eight o'clock, Jan checks the safety regulations in the building.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -12919,8 +12919,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00818",
-    "nl": "Wij weten dat jan om acht uur de veiligheidsvoorschriften in het gebouw controleert.",
-    "en": "We know that jan checks the safety regulations in the building at eight o'clock.",
+    "nl": "Wij weten dat Jan om acht uur de veiligheidsvoorschriften in het gebouw controleert.",
+    "en": "We know that Jan checks the safety regulations in the building at eight o'clock.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -12952,7 +12952,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00820",
     "nl": "Regelmatig controleert Jan de veiligheidsvoorschriften in het gebouw.",
-    "en": "Regelmatig jan checks the safety regulations in the building.",
+    "en": "Regularly, Jan checks the safety regulations in the building.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -12998,8 +12998,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00823",
-    "nl": "Wij weten dat jan regelmatig de veiligheidsvoorschriften in het gebouw controleert.",
-    "en": "We know that jan checks the safety regulations in the building regularly.",
+    "nl": "Wij weten dat Jan regelmatig de veiligheidsvoorschriften in het gebouw controleert.",
+    "en": "We know that Jan checks the safety regulations in the building regularly.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -13031,7 +13031,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00825",
     "nl": "Vaak controleert Jan de veiligheidsvoorschriften in het gebouw.",
-    "en": "Vaak jan checks the safety regulations in the building.",
+    "en": "Often, Jan checks the safety regulations in the building.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -13077,8 +13077,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00828",
-    "nl": "Wij weten dat jan vaak de veiligheidsvoorschriften in het gebouw controleert.",
-    "en": "We know that jan checks the safety regulations in the building often.",
+    "nl": "Wij weten dat Jan vaak de veiligheidsvoorschriften in het gebouw controleert.",
+    "en": "We know that Jan checks the safety regulations in the building often.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -13110,7 +13110,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00830",
     "nl": "Op maandag controleert Jan de veiligheidsvoorschriften in het gebouw.",
-    "en": "Op maandag jan checks the safety regulations in the building.",
+    "en": "On Monday, Jan checks the safety regulations in the building.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -13156,8 +13156,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00833",
-    "nl": "Wij weten dat jan op maandag de veiligheidsvoorschriften in het gebouw controleert.",
-    "en": "We know that jan checks the safety regulations in the building on Monday.",
+    "nl": "Wij weten dat Jan op maandag de veiligheidsvoorschriften in het gebouw controleert.",
+    "en": "We know that Jan checks the safety regulations in the building on Monday.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -13189,7 +13189,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00835",
     "nl": "Tijdens de lunch controleert Jan de veiligheidsvoorschriften in het gebouw.",
-    "en": "Tijdens de lunch jan checks the safety regulations in the building.",
+    "en": "During lunch, Jan checks the safety regulations in the building.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -13235,8 +13235,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00838",
-    "nl": "Wij weten dat jan tijdens de lunch de veiligheidsvoorschriften in het gebouw controleert.",
-    "en": "We know that jan checks the safety regulations in the building during lunch.",
+    "nl": "Wij weten dat Jan tijdens de lunch de veiligheidsvoorschriften in het gebouw controleert.",
+    "en": "We know that Jan checks the safety regulations in the building during lunch.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -13268,7 +13268,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00840",
     "nl": "Na het werk controleert Jan de veiligheidsvoorschriften in het gebouw.",
-    "en": "Na het werk jan checks the safety regulations in the building.",
+    "en": "After work, Jan checks the safety regulations in the building.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -13314,8 +13314,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00843",
-    "nl": "Wij weten dat jan na het werk de veiligheidsvoorschriften in het gebouw controleert.",
-    "en": "We know that jan checks the safety regulations in the building after work.",
+    "nl": "Wij weten dat Jan na het werk de veiligheidsvoorschriften in het gebouw controleert.",
+    "en": "We know that Jan checks the safety regulations in the building after work.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -13347,7 +13347,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00845",
     "nl": "Sinds vorige maand controleert Jan de veiligheidsvoorschriften in het gebouw.",
-    "en": "Sinds vorige maand jan checks the safety regulations in the building.",
+    "en": "Since last month, Jan checks the safety regulations in the building.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -13393,8 +13393,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00848",
-    "nl": "Wij weten dat jan sinds vorige maand de veiligheidsvoorschriften in het gebouw controleert.",
-    "en": "We know that jan checks the safety regulations in the building since last month.",
+    "nl": "Wij weten dat Jan sinds vorige maand de veiligheidsvoorschriften in het gebouw controleert.",
+    "en": "We know that Jan checks the safety regulations in the building since last month.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -13426,7 +13426,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00850",
     "nl": "Met grote zorgvuldigheid controleert Jan de veiligheidsvoorschriften in het gebouw.",
-    "en": "Met grote zorgvuldigheid jan checks the safety regulations in the building.",
+    "en": "With great care, Jan checks the safety regulations in the building.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -13472,8 +13472,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00853",
-    "nl": "Wij weten dat jan met grote zorgvuldigheid de veiligheidsvoorschriften in het gebouw controleert.",
-    "en": "We know that jan checks the safety regulations in the building with great care.",
+    "nl": "Wij weten dat Jan met grote zorgvuldigheid de veiligheidsvoorschriften in het gebouw controleert.",
+    "en": "We know that Jan checks the safety regulations in the building with great care.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -13505,7 +13505,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00855",
     "nl": "Elke ochtend repareert Jan de kapotte fietsverlichting.",
-    "en": "Elke ochtend jan repairs the broken bicycle lighting.",
+    "en": "Every morning, Jan repairs the broken bicycle lighting.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -13551,8 +13551,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00858",
-    "nl": "Wij weten dat jan elke ochtend de kapotte fietsverlichting repareert.",
-    "en": "We know that jan repairs the broken bicycle lighting every morning.",
+    "nl": "Wij weten dat Jan elke ochtend de kapotte fietsverlichting repareert.",
+    "en": "We know that Jan repairs the broken bicycle lighting every morning.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -13584,7 +13584,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00860",
     "nl": "Gisterenmiddag repareert Jan de kapotte fietsverlichting.",
-    "en": "Gisterenmiddag jan repairs the broken bicycle lighting.",
+    "en": "Yesterday afternoon, Jan repairs the broken bicycle lighting.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -13630,8 +13630,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00863",
-    "nl": "Wij weten dat jan gisterenmiddag de kapotte fietsverlichting repareert.",
-    "en": "We know that jan repairs the broken bicycle lighting yesterday afternoon.",
+    "nl": "Wij weten dat Jan gisterenmiddag de kapotte fietsverlichting repareert.",
+    "en": "We know that Jan repairs the broken bicycle lighting yesterday afternoon.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -13663,7 +13663,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00865",
     "nl": "Volgende week repareert Jan de kapotte fietsverlichting.",
-    "en": "Volgende week jan repairs the broken bicycle lighting.",
+    "en": "Next week, Jan repairs the broken bicycle lighting.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -13709,8 +13709,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00868",
-    "nl": "Wij weten dat jan volgende week de kapotte fietsverlichting repareert.",
-    "en": "We know that jan repairs the broken bicycle lighting next week.",
+    "nl": "Wij weten dat Jan volgende week de kapotte fietsverlichting repareert.",
+    "en": "We know that Jan repairs the broken bicycle lighting next week.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -13742,7 +13742,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00870",
     "nl": "In het weekend repareert Jan de kapotte fietsverlichting.",
-    "en": "In het weekend jan repairs the broken bicycle lighting.",
+    "en": "At the weekend, Jan repairs the broken bicycle lighting.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -13788,8 +13788,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00873",
-    "nl": "Wij weten dat jan in het weekend de kapotte fietsverlichting repareert.",
-    "en": "We know that jan repairs the broken bicycle lighting at the weekend.",
+    "nl": "Wij weten dat Jan in het weekend de kapotte fietsverlichting repareert.",
+    "en": "We know that Jan repairs the broken bicycle lighting at the weekend.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -13821,7 +13821,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00875",
     "nl": "Om acht uur repareert Jan de kapotte fietsverlichting.",
-    "en": "Om acht uur jan repairs the broken bicycle lighting.",
+    "en": "At eight o'clock, Jan repairs the broken bicycle lighting.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -13867,8 +13867,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00878",
-    "nl": "Wij weten dat jan om acht uur de kapotte fietsverlichting repareert.",
-    "en": "We know that jan repairs the broken bicycle lighting at eight o'clock.",
+    "nl": "Wij weten dat Jan om acht uur de kapotte fietsverlichting repareert.",
+    "en": "We know that Jan repairs the broken bicycle lighting at eight o'clock.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -13900,7 +13900,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00880",
     "nl": "Regelmatig repareert Jan de kapotte fietsverlichting.",
-    "en": "Regelmatig jan repairs the broken bicycle lighting.",
+    "en": "Regularly, Jan repairs the broken bicycle lighting.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -13946,8 +13946,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00883",
-    "nl": "Wij weten dat jan regelmatig de kapotte fietsverlichting repareert.",
-    "en": "We know that jan repairs the broken bicycle lighting regularly.",
+    "nl": "Wij weten dat Jan regelmatig de kapotte fietsverlichting repareert.",
+    "en": "We know that Jan repairs the broken bicycle lighting regularly.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -13979,7 +13979,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00885",
     "nl": "Vaak repareert Jan de kapotte fietsverlichting.",
-    "en": "Vaak jan repairs the broken bicycle lighting.",
+    "en": "Often, Jan repairs the broken bicycle lighting.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -14025,8 +14025,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00888",
-    "nl": "Wij weten dat jan vaak de kapotte fietsverlichting repareert.",
-    "en": "We know that jan repairs the broken bicycle lighting often.",
+    "nl": "Wij weten dat Jan vaak de kapotte fietsverlichting repareert.",
+    "en": "We know that Jan repairs the broken bicycle lighting often.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -14058,7 +14058,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00890",
     "nl": "Op maandag repareert Jan de kapotte fietsverlichting.",
-    "en": "Op maandag jan repairs the broken bicycle lighting.",
+    "en": "On Monday, Jan repairs the broken bicycle lighting.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -14104,8 +14104,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00893",
-    "nl": "Wij weten dat jan op maandag de kapotte fietsverlichting repareert.",
-    "en": "We know that jan repairs the broken bicycle lighting on Monday.",
+    "nl": "Wij weten dat Jan op maandag de kapotte fietsverlichting repareert.",
+    "en": "We know that Jan repairs the broken bicycle lighting on Monday.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -14137,7 +14137,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00895",
     "nl": "Tijdens de lunch repareert Jan de kapotte fietsverlichting.",
-    "en": "Tijdens de lunch jan repairs the broken bicycle lighting.",
+    "en": "During lunch, Jan repairs the broken bicycle lighting.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -14183,8 +14183,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00898",
-    "nl": "Wij weten dat jan tijdens de lunch de kapotte fietsverlichting repareert.",
-    "en": "We know that jan repairs the broken bicycle lighting during lunch.",
+    "nl": "Wij weten dat Jan tijdens de lunch de kapotte fietsverlichting repareert.",
+    "en": "We know that Jan repairs the broken bicycle lighting during lunch.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -14216,7 +14216,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00900",
     "nl": "Na het werk repareert Jan de kapotte fietsverlichting.",
-    "en": "Na het werk jan repairs the broken bicycle lighting.",
+    "en": "After work, Jan repairs the broken bicycle lighting.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -14262,8 +14262,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00903",
-    "nl": "Wij weten dat jan na het werk de kapotte fietsverlichting repareert.",
-    "en": "We know that jan repairs the broken bicycle lighting after work.",
+    "nl": "Wij weten dat Jan na het werk de kapotte fietsverlichting repareert.",
+    "en": "We know that Jan repairs the broken bicycle lighting after work.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -14295,7 +14295,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00905",
     "nl": "Sinds vorige maand repareert Jan de kapotte fietsverlichting.",
-    "en": "Sinds vorige maand jan repairs the broken bicycle lighting.",
+    "en": "Since last month, Jan repairs the broken bicycle lighting.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -14341,8 +14341,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00908",
-    "nl": "Wij weten dat jan sinds vorige maand de kapotte fietsverlichting repareert.",
-    "en": "We know that jan repairs the broken bicycle lighting since last month.",
+    "nl": "Wij weten dat Jan sinds vorige maand de kapotte fietsverlichting repareert.",
+    "en": "We know that Jan repairs the broken bicycle lighting since last month.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -14374,7 +14374,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00910",
     "nl": "Met grote zorgvuldigheid repareert Jan de kapotte fietsverlichting.",
-    "en": "Met grote zorgvuldigheid jan repairs the broken bicycle lighting.",
+    "en": "With great care, Jan repairs the broken bicycle lighting.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -14420,8 +14420,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00913",
-    "nl": "Wij weten dat jan met grote zorgvuldigheid de kapotte fietsverlichting repareert.",
-    "en": "We know that jan repairs the broken bicycle lighting with great care.",
+    "nl": "Wij weten dat Jan met grote zorgvuldigheid de kapotte fietsverlichting repareert.",
+    "en": "We know that Jan repairs the broken bicycle lighting with great care.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -14453,7 +14453,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00915",
     "nl": "Elke ochtend vertaalt Jan de officiële documenten.",
-    "en": "Elke ochtend jan translates the official documents.",
+    "en": "Every morning, Jan translates the official documents.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -14499,8 +14499,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00918",
-    "nl": "Wij weten dat jan elke ochtend de officiële documenten vertaalt.",
-    "en": "We know that jan translates the official documents every morning.",
+    "nl": "Wij weten dat Jan elke ochtend de officiële documenten vertaalt.",
+    "en": "We know that Jan translates the official documents every morning.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -14532,7 +14532,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00920",
     "nl": "Gisterenmiddag vertaalt Jan de officiële documenten.",
-    "en": "Gisterenmiddag jan translates the official documents.",
+    "en": "Yesterday afternoon, Jan translates the official documents.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -14578,8 +14578,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00923",
-    "nl": "Wij weten dat jan gisterenmiddag de officiële documenten vertaalt.",
-    "en": "We know that jan translates the official documents yesterday afternoon.",
+    "nl": "Wij weten dat Jan gisterenmiddag de officiële documenten vertaalt.",
+    "en": "We know that Jan translates the official documents yesterday afternoon.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -14611,7 +14611,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00925",
     "nl": "Volgende week vertaalt Jan de officiële documenten.",
-    "en": "Volgende week jan translates the official documents.",
+    "en": "Next week, Jan translates the official documents.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -14657,8 +14657,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00928",
-    "nl": "Wij weten dat jan volgende week de officiële documenten vertaalt.",
-    "en": "We know that jan translates the official documents next week.",
+    "nl": "Wij weten dat Jan volgende week de officiële documenten vertaalt.",
+    "en": "We know that Jan translates the official documents next week.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -14690,7 +14690,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00930",
     "nl": "In het weekend vertaalt Jan de officiële documenten.",
-    "en": "In het weekend jan translates the official documents.",
+    "en": "At the weekend, Jan translates the official documents.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -14736,8 +14736,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00933",
-    "nl": "Wij weten dat jan in het weekend de officiële documenten vertaalt.",
-    "en": "We know that jan translates the official documents at the weekend.",
+    "nl": "Wij weten dat Jan in het weekend de officiële documenten vertaalt.",
+    "en": "We know that Jan translates the official documents at the weekend.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -14769,7 +14769,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00935",
     "nl": "Om acht uur vertaalt Jan de officiële documenten.",
-    "en": "Om acht uur jan translates the official documents.",
+    "en": "At eight o'clock, Jan translates the official documents.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -14815,8 +14815,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00938",
-    "nl": "Wij weten dat jan om acht uur de officiële documenten vertaalt.",
-    "en": "We know that jan translates the official documents at eight o'clock.",
+    "nl": "Wij weten dat Jan om acht uur de officiële documenten vertaalt.",
+    "en": "We know that Jan translates the official documents at eight o'clock.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -14848,7 +14848,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00940",
     "nl": "Regelmatig vertaalt Jan de officiële documenten.",
-    "en": "Regelmatig jan translates the official documents.",
+    "en": "Regularly, Jan translates the official documents.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -14894,8 +14894,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00943",
-    "nl": "Wij weten dat jan regelmatig de officiële documenten vertaalt.",
-    "en": "We know that jan translates the official documents regularly.",
+    "nl": "Wij weten dat Jan regelmatig de officiële documenten vertaalt.",
+    "en": "We know that Jan translates the official documents regularly.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -14927,7 +14927,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00945",
     "nl": "Vaak vertaalt Jan de officiële documenten.",
-    "en": "Vaak jan translates the official documents.",
+    "en": "Often, Jan translates the official documents.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -14973,8 +14973,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00948",
-    "nl": "Wij weten dat jan vaak de officiële documenten vertaalt.",
-    "en": "We know that jan translates the official documents often.",
+    "nl": "Wij weten dat Jan vaak de officiële documenten vertaalt.",
+    "en": "We know that Jan translates the official documents often.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -15006,7 +15006,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00950",
     "nl": "Op maandag vertaalt Jan de officiële documenten.",
-    "en": "Op maandag jan translates the official documents.",
+    "en": "On Monday, Jan translates the official documents.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -15052,8 +15052,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00953",
-    "nl": "Wij weten dat jan op maandag de officiële documenten vertaalt.",
-    "en": "We know that jan translates the official documents on Monday.",
+    "nl": "Wij weten dat Jan op maandag de officiële documenten vertaalt.",
+    "en": "We know that Jan translates the official documents on Monday.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -15085,7 +15085,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00955",
     "nl": "Tijdens de lunch vertaalt Jan de officiële documenten.",
-    "en": "Tijdens de lunch jan translates the official documents.",
+    "en": "During lunch, Jan translates the official documents.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -15131,8 +15131,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00958",
-    "nl": "Wij weten dat jan tijdens de lunch de officiële documenten vertaalt.",
-    "en": "We know that jan translates the official documents during lunch.",
+    "nl": "Wij weten dat Jan tijdens de lunch de officiële documenten vertaalt.",
+    "en": "We know that Jan translates the official documents during lunch.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -15164,7 +15164,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00960",
     "nl": "Na het werk vertaalt Jan de officiële documenten.",
-    "en": "Na het werk jan translates the official documents.",
+    "en": "After work, Jan translates the official documents.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -15210,8 +15210,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00963",
-    "nl": "Wij weten dat jan na het werk de officiële documenten vertaalt.",
-    "en": "We know that jan translates the official documents after work.",
+    "nl": "Wij weten dat Jan na het werk de officiële documenten vertaalt.",
+    "en": "We know that Jan translates the official documents after work.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -15243,7 +15243,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00965",
     "nl": "Sinds vorige maand vertaalt Jan de officiële documenten.",
-    "en": "Sinds vorige maand jan translates the official documents.",
+    "en": "Since last month, Jan translates the official documents.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -15289,8 +15289,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00968",
-    "nl": "Wij weten dat jan sinds vorige maand de officiële documenten vertaalt.",
-    "en": "We know that jan translates the official documents since last month.",
+    "nl": "Wij weten dat Jan sinds vorige maand de officiële documenten vertaalt.",
+    "en": "We know that Jan translates the official documents since last month.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -15322,7 +15322,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00970",
     "nl": "Met grote zorgvuldigheid vertaalt Jan de officiële documenten.",
-    "en": "Met grote zorgvuldigheid jan translates the official documents.",
+    "en": "With great care, Jan translates the official documents.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -15368,8 +15368,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00973",
-    "nl": "Wij weten dat jan met grote zorgvuldigheid de officiële documenten vertaalt.",
-    "en": "We know that jan translates the official documents with great care.",
+    "nl": "Wij weten dat Jan met grote zorgvuldigheid de officiële documenten vertaalt.",
+    "en": "We know that Jan translates the official documents with great care.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -15401,7 +15401,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00975",
     "nl": "Elke ochtend verbetert Jan de kwaliteit van het onderwijs.",
-    "en": "Elke ochtend jan improves the quality of education.",
+    "en": "Every morning, Jan improves the quality of education.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -15447,8 +15447,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00978",
-    "nl": "Wij weten dat jan elke ochtend de kwaliteit van het onderwijs verbetert.",
-    "en": "We know that jan improves the quality of education every morning.",
+    "nl": "Wij weten dat Jan elke ochtend de kwaliteit van het onderwijs verbetert.",
+    "en": "We know that Jan improves the quality of education every morning.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -15480,7 +15480,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00980",
     "nl": "Gisterenmiddag verbetert Jan de kwaliteit van het onderwijs.",
-    "en": "Gisterenmiddag jan improves the quality of education.",
+    "en": "Yesterday afternoon, Jan improves the quality of education.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -15526,8 +15526,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00983",
-    "nl": "Wij weten dat jan gisterenmiddag de kwaliteit van het onderwijs verbetert.",
-    "en": "We know that jan improves the quality of education yesterday afternoon.",
+    "nl": "Wij weten dat Jan gisterenmiddag de kwaliteit van het onderwijs verbetert.",
+    "en": "We know that Jan improves the quality of education yesterday afternoon.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -15559,7 +15559,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00985",
     "nl": "Volgende week verbetert Jan de kwaliteit van het onderwijs.",
-    "en": "Volgende week jan improves the quality of education.",
+    "en": "Next week, Jan improves the quality of education.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -15605,8 +15605,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00988",
-    "nl": "Wij weten dat jan volgende week de kwaliteit van het onderwijs verbetert.",
-    "en": "We know that jan improves the quality of education next week.",
+    "nl": "Wij weten dat Jan volgende week de kwaliteit van het onderwijs verbetert.",
+    "en": "We know that Jan improves the quality of education next week.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -15638,7 +15638,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00990",
     "nl": "In het weekend verbetert Jan de kwaliteit van het onderwijs.",
-    "en": "In het weekend jan improves the quality of education.",
+    "en": "At the weekend, Jan improves the quality of education.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -15684,8 +15684,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00993",
-    "nl": "Wij weten dat jan in het weekend de kwaliteit van het onderwijs verbetert.",
-    "en": "We know that jan improves the quality of education at the weekend.",
+    "nl": "Wij weten dat Jan in het weekend de kwaliteit van het onderwijs verbetert.",
+    "en": "We know that Jan improves the quality of education at the weekend.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -15717,7 +15717,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-00995",
     "nl": "Om acht uur verbetert Jan de kwaliteit van het onderwijs.",
-    "en": "Om acht uur jan improves the quality of education.",
+    "en": "At eight o'clock, Jan improves the quality of education.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -15763,8 +15763,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-00998",
-    "nl": "Wij weten dat jan om acht uur de kwaliteit van het onderwijs verbetert.",
-    "en": "We know that jan improves the quality of education at eight o'clock.",
+    "nl": "Wij weten dat Jan om acht uur de kwaliteit van het onderwijs verbetert.",
+    "en": "We know that Jan improves the quality of education at eight o'clock.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -15796,7 +15796,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01000",
     "nl": "Regelmatig verbetert Jan de kwaliteit van het onderwijs.",
-    "en": "Regelmatig jan improves the quality of education.",
+    "en": "Regularly, Jan improves the quality of education.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -15842,8 +15842,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01003",
-    "nl": "Wij weten dat jan regelmatig de kwaliteit van het onderwijs verbetert.",
-    "en": "We know that jan improves the quality of education regularly.",
+    "nl": "Wij weten dat Jan regelmatig de kwaliteit van het onderwijs verbetert.",
+    "en": "We know that Jan improves the quality of education regularly.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -15875,7 +15875,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01005",
     "nl": "Vaak verbetert Jan de kwaliteit van het onderwijs.",
-    "en": "Vaak jan improves the quality of education.",
+    "en": "Often, Jan improves the quality of education.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -15921,8 +15921,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01008",
-    "nl": "Wij weten dat jan vaak de kwaliteit van het onderwijs verbetert.",
-    "en": "We know that jan improves the quality of education often.",
+    "nl": "Wij weten dat Jan vaak de kwaliteit van het onderwijs verbetert.",
+    "en": "We know that Jan improves the quality of education often.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -15954,7 +15954,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01010",
     "nl": "Op maandag verbetert Jan de kwaliteit van het onderwijs.",
-    "en": "Op maandag jan improves the quality of education.",
+    "en": "On Monday, Jan improves the quality of education.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -16000,8 +16000,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01013",
-    "nl": "Wij weten dat jan op maandag de kwaliteit van het onderwijs verbetert.",
-    "en": "We know that jan improves the quality of education on Monday.",
+    "nl": "Wij weten dat Jan op maandag de kwaliteit van het onderwijs verbetert.",
+    "en": "We know that Jan improves the quality of education on Monday.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -16033,7 +16033,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01015",
     "nl": "Tijdens de lunch verbetert Jan de kwaliteit van het onderwijs.",
-    "en": "Tijdens de lunch jan improves the quality of education.",
+    "en": "During lunch, Jan improves the quality of education.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -16079,8 +16079,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01018",
-    "nl": "Wij weten dat jan tijdens de lunch de kwaliteit van het onderwijs verbetert.",
-    "en": "We know that jan improves the quality of education during lunch.",
+    "nl": "Wij weten dat Jan tijdens de lunch de kwaliteit van het onderwijs verbetert.",
+    "en": "We know that Jan improves the quality of education during lunch.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -16112,7 +16112,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01020",
     "nl": "Na het werk verbetert Jan de kwaliteit van het onderwijs.",
-    "en": "Na het werk jan improves the quality of education.",
+    "en": "After work, Jan improves the quality of education.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -16158,8 +16158,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01023",
-    "nl": "Wij weten dat jan na het werk de kwaliteit van het onderwijs verbetert.",
-    "en": "We know that jan improves the quality of education after work.",
+    "nl": "Wij weten dat Jan na het werk de kwaliteit van het onderwijs verbetert.",
+    "en": "We know that Jan improves the quality of education after work.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -16191,7 +16191,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01025",
     "nl": "Sinds vorige maand verbetert Jan de kwaliteit van het onderwijs.",
-    "en": "Sinds vorige maand jan improves the quality of education.",
+    "en": "Since last month, Jan improves the quality of education.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -16237,8 +16237,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01028",
-    "nl": "Wij weten dat jan sinds vorige maand de kwaliteit van het onderwijs verbetert.",
-    "en": "We know that jan improves the quality of education since last month.",
+    "nl": "Wij weten dat Jan sinds vorige maand de kwaliteit van het onderwijs verbetert.",
+    "en": "We know that Jan improves the quality of education since last month.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -16270,7 +16270,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01030",
     "nl": "Met grote zorgvuldigheid verbetert Jan de kwaliteit van het onderwijs.",
-    "en": "Met grote zorgvuldigheid jan improves the quality of education.",
+    "en": "With great care, Jan improves the quality of education.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -16316,8 +16316,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01033",
-    "nl": "Wij weten dat jan met grote zorgvuldigheid de kwaliteit van het onderwijs verbetert.",
-    "en": "We know that jan improves the quality of education with great care.",
+    "nl": "Wij weten dat Jan met grote zorgvuldigheid de kwaliteit van het onderwijs verbetert.",
+    "en": "We know that Jan improves the quality of education with great care.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -16349,7 +16349,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01035",
     "nl": "Elke ochtend ontwerpt Jan een duurzaam kantoorgebouw.",
-    "en": "Elke ochtend jan designs a sustainable office building.",
+    "en": "Every morning, Jan designs a sustainable office building.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -16395,8 +16395,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01038",
-    "nl": "Wij weten dat jan elke ochtend een duurzaam kantoorgebouw ontwerpt.",
-    "en": "We know that jan designs a sustainable office building every morning.",
+    "nl": "Wij weten dat Jan elke ochtend een duurzaam kantoorgebouw ontwerpt.",
+    "en": "We know that Jan designs a sustainable office building every morning.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -16428,7 +16428,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01040",
     "nl": "Gisterenmiddag ontwerpt Jan een duurzaam kantoorgebouw.",
-    "en": "Gisterenmiddag jan designs a sustainable office building.",
+    "en": "Yesterday afternoon, Jan designs a sustainable office building.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -16474,8 +16474,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01043",
-    "nl": "Wij weten dat jan gisterenmiddag een duurzaam kantoorgebouw ontwerpt.",
-    "en": "We know that jan designs a sustainable office building yesterday afternoon.",
+    "nl": "Wij weten dat Jan gisterenmiddag een duurzaam kantoorgebouw ontwerpt.",
+    "en": "We know that Jan designs a sustainable office building yesterday afternoon.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -16507,7 +16507,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01045",
     "nl": "Volgende week ontwerpt Jan een duurzaam kantoorgebouw.",
-    "en": "Volgende week jan designs a sustainable office building.",
+    "en": "Next week, Jan designs a sustainable office building.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -16553,8 +16553,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01048",
-    "nl": "Wij weten dat jan volgende week een duurzaam kantoorgebouw ontwerpt.",
-    "en": "We know that jan designs a sustainable office building next week.",
+    "nl": "Wij weten dat Jan volgende week een duurzaam kantoorgebouw ontwerpt.",
+    "en": "We know that Jan designs a sustainable office building next week.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -16586,7 +16586,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01050",
     "nl": "In het weekend ontwerpt Jan een duurzaam kantoorgebouw.",
-    "en": "In het weekend jan designs a sustainable office building.",
+    "en": "At the weekend, Jan designs a sustainable office building.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -16632,8 +16632,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01053",
-    "nl": "Wij weten dat jan in het weekend een duurzaam kantoorgebouw ontwerpt.",
-    "en": "We know that jan designs a sustainable office building at the weekend.",
+    "nl": "Wij weten dat Jan in het weekend een duurzaam kantoorgebouw ontwerpt.",
+    "en": "We know that Jan designs a sustainable office building at the weekend.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -16665,7 +16665,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01055",
     "nl": "Om acht uur ontwerpt Jan een duurzaam kantoorgebouw.",
-    "en": "Om acht uur jan designs a sustainable office building.",
+    "en": "At eight o'clock, Jan designs a sustainable office building.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -16711,8 +16711,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01058",
-    "nl": "Wij weten dat jan om acht uur een duurzaam kantoorgebouw ontwerpt.",
-    "en": "We know that jan designs a sustainable office building at eight o'clock.",
+    "nl": "Wij weten dat Jan om acht uur een duurzaam kantoorgebouw ontwerpt.",
+    "en": "We know that Jan designs a sustainable office building at eight o'clock.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -16744,7 +16744,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01060",
     "nl": "Regelmatig ontwerpt Jan een duurzaam kantoorgebouw.",
-    "en": "Regelmatig jan designs a sustainable office building.",
+    "en": "Regularly, Jan designs a sustainable office building.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -16790,8 +16790,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01063",
-    "nl": "Wij weten dat jan regelmatig een duurzaam kantoorgebouw ontwerpt.",
-    "en": "We know that jan designs a sustainable office building regularly.",
+    "nl": "Wij weten dat Jan regelmatig een duurzaam kantoorgebouw ontwerpt.",
+    "en": "We know that Jan designs a sustainable office building regularly.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -16823,7 +16823,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01065",
     "nl": "Vaak ontwerpt Jan een duurzaam kantoorgebouw.",
-    "en": "Vaak jan designs a sustainable office building.",
+    "en": "Often, Jan designs a sustainable office building.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -16869,8 +16869,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01068",
-    "nl": "Wij weten dat jan vaak een duurzaam kantoorgebouw ontwerpt.",
-    "en": "We know that jan designs a sustainable office building often.",
+    "nl": "Wij weten dat Jan vaak een duurzaam kantoorgebouw ontwerpt.",
+    "en": "We know that Jan designs a sustainable office building often.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -16902,7 +16902,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01070",
     "nl": "Op maandag ontwerpt Jan een duurzaam kantoorgebouw.",
-    "en": "Op maandag jan designs a sustainable office building.",
+    "en": "On Monday, Jan designs a sustainable office building.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -16948,8 +16948,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01073",
-    "nl": "Wij weten dat jan op maandag een duurzaam kantoorgebouw ontwerpt.",
-    "en": "We know that jan designs a sustainable office building on Monday.",
+    "nl": "Wij weten dat Jan op maandag een duurzaam kantoorgebouw ontwerpt.",
+    "en": "We know that Jan designs a sustainable office building on Monday.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -16981,7 +16981,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01075",
     "nl": "Tijdens de lunch ontwerpt Jan een duurzaam kantoorgebouw.",
-    "en": "Tijdens de lunch jan designs a sustainable office building.",
+    "en": "During lunch, Jan designs a sustainable office building.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -17027,8 +17027,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01078",
-    "nl": "Wij weten dat jan tijdens de lunch een duurzaam kantoorgebouw ontwerpt.",
-    "en": "We know that jan designs a sustainable office building during lunch.",
+    "nl": "Wij weten dat Jan tijdens de lunch een duurzaam kantoorgebouw ontwerpt.",
+    "en": "We know that Jan designs a sustainable office building during lunch.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -17060,7 +17060,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01080",
     "nl": "Na het werk ontwerpt Jan een duurzaam kantoorgebouw.",
-    "en": "Na het werk jan designs a sustainable office building.",
+    "en": "After work, Jan designs a sustainable office building.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -17106,8 +17106,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01083",
-    "nl": "Wij weten dat jan na het werk een duurzaam kantoorgebouw ontwerpt.",
-    "en": "We know that jan designs a sustainable office building after work.",
+    "nl": "Wij weten dat Jan na het werk een duurzaam kantoorgebouw ontwerpt.",
+    "en": "We know that Jan designs a sustainable office building after work.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -17139,7 +17139,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01085",
     "nl": "Sinds vorige maand ontwerpt Jan een duurzaam kantoorgebouw.",
-    "en": "Sinds vorige maand jan designs a sustainable office building.",
+    "en": "Since last month, Jan designs a sustainable office building.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -17185,8 +17185,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01088",
-    "nl": "Wij weten dat jan sinds vorige maand een duurzaam kantoorgebouw ontwerpt.",
-    "en": "We know that jan designs a sustainable office building since last month.",
+    "nl": "Wij weten dat Jan sinds vorige maand een duurzaam kantoorgebouw ontwerpt.",
+    "en": "We know that Jan designs a sustainable office building since last month.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -17218,7 +17218,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01090",
     "nl": "Met grote zorgvuldigheid ontwerpt Jan een duurzaam kantoorgebouw.",
-    "en": "Met grote zorgvuldigheid jan designs a sustainable office building.",
+    "en": "With great care, Jan designs a sustainable office building.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -17264,8 +17264,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01093",
-    "nl": "Wij weten dat jan met grote zorgvuldigheid een duurzaam kantoorgebouw ontwerpt.",
-    "en": "We know that jan designs a sustainable office building with great care.",
+    "nl": "Wij weten dat Jan met grote zorgvuldigheid een duurzaam kantoorgebouw ontwerpt.",
+    "en": "We know that Jan designs a sustainable office building with great care.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -17297,7 +17297,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01095",
     "nl": "Elke ochtend leest Lisa een interessant boek.",
-    "en": "Elke ochtend lisa reads an interesting book.",
+    "en": "Every morning, Lisa reads an interesting book.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -17343,8 +17343,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01098",
-    "nl": "Wij weten dat lisa elke ochtend een interessant boek leest.",
-    "en": "We know that lisa reads an interesting book every morning.",
+    "nl": "Wij weten dat Lisa elke ochtend een interessant boek leest.",
+    "en": "We know that Lisa reads an interesting book every morning.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -17376,7 +17376,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01100",
     "nl": "Gisterenmiddag leest Lisa een interessant boek.",
-    "en": "Gisterenmiddag lisa reads an interesting book.",
+    "en": "Yesterday afternoon, Lisa reads an interesting book.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -17422,8 +17422,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01103",
-    "nl": "Wij weten dat lisa gisterenmiddag een interessant boek leest.",
-    "en": "We know that lisa reads an interesting book yesterday afternoon.",
+    "nl": "Wij weten dat Lisa gisterenmiddag een interessant boek leest.",
+    "en": "We know that Lisa reads an interesting book yesterday afternoon.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -17455,7 +17455,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01105",
     "nl": "Volgende week leest Lisa een interessant boek.",
-    "en": "Volgende week lisa reads an interesting book.",
+    "en": "Next week, Lisa reads an interesting book.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -17501,8 +17501,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01108",
-    "nl": "Wij weten dat lisa volgende week een interessant boek leest.",
-    "en": "We know that lisa reads an interesting book next week.",
+    "nl": "Wij weten dat Lisa volgende week een interessant boek leest.",
+    "en": "We know that Lisa reads an interesting book next week.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -17534,7 +17534,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01110",
     "nl": "In het weekend leest Lisa een interessant boek.",
-    "en": "In het weekend lisa reads an interesting book.",
+    "en": "At the weekend, Lisa reads an interesting book.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -17580,8 +17580,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01113",
-    "nl": "Wij weten dat lisa in het weekend een interessant boek leest.",
-    "en": "We know that lisa reads an interesting book at the weekend.",
+    "nl": "Wij weten dat Lisa in het weekend een interessant boek leest.",
+    "en": "We know that Lisa reads an interesting book at the weekend.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -17613,7 +17613,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01115",
     "nl": "Om acht uur leest Lisa een interessant boek.",
-    "en": "Om acht uur lisa reads an interesting book.",
+    "en": "At eight o'clock, Lisa reads an interesting book.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -17659,8 +17659,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01118",
-    "nl": "Wij weten dat lisa om acht uur een interessant boek leest.",
-    "en": "We know that lisa reads an interesting book at eight o'clock.",
+    "nl": "Wij weten dat Lisa om acht uur een interessant boek leest.",
+    "en": "We know that Lisa reads an interesting book at eight o'clock.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -17692,7 +17692,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01120",
     "nl": "Regelmatig leest Lisa een interessant boek.",
-    "en": "Regelmatig lisa reads an interesting book.",
+    "en": "Regularly, Lisa reads an interesting book.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -17738,8 +17738,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01123",
-    "nl": "Wij weten dat lisa regelmatig een interessant boek leest.",
-    "en": "We know that lisa reads an interesting book regularly.",
+    "nl": "Wij weten dat Lisa regelmatig een interessant boek leest.",
+    "en": "We know that Lisa reads an interesting book regularly.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -17771,7 +17771,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01125",
     "nl": "Vaak leest Lisa een interessant boek.",
-    "en": "Vaak lisa reads an interesting book.",
+    "en": "Often, Lisa reads an interesting book.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -17817,8 +17817,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01128",
-    "nl": "Wij weten dat lisa vaak een interessant boek leest.",
-    "en": "We know that lisa reads an interesting book often.",
+    "nl": "Wij weten dat Lisa vaak een interessant boek leest.",
+    "en": "We know that Lisa reads an interesting book often.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -17850,7 +17850,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01130",
     "nl": "Op maandag leest Lisa een interessant boek.",
-    "en": "Op maandag lisa reads an interesting book.",
+    "en": "On Monday, Lisa reads an interesting book.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -17896,8 +17896,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01133",
-    "nl": "Wij weten dat lisa op maandag een interessant boek leest.",
-    "en": "We know that lisa reads an interesting book on Monday.",
+    "nl": "Wij weten dat Lisa op maandag een interessant boek leest.",
+    "en": "We know that Lisa reads an interesting book on Monday.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -17929,7 +17929,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01135",
     "nl": "Tijdens de lunch leest Lisa een interessant boek.",
-    "en": "Tijdens de lunch lisa reads an interesting book.",
+    "en": "During lunch, Lisa reads an interesting book.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -17975,8 +17975,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01138",
-    "nl": "Wij weten dat lisa tijdens de lunch een interessant boek leest.",
-    "en": "We know that lisa reads an interesting book during lunch.",
+    "nl": "Wij weten dat Lisa tijdens de lunch een interessant boek leest.",
+    "en": "We know that Lisa reads an interesting book during lunch.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -18008,7 +18008,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01140",
     "nl": "Na het werk leest Lisa een interessant boek.",
-    "en": "Na het werk lisa reads an interesting book.",
+    "en": "After work, Lisa reads an interesting book.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -18054,8 +18054,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01143",
-    "nl": "Wij weten dat lisa na het werk een interessant boek leest.",
-    "en": "We know that lisa reads an interesting book after work.",
+    "nl": "Wij weten dat Lisa na het werk een interessant boek leest.",
+    "en": "We know that Lisa reads an interesting book after work.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -18087,7 +18087,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01145",
     "nl": "Sinds vorige maand leest Lisa een interessant boek.",
-    "en": "Sinds vorige maand lisa reads an interesting book.",
+    "en": "Since last month, Lisa reads an interesting book.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -18133,8 +18133,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01148",
-    "nl": "Wij weten dat lisa sinds vorige maand een interessant boek leest.",
-    "en": "We know that lisa reads an interesting book since last month.",
+    "nl": "Wij weten dat Lisa sinds vorige maand een interessant boek leest.",
+    "en": "We know that Lisa reads an interesting book since last month.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -18166,7 +18166,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01150",
     "nl": "Met grote zorgvuldigheid leest Lisa een interessant boek.",
-    "en": "Met grote zorgvuldigheid lisa reads an interesting book.",
+    "en": "With great care, Lisa reads an interesting book.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -18212,8 +18212,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01153",
-    "nl": "Wij weten dat lisa met grote zorgvuldigheid een interessant boek leest.",
-    "en": "We know that lisa reads an interesting book with great care.",
+    "nl": "Wij weten dat Lisa met grote zorgvuldigheid een interessant boek leest.",
+    "en": "We know that Lisa reads an interesting book with great care.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -18245,7 +18245,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01155",
     "nl": "Elke ochtend schrijft Lisa een belangrijke e-mail.",
-    "en": "Elke ochtend lisa writes an important email.",
+    "en": "Every morning, Lisa writes an important email.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -18291,8 +18291,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01158",
-    "nl": "Wij weten dat lisa elke ochtend een belangrijke e-mail schrijft.",
-    "en": "We know that lisa writes an important email every morning.",
+    "nl": "Wij weten dat Lisa elke ochtend een belangrijke e-mail schrijft.",
+    "en": "We know that Lisa writes an important email every morning.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -18324,7 +18324,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01160",
     "nl": "Gisterenmiddag schrijft Lisa een belangrijke e-mail.",
-    "en": "Gisterenmiddag lisa writes an important email.",
+    "en": "Yesterday afternoon, Lisa writes an important email.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -18370,8 +18370,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01163",
-    "nl": "Wij weten dat lisa gisterenmiddag een belangrijke e-mail schrijft.",
-    "en": "We know that lisa writes an important email yesterday afternoon.",
+    "nl": "Wij weten dat Lisa gisterenmiddag een belangrijke e-mail schrijft.",
+    "en": "We know that Lisa writes an important email yesterday afternoon.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -18403,7 +18403,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01165",
     "nl": "Volgende week schrijft Lisa een belangrijke e-mail.",
-    "en": "Volgende week lisa writes an important email.",
+    "en": "Next week, Lisa writes an important email.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -18449,8 +18449,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01168",
-    "nl": "Wij weten dat lisa volgende week een belangrijke e-mail schrijft.",
-    "en": "We know that lisa writes an important email next week.",
+    "nl": "Wij weten dat Lisa volgende week een belangrijke e-mail schrijft.",
+    "en": "We know that Lisa writes an important email next week.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -18482,7 +18482,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01170",
     "nl": "In het weekend schrijft Lisa een belangrijke e-mail.",
-    "en": "In het weekend lisa writes an important email.",
+    "en": "At the weekend, Lisa writes an important email.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -18528,8 +18528,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01173",
-    "nl": "Wij weten dat lisa in het weekend een belangrijke e-mail schrijft.",
-    "en": "We know that lisa writes an important email at the weekend.",
+    "nl": "Wij weten dat Lisa in het weekend een belangrijke e-mail schrijft.",
+    "en": "We know that Lisa writes an important email at the weekend.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -18561,7 +18561,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01175",
     "nl": "Om acht uur schrijft Lisa een belangrijke e-mail.",
-    "en": "Om acht uur lisa writes an important email.",
+    "en": "At eight o'clock, Lisa writes an important email.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -18607,8 +18607,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01178",
-    "nl": "Wij weten dat lisa om acht uur een belangrijke e-mail schrijft.",
-    "en": "We know that lisa writes an important email at eight o'clock.",
+    "nl": "Wij weten dat Lisa om acht uur een belangrijke e-mail schrijft.",
+    "en": "We know that Lisa writes an important email at eight o'clock.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -18640,7 +18640,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01180",
     "nl": "Regelmatig schrijft Lisa een belangrijke e-mail.",
-    "en": "Regelmatig lisa writes an important email.",
+    "en": "Regularly, Lisa writes an important email.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -18686,8 +18686,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01183",
-    "nl": "Wij weten dat lisa regelmatig een belangrijke e-mail schrijft.",
-    "en": "We know that lisa writes an important email regularly.",
+    "nl": "Wij weten dat Lisa regelmatig een belangrijke e-mail schrijft.",
+    "en": "We know that Lisa writes an important email regularly.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -18719,7 +18719,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01185",
     "nl": "Vaak schrijft Lisa een belangrijke e-mail.",
-    "en": "Vaak lisa writes an important email.",
+    "en": "Often, Lisa writes an important email.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -18765,8 +18765,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01188",
-    "nl": "Wij weten dat lisa vaak een belangrijke e-mail schrijft.",
-    "en": "We know that lisa writes an important email often.",
+    "nl": "Wij weten dat Lisa vaak een belangrijke e-mail schrijft.",
+    "en": "We know that Lisa writes an important email often.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -18798,7 +18798,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01190",
     "nl": "Op maandag schrijft Lisa een belangrijke e-mail.",
-    "en": "Op maandag lisa writes an important email.",
+    "en": "On Monday, Lisa writes an important email.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -18844,8 +18844,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01193",
-    "nl": "Wij weten dat lisa op maandag een belangrijke e-mail schrijft.",
-    "en": "We know that lisa writes an important email on Monday.",
+    "nl": "Wij weten dat Lisa op maandag een belangrijke e-mail schrijft.",
+    "en": "We know that Lisa writes an important email on Monday.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -18877,7 +18877,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01195",
     "nl": "Tijdens de lunch schrijft Lisa een belangrijke e-mail.",
-    "en": "Tijdens de lunch lisa writes an important email.",
+    "en": "During lunch, Lisa writes an important email.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -18923,8 +18923,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01198",
-    "nl": "Wij weten dat lisa tijdens de lunch een belangrijke e-mail schrijft.",
-    "en": "We know that lisa writes an important email during lunch.",
+    "nl": "Wij weten dat Lisa tijdens de lunch een belangrijke e-mail schrijft.",
+    "en": "We know that Lisa writes an important email during lunch.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -18956,7 +18956,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01200",
     "nl": "Na het werk schrijft Lisa een belangrijke e-mail.",
-    "en": "Na het werk lisa writes an important email.",
+    "en": "After work, Lisa writes an important email.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -19002,8 +19002,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01203",
-    "nl": "Wij weten dat lisa na het werk een belangrijke e-mail schrijft.",
-    "en": "We know that lisa writes an important email after work.",
+    "nl": "Wij weten dat Lisa na het werk een belangrijke e-mail schrijft.",
+    "en": "We know that Lisa writes an important email after work.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -19035,7 +19035,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01205",
     "nl": "Sinds vorige maand schrijft Lisa een belangrijke e-mail.",
-    "en": "Sinds vorige maand lisa writes an important email.",
+    "en": "Since last month, Lisa writes an important email.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -19081,8 +19081,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01208",
-    "nl": "Wij weten dat lisa sinds vorige maand een belangrijke e-mail schrijft.",
-    "en": "We know that lisa writes an important email since last month.",
+    "nl": "Wij weten dat Lisa sinds vorige maand een belangrijke e-mail schrijft.",
+    "en": "We know that Lisa writes an important email since last month.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -19114,7 +19114,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01210",
     "nl": "Met grote zorgvuldigheid schrijft Lisa een belangrijke e-mail.",
-    "en": "Met grote zorgvuldigheid lisa writes an important email.",
+    "en": "With great care, Lisa writes an important email.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -19160,8 +19160,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01213",
-    "nl": "Wij weten dat lisa met grote zorgvuldigheid een belangrijke e-mail schrijft.",
-    "en": "We know that lisa writes an important email with great care.",
+    "nl": "Wij weten dat Lisa met grote zorgvuldigheid een belangrijke e-mail schrijft.",
+    "en": "We know that Lisa writes an important email with great care.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -19193,7 +19193,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01215",
     "nl": "Elke ochtend koopt Lisa verse groenten op de markt.",
-    "en": "Elke ochtend lisa buys fresh vegetables at the market.",
+    "en": "Every morning, Lisa buys fresh vegetables at the market.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -19239,8 +19239,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01218",
-    "nl": "Wij weten dat lisa elke ochtend verse groenten op de markt koopt.",
-    "en": "We know that lisa buys fresh vegetables at the market every morning.",
+    "nl": "Wij weten dat Lisa elke ochtend verse groenten op de markt koopt.",
+    "en": "We know that Lisa buys fresh vegetables at the market every morning.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -19272,7 +19272,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01220",
     "nl": "Gisterenmiddag koopt Lisa verse groenten op de markt.",
-    "en": "Gisterenmiddag lisa buys fresh vegetables at the market.",
+    "en": "Yesterday afternoon, Lisa buys fresh vegetables at the market.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -19318,8 +19318,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01223",
-    "nl": "Wij weten dat lisa gisterenmiddag verse groenten op de markt koopt.",
-    "en": "We know that lisa buys fresh vegetables at the market yesterday afternoon.",
+    "nl": "Wij weten dat Lisa gisterenmiddag verse groenten op de markt koopt.",
+    "en": "We know that Lisa buys fresh vegetables at the market yesterday afternoon.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -19351,7 +19351,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01225",
     "nl": "Volgende week koopt Lisa verse groenten op de markt.",
-    "en": "Volgende week lisa buys fresh vegetables at the market.",
+    "en": "Next week, Lisa buys fresh vegetables at the market.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -19397,8 +19397,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01228",
-    "nl": "Wij weten dat lisa volgende week verse groenten op de markt koopt.",
-    "en": "We know that lisa buys fresh vegetables at the market next week.",
+    "nl": "Wij weten dat Lisa volgende week verse groenten op de markt koopt.",
+    "en": "We know that Lisa buys fresh vegetables at the market next week.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -19430,7 +19430,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01230",
     "nl": "In het weekend koopt Lisa verse groenten op de markt.",
-    "en": "In het weekend lisa buys fresh vegetables at the market.",
+    "en": "At the weekend, Lisa buys fresh vegetables at the market.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -19476,8 +19476,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01233",
-    "nl": "Wij weten dat lisa in het weekend verse groenten op de markt koopt.",
-    "en": "We know that lisa buys fresh vegetables at the market at the weekend.",
+    "nl": "Wij weten dat Lisa in het weekend verse groenten op de markt koopt.",
+    "en": "We know that Lisa buys fresh vegetables at the market at the weekend.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -19509,7 +19509,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01235",
     "nl": "Om acht uur koopt Lisa verse groenten op de markt.",
-    "en": "Om acht uur lisa buys fresh vegetables at the market.",
+    "en": "At eight o'clock, Lisa buys fresh vegetables at the market.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -19555,8 +19555,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01238",
-    "nl": "Wij weten dat lisa om acht uur verse groenten op de markt koopt.",
-    "en": "We know that lisa buys fresh vegetables at the market at eight o'clock.",
+    "nl": "Wij weten dat Lisa om acht uur verse groenten op de markt koopt.",
+    "en": "We know that Lisa buys fresh vegetables at the market at eight o'clock.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -19588,7 +19588,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01240",
     "nl": "Regelmatig koopt Lisa verse groenten op de markt.",
-    "en": "Regelmatig lisa buys fresh vegetables at the market.",
+    "en": "Regularly, Lisa buys fresh vegetables at the market.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -19634,8 +19634,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01243",
-    "nl": "Wij weten dat lisa regelmatig verse groenten op de markt koopt.",
-    "en": "We know that lisa buys fresh vegetables at the market regularly.",
+    "nl": "Wij weten dat Lisa regelmatig verse groenten op de markt koopt.",
+    "en": "We know that Lisa buys fresh vegetables at the market regularly.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -19667,7 +19667,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01245",
     "nl": "Vaak koopt Lisa verse groenten op de markt.",
-    "en": "Vaak lisa buys fresh vegetables at the market.",
+    "en": "Often, Lisa buys fresh vegetables at the market.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -19713,8 +19713,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01248",
-    "nl": "Wij weten dat lisa vaak verse groenten op de markt koopt.",
-    "en": "We know that lisa buys fresh vegetables at the market often.",
+    "nl": "Wij weten dat Lisa vaak verse groenten op de markt koopt.",
+    "en": "We know that Lisa buys fresh vegetables at the market often.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -19746,7 +19746,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01250",
     "nl": "Op maandag koopt Lisa verse groenten op de markt.",
-    "en": "Op maandag lisa buys fresh vegetables at the market.",
+    "en": "On Monday, Lisa buys fresh vegetables at the market.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -19792,8 +19792,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01253",
-    "nl": "Wij weten dat lisa op maandag verse groenten op de markt koopt.",
-    "en": "We know that lisa buys fresh vegetables at the market on Monday.",
+    "nl": "Wij weten dat Lisa op maandag verse groenten op de markt koopt.",
+    "en": "We know that Lisa buys fresh vegetables at the market on Monday.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -19825,7 +19825,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01255",
     "nl": "Tijdens de lunch koopt Lisa verse groenten op de markt.",
-    "en": "Tijdens de lunch lisa buys fresh vegetables at the market.",
+    "en": "During lunch, Lisa buys fresh vegetables at the market.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -19871,8 +19871,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01258",
-    "nl": "Wij weten dat lisa tijdens de lunch verse groenten op de markt koopt.",
-    "en": "We know that lisa buys fresh vegetables at the market during lunch.",
+    "nl": "Wij weten dat Lisa tijdens de lunch verse groenten op de markt koopt.",
+    "en": "We know that Lisa buys fresh vegetables at the market during lunch.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -19904,7 +19904,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01260",
     "nl": "Na het werk koopt Lisa verse groenten op de markt.",
-    "en": "Na het werk lisa buys fresh vegetables at the market.",
+    "en": "After work, Lisa buys fresh vegetables at the market.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -19950,8 +19950,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01263",
-    "nl": "Wij weten dat lisa na het werk verse groenten op de markt koopt.",
-    "en": "We know that lisa buys fresh vegetables at the market after work.",
+    "nl": "Wij weten dat Lisa na het werk verse groenten op de markt koopt.",
+    "en": "We know that Lisa buys fresh vegetables at the market after work.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -19983,7 +19983,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01265",
     "nl": "Sinds vorige maand koopt Lisa verse groenten op de markt.",
-    "en": "Sinds vorige maand lisa buys fresh vegetables at the market.",
+    "en": "Since last month, Lisa buys fresh vegetables at the market.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -20029,8 +20029,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01268",
-    "nl": "Wij weten dat lisa sinds vorige maand verse groenten op de markt koopt.",
-    "en": "We know that lisa buys fresh vegetables at the market since last month.",
+    "nl": "Wij weten dat Lisa sinds vorige maand verse groenten op de markt koopt.",
+    "en": "We know that Lisa buys fresh vegetables at the market since last month.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -20062,7 +20062,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01270",
     "nl": "Met grote zorgvuldigheid koopt Lisa verse groenten op de markt.",
-    "en": "Met grote zorgvuldigheid lisa buys fresh vegetables at the market.",
+    "en": "With great care, Lisa buys fresh vegetables at the market.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -20108,8 +20108,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01273",
-    "nl": "Wij weten dat lisa met grote zorgvuldigheid verse groenten op de markt koopt.",
-    "en": "We know that lisa buys fresh vegetables at the market with great care.",
+    "nl": "Wij weten dat Lisa met grote zorgvuldigheid verse groenten op de markt koopt.",
+    "en": "We know that Lisa buys fresh vegetables at the market with great care.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -20141,7 +20141,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01275",
     "nl": "Elke ochtend maakt Lisa een heerlijke lunch.",
-    "en": "Elke ochtend lisa makes a delicious lunch.",
+    "en": "Every morning, Lisa makes a delicious lunch.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -20187,8 +20187,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01278",
-    "nl": "Wij weten dat lisa elke ochtend een heerlijke lunch maakt.",
-    "en": "We know that lisa makes a delicious lunch every morning.",
+    "nl": "Wij weten dat Lisa elke ochtend een heerlijke lunch maakt.",
+    "en": "We know that Lisa makes a delicious lunch every morning.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -20220,7 +20220,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01280",
     "nl": "Gisterenmiddag maakt Lisa een heerlijke lunch.",
-    "en": "Gisterenmiddag lisa makes a delicious lunch.",
+    "en": "Yesterday afternoon, Lisa makes a delicious lunch.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -20266,8 +20266,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01283",
-    "nl": "Wij weten dat lisa gisterenmiddag een heerlijke lunch maakt.",
-    "en": "We know that lisa makes a delicious lunch yesterday afternoon.",
+    "nl": "Wij weten dat Lisa gisterenmiddag een heerlijke lunch maakt.",
+    "en": "We know that Lisa makes a delicious lunch yesterday afternoon.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -20299,7 +20299,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01285",
     "nl": "Volgende week maakt Lisa een heerlijke lunch.",
-    "en": "Volgende week lisa makes a delicious lunch.",
+    "en": "Next week, Lisa makes a delicious lunch.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -20345,8 +20345,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01288",
-    "nl": "Wij weten dat lisa volgende week een heerlijke lunch maakt.",
-    "en": "We know that lisa makes a delicious lunch next week.",
+    "nl": "Wij weten dat Lisa volgende week een heerlijke lunch maakt.",
+    "en": "We know that Lisa makes a delicious lunch next week.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -20378,7 +20378,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01290",
     "nl": "In het weekend maakt Lisa een heerlijke lunch.",
-    "en": "In het weekend lisa makes a delicious lunch.",
+    "en": "At the weekend, Lisa makes a delicious lunch.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -20424,8 +20424,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01293",
-    "nl": "Wij weten dat lisa in het weekend een heerlijke lunch maakt.",
-    "en": "We know that lisa makes a delicious lunch at the weekend.",
+    "nl": "Wij weten dat Lisa in het weekend een heerlijke lunch maakt.",
+    "en": "We know that Lisa makes a delicious lunch at the weekend.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -20457,7 +20457,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01295",
     "nl": "Om acht uur maakt Lisa een heerlijke lunch.",
-    "en": "Om acht uur lisa makes a delicious lunch.",
+    "en": "At eight o'clock, Lisa makes a delicious lunch.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -20503,8 +20503,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01298",
-    "nl": "Wij weten dat lisa om acht uur een heerlijke lunch maakt.",
-    "en": "We know that lisa makes a delicious lunch at eight o'clock.",
+    "nl": "Wij weten dat Lisa om acht uur een heerlijke lunch maakt.",
+    "en": "We know that Lisa makes a delicious lunch at eight o'clock.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -20536,7 +20536,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01300",
     "nl": "Regelmatig maakt Lisa een heerlijke lunch.",
-    "en": "Regelmatig lisa makes a delicious lunch.",
+    "en": "Regularly, Lisa makes a delicious lunch.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -20582,8 +20582,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01303",
-    "nl": "Wij weten dat lisa regelmatig een heerlijke lunch maakt.",
-    "en": "We know that lisa makes a delicious lunch regularly.",
+    "nl": "Wij weten dat Lisa regelmatig een heerlijke lunch maakt.",
+    "en": "We know that Lisa makes a delicious lunch regularly.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -20615,7 +20615,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01305",
     "nl": "Vaak maakt Lisa een heerlijke lunch.",
-    "en": "Vaak lisa makes a delicious lunch.",
+    "en": "Often, Lisa makes a delicious lunch.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -20661,8 +20661,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01308",
-    "nl": "Wij weten dat lisa vaak een heerlijke lunch maakt.",
-    "en": "We know that lisa makes a delicious lunch often.",
+    "nl": "Wij weten dat Lisa vaak een heerlijke lunch maakt.",
+    "en": "We know that Lisa makes a delicious lunch often.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -20694,7 +20694,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01310",
     "nl": "Op maandag maakt Lisa een heerlijke lunch.",
-    "en": "Op maandag lisa makes a delicious lunch.",
+    "en": "On Monday, Lisa makes a delicious lunch.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -20740,8 +20740,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01313",
-    "nl": "Wij weten dat lisa op maandag een heerlijke lunch maakt.",
-    "en": "We know that lisa makes a delicious lunch on Monday.",
+    "nl": "Wij weten dat Lisa op maandag een heerlijke lunch maakt.",
+    "en": "We know that Lisa makes a delicious lunch on Monday.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -20773,7 +20773,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01315",
     "nl": "Tijdens de lunch maakt Lisa een heerlijke lunch.",
-    "en": "Tijdens de lunch lisa makes a delicious lunch.",
+    "en": "During lunch, Lisa makes a delicious lunch.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -20819,8 +20819,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01318",
-    "nl": "Wij weten dat lisa tijdens de lunch een heerlijke lunch maakt.",
-    "en": "We know that lisa makes a delicious lunch during lunch.",
+    "nl": "Wij weten dat Lisa tijdens de lunch een heerlijke lunch maakt.",
+    "en": "We know that Lisa makes a delicious lunch during lunch.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -20852,7 +20852,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01320",
     "nl": "Na het werk maakt Lisa een heerlijke lunch.",
-    "en": "Na het werk lisa makes a delicious lunch.",
+    "en": "After work, Lisa makes a delicious lunch.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -20898,8 +20898,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01323",
-    "nl": "Wij weten dat lisa na het werk een heerlijke lunch maakt.",
-    "en": "We know that lisa makes a delicious lunch after work.",
+    "nl": "Wij weten dat Lisa na het werk een heerlijke lunch maakt.",
+    "en": "We know that Lisa makes a delicious lunch after work.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -20931,7 +20931,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01325",
     "nl": "Sinds vorige maand maakt Lisa een heerlijke lunch.",
-    "en": "Sinds vorige maand lisa makes a delicious lunch.",
+    "en": "Since last month, Lisa makes a delicious lunch.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -20977,8 +20977,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01328",
-    "nl": "Wij weten dat lisa sinds vorige maand een heerlijke lunch maakt.",
-    "en": "We know that lisa makes a delicious lunch since last month.",
+    "nl": "Wij weten dat Lisa sinds vorige maand een heerlijke lunch maakt.",
+    "en": "We know that Lisa makes a delicious lunch since last month.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -21010,7 +21010,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01330",
     "nl": "Met grote zorgvuldigheid maakt Lisa een heerlijke lunch.",
-    "en": "Met grote zorgvuldigheid lisa makes a delicious lunch.",
+    "en": "With great care, Lisa makes a delicious lunch.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -21056,8 +21056,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01333",
-    "nl": "Wij weten dat lisa met grote zorgvuldigheid een heerlijke lunch maakt.",
-    "en": "We know that lisa makes a delicious lunch with great care.",
+    "nl": "Wij weten dat Lisa met grote zorgvuldigheid een heerlijke lunch maakt.",
+    "en": "We know that Lisa makes a delicious lunch with great care.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -21089,7 +21089,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01335",
     "nl": "Elke ochtend drinkt Lisa een kop verse muntthee.",
-    "en": "Elke ochtend lisa drinks a cup of fresh mint tea.",
+    "en": "Every morning, Lisa drinks a cup of fresh mint tea.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -21135,8 +21135,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01338",
-    "nl": "Wij weten dat lisa elke ochtend een kop verse muntthee drinkt.",
-    "en": "We know that lisa drinks a cup of fresh mint tea every morning.",
+    "nl": "Wij weten dat Lisa elke ochtend een kop verse muntthee drinkt.",
+    "en": "We know that Lisa drinks a cup of fresh mint tea every morning.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -21168,7 +21168,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01340",
     "nl": "Gisterenmiddag drinkt Lisa een kop verse muntthee.",
-    "en": "Gisterenmiddag lisa drinks a cup of fresh mint tea.",
+    "en": "Yesterday afternoon, Lisa drinks a cup of fresh mint tea.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -21214,8 +21214,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01343",
-    "nl": "Wij weten dat lisa gisterenmiddag een kop verse muntthee drinkt.",
-    "en": "We know that lisa drinks a cup of fresh mint tea yesterday afternoon.",
+    "nl": "Wij weten dat Lisa gisterenmiddag een kop verse muntthee drinkt.",
+    "en": "We know that Lisa drinks a cup of fresh mint tea yesterday afternoon.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -21247,7 +21247,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01345",
     "nl": "Volgende week drinkt Lisa een kop verse muntthee.",
-    "en": "Volgende week lisa drinks a cup of fresh mint tea.",
+    "en": "Next week, Lisa drinks a cup of fresh mint tea.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -21293,8 +21293,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01348",
-    "nl": "Wij weten dat lisa volgende week een kop verse muntthee drinkt.",
-    "en": "We know that lisa drinks a cup of fresh mint tea next week.",
+    "nl": "Wij weten dat Lisa volgende week een kop verse muntthee drinkt.",
+    "en": "We know that Lisa drinks a cup of fresh mint tea next week.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -21326,7 +21326,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01350",
     "nl": "In het weekend drinkt Lisa een kop verse muntthee.",
-    "en": "In het weekend lisa drinks a cup of fresh mint tea.",
+    "en": "At the weekend, Lisa drinks a cup of fresh mint tea.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -21372,8 +21372,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01353",
-    "nl": "Wij weten dat lisa in het weekend een kop verse muntthee drinkt.",
-    "en": "We know that lisa drinks a cup of fresh mint tea at the weekend.",
+    "nl": "Wij weten dat Lisa in het weekend een kop verse muntthee drinkt.",
+    "en": "We know that Lisa drinks a cup of fresh mint tea at the weekend.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -21405,7 +21405,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01355",
     "nl": "Om acht uur drinkt Lisa een kop verse muntthee.",
-    "en": "Om acht uur lisa drinks a cup of fresh mint tea.",
+    "en": "At eight o'clock, Lisa drinks a cup of fresh mint tea.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -21451,8 +21451,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01358",
-    "nl": "Wij weten dat lisa om acht uur een kop verse muntthee drinkt.",
-    "en": "We know that lisa drinks a cup of fresh mint tea at eight o'clock.",
+    "nl": "Wij weten dat Lisa om acht uur een kop verse muntthee drinkt.",
+    "en": "We know that Lisa drinks a cup of fresh mint tea at eight o'clock.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -21484,7 +21484,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01360",
     "nl": "Regelmatig drinkt Lisa een kop verse muntthee.",
-    "en": "Regelmatig lisa drinks a cup of fresh mint tea.",
+    "en": "Regularly, Lisa drinks a cup of fresh mint tea.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -21530,8 +21530,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01363",
-    "nl": "Wij weten dat lisa regelmatig een kop verse muntthee drinkt.",
-    "en": "We know that lisa drinks a cup of fresh mint tea regularly.",
+    "nl": "Wij weten dat Lisa regelmatig een kop verse muntthee drinkt.",
+    "en": "We know that Lisa drinks a cup of fresh mint tea regularly.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -21563,7 +21563,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01365",
     "nl": "Vaak drinkt Lisa een kop verse muntthee.",
-    "en": "Vaak lisa drinks a cup of fresh mint tea.",
+    "en": "Often, Lisa drinks a cup of fresh mint tea.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -21609,8 +21609,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01368",
-    "nl": "Wij weten dat lisa vaak een kop verse muntthee drinkt.",
-    "en": "We know that lisa drinks a cup of fresh mint tea often.",
+    "nl": "Wij weten dat Lisa vaak een kop verse muntthee drinkt.",
+    "en": "We know that Lisa drinks a cup of fresh mint tea often.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -21642,7 +21642,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01370",
     "nl": "Op maandag drinkt Lisa een kop verse muntthee.",
-    "en": "Op maandag lisa drinks a cup of fresh mint tea.",
+    "en": "On Monday, Lisa drinks a cup of fresh mint tea.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -21688,8 +21688,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01373",
-    "nl": "Wij weten dat lisa op maandag een kop verse muntthee drinkt.",
-    "en": "We know that lisa drinks a cup of fresh mint tea on Monday.",
+    "nl": "Wij weten dat Lisa op maandag een kop verse muntthee drinkt.",
+    "en": "We know that Lisa drinks a cup of fresh mint tea on Monday.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -21721,7 +21721,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01375",
     "nl": "Tijdens de lunch drinkt Lisa een kop verse muntthee.",
-    "en": "Tijdens de lunch lisa drinks a cup of fresh mint tea.",
+    "en": "During lunch, Lisa drinks a cup of fresh mint tea.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -21767,8 +21767,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01378",
-    "nl": "Wij weten dat lisa tijdens de lunch een kop verse muntthee drinkt.",
-    "en": "We know that lisa drinks a cup of fresh mint tea during lunch.",
+    "nl": "Wij weten dat Lisa tijdens de lunch een kop verse muntthee drinkt.",
+    "en": "We know that Lisa drinks a cup of fresh mint tea during lunch.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -21800,7 +21800,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01380",
     "nl": "Na het werk drinkt Lisa een kop verse muntthee.",
-    "en": "Na het werk lisa drinks a cup of fresh mint tea.",
+    "en": "After work, Lisa drinks a cup of fresh mint tea.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -21846,8 +21846,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01383",
-    "nl": "Wij weten dat lisa na het werk een kop verse muntthee drinkt.",
-    "en": "We know that lisa drinks a cup of fresh mint tea after work.",
+    "nl": "Wij weten dat Lisa na het werk een kop verse muntthee drinkt.",
+    "en": "We know that Lisa drinks a cup of fresh mint tea after work.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -21879,7 +21879,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01385",
     "nl": "Sinds vorige maand drinkt Lisa een kop verse muntthee.",
-    "en": "Sinds vorige maand lisa drinks a cup of fresh mint tea.",
+    "en": "Since last month, Lisa drinks a cup of fresh mint tea.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -21925,8 +21925,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01388",
-    "nl": "Wij weten dat lisa sinds vorige maand een kop verse muntthee drinkt.",
-    "en": "We know that lisa drinks a cup of fresh mint tea since last month.",
+    "nl": "Wij weten dat Lisa sinds vorige maand een kop verse muntthee drinkt.",
+    "en": "We know that Lisa drinks a cup of fresh mint tea since last month.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -21958,7 +21958,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01390",
     "nl": "Met grote zorgvuldigheid drinkt Lisa een kop verse muntthee.",
-    "en": "Met grote zorgvuldigheid lisa drinks a cup of fresh mint tea.",
+    "en": "With great care, Lisa drinks a cup of fresh mint tea.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -22004,8 +22004,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01393",
-    "nl": "Wij weten dat lisa met grote zorgvuldigheid een kop verse muntthee drinkt.",
-    "en": "We know that lisa drinks a cup of fresh mint tea with great care.",
+    "nl": "Wij weten dat Lisa met grote zorgvuldigheid een kop verse muntthee drinkt.",
+    "en": "We know that Lisa drinks a cup of fresh mint tea with great care.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -22037,7 +22037,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01395",
     "nl": "Elke ochtend bezoekt Lisa het historische museum.",
-    "en": "Elke ochtend lisa visits the historical museum.",
+    "en": "Every morning, Lisa visits the historical museum.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -22083,8 +22083,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01398",
-    "nl": "Wij weten dat lisa elke ochtend het historische museum bezoekt.",
-    "en": "We know that lisa visits the historical museum every morning.",
+    "nl": "Wij weten dat Lisa elke ochtend het historische museum bezoekt.",
+    "en": "We know that Lisa visits the historical museum every morning.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -22116,7 +22116,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01400",
     "nl": "Gisterenmiddag bezoekt Lisa het historische museum.",
-    "en": "Gisterenmiddag lisa visits the historical museum.",
+    "en": "Yesterday afternoon, Lisa visits the historical museum.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -22162,8 +22162,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01403",
-    "nl": "Wij weten dat lisa gisterenmiddag het historische museum bezoekt.",
-    "en": "We know that lisa visits the historical museum yesterday afternoon.",
+    "nl": "Wij weten dat Lisa gisterenmiddag het historische museum bezoekt.",
+    "en": "We know that Lisa visits the historical museum yesterday afternoon.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -22195,7 +22195,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01405",
     "nl": "Volgende week bezoekt Lisa het historische museum.",
-    "en": "Volgende week lisa visits the historical museum.",
+    "en": "Next week, Lisa visits the historical museum.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -22241,8 +22241,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01408",
-    "nl": "Wij weten dat lisa volgende week het historische museum bezoekt.",
-    "en": "We know that lisa visits the historical museum next week.",
+    "nl": "Wij weten dat Lisa volgende week het historische museum bezoekt.",
+    "en": "We know that Lisa visits the historical museum next week.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -22274,7 +22274,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01410",
     "nl": "In het weekend bezoekt Lisa het historische museum.",
-    "en": "In het weekend lisa visits the historical museum.",
+    "en": "At the weekend, Lisa visits the historical museum.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -22320,8 +22320,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01413",
-    "nl": "Wij weten dat lisa in het weekend het historische museum bezoekt.",
-    "en": "We know that lisa visits the historical museum at the weekend.",
+    "nl": "Wij weten dat Lisa in het weekend het historische museum bezoekt.",
+    "en": "We know that Lisa visits the historical museum at the weekend.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -22353,7 +22353,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01415",
     "nl": "Om acht uur bezoekt Lisa het historische museum.",
-    "en": "Om acht uur lisa visits the historical museum.",
+    "en": "At eight o'clock, Lisa visits the historical museum.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -22399,8 +22399,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01418",
-    "nl": "Wij weten dat lisa om acht uur het historische museum bezoekt.",
-    "en": "We know that lisa visits the historical museum at eight o'clock.",
+    "nl": "Wij weten dat Lisa om acht uur het historische museum bezoekt.",
+    "en": "We know that Lisa visits the historical museum at eight o'clock.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -22432,7 +22432,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01420",
     "nl": "Regelmatig bezoekt Lisa het historische museum.",
-    "en": "Regelmatig lisa visits the historical museum.",
+    "en": "Regularly, Lisa visits the historical museum.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -22478,8 +22478,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01423",
-    "nl": "Wij weten dat lisa regelmatig het historische museum bezoekt.",
-    "en": "We know that lisa visits the historical museum regularly.",
+    "nl": "Wij weten dat Lisa regelmatig het historische museum bezoekt.",
+    "en": "We know that Lisa visits the historical museum regularly.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -22511,7 +22511,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01425",
     "nl": "Vaak bezoekt Lisa het historische museum.",
-    "en": "Vaak lisa visits the historical museum.",
+    "en": "Often, Lisa visits the historical museum.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -22557,8 +22557,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01428",
-    "nl": "Wij weten dat lisa vaak het historische museum bezoekt.",
-    "en": "We know that lisa visits the historical museum often.",
+    "nl": "Wij weten dat Lisa vaak het historische museum bezoekt.",
+    "en": "We know that Lisa visits the historical museum often.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -22590,7 +22590,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01430",
     "nl": "Op maandag bezoekt Lisa het historische museum.",
-    "en": "Op maandag lisa visits the historical museum.",
+    "en": "On Monday, Lisa visits the historical museum.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -22636,8 +22636,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01433",
-    "nl": "Wij weten dat lisa op maandag het historische museum bezoekt.",
-    "en": "We know that lisa visits the historical museum on Monday.",
+    "nl": "Wij weten dat Lisa op maandag het historische museum bezoekt.",
+    "en": "We know that Lisa visits the historical museum on Monday.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -22669,7 +22669,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01435",
     "nl": "Tijdens de lunch bezoekt Lisa het historische museum.",
-    "en": "Tijdens de lunch lisa visits the historical museum.",
+    "en": "During lunch, Lisa visits the historical museum.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -22715,8 +22715,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01438",
-    "nl": "Wij weten dat lisa tijdens de lunch het historische museum bezoekt.",
-    "en": "We know that lisa visits the historical museum during lunch.",
+    "nl": "Wij weten dat Lisa tijdens de lunch het historische museum bezoekt.",
+    "en": "We know that Lisa visits the historical museum during lunch.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -22748,7 +22748,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01440",
     "nl": "Na het werk bezoekt Lisa het historische museum.",
-    "en": "Na het werk lisa visits the historical museum.",
+    "en": "After work, Lisa visits the historical museum.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -22794,8 +22794,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01443",
-    "nl": "Wij weten dat lisa na het werk het historische museum bezoekt.",
-    "en": "We know that lisa visits the historical museum after work.",
+    "nl": "Wij weten dat Lisa na het werk het historische museum bezoekt.",
+    "en": "We know that Lisa visits the historical museum after work.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -22827,7 +22827,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01445",
     "nl": "Sinds vorige maand bezoekt Lisa het historische museum.",
-    "en": "Sinds vorige maand lisa visits the historical museum.",
+    "en": "Since last month, Lisa visits the historical museum.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -22873,8 +22873,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01448",
-    "nl": "Wij weten dat lisa sinds vorige maand het historische museum bezoekt.",
-    "en": "We know that lisa visits the historical museum since last month.",
+    "nl": "Wij weten dat Lisa sinds vorige maand het historische museum bezoekt.",
+    "en": "We know that Lisa visits the historical museum since last month.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -22906,7 +22906,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01450",
     "nl": "Met grote zorgvuldigheid bezoekt Lisa het historische museum.",
-    "en": "Met grote zorgvuldigheid lisa visits the historical museum.",
+    "en": "With great care, Lisa visits the historical museum.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -22952,8 +22952,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01453",
-    "nl": "Wij weten dat lisa met grote zorgvuldigheid het historische museum bezoekt.",
-    "en": "We know that lisa visits the historical museum with great care.",
+    "nl": "Wij weten dat Lisa met grote zorgvuldigheid het historische museum bezoekt.",
+    "en": "We know that Lisa visits the historical museum with great care.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -22985,7 +22985,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01455",
     "nl": "Elke ochtend zoekt Lisa een nieuw appartement.",
-    "en": "Elke ochtend lisa looks for a new apartment.",
+    "en": "Every morning, Lisa looks for a new apartment.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -23031,8 +23031,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01458",
-    "nl": "Wij weten dat lisa elke ochtend een nieuw appartement zoekt.",
-    "en": "We know that lisa looks for a new apartment every morning.",
+    "nl": "Wij weten dat Lisa elke ochtend een nieuw appartement zoekt.",
+    "en": "We know that Lisa looks for a new apartment every morning.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -23064,7 +23064,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01460",
     "nl": "Gisterenmiddag zoekt Lisa een nieuw appartement.",
-    "en": "Gisterenmiddag lisa looks for a new apartment.",
+    "en": "Yesterday afternoon, Lisa looks for a new apartment.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -23110,8 +23110,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01463",
-    "nl": "Wij weten dat lisa gisterenmiddag een nieuw appartement zoekt.",
-    "en": "We know that lisa looks for a new apartment yesterday afternoon.",
+    "nl": "Wij weten dat Lisa gisterenmiddag een nieuw appartement zoekt.",
+    "en": "We know that Lisa looks for a new apartment yesterday afternoon.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -23143,7 +23143,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01465",
     "nl": "Volgende week zoekt Lisa een nieuw appartement.",
-    "en": "Volgende week lisa looks for a new apartment.",
+    "en": "Next week, Lisa looks for a new apartment.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -23189,8 +23189,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01468",
-    "nl": "Wij weten dat lisa volgende week een nieuw appartement zoekt.",
-    "en": "We know that lisa looks for a new apartment next week.",
+    "nl": "Wij weten dat Lisa volgende week een nieuw appartement zoekt.",
+    "en": "We know that Lisa looks for a new apartment next week.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -23222,7 +23222,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01470",
     "nl": "In het weekend zoekt Lisa een nieuw appartement.",
-    "en": "In het weekend lisa looks for a new apartment.",
+    "en": "At the weekend, Lisa looks for a new apartment.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -23268,8 +23268,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01473",
-    "nl": "Wij weten dat lisa in het weekend een nieuw appartement zoekt.",
-    "en": "We know that lisa looks for a new apartment at the weekend.",
+    "nl": "Wij weten dat Lisa in het weekend een nieuw appartement zoekt.",
+    "en": "We know that Lisa looks for a new apartment at the weekend.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -23301,7 +23301,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01475",
     "nl": "Om acht uur zoekt Lisa een nieuw appartement.",
-    "en": "Om acht uur lisa looks for a new apartment.",
+    "en": "At eight o'clock, Lisa looks for a new apartment.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -23347,8 +23347,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01478",
-    "nl": "Wij weten dat lisa om acht uur een nieuw appartement zoekt.",
-    "en": "We know that lisa looks for a new apartment at eight o'clock.",
+    "nl": "Wij weten dat Lisa om acht uur een nieuw appartement zoekt.",
+    "en": "We know that Lisa looks for a new apartment at eight o'clock.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -23380,7 +23380,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01480",
     "nl": "Regelmatig zoekt Lisa een nieuw appartement.",
-    "en": "Regelmatig lisa looks for a new apartment.",
+    "en": "Regularly, Lisa looks for a new apartment.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -23426,8 +23426,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01483",
-    "nl": "Wij weten dat lisa regelmatig een nieuw appartement zoekt.",
-    "en": "We know that lisa looks for a new apartment regularly.",
+    "nl": "Wij weten dat Lisa regelmatig een nieuw appartement zoekt.",
+    "en": "We know that Lisa looks for a new apartment regularly.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -23459,7 +23459,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01485",
     "nl": "Vaak zoekt Lisa een nieuw appartement.",
-    "en": "Vaak lisa looks for a new apartment.",
+    "en": "Often, Lisa looks for a new apartment.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -23505,8 +23505,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01488",
-    "nl": "Wij weten dat lisa vaak een nieuw appartement zoekt.",
-    "en": "We know that lisa looks for a new apartment often.",
+    "nl": "Wij weten dat Lisa vaak een nieuw appartement zoekt.",
+    "en": "We know that Lisa looks for a new apartment often.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -23538,7 +23538,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01490",
     "nl": "Op maandag zoekt Lisa een nieuw appartement.",
-    "en": "Op maandag lisa looks for a new apartment.",
+    "en": "On Monday, Lisa looks for a new apartment.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -23584,8 +23584,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01493",
-    "nl": "Wij weten dat lisa op maandag een nieuw appartement zoekt.",
-    "en": "We know that lisa looks for a new apartment on Monday.",
+    "nl": "Wij weten dat Lisa op maandag een nieuw appartement zoekt.",
+    "en": "We know that Lisa looks for a new apartment on Monday.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -23617,7 +23617,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01495",
     "nl": "Tijdens de lunch zoekt Lisa een nieuw appartement.",
-    "en": "Tijdens de lunch lisa looks for a new apartment.",
+    "en": "During lunch, Lisa looks for a new apartment.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -23663,8 +23663,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01498",
-    "nl": "Wij weten dat lisa tijdens de lunch een nieuw appartement zoekt.",
-    "en": "We know that lisa looks for a new apartment during lunch.",
+    "nl": "Wij weten dat Lisa tijdens de lunch een nieuw appartement zoekt.",
+    "en": "We know that Lisa looks for a new apartment during lunch.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -23696,7 +23696,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01500",
     "nl": "Na het werk zoekt Lisa een nieuw appartement.",
-    "en": "Na het werk lisa looks for a new apartment.",
+    "en": "After work, Lisa looks for a new apartment.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -23742,8 +23742,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01503",
-    "nl": "Wij weten dat lisa na het werk een nieuw appartement zoekt.",
-    "en": "We know that lisa looks for a new apartment after work.",
+    "nl": "Wij weten dat Lisa na het werk een nieuw appartement zoekt.",
+    "en": "We know that Lisa looks for a new apartment after work.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -23775,7 +23775,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01505",
     "nl": "Sinds vorige maand zoekt Lisa een nieuw appartement.",
-    "en": "Sinds vorige maand lisa looks for a new apartment.",
+    "en": "Since last month, Lisa looks for a new apartment.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -23821,8 +23821,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01508",
-    "nl": "Wij weten dat lisa sinds vorige maand een nieuw appartement zoekt.",
-    "en": "We know that lisa looks for a new apartment since last month.",
+    "nl": "Wij weten dat Lisa sinds vorige maand een nieuw appartement zoekt.",
+    "en": "We know that Lisa looks for a new apartment since last month.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -23854,7 +23854,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01510",
     "nl": "Met grote zorgvuldigheid zoekt Lisa een nieuw appartement.",
-    "en": "Met grote zorgvuldigheid lisa looks for a new apartment.",
+    "en": "With great care, Lisa looks for a new apartment.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -23900,8 +23900,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01513",
-    "nl": "Wij weten dat lisa met grote zorgvuldigheid een nieuw appartement zoekt.",
-    "en": "We know that lisa looks for a new apartment with great care.",
+    "nl": "Wij weten dat Lisa met grote zorgvuldigheid een nieuw appartement zoekt.",
+    "en": "We know that Lisa looks for a new apartment with great care.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -23933,7 +23933,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01515",
     "nl": "Elke ochtend ontmoet Lisa goede vrienden in de stad.",
-    "en": "Elke ochtend lisa meets good friends in the city.",
+    "en": "Every morning, Lisa meets good friends in the city.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -23979,8 +23979,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01518",
-    "nl": "Wij weten dat lisa elke ochtend goede vrienden in de stad ontmoet.",
-    "en": "We know that lisa meets good friends in the city every morning.",
+    "nl": "Wij weten dat Lisa elke ochtend goede vrienden in de stad ontmoet.",
+    "en": "We know that Lisa meets good friends in the city every morning.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -24012,7 +24012,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01520",
     "nl": "Gisterenmiddag ontmoet Lisa goede vrienden in de stad.",
-    "en": "Gisterenmiddag lisa meets good friends in the city.",
+    "en": "Yesterday afternoon, Lisa meets good friends in the city.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -24058,8 +24058,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01523",
-    "nl": "Wij weten dat lisa gisterenmiddag goede vrienden in de stad ontmoet.",
-    "en": "We know that lisa meets good friends in the city yesterday afternoon.",
+    "nl": "Wij weten dat Lisa gisterenmiddag goede vrienden in de stad ontmoet.",
+    "en": "We know that Lisa meets good friends in the city yesterday afternoon.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -24091,7 +24091,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01525",
     "nl": "Volgende week ontmoet Lisa goede vrienden in de stad.",
-    "en": "Volgende week lisa meets good friends in the city.",
+    "en": "Next week, Lisa meets good friends in the city.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -24137,8 +24137,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01528",
-    "nl": "Wij weten dat lisa volgende week goede vrienden in de stad ontmoet.",
-    "en": "We know that lisa meets good friends in the city next week.",
+    "nl": "Wij weten dat Lisa volgende week goede vrienden in de stad ontmoet.",
+    "en": "We know that Lisa meets good friends in the city next week.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -24170,7 +24170,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01530",
     "nl": "In het weekend ontmoet Lisa goede vrienden in de stad.",
-    "en": "In het weekend lisa meets good friends in the city.",
+    "en": "At the weekend, Lisa meets good friends in the city.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -24216,8 +24216,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01533",
-    "nl": "Wij weten dat lisa in het weekend goede vrienden in de stad ontmoet.",
-    "en": "We know that lisa meets good friends in the city at the weekend.",
+    "nl": "Wij weten dat Lisa in het weekend goede vrienden in de stad ontmoet.",
+    "en": "We know that Lisa meets good friends in the city at the weekend.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -24249,7 +24249,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01535",
     "nl": "Om acht uur ontmoet Lisa goede vrienden in de stad.",
-    "en": "Om acht uur lisa meets good friends in the city.",
+    "en": "At eight o'clock, Lisa meets good friends in the city.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -24295,8 +24295,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01538",
-    "nl": "Wij weten dat lisa om acht uur goede vrienden in de stad ontmoet.",
-    "en": "We know that lisa meets good friends in the city at eight o'clock.",
+    "nl": "Wij weten dat Lisa om acht uur goede vrienden in de stad ontmoet.",
+    "en": "We know that Lisa meets good friends in the city at eight o'clock.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -24328,7 +24328,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01540",
     "nl": "Regelmatig ontmoet Lisa goede vrienden in de stad.",
-    "en": "Regelmatig lisa meets good friends in the city.",
+    "en": "Regularly, Lisa meets good friends in the city.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -24374,8 +24374,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01543",
-    "nl": "Wij weten dat lisa regelmatig goede vrienden in de stad ontmoet.",
-    "en": "We know that lisa meets good friends in the city regularly.",
+    "nl": "Wij weten dat Lisa regelmatig goede vrienden in de stad ontmoet.",
+    "en": "We know that Lisa meets good friends in the city regularly.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -24407,7 +24407,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01545",
     "nl": "Vaak ontmoet Lisa goede vrienden in de stad.",
-    "en": "Vaak lisa meets good friends in the city.",
+    "en": "Often, Lisa meets good friends in the city.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -24453,8 +24453,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01548",
-    "nl": "Wij weten dat lisa vaak goede vrienden in de stad ontmoet.",
-    "en": "We know that lisa meets good friends in the city often.",
+    "nl": "Wij weten dat Lisa vaak goede vrienden in de stad ontmoet.",
+    "en": "We know that Lisa meets good friends in the city often.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -24486,7 +24486,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01550",
     "nl": "Op maandag ontmoet Lisa goede vrienden in de stad.",
-    "en": "Op maandag lisa meets good friends in the city.",
+    "en": "On Monday, Lisa meets good friends in the city.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -24532,8 +24532,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01553",
-    "nl": "Wij weten dat lisa op maandag goede vrienden in de stad ontmoet.",
-    "en": "We know that lisa meets good friends in the city on Monday.",
+    "nl": "Wij weten dat Lisa op maandag goede vrienden in de stad ontmoet.",
+    "en": "We know that Lisa meets good friends in the city on Monday.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -24565,7 +24565,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01555",
     "nl": "Tijdens de lunch ontmoet Lisa goede vrienden in de stad.",
-    "en": "Tijdens de lunch lisa meets good friends in the city.",
+    "en": "During lunch, Lisa meets good friends in the city.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -24611,8 +24611,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01558",
-    "nl": "Wij weten dat lisa tijdens de lunch goede vrienden in de stad ontmoet.",
-    "en": "We know that lisa meets good friends in the city during lunch.",
+    "nl": "Wij weten dat Lisa tijdens de lunch goede vrienden in de stad ontmoet.",
+    "en": "We know that Lisa meets good friends in the city during lunch.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -24644,7 +24644,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01560",
     "nl": "Na het werk ontmoet Lisa goede vrienden in de stad.",
-    "en": "Na het werk lisa meets good friends in the city.",
+    "en": "After work, Lisa meets good friends in the city.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -24690,8 +24690,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01563",
-    "nl": "Wij weten dat lisa na het werk goede vrienden in de stad ontmoet.",
-    "en": "We know that lisa meets good friends in the city after work.",
+    "nl": "Wij weten dat Lisa na het werk goede vrienden in de stad ontmoet.",
+    "en": "We know that Lisa meets good friends in the city after work.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -24723,7 +24723,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01565",
     "nl": "Sinds vorige maand ontmoet Lisa goede vrienden in de stad.",
-    "en": "Sinds vorige maand lisa meets good friends in the city.",
+    "en": "Since last month, Lisa meets good friends in the city.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -24769,8 +24769,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01568",
-    "nl": "Wij weten dat lisa sinds vorige maand goede vrienden in de stad ontmoet.",
-    "en": "We know that lisa meets good friends in the city since last month.",
+    "nl": "Wij weten dat Lisa sinds vorige maand goede vrienden in de stad ontmoet.",
+    "en": "We know that Lisa meets good friends in the city since last month.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -24802,7 +24802,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01570",
     "nl": "Met grote zorgvuldigheid ontmoet Lisa goede vrienden in de stad.",
-    "en": "Met grote zorgvuldigheid lisa meets good friends in the city.",
+    "en": "With great care, Lisa meets good friends in the city.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -24848,8 +24848,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01573",
-    "nl": "Wij weten dat lisa met grote zorgvuldigheid goede vrienden in de stad ontmoet.",
-    "en": "We know that lisa meets good friends in the city with great care.",
+    "nl": "Wij weten dat Lisa met grote zorgvuldigheid goede vrienden in de stad ontmoet.",
+    "en": "We know that Lisa meets good friends in the city with great care.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -24881,7 +24881,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01575",
     "nl": "Elke ochtend plant Lisa een lange reis naar het buitenland.",
-    "en": "Elke ochtend lisa plans a long journey abroad.",
+    "en": "Every morning, Lisa plans a long journey abroad.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -24927,8 +24927,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01578",
-    "nl": "Wij weten dat lisa elke ochtend een lange reis naar het buitenland plant.",
-    "en": "We know that lisa plans a long journey abroad every morning.",
+    "nl": "Wij weten dat Lisa elke ochtend een lange reis naar het buitenland plant.",
+    "en": "We know that Lisa plans a long journey abroad every morning.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -24960,7 +24960,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01580",
     "nl": "Gisterenmiddag plant Lisa een lange reis naar het buitenland.",
-    "en": "Gisterenmiddag lisa plans a long journey abroad.",
+    "en": "Yesterday afternoon, Lisa plans a long journey abroad.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -25006,8 +25006,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01583",
-    "nl": "Wij weten dat lisa gisterenmiddag een lange reis naar het buitenland plant.",
-    "en": "We know that lisa plans a long journey abroad yesterday afternoon.",
+    "nl": "Wij weten dat Lisa gisterenmiddag een lange reis naar het buitenland plant.",
+    "en": "We know that Lisa plans a long journey abroad yesterday afternoon.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -25039,7 +25039,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01585",
     "nl": "Volgende week plant Lisa een lange reis naar het buitenland.",
-    "en": "Volgende week lisa plans a long journey abroad.",
+    "en": "Next week, Lisa plans a long journey abroad.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -25085,8 +25085,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01588",
-    "nl": "Wij weten dat lisa volgende week een lange reis naar het buitenland plant.",
-    "en": "We know that lisa plans a long journey abroad next week.",
+    "nl": "Wij weten dat Lisa volgende week een lange reis naar het buitenland plant.",
+    "en": "We know that Lisa plans a long journey abroad next week.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -25118,7 +25118,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01590",
     "nl": "In het weekend plant Lisa een lange reis naar het buitenland.",
-    "en": "In het weekend lisa plans a long journey abroad.",
+    "en": "At the weekend, Lisa plans a long journey abroad.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -25164,8 +25164,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01593",
-    "nl": "Wij weten dat lisa in het weekend een lange reis naar het buitenland plant.",
-    "en": "We know that lisa plans a long journey abroad at the weekend.",
+    "nl": "Wij weten dat Lisa in het weekend een lange reis naar het buitenland plant.",
+    "en": "We know that Lisa plans a long journey abroad at the weekend.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -25197,7 +25197,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01595",
     "nl": "Om acht uur plant Lisa een lange reis naar het buitenland.",
-    "en": "Om acht uur lisa plans a long journey abroad.",
+    "en": "At eight o'clock, Lisa plans a long journey abroad.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -25243,8 +25243,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01598",
-    "nl": "Wij weten dat lisa om acht uur een lange reis naar het buitenland plant.",
-    "en": "We know that lisa plans a long journey abroad at eight o'clock.",
+    "nl": "Wij weten dat Lisa om acht uur een lange reis naar het buitenland plant.",
+    "en": "We know that Lisa plans a long journey abroad at eight o'clock.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -25276,7 +25276,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01600",
     "nl": "Regelmatig plant Lisa een lange reis naar het buitenland.",
-    "en": "Regelmatig lisa plans a long journey abroad.",
+    "en": "Regularly, Lisa plans a long journey abroad.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -25322,8 +25322,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01603",
-    "nl": "Wij weten dat lisa regelmatig een lange reis naar het buitenland plant.",
-    "en": "We know that lisa plans a long journey abroad regularly.",
+    "nl": "Wij weten dat Lisa regelmatig een lange reis naar het buitenland plant.",
+    "en": "We know that Lisa plans a long journey abroad regularly.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -25355,7 +25355,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01605",
     "nl": "Vaak plant Lisa een lange reis naar het buitenland.",
-    "en": "Vaak lisa plans a long journey abroad.",
+    "en": "Often, Lisa plans a long journey abroad.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -25401,8 +25401,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01608",
-    "nl": "Wij weten dat lisa vaak een lange reis naar het buitenland plant.",
-    "en": "We know that lisa plans a long journey abroad often.",
+    "nl": "Wij weten dat Lisa vaak een lange reis naar het buitenland plant.",
+    "en": "We know that Lisa plans a long journey abroad often.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -25434,7 +25434,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01610",
     "nl": "Op maandag plant Lisa een lange reis naar het buitenland.",
-    "en": "Op maandag lisa plans a long journey abroad.",
+    "en": "On Monday, Lisa plans a long journey abroad.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -25480,8 +25480,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01613",
-    "nl": "Wij weten dat lisa op maandag een lange reis naar het buitenland plant.",
-    "en": "We know that lisa plans a long journey abroad on Monday.",
+    "nl": "Wij weten dat Lisa op maandag een lange reis naar het buitenland plant.",
+    "en": "We know that Lisa plans a long journey abroad on Monday.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -25513,7 +25513,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01615",
     "nl": "Tijdens de lunch plant Lisa een lange reis naar het buitenland.",
-    "en": "Tijdens de lunch lisa plans a long journey abroad.",
+    "en": "During lunch, Lisa plans a long journey abroad.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -25559,8 +25559,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01618",
-    "nl": "Wij weten dat lisa tijdens de lunch een lange reis naar het buitenland plant.",
-    "en": "We know that lisa plans a long journey abroad during lunch.",
+    "nl": "Wij weten dat Lisa tijdens de lunch een lange reis naar het buitenland plant.",
+    "en": "We know that Lisa plans a long journey abroad during lunch.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -25592,7 +25592,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01620",
     "nl": "Na het werk plant Lisa een lange reis naar het buitenland.",
-    "en": "Na het werk lisa plans a long journey abroad.",
+    "en": "After work, Lisa plans a long journey abroad.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -25638,8 +25638,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01623",
-    "nl": "Wij weten dat lisa na het werk een lange reis naar het buitenland plant.",
-    "en": "We know that lisa plans a long journey abroad after work.",
+    "nl": "Wij weten dat Lisa na het werk een lange reis naar het buitenland plant.",
+    "en": "We know that Lisa plans a long journey abroad after work.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -25671,7 +25671,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01625",
     "nl": "Sinds vorige maand plant Lisa een lange reis naar het buitenland.",
-    "en": "Sinds vorige maand lisa plans a long journey abroad.",
+    "en": "Since last month, Lisa plans a long journey abroad.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -25717,8 +25717,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01628",
-    "nl": "Wij weten dat lisa sinds vorige maand een lange reis naar het buitenland plant.",
-    "en": "We know that lisa plans a long journey abroad since last month.",
+    "nl": "Wij weten dat Lisa sinds vorige maand een lange reis naar het buitenland plant.",
+    "en": "We know that Lisa plans a long journey abroad since last month.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -25750,7 +25750,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01630",
     "nl": "Met grote zorgvuldigheid plant Lisa een lange reis naar het buitenland.",
-    "en": "Met grote zorgvuldigheid lisa plans a long journey abroad.",
+    "en": "With great care, Lisa plans a long journey abroad.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -25796,8 +25796,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01633",
-    "nl": "Wij weten dat lisa met grote zorgvuldigheid een lange reis naar het buitenland plant.",
-    "en": "We know that lisa plans a long journey abroad with great care.",
+    "nl": "Wij weten dat Lisa met grote zorgvuldigheid een lange reis naar het buitenland plant.",
+    "en": "We know that Lisa plans a long journey abroad with great care.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -25829,7 +25829,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01635",
     "nl": "Elke ochtend organiseert Lisa een gezellige buurtbijeenkomst.",
-    "en": "Elke ochtend lisa organizes a cosy neighbourhood meeting.",
+    "en": "Every morning, Lisa organizes a cosy neighbourhood meeting.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -25875,8 +25875,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01638",
-    "nl": "Wij weten dat lisa elke ochtend een gezellige buurtbijeenkomst organiseert.",
-    "en": "We know that lisa organizes a cosy neighbourhood meeting every morning.",
+    "nl": "Wij weten dat Lisa elke ochtend een gezellige buurtbijeenkomst organiseert.",
+    "en": "We know that Lisa organizes a cosy neighbourhood meeting every morning.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -25908,7 +25908,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01640",
     "nl": "Gisterenmiddag organiseert Lisa een gezellige buurtbijeenkomst.",
-    "en": "Gisterenmiddag lisa organizes a cosy neighbourhood meeting.",
+    "en": "Yesterday afternoon, Lisa organizes a cosy neighbourhood meeting.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -25954,8 +25954,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01643",
-    "nl": "Wij weten dat lisa gisterenmiddag een gezellige buurtbijeenkomst organiseert.",
-    "en": "We know that lisa organizes a cosy neighbourhood meeting yesterday afternoon.",
+    "nl": "Wij weten dat Lisa gisterenmiddag een gezellige buurtbijeenkomst organiseert.",
+    "en": "We know that Lisa organizes a cosy neighbourhood meeting yesterday afternoon.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -25987,7 +25987,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01645",
     "nl": "Volgende week organiseert Lisa een gezellige buurtbijeenkomst.",
-    "en": "Volgende week lisa organizes a cosy neighbourhood meeting.",
+    "en": "Next week, Lisa organizes a cosy neighbourhood meeting.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -26033,8 +26033,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01648",
-    "nl": "Wij weten dat lisa volgende week een gezellige buurtbijeenkomst organiseert.",
-    "en": "We know that lisa organizes a cosy neighbourhood meeting next week.",
+    "nl": "Wij weten dat Lisa volgende week een gezellige buurtbijeenkomst organiseert.",
+    "en": "We know that Lisa organizes a cosy neighbourhood meeting next week.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -26066,7 +26066,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01650",
     "nl": "In het weekend organiseert Lisa een gezellige buurtbijeenkomst.",
-    "en": "In het weekend lisa organizes a cosy neighbourhood meeting.",
+    "en": "At the weekend, Lisa organizes a cosy neighbourhood meeting.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -26112,8 +26112,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01653",
-    "nl": "Wij weten dat lisa in het weekend een gezellige buurtbijeenkomst organiseert.",
-    "en": "We know that lisa organizes a cosy neighbourhood meeting at the weekend.",
+    "nl": "Wij weten dat Lisa in het weekend een gezellige buurtbijeenkomst organiseert.",
+    "en": "We know that Lisa organizes a cosy neighbourhood meeting at the weekend.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -26145,7 +26145,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01655",
     "nl": "Om acht uur organiseert Lisa een gezellige buurtbijeenkomst.",
-    "en": "Om acht uur lisa organizes a cosy neighbourhood meeting.",
+    "en": "At eight o'clock, Lisa organizes a cosy neighbourhood meeting.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -26191,8 +26191,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01658",
-    "nl": "Wij weten dat lisa om acht uur een gezellige buurtbijeenkomst organiseert.",
-    "en": "We know that lisa organizes a cosy neighbourhood meeting at eight o'clock.",
+    "nl": "Wij weten dat Lisa om acht uur een gezellige buurtbijeenkomst organiseert.",
+    "en": "We know that Lisa organizes a cosy neighbourhood meeting at eight o'clock.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -26224,7 +26224,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01660",
     "nl": "Regelmatig organiseert Lisa een gezellige buurtbijeenkomst.",
-    "en": "Regelmatig lisa organizes a cosy neighbourhood meeting.",
+    "en": "Regularly, Lisa organizes a cosy neighbourhood meeting.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -26270,8 +26270,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01663",
-    "nl": "Wij weten dat lisa regelmatig een gezellige buurtbijeenkomst organiseert.",
-    "en": "We know that lisa organizes a cosy neighbourhood meeting regularly.",
+    "nl": "Wij weten dat Lisa regelmatig een gezellige buurtbijeenkomst organiseert.",
+    "en": "We know that Lisa organizes a cosy neighbourhood meeting regularly.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -26303,7 +26303,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01665",
     "nl": "Vaak organiseert Lisa een gezellige buurtbijeenkomst.",
-    "en": "Vaak lisa organizes a cosy neighbourhood meeting.",
+    "en": "Often, Lisa organizes a cosy neighbourhood meeting.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -26349,8 +26349,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01668",
-    "nl": "Wij weten dat lisa vaak een gezellige buurtbijeenkomst organiseert.",
-    "en": "We know that lisa organizes a cosy neighbourhood meeting often.",
+    "nl": "Wij weten dat Lisa vaak een gezellige buurtbijeenkomst organiseert.",
+    "en": "We know that Lisa organizes a cosy neighbourhood meeting often.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -26382,7 +26382,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01670",
     "nl": "Op maandag organiseert Lisa een gezellige buurtbijeenkomst.",
-    "en": "Op maandag lisa organizes a cosy neighbourhood meeting.",
+    "en": "On Monday, Lisa organizes a cosy neighbourhood meeting.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -26428,8 +26428,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01673",
-    "nl": "Wij weten dat lisa op maandag een gezellige buurtbijeenkomst organiseert.",
-    "en": "We know that lisa organizes a cosy neighbourhood meeting on Monday.",
+    "nl": "Wij weten dat Lisa op maandag een gezellige buurtbijeenkomst organiseert.",
+    "en": "We know that Lisa organizes a cosy neighbourhood meeting on Monday.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -26461,7 +26461,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01675",
     "nl": "Tijdens de lunch organiseert Lisa een gezellige buurtbijeenkomst.",
-    "en": "Tijdens de lunch lisa organizes a cosy neighbourhood meeting.",
+    "en": "During lunch, Lisa organizes a cosy neighbourhood meeting.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -26507,8 +26507,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01678",
-    "nl": "Wij weten dat lisa tijdens de lunch een gezellige buurtbijeenkomst organiseert.",
-    "en": "We know that lisa organizes a cosy neighbourhood meeting during lunch.",
+    "nl": "Wij weten dat Lisa tijdens de lunch een gezellige buurtbijeenkomst organiseert.",
+    "en": "We know that Lisa organizes a cosy neighbourhood meeting during lunch.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -26540,7 +26540,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01680",
     "nl": "Na het werk organiseert Lisa een gezellige buurtbijeenkomst.",
-    "en": "Na het werk lisa organizes a cosy neighbourhood meeting.",
+    "en": "After work, Lisa organizes a cosy neighbourhood meeting.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -26586,8 +26586,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01683",
-    "nl": "Wij weten dat lisa na het werk een gezellige buurtbijeenkomst organiseert.",
-    "en": "We know that lisa organizes a cosy neighbourhood meeting after work.",
+    "nl": "Wij weten dat Lisa na het werk een gezellige buurtbijeenkomst organiseert.",
+    "en": "We know that Lisa organizes a cosy neighbourhood meeting after work.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -26619,7 +26619,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01685",
     "nl": "Sinds vorige maand organiseert Lisa een gezellige buurtbijeenkomst.",
-    "en": "Sinds vorige maand lisa organizes a cosy neighbourhood meeting.",
+    "en": "Since last month, Lisa organizes a cosy neighbourhood meeting.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -26665,8 +26665,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01688",
-    "nl": "Wij weten dat lisa sinds vorige maand een gezellige buurtbijeenkomst organiseert.",
-    "en": "We know that lisa organizes a cosy neighbourhood meeting since last month.",
+    "nl": "Wij weten dat Lisa sinds vorige maand een gezellige buurtbijeenkomst organiseert.",
+    "en": "We know that Lisa organizes a cosy neighbourhood meeting since last month.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -26698,7 +26698,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01690",
     "nl": "Met grote zorgvuldigheid organiseert Lisa een gezellige buurtbijeenkomst.",
-    "en": "Met grote zorgvuldigheid lisa organizes a cosy neighbourhood meeting.",
+    "en": "With great care, Lisa organizes a cosy neighbourhood meeting.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -26744,8 +26744,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01693",
-    "nl": "Wij weten dat lisa met grote zorgvuldigheid een gezellige buurtbijeenkomst organiseert.",
-    "en": "We know that lisa organizes a cosy neighbourhood meeting with great care.",
+    "nl": "Wij weten dat Lisa met grote zorgvuldigheid een gezellige buurtbijeenkomst organiseert.",
+    "en": "We know that Lisa organizes a cosy neighbourhood meeting with great care.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -26777,7 +26777,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01695",
     "nl": "Elke ochtend analyseert Lisa de complexe financiële resultaten.",
-    "en": "Elke ochtend lisa analyzes the complex financial results.",
+    "en": "Every morning, Lisa analyzes the complex financial results.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -26823,8 +26823,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01698",
-    "nl": "Wij weten dat lisa elke ochtend de complexe financiële resultaten analyseert.",
-    "en": "We know that lisa analyzes the complex financial results every morning.",
+    "nl": "Wij weten dat Lisa elke ochtend de complexe financiële resultaten analyseert.",
+    "en": "We know that Lisa analyzes the complex financial results every morning.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -26856,7 +26856,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01700",
     "nl": "Gisterenmiddag analyseert Lisa de complexe financiële resultaten.",
-    "en": "Gisterenmiddag lisa analyzes the complex financial results.",
+    "en": "Yesterday afternoon, Lisa analyzes the complex financial results.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -26902,8 +26902,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01703",
-    "nl": "Wij weten dat lisa gisterenmiddag de complexe financiële resultaten analyseert.",
-    "en": "We know that lisa analyzes the complex financial results yesterday afternoon.",
+    "nl": "Wij weten dat Lisa gisterenmiddag de complexe financiële resultaten analyseert.",
+    "en": "We know that Lisa analyzes the complex financial results yesterday afternoon.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -26935,7 +26935,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01705",
     "nl": "Volgende week analyseert Lisa de complexe financiële resultaten.",
-    "en": "Volgende week lisa analyzes the complex financial results.",
+    "en": "Next week, Lisa analyzes the complex financial results.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -26981,8 +26981,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01708",
-    "nl": "Wij weten dat lisa volgende week de complexe financiële resultaten analyseert.",
-    "en": "We know that lisa analyzes the complex financial results next week.",
+    "nl": "Wij weten dat Lisa volgende week de complexe financiële resultaten analyseert.",
+    "en": "We know that Lisa analyzes the complex financial results next week.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -27014,7 +27014,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01710",
     "nl": "In het weekend analyseert Lisa de complexe financiële resultaten.",
-    "en": "In het weekend lisa analyzes the complex financial results.",
+    "en": "At the weekend, Lisa analyzes the complex financial results.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -27060,8 +27060,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01713",
-    "nl": "Wij weten dat lisa in het weekend de complexe financiële resultaten analyseert.",
-    "en": "We know that lisa analyzes the complex financial results at the weekend.",
+    "nl": "Wij weten dat Lisa in het weekend de complexe financiële resultaten analyseert.",
+    "en": "We know that Lisa analyzes the complex financial results at the weekend.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -27093,7 +27093,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01715",
     "nl": "Om acht uur analyseert Lisa de complexe financiële resultaten.",
-    "en": "Om acht uur lisa analyzes the complex financial results.",
+    "en": "At eight o'clock, Lisa analyzes the complex financial results.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -27139,8 +27139,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01718",
-    "nl": "Wij weten dat lisa om acht uur de complexe financiële resultaten analyseert.",
-    "en": "We know that lisa analyzes the complex financial results at eight o'clock.",
+    "nl": "Wij weten dat Lisa om acht uur de complexe financiële resultaten analyseert.",
+    "en": "We know that Lisa analyzes the complex financial results at eight o'clock.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -27172,7 +27172,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01720",
     "nl": "Regelmatig analyseert Lisa de complexe financiële resultaten.",
-    "en": "Regelmatig lisa analyzes the complex financial results.",
+    "en": "Regularly, Lisa analyzes the complex financial results.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -27218,8 +27218,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01723",
-    "nl": "Wij weten dat lisa regelmatig de complexe financiële resultaten analyseert.",
-    "en": "We know that lisa analyzes the complex financial results regularly.",
+    "nl": "Wij weten dat Lisa regelmatig de complexe financiële resultaten analyseert.",
+    "en": "We know that Lisa analyzes the complex financial results regularly.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -27251,7 +27251,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01725",
     "nl": "Vaak analyseert Lisa de complexe financiële resultaten.",
-    "en": "Vaak lisa analyzes the complex financial results.",
+    "en": "Often, Lisa analyzes the complex financial results.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -27297,8 +27297,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01728",
-    "nl": "Wij weten dat lisa vaak de complexe financiële resultaten analyseert.",
-    "en": "We know that lisa analyzes the complex financial results often.",
+    "nl": "Wij weten dat Lisa vaak de complexe financiële resultaten analyseert.",
+    "en": "We know that Lisa analyzes the complex financial results often.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -27330,7 +27330,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01730",
     "nl": "Op maandag analyseert Lisa de complexe financiële resultaten.",
-    "en": "Op maandag lisa analyzes the complex financial results.",
+    "en": "On Monday, Lisa analyzes the complex financial results.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -27376,8 +27376,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01733",
-    "nl": "Wij weten dat lisa op maandag de complexe financiële resultaten analyseert.",
-    "en": "We know that lisa analyzes the complex financial results on Monday.",
+    "nl": "Wij weten dat Lisa op maandag de complexe financiële resultaten analyseert.",
+    "en": "We know that Lisa analyzes the complex financial results on Monday.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -27409,7 +27409,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01735",
     "nl": "Tijdens de lunch analyseert Lisa de complexe financiële resultaten.",
-    "en": "Tijdens de lunch lisa analyzes the complex financial results.",
+    "en": "During lunch, Lisa analyzes the complex financial results.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -27455,8 +27455,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01738",
-    "nl": "Wij weten dat lisa tijdens de lunch de complexe financiële resultaten analyseert.",
-    "en": "We know that lisa analyzes the complex financial results during lunch.",
+    "nl": "Wij weten dat Lisa tijdens de lunch de complexe financiële resultaten analyseert.",
+    "en": "We know that Lisa analyzes the complex financial results during lunch.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -27488,7 +27488,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01740",
     "nl": "Na het werk analyseert Lisa de complexe financiële resultaten.",
-    "en": "Na het werk lisa analyzes the complex financial results.",
+    "en": "After work, Lisa analyzes the complex financial results.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -27534,8 +27534,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01743",
-    "nl": "Wij weten dat lisa na het werk de complexe financiële resultaten analyseert.",
-    "en": "We know that lisa analyzes the complex financial results after work.",
+    "nl": "Wij weten dat Lisa na het werk de complexe financiële resultaten analyseert.",
+    "en": "We know that Lisa analyzes the complex financial results after work.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -27567,7 +27567,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01745",
     "nl": "Sinds vorige maand analyseert Lisa de complexe financiële resultaten.",
-    "en": "Sinds vorige maand lisa analyzes the complex financial results.",
+    "en": "Since last month, Lisa analyzes the complex financial results.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -27613,8 +27613,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01748",
-    "nl": "Wij weten dat lisa sinds vorige maand de complexe financiële resultaten analyseert.",
-    "en": "We know that lisa analyzes the complex financial results since last month.",
+    "nl": "Wij weten dat Lisa sinds vorige maand de complexe financiële resultaten analyseert.",
+    "en": "We know that Lisa analyzes the complex financial results since last month.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -27646,7 +27646,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01750",
     "nl": "Met grote zorgvuldigheid analyseert Lisa de complexe financiële resultaten.",
-    "en": "Met grote zorgvuldigheid lisa analyzes the complex financial results.",
+    "en": "With great care, Lisa analyzes the complex financial results.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -27692,8 +27692,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01753",
-    "nl": "Wij weten dat lisa met grote zorgvuldigheid de complexe financiële resultaten analyseert.",
-    "en": "We know that lisa analyzes the complex financial results with great care.",
+    "nl": "Wij weten dat Lisa met grote zorgvuldigheid de complexe financiële resultaten analyseert.",
+    "en": "We know that Lisa analyzes the complex financial results with great care.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -27725,7 +27725,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01755",
     "nl": "Elke ochtend bespreekt Lisa de nieuwe beleidsvoorstellen.",
-    "en": "Elke ochtend lisa discusses the new policy proposals.",
+    "en": "Every morning, Lisa discusses the new policy proposals.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -27771,8 +27771,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01758",
-    "nl": "Wij weten dat lisa elke ochtend de nieuwe beleidsvoorstellen bespreekt.",
-    "en": "We know that lisa discusses the new policy proposals every morning.",
+    "nl": "Wij weten dat Lisa elke ochtend de nieuwe beleidsvoorstellen bespreekt.",
+    "en": "We know that Lisa discusses the new policy proposals every morning.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -27804,7 +27804,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01760",
     "nl": "Gisterenmiddag bespreekt Lisa de nieuwe beleidsvoorstellen.",
-    "en": "Gisterenmiddag lisa discusses the new policy proposals.",
+    "en": "Yesterday afternoon, Lisa discusses the new policy proposals.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -27850,8 +27850,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01763",
-    "nl": "Wij weten dat lisa gisterenmiddag de nieuwe beleidsvoorstellen bespreekt.",
-    "en": "We know that lisa discusses the new policy proposals yesterday afternoon.",
+    "nl": "Wij weten dat Lisa gisterenmiddag de nieuwe beleidsvoorstellen bespreekt.",
+    "en": "We know that Lisa discusses the new policy proposals yesterday afternoon.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -27883,7 +27883,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01765",
     "nl": "Volgende week bespreekt Lisa de nieuwe beleidsvoorstellen.",
-    "en": "Volgende week lisa discusses the new policy proposals.",
+    "en": "Next week, Lisa discusses the new policy proposals.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -27929,8 +27929,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01768",
-    "nl": "Wij weten dat lisa volgende week de nieuwe beleidsvoorstellen bespreekt.",
-    "en": "We know that lisa discusses the new policy proposals next week.",
+    "nl": "Wij weten dat Lisa volgende week de nieuwe beleidsvoorstellen bespreekt.",
+    "en": "We know that Lisa discusses the new policy proposals next week.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -27962,7 +27962,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01770",
     "nl": "In het weekend bespreekt Lisa de nieuwe beleidsvoorstellen.",
-    "en": "In het weekend lisa discusses the new policy proposals.",
+    "en": "At the weekend, Lisa discusses the new policy proposals.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -28008,8 +28008,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01773",
-    "nl": "Wij weten dat lisa in het weekend de nieuwe beleidsvoorstellen bespreekt.",
-    "en": "We know that lisa discusses the new policy proposals at the weekend.",
+    "nl": "Wij weten dat Lisa in het weekend de nieuwe beleidsvoorstellen bespreekt.",
+    "en": "We know that Lisa discusses the new policy proposals at the weekend.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -28041,7 +28041,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01775",
     "nl": "Om acht uur bespreekt Lisa de nieuwe beleidsvoorstellen.",
-    "en": "Om acht uur lisa discusses the new policy proposals.",
+    "en": "At eight o'clock, Lisa discusses the new policy proposals.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -28087,8 +28087,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01778",
-    "nl": "Wij weten dat lisa om acht uur de nieuwe beleidsvoorstellen bespreekt.",
-    "en": "We know that lisa discusses the new policy proposals at eight o'clock.",
+    "nl": "Wij weten dat Lisa om acht uur de nieuwe beleidsvoorstellen bespreekt.",
+    "en": "We know that Lisa discusses the new policy proposals at eight o'clock.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -28120,7 +28120,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01780",
     "nl": "Regelmatig bespreekt Lisa de nieuwe beleidsvoorstellen.",
-    "en": "Regelmatig lisa discusses the new policy proposals.",
+    "en": "Regularly, Lisa discusses the new policy proposals.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -28166,8 +28166,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01783",
-    "nl": "Wij weten dat lisa regelmatig de nieuwe beleidsvoorstellen bespreekt.",
-    "en": "We know that lisa discusses the new policy proposals regularly.",
+    "nl": "Wij weten dat Lisa regelmatig de nieuwe beleidsvoorstellen bespreekt.",
+    "en": "We know that Lisa discusses the new policy proposals regularly.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -28199,7 +28199,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01785",
     "nl": "Vaak bespreekt Lisa de nieuwe beleidsvoorstellen.",
-    "en": "Vaak lisa discusses the new policy proposals.",
+    "en": "Often, Lisa discusses the new policy proposals.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -28245,8 +28245,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01788",
-    "nl": "Wij weten dat lisa vaak de nieuwe beleidsvoorstellen bespreekt.",
-    "en": "We know that lisa discusses the new policy proposals often.",
+    "nl": "Wij weten dat Lisa vaak de nieuwe beleidsvoorstellen bespreekt.",
+    "en": "We know that Lisa discusses the new policy proposals often.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -28278,7 +28278,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01790",
     "nl": "Op maandag bespreekt Lisa de nieuwe beleidsvoorstellen.",
-    "en": "Op maandag lisa discusses the new policy proposals.",
+    "en": "On Monday, Lisa discusses the new policy proposals.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -28324,8 +28324,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01793",
-    "nl": "Wij weten dat lisa op maandag de nieuwe beleidsvoorstellen bespreekt.",
-    "en": "We know that lisa discusses the new policy proposals on Monday.",
+    "nl": "Wij weten dat Lisa op maandag de nieuwe beleidsvoorstellen bespreekt.",
+    "en": "We know that Lisa discusses the new policy proposals on Monday.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -28357,7 +28357,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01795",
     "nl": "Tijdens de lunch bespreekt Lisa de nieuwe beleidsvoorstellen.",
-    "en": "Tijdens de lunch lisa discusses the new policy proposals.",
+    "en": "During lunch, Lisa discusses the new policy proposals.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -28403,8 +28403,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01798",
-    "nl": "Wij weten dat lisa tijdens de lunch de nieuwe beleidsvoorstellen bespreekt.",
-    "en": "We know that lisa discusses the new policy proposals during lunch.",
+    "nl": "Wij weten dat Lisa tijdens de lunch de nieuwe beleidsvoorstellen bespreekt.",
+    "en": "We know that Lisa discusses the new policy proposals during lunch.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -28436,7 +28436,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01800",
     "nl": "Na het werk bespreekt Lisa de nieuwe beleidsvoorstellen.",
-    "en": "Na het werk lisa discusses the new policy proposals.",
+    "en": "After work, Lisa discusses the new policy proposals.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -28482,8 +28482,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01803",
-    "nl": "Wij weten dat lisa na het werk de nieuwe beleidsvoorstellen bespreekt.",
-    "en": "We know that lisa discusses the new policy proposals after work.",
+    "nl": "Wij weten dat Lisa na het werk de nieuwe beleidsvoorstellen bespreekt.",
+    "en": "We know that Lisa discusses the new policy proposals after work.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -28515,7 +28515,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01805",
     "nl": "Sinds vorige maand bespreekt Lisa de nieuwe beleidsvoorstellen.",
-    "en": "Sinds vorige maand lisa discusses the new policy proposals.",
+    "en": "Since last month, Lisa discusses the new policy proposals.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -28561,8 +28561,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01808",
-    "nl": "Wij weten dat lisa sinds vorige maand de nieuwe beleidsvoorstellen bespreekt.",
-    "en": "We know that lisa discusses the new policy proposals since last month.",
+    "nl": "Wij weten dat Lisa sinds vorige maand de nieuwe beleidsvoorstellen bespreekt.",
+    "en": "We know that Lisa discusses the new policy proposals since last month.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -28594,7 +28594,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01810",
     "nl": "Met grote zorgvuldigheid bespreekt Lisa de nieuwe beleidsvoorstellen.",
-    "en": "Met grote zorgvuldigheid lisa discusses the new policy proposals.",
+    "en": "With great care, Lisa discusses the new policy proposals.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -28640,8 +28640,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01813",
-    "nl": "Wij weten dat lisa met grote zorgvuldigheid de nieuwe beleidsvoorstellen bespreekt.",
-    "en": "We know that lisa discusses the new policy proposals with great care.",
+    "nl": "Wij weten dat Lisa met grote zorgvuldigheid de nieuwe beleidsvoorstellen bespreekt.",
+    "en": "We know that Lisa discusses the new policy proposals with great care.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -28673,7 +28673,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01815",
     "nl": "Elke ochtend presenteert Lisa het innovatieve onderzoeksrapport.",
-    "en": "Elke ochtend lisa presents the innovative research report.",
+    "en": "Every morning, Lisa presents the innovative research report.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -28719,8 +28719,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01818",
-    "nl": "Wij weten dat lisa elke ochtend het innovatieve onderzoeksrapport presenteert.",
-    "en": "We know that lisa presents the innovative research report every morning.",
+    "nl": "Wij weten dat Lisa elke ochtend het innovatieve onderzoeksrapport presenteert.",
+    "en": "We know that Lisa presents the innovative research report every morning.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -28752,7 +28752,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01820",
     "nl": "Gisterenmiddag presenteert Lisa het innovatieve onderzoeksrapport.",
-    "en": "Gisterenmiddag lisa presents the innovative research report.",
+    "en": "Yesterday afternoon, Lisa presents the innovative research report.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -28798,8 +28798,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01823",
-    "nl": "Wij weten dat lisa gisterenmiddag het innovatieve onderzoeksrapport presenteert.",
-    "en": "We know that lisa presents the innovative research report yesterday afternoon.",
+    "nl": "Wij weten dat Lisa gisterenmiddag het innovatieve onderzoeksrapport presenteert.",
+    "en": "We know that Lisa presents the innovative research report yesterday afternoon.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -28831,7 +28831,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01825",
     "nl": "Volgende week presenteert Lisa het innovatieve onderzoeksrapport.",
-    "en": "Volgende week lisa presents the innovative research report.",
+    "en": "Next week, Lisa presents the innovative research report.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -28877,8 +28877,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01828",
-    "nl": "Wij weten dat lisa volgende week het innovatieve onderzoeksrapport presenteert.",
-    "en": "We know that lisa presents the innovative research report next week.",
+    "nl": "Wij weten dat Lisa volgende week het innovatieve onderzoeksrapport presenteert.",
+    "en": "We know that Lisa presents the innovative research report next week.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -28910,7 +28910,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01830",
     "nl": "In het weekend presenteert Lisa het innovatieve onderzoeksrapport.",
-    "en": "In het weekend lisa presents the innovative research report.",
+    "en": "At the weekend, Lisa presents the innovative research report.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -28956,8 +28956,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01833",
-    "nl": "Wij weten dat lisa in het weekend het innovatieve onderzoeksrapport presenteert.",
-    "en": "We know that lisa presents the innovative research report at the weekend.",
+    "nl": "Wij weten dat Lisa in het weekend het innovatieve onderzoeksrapport presenteert.",
+    "en": "We know that Lisa presents the innovative research report at the weekend.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -28989,7 +28989,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01835",
     "nl": "Om acht uur presenteert Lisa het innovatieve onderzoeksrapport.",
-    "en": "Om acht uur lisa presents the innovative research report.",
+    "en": "At eight o'clock, Lisa presents the innovative research report.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -29035,8 +29035,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01838",
-    "nl": "Wij weten dat lisa om acht uur het innovatieve onderzoeksrapport presenteert.",
-    "en": "We know that lisa presents the innovative research report at eight o'clock.",
+    "nl": "Wij weten dat Lisa om acht uur het innovatieve onderzoeksrapport presenteert.",
+    "en": "We know that Lisa presents the innovative research report at eight o'clock.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -29068,7 +29068,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01840",
     "nl": "Regelmatig presenteert Lisa het innovatieve onderzoeksrapport.",
-    "en": "Regelmatig lisa presents the innovative research report.",
+    "en": "Regularly, Lisa presents the innovative research report.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -29114,8 +29114,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01843",
-    "nl": "Wij weten dat lisa regelmatig het innovatieve onderzoeksrapport presenteert.",
-    "en": "We know that lisa presents the innovative research report regularly.",
+    "nl": "Wij weten dat Lisa regelmatig het innovatieve onderzoeksrapport presenteert.",
+    "en": "We know that Lisa presents the innovative research report regularly.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -29147,7 +29147,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01845",
     "nl": "Vaak presenteert Lisa het innovatieve onderzoeksrapport.",
-    "en": "Vaak lisa presents the innovative research report.",
+    "en": "Often, Lisa presents the innovative research report.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -29193,8 +29193,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01848",
-    "nl": "Wij weten dat lisa vaak het innovatieve onderzoeksrapport presenteert.",
-    "en": "We know that lisa presents the innovative research report often.",
+    "nl": "Wij weten dat Lisa vaak het innovatieve onderzoeksrapport presenteert.",
+    "en": "We know that Lisa presents the innovative research report often.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -29226,7 +29226,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01850",
     "nl": "Op maandag presenteert Lisa het innovatieve onderzoeksrapport.",
-    "en": "Op maandag lisa presents the innovative research report.",
+    "en": "On Monday, Lisa presents the innovative research report.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -29272,8 +29272,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01853",
-    "nl": "Wij weten dat lisa op maandag het innovatieve onderzoeksrapport presenteert.",
-    "en": "We know that lisa presents the innovative research report on Monday.",
+    "nl": "Wij weten dat Lisa op maandag het innovatieve onderzoeksrapport presenteert.",
+    "en": "We know that Lisa presents the innovative research report on Monday.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -29305,7 +29305,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01855",
     "nl": "Tijdens de lunch presenteert Lisa het innovatieve onderzoeksrapport.",
-    "en": "Tijdens de lunch lisa presents the innovative research report.",
+    "en": "During lunch, Lisa presents the innovative research report.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -29351,8 +29351,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01858",
-    "nl": "Wij weten dat lisa tijdens de lunch het innovatieve onderzoeksrapport presenteert.",
-    "en": "We know that lisa presents the innovative research report during lunch.",
+    "nl": "Wij weten dat Lisa tijdens de lunch het innovatieve onderzoeksrapport presenteert.",
+    "en": "We know that Lisa presents the innovative research report during lunch.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -29384,7 +29384,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01860",
     "nl": "Na het werk presenteert Lisa het innovatieve onderzoeksrapport.",
-    "en": "Na het werk lisa presents the innovative research report.",
+    "en": "After work, Lisa presents the innovative research report.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -29430,8 +29430,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01863",
-    "nl": "Wij weten dat lisa na het werk het innovatieve onderzoeksrapport presenteert.",
-    "en": "We know that lisa presents the innovative research report after work.",
+    "nl": "Wij weten dat Lisa na het werk het innovatieve onderzoeksrapport presenteert.",
+    "en": "We know that Lisa presents the innovative research report after work.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -29463,7 +29463,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01865",
     "nl": "Sinds vorige maand presenteert Lisa het innovatieve onderzoeksrapport.",
-    "en": "Sinds vorige maand lisa presents the innovative research report.",
+    "en": "Since last month, Lisa presents the innovative research report.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -29509,8 +29509,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01868",
-    "nl": "Wij weten dat lisa sinds vorige maand het innovatieve onderzoeksrapport presenteert.",
-    "en": "We know that lisa presents the innovative research report since last month.",
+    "nl": "Wij weten dat Lisa sinds vorige maand het innovatieve onderzoeksrapport presenteert.",
+    "en": "We know that Lisa presents the innovative research report since last month.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -29542,7 +29542,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01870",
     "nl": "Met grote zorgvuldigheid presenteert Lisa het innovatieve onderzoeksrapport.",
-    "en": "Met grote zorgvuldigheid lisa presents the innovative research report.",
+    "en": "With great care, Lisa presents the innovative research report.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -29588,8 +29588,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01873",
-    "nl": "Wij weten dat lisa met grote zorgvuldigheid het innovatieve onderzoeksrapport presenteert.",
-    "en": "We know that lisa presents the innovative research report with great care.",
+    "nl": "Wij weten dat Lisa met grote zorgvuldigheid het innovatieve onderzoeksrapport presenteert.",
+    "en": "We know that Lisa presents the innovative research report with great care.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -29621,7 +29621,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01875",
     "nl": "Elke ochtend controleert Lisa de veiligheidsvoorschriften in het gebouw.",
-    "en": "Elke ochtend lisa checks the safety regulations in the building.",
+    "en": "Every morning, Lisa checks the safety regulations in the building.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -29667,8 +29667,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01878",
-    "nl": "Wij weten dat lisa elke ochtend de veiligheidsvoorschriften in het gebouw controleert.",
-    "en": "We know that lisa checks the safety regulations in the building every morning.",
+    "nl": "Wij weten dat Lisa elke ochtend de veiligheidsvoorschriften in het gebouw controleert.",
+    "en": "We know that Lisa checks the safety regulations in the building every morning.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -29700,7 +29700,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01880",
     "nl": "Gisterenmiddag controleert Lisa de veiligheidsvoorschriften in het gebouw.",
-    "en": "Gisterenmiddag lisa checks the safety regulations in the building.",
+    "en": "Yesterday afternoon, Lisa checks the safety regulations in the building.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -29746,8 +29746,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01883",
-    "nl": "Wij weten dat lisa gisterenmiddag de veiligheidsvoorschriften in het gebouw controleert.",
-    "en": "We know that lisa checks the safety regulations in the building yesterday afternoon.",
+    "nl": "Wij weten dat Lisa gisterenmiddag de veiligheidsvoorschriften in het gebouw controleert.",
+    "en": "We know that Lisa checks the safety regulations in the building yesterday afternoon.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -29779,7 +29779,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01885",
     "nl": "Volgende week controleert Lisa de veiligheidsvoorschriften in het gebouw.",
-    "en": "Volgende week lisa checks the safety regulations in the building.",
+    "en": "Next week, Lisa checks the safety regulations in the building.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -29825,8 +29825,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01888",
-    "nl": "Wij weten dat lisa volgende week de veiligheidsvoorschriften in het gebouw controleert.",
-    "en": "We know that lisa checks the safety regulations in the building next week.",
+    "nl": "Wij weten dat Lisa volgende week de veiligheidsvoorschriften in het gebouw controleert.",
+    "en": "We know that Lisa checks the safety regulations in the building next week.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -29858,7 +29858,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01890",
     "nl": "In het weekend controleert Lisa de veiligheidsvoorschriften in het gebouw.",
-    "en": "In het weekend lisa checks the safety regulations in the building.",
+    "en": "At the weekend, Lisa checks the safety regulations in the building.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -29904,8 +29904,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01893",
-    "nl": "Wij weten dat lisa in het weekend de veiligheidsvoorschriften in het gebouw controleert.",
-    "en": "We know that lisa checks the safety regulations in the building at the weekend.",
+    "nl": "Wij weten dat Lisa in het weekend de veiligheidsvoorschriften in het gebouw controleert.",
+    "en": "We know that Lisa checks the safety regulations in the building at the weekend.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -29937,7 +29937,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01895",
     "nl": "Om acht uur controleert Lisa de veiligheidsvoorschriften in het gebouw.",
-    "en": "Om acht uur lisa checks the safety regulations in the building.",
+    "en": "At eight o'clock, Lisa checks the safety regulations in the building.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -29983,8 +29983,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01898",
-    "nl": "Wij weten dat lisa om acht uur de veiligheidsvoorschriften in het gebouw controleert.",
-    "en": "We know that lisa checks the safety regulations in the building at eight o'clock.",
+    "nl": "Wij weten dat Lisa om acht uur de veiligheidsvoorschriften in het gebouw controleert.",
+    "en": "We know that Lisa checks the safety regulations in the building at eight o'clock.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -30016,7 +30016,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01900",
     "nl": "Regelmatig controleert Lisa de veiligheidsvoorschriften in het gebouw.",
-    "en": "Regelmatig lisa checks the safety regulations in the building.",
+    "en": "Regularly, Lisa checks the safety regulations in the building.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -30062,8 +30062,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01903",
-    "nl": "Wij weten dat lisa regelmatig de veiligheidsvoorschriften in het gebouw controleert.",
-    "en": "We know that lisa checks the safety regulations in the building regularly.",
+    "nl": "Wij weten dat Lisa regelmatig de veiligheidsvoorschriften in het gebouw controleert.",
+    "en": "We know that Lisa checks the safety regulations in the building regularly.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -30095,7 +30095,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01905",
     "nl": "Vaak controleert Lisa de veiligheidsvoorschriften in het gebouw.",
-    "en": "Vaak lisa checks the safety regulations in the building.",
+    "en": "Often, Lisa checks the safety regulations in the building.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -30141,8 +30141,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01908",
-    "nl": "Wij weten dat lisa vaak de veiligheidsvoorschriften in het gebouw controleert.",
-    "en": "We know that lisa checks the safety regulations in the building often.",
+    "nl": "Wij weten dat Lisa vaak de veiligheidsvoorschriften in het gebouw controleert.",
+    "en": "We know that Lisa checks the safety regulations in the building often.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -30174,7 +30174,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01910",
     "nl": "Op maandag controleert Lisa de veiligheidsvoorschriften in het gebouw.",
-    "en": "Op maandag lisa checks the safety regulations in the building.",
+    "en": "On Monday, Lisa checks the safety regulations in the building.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -30220,8 +30220,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01913",
-    "nl": "Wij weten dat lisa op maandag de veiligheidsvoorschriften in het gebouw controleert.",
-    "en": "We know that lisa checks the safety regulations in the building on Monday.",
+    "nl": "Wij weten dat Lisa op maandag de veiligheidsvoorschriften in het gebouw controleert.",
+    "en": "We know that Lisa checks the safety regulations in the building on Monday.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -30253,7 +30253,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01915",
     "nl": "Tijdens de lunch controleert Lisa de veiligheidsvoorschriften in het gebouw.",
-    "en": "Tijdens de lunch lisa checks the safety regulations in the building.",
+    "en": "During lunch, Lisa checks the safety regulations in the building.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -30299,8 +30299,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01918",
-    "nl": "Wij weten dat lisa tijdens de lunch de veiligheidsvoorschriften in het gebouw controleert.",
-    "en": "We know that lisa checks the safety regulations in the building during lunch.",
+    "nl": "Wij weten dat Lisa tijdens de lunch de veiligheidsvoorschriften in het gebouw controleert.",
+    "en": "We know that Lisa checks the safety regulations in the building during lunch.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -30332,7 +30332,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01920",
     "nl": "Na het werk controleert Lisa de veiligheidsvoorschriften in het gebouw.",
-    "en": "Na het werk lisa checks the safety regulations in the building.",
+    "en": "After work, Lisa checks the safety regulations in the building.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -30378,8 +30378,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01923",
-    "nl": "Wij weten dat lisa na het werk de veiligheidsvoorschriften in het gebouw controleert.",
-    "en": "We know that lisa checks the safety regulations in the building after work.",
+    "nl": "Wij weten dat Lisa na het werk de veiligheidsvoorschriften in het gebouw controleert.",
+    "en": "We know that Lisa checks the safety regulations in the building after work.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -30411,7 +30411,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01925",
     "nl": "Sinds vorige maand controleert Lisa de veiligheidsvoorschriften in het gebouw.",
-    "en": "Sinds vorige maand lisa checks the safety regulations in the building.",
+    "en": "Since last month, Lisa checks the safety regulations in the building.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -30457,8 +30457,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01928",
-    "nl": "Wij weten dat lisa sinds vorige maand de veiligheidsvoorschriften in het gebouw controleert.",
-    "en": "We know that lisa checks the safety regulations in the building since last month.",
+    "nl": "Wij weten dat Lisa sinds vorige maand de veiligheidsvoorschriften in het gebouw controleert.",
+    "en": "We know that Lisa checks the safety regulations in the building since last month.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -30490,7 +30490,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01930",
     "nl": "Met grote zorgvuldigheid controleert Lisa de veiligheidsvoorschriften in het gebouw.",
-    "en": "Met grote zorgvuldigheid lisa checks the safety regulations in the building.",
+    "en": "With great care, Lisa checks the safety regulations in the building.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -30536,8 +30536,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01933",
-    "nl": "Wij weten dat lisa met grote zorgvuldigheid de veiligheidsvoorschriften in het gebouw controleert.",
-    "en": "We know that lisa checks the safety regulations in the building with great care.",
+    "nl": "Wij weten dat Lisa met grote zorgvuldigheid de veiligheidsvoorschriften in het gebouw controleert.",
+    "en": "We know that Lisa checks the safety regulations in the building with great care.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -30569,7 +30569,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01935",
     "nl": "Elke ochtend repareert Lisa de kapotte fietsverlichting.",
-    "en": "Elke ochtend lisa repairs the broken bicycle lighting.",
+    "en": "Every morning, Lisa repairs the broken bicycle lighting.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -30615,8 +30615,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01938",
-    "nl": "Wij weten dat lisa elke ochtend de kapotte fietsverlichting repareert.",
-    "en": "We know that lisa repairs the broken bicycle lighting every morning.",
+    "nl": "Wij weten dat Lisa elke ochtend de kapotte fietsverlichting repareert.",
+    "en": "We know that Lisa repairs the broken bicycle lighting every morning.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -30648,7 +30648,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01940",
     "nl": "Gisterenmiddag repareert Lisa de kapotte fietsverlichting.",
-    "en": "Gisterenmiddag lisa repairs the broken bicycle lighting.",
+    "en": "Yesterday afternoon, Lisa repairs the broken bicycle lighting.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -30694,8 +30694,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01943",
-    "nl": "Wij weten dat lisa gisterenmiddag de kapotte fietsverlichting repareert.",
-    "en": "We know that lisa repairs the broken bicycle lighting yesterday afternoon.",
+    "nl": "Wij weten dat Lisa gisterenmiddag de kapotte fietsverlichting repareert.",
+    "en": "We know that Lisa repairs the broken bicycle lighting yesterday afternoon.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -30727,7 +30727,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01945",
     "nl": "Volgende week repareert Lisa de kapotte fietsverlichting.",
-    "en": "Volgende week lisa repairs the broken bicycle lighting.",
+    "en": "Next week, Lisa repairs the broken bicycle lighting.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -30773,8 +30773,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01948",
-    "nl": "Wij weten dat lisa volgende week de kapotte fietsverlichting repareert.",
-    "en": "We know that lisa repairs the broken bicycle lighting next week.",
+    "nl": "Wij weten dat Lisa volgende week de kapotte fietsverlichting repareert.",
+    "en": "We know that Lisa repairs the broken bicycle lighting next week.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -30806,7 +30806,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01950",
     "nl": "In het weekend repareert Lisa de kapotte fietsverlichting.",
-    "en": "In het weekend lisa repairs the broken bicycle lighting.",
+    "en": "At the weekend, Lisa repairs the broken bicycle lighting.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -30852,8 +30852,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01953",
-    "nl": "Wij weten dat lisa in het weekend de kapotte fietsverlichting repareert.",
-    "en": "We know that lisa repairs the broken bicycle lighting at the weekend.",
+    "nl": "Wij weten dat Lisa in het weekend de kapotte fietsverlichting repareert.",
+    "en": "We know that Lisa repairs the broken bicycle lighting at the weekend.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -30885,7 +30885,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01955",
     "nl": "Om acht uur repareert Lisa de kapotte fietsverlichting.",
-    "en": "Om acht uur lisa repairs the broken bicycle lighting.",
+    "en": "At eight o'clock, Lisa repairs the broken bicycle lighting.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -30931,8 +30931,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01958",
-    "nl": "Wij weten dat lisa om acht uur de kapotte fietsverlichting repareert.",
-    "en": "We know that lisa repairs the broken bicycle lighting at eight o'clock.",
+    "nl": "Wij weten dat Lisa om acht uur de kapotte fietsverlichting repareert.",
+    "en": "We know that Lisa repairs the broken bicycle lighting at eight o'clock.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -30964,7 +30964,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01960",
     "nl": "Regelmatig repareert Lisa de kapotte fietsverlichting.",
-    "en": "Regelmatig lisa repairs the broken bicycle lighting.",
+    "en": "Regularly, Lisa repairs the broken bicycle lighting.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -31010,8 +31010,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01963",
-    "nl": "Wij weten dat lisa regelmatig de kapotte fietsverlichting repareert.",
-    "en": "We know that lisa repairs the broken bicycle lighting regularly.",
+    "nl": "Wij weten dat Lisa regelmatig de kapotte fietsverlichting repareert.",
+    "en": "We know that Lisa repairs the broken bicycle lighting regularly.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -31043,7 +31043,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01965",
     "nl": "Vaak repareert Lisa de kapotte fietsverlichting.",
-    "en": "Vaak lisa repairs the broken bicycle lighting.",
+    "en": "Often, Lisa repairs the broken bicycle lighting.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -31089,8 +31089,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01968",
-    "nl": "Wij weten dat lisa vaak de kapotte fietsverlichting repareert.",
-    "en": "We know that lisa repairs the broken bicycle lighting often.",
+    "nl": "Wij weten dat Lisa vaak de kapotte fietsverlichting repareert.",
+    "en": "We know that Lisa repairs the broken bicycle lighting often.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -31122,7 +31122,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01970",
     "nl": "Op maandag repareert Lisa de kapotte fietsverlichting.",
-    "en": "Op maandag lisa repairs the broken bicycle lighting.",
+    "en": "On Monday, Lisa repairs the broken bicycle lighting.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -31168,8 +31168,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01973",
-    "nl": "Wij weten dat lisa op maandag de kapotte fietsverlichting repareert.",
-    "en": "We know that lisa repairs the broken bicycle lighting on Monday.",
+    "nl": "Wij weten dat Lisa op maandag de kapotte fietsverlichting repareert.",
+    "en": "We know that Lisa repairs the broken bicycle lighting on Monday.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -31201,7 +31201,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01975",
     "nl": "Tijdens de lunch repareert Lisa de kapotte fietsverlichting.",
-    "en": "Tijdens de lunch lisa repairs the broken bicycle lighting.",
+    "en": "During lunch, Lisa repairs the broken bicycle lighting.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -31247,8 +31247,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01978",
-    "nl": "Wij weten dat lisa tijdens de lunch de kapotte fietsverlichting repareert.",
-    "en": "We know that lisa repairs the broken bicycle lighting during lunch.",
+    "nl": "Wij weten dat Lisa tijdens de lunch de kapotte fietsverlichting repareert.",
+    "en": "We know that Lisa repairs the broken bicycle lighting during lunch.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -31280,7 +31280,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01980",
     "nl": "Na het werk repareert Lisa de kapotte fietsverlichting.",
-    "en": "Na het werk lisa repairs the broken bicycle lighting.",
+    "en": "After work, Lisa repairs the broken bicycle lighting.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -31326,8 +31326,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01983",
-    "nl": "Wij weten dat lisa na het werk de kapotte fietsverlichting repareert.",
-    "en": "We know that lisa repairs the broken bicycle lighting after work.",
+    "nl": "Wij weten dat Lisa na het werk de kapotte fietsverlichting repareert.",
+    "en": "We know that Lisa repairs the broken bicycle lighting after work.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -31359,7 +31359,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01985",
     "nl": "Sinds vorige maand repareert Lisa de kapotte fietsverlichting.",
-    "en": "Sinds vorige maand lisa repairs the broken bicycle lighting.",
+    "en": "Since last month, Lisa repairs the broken bicycle lighting.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -31405,8 +31405,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01988",
-    "nl": "Wij weten dat lisa sinds vorige maand de kapotte fietsverlichting repareert.",
-    "en": "We know that lisa repairs the broken bicycle lighting since last month.",
+    "nl": "Wij weten dat Lisa sinds vorige maand de kapotte fietsverlichting repareert.",
+    "en": "We know that Lisa repairs the broken bicycle lighting since last month.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -31438,7 +31438,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01990",
     "nl": "Met grote zorgvuldigheid repareert Lisa de kapotte fietsverlichting.",
-    "en": "Met grote zorgvuldigheid lisa repairs the broken bicycle lighting.",
+    "en": "With great care, Lisa repairs the broken bicycle lighting.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -31484,8 +31484,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01993",
-    "nl": "Wij weten dat lisa met grote zorgvuldigheid de kapotte fietsverlichting repareert.",
-    "en": "We know that lisa repairs the broken bicycle lighting with great care.",
+    "nl": "Wij weten dat Lisa met grote zorgvuldigheid de kapotte fietsverlichting repareert.",
+    "en": "We know that Lisa repairs the broken bicycle lighting with great care.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -31517,7 +31517,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-01995",
     "nl": "Elke ochtend vertaalt Lisa de officiële documenten.",
-    "en": "Elke ochtend lisa translates the official documents.",
+    "en": "Every morning, Lisa translates the official documents.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -31563,8 +31563,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-01998",
-    "nl": "Wij weten dat lisa elke ochtend de officiële documenten vertaalt.",
-    "en": "We know that lisa translates the official documents every morning.",
+    "nl": "Wij weten dat Lisa elke ochtend de officiële documenten vertaalt.",
+    "en": "We know that Lisa translates the official documents every morning.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -31596,7 +31596,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02000",
     "nl": "Gisterenmiddag vertaalt Lisa de officiële documenten.",
-    "en": "Gisterenmiddag lisa translates the official documents.",
+    "en": "Yesterday afternoon, Lisa translates the official documents.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -31642,8 +31642,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02003",
-    "nl": "Wij weten dat lisa gisterenmiddag de officiële documenten vertaalt.",
-    "en": "We know that lisa translates the official documents yesterday afternoon.",
+    "nl": "Wij weten dat Lisa gisterenmiddag de officiële documenten vertaalt.",
+    "en": "We know that Lisa translates the official documents yesterday afternoon.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -31675,7 +31675,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02005",
     "nl": "Volgende week vertaalt Lisa de officiële documenten.",
-    "en": "Volgende week lisa translates the official documents.",
+    "en": "Next week, Lisa translates the official documents.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -31721,8 +31721,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02008",
-    "nl": "Wij weten dat lisa volgende week de officiële documenten vertaalt.",
-    "en": "We know that lisa translates the official documents next week.",
+    "nl": "Wij weten dat Lisa volgende week de officiële documenten vertaalt.",
+    "en": "We know that Lisa translates the official documents next week.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -31754,7 +31754,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02010",
     "nl": "In het weekend vertaalt Lisa de officiële documenten.",
-    "en": "In het weekend lisa translates the official documents.",
+    "en": "At the weekend, Lisa translates the official documents.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -31800,8 +31800,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02013",
-    "nl": "Wij weten dat lisa in het weekend de officiële documenten vertaalt.",
-    "en": "We know that lisa translates the official documents at the weekend.",
+    "nl": "Wij weten dat Lisa in het weekend de officiële documenten vertaalt.",
+    "en": "We know that Lisa translates the official documents at the weekend.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -31833,7 +31833,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02015",
     "nl": "Om acht uur vertaalt Lisa de officiële documenten.",
-    "en": "Om acht uur lisa translates the official documents.",
+    "en": "At eight o'clock, Lisa translates the official documents.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -31879,8 +31879,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02018",
-    "nl": "Wij weten dat lisa om acht uur de officiële documenten vertaalt.",
-    "en": "We know that lisa translates the official documents at eight o'clock.",
+    "nl": "Wij weten dat Lisa om acht uur de officiële documenten vertaalt.",
+    "en": "We know that Lisa translates the official documents at eight o'clock.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -31912,7 +31912,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02020",
     "nl": "Regelmatig vertaalt Lisa de officiële documenten.",
-    "en": "Regelmatig lisa translates the official documents.",
+    "en": "Regularly, Lisa translates the official documents.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -31958,8 +31958,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02023",
-    "nl": "Wij weten dat lisa regelmatig de officiële documenten vertaalt.",
-    "en": "We know that lisa translates the official documents regularly.",
+    "nl": "Wij weten dat Lisa regelmatig de officiële documenten vertaalt.",
+    "en": "We know that Lisa translates the official documents regularly.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -31991,7 +31991,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02025",
     "nl": "Vaak vertaalt Lisa de officiële documenten.",
-    "en": "Vaak lisa translates the official documents.",
+    "en": "Often, Lisa translates the official documents.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -32037,8 +32037,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02028",
-    "nl": "Wij weten dat lisa vaak de officiële documenten vertaalt.",
-    "en": "We know that lisa translates the official documents often.",
+    "nl": "Wij weten dat Lisa vaak de officiële documenten vertaalt.",
+    "en": "We know that Lisa translates the official documents often.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -32070,7 +32070,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02030",
     "nl": "Op maandag vertaalt Lisa de officiële documenten.",
-    "en": "Op maandag lisa translates the official documents.",
+    "en": "On Monday, Lisa translates the official documents.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -32116,8 +32116,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02033",
-    "nl": "Wij weten dat lisa op maandag de officiële documenten vertaalt.",
-    "en": "We know that lisa translates the official documents on Monday.",
+    "nl": "Wij weten dat Lisa op maandag de officiële documenten vertaalt.",
+    "en": "We know that Lisa translates the official documents on Monday.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -32149,7 +32149,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02035",
     "nl": "Tijdens de lunch vertaalt Lisa de officiële documenten.",
-    "en": "Tijdens de lunch lisa translates the official documents.",
+    "en": "During lunch, Lisa translates the official documents.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -32195,8 +32195,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02038",
-    "nl": "Wij weten dat lisa tijdens de lunch de officiële documenten vertaalt.",
-    "en": "We know that lisa translates the official documents during lunch.",
+    "nl": "Wij weten dat Lisa tijdens de lunch de officiële documenten vertaalt.",
+    "en": "We know that Lisa translates the official documents during lunch.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -32228,7 +32228,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02040",
     "nl": "Na het werk vertaalt Lisa de officiële documenten.",
-    "en": "Na het werk lisa translates the official documents.",
+    "en": "After work, Lisa translates the official documents.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -32274,8 +32274,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02043",
-    "nl": "Wij weten dat lisa na het werk de officiële documenten vertaalt.",
-    "en": "We know that lisa translates the official documents after work.",
+    "nl": "Wij weten dat Lisa na het werk de officiële documenten vertaalt.",
+    "en": "We know that Lisa translates the official documents after work.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -32307,7 +32307,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02045",
     "nl": "Sinds vorige maand vertaalt Lisa de officiële documenten.",
-    "en": "Sinds vorige maand lisa translates the official documents.",
+    "en": "Since last month, Lisa translates the official documents.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -32353,8 +32353,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02048",
-    "nl": "Wij weten dat lisa sinds vorige maand de officiële documenten vertaalt.",
-    "en": "We know that lisa translates the official documents since last month.",
+    "nl": "Wij weten dat Lisa sinds vorige maand de officiële documenten vertaalt.",
+    "en": "We know that Lisa translates the official documents since last month.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -32386,7 +32386,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02050",
     "nl": "Met grote zorgvuldigheid vertaalt Lisa de officiële documenten.",
-    "en": "Met grote zorgvuldigheid lisa translates the official documents.",
+    "en": "With great care, Lisa translates the official documents.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -32432,8 +32432,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02053",
-    "nl": "Wij weten dat lisa met grote zorgvuldigheid de officiële documenten vertaalt.",
-    "en": "We know that lisa translates the official documents with great care.",
+    "nl": "Wij weten dat Lisa met grote zorgvuldigheid de officiële documenten vertaalt.",
+    "en": "We know that Lisa translates the official documents with great care.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -32465,7 +32465,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02055",
     "nl": "Elke ochtend verbetert Lisa de kwaliteit van het onderwijs.",
-    "en": "Elke ochtend lisa improves the quality of education.",
+    "en": "Every morning, Lisa improves the quality of education.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -32511,8 +32511,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02058",
-    "nl": "Wij weten dat lisa elke ochtend de kwaliteit van het onderwijs verbetert.",
-    "en": "We know that lisa improves the quality of education every morning.",
+    "nl": "Wij weten dat Lisa elke ochtend de kwaliteit van het onderwijs verbetert.",
+    "en": "We know that Lisa improves the quality of education every morning.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -32544,7 +32544,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02060",
     "nl": "Gisterenmiddag verbetert Lisa de kwaliteit van het onderwijs.",
-    "en": "Gisterenmiddag lisa improves the quality of education.",
+    "en": "Yesterday afternoon, Lisa improves the quality of education.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -32590,8 +32590,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02063",
-    "nl": "Wij weten dat lisa gisterenmiddag de kwaliteit van het onderwijs verbetert.",
-    "en": "We know that lisa improves the quality of education yesterday afternoon.",
+    "nl": "Wij weten dat Lisa gisterenmiddag de kwaliteit van het onderwijs verbetert.",
+    "en": "We know that Lisa improves the quality of education yesterday afternoon.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -32623,7 +32623,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02065",
     "nl": "Volgende week verbetert Lisa de kwaliteit van het onderwijs.",
-    "en": "Volgende week lisa improves the quality of education.",
+    "en": "Next week, Lisa improves the quality of education.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -32669,8 +32669,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02068",
-    "nl": "Wij weten dat lisa volgende week de kwaliteit van het onderwijs verbetert.",
-    "en": "We know that lisa improves the quality of education next week.",
+    "nl": "Wij weten dat Lisa volgende week de kwaliteit van het onderwijs verbetert.",
+    "en": "We know that Lisa improves the quality of education next week.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -32702,7 +32702,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02070",
     "nl": "In het weekend verbetert Lisa de kwaliteit van het onderwijs.",
-    "en": "In het weekend lisa improves the quality of education.",
+    "en": "At the weekend, Lisa improves the quality of education.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -32748,8 +32748,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02073",
-    "nl": "Wij weten dat lisa in het weekend de kwaliteit van het onderwijs verbetert.",
-    "en": "We know that lisa improves the quality of education at the weekend.",
+    "nl": "Wij weten dat Lisa in het weekend de kwaliteit van het onderwijs verbetert.",
+    "en": "We know that Lisa improves the quality of education at the weekend.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -32781,7 +32781,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02075",
     "nl": "Om acht uur verbetert Lisa de kwaliteit van het onderwijs.",
-    "en": "Om acht uur lisa improves the quality of education.",
+    "en": "At eight o'clock, Lisa improves the quality of education.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -32827,8 +32827,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02078",
-    "nl": "Wij weten dat lisa om acht uur de kwaliteit van het onderwijs verbetert.",
-    "en": "We know that lisa improves the quality of education at eight o'clock.",
+    "nl": "Wij weten dat Lisa om acht uur de kwaliteit van het onderwijs verbetert.",
+    "en": "We know that Lisa improves the quality of education at eight o'clock.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -32860,7 +32860,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02080",
     "nl": "Regelmatig verbetert Lisa de kwaliteit van het onderwijs.",
-    "en": "Regelmatig lisa improves the quality of education.",
+    "en": "Regularly, Lisa improves the quality of education.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -32906,8 +32906,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02083",
-    "nl": "Wij weten dat lisa regelmatig de kwaliteit van het onderwijs verbetert.",
-    "en": "We know that lisa improves the quality of education regularly.",
+    "nl": "Wij weten dat Lisa regelmatig de kwaliteit van het onderwijs verbetert.",
+    "en": "We know that Lisa improves the quality of education regularly.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -32939,7 +32939,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02085",
     "nl": "Vaak verbetert Lisa de kwaliteit van het onderwijs.",
-    "en": "Vaak lisa improves the quality of education.",
+    "en": "Often, Lisa improves the quality of education.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -32985,8 +32985,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02088",
-    "nl": "Wij weten dat lisa vaak de kwaliteit van het onderwijs verbetert.",
-    "en": "We know that lisa improves the quality of education often.",
+    "nl": "Wij weten dat Lisa vaak de kwaliteit van het onderwijs verbetert.",
+    "en": "We know that Lisa improves the quality of education often.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -33018,7 +33018,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02090",
     "nl": "Op maandag verbetert Lisa de kwaliteit van het onderwijs.",
-    "en": "Op maandag lisa improves the quality of education.",
+    "en": "On Monday, Lisa improves the quality of education.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -33064,8 +33064,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02093",
-    "nl": "Wij weten dat lisa op maandag de kwaliteit van het onderwijs verbetert.",
-    "en": "We know that lisa improves the quality of education on Monday.",
+    "nl": "Wij weten dat Lisa op maandag de kwaliteit van het onderwijs verbetert.",
+    "en": "We know that Lisa improves the quality of education on Monday.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -33097,7 +33097,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02095",
     "nl": "Tijdens de lunch verbetert Lisa de kwaliteit van het onderwijs.",
-    "en": "Tijdens de lunch lisa improves the quality of education.",
+    "en": "During lunch, Lisa improves the quality of education.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -33143,8 +33143,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02098",
-    "nl": "Wij weten dat lisa tijdens de lunch de kwaliteit van het onderwijs verbetert.",
-    "en": "We know that lisa improves the quality of education during lunch.",
+    "nl": "Wij weten dat Lisa tijdens de lunch de kwaliteit van het onderwijs verbetert.",
+    "en": "We know that Lisa improves the quality of education during lunch.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -33176,7 +33176,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02100",
     "nl": "Na het werk verbetert Lisa de kwaliteit van het onderwijs.",
-    "en": "Na het werk lisa improves the quality of education.",
+    "en": "After work, Lisa improves the quality of education.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -33222,8 +33222,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02103",
-    "nl": "Wij weten dat lisa na het werk de kwaliteit van het onderwijs verbetert.",
-    "en": "We know that lisa improves the quality of education after work.",
+    "nl": "Wij weten dat Lisa na het werk de kwaliteit van het onderwijs verbetert.",
+    "en": "We know that Lisa improves the quality of education after work.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -33255,7 +33255,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02105",
     "nl": "Sinds vorige maand verbetert Lisa de kwaliteit van het onderwijs.",
-    "en": "Sinds vorige maand lisa improves the quality of education.",
+    "en": "Since last month, Lisa improves the quality of education.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -33301,8 +33301,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02108",
-    "nl": "Wij weten dat lisa sinds vorige maand de kwaliteit van het onderwijs verbetert.",
-    "en": "We know that lisa improves the quality of education since last month.",
+    "nl": "Wij weten dat Lisa sinds vorige maand de kwaliteit van het onderwijs verbetert.",
+    "en": "We know that Lisa improves the quality of education since last month.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -33334,7 +33334,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02110",
     "nl": "Met grote zorgvuldigheid verbetert Lisa de kwaliteit van het onderwijs.",
-    "en": "Met grote zorgvuldigheid lisa improves the quality of education.",
+    "en": "With great care, Lisa improves the quality of education.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -33380,8 +33380,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02113",
-    "nl": "Wij weten dat lisa met grote zorgvuldigheid de kwaliteit van het onderwijs verbetert.",
-    "en": "We know that lisa improves the quality of education with great care.",
+    "nl": "Wij weten dat Lisa met grote zorgvuldigheid de kwaliteit van het onderwijs verbetert.",
+    "en": "We know that Lisa improves the quality of education with great care.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -33413,7 +33413,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02115",
     "nl": "Elke ochtend ontwerpt Lisa een duurzaam kantoorgebouw.",
-    "en": "Elke ochtend lisa designs a sustainable office building.",
+    "en": "Every morning, Lisa designs a sustainable office building.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -33459,8 +33459,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02118",
-    "nl": "Wij weten dat lisa elke ochtend een duurzaam kantoorgebouw ontwerpt.",
-    "en": "We know that lisa designs a sustainable office building every morning.",
+    "nl": "Wij weten dat Lisa elke ochtend een duurzaam kantoorgebouw ontwerpt.",
+    "en": "We know that Lisa designs a sustainable office building every morning.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -33492,7 +33492,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02120",
     "nl": "Gisterenmiddag ontwerpt Lisa een duurzaam kantoorgebouw.",
-    "en": "Gisterenmiddag lisa designs a sustainable office building.",
+    "en": "Yesterday afternoon, Lisa designs a sustainable office building.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -33538,8 +33538,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02123",
-    "nl": "Wij weten dat lisa gisterenmiddag een duurzaam kantoorgebouw ontwerpt.",
-    "en": "We know that lisa designs a sustainable office building yesterday afternoon.",
+    "nl": "Wij weten dat Lisa gisterenmiddag een duurzaam kantoorgebouw ontwerpt.",
+    "en": "We know that Lisa designs a sustainable office building yesterday afternoon.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -33571,7 +33571,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02125",
     "nl": "Volgende week ontwerpt Lisa een duurzaam kantoorgebouw.",
-    "en": "Volgende week lisa designs a sustainable office building.",
+    "en": "Next week, Lisa designs a sustainable office building.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -33617,8 +33617,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02128",
-    "nl": "Wij weten dat lisa volgende week een duurzaam kantoorgebouw ontwerpt.",
-    "en": "We know that lisa designs a sustainable office building next week.",
+    "nl": "Wij weten dat Lisa volgende week een duurzaam kantoorgebouw ontwerpt.",
+    "en": "We know that Lisa designs a sustainable office building next week.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -33650,7 +33650,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02130",
     "nl": "In het weekend ontwerpt Lisa een duurzaam kantoorgebouw.",
-    "en": "In het weekend lisa designs a sustainable office building.",
+    "en": "At the weekend, Lisa designs a sustainable office building.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -33696,8 +33696,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02133",
-    "nl": "Wij weten dat lisa in het weekend een duurzaam kantoorgebouw ontwerpt.",
-    "en": "We know that lisa designs a sustainable office building at the weekend.",
+    "nl": "Wij weten dat Lisa in het weekend een duurzaam kantoorgebouw ontwerpt.",
+    "en": "We know that Lisa designs a sustainable office building at the weekend.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -33729,7 +33729,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02135",
     "nl": "Om acht uur ontwerpt Lisa een duurzaam kantoorgebouw.",
-    "en": "Om acht uur lisa designs a sustainable office building.",
+    "en": "At eight o'clock, Lisa designs a sustainable office building.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -33775,8 +33775,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02138",
-    "nl": "Wij weten dat lisa om acht uur een duurzaam kantoorgebouw ontwerpt.",
-    "en": "We know that lisa designs a sustainable office building at eight o'clock.",
+    "nl": "Wij weten dat Lisa om acht uur een duurzaam kantoorgebouw ontwerpt.",
+    "en": "We know that Lisa designs a sustainable office building at eight o'clock.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -33808,7 +33808,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02140",
     "nl": "Regelmatig ontwerpt Lisa een duurzaam kantoorgebouw.",
-    "en": "Regelmatig lisa designs a sustainable office building.",
+    "en": "Regularly, Lisa designs a sustainable office building.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -33854,8 +33854,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02143",
-    "nl": "Wij weten dat lisa regelmatig een duurzaam kantoorgebouw ontwerpt.",
-    "en": "We know that lisa designs a sustainable office building regularly.",
+    "nl": "Wij weten dat Lisa regelmatig een duurzaam kantoorgebouw ontwerpt.",
+    "en": "We know that Lisa designs a sustainable office building regularly.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -33887,7 +33887,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02145",
     "nl": "Vaak ontwerpt Lisa een duurzaam kantoorgebouw.",
-    "en": "Vaak lisa designs a sustainable office building.",
+    "en": "Often, Lisa designs a sustainable office building.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -33933,8 +33933,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02148",
-    "nl": "Wij weten dat lisa vaak een duurzaam kantoorgebouw ontwerpt.",
-    "en": "We know that lisa designs a sustainable office building often.",
+    "nl": "Wij weten dat Lisa vaak een duurzaam kantoorgebouw ontwerpt.",
+    "en": "We know that Lisa designs a sustainable office building often.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -33966,7 +33966,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02150",
     "nl": "Op maandag ontwerpt Lisa een duurzaam kantoorgebouw.",
-    "en": "Op maandag lisa designs a sustainable office building.",
+    "en": "On Monday, Lisa designs a sustainable office building.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -34012,8 +34012,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02153",
-    "nl": "Wij weten dat lisa op maandag een duurzaam kantoorgebouw ontwerpt.",
-    "en": "We know that lisa designs a sustainable office building on Monday.",
+    "nl": "Wij weten dat Lisa op maandag een duurzaam kantoorgebouw ontwerpt.",
+    "en": "We know that Lisa designs a sustainable office building on Monday.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -34045,7 +34045,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02155",
     "nl": "Tijdens de lunch ontwerpt Lisa een duurzaam kantoorgebouw.",
-    "en": "Tijdens de lunch lisa designs a sustainable office building.",
+    "en": "During lunch, Lisa designs a sustainable office building.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -34091,8 +34091,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02158",
-    "nl": "Wij weten dat lisa tijdens de lunch een duurzaam kantoorgebouw ontwerpt.",
-    "en": "We know that lisa designs a sustainable office building during lunch.",
+    "nl": "Wij weten dat Lisa tijdens de lunch een duurzaam kantoorgebouw ontwerpt.",
+    "en": "We know that Lisa designs a sustainable office building during lunch.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -34124,7 +34124,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02160",
     "nl": "Na het werk ontwerpt Lisa een duurzaam kantoorgebouw.",
-    "en": "Na het werk lisa designs a sustainable office building.",
+    "en": "After work, Lisa designs a sustainable office building.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -34170,8 +34170,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02163",
-    "nl": "Wij weten dat lisa na het werk een duurzaam kantoorgebouw ontwerpt.",
-    "en": "We know that lisa designs a sustainable office building after work.",
+    "nl": "Wij weten dat Lisa na het werk een duurzaam kantoorgebouw ontwerpt.",
+    "en": "We know that Lisa designs a sustainable office building after work.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -34203,7 +34203,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02165",
     "nl": "Sinds vorige maand ontwerpt Lisa een duurzaam kantoorgebouw.",
-    "en": "Sinds vorige maand lisa designs a sustainable office building.",
+    "en": "Since last month, Lisa designs a sustainable office building.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -34249,8 +34249,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02168",
-    "nl": "Wij weten dat lisa sinds vorige maand een duurzaam kantoorgebouw ontwerpt.",
-    "en": "We know that lisa designs a sustainable office building since last month.",
+    "nl": "Wij weten dat Lisa sinds vorige maand een duurzaam kantoorgebouw ontwerpt.",
+    "en": "We know that Lisa designs a sustainable office building since last month.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -34282,7 +34282,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02170",
     "nl": "Met grote zorgvuldigheid ontwerpt Lisa een duurzaam kantoorgebouw.",
-    "en": "Met grote zorgvuldigheid lisa designs a sustainable office building.",
+    "en": "With great care, Lisa designs a sustainable office building.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -34328,8 +34328,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02173",
-    "nl": "Wij weten dat lisa met grote zorgvuldigheid een duurzaam kantoorgebouw ontwerpt.",
-    "en": "We know that lisa designs a sustainable office building with great care.",
+    "nl": "Wij weten dat Lisa met grote zorgvuldigheid een duurzaam kantoorgebouw ontwerpt.",
+    "en": "We know that Lisa designs a sustainable office building with great care.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -34361,7 +34361,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02175",
     "nl": "Elke ochtend leest Peter een interessant boek.",
-    "en": "Elke ochtend peter reads an interesting book.",
+    "en": "Every morning, Peter reads an interesting book.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -34407,8 +34407,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02178",
-    "nl": "Wij weten dat peter elke ochtend een interessant boek leest.",
-    "en": "We know that peter reads an interesting book every morning.",
+    "nl": "Wij weten dat Peter elke ochtend een interessant boek leest.",
+    "en": "We know that Peter reads an interesting book every morning.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -34440,7 +34440,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02180",
     "nl": "Gisterenmiddag leest Peter een interessant boek.",
-    "en": "Gisterenmiddag peter reads an interesting book.",
+    "en": "Yesterday afternoon, Peter reads an interesting book.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -34486,8 +34486,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02183",
-    "nl": "Wij weten dat peter gisterenmiddag een interessant boek leest.",
-    "en": "We know that peter reads an interesting book yesterday afternoon.",
+    "nl": "Wij weten dat Peter gisterenmiddag een interessant boek leest.",
+    "en": "We know that Peter reads an interesting book yesterday afternoon.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -34519,7 +34519,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02185",
     "nl": "Volgende week leest Peter een interessant boek.",
-    "en": "Volgende week peter reads an interesting book.",
+    "en": "Next week, Peter reads an interesting book.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -34565,8 +34565,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02188",
-    "nl": "Wij weten dat peter volgende week een interessant boek leest.",
-    "en": "We know that peter reads an interesting book next week.",
+    "nl": "Wij weten dat Peter volgende week een interessant boek leest.",
+    "en": "We know that Peter reads an interesting book next week.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -34598,7 +34598,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02190",
     "nl": "In het weekend leest Peter een interessant boek.",
-    "en": "In het weekend peter reads an interesting book.",
+    "en": "At the weekend, Peter reads an interesting book.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -34644,8 +34644,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02193",
-    "nl": "Wij weten dat peter in het weekend een interessant boek leest.",
-    "en": "We know that peter reads an interesting book at the weekend.",
+    "nl": "Wij weten dat Peter in het weekend een interessant boek leest.",
+    "en": "We know that Peter reads an interesting book at the weekend.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -34677,7 +34677,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02195",
     "nl": "Om acht uur leest Peter een interessant boek.",
-    "en": "Om acht uur peter reads an interesting book.",
+    "en": "At eight o'clock, Peter reads an interesting book.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -34723,8 +34723,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02198",
-    "nl": "Wij weten dat peter om acht uur een interessant boek leest.",
-    "en": "We know that peter reads an interesting book at eight o'clock.",
+    "nl": "Wij weten dat Peter om acht uur een interessant boek leest.",
+    "en": "We know that Peter reads an interesting book at eight o'clock.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -34756,7 +34756,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02200",
     "nl": "Regelmatig leest Peter een interessant boek.",
-    "en": "Regelmatig peter reads an interesting book.",
+    "en": "Regularly, Peter reads an interesting book.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -34802,8 +34802,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02203",
-    "nl": "Wij weten dat peter regelmatig een interessant boek leest.",
-    "en": "We know that peter reads an interesting book regularly.",
+    "nl": "Wij weten dat Peter regelmatig een interessant boek leest.",
+    "en": "We know that Peter reads an interesting book regularly.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -34835,7 +34835,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02205",
     "nl": "Vaak leest Peter een interessant boek.",
-    "en": "Vaak peter reads an interesting book.",
+    "en": "Often, Peter reads an interesting book.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -34881,8 +34881,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02208",
-    "nl": "Wij weten dat peter vaak een interessant boek leest.",
-    "en": "We know that peter reads an interesting book often.",
+    "nl": "Wij weten dat Peter vaak een interessant boek leest.",
+    "en": "We know that Peter reads an interesting book often.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -34914,7 +34914,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02210",
     "nl": "Op maandag leest Peter een interessant boek.",
-    "en": "Op maandag peter reads an interesting book.",
+    "en": "On Monday, Peter reads an interesting book.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -34960,8 +34960,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02213",
-    "nl": "Wij weten dat peter op maandag een interessant boek leest.",
-    "en": "We know that peter reads an interesting book on Monday.",
+    "nl": "Wij weten dat Peter op maandag een interessant boek leest.",
+    "en": "We know that Peter reads an interesting book on Monday.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -34993,7 +34993,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02215",
     "nl": "Tijdens de lunch leest Peter een interessant boek.",
-    "en": "Tijdens de lunch peter reads an interesting book.",
+    "en": "During lunch, Peter reads an interesting book.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -35039,8 +35039,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02218",
-    "nl": "Wij weten dat peter tijdens de lunch een interessant boek leest.",
-    "en": "We know that peter reads an interesting book during lunch.",
+    "nl": "Wij weten dat Peter tijdens de lunch een interessant boek leest.",
+    "en": "We know that Peter reads an interesting book during lunch.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -35072,7 +35072,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02220",
     "nl": "Na het werk leest Peter een interessant boek.",
-    "en": "Na het werk peter reads an interesting book.",
+    "en": "After work, Peter reads an interesting book.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -35118,8 +35118,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02223",
-    "nl": "Wij weten dat peter na het werk een interessant boek leest.",
-    "en": "We know that peter reads an interesting book after work.",
+    "nl": "Wij weten dat Peter na het werk een interessant boek leest.",
+    "en": "We know that Peter reads an interesting book after work.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -35151,7 +35151,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02225",
     "nl": "Sinds vorige maand leest Peter een interessant boek.",
-    "en": "Sinds vorige maand peter reads an interesting book.",
+    "en": "Since last month, Peter reads an interesting book.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -35197,8 +35197,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02228",
-    "nl": "Wij weten dat peter sinds vorige maand een interessant boek leest.",
-    "en": "We know that peter reads an interesting book since last month.",
+    "nl": "Wij weten dat Peter sinds vorige maand een interessant boek leest.",
+    "en": "We know that Peter reads an interesting book since last month.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -35230,7 +35230,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02230",
     "nl": "Met grote zorgvuldigheid leest Peter een interessant boek.",
-    "en": "Met grote zorgvuldigheid peter reads an interesting book.",
+    "en": "With great care, Peter reads an interesting book.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -35276,8 +35276,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02233",
-    "nl": "Wij weten dat peter met grote zorgvuldigheid een interessant boek leest.",
-    "en": "We know that peter reads an interesting book with great care.",
+    "nl": "Wij weten dat Peter met grote zorgvuldigheid een interessant boek leest.",
+    "en": "We know that Peter reads an interesting book with great care.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -35309,7 +35309,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02235",
     "nl": "Elke ochtend schrijft Peter een belangrijke e-mail.",
-    "en": "Elke ochtend peter writes an important email.",
+    "en": "Every morning, Peter writes an important email.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -35355,8 +35355,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02238",
-    "nl": "Wij weten dat peter elke ochtend een belangrijke e-mail schrijft.",
-    "en": "We know that peter writes an important email every morning.",
+    "nl": "Wij weten dat Peter elke ochtend een belangrijke e-mail schrijft.",
+    "en": "We know that Peter writes an important email every morning.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -35388,7 +35388,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02240",
     "nl": "Gisterenmiddag schrijft Peter een belangrijke e-mail.",
-    "en": "Gisterenmiddag peter writes an important email.",
+    "en": "Yesterday afternoon, Peter writes an important email.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -35434,8 +35434,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02243",
-    "nl": "Wij weten dat peter gisterenmiddag een belangrijke e-mail schrijft.",
-    "en": "We know that peter writes an important email yesterday afternoon.",
+    "nl": "Wij weten dat Peter gisterenmiddag een belangrijke e-mail schrijft.",
+    "en": "We know that Peter writes an important email yesterday afternoon.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -35467,7 +35467,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02245",
     "nl": "Volgende week schrijft Peter een belangrijke e-mail.",
-    "en": "Volgende week peter writes an important email.",
+    "en": "Next week, Peter writes an important email.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -35513,8 +35513,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02248",
-    "nl": "Wij weten dat peter volgende week een belangrijke e-mail schrijft.",
-    "en": "We know that peter writes an important email next week.",
+    "nl": "Wij weten dat Peter volgende week een belangrijke e-mail schrijft.",
+    "en": "We know that Peter writes an important email next week.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -35546,7 +35546,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02250",
     "nl": "In het weekend schrijft Peter een belangrijke e-mail.",
-    "en": "In het weekend peter writes an important email.",
+    "en": "At the weekend, Peter writes an important email.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -35592,8 +35592,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02253",
-    "nl": "Wij weten dat peter in het weekend een belangrijke e-mail schrijft.",
-    "en": "We know that peter writes an important email at the weekend.",
+    "nl": "Wij weten dat Peter in het weekend een belangrijke e-mail schrijft.",
+    "en": "We know that Peter writes an important email at the weekend.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -35625,7 +35625,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02255",
     "nl": "Om acht uur schrijft Peter een belangrijke e-mail.",
-    "en": "Om acht uur peter writes an important email.",
+    "en": "At eight o'clock, Peter writes an important email.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -35671,8 +35671,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02258",
-    "nl": "Wij weten dat peter om acht uur een belangrijke e-mail schrijft.",
-    "en": "We know that peter writes an important email at eight o'clock.",
+    "nl": "Wij weten dat Peter om acht uur een belangrijke e-mail schrijft.",
+    "en": "We know that Peter writes an important email at eight o'clock.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -35704,7 +35704,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02260",
     "nl": "Regelmatig schrijft Peter een belangrijke e-mail.",
-    "en": "Regelmatig peter writes an important email.",
+    "en": "Regularly, Peter writes an important email.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -35750,8 +35750,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02263",
-    "nl": "Wij weten dat peter regelmatig een belangrijke e-mail schrijft.",
-    "en": "We know that peter writes an important email regularly.",
+    "nl": "Wij weten dat Peter regelmatig een belangrijke e-mail schrijft.",
+    "en": "We know that Peter writes an important email regularly.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -35783,7 +35783,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02265",
     "nl": "Vaak schrijft Peter een belangrijke e-mail.",
-    "en": "Vaak peter writes an important email.",
+    "en": "Often, Peter writes an important email.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -35829,8 +35829,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02268",
-    "nl": "Wij weten dat peter vaak een belangrijke e-mail schrijft.",
-    "en": "We know that peter writes an important email often.",
+    "nl": "Wij weten dat Peter vaak een belangrijke e-mail schrijft.",
+    "en": "We know that Peter writes an important email often.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -35862,7 +35862,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02270",
     "nl": "Op maandag schrijft Peter een belangrijke e-mail.",
-    "en": "Op maandag peter writes an important email.",
+    "en": "On Monday, Peter writes an important email.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -35908,8 +35908,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02273",
-    "nl": "Wij weten dat peter op maandag een belangrijke e-mail schrijft.",
-    "en": "We know that peter writes an important email on Monday.",
+    "nl": "Wij weten dat Peter op maandag een belangrijke e-mail schrijft.",
+    "en": "We know that Peter writes an important email on Monday.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -35941,7 +35941,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02275",
     "nl": "Tijdens de lunch schrijft Peter een belangrijke e-mail.",
-    "en": "Tijdens de lunch peter writes an important email.",
+    "en": "During lunch, Peter writes an important email.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -35987,8 +35987,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02278",
-    "nl": "Wij weten dat peter tijdens de lunch een belangrijke e-mail schrijft.",
-    "en": "We know that peter writes an important email during lunch.",
+    "nl": "Wij weten dat Peter tijdens de lunch een belangrijke e-mail schrijft.",
+    "en": "We know that Peter writes an important email during lunch.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -36020,7 +36020,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02280",
     "nl": "Na het werk schrijft Peter een belangrijke e-mail.",
-    "en": "Na het werk peter writes an important email.",
+    "en": "After work, Peter writes an important email.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -36066,8 +36066,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02283",
-    "nl": "Wij weten dat peter na het werk een belangrijke e-mail schrijft.",
-    "en": "We know that peter writes an important email after work.",
+    "nl": "Wij weten dat Peter na het werk een belangrijke e-mail schrijft.",
+    "en": "We know that Peter writes an important email after work.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -36099,7 +36099,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02285",
     "nl": "Sinds vorige maand schrijft Peter een belangrijke e-mail.",
-    "en": "Sinds vorige maand peter writes an important email.",
+    "en": "Since last month, Peter writes an important email.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -36145,8 +36145,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02288",
-    "nl": "Wij weten dat peter sinds vorige maand een belangrijke e-mail schrijft.",
-    "en": "We know that peter writes an important email since last month.",
+    "nl": "Wij weten dat Peter sinds vorige maand een belangrijke e-mail schrijft.",
+    "en": "We know that Peter writes an important email since last month.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -36178,7 +36178,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02290",
     "nl": "Met grote zorgvuldigheid schrijft Peter een belangrijke e-mail.",
-    "en": "Met grote zorgvuldigheid peter writes an important email.",
+    "en": "With great care, Peter writes an important email.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -36224,8 +36224,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02293",
-    "nl": "Wij weten dat peter met grote zorgvuldigheid een belangrijke e-mail schrijft.",
-    "en": "We know that peter writes an important email with great care.",
+    "nl": "Wij weten dat Peter met grote zorgvuldigheid een belangrijke e-mail schrijft.",
+    "en": "We know that Peter writes an important email with great care.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -36257,7 +36257,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02295",
     "nl": "Elke ochtend koopt Peter verse groenten op de markt.",
-    "en": "Elke ochtend peter buys fresh vegetables at the market.",
+    "en": "Every morning, Peter buys fresh vegetables at the market.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -36303,8 +36303,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02298",
-    "nl": "Wij weten dat peter elke ochtend verse groenten op de markt koopt.",
-    "en": "We know that peter buys fresh vegetables at the market every morning.",
+    "nl": "Wij weten dat Peter elke ochtend verse groenten op de markt koopt.",
+    "en": "We know that Peter buys fresh vegetables at the market every morning.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -36336,7 +36336,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02300",
     "nl": "Gisterenmiddag koopt Peter verse groenten op de markt.",
-    "en": "Gisterenmiddag peter buys fresh vegetables at the market.",
+    "en": "Yesterday afternoon, Peter buys fresh vegetables at the market.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -36382,8 +36382,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02303",
-    "nl": "Wij weten dat peter gisterenmiddag verse groenten op de markt koopt.",
-    "en": "We know that peter buys fresh vegetables at the market yesterday afternoon.",
+    "nl": "Wij weten dat Peter gisterenmiddag verse groenten op de markt koopt.",
+    "en": "We know that Peter buys fresh vegetables at the market yesterday afternoon.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -36415,7 +36415,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02305",
     "nl": "Volgende week koopt Peter verse groenten op de markt.",
-    "en": "Volgende week peter buys fresh vegetables at the market.",
+    "en": "Next week, Peter buys fresh vegetables at the market.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -36461,8 +36461,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02308",
-    "nl": "Wij weten dat peter volgende week verse groenten op de markt koopt.",
-    "en": "We know that peter buys fresh vegetables at the market next week.",
+    "nl": "Wij weten dat Peter volgende week verse groenten op de markt koopt.",
+    "en": "We know that Peter buys fresh vegetables at the market next week.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -36494,7 +36494,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02310",
     "nl": "In het weekend koopt Peter verse groenten op de markt.",
-    "en": "In het weekend peter buys fresh vegetables at the market.",
+    "en": "At the weekend, Peter buys fresh vegetables at the market.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -36540,8 +36540,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02313",
-    "nl": "Wij weten dat peter in het weekend verse groenten op de markt koopt.",
-    "en": "We know that peter buys fresh vegetables at the market at the weekend.",
+    "nl": "Wij weten dat Peter in het weekend verse groenten op de markt koopt.",
+    "en": "We know that Peter buys fresh vegetables at the market at the weekend.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -36573,7 +36573,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02315",
     "nl": "Om acht uur koopt Peter verse groenten op de markt.",
-    "en": "Om acht uur peter buys fresh vegetables at the market.",
+    "en": "At eight o'clock, Peter buys fresh vegetables at the market.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -36619,8 +36619,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02318",
-    "nl": "Wij weten dat peter om acht uur verse groenten op de markt koopt.",
-    "en": "We know that peter buys fresh vegetables at the market at eight o'clock.",
+    "nl": "Wij weten dat Peter om acht uur verse groenten op de markt koopt.",
+    "en": "We know that Peter buys fresh vegetables at the market at eight o'clock.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -36652,7 +36652,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02320",
     "nl": "Regelmatig koopt Peter verse groenten op de markt.",
-    "en": "Regelmatig peter buys fresh vegetables at the market.",
+    "en": "Regularly, Peter buys fresh vegetables at the market.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -36698,8 +36698,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02323",
-    "nl": "Wij weten dat peter regelmatig verse groenten op de markt koopt.",
-    "en": "We know that peter buys fresh vegetables at the market regularly.",
+    "nl": "Wij weten dat Peter regelmatig verse groenten op de markt koopt.",
+    "en": "We know that Peter buys fresh vegetables at the market regularly.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -36731,7 +36731,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02325",
     "nl": "Vaak koopt Peter verse groenten op de markt.",
-    "en": "Vaak peter buys fresh vegetables at the market.",
+    "en": "Often, Peter buys fresh vegetables at the market.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -36777,8 +36777,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02328",
-    "nl": "Wij weten dat peter vaak verse groenten op de markt koopt.",
-    "en": "We know that peter buys fresh vegetables at the market often.",
+    "nl": "Wij weten dat Peter vaak verse groenten op de markt koopt.",
+    "en": "We know that Peter buys fresh vegetables at the market often.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -36810,7 +36810,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02330",
     "nl": "Op maandag koopt Peter verse groenten op de markt.",
-    "en": "Op maandag peter buys fresh vegetables at the market.",
+    "en": "On Monday, Peter buys fresh vegetables at the market.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -36856,8 +36856,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02333",
-    "nl": "Wij weten dat peter op maandag verse groenten op de markt koopt.",
-    "en": "We know that peter buys fresh vegetables at the market on Monday.",
+    "nl": "Wij weten dat Peter op maandag verse groenten op de markt koopt.",
+    "en": "We know that Peter buys fresh vegetables at the market on Monday.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -36889,7 +36889,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02335",
     "nl": "Tijdens de lunch koopt Peter verse groenten op de markt.",
-    "en": "Tijdens de lunch peter buys fresh vegetables at the market.",
+    "en": "During lunch, Peter buys fresh vegetables at the market.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -36935,8 +36935,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02338",
-    "nl": "Wij weten dat peter tijdens de lunch verse groenten op de markt koopt.",
-    "en": "We know that peter buys fresh vegetables at the market during lunch.",
+    "nl": "Wij weten dat Peter tijdens de lunch verse groenten op de markt koopt.",
+    "en": "We know that Peter buys fresh vegetables at the market during lunch.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -36968,7 +36968,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02340",
     "nl": "Na het werk koopt Peter verse groenten op de markt.",
-    "en": "Na het werk peter buys fresh vegetables at the market.",
+    "en": "After work, Peter buys fresh vegetables at the market.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -37014,8 +37014,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02343",
-    "nl": "Wij weten dat peter na het werk verse groenten op de markt koopt.",
-    "en": "We know that peter buys fresh vegetables at the market after work.",
+    "nl": "Wij weten dat Peter na het werk verse groenten op de markt koopt.",
+    "en": "We know that Peter buys fresh vegetables at the market after work.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -37047,7 +37047,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02345",
     "nl": "Sinds vorige maand koopt Peter verse groenten op de markt.",
-    "en": "Sinds vorige maand peter buys fresh vegetables at the market.",
+    "en": "Since last month, Peter buys fresh vegetables at the market.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -37093,8 +37093,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02348",
-    "nl": "Wij weten dat peter sinds vorige maand verse groenten op de markt koopt.",
-    "en": "We know that peter buys fresh vegetables at the market since last month.",
+    "nl": "Wij weten dat Peter sinds vorige maand verse groenten op de markt koopt.",
+    "en": "We know that Peter buys fresh vegetables at the market since last month.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -37126,7 +37126,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02350",
     "nl": "Met grote zorgvuldigheid koopt Peter verse groenten op de markt.",
-    "en": "Met grote zorgvuldigheid peter buys fresh vegetables at the market.",
+    "en": "With great care, Peter buys fresh vegetables at the market.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -37172,8 +37172,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02353",
-    "nl": "Wij weten dat peter met grote zorgvuldigheid verse groenten op de markt koopt.",
-    "en": "We know that peter buys fresh vegetables at the market with great care.",
+    "nl": "Wij weten dat Peter met grote zorgvuldigheid verse groenten op de markt koopt.",
+    "en": "We know that Peter buys fresh vegetables at the market with great care.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -37205,7 +37205,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02355",
     "nl": "Elke ochtend maakt Peter een heerlijke lunch.",
-    "en": "Elke ochtend peter makes a delicious lunch.",
+    "en": "Every morning, Peter makes a delicious lunch.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -37251,8 +37251,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02358",
-    "nl": "Wij weten dat peter elke ochtend een heerlijke lunch maakt.",
-    "en": "We know that peter makes a delicious lunch every morning.",
+    "nl": "Wij weten dat Peter elke ochtend een heerlijke lunch maakt.",
+    "en": "We know that Peter makes a delicious lunch every morning.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -37284,7 +37284,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02360",
     "nl": "Gisterenmiddag maakt Peter een heerlijke lunch.",
-    "en": "Gisterenmiddag peter makes a delicious lunch.",
+    "en": "Yesterday afternoon, Peter makes a delicious lunch.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -37330,8 +37330,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02363",
-    "nl": "Wij weten dat peter gisterenmiddag een heerlijke lunch maakt.",
-    "en": "We know that peter makes a delicious lunch yesterday afternoon.",
+    "nl": "Wij weten dat Peter gisterenmiddag een heerlijke lunch maakt.",
+    "en": "We know that Peter makes a delicious lunch yesterday afternoon.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -37363,7 +37363,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02365",
     "nl": "Volgende week maakt Peter een heerlijke lunch.",
-    "en": "Volgende week peter makes a delicious lunch.",
+    "en": "Next week, Peter makes a delicious lunch.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -37409,8 +37409,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02368",
-    "nl": "Wij weten dat peter volgende week een heerlijke lunch maakt.",
-    "en": "We know that peter makes a delicious lunch next week.",
+    "nl": "Wij weten dat Peter volgende week een heerlijke lunch maakt.",
+    "en": "We know that Peter makes a delicious lunch next week.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -37442,7 +37442,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02370",
     "nl": "In het weekend maakt Peter een heerlijke lunch.",
-    "en": "In het weekend peter makes a delicious lunch.",
+    "en": "At the weekend, Peter makes a delicious lunch.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -37488,8 +37488,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02373",
-    "nl": "Wij weten dat peter in het weekend een heerlijke lunch maakt.",
-    "en": "We know that peter makes a delicious lunch at the weekend.",
+    "nl": "Wij weten dat Peter in het weekend een heerlijke lunch maakt.",
+    "en": "We know that Peter makes a delicious lunch at the weekend.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -37521,7 +37521,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02375",
     "nl": "Om acht uur maakt Peter een heerlijke lunch.",
-    "en": "Om acht uur peter makes a delicious lunch.",
+    "en": "At eight o'clock, Peter makes a delicious lunch.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -37567,8 +37567,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02378",
-    "nl": "Wij weten dat peter om acht uur een heerlijke lunch maakt.",
-    "en": "We know that peter makes a delicious lunch at eight o'clock.",
+    "nl": "Wij weten dat Peter om acht uur een heerlijke lunch maakt.",
+    "en": "We know that Peter makes a delicious lunch at eight o'clock.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -37600,7 +37600,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02380",
     "nl": "Regelmatig maakt Peter een heerlijke lunch.",
-    "en": "Regelmatig peter makes a delicious lunch.",
+    "en": "Regularly, Peter makes a delicious lunch.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -37646,8 +37646,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02383",
-    "nl": "Wij weten dat peter regelmatig een heerlijke lunch maakt.",
-    "en": "We know that peter makes a delicious lunch regularly.",
+    "nl": "Wij weten dat Peter regelmatig een heerlijke lunch maakt.",
+    "en": "We know that Peter makes a delicious lunch regularly.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -37679,7 +37679,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02385",
     "nl": "Vaak maakt Peter een heerlijke lunch.",
-    "en": "Vaak peter makes a delicious lunch.",
+    "en": "Often, Peter makes a delicious lunch.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -37725,8 +37725,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02388",
-    "nl": "Wij weten dat peter vaak een heerlijke lunch maakt.",
-    "en": "We know that peter makes a delicious lunch often.",
+    "nl": "Wij weten dat Peter vaak een heerlijke lunch maakt.",
+    "en": "We know that Peter makes a delicious lunch often.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -37758,7 +37758,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02390",
     "nl": "Op maandag maakt Peter een heerlijke lunch.",
-    "en": "Op maandag peter makes a delicious lunch.",
+    "en": "On Monday, Peter makes a delicious lunch.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -37804,8 +37804,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02393",
-    "nl": "Wij weten dat peter op maandag een heerlijke lunch maakt.",
-    "en": "We know that peter makes a delicious lunch on Monday.",
+    "nl": "Wij weten dat Peter op maandag een heerlijke lunch maakt.",
+    "en": "We know that Peter makes a delicious lunch on Monday.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -37837,7 +37837,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02395",
     "nl": "Tijdens de lunch maakt Peter een heerlijke lunch.",
-    "en": "Tijdens de lunch peter makes a delicious lunch.",
+    "en": "During lunch, Peter makes a delicious lunch.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -37883,8 +37883,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02398",
-    "nl": "Wij weten dat peter tijdens de lunch een heerlijke lunch maakt.",
-    "en": "We know that peter makes a delicious lunch during lunch.",
+    "nl": "Wij weten dat Peter tijdens de lunch een heerlijke lunch maakt.",
+    "en": "We know that Peter makes a delicious lunch during lunch.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -37916,7 +37916,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02400",
     "nl": "Na het werk maakt Peter een heerlijke lunch.",
-    "en": "Na het werk peter makes a delicious lunch.",
+    "en": "After work, Peter makes a delicious lunch.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -37962,8 +37962,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02403",
-    "nl": "Wij weten dat peter na het werk een heerlijke lunch maakt.",
-    "en": "We know that peter makes a delicious lunch after work.",
+    "nl": "Wij weten dat Peter na het werk een heerlijke lunch maakt.",
+    "en": "We know that Peter makes a delicious lunch after work.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -37995,7 +37995,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02405",
     "nl": "Sinds vorige maand maakt Peter een heerlijke lunch.",
-    "en": "Sinds vorige maand peter makes a delicious lunch.",
+    "en": "Since last month, Peter makes a delicious lunch.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -38041,8 +38041,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02408",
-    "nl": "Wij weten dat peter sinds vorige maand een heerlijke lunch maakt.",
-    "en": "We know that peter makes a delicious lunch since last month.",
+    "nl": "Wij weten dat Peter sinds vorige maand een heerlijke lunch maakt.",
+    "en": "We know that Peter makes a delicious lunch since last month.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -38074,7 +38074,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02410",
     "nl": "Met grote zorgvuldigheid maakt Peter een heerlijke lunch.",
-    "en": "Met grote zorgvuldigheid peter makes a delicious lunch.",
+    "en": "With great care, Peter makes a delicious lunch.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -38120,8 +38120,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02413",
-    "nl": "Wij weten dat peter met grote zorgvuldigheid een heerlijke lunch maakt.",
-    "en": "We know that peter makes a delicious lunch with great care.",
+    "nl": "Wij weten dat Peter met grote zorgvuldigheid een heerlijke lunch maakt.",
+    "en": "We know that Peter makes a delicious lunch with great care.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -38153,7 +38153,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02415",
     "nl": "Elke ochtend drinkt Peter een kop verse muntthee.",
-    "en": "Elke ochtend peter drinks a cup of fresh mint tea.",
+    "en": "Every morning, Peter drinks a cup of fresh mint tea.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -38199,8 +38199,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02418",
-    "nl": "Wij weten dat peter elke ochtend een kop verse muntthee drinkt.",
-    "en": "We know that peter drinks a cup of fresh mint tea every morning.",
+    "nl": "Wij weten dat Peter elke ochtend een kop verse muntthee drinkt.",
+    "en": "We know that Peter drinks a cup of fresh mint tea every morning.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -38232,7 +38232,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02420",
     "nl": "Gisterenmiddag drinkt Peter een kop verse muntthee.",
-    "en": "Gisterenmiddag peter drinks a cup of fresh mint tea.",
+    "en": "Yesterday afternoon, Peter drinks a cup of fresh mint tea.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -38278,8 +38278,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02423",
-    "nl": "Wij weten dat peter gisterenmiddag een kop verse muntthee drinkt.",
-    "en": "We know that peter drinks a cup of fresh mint tea yesterday afternoon.",
+    "nl": "Wij weten dat Peter gisterenmiddag een kop verse muntthee drinkt.",
+    "en": "We know that Peter drinks a cup of fresh mint tea yesterday afternoon.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -38311,7 +38311,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02425",
     "nl": "Volgende week drinkt Peter een kop verse muntthee.",
-    "en": "Volgende week peter drinks a cup of fresh mint tea.",
+    "en": "Next week, Peter drinks a cup of fresh mint tea.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -38357,8 +38357,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02428",
-    "nl": "Wij weten dat peter volgende week een kop verse muntthee drinkt.",
-    "en": "We know that peter drinks a cup of fresh mint tea next week.",
+    "nl": "Wij weten dat Peter volgende week een kop verse muntthee drinkt.",
+    "en": "We know that Peter drinks a cup of fresh mint tea next week.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -38390,7 +38390,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02430",
     "nl": "In het weekend drinkt Peter een kop verse muntthee.",
-    "en": "In het weekend peter drinks a cup of fresh mint tea.",
+    "en": "At the weekend, Peter drinks a cup of fresh mint tea.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -38436,8 +38436,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02433",
-    "nl": "Wij weten dat peter in het weekend een kop verse muntthee drinkt.",
-    "en": "We know that peter drinks a cup of fresh mint tea at the weekend.",
+    "nl": "Wij weten dat Peter in het weekend een kop verse muntthee drinkt.",
+    "en": "We know that Peter drinks a cup of fresh mint tea at the weekend.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -38469,7 +38469,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02435",
     "nl": "Om acht uur drinkt Peter een kop verse muntthee.",
-    "en": "Om acht uur peter drinks a cup of fresh mint tea.",
+    "en": "At eight o'clock, Peter drinks a cup of fresh mint tea.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -38515,8 +38515,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02438",
-    "nl": "Wij weten dat peter om acht uur een kop verse muntthee drinkt.",
-    "en": "We know that peter drinks a cup of fresh mint tea at eight o'clock.",
+    "nl": "Wij weten dat Peter om acht uur een kop verse muntthee drinkt.",
+    "en": "We know that Peter drinks a cup of fresh mint tea at eight o'clock.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -38548,7 +38548,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02440",
     "nl": "Regelmatig drinkt Peter een kop verse muntthee.",
-    "en": "Regelmatig peter drinks a cup of fresh mint tea.",
+    "en": "Regularly, Peter drinks a cup of fresh mint tea.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -38594,8 +38594,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02443",
-    "nl": "Wij weten dat peter regelmatig een kop verse muntthee drinkt.",
-    "en": "We know that peter drinks a cup of fresh mint tea regularly.",
+    "nl": "Wij weten dat Peter regelmatig een kop verse muntthee drinkt.",
+    "en": "We know that Peter drinks a cup of fresh mint tea regularly.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -38627,7 +38627,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02445",
     "nl": "Vaak drinkt Peter een kop verse muntthee.",
-    "en": "Vaak peter drinks a cup of fresh mint tea.",
+    "en": "Often, Peter drinks a cup of fresh mint tea.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -38673,8 +38673,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02448",
-    "nl": "Wij weten dat peter vaak een kop verse muntthee drinkt.",
-    "en": "We know that peter drinks a cup of fresh mint tea often.",
+    "nl": "Wij weten dat Peter vaak een kop verse muntthee drinkt.",
+    "en": "We know that Peter drinks a cup of fresh mint tea often.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -38706,7 +38706,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02450",
     "nl": "Op maandag drinkt Peter een kop verse muntthee.",
-    "en": "Op maandag peter drinks a cup of fresh mint tea.",
+    "en": "On Monday, Peter drinks a cup of fresh mint tea.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -38752,8 +38752,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02453",
-    "nl": "Wij weten dat peter op maandag een kop verse muntthee drinkt.",
-    "en": "We know that peter drinks a cup of fresh mint tea on Monday.",
+    "nl": "Wij weten dat Peter op maandag een kop verse muntthee drinkt.",
+    "en": "We know that Peter drinks a cup of fresh mint tea on Monday.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -38785,7 +38785,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02455",
     "nl": "Tijdens de lunch drinkt Peter een kop verse muntthee.",
-    "en": "Tijdens de lunch peter drinks a cup of fresh mint tea.",
+    "en": "During lunch, Peter drinks a cup of fresh mint tea.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -38831,8 +38831,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02458",
-    "nl": "Wij weten dat peter tijdens de lunch een kop verse muntthee drinkt.",
-    "en": "We know that peter drinks a cup of fresh mint tea during lunch.",
+    "nl": "Wij weten dat Peter tijdens de lunch een kop verse muntthee drinkt.",
+    "en": "We know that Peter drinks a cup of fresh mint tea during lunch.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -38864,7 +38864,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02460",
     "nl": "Na het werk drinkt Peter een kop verse muntthee.",
-    "en": "Na het werk peter drinks a cup of fresh mint tea.",
+    "en": "After work, Peter drinks a cup of fresh mint tea.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -38910,8 +38910,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02463",
-    "nl": "Wij weten dat peter na het werk een kop verse muntthee drinkt.",
-    "en": "We know that peter drinks a cup of fresh mint tea after work.",
+    "nl": "Wij weten dat Peter na het werk een kop verse muntthee drinkt.",
+    "en": "We know that Peter drinks a cup of fresh mint tea after work.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -38943,7 +38943,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02465",
     "nl": "Sinds vorige maand drinkt Peter een kop verse muntthee.",
-    "en": "Sinds vorige maand peter drinks a cup of fresh mint tea.",
+    "en": "Since last month, Peter drinks a cup of fresh mint tea.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -38989,8 +38989,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02468",
-    "nl": "Wij weten dat peter sinds vorige maand een kop verse muntthee drinkt.",
-    "en": "We know that peter drinks a cup of fresh mint tea since last month.",
+    "nl": "Wij weten dat Peter sinds vorige maand een kop verse muntthee drinkt.",
+    "en": "We know that Peter drinks a cup of fresh mint tea since last month.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -39022,7 +39022,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02470",
     "nl": "Met grote zorgvuldigheid drinkt Peter een kop verse muntthee.",
-    "en": "Met grote zorgvuldigheid peter drinks a cup of fresh mint tea.",
+    "en": "With great care, Peter drinks a cup of fresh mint tea.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -39068,8 +39068,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02473",
-    "nl": "Wij weten dat peter met grote zorgvuldigheid een kop verse muntthee drinkt.",
-    "en": "We know that peter drinks a cup of fresh mint tea with great care.",
+    "nl": "Wij weten dat Peter met grote zorgvuldigheid een kop verse muntthee drinkt.",
+    "en": "We know that Peter drinks a cup of fresh mint tea with great care.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -39101,7 +39101,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02475",
     "nl": "Elke ochtend bezoekt Peter het historische museum.",
-    "en": "Elke ochtend peter visits the historical museum.",
+    "en": "Every morning, Peter visits the historical museum.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -39147,8 +39147,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02478",
-    "nl": "Wij weten dat peter elke ochtend het historische museum bezoekt.",
-    "en": "We know that peter visits the historical museum every morning.",
+    "nl": "Wij weten dat Peter elke ochtend het historische museum bezoekt.",
+    "en": "We know that Peter visits the historical museum every morning.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -39180,7 +39180,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02480",
     "nl": "Gisterenmiddag bezoekt Peter het historische museum.",
-    "en": "Gisterenmiddag peter visits the historical museum.",
+    "en": "Yesterday afternoon, Peter visits the historical museum.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -39226,8 +39226,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02483",
-    "nl": "Wij weten dat peter gisterenmiddag het historische museum bezoekt.",
-    "en": "We know that peter visits the historical museum yesterday afternoon.",
+    "nl": "Wij weten dat Peter gisterenmiddag het historische museum bezoekt.",
+    "en": "We know that Peter visits the historical museum yesterday afternoon.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -39259,7 +39259,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02485",
     "nl": "Volgende week bezoekt Peter het historische museum.",
-    "en": "Volgende week peter visits the historical museum.",
+    "en": "Next week, Peter visits the historical museum.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -39305,8 +39305,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02488",
-    "nl": "Wij weten dat peter volgende week het historische museum bezoekt.",
-    "en": "We know that peter visits the historical museum next week.",
+    "nl": "Wij weten dat Peter volgende week het historische museum bezoekt.",
+    "en": "We know that Peter visits the historical museum next week.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -39338,7 +39338,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02490",
     "nl": "In het weekend bezoekt Peter het historische museum.",
-    "en": "In het weekend peter visits the historical museum.",
+    "en": "At the weekend, Peter visits the historical museum.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -39384,8 +39384,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02493",
-    "nl": "Wij weten dat peter in het weekend het historische museum bezoekt.",
-    "en": "We know that peter visits the historical museum at the weekend.",
+    "nl": "Wij weten dat Peter in het weekend het historische museum bezoekt.",
+    "en": "We know that Peter visits the historical museum at the weekend.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -39417,7 +39417,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02495",
     "nl": "Om acht uur bezoekt Peter het historische museum.",
-    "en": "Om acht uur peter visits the historical museum.",
+    "en": "At eight o'clock, Peter visits the historical museum.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -39463,8 +39463,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02498",
-    "nl": "Wij weten dat peter om acht uur het historische museum bezoekt.",
-    "en": "We know that peter visits the historical museum at eight o'clock.",
+    "nl": "Wij weten dat Peter om acht uur het historische museum bezoekt.",
+    "en": "We know that Peter visits the historical museum at eight o'clock.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -39496,7 +39496,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02500",
     "nl": "Regelmatig bezoekt Peter het historische museum.",
-    "en": "Regelmatig peter visits the historical museum.",
+    "en": "Regularly, Peter visits the historical museum.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -39542,8 +39542,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02503",
-    "nl": "Wij weten dat peter regelmatig het historische museum bezoekt.",
-    "en": "We know that peter visits the historical museum regularly.",
+    "nl": "Wij weten dat Peter regelmatig het historische museum bezoekt.",
+    "en": "We know that Peter visits the historical museum regularly.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -39575,7 +39575,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02505",
     "nl": "Vaak bezoekt Peter het historische museum.",
-    "en": "Vaak peter visits the historical museum.",
+    "en": "Often, Peter visits the historical museum.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -39621,8 +39621,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02508",
-    "nl": "Wij weten dat peter vaak het historische museum bezoekt.",
-    "en": "We know that peter visits the historical museum often.",
+    "nl": "Wij weten dat Peter vaak het historische museum bezoekt.",
+    "en": "We know that Peter visits the historical museum often.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -39654,7 +39654,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02510",
     "nl": "Op maandag bezoekt Peter het historische museum.",
-    "en": "Op maandag peter visits the historical museum.",
+    "en": "On Monday, Peter visits the historical museum.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -39700,8 +39700,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02513",
-    "nl": "Wij weten dat peter op maandag het historische museum bezoekt.",
-    "en": "We know that peter visits the historical museum on Monday.",
+    "nl": "Wij weten dat Peter op maandag het historische museum bezoekt.",
+    "en": "We know that Peter visits the historical museum on Monday.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -39733,7 +39733,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02515",
     "nl": "Tijdens de lunch bezoekt Peter het historische museum.",
-    "en": "Tijdens de lunch peter visits the historical museum.",
+    "en": "During lunch, Peter visits the historical museum.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -39779,8 +39779,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02518",
-    "nl": "Wij weten dat peter tijdens de lunch het historische museum bezoekt.",
-    "en": "We know that peter visits the historical museum during lunch.",
+    "nl": "Wij weten dat Peter tijdens de lunch het historische museum bezoekt.",
+    "en": "We know that Peter visits the historical museum during lunch.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -39812,7 +39812,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02520",
     "nl": "Na het werk bezoekt Peter het historische museum.",
-    "en": "Na het werk peter visits the historical museum.",
+    "en": "After work, Peter visits the historical museum.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -39858,8 +39858,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02523",
-    "nl": "Wij weten dat peter na het werk het historische museum bezoekt.",
-    "en": "We know that peter visits the historical museum after work.",
+    "nl": "Wij weten dat Peter na het werk het historische museum bezoekt.",
+    "en": "We know that Peter visits the historical museum after work.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -39891,7 +39891,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02525",
     "nl": "Sinds vorige maand bezoekt Peter het historische museum.",
-    "en": "Sinds vorige maand peter visits the historical museum.",
+    "en": "Since last month, Peter visits the historical museum.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -39937,8 +39937,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02528",
-    "nl": "Wij weten dat peter sinds vorige maand het historische museum bezoekt.",
-    "en": "We know that peter visits the historical museum since last month.",
+    "nl": "Wij weten dat Peter sinds vorige maand het historische museum bezoekt.",
+    "en": "We know that Peter visits the historical museum since last month.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -39970,7 +39970,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02530",
     "nl": "Met grote zorgvuldigheid bezoekt Peter het historische museum.",
-    "en": "Met grote zorgvuldigheid peter visits the historical museum.",
+    "en": "With great care, Peter visits the historical museum.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -40016,8 +40016,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02533",
-    "nl": "Wij weten dat peter met grote zorgvuldigheid het historische museum bezoekt.",
-    "en": "We know that peter visits the historical museum with great care.",
+    "nl": "Wij weten dat Peter met grote zorgvuldigheid het historische museum bezoekt.",
+    "en": "We know that Peter visits the historical museum with great care.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -40049,7 +40049,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02535",
     "nl": "Elke ochtend zoekt Peter een nieuw appartement.",
-    "en": "Elke ochtend peter looks for a new apartment.",
+    "en": "Every morning, Peter looks for a new apartment.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -40095,8 +40095,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02538",
-    "nl": "Wij weten dat peter elke ochtend een nieuw appartement zoekt.",
-    "en": "We know that peter looks for a new apartment every morning.",
+    "nl": "Wij weten dat Peter elke ochtend een nieuw appartement zoekt.",
+    "en": "We know that Peter looks for a new apartment every morning.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -40128,7 +40128,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02540",
     "nl": "Gisterenmiddag zoekt Peter een nieuw appartement.",
-    "en": "Gisterenmiddag peter looks for a new apartment.",
+    "en": "Yesterday afternoon, Peter looks for a new apartment.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -40174,8 +40174,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02543",
-    "nl": "Wij weten dat peter gisterenmiddag een nieuw appartement zoekt.",
-    "en": "We know that peter looks for a new apartment yesterday afternoon.",
+    "nl": "Wij weten dat Peter gisterenmiddag een nieuw appartement zoekt.",
+    "en": "We know that Peter looks for a new apartment yesterday afternoon.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -40207,7 +40207,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02545",
     "nl": "Volgende week zoekt Peter een nieuw appartement.",
-    "en": "Volgende week peter looks for a new apartment.",
+    "en": "Next week, Peter looks for a new apartment.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -40253,8 +40253,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02548",
-    "nl": "Wij weten dat peter volgende week een nieuw appartement zoekt.",
-    "en": "We know that peter looks for a new apartment next week.",
+    "nl": "Wij weten dat Peter volgende week een nieuw appartement zoekt.",
+    "en": "We know that Peter looks for a new apartment next week.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -40286,7 +40286,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02550",
     "nl": "In het weekend zoekt Peter een nieuw appartement.",
-    "en": "In het weekend peter looks for a new apartment.",
+    "en": "At the weekend, Peter looks for a new apartment.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -40332,8 +40332,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02553",
-    "nl": "Wij weten dat peter in het weekend een nieuw appartement zoekt.",
-    "en": "We know that peter looks for a new apartment at the weekend.",
+    "nl": "Wij weten dat Peter in het weekend een nieuw appartement zoekt.",
+    "en": "We know that Peter looks for a new apartment at the weekend.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -40365,7 +40365,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02555",
     "nl": "Om acht uur zoekt Peter een nieuw appartement.",
-    "en": "Om acht uur peter looks for a new apartment.",
+    "en": "At eight o'clock, Peter looks for a new apartment.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -40411,8 +40411,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02558",
-    "nl": "Wij weten dat peter om acht uur een nieuw appartement zoekt.",
-    "en": "We know that peter looks for a new apartment at eight o'clock.",
+    "nl": "Wij weten dat Peter om acht uur een nieuw appartement zoekt.",
+    "en": "We know that Peter looks for a new apartment at eight o'clock.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -40444,7 +40444,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02560",
     "nl": "Regelmatig zoekt Peter een nieuw appartement.",
-    "en": "Regelmatig peter looks for a new apartment.",
+    "en": "Regularly, Peter looks for a new apartment.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -40490,8 +40490,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02563",
-    "nl": "Wij weten dat peter regelmatig een nieuw appartement zoekt.",
-    "en": "We know that peter looks for a new apartment regularly.",
+    "nl": "Wij weten dat Peter regelmatig een nieuw appartement zoekt.",
+    "en": "We know that Peter looks for a new apartment regularly.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -40523,7 +40523,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02565",
     "nl": "Vaak zoekt Peter een nieuw appartement.",
-    "en": "Vaak peter looks for a new apartment.",
+    "en": "Often, Peter looks for a new apartment.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -40569,8 +40569,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02568",
-    "nl": "Wij weten dat peter vaak een nieuw appartement zoekt.",
-    "en": "We know that peter looks for a new apartment often.",
+    "nl": "Wij weten dat Peter vaak een nieuw appartement zoekt.",
+    "en": "We know that Peter looks for a new apartment often.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -40602,7 +40602,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02570",
     "nl": "Op maandag zoekt Peter een nieuw appartement.",
-    "en": "Op maandag peter looks for a new apartment.",
+    "en": "On Monday, Peter looks for a new apartment.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -40648,8 +40648,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02573",
-    "nl": "Wij weten dat peter op maandag een nieuw appartement zoekt.",
-    "en": "We know that peter looks for a new apartment on Monday.",
+    "nl": "Wij weten dat Peter op maandag een nieuw appartement zoekt.",
+    "en": "We know that Peter looks for a new apartment on Monday.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -40681,7 +40681,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02575",
     "nl": "Tijdens de lunch zoekt Peter een nieuw appartement.",
-    "en": "Tijdens de lunch peter looks for a new apartment.",
+    "en": "During lunch, Peter looks for a new apartment.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -40727,8 +40727,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02578",
-    "nl": "Wij weten dat peter tijdens de lunch een nieuw appartement zoekt.",
-    "en": "We know that peter looks for a new apartment during lunch.",
+    "nl": "Wij weten dat Peter tijdens de lunch een nieuw appartement zoekt.",
+    "en": "We know that Peter looks for a new apartment during lunch.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -40760,7 +40760,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02580",
     "nl": "Na het werk zoekt Peter een nieuw appartement.",
-    "en": "Na het werk peter looks for a new apartment.",
+    "en": "After work, Peter looks for a new apartment.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -40806,8 +40806,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02583",
-    "nl": "Wij weten dat peter na het werk een nieuw appartement zoekt.",
-    "en": "We know that peter looks for a new apartment after work.",
+    "nl": "Wij weten dat Peter na het werk een nieuw appartement zoekt.",
+    "en": "We know that Peter looks for a new apartment after work.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -40839,7 +40839,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02585",
     "nl": "Sinds vorige maand zoekt Peter een nieuw appartement.",
-    "en": "Sinds vorige maand peter looks for a new apartment.",
+    "en": "Since last month, Peter looks for a new apartment.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -40885,8 +40885,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02588",
-    "nl": "Wij weten dat peter sinds vorige maand een nieuw appartement zoekt.",
-    "en": "We know that peter looks for a new apartment since last month.",
+    "nl": "Wij weten dat Peter sinds vorige maand een nieuw appartement zoekt.",
+    "en": "We know that Peter looks for a new apartment since last month.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -40918,7 +40918,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02590",
     "nl": "Met grote zorgvuldigheid zoekt Peter een nieuw appartement.",
-    "en": "Met grote zorgvuldigheid peter looks for a new apartment.",
+    "en": "With great care, Peter looks for a new apartment.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -40964,8 +40964,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02593",
-    "nl": "Wij weten dat peter met grote zorgvuldigheid een nieuw appartement zoekt.",
-    "en": "We know that peter looks for a new apartment with great care.",
+    "nl": "Wij weten dat Peter met grote zorgvuldigheid een nieuw appartement zoekt.",
+    "en": "We know that Peter looks for a new apartment with great care.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -40997,7 +40997,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02595",
     "nl": "Elke ochtend ontmoet Peter goede vrienden in de stad.",
-    "en": "Elke ochtend peter meets good friends in the city.",
+    "en": "Every morning, Peter meets good friends in the city.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -41043,8 +41043,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02598",
-    "nl": "Wij weten dat peter elke ochtend goede vrienden in de stad ontmoet.",
-    "en": "We know that peter meets good friends in the city every morning.",
+    "nl": "Wij weten dat Peter elke ochtend goede vrienden in de stad ontmoet.",
+    "en": "We know that Peter meets good friends in the city every morning.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -41076,7 +41076,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02600",
     "nl": "Gisterenmiddag ontmoet Peter goede vrienden in de stad.",
-    "en": "Gisterenmiddag peter meets good friends in the city.",
+    "en": "Yesterday afternoon, Peter meets good friends in the city.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -41122,8 +41122,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02603",
-    "nl": "Wij weten dat peter gisterenmiddag goede vrienden in de stad ontmoet.",
-    "en": "We know that peter meets good friends in the city yesterday afternoon.",
+    "nl": "Wij weten dat Peter gisterenmiddag goede vrienden in de stad ontmoet.",
+    "en": "We know that Peter meets good friends in the city yesterday afternoon.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -41155,7 +41155,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02605",
     "nl": "Volgende week ontmoet Peter goede vrienden in de stad.",
-    "en": "Volgende week peter meets good friends in the city.",
+    "en": "Next week, Peter meets good friends in the city.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -41201,8 +41201,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02608",
-    "nl": "Wij weten dat peter volgende week goede vrienden in de stad ontmoet.",
-    "en": "We know that peter meets good friends in the city next week.",
+    "nl": "Wij weten dat Peter volgende week goede vrienden in de stad ontmoet.",
+    "en": "We know that Peter meets good friends in the city next week.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -41234,7 +41234,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02610",
     "nl": "In het weekend ontmoet Peter goede vrienden in de stad.",
-    "en": "In het weekend peter meets good friends in the city.",
+    "en": "At the weekend, Peter meets good friends in the city.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -41280,8 +41280,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02613",
-    "nl": "Wij weten dat peter in het weekend goede vrienden in de stad ontmoet.",
-    "en": "We know that peter meets good friends in the city at the weekend.",
+    "nl": "Wij weten dat Peter in het weekend goede vrienden in de stad ontmoet.",
+    "en": "We know that Peter meets good friends in the city at the weekend.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -41313,7 +41313,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02615",
     "nl": "Om acht uur ontmoet Peter goede vrienden in de stad.",
-    "en": "Om acht uur peter meets good friends in the city.",
+    "en": "At eight o'clock, Peter meets good friends in the city.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -41359,8 +41359,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02618",
-    "nl": "Wij weten dat peter om acht uur goede vrienden in de stad ontmoet.",
-    "en": "We know that peter meets good friends in the city at eight o'clock.",
+    "nl": "Wij weten dat Peter om acht uur goede vrienden in de stad ontmoet.",
+    "en": "We know that Peter meets good friends in the city at eight o'clock.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -41392,7 +41392,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02620",
     "nl": "Regelmatig ontmoet Peter goede vrienden in de stad.",
-    "en": "Regelmatig peter meets good friends in the city.",
+    "en": "Regularly, Peter meets good friends in the city.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -41438,8 +41438,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02623",
-    "nl": "Wij weten dat peter regelmatig goede vrienden in de stad ontmoet.",
-    "en": "We know that peter meets good friends in the city regularly.",
+    "nl": "Wij weten dat Peter regelmatig goede vrienden in de stad ontmoet.",
+    "en": "We know that Peter meets good friends in the city regularly.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -41471,7 +41471,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02625",
     "nl": "Vaak ontmoet Peter goede vrienden in de stad.",
-    "en": "Vaak peter meets good friends in the city.",
+    "en": "Often, Peter meets good friends in the city.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -41517,8 +41517,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02628",
-    "nl": "Wij weten dat peter vaak goede vrienden in de stad ontmoet.",
-    "en": "We know that peter meets good friends in the city often.",
+    "nl": "Wij weten dat Peter vaak goede vrienden in de stad ontmoet.",
+    "en": "We know that Peter meets good friends in the city often.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -41550,7 +41550,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02630",
     "nl": "Op maandag ontmoet Peter goede vrienden in de stad.",
-    "en": "Op maandag peter meets good friends in the city.",
+    "en": "On Monday, Peter meets good friends in the city.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -41596,8 +41596,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02633",
-    "nl": "Wij weten dat peter op maandag goede vrienden in de stad ontmoet.",
-    "en": "We know that peter meets good friends in the city on Monday.",
+    "nl": "Wij weten dat Peter op maandag goede vrienden in de stad ontmoet.",
+    "en": "We know that Peter meets good friends in the city on Monday.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -41629,7 +41629,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02635",
     "nl": "Tijdens de lunch ontmoet Peter goede vrienden in de stad.",
-    "en": "Tijdens de lunch peter meets good friends in the city.",
+    "en": "During lunch, Peter meets good friends in the city.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -41675,8 +41675,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02638",
-    "nl": "Wij weten dat peter tijdens de lunch goede vrienden in de stad ontmoet.",
-    "en": "We know that peter meets good friends in the city during lunch.",
+    "nl": "Wij weten dat Peter tijdens de lunch goede vrienden in de stad ontmoet.",
+    "en": "We know that Peter meets good friends in the city during lunch.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -41708,7 +41708,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02640",
     "nl": "Na het werk ontmoet Peter goede vrienden in de stad.",
-    "en": "Na het werk peter meets good friends in the city.",
+    "en": "After work, Peter meets good friends in the city.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -41754,8 +41754,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02643",
-    "nl": "Wij weten dat peter na het werk goede vrienden in de stad ontmoet.",
-    "en": "We know that peter meets good friends in the city after work.",
+    "nl": "Wij weten dat Peter na het werk goede vrienden in de stad ontmoet.",
+    "en": "We know that Peter meets good friends in the city after work.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -41787,7 +41787,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02645",
     "nl": "Sinds vorige maand ontmoet Peter goede vrienden in de stad.",
-    "en": "Sinds vorige maand peter meets good friends in the city.",
+    "en": "Since last month, Peter meets good friends in the city.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -41833,8 +41833,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02648",
-    "nl": "Wij weten dat peter sinds vorige maand goede vrienden in de stad ontmoet.",
-    "en": "We know that peter meets good friends in the city since last month.",
+    "nl": "Wij weten dat Peter sinds vorige maand goede vrienden in de stad ontmoet.",
+    "en": "We know that Peter meets good friends in the city since last month.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -41866,7 +41866,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02650",
     "nl": "Met grote zorgvuldigheid ontmoet Peter goede vrienden in de stad.",
-    "en": "Met grote zorgvuldigheid peter meets good friends in the city.",
+    "en": "With great care, Peter meets good friends in the city.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -41912,8 +41912,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02653",
-    "nl": "Wij weten dat peter met grote zorgvuldigheid goede vrienden in de stad ontmoet.",
-    "en": "We know that peter meets good friends in the city with great care.",
+    "nl": "Wij weten dat Peter met grote zorgvuldigheid goede vrienden in de stad ontmoet.",
+    "en": "We know that Peter meets good friends in the city with great care.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -41945,7 +41945,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02655",
     "nl": "Elke ochtend plant Peter een lange reis naar het buitenland.",
-    "en": "Elke ochtend peter plans a long journey abroad.",
+    "en": "Every morning, Peter plans a long journey abroad.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -41991,8 +41991,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02658",
-    "nl": "Wij weten dat peter elke ochtend een lange reis naar het buitenland plant.",
-    "en": "We know that peter plans a long journey abroad every morning.",
+    "nl": "Wij weten dat Peter elke ochtend een lange reis naar het buitenland plant.",
+    "en": "We know that Peter plans a long journey abroad every morning.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -42024,7 +42024,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02660",
     "nl": "Gisterenmiddag plant Peter een lange reis naar het buitenland.",
-    "en": "Gisterenmiddag peter plans a long journey abroad.",
+    "en": "Yesterday afternoon, Peter plans a long journey abroad.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -42070,8 +42070,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02663",
-    "nl": "Wij weten dat peter gisterenmiddag een lange reis naar het buitenland plant.",
-    "en": "We know that peter plans a long journey abroad yesterday afternoon.",
+    "nl": "Wij weten dat Peter gisterenmiddag een lange reis naar het buitenland plant.",
+    "en": "We know that Peter plans a long journey abroad yesterday afternoon.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -42103,7 +42103,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02665",
     "nl": "Volgende week plant Peter een lange reis naar het buitenland.",
-    "en": "Volgende week peter plans a long journey abroad.",
+    "en": "Next week, Peter plans a long journey abroad.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -42149,8 +42149,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02668",
-    "nl": "Wij weten dat peter volgende week een lange reis naar het buitenland plant.",
-    "en": "We know that peter plans a long journey abroad next week.",
+    "nl": "Wij weten dat Peter volgende week een lange reis naar het buitenland plant.",
+    "en": "We know that Peter plans a long journey abroad next week.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -42182,7 +42182,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02670",
     "nl": "In het weekend plant Peter een lange reis naar het buitenland.",
-    "en": "In het weekend peter plans a long journey abroad.",
+    "en": "At the weekend, Peter plans a long journey abroad.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -42228,8 +42228,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02673",
-    "nl": "Wij weten dat peter in het weekend een lange reis naar het buitenland plant.",
-    "en": "We know that peter plans a long journey abroad at the weekend.",
+    "nl": "Wij weten dat Peter in het weekend een lange reis naar het buitenland plant.",
+    "en": "We know that Peter plans a long journey abroad at the weekend.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -42261,7 +42261,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02675",
     "nl": "Om acht uur plant Peter een lange reis naar het buitenland.",
-    "en": "Om acht uur peter plans a long journey abroad.",
+    "en": "At eight o'clock, Peter plans a long journey abroad.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -42307,8 +42307,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02678",
-    "nl": "Wij weten dat peter om acht uur een lange reis naar het buitenland plant.",
-    "en": "We know that peter plans a long journey abroad at eight o'clock.",
+    "nl": "Wij weten dat Peter om acht uur een lange reis naar het buitenland plant.",
+    "en": "We know that Peter plans a long journey abroad at eight o'clock.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -42340,7 +42340,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02680",
     "nl": "Regelmatig plant Peter een lange reis naar het buitenland.",
-    "en": "Regelmatig peter plans a long journey abroad.",
+    "en": "Regularly, Peter plans a long journey abroad.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -42386,8 +42386,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02683",
-    "nl": "Wij weten dat peter regelmatig een lange reis naar het buitenland plant.",
-    "en": "We know that peter plans a long journey abroad regularly.",
+    "nl": "Wij weten dat Peter regelmatig een lange reis naar het buitenland plant.",
+    "en": "We know that Peter plans a long journey abroad regularly.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -42419,7 +42419,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02685",
     "nl": "Vaak plant Peter een lange reis naar het buitenland.",
-    "en": "Vaak peter plans a long journey abroad.",
+    "en": "Often, Peter plans a long journey abroad.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -42465,8 +42465,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02688",
-    "nl": "Wij weten dat peter vaak een lange reis naar het buitenland plant.",
-    "en": "We know that peter plans a long journey abroad often.",
+    "nl": "Wij weten dat Peter vaak een lange reis naar het buitenland plant.",
+    "en": "We know that Peter plans a long journey abroad often.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -42498,7 +42498,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02690",
     "nl": "Op maandag plant Peter een lange reis naar het buitenland.",
-    "en": "Op maandag peter plans a long journey abroad.",
+    "en": "On Monday, Peter plans a long journey abroad.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -42544,8 +42544,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02693",
-    "nl": "Wij weten dat peter op maandag een lange reis naar het buitenland plant.",
-    "en": "We know that peter plans a long journey abroad on Monday.",
+    "nl": "Wij weten dat Peter op maandag een lange reis naar het buitenland plant.",
+    "en": "We know that Peter plans a long journey abroad on Monday.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -42577,7 +42577,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02695",
     "nl": "Tijdens de lunch plant Peter een lange reis naar het buitenland.",
-    "en": "Tijdens de lunch peter plans a long journey abroad.",
+    "en": "During lunch, Peter plans a long journey abroad.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -42623,8 +42623,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02698",
-    "nl": "Wij weten dat peter tijdens de lunch een lange reis naar het buitenland plant.",
-    "en": "We know that peter plans a long journey abroad during lunch.",
+    "nl": "Wij weten dat Peter tijdens de lunch een lange reis naar het buitenland plant.",
+    "en": "We know that Peter plans a long journey abroad during lunch.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -42656,7 +42656,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02700",
     "nl": "Na het werk plant Peter een lange reis naar het buitenland.",
-    "en": "Na het werk peter plans a long journey abroad.",
+    "en": "After work, Peter plans a long journey abroad.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -42702,8 +42702,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02703",
-    "nl": "Wij weten dat peter na het werk een lange reis naar het buitenland plant.",
-    "en": "We know that peter plans a long journey abroad after work.",
+    "nl": "Wij weten dat Peter na het werk een lange reis naar het buitenland plant.",
+    "en": "We know that Peter plans a long journey abroad after work.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -42735,7 +42735,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02705",
     "nl": "Sinds vorige maand plant Peter een lange reis naar het buitenland.",
-    "en": "Sinds vorige maand peter plans a long journey abroad.",
+    "en": "Since last month, Peter plans a long journey abroad.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -42781,8 +42781,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02708",
-    "nl": "Wij weten dat peter sinds vorige maand een lange reis naar het buitenland plant.",
-    "en": "We know that peter plans a long journey abroad since last month.",
+    "nl": "Wij weten dat Peter sinds vorige maand een lange reis naar het buitenland plant.",
+    "en": "We know that Peter plans a long journey abroad since last month.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -42814,7 +42814,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02710",
     "nl": "Met grote zorgvuldigheid plant Peter een lange reis naar het buitenland.",
-    "en": "Met grote zorgvuldigheid peter plans a long journey abroad.",
+    "en": "With great care, Peter plans a long journey abroad.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -42860,8 +42860,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02713",
-    "nl": "Wij weten dat peter met grote zorgvuldigheid een lange reis naar het buitenland plant.",
-    "en": "We know that peter plans a long journey abroad with great care.",
+    "nl": "Wij weten dat Peter met grote zorgvuldigheid een lange reis naar het buitenland plant.",
+    "en": "We know that Peter plans a long journey abroad with great care.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -42893,7 +42893,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02715",
     "nl": "Elke ochtend organiseert Peter een gezellige buurtbijeenkomst.",
-    "en": "Elke ochtend peter organizes a cosy neighbourhood meeting.",
+    "en": "Every morning, Peter organizes a cosy neighbourhood meeting.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -42939,8 +42939,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02718",
-    "nl": "Wij weten dat peter elke ochtend een gezellige buurtbijeenkomst organiseert.",
-    "en": "We know that peter organizes a cosy neighbourhood meeting every morning.",
+    "nl": "Wij weten dat Peter elke ochtend een gezellige buurtbijeenkomst organiseert.",
+    "en": "We know that Peter organizes a cosy neighbourhood meeting every morning.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -42972,7 +42972,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02720",
     "nl": "Gisterenmiddag organiseert Peter een gezellige buurtbijeenkomst.",
-    "en": "Gisterenmiddag peter organizes a cosy neighbourhood meeting.",
+    "en": "Yesterday afternoon, Peter organizes a cosy neighbourhood meeting.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -43018,8 +43018,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02723",
-    "nl": "Wij weten dat peter gisterenmiddag een gezellige buurtbijeenkomst organiseert.",
-    "en": "We know that peter organizes a cosy neighbourhood meeting yesterday afternoon.",
+    "nl": "Wij weten dat Peter gisterenmiddag een gezellige buurtbijeenkomst organiseert.",
+    "en": "We know that Peter organizes a cosy neighbourhood meeting yesterday afternoon.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -43051,7 +43051,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02725",
     "nl": "Volgende week organiseert Peter een gezellige buurtbijeenkomst.",
-    "en": "Volgende week peter organizes a cosy neighbourhood meeting.",
+    "en": "Next week, Peter organizes a cosy neighbourhood meeting.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -43097,8 +43097,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02728",
-    "nl": "Wij weten dat peter volgende week een gezellige buurtbijeenkomst organiseert.",
-    "en": "We know that peter organizes a cosy neighbourhood meeting next week.",
+    "nl": "Wij weten dat Peter volgende week een gezellige buurtbijeenkomst organiseert.",
+    "en": "We know that Peter organizes a cosy neighbourhood meeting next week.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -43130,7 +43130,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02730",
     "nl": "In het weekend organiseert Peter een gezellige buurtbijeenkomst.",
-    "en": "In het weekend peter organizes a cosy neighbourhood meeting.",
+    "en": "At the weekend, Peter organizes a cosy neighbourhood meeting.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -43176,8 +43176,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02733",
-    "nl": "Wij weten dat peter in het weekend een gezellige buurtbijeenkomst organiseert.",
-    "en": "We know that peter organizes a cosy neighbourhood meeting at the weekend.",
+    "nl": "Wij weten dat Peter in het weekend een gezellige buurtbijeenkomst organiseert.",
+    "en": "We know that Peter organizes a cosy neighbourhood meeting at the weekend.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -43209,7 +43209,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02735",
     "nl": "Om acht uur organiseert Peter een gezellige buurtbijeenkomst.",
-    "en": "Om acht uur peter organizes a cosy neighbourhood meeting.",
+    "en": "At eight o'clock, Peter organizes a cosy neighbourhood meeting.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -43255,8 +43255,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02738",
-    "nl": "Wij weten dat peter om acht uur een gezellige buurtbijeenkomst organiseert.",
-    "en": "We know that peter organizes a cosy neighbourhood meeting at eight o'clock.",
+    "nl": "Wij weten dat Peter om acht uur een gezellige buurtbijeenkomst organiseert.",
+    "en": "We know that Peter organizes a cosy neighbourhood meeting at eight o'clock.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -43288,7 +43288,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02740",
     "nl": "Regelmatig organiseert Peter een gezellige buurtbijeenkomst.",
-    "en": "Regelmatig peter organizes a cosy neighbourhood meeting.",
+    "en": "Regularly, Peter organizes a cosy neighbourhood meeting.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -43334,8 +43334,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02743",
-    "nl": "Wij weten dat peter regelmatig een gezellige buurtbijeenkomst organiseert.",
-    "en": "We know that peter organizes a cosy neighbourhood meeting regularly.",
+    "nl": "Wij weten dat Peter regelmatig een gezellige buurtbijeenkomst organiseert.",
+    "en": "We know that Peter organizes a cosy neighbourhood meeting regularly.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -43367,7 +43367,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02745",
     "nl": "Vaak organiseert Peter een gezellige buurtbijeenkomst.",
-    "en": "Vaak peter organizes a cosy neighbourhood meeting.",
+    "en": "Often, Peter organizes a cosy neighbourhood meeting.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -43413,8 +43413,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02748",
-    "nl": "Wij weten dat peter vaak een gezellige buurtbijeenkomst organiseert.",
-    "en": "We know that peter organizes a cosy neighbourhood meeting often.",
+    "nl": "Wij weten dat Peter vaak een gezellige buurtbijeenkomst organiseert.",
+    "en": "We know that Peter organizes a cosy neighbourhood meeting often.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -43446,7 +43446,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02750",
     "nl": "Op maandag organiseert Peter een gezellige buurtbijeenkomst.",
-    "en": "Op maandag peter organizes a cosy neighbourhood meeting.",
+    "en": "On Monday, Peter organizes a cosy neighbourhood meeting.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -43492,8 +43492,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02753",
-    "nl": "Wij weten dat peter op maandag een gezellige buurtbijeenkomst organiseert.",
-    "en": "We know that peter organizes a cosy neighbourhood meeting on Monday.",
+    "nl": "Wij weten dat Peter op maandag een gezellige buurtbijeenkomst organiseert.",
+    "en": "We know that Peter organizes a cosy neighbourhood meeting on Monday.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -43525,7 +43525,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02755",
     "nl": "Tijdens de lunch organiseert Peter een gezellige buurtbijeenkomst.",
-    "en": "Tijdens de lunch peter organizes a cosy neighbourhood meeting.",
+    "en": "During lunch, Peter organizes a cosy neighbourhood meeting.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -43571,8 +43571,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02758",
-    "nl": "Wij weten dat peter tijdens de lunch een gezellige buurtbijeenkomst organiseert.",
-    "en": "We know that peter organizes a cosy neighbourhood meeting during lunch.",
+    "nl": "Wij weten dat Peter tijdens de lunch een gezellige buurtbijeenkomst organiseert.",
+    "en": "We know that Peter organizes a cosy neighbourhood meeting during lunch.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -43604,7 +43604,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02760",
     "nl": "Na het werk organiseert Peter een gezellige buurtbijeenkomst.",
-    "en": "Na het werk peter organizes a cosy neighbourhood meeting.",
+    "en": "After work, Peter organizes a cosy neighbourhood meeting.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -43650,8 +43650,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02763",
-    "nl": "Wij weten dat peter na het werk een gezellige buurtbijeenkomst organiseert.",
-    "en": "We know that peter organizes a cosy neighbourhood meeting after work.",
+    "nl": "Wij weten dat Peter na het werk een gezellige buurtbijeenkomst organiseert.",
+    "en": "We know that Peter organizes a cosy neighbourhood meeting after work.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -43683,7 +43683,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02765",
     "nl": "Sinds vorige maand organiseert Peter een gezellige buurtbijeenkomst.",
-    "en": "Sinds vorige maand peter organizes a cosy neighbourhood meeting.",
+    "en": "Since last month, Peter organizes a cosy neighbourhood meeting.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -43729,8 +43729,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02768",
-    "nl": "Wij weten dat peter sinds vorige maand een gezellige buurtbijeenkomst organiseert.",
-    "en": "We know that peter organizes a cosy neighbourhood meeting since last month.",
+    "nl": "Wij weten dat Peter sinds vorige maand een gezellige buurtbijeenkomst organiseert.",
+    "en": "We know that Peter organizes a cosy neighbourhood meeting since last month.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -43762,7 +43762,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02770",
     "nl": "Met grote zorgvuldigheid organiseert Peter een gezellige buurtbijeenkomst.",
-    "en": "Met grote zorgvuldigheid peter organizes a cosy neighbourhood meeting.",
+    "en": "With great care, Peter organizes a cosy neighbourhood meeting.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -43808,8 +43808,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02773",
-    "nl": "Wij weten dat peter met grote zorgvuldigheid een gezellige buurtbijeenkomst organiseert.",
-    "en": "We know that peter organizes a cosy neighbourhood meeting with great care.",
+    "nl": "Wij weten dat Peter met grote zorgvuldigheid een gezellige buurtbijeenkomst organiseert.",
+    "en": "We know that Peter organizes a cosy neighbourhood meeting with great care.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -43841,7 +43841,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02775",
     "nl": "Elke ochtend analyseert Peter de complexe financiële resultaten.",
-    "en": "Elke ochtend peter analyzes the complex financial results.",
+    "en": "Every morning, Peter analyzes the complex financial results.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -43887,8 +43887,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02778",
-    "nl": "Wij weten dat peter elke ochtend de complexe financiële resultaten analyseert.",
-    "en": "We know that peter analyzes the complex financial results every morning.",
+    "nl": "Wij weten dat Peter elke ochtend de complexe financiële resultaten analyseert.",
+    "en": "We know that Peter analyzes the complex financial results every morning.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -43920,7 +43920,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02780",
     "nl": "Gisterenmiddag analyseert Peter de complexe financiële resultaten.",
-    "en": "Gisterenmiddag peter analyzes the complex financial results.",
+    "en": "Yesterday afternoon, Peter analyzes the complex financial results.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -43966,8 +43966,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02783",
-    "nl": "Wij weten dat peter gisterenmiddag de complexe financiële resultaten analyseert.",
-    "en": "We know that peter analyzes the complex financial results yesterday afternoon.",
+    "nl": "Wij weten dat Peter gisterenmiddag de complexe financiële resultaten analyseert.",
+    "en": "We know that Peter analyzes the complex financial results yesterday afternoon.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -43999,7 +43999,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02785",
     "nl": "Volgende week analyseert Peter de complexe financiële resultaten.",
-    "en": "Volgende week peter analyzes the complex financial results.",
+    "en": "Next week, Peter analyzes the complex financial results.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -44045,8 +44045,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02788",
-    "nl": "Wij weten dat peter volgende week de complexe financiële resultaten analyseert.",
-    "en": "We know that peter analyzes the complex financial results next week.",
+    "nl": "Wij weten dat Peter volgende week de complexe financiële resultaten analyseert.",
+    "en": "We know that Peter analyzes the complex financial results next week.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -44078,7 +44078,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02790",
     "nl": "In het weekend analyseert Peter de complexe financiële resultaten.",
-    "en": "In het weekend peter analyzes the complex financial results.",
+    "en": "At the weekend, Peter analyzes the complex financial results.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -44124,8 +44124,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02793",
-    "nl": "Wij weten dat peter in het weekend de complexe financiële resultaten analyseert.",
-    "en": "We know that peter analyzes the complex financial results at the weekend.",
+    "nl": "Wij weten dat Peter in het weekend de complexe financiële resultaten analyseert.",
+    "en": "We know that Peter analyzes the complex financial results at the weekend.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -44157,7 +44157,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02795",
     "nl": "Om acht uur analyseert Peter de complexe financiële resultaten.",
-    "en": "Om acht uur peter analyzes the complex financial results.",
+    "en": "At eight o'clock, Peter analyzes the complex financial results.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -44203,8 +44203,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02798",
-    "nl": "Wij weten dat peter om acht uur de complexe financiële resultaten analyseert.",
-    "en": "We know that peter analyzes the complex financial results at eight o'clock.",
+    "nl": "Wij weten dat Peter om acht uur de complexe financiële resultaten analyseert.",
+    "en": "We know that Peter analyzes the complex financial results at eight o'clock.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -44236,7 +44236,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02800",
     "nl": "Regelmatig analyseert Peter de complexe financiële resultaten.",
-    "en": "Regelmatig peter analyzes the complex financial results.",
+    "en": "Regularly, Peter analyzes the complex financial results.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -44282,8 +44282,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02803",
-    "nl": "Wij weten dat peter regelmatig de complexe financiële resultaten analyseert.",
-    "en": "We know that peter analyzes the complex financial results regularly.",
+    "nl": "Wij weten dat Peter regelmatig de complexe financiële resultaten analyseert.",
+    "en": "We know that Peter analyzes the complex financial results regularly.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -44315,7 +44315,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02805",
     "nl": "Vaak analyseert Peter de complexe financiële resultaten.",
-    "en": "Vaak peter analyzes the complex financial results.",
+    "en": "Often, Peter analyzes the complex financial results.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -44361,8 +44361,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02808",
-    "nl": "Wij weten dat peter vaak de complexe financiële resultaten analyseert.",
-    "en": "We know that peter analyzes the complex financial results often.",
+    "nl": "Wij weten dat Peter vaak de complexe financiële resultaten analyseert.",
+    "en": "We know that Peter analyzes the complex financial results often.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -44394,7 +44394,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02810",
     "nl": "Op maandag analyseert Peter de complexe financiële resultaten.",
-    "en": "Op maandag peter analyzes the complex financial results.",
+    "en": "On Monday, Peter analyzes the complex financial results.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -44440,8 +44440,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02813",
-    "nl": "Wij weten dat peter op maandag de complexe financiële resultaten analyseert.",
-    "en": "We know that peter analyzes the complex financial results on Monday.",
+    "nl": "Wij weten dat Peter op maandag de complexe financiële resultaten analyseert.",
+    "en": "We know that Peter analyzes the complex financial results on Monday.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -44473,7 +44473,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02815",
     "nl": "Tijdens de lunch analyseert Peter de complexe financiële resultaten.",
-    "en": "Tijdens de lunch peter analyzes the complex financial results.",
+    "en": "During lunch, Peter analyzes the complex financial results.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -44519,8 +44519,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02818",
-    "nl": "Wij weten dat peter tijdens de lunch de complexe financiële resultaten analyseert.",
-    "en": "We know that peter analyzes the complex financial results during lunch.",
+    "nl": "Wij weten dat Peter tijdens de lunch de complexe financiële resultaten analyseert.",
+    "en": "We know that Peter analyzes the complex financial results during lunch.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -44552,7 +44552,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02820",
     "nl": "Na het werk analyseert Peter de complexe financiële resultaten.",
-    "en": "Na het werk peter analyzes the complex financial results.",
+    "en": "After work, Peter analyzes the complex financial results.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -44598,8 +44598,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02823",
-    "nl": "Wij weten dat peter na het werk de complexe financiële resultaten analyseert.",
-    "en": "We know that peter analyzes the complex financial results after work.",
+    "nl": "Wij weten dat Peter na het werk de complexe financiële resultaten analyseert.",
+    "en": "We know that Peter analyzes the complex financial results after work.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -44631,7 +44631,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02825",
     "nl": "Sinds vorige maand analyseert Peter de complexe financiële resultaten.",
-    "en": "Sinds vorige maand peter analyzes the complex financial results.",
+    "en": "Since last month, Peter analyzes the complex financial results.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -44677,8 +44677,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02828",
-    "nl": "Wij weten dat peter sinds vorige maand de complexe financiële resultaten analyseert.",
-    "en": "We know that peter analyzes the complex financial results since last month.",
+    "nl": "Wij weten dat Peter sinds vorige maand de complexe financiële resultaten analyseert.",
+    "en": "We know that Peter analyzes the complex financial results since last month.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -44710,7 +44710,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02830",
     "nl": "Met grote zorgvuldigheid analyseert Peter de complexe financiële resultaten.",
-    "en": "Met grote zorgvuldigheid peter analyzes the complex financial results.",
+    "en": "With great care, Peter analyzes the complex financial results.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -44756,8 +44756,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02833",
-    "nl": "Wij weten dat peter met grote zorgvuldigheid de complexe financiële resultaten analyseert.",
-    "en": "We know that peter analyzes the complex financial results with great care.",
+    "nl": "Wij weten dat Peter met grote zorgvuldigheid de complexe financiële resultaten analyseert.",
+    "en": "We know that Peter analyzes the complex financial results with great care.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -44789,7 +44789,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02835",
     "nl": "Elke ochtend bespreekt Peter de nieuwe beleidsvoorstellen.",
-    "en": "Elke ochtend peter discusses the new policy proposals.",
+    "en": "Every morning, Peter discusses the new policy proposals.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -44835,8 +44835,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02838",
-    "nl": "Wij weten dat peter elke ochtend de nieuwe beleidsvoorstellen bespreekt.",
-    "en": "We know that peter discusses the new policy proposals every morning.",
+    "nl": "Wij weten dat Peter elke ochtend de nieuwe beleidsvoorstellen bespreekt.",
+    "en": "We know that Peter discusses the new policy proposals every morning.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -44868,7 +44868,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02840",
     "nl": "Gisterenmiddag bespreekt Peter de nieuwe beleidsvoorstellen.",
-    "en": "Gisterenmiddag peter discusses the new policy proposals.",
+    "en": "Yesterday afternoon, Peter discusses the new policy proposals.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -44914,8 +44914,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02843",
-    "nl": "Wij weten dat peter gisterenmiddag de nieuwe beleidsvoorstellen bespreekt.",
-    "en": "We know that peter discusses the new policy proposals yesterday afternoon.",
+    "nl": "Wij weten dat Peter gisterenmiddag de nieuwe beleidsvoorstellen bespreekt.",
+    "en": "We know that Peter discusses the new policy proposals yesterday afternoon.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -44947,7 +44947,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02845",
     "nl": "Volgende week bespreekt Peter de nieuwe beleidsvoorstellen.",
-    "en": "Volgende week peter discusses the new policy proposals.",
+    "en": "Next week, Peter discusses the new policy proposals.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -44993,8 +44993,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02848",
-    "nl": "Wij weten dat peter volgende week de nieuwe beleidsvoorstellen bespreekt.",
-    "en": "We know that peter discusses the new policy proposals next week.",
+    "nl": "Wij weten dat Peter volgende week de nieuwe beleidsvoorstellen bespreekt.",
+    "en": "We know that Peter discusses the new policy proposals next week.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -45026,7 +45026,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02850",
     "nl": "In het weekend bespreekt Peter de nieuwe beleidsvoorstellen.",
-    "en": "In het weekend peter discusses the new policy proposals.",
+    "en": "At the weekend, Peter discusses the new policy proposals.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -45072,8 +45072,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02853",
-    "nl": "Wij weten dat peter in het weekend de nieuwe beleidsvoorstellen bespreekt.",
-    "en": "We know that peter discusses the new policy proposals at the weekend.",
+    "nl": "Wij weten dat Peter in het weekend de nieuwe beleidsvoorstellen bespreekt.",
+    "en": "We know that Peter discusses the new policy proposals at the weekend.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -45105,7 +45105,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02855",
     "nl": "Om acht uur bespreekt Peter de nieuwe beleidsvoorstellen.",
-    "en": "Om acht uur peter discusses the new policy proposals.",
+    "en": "At eight o'clock, Peter discusses the new policy proposals.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -45151,8 +45151,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02858",
-    "nl": "Wij weten dat peter om acht uur de nieuwe beleidsvoorstellen bespreekt.",
-    "en": "We know that peter discusses the new policy proposals at eight o'clock.",
+    "nl": "Wij weten dat Peter om acht uur de nieuwe beleidsvoorstellen bespreekt.",
+    "en": "We know that Peter discusses the new policy proposals at eight o'clock.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -45184,7 +45184,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02860",
     "nl": "Regelmatig bespreekt Peter de nieuwe beleidsvoorstellen.",
-    "en": "Regelmatig peter discusses the new policy proposals.",
+    "en": "Regularly, Peter discusses the new policy proposals.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -45230,8 +45230,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02863",
-    "nl": "Wij weten dat peter regelmatig de nieuwe beleidsvoorstellen bespreekt.",
-    "en": "We know that peter discusses the new policy proposals regularly.",
+    "nl": "Wij weten dat Peter regelmatig de nieuwe beleidsvoorstellen bespreekt.",
+    "en": "We know that Peter discusses the new policy proposals regularly.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -45263,7 +45263,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02865",
     "nl": "Vaak bespreekt Peter de nieuwe beleidsvoorstellen.",
-    "en": "Vaak peter discusses the new policy proposals.",
+    "en": "Often, Peter discusses the new policy proposals.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -45309,8 +45309,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02868",
-    "nl": "Wij weten dat peter vaak de nieuwe beleidsvoorstellen bespreekt.",
-    "en": "We know that peter discusses the new policy proposals often.",
+    "nl": "Wij weten dat Peter vaak de nieuwe beleidsvoorstellen bespreekt.",
+    "en": "We know that Peter discusses the new policy proposals often.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -45342,7 +45342,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02870",
     "nl": "Op maandag bespreekt Peter de nieuwe beleidsvoorstellen.",
-    "en": "Op maandag peter discusses the new policy proposals.",
+    "en": "On Monday, Peter discusses the new policy proposals.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -45388,8 +45388,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02873",
-    "nl": "Wij weten dat peter op maandag de nieuwe beleidsvoorstellen bespreekt.",
-    "en": "We know that peter discusses the new policy proposals on Monday.",
+    "nl": "Wij weten dat Peter op maandag de nieuwe beleidsvoorstellen bespreekt.",
+    "en": "We know that Peter discusses the new policy proposals on Monday.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -45421,7 +45421,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02875",
     "nl": "Tijdens de lunch bespreekt Peter de nieuwe beleidsvoorstellen.",
-    "en": "Tijdens de lunch peter discusses the new policy proposals.",
+    "en": "During lunch, Peter discusses the new policy proposals.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -45467,8 +45467,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02878",
-    "nl": "Wij weten dat peter tijdens de lunch de nieuwe beleidsvoorstellen bespreekt.",
-    "en": "We know that peter discusses the new policy proposals during lunch.",
+    "nl": "Wij weten dat Peter tijdens de lunch de nieuwe beleidsvoorstellen bespreekt.",
+    "en": "We know that Peter discusses the new policy proposals during lunch.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -45500,7 +45500,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02880",
     "nl": "Na het werk bespreekt Peter de nieuwe beleidsvoorstellen.",
-    "en": "Na het werk peter discusses the new policy proposals.",
+    "en": "After work, Peter discusses the new policy proposals.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -45546,8 +45546,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02883",
-    "nl": "Wij weten dat peter na het werk de nieuwe beleidsvoorstellen bespreekt.",
-    "en": "We know that peter discusses the new policy proposals after work.",
+    "nl": "Wij weten dat Peter na het werk de nieuwe beleidsvoorstellen bespreekt.",
+    "en": "We know that Peter discusses the new policy proposals after work.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -45579,7 +45579,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02885",
     "nl": "Sinds vorige maand bespreekt Peter de nieuwe beleidsvoorstellen.",
-    "en": "Sinds vorige maand peter discusses the new policy proposals.",
+    "en": "Since last month, Peter discusses the new policy proposals.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -45625,8 +45625,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02888",
-    "nl": "Wij weten dat peter sinds vorige maand de nieuwe beleidsvoorstellen bespreekt.",
-    "en": "We know that peter discusses the new policy proposals since last month.",
+    "nl": "Wij weten dat Peter sinds vorige maand de nieuwe beleidsvoorstellen bespreekt.",
+    "en": "We know that Peter discusses the new policy proposals since last month.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -45658,7 +45658,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02890",
     "nl": "Met grote zorgvuldigheid bespreekt Peter de nieuwe beleidsvoorstellen.",
-    "en": "Met grote zorgvuldigheid peter discusses the new policy proposals.",
+    "en": "With great care, Peter discusses the new policy proposals.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -45704,8 +45704,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02893",
-    "nl": "Wij weten dat peter met grote zorgvuldigheid de nieuwe beleidsvoorstellen bespreekt.",
-    "en": "We know that peter discusses the new policy proposals with great care.",
+    "nl": "Wij weten dat Peter met grote zorgvuldigheid de nieuwe beleidsvoorstellen bespreekt.",
+    "en": "We know that Peter discusses the new policy proposals with great care.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -45737,7 +45737,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02895",
     "nl": "Elke ochtend presenteert Peter het innovatieve onderzoeksrapport.",
-    "en": "Elke ochtend peter presents the innovative research report.",
+    "en": "Every morning, Peter presents the innovative research report.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -45783,8 +45783,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02898",
-    "nl": "Wij weten dat peter elke ochtend het innovatieve onderzoeksrapport presenteert.",
-    "en": "We know that peter presents the innovative research report every morning.",
+    "nl": "Wij weten dat Peter elke ochtend het innovatieve onderzoeksrapport presenteert.",
+    "en": "We know that Peter presents the innovative research report every morning.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -45816,7 +45816,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02900",
     "nl": "Gisterenmiddag presenteert Peter het innovatieve onderzoeksrapport.",
-    "en": "Gisterenmiddag peter presents the innovative research report.",
+    "en": "Yesterday afternoon, Peter presents the innovative research report.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -45862,8 +45862,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02903",
-    "nl": "Wij weten dat peter gisterenmiddag het innovatieve onderzoeksrapport presenteert.",
-    "en": "We know that peter presents the innovative research report yesterday afternoon.",
+    "nl": "Wij weten dat Peter gisterenmiddag het innovatieve onderzoeksrapport presenteert.",
+    "en": "We know that Peter presents the innovative research report yesterday afternoon.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -45895,7 +45895,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02905",
     "nl": "Volgende week presenteert Peter het innovatieve onderzoeksrapport.",
-    "en": "Volgende week peter presents the innovative research report.",
+    "en": "Next week, Peter presents the innovative research report.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -45941,8 +45941,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02908",
-    "nl": "Wij weten dat peter volgende week het innovatieve onderzoeksrapport presenteert.",
-    "en": "We know that peter presents the innovative research report next week.",
+    "nl": "Wij weten dat Peter volgende week het innovatieve onderzoeksrapport presenteert.",
+    "en": "We know that Peter presents the innovative research report next week.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -45974,7 +45974,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02910",
     "nl": "In het weekend presenteert Peter het innovatieve onderzoeksrapport.",
-    "en": "In het weekend peter presents the innovative research report.",
+    "en": "At the weekend, Peter presents the innovative research report.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -46020,8 +46020,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02913",
-    "nl": "Wij weten dat peter in het weekend het innovatieve onderzoeksrapport presenteert.",
-    "en": "We know that peter presents the innovative research report at the weekend.",
+    "nl": "Wij weten dat Peter in het weekend het innovatieve onderzoeksrapport presenteert.",
+    "en": "We know that Peter presents the innovative research report at the weekend.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -46053,7 +46053,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02915",
     "nl": "Om acht uur presenteert Peter het innovatieve onderzoeksrapport.",
-    "en": "Om acht uur peter presents the innovative research report.",
+    "en": "At eight o'clock, Peter presents the innovative research report.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -46099,8 +46099,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02918",
-    "nl": "Wij weten dat peter om acht uur het innovatieve onderzoeksrapport presenteert.",
-    "en": "We know that peter presents the innovative research report at eight o'clock.",
+    "nl": "Wij weten dat Peter om acht uur het innovatieve onderzoeksrapport presenteert.",
+    "en": "We know that Peter presents the innovative research report at eight o'clock.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -46132,7 +46132,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02920",
     "nl": "Regelmatig presenteert Peter het innovatieve onderzoeksrapport.",
-    "en": "Regelmatig peter presents the innovative research report.",
+    "en": "Regularly, Peter presents the innovative research report.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -46178,8 +46178,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02923",
-    "nl": "Wij weten dat peter regelmatig het innovatieve onderzoeksrapport presenteert.",
-    "en": "We know that peter presents the innovative research report regularly.",
+    "nl": "Wij weten dat Peter regelmatig het innovatieve onderzoeksrapport presenteert.",
+    "en": "We know that Peter presents the innovative research report regularly.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -46211,7 +46211,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02925",
     "nl": "Vaak presenteert Peter het innovatieve onderzoeksrapport.",
-    "en": "Vaak peter presents the innovative research report.",
+    "en": "Often, Peter presents the innovative research report.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -46257,8 +46257,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02928",
-    "nl": "Wij weten dat peter vaak het innovatieve onderzoeksrapport presenteert.",
-    "en": "We know that peter presents the innovative research report often.",
+    "nl": "Wij weten dat Peter vaak het innovatieve onderzoeksrapport presenteert.",
+    "en": "We know that Peter presents the innovative research report often.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -46290,7 +46290,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02930",
     "nl": "Op maandag presenteert Peter het innovatieve onderzoeksrapport.",
-    "en": "Op maandag peter presents the innovative research report.",
+    "en": "On Monday, Peter presents the innovative research report.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -46336,8 +46336,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02933",
-    "nl": "Wij weten dat peter op maandag het innovatieve onderzoeksrapport presenteert.",
-    "en": "We know that peter presents the innovative research report on Monday.",
+    "nl": "Wij weten dat Peter op maandag het innovatieve onderzoeksrapport presenteert.",
+    "en": "We know that Peter presents the innovative research report on Monday.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -46369,7 +46369,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02935",
     "nl": "Tijdens de lunch presenteert Peter het innovatieve onderzoeksrapport.",
-    "en": "Tijdens de lunch peter presents the innovative research report.",
+    "en": "During lunch, Peter presents the innovative research report.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -46415,8 +46415,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02938",
-    "nl": "Wij weten dat peter tijdens de lunch het innovatieve onderzoeksrapport presenteert.",
-    "en": "We know that peter presents the innovative research report during lunch.",
+    "nl": "Wij weten dat Peter tijdens de lunch het innovatieve onderzoeksrapport presenteert.",
+    "en": "We know that Peter presents the innovative research report during lunch.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -46448,7 +46448,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02940",
     "nl": "Na het werk presenteert Peter het innovatieve onderzoeksrapport.",
-    "en": "Na het werk peter presents the innovative research report.",
+    "en": "After work, Peter presents the innovative research report.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -46494,8 +46494,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02943",
-    "nl": "Wij weten dat peter na het werk het innovatieve onderzoeksrapport presenteert.",
-    "en": "We know that peter presents the innovative research report after work.",
+    "nl": "Wij weten dat Peter na het werk het innovatieve onderzoeksrapport presenteert.",
+    "en": "We know that Peter presents the innovative research report after work.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -46527,7 +46527,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02945",
     "nl": "Sinds vorige maand presenteert Peter het innovatieve onderzoeksrapport.",
-    "en": "Sinds vorige maand peter presents the innovative research report.",
+    "en": "Since last month, Peter presents the innovative research report.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -46573,8 +46573,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02948",
-    "nl": "Wij weten dat peter sinds vorige maand het innovatieve onderzoeksrapport presenteert.",
-    "en": "We know that peter presents the innovative research report since last month.",
+    "nl": "Wij weten dat Peter sinds vorige maand het innovatieve onderzoeksrapport presenteert.",
+    "en": "We know that Peter presents the innovative research report since last month.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -46606,7 +46606,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02950",
     "nl": "Met grote zorgvuldigheid presenteert Peter het innovatieve onderzoeksrapport.",
-    "en": "Met grote zorgvuldigheid peter presents the innovative research report.",
+    "en": "With great care, Peter presents the innovative research report.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -46652,8 +46652,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02953",
-    "nl": "Wij weten dat peter met grote zorgvuldigheid het innovatieve onderzoeksrapport presenteert.",
-    "en": "We know that peter presents the innovative research report with great care.",
+    "nl": "Wij weten dat Peter met grote zorgvuldigheid het innovatieve onderzoeksrapport presenteert.",
+    "en": "We know that Peter presents the innovative research report with great care.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -46685,7 +46685,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02955",
     "nl": "Elke ochtend controleert Peter de veiligheidsvoorschriften in het gebouw.",
-    "en": "Elke ochtend peter checks the safety regulations in the building.",
+    "en": "Every morning, Peter checks the safety regulations in the building.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -46731,8 +46731,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02958",
-    "nl": "Wij weten dat peter elke ochtend de veiligheidsvoorschriften in het gebouw controleert.",
-    "en": "We know that peter checks the safety regulations in the building every morning.",
+    "nl": "Wij weten dat Peter elke ochtend de veiligheidsvoorschriften in het gebouw controleert.",
+    "en": "We know that Peter checks the safety regulations in the building every morning.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -46764,7 +46764,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02960",
     "nl": "Gisterenmiddag controleert Peter de veiligheidsvoorschriften in het gebouw.",
-    "en": "Gisterenmiddag peter checks the safety regulations in the building.",
+    "en": "Yesterday afternoon, Peter checks the safety regulations in the building.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -46810,8 +46810,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02963",
-    "nl": "Wij weten dat peter gisterenmiddag de veiligheidsvoorschriften in het gebouw controleert.",
-    "en": "We know that peter checks the safety regulations in the building yesterday afternoon.",
+    "nl": "Wij weten dat Peter gisterenmiddag de veiligheidsvoorschriften in het gebouw controleert.",
+    "en": "We know that Peter checks the safety regulations in the building yesterday afternoon.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -46843,7 +46843,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02965",
     "nl": "Volgende week controleert Peter de veiligheidsvoorschriften in het gebouw.",
-    "en": "Volgende week peter checks the safety regulations in the building.",
+    "en": "Next week, Peter checks the safety regulations in the building.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -46889,8 +46889,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02968",
-    "nl": "Wij weten dat peter volgende week de veiligheidsvoorschriften in het gebouw controleert.",
-    "en": "We know that peter checks the safety regulations in the building next week.",
+    "nl": "Wij weten dat Peter volgende week de veiligheidsvoorschriften in het gebouw controleert.",
+    "en": "We know that Peter checks the safety regulations in the building next week.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -46922,7 +46922,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02970",
     "nl": "In het weekend controleert Peter de veiligheidsvoorschriften in het gebouw.",
-    "en": "In het weekend peter checks the safety regulations in the building.",
+    "en": "At the weekend, Peter checks the safety regulations in the building.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -46968,8 +46968,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02973",
-    "nl": "Wij weten dat peter in het weekend de veiligheidsvoorschriften in het gebouw controleert.",
-    "en": "We know that peter checks the safety regulations in the building at the weekend.",
+    "nl": "Wij weten dat Peter in het weekend de veiligheidsvoorschriften in het gebouw controleert.",
+    "en": "We know that Peter checks the safety regulations in the building at the weekend.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -47001,7 +47001,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02975",
     "nl": "Om acht uur controleert Peter de veiligheidsvoorschriften in het gebouw.",
-    "en": "Om acht uur peter checks the safety regulations in the building.",
+    "en": "At eight o'clock, Peter checks the safety regulations in the building.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -47047,8 +47047,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02978",
-    "nl": "Wij weten dat peter om acht uur de veiligheidsvoorschriften in het gebouw controleert.",
-    "en": "We know that peter checks the safety regulations in the building at eight o'clock.",
+    "nl": "Wij weten dat Peter om acht uur de veiligheidsvoorschriften in het gebouw controleert.",
+    "en": "We know that Peter checks the safety regulations in the building at eight o'clock.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -47080,7 +47080,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02980",
     "nl": "Regelmatig controleert Peter de veiligheidsvoorschriften in het gebouw.",
-    "en": "Regelmatig peter checks the safety regulations in the building.",
+    "en": "Regularly, Peter checks the safety regulations in the building.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -47126,8 +47126,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02983",
-    "nl": "Wij weten dat peter regelmatig de veiligheidsvoorschriften in het gebouw controleert.",
-    "en": "We know that peter checks the safety regulations in the building regularly.",
+    "nl": "Wij weten dat Peter regelmatig de veiligheidsvoorschriften in het gebouw controleert.",
+    "en": "We know that Peter checks the safety regulations in the building regularly.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -47159,7 +47159,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02985",
     "nl": "Vaak controleert Peter de veiligheidsvoorschriften in het gebouw.",
-    "en": "Vaak peter checks the safety regulations in the building.",
+    "en": "Often, Peter checks the safety regulations in the building.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -47205,8 +47205,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02988",
-    "nl": "Wij weten dat peter vaak de veiligheidsvoorschriften in het gebouw controleert.",
-    "en": "We know that peter checks the safety regulations in the building often.",
+    "nl": "Wij weten dat Peter vaak de veiligheidsvoorschriften in het gebouw controleert.",
+    "en": "We know that Peter checks the safety regulations in the building often.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -47238,7 +47238,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02990",
     "nl": "Op maandag controleert Peter de veiligheidsvoorschriften in het gebouw.",
-    "en": "Op maandag peter checks the safety regulations in the building.",
+    "en": "On Monday, Peter checks the safety regulations in the building.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -47284,8 +47284,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02993",
-    "nl": "Wij weten dat peter op maandag de veiligheidsvoorschriften in het gebouw controleert.",
-    "en": "We know that peter checks the safety regulations in the building on Monday.",
+    "nl": "Wij weten dat Peter op maandag de veiligheidsvoorschriften in het gebouw controleert.",
+    "en": "We know that Peter checks the safety regulations in the building on Monday.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -47317,7 +47317,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-02995",
     "nl": "Tijdens de lunch controleert Peter de veiligheidsvoorschriften in het gebouw.",
-    "en": "Tijdens de lunch peter checks the safety regulations in the building.",
+    "en": "During lunch, Peter checks the safety regulations in the building.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -47363,8 +47363,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-02998",
-    "nl": "Wij weten dat peter tijdens de lunch de veiligheidsvoorschriften in het gebouw controleert.",
-    "en": "We know that peter checks the safety regulations in the building during lunch.",
+    "nl": "Wij weten dat Peter tijdens de lunch de veiligheidsvoorschriften in het gebouw controleert.",
+    "en": "We know that Peter checks the safety regulations in the building during lunch.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -47396,7 +47396,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03000",
     "nl": "Na het werk controleert Peter de veiligheidsvoorschriften in het gebouw.",
-    "en": "Na het werk peter checks the safety regulations in the building.",
+    "en": "After work, Peter checks the safety regulations in the building.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -47442,8 +47442,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03003",
-    "nl": "Wij weten dat peter na het werk de veiligheidsvoorschriften in het gebouw controleert.",
-    "en": "We know that peter checks the safety regulations in the building after work.",
+    "nl": "Wij weten dat Peter na het werk de veiligheidsvoorschriften in het gebouw controleert.",
+    "en": "We know that Peter checks the safety regulations in the building after work.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -47475,7 +47475,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03005",
     "nl": "Sinds vorige maand controleert Peter de veiligheidsvoorschriften in het gebouw.",
-    "en": "Sinds vorige maand peter checks the safety regulations in the building.",
+    "en": "Since last month, Peter checks the safety regulations in the building.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -47521,8 +47521,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03008",
-    "nl": "Wij weten dat peter sinds vorige maand de veiligheidsvoorschriften in het gebouw controleert.",
-    "en": "We know that peter checks the safety regulations in the building since last month.",
+    "nl": "Wij weten dat Peter sinds vorige maand de veiligheidsvoorschriften in het gebouw controleert.",
+    "en": "We know that Peter checks the safety regulations in the building since last month.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -47554,7 +47554,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03010",
     "nl": "Met grote zorgvuldigheid controleert Peter de veiligheidsvoorschriften in het gebouw.",
-    "en": "Met grote zorgvuldigheid peter checks the safety regulations in the building.",
+    "en": "With great care, Peter checks the safety regulations in the building.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -47600,8 +47600,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03013",
-    "nl": "Wij weten dat peter met grote zorgvuldigheid de veiligheidsvoorschriften in het gebouw controleert.",
-    "en": "We know that peter checks the safety regulations in the building with great care.",
+    "nl": "Wij weten dat Peter met grote zorgvuldigheid de veiligheidsvoorschriften in het gebouw controleert.",
+    "en": "We know that Peter checks the safety regulations in the building with great care.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -47633,7 +47633,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03015",
     "nl": "Elke ochtend repareert Peter de kapotte fietsverlichting.",
-    "en": "Elke ochtend peter repairs the broken bicycle lighting.",
+    "en": "Every morning, Peter repairs the broken bicycle lighting.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -47679,8 +47679,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03018",
-    "nl": "Wij weten dat peter elke ochtend de kapotte fietsverlichting repareert.",
-    "en": "We know that peter repairs the broken bicycle lighting every morning.",
+    "nl": "Wij weten dat Peter elke ochtend de kapotte fietsverlichting repareert.",
+    "en": "We know that Peter repairs the broken bicycle lighting every morning.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -47712,7 +47712,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03020",
     "nl": "Gisterenmiddag repareert Peter de kapotte fietsverlichting.",
-    "en": "Gisterenmiddag peter repairs the broken bicycle lighting.",
+    "en": "Yesterday afternoon, Peter repairs the broken bicycle lighting.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -47758,8 +47758,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03023",
-    "nl": "Wij weten dat peter gisterenmiddag de kapotte fietsverlichting repareert.",
-    "en": "We know that peter repairs the broken bicycle lighting yesterday afternoon.",
+    "nl": "Wij weten dat Peter gisterenmiddag de kapotte fietsverlichting repareert.",
+    "en": "We know that Peter repairs the broken bicycle lighting yesterday afternoon.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -47791,7 +47791,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03025",
     "nl": "Volgende week repareert Peter de kapotte fietsverlichting.",
-    "en": "Volgende week peter repairs the broken bicycle lighting.",
+    "en": "Next week, Peter repairs the broken bicycle lighting.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -47837,8 +47837,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03028",
-    "nl": "Wij weten dat peter volgende week de kapotte fietsverlichting repareert.",
-    "en": "We know that peter repairs the broken bicycle lighting next week.",
+    "nl": "Wij weten dat Peter volgende week de kapotte fietsverlichting repareert.",
+    "en": "We know that Peter repairs the broken bicycle lighting next week.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -47870,7 +47870,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03030",
     "nl": "In het weekend repareert Peter de kapotte fietsverlichting.",
-    "en": "In het weekend peter repairs the broken bicycle lighting.",
+    "en": "At the weekend, Peter repairs the broken bicycle lighting.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -47916,8 +47916,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03033",
-    "nl": "Wij weten dat peter in het weekend de kapotte fietsverlichting repareert.",
-    "en": "We know that peter repairs the broken bicycle lighting at the weekend.",
+    "nl": "Wij weten dat Peter in het weekend de kapotte fietsverlichting repareert.",
+    "en": "We know that Peter repairs the broken bicycle lighting at the weekend.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -47949,7 +47949,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03035",
     "nl": "Om acht uur repareert Peter de kapotte fietsverlichting.",
-    "en": "Om acht uur peter repairs the broken bicycle lighting.",
+    "en": "At eight o'clock, Peter repairs the broken bicycle lighting.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -47995,8 +47995,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03038",
-    "nl": "Wij weten dat peter om acht uur de kapotte fietsverlichting repareert.",
-    "en": "We know that peter repairs the broken bicycle lighting at eight o'clock.",
+    "nl": "Wij weten dat Peter om acht uur de kapotte fietsverlichting repareert.",
+    "en": "We know that Peter repairs the broken bicycle lighting at eight o'clock.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -48028,7 +48028,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03040",
     "nl": "Regelmatig repareert Peter de kapotte fietsverlichting.",
-    "en": "Regelmatig peter repairs the broken bicycle lighting.",
+    "en": "Regularly, Peter repairs the broken bicycle lighting.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -48074,8 +48074,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03043",
-    "nl": "Wij weten dat peter regelmatig de kapotte fietsverlichting repareert.",
-    "en": "We know that peter repairs the broken bicycle lighting regularly.",
+    "nl": "Wij weten dat Peter regelmatig de kapotte fietsverlichting repareert.",
+    "en": "We know that Peter repairs the broken bicycle lighting regularly.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -48107,7 +48107,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03045",
     "nl": "Vaak repareert Peter de kapotte fietsverlichting.",
-    "en": "Vaak peter repairs the broken bicycle lighting.",
+    "en": "Often, Peter repairs the broken bicycle lighting.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -48153,8 +48153,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03048",
-    "nl": "Wij weten dat peter vaak de kapotte fietsverlichting repareert.",
-    "en": "We know that peter repairs the broken bicycle lighting often.",
+    "nl": "Wij weten dat Peter vaak de kapotte fietsverlichting repareert.",
+    "en": "We know that Peter repairs the broken bicycle lighting often.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -48186,7 +48186,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03050",
     "nl": "Op maandag repareert Peter de kapotte fietsverlichting.",
-    "en": "Op maandag peter repairs the broken bicycle lighting.",
+    "en": "On Monday, Peter repairs the broken bicycle lighting.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -48232,8 +48232,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03053",
-    "nl": "Wij weten dat peter op maandag de kapotte fietsverlichting repareert.",
-    "en": "We know that peter repairs the broken bicycle lighting on Monday.",
+    "nl": "Wij weten dat Peter op maandag de kapotte fietsverlichting repareert.",
+    "en": "We know that Peter repairs the broken bicycle lighting on Monday.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -48265,7 +48265,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03055",
     "nl": "Tijdens de lunch repareert Peter de kapotte fietsverlichting.",
-    "en": "Tijdens de lunch peter repairs the broken bicycle lighting.",
+    "en": "During lunch, Peter repairs the broken bicycle lighting.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -48311,8 +48311,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03058",
-    "nl": "Wij weten dat peter tijdens de lunch de kapotte fietsverlichting repareert.",
-    "en": "We know that peter repairs the broken bicycle lighting during lunch.",
+    "nl": "Wij weten dat Peter tijdens de lunch de kapotte fietsverlichting repareert.",
+    "en": "We know that Peter repairs the broken bicycle lighting during lunch.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -48344,7 +48344,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03060",
     "nl": "Na het werk repareert Peter de kapotte fietsverlichting.",
-    "en": "Na het werk peter repairs the broken bicycle lighting.",
+    "en": "After work, Peter repairs the broken bicycle lighting.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -48390,8 +48390,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03063",
-    "nl": "Wij weten dat peter na het werk de kapotte fietsverlichting repareert.",
-    "en": "We know that peter repairs the broken bicycle lighting after work.",
+    "nl": "Wij weten dat Peter na het werk de kapotte fietsverlichting repareert.",
+    "en": "We know that Peter repairs the broken bicycle lighting after work.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -48423,7 +48423,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03065",
     "nl": "Sinds vorige maand repareert Peter de kapotte fietsverlichting.",
-    "en": "Sinds vorige maand peter repairs the broken bicycle lighting.",
+    "en": "Since last month, Peter repairs the broken bicycle lighting.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -48469,8 +48469,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03068",
-    "nl": "Wij weten dat peter sinds vorige maand de kapotte fietsverlichting repareert.",
-    "en": "We know that peter repairs the broken bicycle lighting since last month.",
+    "nl": "Wij weten dat Peter sinds vorige maand de kapotte fietsverlichting repareert.",
+    "en": "We know that Peter repairs the broken bicycle lighting since last month.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -48502,7 +48502,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03070",
     "nl": "Met grote zorgvuldigheid repareert Peter de kapotte fietsverlichting.",
-    "en": "Met grote zorgvuldigheid peter repairs the broken bicycle lighting.",
+    "en": "With great care, Peter repairs the broken bicycle lighting.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -48548,8 +48548,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03073",
-    "nl": "Wij weten dat peter met grote zorgvuldigheid de kapotte fietsverlichting repareert.",
-    "en": "We know that peter repairs the broken bicycle lighting with great care.",
+    "nl": "Wij weten dat Peter met grote zorgvuldigheid de kapotte fietsverlichting repareert.",
+    "en": "We know that Peter repairs the broken bicycle lighting with great care.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -48581,7 +48581,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03075",
     "nl": "Elke ochtend vertaalt Peter de officiële documenten.",
-    "en": "Elke ochtend peter translates the official documents.",
+    "en": "Every morning, Peter translates the official documents.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -48627,8 +48627,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03078",
-    "nl": "Wij weten dat peter elke ochtend de officiële documenten vertaalt.",
-    "en": "We know that peter translates the official documents every morning.",
+    "nl": "Wij weten dat Peter elke ochtend de officiële documenten vertaalt.",
+    "en": "We know that Peter translates the official documents every morning.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -48660,7 +48660,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03080",
     "nl": "Gisterenmiddag vertaalt Peter de officiële documenten.",
-    "en": "Gisterenmiddag peter translates the official documents.",
+    "en": "Yesterday afternoon, Peter translates the official documents.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -48706,8 +48706,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03083",
-    "nl": "Wij weten dat peter gisterenmiddag de officiële documenten vertaalt.",
-    "en": "We know that peter translates the official documents yesterday afternoon.",
+    "nl": "Wij weten dat Peter gisterenmiddag de officiële documenten vertaalt.",
+    "en": "We know that Peter translates the official documents yesterday afternoon.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -48739,7 +48739,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03085",
     "nl": "Volgende week vertaalt Peter de officiële documenten.",
-    "en": "Volgende week peter translates the official documents.",
+    "en": "Next week, Peter translates the official documents.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -48785,8 +48785,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03088",
-    "nl": "Wij weten dat peter volgende week de officiële documenten vertaalt.",
-    "en": "We know that peter translates the official documents next week.",
+    "nl": "Wij weten dat Peter volgende week de officiële documenten vertaalt.",
+    "en": "We know that Peter translates the official documents next week.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -48818,7 +48818,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03090",
     "nl": "In het weekend vertaalt Peter de officiële documenten.",
-    "en": "In het weekend peter translates the official documents.",
+    "en": "At the weekend, Peter translates the official documents.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -48864,8 +48864,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03093",
-    "nl": "Wij weten dat peter in het weekend de officiële documenten vertaalt.",
-    "en": "We know that peter translates the official documents at the weekend.",
+    "nl": "Wij weten dat Peter in het weekend de officiële documenten vertaalt.",
+    "en": "We know that Peter translates the official documents at the weekend.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -48897,7 +48897,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03095",
     "nl": "Om acht uur vertaalt Peter de officiële documenten.",
-    "en": "Om acht uur peter translates the official documents.",
+    "en": "At eight o'clock, Peter translates the official documents.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -48943,8 +48943,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03098",
-    "nl": "Wij weten dat peter om acht uur de officiële documenten vertaalt.",
-    "en": "We know that peter translates the official documents at eight o'clock.",
+    "nl": "Wij weten dat Peter om acht uur de officiële documenten vertaalt.",
+    "en": "We know that Peter translates the official documents at eight o'clock.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -48976,7 +48976,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03100",
     "nl": "Regelmatig vertaalt Peter de officiële documenten.",
-    "en": "Regelmatig peter translates the official documents.",
+    "en": "Regularly, Peter translates the official documents.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -49022,8 +49022,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03103",
-    "nl": "Wij weten dat peter regelmatig de officiële documenten vertaalt.",
-    "en": "We know that peter translates the official documents regularly.",
+    "nl": "Wij weten dat Peter regelmatig de officiële documenten vertaalt.",
+    "en": "We know that Peter translates the official documents regularly.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -49055,7 +49055,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03105",
     "nl": "Vaak vertaalt Peter de officiële documenten.",
-    "en": "Vaak peter translates the official documents.",
+    "en": "Often, Peter translates the official documents.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -49101,8 +49101,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03108",
-    "nl": "Wij weten dat peter vaak de officiële documenten vertaalt.",
-    "en": "We know that peter translates the official documents often.",
+    "nl": "Wij weten dat Peter vaak de officiële documenten vertaalt.",
+    "en": "We know that Peter translates the official documents often.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -49134,7 +49134,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03110",
     "nl": "Op maandag vertaalt Peter de officiële documenten.",
-    "en": "Op maandag peter translates the official documents.",
+    "en": "On Monday, Peter translates the official documents.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -49180,8 +49180,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03113",
-    "nl": "Wij weten dat peter op maandag de officiële documenten vertaalt.",
-    "en": "We know that peter translates the official documents on Monday.",
+    "nl": "Wij weten dat Peter op maandag de officiële documenten vertaalt.",
+    "en": "We know that Peter translates the official documents on Monday.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -49213,7 +49213,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03115",
     "nl": "Tijdens de lunch vertaalt Peter de officiële documenten.",
-    "en": "Tijdens de lunch peter translates the official documents.",
+    "en": "During lunch, Peter translates the official documents.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -49259,8 +49259,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03118",
-    "nl": "Wij weten dat peter tijdens de lunch de officiële documenten vertaalt.",
-    "en": "We know that peter translates the official documents during lunch.",
+    "nl": "Wij weten dat Peter tijdens de lunch de officiële documenten vertaalt.",
+    "en": "We know that Peter translates the official documents during lunch.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -49292,7 +49292,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03120",
     "nl": "Na het werk vertaalt Peter de officiële documenten.",
-    "en": "Na het werk peter translates the official documents.",
+    "en": "After work, Peter translates the official documents.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -49338,8 +49338,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03123",
-    "nl": "Wij weten dat peter na het werk de officiële documenten vertaalt.",
-    "en": "We know that peter translates the official documents after work.",
+    "nl": "Wij weten dat Peter na het werk de officiële documenten vertaalt.",
+    "en": "We know that Peter translates the official documents after work.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -49371,7 +49371,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03125",
     "nl": "Sinds vorige maand vertaalt Peter de officiële documenten.",
-    "en": "Sinds vorige maand peter translates the official documents.",
+    "en": "Since last month, Peter translates the official documents.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -49417,8 +49417,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03128",
-    "nl": "Wij weten dat peter sinds vorige maand de officiële documenten vertaalt.",
-    "en": "We know that peter translates the official documents since last month.",
+    "nl": "Wij weten dat Peter sinds vorige maand de officiële documenten vertaalt.",
+    "en": "We know that Peter translates the official documents since last month.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -49450,7 +49450,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03130",
     "nl": "Met grote zorgvuldigheid vertaalt Peter de officiële documenten.",
-    "en": "Met grote zorgvuldigheid peter translates the official documents.",
+    "en": "With great care, Peter translates the official documents.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -49496,8 +49496,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03133",
-    "nl": "Wij weten dat peter met grote zorgvuldigheid de officiële documenten vertaalt.",
-    "en": "We know that peter translates the official documents with great care.",
+    "nl": "Wij weten dat Peter met grote zorgvuldigheid de officiële documenten vertaalt.",
+    "en": "We know that Peter translates the official documents with great care.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -49529,7 +49529,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03135",
     "nl": "Elke ochtend verbetert Peter de kwaliteit van het onderwijs.",
-    "en": "Elke ochtend peter improves the quality of education.",
+    "en": "Every morning, Peter improves the quality of education.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -49575,8 +49575,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03138",
-    "nl": "Wij weten dat peter elke ochtend de kwaliteit van het onderwijs verbetert.",
-    "en": "We know that peter improves the quality of education every morning.",
+    "nl": "Wij weten dat Peter elke ochtend de kwaliteit van het onderwijs verbetert.",
+    "en": "We know that Peter improves the quality of education every morning.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -49608,7 +49608,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03140",
     "nl": "Gisterenmiddag verbetert Peter de kwaliteit van het onderwijs.",
-    "en": "Gisterenmiddag peter improves the quality of education.",
+    "en": "Yesterday afternoon, Peter improves the quality of education.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -49654,8 +49654,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03143",
-    "nl": "Wij weten dat peter gisterenmiddag de kwaliteit van het onderwijs verbetert.",
-    "en": "We know that peter improves the quality of education yesterday afternoon.",
+    "nl": "Wij weten dat Peter gisterenmiddag de kwaliteit van het onderwijs verbetert.",
+    "en": "We know that Peter improves the quality of education yesterday afternoon.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -49687,7 +49687,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03145",
     "nl": "Volgende week verbetert Peter de kwaliteit van het onderwijs.",
-    "en": "Volgende week peter improves the quality of education.",
+    "en": "Next week, Peter improves the quality of education.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -49733,8 +49733,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03148",
-    "nl": "Wij weten dat peter volgende week de kwaliteit van het onderwijs verbetert.",
-    "en": "We know that peter improves the quality of education next week.",
+    "nl": "Wij weten dat Peter volgende week de kwaliteit van het onderwijs verbetert.",
+    "en": "We know that Peter improves the quality of education next week.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -49766,7 +49766,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03150",
     "nl": "In het weekend verbetert Peter de kwaliteit van het onderwijs.",
-    "en": "In het weekend peter improves the quality of education.",
+    "en": "At the weekend, Peter improves the quality of education.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -49812,8 +49812,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03153",
-    "nl": "Wij weten dat peter in het weekend de kwaliteit van het onderwijs verbetert.",
-    "en": "We know that peter improves the quality of education at the weekend.",
+    "nl": "Wij weten dat Peter in het weekend de kwaliteit van het onderwijs verbetert.",
+    "en": "We know that Peter improves the quality of education at the weekend.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -49845,7 +49845,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03155",
     "nl": "Om acht uur verbetert Peter de kwaliteit van het onderwijs.",
-    "en": "Om acht uur peter improves the quality of education.",
+    "en": "At eight o'clock, Peter improves the quality of education.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -49891,8 +49891,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03158",
-    "nl": "Wij weten dat peter om acht uur de kwaliteit van het onderwijs verbetert.",
-    "en": "We know that peter improves the quality of education at eight o'clock.",
+    "nl": "Wij weten dat Peter om acht uur de kwaliteit van het onderwijs verbetert.",
+    "en": "We know that Peter improves the quality of education at eight o'clock.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -49924,7 +49924,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03160",
     "nl": "Regelmatig verbetert Peter de kwaliteit van het onderwijs.",
-    "en": "Regelmatig peter improves the quality of education.",
+    "en": "Regularly, Peter improves the quality of education.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -49970,8 +49970,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03163",
-    "nl": "Wij weten dat peter regelmatig de kwaliteit van het onderwijs verbetert.",
-    "en": "We know that peter improves the quality of education regularly.",
+    "nl": "Wij weten dat Peter regelmatig de kwaliteit van het onderwijs verbetert.",
+    "en": "We know that Peter improves the quality of education regularly.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -50003,7 +50003,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03165",
     "nl": "Vaak verbetert Peter de kwaliteit van het onderwijs.",
-    "en": "Vaak peter improves the quality of education.",
+    "en": "Often, Peter improves the quality of education.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -50049,8 +50049,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03168",
-    "nl": "Wij weten dat peter vaak de kwaliteit van het onderwijs verbetert.",
-    "en": "We know that peter improves the quality of education often.",
+    "nl": "Wij weten dat Peter vaak de kwaliteit van het onderwijs verbetert.",
+    "en": "We know that Peter improves the quality of education often.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -50082,7 +50082,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03170",
     "nl": "Op maandag verbetert Peter de kwaliteit van het onderwijs.",
-    "en": "Op maandag peter improves the quality of education.",
+    "en": "On Monday, Peter improves the quality of education.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -50128,8 +50128,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03173",
-    "nl": "Wij weten dat peter op maandag de kwaliteit van het onderwijs verbetert.",
-    "en": "We know that peter improves the quality of education on Monday.",
+    "nl": "Wij weten dat Peter op maandag de kwaliteit van het onderwijs verbetert.",
+    "en": "We know that Peter improves the quality of education on Monday.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -50161,7 +50161,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03175",
     "nl": "Tijdens de lunch verbetert Peter de kwaliteit van het onderwijs.",
-    "en": "Tijdens de lunch peter improves the quality of education.",
+    "en": "During lunch, Peter improves the quality of education.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -50207,8 +50207,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03178",
-    "nl": "Wij weten dat peter tijdens de lunch de kwaliteit van het onderwijs verbetert.",
-    "en": "We know that peter improves the quality of education during lunch.",
+    "nl": "Wij weten dat Peter tijdens de lunch de kwaliteit van het onderwijs verbetert.",
+    "en": "We know that Peter improves the quality of education during lunch.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -50240,7 +50240,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03180",
     "nl": "Na het werk verbetert Peter de kwaliteit van het onderwijs.",
-    "en": "Na het werk peter improves the quality of education.",
+    "en": "After work, Peter improves the quality of education.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -50286,8 +50286,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03183",
-    "nl": "Wij weten dat peter na het werk de kwaliteit van het onderwijs verbetert.",
-    "en": "We know that peter improves the quality of education after work.",
+    "nl": "Wij weten dat Peter na het werk de kwaliteit van het onderwijs verbetert.",
+    "en": "We know that Peter improves the quality of education after work.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -50319,7 +50319,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03185",
     "nl": "Sinds vorige maand verbetert Peter de kwaliteit van het onderwijs.",
-    "en": "Sinds vorige maand peter improves the quality of education.",
+    "en": "Since last month, Peter improves the quality of education.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -50365,8 +50365,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03188",
-    "nl": "Wij weten dat peter sinds vorige maand de kwaliteit van het onderwijs verbetert.",
-    "en": "We know that peter improves the quality of education since last month.",
+    "nl": "Wij weten dat Peter sinds vorige maand de kwaliteit van het onderwijs verbetert.",
+    "en": "We know that Peter improves the quality of education since last month.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -50398,7 +50398,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03190",
     "nl": "Met grote zorgvuldigheid verbetert Peter de kwaliteit van het onderwijs.",
-    "en": "Met grote zorgvuldigheid peter improves the quality of education.",
+    "en": "With great care, Peter improves the quality of education.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -50444,8 +50444,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03193",
-    "nl": "Wij weten dat peter met grote zorgvuldigheid de kwaliteit van het onderwijs verbetert.",
-    "en": "We know that peter improves the quality of education with great care.",
+    "nl": "Wij weten dat Peter met grote zorgvuldigheid de kwaliteit van het onderwijs verbetert.",
+    "en": "We know that Peter improves the quality of education with great care.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -50477,7 +50477,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03195",
     "nl": "Elke ochtend ontwerpt Peter een duurzaam kantoorgebouw.",
-    "en": "Elke ochtend peter designs a sustainable office building.",
+    "en": "Every morning, Peter designs a sustainable office building.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -50523,8 +50523,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03198",
-    "nl": "Wij weten dat peter elke ochtend een duurzaam kantoorgebouw ontwerpt.",
-    "en": "We know that peter designs a sustainable office building every morning.",
+    "nl": "Wij weten dat Peter elke ochtend een duurzaam kantoorgebouw ontwerpt.",
+    "en": "We know that Peter designs a sustainable office building every morning.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -50556,7 +50556,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03200",
     "nl": "Gisterenmiddag ontwerpt Peter een duurzaam kantoorgebouw.",
-    "en": "Gisterenmiddag peter designs a sustainable office building.",
+    "en": "Yesterday afternoon, Peter designs a sustainable office building.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -50602,8 +50602,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03203",
-    "nl": "Wij weten dat peter gisterenmiddag een duurzaam kantoorgebouw ontwerpt.",
-    "en": "We know that peter designs a sustainable office building yesterday afternoon.",
+    "nl": "Wij weten dat Peter gisterenmiddag een duurzaam kantoorgebouw ontwerpt.",
+    "en": "We know that Peter designs a sustainable office building yesterday afternoon.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -50635,7 +50635,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03205",
     "nl": "Volgende week ontwerpt Peter een duurzaam kantoorgebouw.",
-    "en": "Volgende week peter designs a sustainable office building.",
+    "en": "Next week, Peter designs a sustainable office building.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -50681,8 +50681,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03208",
-    "nl": "Wij weten dat peter volgende week een duurzaam kantoorgebouw ontwerpt.",
-    "en": "We know that peter designs a sustainable office building next week.",
+    "nl": "Wij weten dat Peter volgende week een duurzaam kantoorgebouw ontwerpt.",
+    "en": "We know that Peter designs a sustainable office building next week.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -50714,7 +50714,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03210",
     "nl": "In het weekend ontwerpt Peter een duurzaam kantoorgebouw.",
-    "en": "In het weekend peter designs a sustainable office building.",
+    "en": "At the weekend, Peter designs a sustainable office building.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -50760,8 +50760,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03213",
-    "nl": "Wij weten dat peter in het weekend een duurzaam kantoorgebouw ontwerpt.",
-    "en": "We know that peter designs a sustainable office building at the weekend.",
+    "nl": "Wij weten dat Peter in het weekend een duurzaam kantoorgebouw ontwerpt.",
+    "en": "We know that Peter designs a sustainable office building at the weekend.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -50793,7 +50793,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03215",
     "nl": "Om acht uur ontwerpt Peter een duurzaam kantoorgebouw.",
-    "en": "Om acht uur peter designs a sustainable office building.",
+    "en": "At eight o'clock, Peter designs a sustainable office building.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -50839,8 +50839,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03218",
-    "nl": "Wij weten dat peter om acht uur een duurzaam kantoorgebouw ontwerpt.",
-    "en": "We know that peter designs a sustainable office building at eight o'clock.",
+    "nl": "Wij weten dat Peter om acht uur een duurzaam kantoorgebouw ontwerpt.",
+    "en": "We know that Peter designs a sustainable office building at eight o'clock.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -50872,7 +50872,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03220",
     "nl": "Regelmatig ontwerpt Peter een duurzaam kantoorgebouw.",
-    "en": "Regelmatig peter designs a sustainable office building.",
+    "en": "Regularly, Peter designs a sustainable office building.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -50918,8 +50918,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03223",
-    "nl": "Wij weten dat peter regelmatig een duurzaam kantoorgebouw ontwerpt.",
-    "en": "We know that peter designs a sustainable office building regularly.",
+    "nl": "Wij weten dat Peter regelmatig een duurzaam kantoorgebouw ontwerpt.",
+    "en": "We know that Peter designs a sustainable office building regularly.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -50951,7 +50951,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03225",
     "nl": "Vaak ontwerpt Peter een duurzaam kantoorgebouw.",
-    "en": "Vaak peter designs a sustainable office building.",
+    "en": "Often, Peter designs a sustainable office building.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -50997,8 +50997,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03228",
-    "nl": "Wij weten dat peter vaak een duurzaam kantoorgebouw ontwerpt.",
-    "en": "We know that peter designs a sustainable office building often.",
+    "nl": "Wij weten dat Peter vaak een duurzaam kantoorgebouw ontwerpt.",
+    "en": "We know that Peter designs a sustainable office building often.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -51030,7 +51030,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03230",
     "nl": "Op maandag ontwerpt Peter een duurzaam kantoorgebouw.",
-    "en": "Op maandag peter designs a sustainable office building.",
+    "en": "On Monday, Peter designs a sustainable office building.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -51076,8 +51076,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03233",
-    "nl": "Wij weten dat peter op maandag een duurzaam kantoorgebouw ontwerpt.",
-    "en": "We know that peter designs a sustainable office building on Monday.",
+    "nl": "Wij weten dat Peter op maandag een duurzaam kantoorgebouw ontwerpt.",
+    "en": "We know that Peter designs a sustainable office building on Monday.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -51109,7 +51109,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03235",
     "nl": "Tijdens de lunch ontwerpt Peter een duurzaam kantoorgebouw.",
-    "en": "Tijdens de lunch peter designs a sustainable office building.",
+    "en": "During lunch, Peter designs a sustainable office building.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -51155,8 +51155,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03238",
-    "nl": "Wij weten dat peter tijdens de lunch een duurzaam kantoorgebouw ontwerpt.",
-    "en": "We know that peter designs a sustainable office building during lunch.",
+    "nl": "Wij weten dat Peter tijdens de lunch een duurzaam kantoorgebouw ontwerpt.",
+    "en": "We know that Peter designs a sustainable office building during lunch.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -51188,7 +51188,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03240",
     "nl": "Na het werk ontwerpt Peter een duurzaam kantoorgebouw.",
-    "en": "Na het werk peter designs a sustainable office building.",
+    "en": "After work, Peter designs a sustainable office building.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -51234,8 +51234,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03243",
-    "nl": "Wij weten dat peter na het werk een duurzaam kantoorgebouw ontwerpt.",
-    "en": "We know that peter designs a sustainable office building after work.",
+    "nl": "Wij weten dat Peter na het werk een duurzaam kantoorgebouw ontwerpt.",
+    "en": "We know that Peter designs a sustainable office building after work.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -51267,7 +51267,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03245",
     "nl": "Sinds vorige maand ontwerpt Peter een duurzaam kantoorgebouw.",
-    "en": "Sinds vorige maand peter designs a sustainable office building.",
+    "en": "Since last month, Peter designs a sustainable office building.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -51313,8 +51313,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03248",
-    "nl": "Wij weten dat peter sinds vorige maand een duurzaam kantoorgebouw ontwerpt.",
-    "en": "We know that peter designs a sustainable office building since last month.",
+    "nl": "Wij weten dat Peter sinds vorige maand een duurzaam kantoorgebouw ontwerpt.",
+    "en": "We know that Peter designs a sustainable office building since last month.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -51346,7 +51346,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03250",
     "nl": "Met grote zorgvuldigheid ontwerpt Peter een duurzaam kantoorgebouw.",
-    "en": "Met grote zorgvuldigheid peter designs a sustainable office building.",
+    "en": "With great care, Peter designs a sustainable office building.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -51392,8 +51392,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03253",
-    "nl": "Wij weten dat peter met grote zorgvuldigheid een duurzaam kantoorgebouw ontwerpt.",
-    "en": "We know that peter designs a sustainable office building with great care.",
+    "nl": "Wij weten dat Peter met grote zorgvuldigheid een duurzaam kantoorgebouw ontwerpt.",
+    "en": "We know that Peter designs a sustainable office building with great care.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -51425,7 +51425,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03255",
     "nl": "Elke ochtend leest Sophie een interessant boek.",
-    "en": "Elke ochtend sophie reads an interesting book.",
+    "en": "Every morning, Sophie reads an interesting book.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -51471,8 +51471,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03258",
-    "nl": "Wij weten dat sophie elke ochtend een interessant boek leest.",
-    "en": "We know that sophie reads an interesting book every morning.",
+    "nl": "Wij weten dat Sophie elke ochtend een interessant boek leest.",
+    "en": "We know that Sophie reads an interesting book every morning.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -51504,7 +51504,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03260",
     "nl": "Gisterenmiddag leest Sophie een interessant boek.",
-    "en": "Gisterenmiddag sophie reads an interesting book.",
+    "en": "Yesterday afternoon, Sophie reads an interesting book.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -51550,8 +51550,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03263",
-    "nl": "Wij weten dat sophie gisterenmiddag een interessant boek leest.",
-    "en": "We know that sophie reads an interesting book yesterday afternoon.",
+    "nl": "Wij weten dat Sophie gisterenmiddag een interessant boek leest.",
+    "en": "We know that Sophie reads an interesting book yesterday afternoon.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -51583,7 +51583,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03265",
     "nl": "Volgende week leest Sophie een interessant boek.",
-    "en": "Volgende week sophie reads an interesting book.",
+    "en": "Next week, Sophie reads an interesting book.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -51629,8 +51629,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03268",
-    "nl": "Wij weten dat sophie volgende week een interessant boek leest.",
-    "en": "We know that sophie reads an interesting book next week.",
+    "nl": "Wij weten dat Sophie volgende week een interessant boek leest.",
+    "en": "We know that Sophie reads an interesting book next week.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -51662,7 +51662,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03270",
     "nl": "In het weekend leest Sophie een interessant boek.",
-    "en": "In het weekend sophie reads an interesting book.",
+    "en": "At the weekend, Sophie reads an interesting book.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -51708,8 +51708,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03273",
-    "nl": "Wij weten dat sophie in het weekend een interessant boek leest.",
-    "en": "We know that sophie reads an interesting book at the weekend.",
+    "nl": "Wij weten dat Sophie in het weekend een interessant boek leest.",
+    "en": "We know that Sophie reads an interesting book at the weekend.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -51741,7 +51741,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03275",
     "nl": "Om acht uur leest Sophie een interessant boek.",
-    "en": "Om acht uur sophie reads an interesting book.",
+    "en": "At eight o'clock, Sophie reads an interesting book.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -51787,8 +51787,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03278",
-    "nl": "Wij weten dat sophie om acht uur een interessant boek leest.",
-    "en": "We know that sophie reads an interesting book at eight o'clock.",
+    "nl": "Wij weten dat Sophie om acht uur een interessant boek leest.",
+    "en": "We know that Sophie reads an interesting book at eight o'clock.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -51820,7 +51820,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03280",
     "nl": "Regelmatig leest Sophie een interessant boek.",
-    "en": "Regelmatig sophie reads an interesting book.",
+    "en": "Regularly, Sophie reads an interesting book.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -51866,8 +51866,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03283",
-    "nl": "Wij weten dat sophie regelmatig een interessant boek leest.",
-    "en": "We know that sophie reads an interesting book regularly.",
+    "nl": "Wij weten dat Sophie regelmatig een interessant boek leest.",
+    "en": "We know that Sophie reads an interesting book regularly.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -51899,7 +51899,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03285",
     "nl": "Vaak leest Sophie een interessant boek.",
-    "en": "Vaak sophie reads an interesting book.",
+    "en": "Often, Sophie reads an interesting book.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -51945,8 +51945,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03288",
-    "nl": "Wij weten dat sophie vaak een interessant boek leest.",
-    "en": "We know that sophie reads an interesting book often.",
+    "nl": "Wij weten dat Sophie vaak een interessant boek leest.",
+    "en": "We know that Sophie reads an interesting book often.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -51978,7 +51978,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03290",
     "nl": "Op maandag leest Sophie een interessant boek.",
-    "en": "Op maandag sophie reads an interesting book.",
+    "en": "On Monday, Sophie reads an interesting book.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -52024,8 +52024,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03293",
-    "nl": "Wij weten dat sophie op maandag een interessant boek leest.",
-    "en": "We know that sophie reads an interesting book on Monday.",
+    "nl": "Wij weten dat Sophie op maandag een interessant boek leest.",
+    "en": "We know that Sophie reads an interesting book on Monday.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -52057,7 +52057,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03295",
     "nl": "Tijdens de lunch leest Sophie een interessant boek.",
-    "en": "Tijdens de lunch sophie reads an interesting book.",
+    "en": "During lunch, Sophie reads an interesting book.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -52103,8 +52103,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03298",
-    "nl": "Wij weten dat sophie tijdens de lunch een interessant boek leest.",
-    "en": "We know that sophie reads an interesting book during lunch.",
+    "nl": "Wij weten dat Sophie tijdens de lunch een interessant boek leest.",
+    "en": "We know that Sophie reads an interesting book during lunch.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -52136,7 +52136,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03300",
     "nl": "Na het werk leest Sophie een interessant boek.",
-    "en": "Na het werk sophie reads an interesting book.",
+    "en": "After work, Sophie reads an interesting book.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -52182,8 +52182,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03303",
-    "nl": "Wij weten dat sophie na het werk een interessant boek leest.",
-    "en": "We know that sophie reads an interesting book after work.",
+    "nl": "Wij weten dat Sophie na het werk een interessant boek leest.",
+    "en": "We know that Sophie reads an interesting book after work.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -52215,7 +52215,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03305",
     "nl": "Sinds vorige maand leest Sophie een interessant boek.",
-    "en": "Sinds vorige maand sophie reads an interesting book.",
+    "en": "Since last month, Sophie reads an interesting book.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -52261,8 +52261,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03308",
-    "nl": "Wij weten dat sophie sinds vorige maand een interessant boek leest.",
-    "en": "We know that sophie reads an interesting book since last month.",
+    "nl": "Wij weten dat Sophie sinds vorige maand een interessant boek leest.",
+    "en": "We know that Sophie reads an interesting book since last month.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -52294,7 +52294,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03310",
     "nl": "Met grote zorgvuldigheid leest Sophie een interessant boek.",
-    "en": "Met grote zorgvuldigheid sophie reads an interesting book.",
+    "en": "With great care, Sophie reads an interesting book.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -52340,8 +52340,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03313",
-    "nl": "Wij weten dat sophie met grote zorgvuldigheid een interessant boek leest.",
-    "en": "We know that sophie reads an interesting book with great care.",
+    "nl": "Wij weten dat Sophie met grote zorgvuldigheid een interessant boek leest.",
+    "en": "We know that Sophie reads an interesting book with great care.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -52373,7 +52373,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03315",
     "nl": "Elke ochtend schrijft Sophie een belangrijke e-mail.",
-    "en": "Elke ochtend sophie writes an important email.",
+    "en": "Every morning, Sophie writes an important email.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -52419,8 +52419,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03318",
-    "nl": "Wij weten dat sophie elke ochtend een belangrijke e-mail schrijft.",
-    "en": "We know that sophie writes an important email every morning.",
+    "nl": "Wij weten dat Sophie elke ochtend een belangrijke e-mail schrijft.",
+    "en": "We know that Sophie writes an important email every morning.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -52452,7 +52452,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03320",
     "nl": "Gisterenmiddag schrijft Sophie een belangrijke e-mail.",
-    "en": "Gisterenmiddag sophie writes an important email.",
+    "en": "Yesterday afternoon, Sophie writes an important email.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -52498,8 +52498,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03323",
-    "nl": "Wij weten dat sophie gisterenmiddag een belangrijke e-mail schrijft.",
-    "en": "We know that sophie writes an important email yesterday afternoon.",
+    "nl": "Wij weten dat Sophie gisterenmiddag een belangrijke e-mail schrijft.",
+    "en": "We know that Sophie writes an important email yesterday afternoon.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -52531,7 +52531,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03325",
     "nl": "Volgende week schrijft Sophie een belangrijke e-mail.",
-    "en": "Volgende week sophie writes an important email.",
+    "en": "Next week, Sophie writes an important email.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -52577,8 +52577,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03328",
-    "nl": "Wij weten dat sophie volgende week een belangrijke e-mail schrijft.",
-    "en": "We know that sophie writes an important email next week.",
+    "nl": "Wij weten dat Sophie volgende week een belangrijke e-mail schrijft.",
+    "en": "We know that Sophie writes an important email next week.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -52610,7 +52610,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03330",
     "nl": "In het weekend schrijft Sophie een belangrijke e-mail.",
-    "en": "In het weekend sophie writes an important email.",
+    "en": "At the weekend, Sophie writes an important email.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -52656,8 +52656,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03333",
-    "nl": "Wij weten dat sophie in het weekend een belangrijke e-mail schrijft.",
-    "en": "We know that sophie writes an important email at the weekend.",
+    "nl": "Wij weten dat Sophie in het weekend een belangrijke e-mail schrijft.",
+    "en": "We know that Sophie writes an important email at the weekend.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -52689,7 +52689,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03335",
     "nl": "Om acht uur schrijft Sophie een belangrijke e-mail.",
-    "en": "Om acht uur sophie writes an important email.",
+    "en": "At eight o'clock, Sophie writes an important email.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -52735,8 +52735,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03338",
-    "nl": "Wij weten dat sophie om acht uur een belangrijke e-mail schrijft.",
-    "en": "We know that sophie writes an important email at eight o'clock.",
+    "nl": "Wij weten dat Sophie om acht uur een belangrijke e-mail schrijft.",
+    "en": "We know that Sophie writes an important email at eight o'clock.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -52768,7 +52768,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03340",
     "nl": "Regelmatig schrijft Sophie een belangrijke e-mail.",
-    "en": "Regelmatig sophie writes an important email.",
+    "en": "Regularly, Sophie writes an important email.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -52814,8 +52814,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03343",
-    "nl": "Wij weten dat sophie regelmatig een belangrijke e-mail schrijft.",
-    "en": "We know that sophie writes an important email regularly.",
+    "nl": "Wij weten dat Sophie regelmatig een belangrijke e-mail schrijft.",
+    "en": "We know that Sophie writes an important email regularly.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -52847,7 +52847,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03345",
     "nl": "Vaak schrijft Sophie een belangrijke e-mail.",
-    "en": "Vaak sophie writes an important email.",
+    "en": "Often, Sophie writes an important email.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -52893,8 +52893,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03348",
-    "nl": "Wij weten dat sophie vaak een belangrijke e-mail schrijft.",
-    "en": "We know that sophie writes an important email often.",
+    "nl": "Wij weten dat Sophie vaak een belangrijke e-mail schrijft.",
+    "en": "We know that Sophie writes an important email often.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -52926,7 +52926,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03350",
     "nl": "Op maandag schrijft Sophie een belangrijke e-mail.",
-    "en": "Op maandag sophie writes an important email.",
+    "en": "On Monday, Sophie writes an important email.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -52972,8 +52972,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03353",
-    "nl": "Wij weten dat sophie op maandag een belangrijke e-mail schrijft.",
-    "en": "We know that sophie writes an important email on Monday.",
+    "nl": "Wij weten dat Sophie op maandag een belangrijke e-mail schrijft.",
+    "en": "We know that Sophie writes an important email on Monday.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -53005,7 +53005,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03355",
     "nl": "Tijdens de lunch schrijft Sophie een belangrijke e-mail.",
-    "en": "Tijdens de lunch sophie writes an important email.",
+    "en": "During lunch, Sophie writes an important email.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -53051,8 +53051,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03358",
-    "nl": "Wij weten dat sophie tijdens de lunch een belangrijke e-mail schrijft.",
-    "en": "We know that sophie writes an important email during lunch.",
+    "nl": "Wij weten dat Sophie tijdens de lunch een belangrijke e-mail schrijft.",
+    "en": "We know that Sophie writes an important email during lunch.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -53084,7 +53084,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03360",
     "nl": "Na het werk schrijft Sophie een belangrijke e-mail.",
-    "en": "Na het werk sophie writes an important email.",
+    "en": "After work, Sophie writes an important email.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -53130,8 +53130,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03363",
-    "nl": "Wij weten dat sophie na het werk een belangrijke e-mail schrijft.",
-    "en": "We know that sophie writes an important email after work.",
+    "nl": "Wij weten dat Sophie na het werk een belangrijke e-mail schrijft.",
+    "en": "We know that Sophie writes an important email after work.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -53163,7 +53163,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03365",
     "nl": "Sinds vorige maand schrijft Sophie een belangrijke e-mail.",
-    "en": "Sinds vorige maand sophie writes an important email.",
+    "en": "Since last month, Sophie writes an important email.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -53209,8 +53209,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03368",
-    "nl": "Wij weten dat sophie sinds vorige maand een belangrijke e-mail schrijft.",
-    "en": "We know that sophie writes an important email since last month.",
+    "nl": "Wij weten dat Sophie sinds vorige maand een belangrijke e-mail schrijft.",
+    "en": "We know that Sophie writes an important email since last month.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -53242,7 +53242,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03370",
     "nl": "Met grote zorgvuldigheid schrijft Sophie een belangrijke e-mail.",
-    "en": "Met grote zorgvuldigheid sophie writes an important email.",
+    "en": "With great care, Sophie writes an important email.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -53288,8 +53288,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03373",
-    "nl": "Wij weten dat sophie met grote zorgvuldigheid een belangrijke e-mail schrijft.",
-    "en": "We know that sophie writes an important email with great care.",
+    "nl": "Wij weten dat Sophie met grote zorgvuldigheid een belangrijke e-mail schrijft.",
+    "en": "We know that Sophie writes an important email with great care.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -53321,7 +53321,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03375",
     "nl": "Elke ochtend koopt Sophie verse groenten op de markt.",
-    "en": "Elke ochtend sophie buys fresh vegetables at the market.",
+    "en": "Every morning, Sophie buys fresh vegetables at the market.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -53367,8 +53367,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03378",
-    "nl": "Wij weten dat sophie elke ochtend verse groenten op de markt koopt.",
-    "en": "We know that sophie buys fresh vegetables at the market every morning.",
+    "nl": "Wij weten dat Sophie elke ochtend verse groenten op de markt koopt.",
+    "en": "We know that Sophie buys fresh vegetables at the market every morning.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -53400,7 +53400,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03380",
     "nl": "Gisterenmiddag koopt Sophie verse groenten op de markt.",
-    "en": "Gisterenmiddag sophie buys fresh vegetables at the market.",
+    "en": "Yesterday afternoon, Sophie buys fresh vegetables at the market.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -53446,8 +53446,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03383",
-    "nl": "Wij weten dat sophie gisterenmiddag verse groenten op de markt koopt.",
-    "en": "We know that sophie buys fresh vegetables at the market yesterday afternoon.",
+    "nl": "Wij weten dat Sophie gisterenmiddag verse groenten op de markt koopt.",
+    "en": "We know that Sophie buys fresh vegetables at the market yesterday afternoon.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -53479,7 +53479,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03385",
     "nl": "Volgende week koopt Sophie verse groenten op de markt.",
-    "en": "Volgende week sophie buys fresh vegetables at the market.",
+    "en": "Next week, Sophie buys fresh vegetables at the market.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -53525,8 +53525,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03388",
-    "nl": "Wij weten dat sophie volgende week verse groenten op de markt koopt.",
-    "en": "We know that sophie buys fresh vegetables at the market next week.",
+    "nl": "Wij weten dat Sophie volgende week verse groenten op de markt koopt.",
+    "en": "We know that Sophie buys fresh vegetables at the market next week.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -53558,7 +53558,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03390",
     "nl": "In het weekend koopt Sophie verse groenten op de markt.",
-    "en": "In het weekend sophie buys fresh vegetables at the market.",
+    "en": "At the weekend, Sophie buys fresh vegetables at the market.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -53604,8 +53604,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03393",
-    "nl": "Wij weten dat sophie in het weekend verse groenten op de markt koopt.",
-    "en": "We know that sophie buys fresh vegetables at the market at the weekend.",
+    "nl": "Wij weten dat Sophie in het weekend verse groenten op de markt koopt.",
+    "en": "We know that Sophie buys fresh vegetables at the market at the weekend.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -53637,7 +53637,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03395",
     "nl": "Om acht uur koopt Sophie verse groenten op de markt.",
-    "en": "Om acht uur sophie buys fresh vegetables at the market.",
+    "en": "At eight o'clock, Sophie buys fresh vegetables at the market.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -53683,8 +53683,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03398",
-    "nl": "Wij weten dat sophie om acht uur verse groenten op de markt koopt.",
-    "en": "We know that sophie buys fresh vegetables at the market at eight o'clock.",
+    "nl": "Wij weten dat Sophie om acht uur verse groenten op de markt koopt.",
+    "en": "We know that Sophie buys fresh vegetables at the market at eight o'clock.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -53716,7 +53716,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03400",
     "nl": "Regelmatig koopt Sophie verse groenten op de markt.",
-    "en": "Regelmatig sophie buys fresh vegetables at the market.",
+    "en": "Regularly, Sophie buys fresh vegetables at the market.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -53762,8 +53762,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03403",
-    "nl": "Wij weten dat sophie regelmatig verse groenten op de markt koopt.",
-    "en": "We know that sophie buys fresh vegetables at the market regularly.",
+    "nl": "Wij weten dat Sophie regelmatig verse groenten op de markt koopt.",
+    "en": "We know that Sophie buys fresh vegetables at the market regularly.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -53795,7 +53795,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03405",
     "nl": "Vaak koopt Sophie verse groenten op de markt.",
-    "en": "Vaak sophie buys fresh vegetables at the market.",
+    "en": "Often, Sophie buys fresh vegetables at the market.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -53841,8 +53841,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03408",
-    "nl": "Wij weten dat sophie vaak verse groenten op de markt koopt.",
-    "en": "We know that sophie buys fresh vegetables at the market often.",
+    "nl": "Wij weten dat Sophie vaak verse groenten op de markt koopt.",
+    "en": "We know that Sophie buys fresh vegetables at the market often.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -53874,7 +53874,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03410",
     "nl": "Op maandag koopt Sophie verse groenten op de markt.",
-    "en": "Op maandag sophie buys fresh vegetables at the market.",
+    "en": "On Monday, Sophie buys fresh vegetables at the market.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -53920,8 +53920,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03413",
-    "nl": "Wij weten dat sophie op maandag verse groenten op de markt koopt.",
-    "en": "We know that sophie buys fresh vegetables at the market on Monday.",
+    "nl": "Wij weten dat Sophie op maandag verse groenten op de markt koopt.",
+    "en": "We know that Sophie buys fresh vegetables at the market on Monday.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -53953,7 +53953,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03415",
     "nl": "Tijdens de lunch koopt Sophie verse groenten op de markt.",
-    "en": "Tijdens de lunch sophie buys fresh vegetables at the market.",
+    "en": "During lunch, Sophie buys fresh vegetables at the market.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -53999,8 +53999,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03418",
-    "nl": "Wij weten dat sophie tijdens de lunch verse groenten op de markt koopt.",
-    "en": "We know that sophie buys fresh vegetables at the market during lunch.",
+    "nl": "Wij weten dat Sophie tijdens de lunch verse groenten op de markt koopt.",
+    "en": "We know that Sophie buys fresh vegetables at the market during lunch.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -54032,7 +54032,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03420",
     "nl": "Na het werk koopt Sophie verse groenten op de markt.",
-    "en": "Na het werk sophie buys fresh vegetables at the market.",
+    "en": "After work, Sophie buys fresh vegetables at the market.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -54078,8 +54078,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03423",
-    "nl": "Wij weten dat sophie na het werk verse groenten op de markt koopt.",
-    "en": "We know that sophie buys fresh vegetables at the market after work.",
+    "nl": "Wij weten dat Sophie na het werk verse groenten op de markt koopt.",
+    "en": "We know that Sophie buys fresh vegetables at the market after work.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -54111,7 +54111,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03425",
     "nl": "Sinds vorige maand koopt Sophie verse groenten op de markt.",
-    "en": "Sinds vorige maand sophie buys fresh vegetables at the market.",
+    "en": "Since last month, Sophie buys fresh vegetables at the market.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -54157,8 +54157,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03428",
-    "nl": "Wij weten dat sophie sinds vorige maand verse groenten op de markt koopt.",
-    "en": "We know that sophie buys fresh vegetables at the market since last month.",
+    "nl": "Wij weten dat Sophie sinds vorige maand verse groenten op de markt koopt.",
+    "en": "We know that Sophie buys fresh vegetables at the market since last month.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -54190,7 +54190,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03430",
     "nl": "Met grote zorgvuldigheid koopt Sophie verse groenten op de markt.",
-    "en": "Met grote zorgvuldigheid sophie buys fresh vegetables at the market.",
+    "en": "With great care, Sophie buys fresh vegetables at the market.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -54236,8 +54236,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03433",
-    "nl": "Wij weten dat sophie met grote zorgvuldigheid verse groenten op de markt koopt.",
-    "en": "We know that sophie buys fresh vegetables at the market with great care.",
+    "nl": "Wij weten dat Sophie met grote zorgvuldigheid verse groenten op de markt koopt.",
+    "en": "We know that Sophie buys fresh vegetables at the market with great care.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -54269,7 +54269,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03435",
     "nl": "Elke ochtend maakt Sophie een heerlijke lunch.",
-    "en": "Elke ochtend sophie makes a delicious lunch.",
+    "en": "Every morning, Sophie makes a delicious lunch.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -54315,8 +54315,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03438",
-    "nl": "Wij weten dat sophie elke ochtend een heerlijke lunch maakt.",
-    "en": "We know that sophie makes a delicious lunch every morning.",
+    "nl": "Wij weten dat Sophie elke ochtend een heerlijke lunch maakt.",
+    "en": "We know that Sophie makes a delicious lunch every morning.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -54348,7 +54348,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03440",
     "nl": "Gisterenmiddag maakt Sophie een heerlijke lunch.",
-    "en": "Gisterenmiddag sophie makes a delicious lunch.",
+    "en": "Yesterday afternoon, Sophie makes a delicious lunch.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -54394,8 +54394,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03443",
-    "nl": "Wij weten dat sophie gisterenmiddag een heerlijke lunch maakt.",
-    "en": "We know that sophie makes a delicious lunch yesterday afternoon.",
+    "nl": "Wij weten dat Sophie gisterenmiddag een heerlijke lunch maakt.",
+    "en": "We know that Sophie makes a delicious lunch yesterday afternoon.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -54427,7 +54427,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03445",
     "nl": "Volgende week maakt Sophie een heerlijke lunch.",
-    "en": "Volgende week sophie makes a delicious lunch.",
+    "en": "Next week, Sophie makes a delicious lunch.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -54473,8 +54473,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03448",
-    "nl": "Wij weten dat sophie volgende week een heerlijke lunch maakt.",
-    "en": "We know that sophie makes a delicious lunch next week.",
+    "nl": "Wij weten dat Sophie volgende week een heerlijke lunch maakt.",
+    "en": "We know that Sophie makes a delicious lunch next week.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -54506,7 +54506,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03450",
     "nl": "In het weekend maakt Sophie een heerlijke lunch.",
-    "en": "In het weekend sophie makes a delicious lunch.",
+    "en": "At the weekend, Sophie makes a delicious lunch.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -54552,8 +54552,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03453",
-    "nl": "Wij weten dat sophie in het weekend een heerlijke lunch maakt.",
-    "en": "We know that sophie makes a delicious lunch at the weekend.",
+    "nl": "Wij weten dat Sophie in het weekend een heerlijke lunch maakt.",
+    "en": "We know that Sophie makes a delicious lunch at the weekend.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -54585,7 +54585,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03455",
     "nl": "Om acht uur maakt Sophie een heerlijke lunch.",
-    "en": "Om acht uur sophie makes a delicious lunch.",
+    "en": "At eight o'clock, Sophie makes a delicious lunch.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -54631,8 +54631,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03458",
-    "nl": "Wij weten dat sophie om acht uur een heerlijke lunch maakt.",
-    "en": "We know that sophie makes a delicious lunch at eight o'clock.",
+    "nl": "Wij weten dat Sophie om acht uur een heerlijke lunch maakt.",
+    "en": "We know that Sophie makes a delicious lunch at eight o'clock.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -54664,7 +54664,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03460",
     "nl": "Regelmatig maakt Sophie een heerlijke lunch.",
-    "en": "Regelmatig sophie makes a delicious lunch.",
+    "en": "Regularly, Sophie makes a delicious lunch.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -54710,8 +54710,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03463",
-    "nl": "Wij weten dat sophie regelmatig een heerlijke lunch maakt.",
-    "en": "We know that sophie makes a delicious lunch regularly.",
+    "nl": "Wij weten dat Sophie regelmatig een heerlijke lunch maakt.",
+    "en": "We know that Sophie makes a delicious lunch regularly.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -54743,7 +54743,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03465",
     "nl": "Vaak maakt Sophie een heerlijke lunch.",
-    "en": "Vaak sophie makes a delicious lunch.",
+    "en": "Often, Sophie makes a delicious lunch.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -54789,8 +54789,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03468",
-    "nl": "Wij weten dat sophie vaak een heerlijke lunch maakt.",
-    "en": "We know that sophie makes a delicious lunch often.",
+    "nl": "Wij weten dat Sophie vaak een heerlijke lunch maakt.",
+    "en": "We know that Sophie makes a delicious lunch often.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -54822,7 +54822,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03470",
     "nl": "Op maandag maakt Sophie een heerlijke lunch.",
-    "en": "Op maandag sophie makes a delicious lunch.",
+    "en": "On Monday, Sophie makes a delicious lunch.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -54868,8 +54868,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03473",
-    "nl": "Wij weten dat sophie op maandag een heerlijke lunch maakt.",
-    "en": "We know that sophie makes a delicious lunch on Monday.",
+    "nl": "Wij weten dat Sophie op maandag een heerlijke lunch maakt.",
+    "en": "We know that Sophie makes a delicious lunch on Monday.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -54901,7 +54901,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03475",
     "nl": "Tijdens de lunch maakt Sophie een heerlijke lunch.",
-    "en": "Tijdens de lunch sophie makes a delicious lunch.",
+    "en": "During lunch, Sophie makes a delicious lunch.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -54947,8 +54947,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03478",
-    "nl": "Wij weten dat sophie tijdens de lunch een heerlijke lunch maakt.",
-    "en": "We know that sophie makes a delicious lunch during lunch.",
+    "nl": "Wij weten dat Sophie tijdens de lunch een heerlijke lunch maakt.",
+    "en": "We know that Sophie makes a delicious lunch during lunch.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -54980,7 +54980,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03480",
     "nl": "Na het werk maakt Sophie een heerlijke lunch.",
-    "en": "Na het werk sophie makes a delicious lunch.",
+    "en": "After work, Sophie makes a delicious lunch.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -55026,8 +55026,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03483",
-    "nl": "Wij weten dat sophie na het werk een heerlijke lunch maakt.",
-    "en": "We know that sophie makes a delicious lunch after work.",
+    "nl": "Wij weten dat Sophie na het werk een heerlijke lunch maakt.",
+    "en": "We know that Sophie makes a delicious lunch after work.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -55059,7 +55059,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03485",
     "nl": "Sinds vorige maand maakt Sophie een heerlijke lunch.",
-    "en": "Sinds vorige maand sophie makes a delicious lunch.",
+    "en": "Since last month, Sophie makes a delicious lunch.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -55105,8 +55105,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03488",
-    "nl": "Wij weten dat sophie sinds vorige maand een heerlijke lunch maakt.",
-    "en": "We know that sophie makes a delicious lunch since last month.",
+    "nl": "Wij weten dat Sophie sinds vorige maand een heerlijke lunch maakt.",
+    "en": "We know that Sophie makes a delicious lunch since last month.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -55138,7 +55138,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03490",
     "nl": "Met grote zorgvuldigheid maakt Sophie een heerlijke lunch.",
-    "en": "Met grote zorgvuldigheid sophie makes a delicious lunch.",
+    "en": "With great care, Sophie makes a delicious lunch.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -55184,8 +55184,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03493",
-    "nl": "Wij weten dat sophie met grote zorgvuldigheid een heerlijke lunch maakt.",
-    "en": "We know that sophie makes a delicious lunch with great care.",
+    "nl": "Wij weten dat Sophie met grote zorgvuldigheid een heerlijke lunch maakt.",
+    "en": "We know that Sophie makes a delicious lunch with great care.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -55217,7 +55217,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03495",
     "nl": "Elke ochtend drinkt Sophie een kop verse muntthee.",
-    "en": "Elke ochtend sophie drinks a cup of fresh mint tea.",
+    "en": "Every morning, Sophie drinks a cup of fresh mint tea.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -55263,8 +55263,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03498",
-    "nl": "Wij weten dat sophie elke ochtend een kop verse muntthee drinkt.",
-    "en": "We know that sophie drinks a cup of fresh mint tea every morning.",
+    "nl": "Wij weten dat Sophie elke ochtend een kop verse muntthee drinkt.",
+    "en": "We know that Sophie drinks a cup of fresh mint tea every morning.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -55296,7 +55296,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03500",
     "nl": "Gisterenmiddag drinkt Sophie een kop verse muntthee.",
-    "en": "Gisterenmiddag sophie drinks a cup of fresh mint tea.",
+    "en": "Yesterday afternoon, Sophie drinks a cup of fresh mint tea.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -55342,8 +55342,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03503",
-    "nl": "Wij weten dat sophie gisterenmiddag een kop verse muntthee drinkt.",
-    "en": "We know that sophie drinks a cup of fresh mint tea yesterday afternoon.",
+    "nl": "Wij weten dat Sophie gisterenmiddag een kop verse muntthee drinkt.",
+    "en": "We know that Sophie drinks a cup of fresh mint tea yesterday afternoon.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -55375,7 +55375,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03505",
     "nl": "Volgende week drinkt Sophie een kop verse muntthee.",
-    "en": "Volgende week sophie drinks a cup of fresh mint tea.",
+    "en": "Next week, Sophie drinks a cup of fresh mint tea.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -55421,8 +55421,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03508",
-    "nl": "Wij weten dat sophie volgende week een kop verse muntthee drinkt.",
-    "en": "We know that sophie drinks a cup of fresh mint tea next week.",
+    "nl": "Wij weten dat Sophie volgende week een kop verse muntthee drinkt.",
+    "en": "We know that Sophie drinks a cup of fresh mint tea next week.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -55454,7 +55454,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03510",
     "nl": "In het weekend drinkt Sophie een kop verse muntthee.",
-    "en": "In het weekend sophie drinks a cup of fresh mint tea.",
+    "en": "At the weekend, Sophie drinks a cup of fresh mint tea.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -55500,8 +55500,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03513",
-    "nl": "Wij weten dat sophie in het weekend een kop verse muntthee drinkt.",
-    "en": "We know that sophie drinks a cup of fresh mint tea at the weekend.",
+    "nl": "Wij weten dat Sophie in het weekend een kop verse muntthee drinkt.",
+    "en": "We know that Sophie drinks a cup of fresh mint tea at the weekend.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -55533,7 +55533,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03515",
     "nl": "Om acht uur drinkt Sophie een kop verse muntthee.",
-    "en": "Om acht uur sophie drinks a cup of fresh mint tea.",
+    "en": "At eight o'clock, Sophie drinks a cup of fresh mint tea.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -55579,8 +55579,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03518",
-    "nl": "Wij weten dat sophie om acht uur een kop verse muntthee drinkt.",
-    "en": "We know that sophie drinks a cup of fresh mint tea at eight o'clock.",
+    "nl": "Wij weten dat Sophie om acht uur een kop verse muntthee drinkt.",
+    "en": "We know that Sophie drinks a cup of fresh mint tea at eight o'clock.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -55612,7 +55612,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03520",
     "nl": "Regelmatig drinkt Sophie een kop verse muntthee.",
-    "en": "Regelmatig sophie drinks a cup of fresh mint tea.",
+    "en": "Regularly, Sophie drinks a cup of fresh mint tea.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -55658,8 +55658,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03523",
-    "nl": "Wij weten dat sophie regelmatig een kop verse muntthee drinkt.",
-    "en": "We know that sophie drinks a cup of fresh mint tea regularly.",
+    "nl": "Wij weten dat Sophie regelmatig een kop verse muntthee drinkt.",
+    "en": "We know that Sophie drinks a cup of fresh mint tea regularly.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -55691,7 +55691,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03525",
     "nl": "Vaak drinkt Sophie een kop verse muntthee.",
-    "en": "Vaak sophie drinks a cup of fresh mint tea.",
+    "en": "Often, Sophie drinks a cup of fresh mint tea.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -55737,8 +55737,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03528",
-    "nl": "Wij weten dat sophie vaak een kop verse muntthee drinkt.",
-    "en": "We know that sophie drinks a cup of fresh mint tea often.",
+    "nl": "Wij weten dat Sophie vaak een kop verse muntthee drinkt.",
+    "en": "We know that Sophie drinks a cup of fresh mint tea often.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -55770,7 +55770,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03530",
     "nl": "Op maandag drinkt Sophie een kop verse muntthee.",
-    "en": "Op maandag sophie drinks a cup of fresh mint tea.",
+    "en": "On Monday, Sophie drinks a cup of fresh mint tea.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -55816,8 +55816,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03533",
-    "nl": "Wij weten dat sophie op maandag een kop verse muntthee drinkt.",
-    "en": "We know that sophie drinks a cup of fresh mint tea on Monday.",
+    "nl": "Wij weten dat Sophie op maandag een kop verse muntthee drinkt.",
+    "en": "We know that Sophie drinks a cup of fresh mint tea on Monday.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -55849,7 +55849,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03535",
     "nl": "Tijdens de lunch drinkt Sophie een kop verse muntthee.",
-    "en": "Tijdens de lunch sophie drinks a cup of fresh mint tea.",
+    "en": "During lunch, Sophie drinks a cup of fresh mint tea.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -55895,8 +55895,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03538",
-    "nl": "Wij weten dat sophie tijdens de lunch een kop verse muntthee drinkt.",
-    "en": "We know that sophie drinks a cup of fresh mint tea during lunch.",
+    "nl": "Wij weten dat Sophie tijdens de lunch een kop verse muntthee drinkt.",
+    "en": "We know that Sophie drinks a cup of fresh mint tea during lunch.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -55928,7 +55928,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03540",
     "nl": "Na het werk drinkt Sophie een kop verse muntthee.",
-    "en": "Na het werk sophie drinks a cup of fresh mint tea.",
+    "en": "After work, Sophie drinks a cup of fresh mint tea.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -55974,8 +55974,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03543",
-    "nl": "Wij weten dat sophie na het werk een kop verse muntthee drinkt.",
-    "en": "We know that sophie drinks a cup of fresh mint tea after work.",
+    "nl": "Wij weten dat Sophie na het werk een kop verse muntthee drinkt.",
+    "en": "We know that Sophie drinks a cup of fresh mint tea after work.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -56007,7 +56007,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03545",
     "nl": "Sinds vorige maand drinkt Sophie een kop verse muntthee.",
-    "en": "Sinds vorige maand sophie drinks a cup of fresh mint tea.",
+    "en": "Since last month, Sophie drinks a cup of fresh mint tea.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -56053,8 +56053,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03548",
-    "nl": "Wij weten dat sophie sinds vorige maand een kop verse muntthee drinkt.",
-    "en": "We know that sophie drinks a cup of fresh mint tea since last month.",
+    "nl": "Wij weten dat Sophie sinds vorige maand een kop verse muntthee drinkt.",
+    "en": "We know that Sophie drinks a cup of fresh mint tea since last month.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -56086,7 +56086,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03550",
     "nl": "Met grote zorgvuldigheid drinkt Sophie een kop verse muntthee.",
-    "en": "Met grote zorgvuldigheid sophie drinks a cup of fresh mint tea.",
+    "en": "With great care, Sophie drinks a cup of fresh mint tea.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -56132,8 +56132,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03553",
-    "nl": "Wij weten dat sophie met grote zorgvuldigheid een kop verse muntthee drinkt.",
-    "en": "We know that sophie drinks a cup of fresh mint tea with great care.",
+    "nl": "Wij weten dat Sophie met grote zorgvuldigheid een kop verse muntthee drinkt.",
+    "en": "We know that Sophie drinks a cup of fresh mint tea with great care.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -56165,7 +56165,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03555",
     "nl": "Elke ochtend bezoekt Sophie het historische museum.",
-    "en": "Elke ochtend sophie visits the historical museum.",
+    "en": "Every morning, Sophie visits the historical museum.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -56211,8 +56211,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03558",
-    "nl": "Wij weten dat sophie elke ochtend het historische museum bezoekt.",
-    "en": "We know that sophie visits the historical museum every morning.",
+    "nl": "Wij weten dat Sophie elke ochtend het historische museum bezoekt.",
+    "en": "We know that Sophie visits the historical museum every morning.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -56244,7 +56244,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03560",
     "nl": "Gisterenmiddag bezoekt Sophie het historische museum.",
-    "en": "Gisterenmiddag sophie visits the historical museum.",
+    "en": "Yesterday afternoon, Sophie visits the historical museum.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -56290,8 +56290,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03563",
-    "nl": "Wij weten dat sophie gisterenmiddag het historische museum bezoekt.",
-    "en": "We know that sophie visits the historical museum yesterday afternoon.",
+    "nl": "Wij weten dat Sophie gisterenmiddag het historische museum bezoekt.",
+    "en": "We know that Sophie visits the historical museum yesterday afternoon.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -56323,7 +56323,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03565",
     "nl": "Volgende week bezoekt Sophie het historische museum.",
-    "en": "Volgende week sophie visits the historical museum.",
+    "en": "Next week, Sophie visits the historical museum.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -56369,8 +56369,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03568",
-    "nl": "Wij weten dat sophie volgende week het historische museum bezoekt.",
-    "en": "We know that sophie visits the historical museum next week.",
+    "nl": "Wij weten dat Sophie volgende week het historische museum bezoekt.",
+    "en": "We know that Sophie visits the historical museum next week.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -56402,7 +56402,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03570",
     "nl": "In het weekend bezoekt Sophie het historische museum.",
-    "en": "In het weekend sophie visits the historical museum.",
+    "en": "At the weekend, Sophie visits the historical museum.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -56448,8 +56448,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03573",
-    "nl": "Wij weten dat sophie in het weekend het historische museum bezoekt.",
-    "en": "We know that sophie visits the historical museum at the weekend.",
+    "nl": "Wij weten dat Sophie in het weekend het historische museum bezoekt.",
+    "en": "We know that Sophie visits the historical museum at the weekend.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -56481,7 +56481,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03575",
     "nl": "Om acht uur bezoekt Sophie het historische museum.",
-    "en": "Om acht uur sophie visits the historical museum.",
+    "en": "At eight o'clock, Sophie visits the historical museum.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -56527,8 +56527,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03578",
-    "nl": "Wij weten dat sophie om acht uur het historische museum bezoekt.",
-    "en": "We know that sophie visits the historical museum at eight o'clock.",
+    "nl": "Wij weten dat Sophie om acht uur het historische museum bezoekt.",
+    "en": "We know that Sophie visits the historical museum at eight o'clock.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -56560,7 +56560,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03580",
     "nl": "Regelmatig bezoekt Sophie het historische museum.",
-    "en": "Regelmatig sophie visits the historical museum.",
+    "en": "Regularly, Sophie visits the historical museum.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -56606,8 +56606,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03583",
-    "nl": "Wij weten dat sophie regelmatig het historische museum bezoekt.",
-    "en": "We know that sophie visits the historical museum regularly.",
+    "nl": "Wij weten dat Sophie regelmatig het historische museum bezoekt.",
+    "en": "We know that Sophie visits the historical museum regularly.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -56639,7 +56639,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03585",
     "nl": "Vaak bezoekt Sophie het historische museum.",
-    "en": "Vaak sophie visits the historical museum.",
+    "en": "Often, Sophie visits the historical museum.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -56685,8 +56685,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03588",
-    "nl": "Wij weten dat sophie vaak het historische museum bezoekt.",
-    "en": "We know that sophie visits the historical museum often.",
+    "nl": "Wij weten dat Sophie vaak het historische museum bezoekt.",
+    "en": "We know that Sophie visits the historical museum often.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -56718,7 +56718,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03590",
     "nl": "Op maandag bezoekt Sophie het historische museum.",
-    "en": "Op maandag sophie visits the historical museum.",
+    "en": "On Monday, Sophie visits the historical museum.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -56764,8 +56764,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03593",
-    "nl": "Wij weten dat sophie op maandag het historische museum bezoekt.",
-    "en": "We know that sophie visits the historical museum on Monday.",
+    "nl": "Wij weten dat Sophie op maandag het historische museum bezoekt.",
+    "en": "We know that Sophie visits the historical museum on Monday.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -56797,7 +56797,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03595",
     "nl": "Tijdens de lunch bezoekt Sophie het historische museum.",
-    "en": "Tijdens de lunch sophie visits the historical museum.",
+    "en": "During lunch, Sophie visits the historical museum.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -56843,8 +56843,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03598",
-    "nl": "Wij weten dat sophie tijdens de lunch het historische museum bezoekt.",
-    "en": "We know that sophie visits the historical museum during lunch.",
+    "nl": "Wij weten dat Sophie tijdens de lunch het historische museum bezoekt.",
+    "en": "We know that Sophie visits the historical museum during lunch.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -56876,7 +56876,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03600",
     "nl": "Na het werk bezoekt Sophie het historische museum.",
-    "en": "Na het werk sophie visits the historical museum.",
+    "en": "After work, Sophie visits the historical museum.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -56922,8 +56922,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03603",
-    "nl": "Wij weten dat sophie na het werk het historische museum bezoekt.",
-    "en": "We know that sophie visits the historical museum after work.",
+    "nl": "Wij weten dat Sophie na het werk het historische museum bezoekt.",
+    "en": "We know that Sophie visits the historical museum after work.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -56955,7 +56955,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03605",
     "nl": "Sinds vorige maand bezoekt Sophie het historische museum.",
-    "en": "Sinds vorige maand sophie visits the historical museum.",
+    "en": "Since last month, Sophie visits the historical museum.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -57001,8 +57001,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03608",
-    "nl": "Wij weten dat sophie sinds vorige maand het historische museum bezoekt.",
-    "en": "We know that sophie visits the historical museum since last month.",
+    "nl": "Wij weten dat Sophie sinds vorige maand het historische museum bezoekt.",
+    "en": "We know that Sophie visits the historical museum since last month.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -57034,7 +57034,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03610",
     "nl": "Met grote zorgvuldigheid bezoekt Sophie het historische museum.",
-    "en": "Met grote zorgvuldigheid sophie visits the historical museum.",
+    "en": "With great care, Sophie visits the historical museum.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -57080,8 +57080,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03613",
-    "nl": "Wij weten dat sophie met grote zorgvuldigheid het historische museum bezoekt.",
-    "en": "We know that sophie visits the historical museum with great care.",
+    "nl": "Wij weten dat Sophie met grote zorgvuldigheid het historische museum bezoekt.",
+    "en": "We know that Sophie visits the historical museum with great care.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -57113,7 +57113,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03615",
     "nl": "Elke ochtend zoekt Sophie een nieuw appartement.",
-    "en": "Elke ochtend sophie looks for a new apartment.",
+    "en": "Every morning, Sophie looks for a new apartment.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -57159,8 +57159,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03618",
-    "nl": "Wij weten dat sophie elke ochtend een nieuw appartement zoekt.",
-    "en": "We know that sophie looks for a new apartment every morning.",
+    "nl": "Wij weten dat Sophie elke ochtend een nieuw appartement zoekt.",
+    "en": "We know that Sophie looks for a new apartment every morning.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -57192,7 +57192,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03620",
     "nl": "Gisterenmiddag zoekt Sophie een nieuw appartement.",
-    "en": "Gisterenmiddag sophie looks for a new apartment.",
+    "en": "Yesterday afternoon, Sophie looks for a new apartment.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -57238,8 +57238,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03623",
-    "nl": "Wij weten dat sophie gisterenmiddag een nieuw appartement zoekt.",
-    "en": "We know that sophie looks for a new apartment yesterday afternoon.",
+    "nl": "Wij weten dat Sophie gisterenmiddag een nieuw appartement zoekt.",
+    "en": "We know that Sophie looks for a new apartment yesterday afternoon.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -57271,7 +57271,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03625",
     "nl": "Volgende week zoekt Sophie een nieuw appartement.",
-    "en": "Volgende week sophie looks for a new apartment.",
+    "en": "Next week, Sophie looks for a new apartment.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -57317,8 +57317,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03628",
-    "nl": "Wij weten dat sophie volgende week een nieuw appartement zoekt.",
-    "en": "We know that sophie looks for a new apartment next week.",
+    "nl": "Wij weten dat Sophie volgende week een nieuw appartement zoekt.",
+    "en": "We know that Sophie looks for a new apartment next week.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -57350,7 +57350,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03630",
     "nl": "In het weekend zoekt Sophie een nieuw appartement.",
-    "en": "In het weekend sophie looks for a new apartment.",
+    "en": "At the weekend, Sophie looks for a new apartment.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -57396,8 +57396,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03633",
-    "nl": "Wij weten dat sophie in het weekend een nieuw appartement zoekt.",
-    "en": "We know that sophie looks for a new apartment at the weekend.",
+    "nl": "Wij weten dat Sophie in het weekend een nieuw appartement zoekt.",
+    "en": "We know that Sophie looks for a new apartment at the weekend.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -57429,7 +57429,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03635",
     "nl": "Om acht uur zoekt Sophie een nieuw appartement.",
-    "en": "Om acht uur sophie looks for a new apartment.",
+    "en": "At eight o'clock, Sophie looks for a new apartment.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -57475,8 +57475,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03638",
-    "nl": "Wij weten dat sophie om acht uur een nieuw appartement zoekt.",
-    "en": "We know that sophie looks for a new apartment at eight o'clock.",
+    "nl": "Wij weten dat Sophie om acht uur een nieuw appartement zoekt.",
+    "en": "We know that Sophie looks for a new apartment at eight o'clock.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -57508,7 +57508,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03640",
     "nl": "Regelmatig zoekt Sophie een nieuw appartement.",
-    "en": "Regelmatig sophie looks for a new apartment.",
+    "en": "Regularly, Sophie looks for a new apartment.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -57554,8 +57554,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03643",
-    "nl": "Wij weten dat sophie regelmatig een nieuw appartement zoekt.",
-    "en": "We know that sophie looks for a new apartment regularly.",
+    "nl": "Wij weten dat Sophie regelmatig een nieuw appartement zoekt.",
+    "en": "We know that Sophie looks for a new apartment regularly.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -57587,7 +57587,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03645",
     "nl": "Vaak zoekt Sophie een nieuw appartement.",
-    "en": "Vaak sophie looks for a new apartment.",
+    "en": "Often, Sophie looks for a new apartment.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -57633,8 +57633,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03648",
-    "nl": "Wij weten dat sophie vaak een nieuw appartement zoekt.",
-    "en": "We know that sophie looks for a new apartment often.",
+    "nl": "Wij weten dat Sophie vaak een nieuw appartement zoekt.",
+    "en": "We know that Sophie looks for a new apartment often.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -57666,7 +57666,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03650",
     "nl": "Op maandag zoekt Sophie een nieuw appartement.",
-    "en": "Op maandag sophie looks for a new apartment.",
+    "en": "On Monday, Sophie looks for a new apartment.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -57712,8 +57712,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03653",
-    "nl": "Wij weten dat sophie op maandag een nieuw appartement zoekt.",
-    "en": "We know that sophie looks for a new apartment on Monday.",
+    "nl": "Wij weten dat Sophie op maandag een nieuw appartement zoekt.",
+    "en": "We know that Sophie looks for a new apartment on Monday.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -57745,7 +57745,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03655",
     "nl": "Tijdens de lunch zoekt Sophie een nieuw appartement.",
-    "en": "Tijdens de lunch sophie looks for a new apartment.",
+    "en": "During lunch, Sophie looks for a new apartment.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -57791,8 +57791,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03658",
-    "nl": "Wij weten dat sophie tijdens de lunch een nieuw appartement zoekt.",
-    "en": "We know that sophie looks for a new apartment during lunch.",
+    "nl": "Wij weten dat Sophie tijdens de lunch een nieuw appartement zoekt.",
+    "en": "We know that Sophie looks for a new apartment during lunch.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -57824,7 +57824,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03660",
     "nl": "Na het werk zoekt Sophie een nieuw appartement.",
-    "en": "Na het werk sophie looks for a new apartment.",
+    "en": "After work, Sophie looks for a new apartment.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -57870,8 +57870,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03663",
-    "nl": "Wij weten dat sophie na het werk een nieuw appartement zoekt.",
-    "en": "We know that sophie looks for a new apartment after work.",
+    "nl": "Wij weten dat Sophie na het werk een nieuw appartement zoekt.",
+    "en": "We know that Sophie looks for a new apartment after work.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -57903,7 +57903,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03665",
     "nl": "Sinds vorige maand zoekt Sophie een nieuw appartement.",
-    "en": "Sinds vorige maand sophie looks for a new apartment.",
+    "en": "Since last month, Sophie looks for a new apartment.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -57949,8 +57949,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03668",
-    "nl": "Wij weten dat sophie sinds vorige maand een nieuw appartement zoekt.",
-    "en": "We know that sophie looks for a new apartment since last month.",
+    "nl": "Wij weten dat Sophie sinds vorige maand een nieuw appartement zoekt.",
+    "en": "We know that Sophie looks for a new apartment since last month.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -57982,7 +57982,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03670",
     "nl": "Met grote zorgvuldigheid zoekt Sophie een nieuw appartement.",
-    "en": "Met grote zorgvuldigheid sophie looks for a new apartment.",
+    "en": "With great care, Sophie looks for a new apartment.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -58028,8 +58028,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03673",
-    "nl": "Wij weten dat sophie met grote zorgvuldigheid een nieuw appartement zoekt.",
-    "en": "We know that sophie looks for a new apartment with great care.",
+    "nl": "Wij weten dat Sophie met grote zorgvuldigheid een nieuw appartement zoekt.",
+    "en": "We know that Sophie looks for a new apartment with great care.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -58061,7 +58061,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03675",
     "nl": "Elke ochtend ontmoet Sophie goede vrienden in de stad.",
-    "en": "Elke ochtend sophie meets good friends in the city.",
+    "en": "Every morning, Sophie meets good friends in the city.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -58107,8 +58107,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03678",
-    "nl": "Wij weten dat sophie elke ochtend goede vrienden in de stad ontmoet.",
-    "en": "We know that sophie meets good friends in the city every morning.",
+    "nl": "Wij weten dat Sophie elke ochtend goede vrienden in de stad ontmoet.",
+    "en": "We know that Sophie meets good friends in the city every morning.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -58140,7 +58140,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03680",
     "nl": "Gisterenmiddag ontmoet Sophie goede vrienden in de stad.",
-    "en": "Gisterenmiddag sophie meets good friends in the city.",
+    "en": "Yesterday afternoon, Sophie meets good friends in the city.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -58186,8 +58186,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03683",
-    "nl": "Wij weten dat sophie gisterenmiddag goede vrienden in de stad ontmoet.",
-    "en": "We know that sophie meets good friends in the city yesterday afternoon.",
+    "nl": "Wij weten dat Sophie gisterenmiddag goede vrienden in de stad ontmoet.",
+    "en": "We know that Sophie meets good friends in the city yesterday afternoon.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -58219,7 +58219,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03685",
     "nl": "Volgende week ontmoet Sophie goede vrienden in de stad.",
-    "en": "Volgende week sophie meets good friends in the city.",
+    "en": "Next week, Sophie meets good friends in the city.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -58265,8 +58265,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03688",
-    "nl": "Wij weten dat sophie volgende week goede vrienden in de stad ontmoet.",
-    "en": "We know that sophie meets good friends in the city next week.",
+    "nl": "Wij weten dat Sophie volgende week goede vrienden in de stad ontmoet.",
+    "en": "We know that Sophie meets good friends in the city next week.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -58298,7 +58298,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03690",
     "nl": "In het weekend ontmoet Sophie goede vrienden in de stad.",
-    "en": "In het weekend sophie meets good friends in the city.",
+    "en": "At the weekend, Sophie meets good friends in the city.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -58344,8 +58344,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03693",
-    "nl": "Wij weten dat sophie in het weekend goede vrienden in de stad ontmoet.",
-    "en": "We know that sophie meets good friends in the city at the weekend.",
+    "nl": "Wij weten dat Sophie in het weekend goede vrienden in de stad ontmoet.",
+    "en": "We know that Sophie meets good friends in the city at the weekend.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -58377,7 +58377,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03695",
     "nl": "Om acht uur ontmoet Sophie goede vrienden in de stad.",
-    "en": "Om acht uur sophie meets good friends in the city.",
+    "en": "At eight o'clock, Sophie meets good friends in the city.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -58423,8 +58423,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03698",
-    "nl": "Wij weten dat sophie om acht uur goede vrienden in de stad ontmoet.",
-    "en": "We know that sophie meets good friends in the city at eight o'clock.",
+    "nl": "Wij weten dat Sophie om acht uur goede vrienden in de stad ontmoet.",
+    "en": "We know that Sophie meets good friends in the city at eight o'clock.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -58456,7 +58456,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03700",
     "nl": "Regelmatig ontmoet Sophie goede vrienden in de stad.",
-    "en": "Regelmatig sophie meets good friends in the city.",
+    "en": "Regularly, Sophie meets good friends in the city.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -58502,8 +58502,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03703",
-    "nl": "Wij weten dat sophie regelmatig goede vrienden in de stad ontmoet.",
-    "en": "We know that sophie meets good friends in the city regularly.",
+    "nl": "Wij weten dat Sophie regelmatig goede vrienden in de stad ontmoet.",
+    "en": "We know that Sophie meets good friends in the city regularly.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -58535,7 +58535,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03705",
     "nl": "Vaak ontmoet Sophie goede vrienden in de stad.",
-    "en": "Vaak sophie meets good friends in the city.",
+    "en": "Often, Sophie meets good friends in the city.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -58581,8 +58581,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03708",
-    "nl": "Wij weten dat sophie vaak goede vrienden in de stad ontmoet.",
-    "en": "We know that sophie meets good friends in the city often.",
+    "nl": "Wij weten dat Sophie vaak goede vrienden in de stad ontmoet.",
+    "en": "We know that Sophie meets good friends in the city often.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -58614,7 +58614,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03710",
     "nl": "Op maandag ontmoet Sophie goede vrienden in de stad.",
-    "en": "Op maandag sophie meets good friends in the city.",
+    "en": "On Monday, Sophie meets good friends in the city.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -58660,8 +58660,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03713",
-    "nl": "Wij weten dat sophie op maandag goede vrienden in de stad ontmoet.",
-    "en": "We know that sophie meets good friends in the city on Monday.",
+    "nl": "Wij weten dat Sophie op maandag goede vrienden in de stad ontmoet.",
+    "en": "We know that Sophie meets good friends in the city on Monday.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -58693,7 +58693,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03715",
     "nl": "Tijdens de lunch ontmoet Sophie goede vrienden in de stad.",
-    "en": "Tijdens de lunch sophie meets good friends in the city.",
+    "en": "During lunch, Sophie meets good friends in the city.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -58739,8 +58739,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03718",
-    "nl": "Wij weten dat sophie tijdens de lunch goede vrienden in de stad ontmoet.",
-    "en": "We know that sophie meets good friends in the city during lunch.",
+    "nl": "Wij weten dat Sophie tijdens de lunch goede vrienden in de stad ontmoet.",
+    "en": "We know that Sophie meets good friends in the city during lunch.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -58772,7 +58772,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03720",
     "nl": "Na het werk ontmoet Sophie goede vrienden in de stad.",
-    "en": "Na het werk sophie meets good friends in the city.",
+    "en": "After work, Sophie meets good friends in the city.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -58818,8 +58818,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03723",
-    "nl": "Wij weten dat sophie na het werk goede vrienden in de stad ontmoet.",
-    "en": "We know that sophie meets good friends in the city after work.",
+    "nl": "Wij weten dat Sophie na het werk goede vrienden in de stad ontmoet.",
+    "en": "We know that Sophie meets good friends in the city after work.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -58851,7 +58851,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03725",
     "nl": "Sinds vorige maand ontmoet Sophie goede vrienden in de stad.",
-    "en": "Sinds vorige maand sophie meets good friends in the city.",
+    "en": "Since last month, Sophie meets good friends in the city.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -58897,8 +58897,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03728",
-    "nl": "Wij weten dat sophie sinds vorige maand goede vrienden in de stad ontmoet.",
-    "en": "We know that sophie meets good friends in the city since last month.",
+    "nl": "Wij weten dat Sophie sinds vorige maand goede vrienden in de stad ontmoet.",
+    "en": "We know that Sophie meets good friends in the city since last month.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -58930,7 +58930,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03730",
     "nl": "Met grote zorgvuldigheid ontmoet Sophie goede vrienden in de stad.",
-    "en": "Met grote zorgvuldigheid sophie meets good friends in the city.",
+    "en": "With great care, Sophie meets good friends in the city.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -58976,8 +58976,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03733",
-    "nl": "Wij weten dat sophie met grote zorgvuldigheid goede vrienden in de stad ontmoet.",
-    "en": "We know that sophie meets good friends in the city with great care.",
+    "nl": "Wij weten dat Sophie met grote zorgvuldigheid goede vrienden in de stad ontmoet.",
+    "en": "We know that Sophie meets good friends in the city with great care.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -59009,7 +59009,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03735",
     "nl": "Elke ochtend plant Sophie een lange reis naar het buitenland.",
-    "en": "Elke ochtend sophie plans a long journey abroad.",
+    "en": "Every morning, Sophie plans a long journey abroad.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -59055,8 +59055,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03738",
-    "nl": "Wij weten dat sophie elke ochtend een lange reis naar het buitenland plant.",
-    "en": "We know that sophie plans a long journey abroad every morning.",
+    "nl": "Wij weten dat Sophie elke ochtend een lange reis naar het buitenland plant.",
+    "en": "We know that Sophie plans a long journey abroad every morning.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -59088,7 +59088,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03740",
     "nl": "Gisterenmiddag plant Sophie een lange reis naar het buitenland.",
-    "en": "Gisterenmiddag sophie plans a long journey abroad.",
+    "en": "Yesterday afternoon, Sophie plans a long journey abroad.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -59134,8 +59134,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03743",
-    "nl": "Wij weten dat sophie gisterenmiddag een lange reis naar het buitenland plant.",
-    "en": "We know that sophie plans a long journey abroad yesterday afternoon.",
+    "nl": "Wij weten dat Sophie gisterenmiddag een lange reis naar het buitenland plant.",
+    "en": "We know that Sophie plans a long journey abroad yesterday afternoon.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -59167,7 +59167,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03745",
     "nl": "Volgende week plant Sophie een lange reis naar het buitenland.",
-    "en": "Volgende week sophie plans a long journey abroad.",
+    "en": "Next week, Sophie plans a long journey abroad.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -59213,8 +59213,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03748",
-    "nl": "Wij weten dat sophie volgende week een lange reis naar het buitenland plant.",
-    "en": "We know that sophie plans a long journey abroad next week.",
+    "nl": "Wij weten dat Sophie volgende week een lange reis naar het buitenland plant.",
+    "en": "We know that Sophie plans a long journey abroad next week.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -59246,7 +59246,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03750",
     "nl": "In het weekend plant Sophie een lange reis naar het buitenland.",
-    "en": "In het weekend sophie plans a long journey abroad.",
+    "en": "At the weekend, Sophie plans a long journey abroad.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -59292,8 +59292,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03753",
-    "nl": "Wij weten dat sophie in het weekend een lange reis naar het buitenland plant.",
-    "en": "We know that sophie plans a long journey abroad at the weekend.",
+    "nl": "Wij weten dat Sophie in het weekend een lange reis naar het buitenland plant.",
+    "en": "We know that Sophie plans a long journey abroad at the weekend.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -59325,7 +59325,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03755",
     "nl": "Om acht uur plant Sophie een lange reis naar het buitenland.",
-    "en": "Om acht uur sophie plans a long journey abroad.",
+    "en": "At eight o'clock, Sophie plans a long journey abroad.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -59371,8 +59371,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03758",
-    "nl": "Wij weten dat sophie om acht uur een lange reis naar het buitenland plant.",
-    "en": "We know that sophie plans a long journey abroad at eight o'clock.",
+    "nl": "Wij weten dat Sophie om acht uur een lange reis naar het buitenland plant.",
+    "en": "We know that Sophie plans a long journey abroad at eight o'clock.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -59404,7 +59404,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03760",
     "nl": "Regelmatig plant Sophie een lange reis naar het buitenland.",
-    "en": "Regelmatig sophie plans a long journey abroad.",
+    "en": "Regularly, Sophie plans a long journey abroad.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -59450,8 +59450,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03763",
-    "nl": "Wij weten dat sophie regelmatig een lange reis naar het buitenland plant.",
-    "en": "We know that sophie plans a long journey abroad regularly.",
+    "nl": "Wij weten dat Sophie regelmatig een lange reis naar het buitenland plant.",
+    "en": "We know that Sophie plans a long journey abroad regularly.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -59483,7 +59483,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03765",
     "nl": "Vaak plant Sophie een lange reis naar het buitenland.",
-    "en": "Vaak sophie plans a long journey abroad.",
+    "en": "Often, Sophie plans a long journey abroad.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -59529,8 +59529,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03768",
-    "nl": "Wij weten dat sophie vaak een lange reis naar het buitenland plant.",
-    "en": "We know that sophie plans a long journey abroad often.",
+    "nl": "Wij weten dat Sophie vaak een lange reis naar het buitenland plant.",
+    "en": "We know that Sophie plans a long journey abroad often.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -59562,7 +59562,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03770",
     "nl": "Op maandag plant Sophie een lange reis naar het buitenland.",
-    "en": "Op maandag sophie plans a long journey abroad.",
+    "en": "On Monday, Sophie plans a long journey abroad.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -59608,8 +59608,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03773",
-    "nl": "Wij weten dat sophie op maandag een lange reis naar het buitenland plant.",
-    "en": "We know that sophie plans a long journey abroad on Monday.",
+    "nl": "Wij weten dat Sophie op maandag een lange reis naar het buitenland plant.",
+    "en": "We know that Sophie plans a long journey abroad on Monday.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -59641,7 +59641,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03775",
     "nl": "Tijdens de lunch plant Sophie een lange reis naar het buitenland.",
-    "en": "Tijdens de lunch sophie plans a long journey abroad.",
+    "en": "During lunch, Sophie plans a long journey abroad.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -59687,8 +59687,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03778",
-    "nl": "Wij weten dat sophie tijdens de lunch een lange reis naar het buitenland plant.",
-    "en": "We know that sophie plans a long journey abroad during lunch.",
+    "nl": "Wij weten dat Sophie tijdens de lunch een lange reis naar het buitenland plant.",
+    "en": "We know that Sophie plans a long journey abroad during lunch.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -59720,7 +59720,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03780",
     "nl": "Na het werk plant Sophie een lange reis naar het buitenland.",
-    "en": "Na het werk sophie plans a long journey abroad.",
+    "en": "After work, Sophie plans a long journey abroad.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -59766,8 +59766,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03783",
-    "nl": "Wij weten dat sophie na het werk een lange reis naar het buitenland plant.",
-    "en": "We know that sophie plans a long journey abroad after work.",
+    "nl": "Wij weten dat Sophie na het werk een lange reis naar het buitenland plant.",
+    "en": "We know that Sophie plans a long journey abroad after work.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -59799,7 +59799,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03785",
     "nl": "Sinds vorige maand plant Sophie een lange reis naar het buitenland.",
-    "en": "Sinds vorige maand sophie plans a long journey abroad.",
+    "en": "Since last month, Sophie plans a long journey abroad.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -59845,8 +59845,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03788",
-    "nl": "Wij weten dat sophie sinds vorige maand een lange reis naar het buitenland plant.",
-    "en": "We know that sophie plans a long journey abroad since last month.",
+    "nl": "Wij weten dat Sophie sinds vorige maand een lange reis naar het buitenland plant.",
+    "en": "We know that Sophie plans a long journey abroad since last month.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -59878,7 +59878,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03790",
     "nl": "Met grote zorgvuldigheid plant Sophie een lange reis naar het buitenland.",
-    "en": "Met grote zorgvuldigheid sophie plans a long journey abroad.",
+    "en": "With great care, Sophie plans a long journey abroad.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -59924,8 +59924,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03793",
-    "nl": "Wij weten dat sophie met grote zorgvuldigheid een lange reis naar het buitenland plant.",
-    "en": "We know that sophie plans a long journey abroad with great care.",
+    "nl": "Wij weten dat Sophie met grote zorgvuldigheid een lange reis naar het buitenland plant.",
+    "en": "We know that Sophie plans a long journey abroad with great care.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -59957,7 +59957,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03795",
     "nl": "Elke ochtend organiseert Sophie een gezellige buurtbijeenkomst.",
-    "en": "Elke ochtend sophie organizes a cosy neighbourhood meeting.",
+    "en": "Every morning, Sophie organizes a cosy neighbourhood meeting.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -60003,8 +60003,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03798",
-    "nl": "Wij weten dat sophie elke ochtend een gezellige buurtbijeenkomst organiseert.",
-    "en": "We know that sophie organizes a cosy neighbourhood meeting every morning.",
+    "nl": "Wij weten dat Sophie elke ochtend een gezellige buurtbijeenkomst organiseert.",
+    "en": "We know that Sophie organizes a cosy neighbourhood meeting every morning.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -60036,7 +60036,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03800",
     "nl": "Gisterenmiddag organiseert Sophie een gezellige buurtbijeenkomst.",
-    "en": "Gisterenmiddag sophie organizes a cosy neighbourhood meeting.",
+    "en": "Yesterday afternoon, Sophie organizes a cosy neighbourhood meeting.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -60082,8 +60082,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03803",
-    "nl": "Wij weten dat sophie gisterenmiddag een gezellige buurtbijeenkomst organiseert.",
-    "en": "We know that sophie organizes a cosy neighbourhood meeting yesterday afternoon.",
+    "nl": "Wij weten dat Sophie gisterenmiddag een gezellige buurtbijeenkomst organiseert.",
+    "en": "We know that Sophie organizes a cosy neighbourhood meeting yesterday afternoon.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -60115,7 +60115,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03805",
     "nl": "Volgende week organiseert Sophie een gezellige buurtbijeenkomst.",
-    "en": "Volgende week sophie organizes a cosy neighbourhood meeting.",
+    "en": "Next week, Sophie organizes a cosy neighbourhood meeting.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -60161,8 +60161,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03808",
-    "nl": "Wij weten dat sophie volgende week een gezellige buurtbijeenkomst organiseert.",
-    "en": "We know that sophie organizes a cosy neighbourhood meeting next week.",
+    "nl": "Wij weten dat Sophie volgende week een gezellige buurtbijeenkomst organiseert.",
+    "en": "We know that Sophie organizes a cosy neighbourhood meeting next week.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -60194,7 +60194,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03810",
     "nl": "In het weekend organiseert Sophie een gezellige buurtbijeenkomst.",
-    "en": "In het weekend sophie organizes a cosy neighbourhood meeting.",
+    "en": "At the weekend, Sophie organizes a cosy neighbourhood meeting.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -60240,8 +60240,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03813",
-    "nl": "Wij weten dat sophie in het weekend een gezellige buurtbijeenkomst organiseert.",
-    "en": "We know that sophie organizes a cosy neighbourhood meeting at the weekend.",
+    "nl": "Wij weten dat Sophie in het weekend een gezellige buurtbijeenkomst organiseert.",
+    "en": "We know that Sophie organizes a cosy neighbourhood meeting at the weekend.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -60273,7 +60273,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03815",
     "nl": "Om acht uur organiseert Sophie een gezellige buurtbijeenkomst.",
-    "en": "Om acht uur sophie organizes a cosy neighbourhood meeting.",
+    "en": "At eight o'clock, Sophie organizes a cosy neighbourhood meeting.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -60319,8 +60319,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03818",
-    "nl": "Wij weten dat sophie om acht uur een gezellige buurtbijeenkomst organiseert.",
-    "en": "We know that sophie organizes a cosy neighbourhood meeting at eight o'clock.",
+    "nl": "Wij weten dat Sophie om acht uur een gezellige buurtbijeenkomst organiseert.",
+    "en": "We know that Sophie organizes a cosy neighbourhood meeting at eight o'clock.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -60352,7 +60352,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03820",
     "nl": "Regelmatig organiseert Sophie een gezellige buurtbijeenkomst.",
-    "en": "Regelmatig sophie organizes a cosy neighbourhood meeting.",
+    "en": "Regularly, Sophie organizes a cosy neighbourhood meeting.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -60398,8 +60398,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03823",
-    "nl": "Wij weten dat sophie regelmatig een gezellige buurtbijeenkomst organiseert.",
-    "en": "We know that sophie organizes a cosy neighbourhood meeting regularly.",
+    "nl": "Wij weten dat Sophie regelmatig een gezellige buurtbijeenkomst organiseert.",
+    "en": "We know that Sophie organizes a cosy neighbourhood meeting regularly.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -60431,7 +60431,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03825",
     "nl": "Vaak organiseert Sophie een gezellige buurtbijeenkomst.",
-    "en": "Vaak sophie organizes a cosy neighbourhood meeting.",
+    "en": "Often, Sophie organizes a cosy neighbourhood meeting.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -60477,8 +60477,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03828",
-    "nl": "Wij weten dat sophie vaak een gezellige buurtbijeenkomst organiseert.",
-    "en": "We know that sophie organizes a cosy neighbourhood meeting often.",
+    "nl": "Wij weten dat Sophie vaak een gezellige buurtbijeenkomst organiseert.",
+    "en": "We know that Sophie organizes a cosy neighbourhood meeting often.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -60510,7 +60510,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03830",
     "nl": "Op maandag organiseert Sophie een gezellige buurtbijeenkomst.",
-    "en": "Op maandag sophie organizes a cosy neighbourhood meeting.",
+    "en": "On Monday, Sophie organizes a cosy neighbourhood meeting.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -60556,8 +60556,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03833",
-    "nl": "Wij weten dat sophie op maandag een gezellige buurtbijeenkomst organiseert.",
-    "en": "We know that sophie organizes a cosy neighbourhood meeting on Monday.",
+    "nl": "Wij weten dat Sophie op maandag een gezellige buurtbijeenkomst organiseert.",
+    "en": "We know that Sophie organizes a cosy neighbourhood meeting on Monday.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -60589,7 +60589,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03835",
     "nl": "Tijdens de lunch organiseert Sophie een gezellige buurtbijeenkomst.",
-    "en": "Tijdens de lunch sophie organizes a cosy neighbourhood meeting.",
+    "en": "During lunch, Sophie organizes a cosy neighbourhood meeting.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -60635,8 +60635,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03838",
-    "nl": "Wij weten dat sophie tijdens de lunch een gezellige buurtbijeenkomst organiseert.",
-    "en": "We know that sophie organizes a cosy neighbourhood meeting during lunch.",
+    "nl": "Wij weten dat Sophie tijdens de lunch een gezellige buurtbijeenkomst organiseert.",
+    "en": "We know that Sophie organizes a cosy neighbourhood meeting during lunch.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -60668,7 +60668,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03840",
     "nl": "Na het werk organiseert Sophie een gezellige buurtbijeenkomst.",
-    "en": "Na het werk sophie organizes a cosy neighbourhood meeting.",
+    "en": "After work, Sophie organizes a cosy neighbourhood meeting.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -60714,8 +60714,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03843",
-    "nl": "Wij weten dat sophie na het werk een gezellige buurtbijeenkomst organiseert.",
-    "en": "We know that sophie organizes a cosy neighbourhood meeting after work.",
+    "nl": "Wij weten dat Sophie na het werk een gezellige buurtbijeenkomst organiseert.",
+    "en": "We know that Sophie organizes a cosy neighbourhood meeting after work.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -60747,7 +60747,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03845",
     "nl": "Sinds vorige maand organiseert Sophie een gezellige buurtbijeenkomst.",
-    "en": "Sinds vorige maand sophie organizes a cosy neighbourhood meeting.",
+    "en": "Since last month, Sophie organizes a cosy neighbourhood meeting.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -60793,8 +60793,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03848",
-    "nl": "Wij weten dat sophie sinds vorige maand een gezellige buurtbijeenkomst organiseert.",
-    "en": "We know that sophie organizes a cosy neighbourhood meeting since last month.",
+    "nl": "Wij weten dat Sophie sinds vorige maand een gezellige buurtbijeenkomst organiseert.",
+    "en": "We know that Sophie organizes a cosy neighbourhood meeting since last month.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -60826,7 +60826,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03850",
     "nl": "Met grote zorgvuldigheid organiseert Sophie een gezellige buurtbijeenkomst.",
-    "en": "Met grote zorgvuldigheid sophie organizes a cosy neighbourhood meeting.",
+    "en": "With great care, Sophie organizes a cosy neighbourhood meeting.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -60872,8 +60872,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03853",
-    "nl": "Wij weten dat sophie met grote zorgvuldigheid een gezellige buurtbijeenkomst organiseert.",
-    "en": "We know that sophie organizes a cosy neighbourhood meeting with great care.",
+    "nl": "Wij weten dat Sophie met grote zorgvuldigheid een gezellige buurtbijeenkomst organiseert.",
+    "en": "We know that Sophie organizes a cosy neighbourhood meeting with great care.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -60905,7 +60905,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03855",
     "nl": "Elke ochtend analyseert Sophie de complexe financiële resultaten.",
-    "en": "Elke ochtend sophie analyzes the complex financial results.",
+    "en": "Every morning, Sophie analyzes the complex financial results.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -60951,8 +60951,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03858",
-    "nl": "Wij weten dat sophie elke ochtend de complexe financiële resultaten analyseert.",
-    "en": "We know that sophie analyzes the complex financial results every morning.",
+    "nl": "Wij weten dat Sophie elke ochtend de complexe financiële resultaten analyseert.",
+    "en": "We know that Sophie analyzes the complex financial results every morning.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -60984,7 +60984,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03860",
     "nl": "Gisterenmiddag analyseert Sophie de complexe financiële resultaten.",
-    "en": "Gisterenmiddag sophie analyzes the complex financial results.",
+    "en": "Yesterday afternoon, Sophie analyzes the complex financial results.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -61030,8 +61030,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03863",
-    "nl": "Wij weten dat sophie gisterenmiddag de complexe financiële resultaten analyseert.",
-    "en": "We know that sophie analyzes the complex financial results yesterday afternoon.",
+    "nl": "Wij weten dat Sophie gisterenmiddag de complexe financiële resultaten analyseert.",
+    "en": "We know that Sophie analyzes the complex financial results yesterday afternoon.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -61063,7 +61063,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03865",
     "nl": "Volgende week analyseert Sophie de complexe financiële resultaten.",
-    "en": "Volgende week sophie analyzes the complex financial results.",
+    "en": "Next week, Sophie analyzes the complex financial results.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -61109,8 +61109,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03868",
-    "nl": "Wij weten dat sophie volgende week de complexe financiële resultaten analyseert.",
-    "en": "We know that sophie analyzes the complex financial results next week.",
+    "nl": "Wij weten dat Sophie volgende week de complexe financiële resultaten analyseert.",
+    "en": "We know that Sophie analyzes the complex financial results next week.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -61142,7 +61142,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03870",
     "nl": "In het weekend analyseert Sophie de complexe financiële resultaten.",
-    "en": "In het weekend sophie analyzes the complex financial results.",
+    "en": "At the weekend, Sophie analyzes the complex financial results.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -61188,8 +61188,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03873",
-    "nl": "Wij weten dat sophie in het weekend de complexe financiële resultaten analyseert.",
-    "en": "We know that sophie analyzes the complex financial results at the weekend.",
+    "nl": "Wij weten dat Sophie in het weekend de complexe financiële resultaten analyseert.",
+    "en": "We know that Sophie analyzes the complex financial results at the weekend.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -61221,7 +61221,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03875",
     "nl": "Om acht uur analyseert Sophie de complexe financiële resultaten.",
-    "en": "Om acht uur sophie analyzes the complex financial results.",
+    "en": "At eight o'clock, Sophie analyzes the complex financial results.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -61267,8 +61267,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03878",
-    "nl": "Wij weten dat sophie om acht uur de complexe financiële resultaten analyseert.",
-    "en": "We know that sophie analyzes the complex financial results at eight o'clock.",
+    "nl": "Wij weten dat Sophie om acht uur de complexe financiële resultaten analyseert.",
+    "en": "We know that Sophie analyzes the complex financial results at eight o'clock.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -61300,7 +61300,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03880",
     "nl": "Regelmatig analyseert Sophie de complexe financiële resultaten.",
-    "en": "Regelmatig sophie analyzes the complex financial results.",
+    "en": "Regularly, Sophie analyzes the complex financial results.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -61346,8 +61346,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03883",
-    "nl": "Wij weten dat sophie regelmatig de complexe financiële resultaten analyseert.",
-    "en": "We know that sophie analyzes the complex financial results regularly.",
+    "nl": "Wij weten dat Sophie regelmatig de complexe financiële resultaten analyseert.",
+    "en": "We know that Sophie analyzes the complex financial results regularly.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -61379,7 +61379,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03885",
     "nl": "Vaak analyseert Sophie de complexe financiële resultaten.",
-    "en": "Vaak sophie analyzes the complex financial results.",
+    "en": "Often, Sophie analyzes the complex financial results.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -61425,8 +61425,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03888",
-    "nl": "Wij weten dat sophie vaak de complexe financiële resultaten analyseert.",
-    "en": "We know that sophie analyzes the complex financial results often.",
+    "nl": "Wij weten dat Sophie vaak de complexe financiële resultaten analyseert.",
+    "en": "We know that Sophie analyzes the complex financial results often.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -61458,7 +61458,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03890",
     "nl": "Op maandag analyseert Sophie de complexe financiële resultaten.",
-    "en": "Op maandag sophie analyzes the complex financial results.",
+    "en": "On Monday, Sophie analyzes the complex financial results.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -61504,8 +61504,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03893",
-    "nl": "Wij weten dat sophie op maandag de complexe financiële resultaten analyseert.",
-    "en": "We know that sophie analyzes the complex financial results on Monday.",
+    "nl": "Wij weten dat Sophie op maandag de complexe financiële resultaten analyseert.",
+    "en": "We know that Sophie analyzes the complex financial results on Monday.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -61537,7 +61537,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03895",
     "nl": "Tijdens de lunch analyseert Sophie de complexe financiële resultaten.",
-    "en": "Tijdens de lunch sophie analyzes the complex financial results.",
+    "en": "During lunch, Sophie analyzes the complex financial results.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -61583,8 +61583,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03898",
-    "nl": "Wij weten dat sophie tijdens de lunch de complexe financiële resultaten analyseert.",
-    "en": "We know that sophie analyzes the complex financial results during lunch.",
+    "nl": "Wij weten dat Sophie tijdens de lunch de complexe financiële resultaten analyseert.",
+    "en": "We know that Sophie analyzes the complex financial results during lunch.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -61616,7 +61616,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03900",
     "nl": "Na het werk analyseert Sophie de complexe financiële resultaten.",
-    "en": "Na het werk sophie analyzes the complex financial results.",
+    "en": "After work, Sophie analyzes the complex financial results.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -61662,8 +61662,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03903",
-    "nl": "Wij weten dat sophie na het werk de complexe financiële resultaten analyseert.",
-    "en": "We know that sophie analyzes the complex financial results after work.",
+    "nl": "Wij weten dat Sophie na het werk de complexe financiële resultaten analyseert.",
+    "en": "We know that Sophie analyzes the complex financial results after work.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -61695,7 +61695,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03905",
     "nl": "Sinds vorige maand analyseert Sophie de complexe financiële resultaten.",
-    "en": "Sinds vorige maand sophie analyzes the complex financial results.",
+    "en": "Since last month, Sophie analyzes the complex financial results.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -61741,8 +61741,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03908",
-    "nl": "Wij weten dat sophie sinds vorige maand de complexe financiële resultaten analyseert.",
-    "en": "We know that sophie analyzes the complex financial results since last month.",
+    "nl": "Wij weten dat Sophie sinds vorige maand de complexe financiële resultaten analyseert.",
+    "en": "We know that Sophie analyzes the complex financial results since last month.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -61774,7 +61774,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03910",
     "nl": "Met grote zorgvuldigheid analyseert Sophie de complexe financiële resultaten.",
-    "en": "Met grote zorgvuldigheid sophie analyzes the complex financial results.",
+    "en": "With great care, Sophie analyzes the complex financial results.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -61820,8 +61820,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03913",
-    "nl": "Wij weten dat sophie met grote zorgvuldigheid de complexe financiële resultaten analyseert.",
-    "en": "We know that sophie analyzes the complex financial results with great care.",
+    "nl": "Wij weten dat Sophie met grote zorgvuldigheid de complexe financiële resultaten analyseert.",
+    "en": "We know that Sophie analyzes the complex financial results with great care.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -61853,7 +61853,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03915",
     "nl": "Elke ochtend bespreekt Sophie de nieuwe beleidsvoorstellen.",
-    "en": "Elke ochtend sophie discusses the new policy proposals.",
+    "en": "Every morning, Sophie discusses the new policy proposals.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -61899,8 +61899,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03918",
-    "nl": "Wij weten dat sophie elke ochtend de nieuwe beleidsvoorstellen bespreekt.",
-    "en": "We know that sophie discusses the new policy proposals every morning.",
+    "nl": "Wij weten dat Sophie elke ochtend de nieuwe beleidsvoorstellen bespreekt.",
+    "en": "We know that Sophie discusses the new policy proposals every morning.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -61932,7 +61932,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03920",
     "nl": "Gisterenmiddag bespreekt Sophie de nieuwe beleidsvoorstellen.",
-    "en": "Gisterenmiddag sophie discusses the new policy proposals.",
+    "en": "Yesterday afternoon, Sophie discusses the new policy proposals.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -61978,8 +61978,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03923",
-    "nl": "Wij weten dat sophie gisterenmiddag de nieuwe beleidsvoorstellen bespreekt.",
-    "en": "We know that sophie discusses the new policy proposals yesterday afternoon.",
+    "nl": "Wij weten dat Sophie gisterenmiddag de nieuwe beleidsvoorstellen bespreekt.",
+    "en": "We know that Sophie discusses the new policy proposals yesterday afternoon.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -62011,7 +62011,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03925",
     "nl": "Volgende week bespreekt Sophie de nieuwe beleidsvoorstellen.",
-    "en": "Volgende week sophie discusses the new policy proposals.",
+    "en": "Next week, Sophie discusses the new policy proposals.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -62057,8 +62057,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03928",
-    "nl": "Wij weten dat sophie volgende week de nieuwe beleidsvoorstellen bespreekt.",
-    "en": "We know that sophie discusses the new policy proposals next week.",
+    "nl": "Wij weten dat Sophie volgende week de nieuwe beleidsvoorstellen bespreekt.",
+    "en": "We know that Sophie discusses the new policy proposals next week.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -62090,7 +62090,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03930",
     "nl": "In het weekend bespreekt Sophie de nieuwe beleidsvoorstellen.",
-    "en": "In het weekend sophie discusses the new policy proposals.",
+    "en": "At the weekend, Sophie discusses the new policy proposals.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -62136,8 +62136,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03933",
-    "nl": "Wij weten dat sophie in het weekend de nieuwe beleidsvoorstellen bespreekt.",
-    "en": "We know that sophie discusses the new policy proposals at the weekend.",
+    "nl": "Wij weten dat Sophie in het weekend de nieuwe beleidsvoorstellen bespreekt.",
+    "en": "We know that Sophie discusses the new policy proposals at the weekend.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -62169,7 +62169,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03935",
     "nl": "Om acht uur bespreekt Sophie de nieuwe beleidsvoorstellen.",
-    "en": "Om acht uur sophie discusses the new policy proposals.",
+    "en": "At eight o'clock, Sophie discusses the new policy proposals.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -62215,8 +62215,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03938",
-    "nl": "Wij weten dat sophie om acht uur de nieuwe beleidsvoorstellen bespreekt.",
-    "en": "We know that sophie discusses the new policy proposals at eight o'clock.",
+    "nl": "Wij weten dat Sophie om acht uur de nieuwe beleidsvoorstellen bespreekt.",
+    "en": "We know that Sophie discusses the new policy proposals at eight o'clock.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -62248,7 +62248,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03940",
     "nl": "Regelmatig bespreekt Sophie de nieuwe beleidsvoorstellen.",
-    "en": "Regelmatig sophie discusses the new policy proposals.",
+    "en": "Regularly, Sophie discusses the new policy proposals.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -62294,8 +62294,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03943",
-    "nl": "Wij weten dat sophie regelmatig de nieuwe beleidsvoorstellen bespreekt.",
-    "en": "We know that sophie discusses the new policy proposals regularly.",
+    "nl": "Wij weten dat Sophie regelmatig de nieuwe beleidsvoorstellen bespreekt.",
+    "en": "We know that Sophie discusses the new policy proposals regularly.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -62327,7 +62327,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03945",
     "nl": "Vaak bespreekt Sophie de nieuwe beleidsvoorstellen.",
-    "en": "Vaak sophie discusses the new policy proposals.",
+    "en": "Often, Sophie discusses the new policy proposals.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -62373,8 +62373,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03948",
-    "nl": "Wij weten dat sophie vaak de nieuwe beleidsvoorstellen bespreekt.",
-    "en": "We know that sophie discusses the new policy proposals often.",
+    "nl": "Wij weten dat Sophie vaak de nieuwe beleidsvoorstellen bespreekt.",
+    "en": "We know that Sophie discusses the new policy proposals often.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -62406,7 +62406,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03950",
     "nl": "Op maandag bespreekt Sophie de nieuwe beleidsvoorstellen.",
-    "en": "Op maandag sophie discusses the new policy proposals.",
+    "en": "On Monday, Sophie discusses the new policy proposals.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -62452,8 +62452,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03953",
-    "nl": "Wij weten dat sophie op maandag de nieuwe beleidsvoorstellen bespreekt.",
-    "en": "We know that sophie discusses the new policy proposals on Monday.",
+    "nl": "Wij weten dat Sophie op maandag de nieuwe beleidsvoorstellen bespreekt.",
+    "en": "We know that Sophie discusses the new policy proposals on Monday.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -62485,7 +62485,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03955",
     "nl": "Tijdens de lunch bespreekt Sophie de nieuwe beleidsvoorstellen.",
-    "en": "Tijdens de lunch sophie discusses the new policy proposals.",
+    "en": "During lunch, Sophie discusses the new policy proposals.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -62531,8 +62531,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03958",
-    "nl": "Wij weten dat sophie tijdens de lunch de nieuwe beleidsvoorstellen bespreekt.",
-    "en": "We know that sophie discusses the new policy proposals during lunch.",
+    "nl": "Wij weten dat Sophie tijdens de lunch de nieuwe beleidsvoorstellen bespreekt.",
+    "en": "We know that Sophie discusses the new policy proposals during lunch.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -62564,7 +62564,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03960",
     "nl": "Na het werk bespreekt Sophie de nieuwe beleidsvoorstellen.",
-    "en": "Na het werk sophie discusses the new policy proposals.",
+    "en": "After work, Sophie discusses the new policy proposals.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -62610,8 +62610,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03963",
-    "nl": "Wij weten dat sophie na het werk de nieuwe beleidsvoorstellen bespreekt.",
-    "en": "We know that sophie discusses the new policy proposals after work.",
+    "nl": "Wij weten dat Sophie na het werk de nieuwe beleidsvoorstellen bespreekt.",
+    "en": "We know that Sophie discusses the new policy proposals after work.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -62643,7 +62643,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03965",
     "nl": "Sinds vorige maand bespreekt Sophie de nieuwe beleidsvoorstellen.",
-    "en": "Sinds vorige maand sophie discusses the new policy proposals.",
+    "en": "Since last month, Sophie discusses the new policy proposals.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -62689,8 +62689,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03968",
-    "nl": "Wij weten dat sophie sinds vorige maand de nieuwe beleidsvoorstellen bespreekt.",
-    "en": "We know that sophie discusses the new policy proposals since last month.",
+    "nl": "Wij weten dat Sophie sinds vorige maand de nieuwe beleidsvoorstellen bespreekt.",
+    "en": "We know that Sophie discusses the new policy proposals since last month.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -62722,7 +62722,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03970",
     "nl": "Met grote zorgvuldigheid bespreekt Sophie de nieuwe beleidsvoorstellen.",
-    "en": "Met grote zorgvuldigheid sophie discusses the new policy proposals.",
+    "en": "With great care, Sophie discusses the new policy proposals.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -62768,8 +62768,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03973",
-    "nl": "Wij weten dat sophie met grote zorgvuldigheid de nieuwe beleidsvoorstellen bespreekt.",
-    "en": "We know that sophie discusses the new policy proposals with great care.",
+    "nl": "Wij weten dat Sophie met grote zorgvuldigheid de nieuwe beleidsvoorstellen bespreekt.",
+    "en": "We know that Sophie discusses the new policy proposals with great care.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -62801,7 +62801,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03975",
     "nl": "Elke ochtend presenteert Sophie het innovatieve onderzoeksrapport.",
-    "en": "Elke ochtend sophie presents the innovative research report.",
+    "en": "Every morning, Sophie presents the innovative research report.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -62847,8 +62847,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03978",
-    "nl": "Wij weten dat sophie elke ochtend het innovatieve onderzoeksrapport presenteert.",
-    "en": "We know that sophie presents the innovative research report every morning.",
+    "nl": "Wij weten dat Sophie elke ochtend het innovatieve onderzoeksrapport presenteert.",
+    "en": "We know that Sophie presents the innovative research report every morning.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -62880,7 +62880,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03980",
     "nl": "Gisterenmiddag presenteert Sophie het innovatieve onderzoeksrapport.",
-    "en": "Gisterenmiddag sophie presents the innovative research report.",
+    "en": "Yesterday afternoon, Sophie presents the innovative research report.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -62926,8 +62926,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03983",
-    "nl": "Wij weten dat sophie gisterenmiddag het innovatieve onderzoeksrapport presenteert.",
-    "en": "We know that sophie presents the innovative research report yesterday afternoon.",
+    "nl": "Wij weten dat Sophie gisterenmiddag het innovatieve onderzoeksrapport presenteert.",
+    "en": "We know that Sophie presents the innovative research report yesterday afternoon.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -62959,7 +62959,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03985",
     "nl": "Volgende week presenteert Sophie het innovatieve onderzoeksrapport.",
-    "en": "Volgende week sophie presents the innovative research report.",
+    "en": "Next week, Sophie presents the innovative research report.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -63005,8 +63005,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03988",
-    "nl": "Wij weten dat sophie volgende week het innovatieve onderzoeksrapport presenteert.",
-    "en": "We know that sophie presents the innovative research report next week.",
+    "nl": "Wij weten dat Sophie volgende week het innovatieve onderzoeksrapport presenteert.",
+    "en": "We know that Sophie presents the innovative research report next week.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -63038,7 +63038,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03990",
     "nl": "In het weekend presenteert Sophie het innovatieve onderzoeksrapport.",
-    "en": "In het weekend sophie presents the innovative research report.",
+    "en": "At the weekend, Sophie presents the innovative research report.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -63084,8 +63084,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03993",
-    "nl": "Wij weten dat sophie in het weekend het innovatieve onderzoeksrapport presenteert.",
-    "en": "We know that sophie presents the innovative research report at the weekend.",
+    "nl": "Wij weten dat Sophie in het weekend het innovatieve onderzoeksrapport presenteert.",
+    "en": "We know that Sophie presents the innovative research report at the weekend.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -63117,7 +63117,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-03995",
     "nl": "Om acht uur presenteert Sophie het innovatieve onderzoeksrapport.",
-    "en": "Om acht uur sophie presents the innovative research report.",
+    "en": "At eight o'clock, Sophie presents the innovative research report.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -63163,8 +63163,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-03998",
-    "nl": "Wij weten dat sophie om acht uur het innovatieve onderzoeksrapport presenteert.",
-    "en": "We know that sophie presents the innovative research report at eight o'clock.",
+    "nl": "Wij weten dat Sophie om acht uur het innovatieve onderzoeksrapport presenteert.",
+    "en": "We know that Sophie presents the innovative research report at eight o'clock.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -63196,7 +63196,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04000",
     "nl": "Regelmatig presenteert Sophie het innovatieve onderzoeksrapport.",
-    "en": "Regelmatig sophie presents the innovative research report.",
+    "en": "Regularly, Sophie presents the innovative research report.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -63242,8 +63242,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-04003",
-    "nl": "Wij weten dat sophie regelmatig het innovatieve onderzoeksrapport presenteert.",
-    "en": "We know that sophie presents the innovative research report regularly.",
+    "nl": "Wij weten dat Sophie regelmatig het innovatieve onderzoeksrapport presenteert.",
+    "en": "We know that Sophie presents the innovative research report regularly.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -63275,7 +63275,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04005",
     "nl": "Vaak presenteert Sophie het innovatieve onderzoeksrapport.",
-    "en": "Vaak sophie presents the innovative research report.",
+    "en": "Often, Sophie presents the innovative research report.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -63321,8 +63321,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-04008",
-    "nl": "Wij weten dat sophie vaak het innovatieve onderzoeksrapport presenteert.",
-    "en": "We know that sophie presents the innovative research report often.",
+    "nl": "Wij weten dat Sophie vaak het innovatieve onderzoeksrapport presenteert.",
+    "en": "We know that Sophie presents the innovative research report often.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -63354,7 +63354,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04010",
     "nl": "Op maandag presenteert Sophie het innovatieve onderzoeksrapport.",
-    "en": "Op maandag sophie presents the innovative research report.",
+    "en": "On Monday, Sophie presents the innovative research report.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -63400,8 +63400,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-04013",
-    "nl": "Wij weten dat sophie op maandag het innovatieve onderzoeksrapport presenteert.",
-    "en": "We know that sophie presents the innovative research report on Monday.",
+    "nl": "Wij weten dat Sophie op maandag het innovatieve onderzoeksrapport presenteert.",
+    "en": "We know that Sophie presents the innovative research report on Monday.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -63433,7 +63433,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04015",
     "nl": "Tijdens de lunch presenteert Sophie het innovatieve onderzoeksrapport.",
-    "en": "Tijdens de lunch sophie presents the innovative research report.",
+    "en": "During lunch, Sophie presents the innovative research report.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -63479,8 +63479,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-04018",
-    "nl": "Wij weten dat sophie tijdens de lunch het innovatieve onderzoeksrapport presenteert.",
-    "en": "We know that sophie presents the innovative research report during lunch.",
+    "nl": "Wij weten dat Sophie tijdens de lunch het innovatieve onderzoeksrapport presenteert.",
+    "en": "We know that Sophie presents the innovative research report during lunch.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -63512,7 +63512,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04020",
     "nl": "Na het werk presenteert Sophie het innovatieve onderzoeksrapport.",
-    "en": "Na het werk sophie presents the innovative research report.",
+    "en": "After work, Sophie presents the innovative research report.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -63558,8 +63558,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-04023",
-    "nl": "Wij weten dat sophie na het werk het innovatieve onderzoeksrapport presenteert.",
-    "en": "We know that sophie presents the innovative research report after work.",
+    "nl": "Wij weten dat Sophie na het werk het innovatieve onderzoeksrapport presenteert.",
+    "en": "We know that Sophie presents the innovative research report after work.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -63591,7 +63591,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04025",
     "nl": "Sinds vorige maand presenteert Sophie het innovatieve onderzoeksrapport.",
-    "en": "Sinds vorige maand sophie presents the innovative research report.",
+    "en": "Since last month, Sophie presents the innovative research report.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -63637,8 +63637,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-04028",
-    "nl": "Wij weten dat sophie sinds vorige maand het innovatieve onderzoeksrapport presenteert.",
-    "en": "We know that sophie presents the innovative research report since last month.",
+    "nl": "Wij weten dat Sophie sinds vorige maand het innovatieve onderzoeksrapport presenteert.",
+    "en": "We know that Sophie presents the innovative research report since last month.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -63670,7 +63670,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04030",
     "nl": "Met grote zorgvuldigheid presenteert Sophie het innovatieve onderzoeksrapport.",
-    "en": "Met grote zorgvuldigheid sophie presents the innovative research report.",
+    "en": "With great care, Sophie presents the innovative research report.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -63716,8 +63716,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-04033",
-    "nl": "Wij weten dat sophie met grote zorgvuldigheid het innovatieve onderzoeksrapport presenteert.",
-    "en": "We know that sophie presents the innovative research report with great care.",
+    "nl": "Wij weten dat Sophie met grote zorgvuldigheid het innovatieve onderzoeksrapport presenteert.",
+    "en": "We know that Sophie presents the innovative research report with great care.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -63749,7 +63749,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04035",
     "nl": "Elke ochtend controleert Sophie de veiligheidsvoorschriften in het gebouw.",
-    "en": "Elke ochtend sophie checks the safety regulations in the building.",
+    "en": "Every morning, Sophie checks the safety regulations in the building.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -63795,8 +63795,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-04038",
-    "nl": "Wij weten dat sophie elke ochtend de veiligheidsvoorschriften in het gebouw controleert.",
-    "en": "We know that sophie checks the safety regulations in the building every morning.",
+    "nl": "Wij weten dat Sophie elke ochtend de veiligheidsvoorschriften in het gebouw controleert.",
+    "en": "We know that Sophie checks the safety regulations in the building every morning.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -63828,7 +63828,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04040",
     "nl": "Gisterenmiddag controleert Sophie de veiligheidsvoorschriften in het gebouw.",
-    "en": "Gisterenmiddag sophie checks the safety regulations in the building.",
+    "en": "Yesterday afternoon, Sophie checks the safety regulations in the building.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -63874,8 +63874,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-04043",
-    "nl": "Wij weten dat sophie gisterenmiddag de veiligheidsvoorschriften in het gebouw controleert.",
-    "en": "We know that sophie checks the safety regulations in the building yesterday afternoon.",
+    "nl": "Wij weten dat Sophie gisterenmiddag de veiligheidsvoorschriften in het gebouw controleert.",
+    "en": "We know that Sophie checks the safety regulations in the building yesterday afternoon.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -63907,7 +63907,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04045",
     "nl": "Volgende week controleert Sophie de veiligheidsvoorschriften in het gebouw.",
-    "en": "Volgende week sophie checks the safety regulations in the building.",
+    "en": "Next week, Sophie checks the safety regulations in the building.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -63953,8 +63953,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-04048",
-    "nl": "Wij weten dat sophie volgende week de veiligheidsvoorschriften in het gebouw controleert.",
-    "en": "We know that sophie checks the safety regulations in the building next week.",
+    "nl": "Wij weten dat Sophie volgende week de veiligheidsvoorschriften in het gebouw controleert.",
+    "en": "We know that Sophie checks the safety regulations in the building next week.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -63986,7 +63986,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04050",
     "nl": "In het weekend controleert Sophie de veiligheidsvoorschriften in het gebouw.",
-    "en": "In het weekend sophie checks the safety regulations in the building.",
+    "en": "At the weekend, Sophie checks the safety regulations in the building.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -64032,8 +64032,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-04053",
-    "nl": "Wij weten dat sophie in het weekend de veiligheidsvoorschriften in het gebouw controleert.",
-    "en": "We know that sophie checks the safety regulations in the building at the weekend.",
+    "nl": "Wij weten dat Sophie in het weekend de veiligheidsvoorschriften in het gebouw controleert.",
+    "en": "We know that Sophie checks the safety regulations in the building at the weekend.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -64065,7 +64065,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04055",
     "nl": "Om acht uur controleert Sophie de veiligheidsvoorschriften in het gebouw.",
-    "en": "Om acht uur sophie checks the safety regulations in the building.",
+    "en": "At eight o'clock, Sophie checks the safety regulations in the building.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -64111,8 +64111,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-04058",
-    "nl": "Wij weten dat sophie om acht uur de veiligheidsvoorschriften in het gebouw controleert.",
-    "en": "We know that sophie checks the safety regulations in the building at eight o'clock.",
+    "nl": "Wij weten dat Sophie om acht uur de veiligheidsvoorschriften in het gebouw controleert.",
+    "en": "We know that Sophie checks the safety regulations in the building at eight o'clock.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -64144,7 +64144,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04060",
     "nl": "Regelmatig controleert Sophie de veiligheidsvoorschriften in het gebouw.",
-    "en": "Regelmatig sophie checks the safety regulations in the building.",
+    "en": "Regularly, Sophie checks the safety regulations in the building.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -64190,8 +64190,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-04063",
-    "nl": "Wij weten dat sophie regelmatig de veiligheidsvoorschriften in het gebouw controleert.",
-    "en": "We know that sophie checks the safety regulations in the building regularly.",
+    "nl": "Wij weten dat Sophie regelmatig de veiligheidsvoorschriften in het gebouw controleert.",
+    "en": "We know that Sophie checks the safety regulations in the building regularly.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -64223,7 +64223,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04065",
     "nl": "Vaak controleert Sophie de veiligheidsvoorschriften in het gebouw.",
-    "en": "Vaak sophie checks the safety regulations in the building.",
+    "en": "Often, Sophie checks the safety regulations in the building.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -64269,8 +64269,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-04068",
-    "nl": "Wij weten dat sophie vaak de veiligheidsvoorschriften in het gebouw controleert.",
-    "en": "We know that sophie checks the safety regulations in the building often.",
+    "nl": "Wij weten dat Sophie vaak de veiligheidsvoorschriften in het gebouw controleert.",
+    "en": "We know that Sophie checks the safety regulations in the building often.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -64302,7 +64302,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04070",
     "nl": "Op maandag controleert Sophie de veiligheidsvoorschriften in het gebouw.",
-    "en": "Op maandag sophie checks the safety regulations in the building.",
+    "en": "On Monday, Sophie checks the safety regulations in the building.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -64348,8 +64348,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-04073",
-    "nl": "Wij weten dat sophie op maandag de veiligheidsvoorschriften in het gebouw controleert.",
-    "en": "We know that sophie checks the safety regulations in the building on Monday.",
+    "nl": "Wij weten dat Sophie op maandag de veiligheidsvoorschriften in het gebouw controleert.",
+    "en": "We know that Sophie checks the safety regulations in the building on Monday.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -64381,7 +64381,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04075",
     "nl": "Tijdens de lunch controleert Sophie de veiligheidsvoorschriften in het gebouw.",
-    "en": "Tijdens de lunch sophie checks the safety regulations in the building.",
+    "en": "During lunch, Sophie checks the safety regulations in the building.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -64427,8 +64427,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-04078",
-    "nl": "Wij weten dat sophie tijdens de lunch de veiligheidsvoorschriften in het gebouw controleert.",
-    "en": "We know that sophie checks the safety regulations in the building during lunch.",
+    "nl": "Wij weten dat Sophie tijdens de lunch de veiligheidsvoorschriften in het gebouw controleert.",
+    "en": "We know that Sophie checks the safety regulations in the building during lunch.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -64460,7 +64460,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04080",
     "nl": "Na het werk controleert Sophie de veiligheidsvoorschriften in het gebouw.",
-    "en": "Na het werk sophie checks the safety regulations in the building.",
+    "en": "After work, Sophie checks the safety regulations in the building.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -64506,8 +64506,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-04083",
-    "nl": "Wij weten dat sophie na het werk de veiligheidsvoorschriften in het gebouw controleert.",
-    "en": "We know that sophie checks the safety regulations in the building after work.",
+    "nl": "Wij weten dat Sophie na het werk de veiligheidsvoorschriften in het gebouw controleert.",
+    "en": "We know that Sophie checks the safety regulations in the building after work.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -64539,7 +64539,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04085",
     "nl": "Sinds vorige maand controleert Sophie de veiligheidsvoorschriften in het gebouw.",
-    "en": "Sinds vorige maand sophie checks the safety regulations in the building.",
+    "en": "Since last month, Sophie checks the safety regulations in the building.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -64585,8 +64585,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-04088",
-    "nl": "Wij weten dat sophie sinds vorige maand de veiligheidsvoorschriften in het gebouw controleert.",
-    "en": "We know that sophie checks the safety regulations in the building since last month.",
+    "nl": "Wij weten dat Sophie sinds vorige maand de veiligheidsvoorschriften in het gebouw controleert.",
+    "en": "We know that Sophie checks the safety regulations in the building since last month.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -64618,7 +64618,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04090",
     "nl": "Met grote zorgvuldigheid controleert Sophie de veiligheidsvoorschriften in het gebouw.",
-    "en": "Met grote zorgvuldigheid sophie checks the safety regulations in the building.",
+    "en": "With great care, Sophie checks the safety regulations in the building.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -64664,8 +64664,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-04093",
-    "nl": "Wij weten dat sophie met grote zorgvuldigheid de veiligheidsvoorschriften in het gebouw controleert.",
-    "en": "We know that sophie checks the safety regulations in the building with great care.",
+    "nl": "Wij weten dat Sophie met grote zorgvuldigheid de veiligheidsvoorschriften in het gebouw controleert.",
+    "en": "We know that Sophie checks the safety regulations in the building with great care.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -64697,7 +64697,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04095",
     "nl": "Elke ochtend repareert Sophie de kapotte fietsverlichting.",
-    "en": "Elke ochtend sophie repairs the broken bicycle lighting.",
+    "en": "Every morning, Sophie repairs the broken bicycle lighting.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -64743,8 +64743,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-04098",
-    "nl": "Wij weten dat sophie elke ochtend de kapotte fietsverlichting repareert.",
-    "en": "We know that sophie repairs the broken bicycle lighting every morning.",
+    "nl": "Wij weten dat Sophie elke ochtend de kapotte fietsverlichting repareert.",
+    "en": "We know that Sophie repairs the broken bicycle lighting every morning.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -64776,7 +64776,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04100",
     "nl": "Gisterenmiddag repareert Sophie de kapotte fietsverlichting.",
-    "en": "Gisterenmiddag sophie repairs the broken bicycle lighting.",
+    "en": "Yesterday afternoon, Sophie repairs the broken bicycle lighting.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -64822,8 +64822,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-04103",
-    "nl": "Wij weten dat sophie gisterenmiddag de kapotte fietsverlichting repareert.",
-    "en": "We know that sophie repairs the broken bicycle lighting yesterday afternoon.",
+    "nl": "Wij weten dat Sophie gisterenmiddag de kapotte fietsverlichting repareert.",
+    "en": "We know that Sophie repairs the broken bicycle lighting yesterday afternoon.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -64855,7 +64855,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04105",
     "nl": "Volgende week repareert Sophie de kapotte fietsverlichting.",
-    "en": "Volgende week sophie repairs the broken bicycle lighting.",
+    "en": "Next week, Sophie repairs the broken bicycle lighting.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -64901,8 +64901,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-04108",
-    "nl": "Wij weten dat sophie volgende week de kapotte fietsverlichting repareert.",
-    "en": "We know that sophie repairs the broken bicycle lighting next week.",
+    "nl": "Wij weten dat Sophie volgende week de kapotte fietsverlichting repareert.",
+    "en": "We know that Sophie repairs the broken bicycle lighting next week.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -64934,7 +64934,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04110",
     "nl": "In het weekend repareert Sophie de kapotte fietsverlichting.",
-    "en": "In het weekend sophie repairs the broken bicycle lighting.",
+    "en": "At the weekend, Sophie repairs the broken bicycle lighting.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -64980,8 +64980,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-04113",
-    "nl": "Wij weten dat sophie in het weekend de kapotte fietsverlichting repareert.",
-    "en": "We know that sophie repairs the broken bicycle lighting at the weekend.",
+    "nl": "Wij weten dat Sophie in het weekend de kapotte fietsverlichting repareert.",
+    "en": "We know that Sophie repairs the broken bicycle lighting at the weekend.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -65013,7 +65013,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04115",
     "nl": "Om acht uur repareert Sophie de kapotte fietsverlichting.",
-    "en": "Om acht uur sophie repairs the broken bicycle lighting.",
+    "en": "At eight o'clock, Sophie repairs the broken bicycle lighting.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -65059,8 +65059,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-04118",
-    "nl": "Wij weten dat sophie om acht uur de kapotte fietsverlichting repareert.",
-    "en": "We know that sophie repairs the broken bicycle lighting at eight o'clock.",
+    "nl": "Wij weten dat Sophie om acht uur de kapotte fietsverlichting repareert.",
+    "en": "We know that Sophie repairs the broken bicycle lighting at eight o'clock.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -65092,7 +65092,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04120",
     "nl": "Regelmatig repareert Sophie de kapotte fietsverlichting.",
-    "en": "Regelmatig sophie repairs the broken bicycle lighting.",
+    "en": "Regularly, Sophie repairs the broken bicycle lighting.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -65138,8 +65138,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-04123",
-    "nl": "Wij weten dat sophie regelmatig de kapotte fietsverlichting repareert.",
-    "en": "We know that sophie repairs the broken bicycle lighting regularly.",
+    "nl": "Wij weten dat Sophie regelmatig de kapotte fietsverlichting repareert.",
+    "en": "We know that Sophie repairs the broken bicycle lighting regularly.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -65171,7 +65171,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04125",
     "nl": "Vaak repareert Sophie de kapotte fietsverlichting.",
-    "en": "Vaak sophie repairs the broken bicycle lighting.",
+    "en": "Often, Sophie repairs the broken bicycle lighting.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -65217,8 +65217,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-04128",
-    "nl": "Wij weten dat sophie vaak de kapotte fietsverlichting repareert.",
-    "en": "We know that sophie repairs the broken bicycle lighting often.",
+    "nl": "Wij weten dat Sophie vaak de kapotte fietsverlichting repareert.",
+    "en": "We know that Sophie repairs the broken bicycle lighting often.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -65250,7 +65250,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04130",
     "nl": "Op maandag repareert Sophie de kapotte fietsverlichting.",
-    "en": "Op maandag sophie repairs the broken bicycle lighting.",
+    "en": "On Monday, Sophie repairs the broken bicycle lighting.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -65296,8 +65296,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-04133",
-    "nl": "Wij weten dat sophie op maandag de kapotte fietsverlichting repareert.",
-    "en": "We know that sophie repairs the broken bicycle lighting on Monday.",
+    "nl": "Wij weten dat Sophie op maandag de kapotte fietsverlichting repareert.",
+    "en": "We know that Sophie repairs the broken bicycle lighting on Monday.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -65329,7 +65329,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04135",
     "nl": "Tijdens de lunch repareert Sophie de kapotte fietsverlichting.",
-    "en": "Tijdens de lunch sophie repairs the broken bicycle lighting.",
+    "en": "During lunch, Sophie repairs the broken bicycle lighting.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -65375,8 +65375,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-04138",
-    "nl": "Wij weten dat sophie tijdens de lunch de kapotte fietsverlichting repareert.",
-    "en": "We know that sophie repairs the broken bicycle lighting during lunch.",
+    "nl": "Wij weten dat Sophie tijdens de lunch de kapotte fietsverlichting repareert.",
+    "en": "We know that Sophie repairs the broken bicycle lighting during lunch.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -65408,7 +65408,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04140",
     "nl": "Na het werk repareert Sophie de kapotte fietsverlichting.",
-    "en": "Na het werk sophie repairs the broken bicycle lighting.",
+    "en": "After work, Sophie repairs the broken bicycle lighting.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -65454,8 +65454,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-04143",
-    "nl": "Wij weten dat sophie na het werk de kapotte fietsverlichting repareert.",
-    "en": "We know that sophie repairs the broken bicycle lighting after work.",
+    "nl": "Wij weten dat Sophie na het werk de kapotte fietsverlichting repareert.",
+    "en": "We know that Sophie repairs the broken bicycle lighting after work.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -65487,7 +65487,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04145",
     "nl": "Sinds vorige maand repareert Sophie de kapotte fietsverlichting.",
-    "en": "Sinds vorige maand sophie repairs the broken bicycle lighting.",
+    "en": "Since last month, Sophie repairs the broken bicycle lighting.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -65533,8 +65533,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-04148",
-    "nl": "Wij weten dat sophie sinds vorige maand de kapotte fietsverlichting repareert.",
-    "en": "We know that sophie repairs the broken bicycle lighting since last month.",
+    "nl": "Wij weten dat Sophie sinds vorige maand de kapotte fietsverlichting repareert.",
+    "en": "We know that Sophie repairs the broken bicycle lighting since last month.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -65566,7 +65566,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04150",
     "nl": "Met grote zorgvuldigheid repareert Sophie de kapotte fietsverlichting.",
-    "en": "Met grote zorgvuldigheid sophie repairs the broken bicycle lighting.",
+    "en": "With great care, Sophie repairs the broken bicycle lighting.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -65612,8 +65612,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-04153",
-    "nl": "Wij weten dat sophie met grote zorgvuldigheid de kapotte fietsverlichting repareert.",
-    "en": "We know that sophie repairs the broken bicycle lighting with great care.",
+    "nl": "Wij weten dat Sophie met grote zorgvuldigheid de kapotte fietsverlichting repareert.",
+    "en": "We know that Sophie repairs the broken bicycle lighting with great care.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -65645,7 +65645,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04155",
     "nl": "Elke ochtend vertaalt Sophie de officiële documenten.",
-    "en": "Elke ochtend sophie translates the official documents.",
+    "en": "Every morning, Sophie translates the official documents.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -65691,8 +65691,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-04158",
-    "nl": "Wij weten dat sophie elke ochtend de officiële documenten vertaalt.",
-    "en": "We know that sophie translates the official documents every morning.",
+    "nl": "Wij weten dat Sophie elke ochtend de officiële documenten vertaalt.",
+    "en": "We know that Sophie translates the official documents every morning.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -65724,7 +65724,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04160",
     "nl": "Gisterenmiddag vertaalt Sophie de officiële documenten.",
-    "en": "Gisterenmiddag sophie translates the official documents.",
+    "en": "Yesterday afternoon, Sophie translates the official documents.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -65770,8 +65770,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-04163",
-    "nl": "Wij weten dat sophie gisterenmiddag de officiële documenten vertaalt.",
-    "en": "We know that sophie translates the official documents yesterday afternoon.",
+    "nl": "Wij weten dat Sophie gisterenmiddag de officiële documenten vertaalt.",
+    "en": "We know that Sophie translates the official documents yesterday afternoon.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -65803,7 +65803,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04165",
     "nl": "Volgende week vertaalt Sophie de officiële documenten.",
-    "en": "Volgende week sophie translates the official documents.",
+    "en": "Next week, Sophie translates the official documents.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -65849,8 +65849,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-04168",
-    "nl": "Wij weten dat sophie volgende week de officiële documenten vertaalt.",
-    "en": "We know that sophie translates the official documents next week.",
+    "nl": "Wij weten dat Sophie volgende week de officiële documenten vertaalt.",
+    "en": "We know that Sophie translates the official documents next week.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -65882,7 +65882,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04170",
     "nl": "In het weekend vertaalt Sophie de officiële documenten.",
-    "en": "In het weekend sophie translates the official documents.",
+    "en": "At the weekend, Sophie translates the official documents.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -65928,8 +65928,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-04173",
-    "nl": "Wij weten dat sophie in het weekend de officiële documenten vertaalt.",
-    "en": "We know that sophie translates the official documents at the weekend.",
+    "nl": "Wij weten dat Sophie in het weekend de officiële documenten vertaalt.",
+    "en": "We know that Sophie translates the official documents at the weekend.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -65961,7 +65961,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04175",
     "nl": "Om acht uur vertaalt Sophie de officiële documenten.",
-    "en": "Om acht uur sophie translates the official documents.",
+    "en": "At eight o'clock, Sophie translates the official documents.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -66007,8 +66007,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-04178",
-    "nl": "Wij weten dat sophie om acht uur de officiële documenten vertaalt.",
-    "en": "We know that sophie translates the official documents at eight o'clock.",
+    "nl": "Wij weten dat Sophie om acht uur de officiële documenten vertaalt.",
+    "en": "We know that Sophie translates the official documents at eight o'clock.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -66040,7 +66040,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04180",
     "nl": "Regelmatig vertaalt Sophie de officiële documenten.",
-    "en": "Regelmatig sophie translates the official documents.",
+    "en": "Regularly, Sophie translates the official documents.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -66086,8 +66086,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-04183",
-    "nl": "Wij weten dat sophie regelmatig de officiële documenten vertaalt.",
-    "en": "We know that sophie translates the official documents regularly.",
+    "nl": "Wij weten dat Sophie regelmatig de officiële documenten vertaalt.",
+    "en": "We know that Sophie translates the official documents regularly.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -66119,7 +66119,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04185",
     "nl": "Vaak vertaalt Sophie de officiële documenten.",
-    "en": "Vaak sophie translates the official documents.",
+    "en": "Often, Sophie translates the official documents.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -66165,8 +66165,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-04188",
-    "nl": "Wij weten dat sophie vaak de officiële documenten vertaalt.",
-    "en": "We know that sophie translates the official documents often.",
+    "nl": "Wij weten dat Sophie vaak de officiële documenten vertaalt.",
+    "en": "We know that Sophie translates the official documents often.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -66198,7 +66198,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04190",
     "nl": "Op maandag vertaalt Sophie de officiële documenten.",
-    "en": "Op maandag sophie translates the official documents.",
+    "en": "On Monday, Sophie translates the official documents.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -66244,8 +66244,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-04193",
-    "nl": "Wij weten dat sophie op maandag de officiële documenten vertaalt.",
-    "en": "We know that sophie translates the official documents on Monday.",
+    "nl": "Wij weten dat Sophie op maandag de officiële documenten vertaalt.",
+    "en": "We know that Sophie translates the official documents on Monday.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -66277,7 +66277,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04195",
     "nl": "Tijdens de lunch vertaalt Sophie de officiële documenten.",
-    "en": "Tijdens de lunch sophie translates the official documents.",
+    "en": "During lunch, Sophie translates the official documents.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -66323,8 +66323,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-04198",
-    "nl": "Wij weten dat sophie tijdens de lunch de officiële documenten vertaalt.",
-    "en": "We know that sophie translates the official documents during lunch.",
+    "nl": "Wij weten dat Sophie tijdens de lunch de officiële documenten vertaalt.",
+    "en": "We know that Sophie translates the official documents during lunch.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -66356,7 +66356,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04200",
     "nl": "Na het werk vertaalt Sophie de officiële documenten.",
-    "en": "Na het werk sophie translates the official documents.",
+    "en": "After work, Sophie translates the official documents.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -66402,8 +66402,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-04203",
-    "nl": "Wij weten dat sophie na het werk de officiële documenten vertaalt.",
-    "en": "We know that sophie translates the official documents after work.",
+    "nl": "Wij weten dat Sophie na het werk de officiële documenten vertaalt.",
+    "en": "We know that Sophie translates the official documents after work.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -66435,7 +66435,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04205",
     "nl": "Sinds vorige maand vertaalt Sophie de officiële documenten.",
-    "en": "Sinds vorige maand sophie translates the official documents.",
+    "en": "Since last month, Sophie translates the official documents.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -66481,8 +66481,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-04208",
-    "nl": "Wij weten dat sophie sinds vorige maand de officiële documenten vertaalt.",
-    "en": "We know that sophie translates the official documents since last month.",
+    "nl": "Wij weten dat Sophie sinds vorige maand de officiële documenten vertaalt.",
+    "en": "We know that Sophie translates the official documents since last month.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -66514,7 +66514,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04210",
     "nl": "Met grote zorgvuldigheid vertaalt Sophie de officiële documenten.",
-    "en": "Met grote zorgvuldigheid sophie translates the official documents.",
+    "en": "With great care, Sophie translates the official documents.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -66560,8 +66560,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-04213",
-    "nl": "Wij weten dat sophie met grote zorgvuldigheid de officiële documenten vertaalt.",
-    "en": "We know that sophie translates the official documents with great care.",
+    "nl": "Wij weten dat Sophie met grote zorgvuldigheid de officiële documenten vertaalt.",
+    "en": "We know that Sophie translates the official documents with great care.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -66593,7 +66593,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04215",
     "nl": "Elke ochtend verbetert Sophie de kwaliteit van het onderwijs.",
-    "en": "Elke ochtend sophie improves the quality of education.",
+    "en": "Every morning, Sophie improves the quality of education.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -66639,8 +66639,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-04218",
-    "nl": "Wij weten dat sophie elke ochtend de kwaliteit van het onderwijs verbetert.",
-    "en": "We know that sophie improves the quality of education every morning.",
+    "nl": "Wij weten dat Sophie elke ochtend de kwaliteit van het onderwijs verbetert.",
+    "en": "We know that Sophie improves the quality of education every morning.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -66672,7 +66672,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04220",
     "nl": "Gisterenmiddag verbetert Sophie de kwaliteit van het onderwijs.",
-    "en": "Gisterenmiddag sophie improves the quality of education.",
+    "en": "Yesterday afternoon, Sophie improves the quality of education.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -66718,8 +66718,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-04223",
-    "nl": "Wij weten dat sophie gisterenmiddag de kwaliteit van het onderwijs verbetert.",
-    "en": "We know that sophie improves the quality of education yesterday afternoon.",
+    "nl": "Wij weten dat Sophie gisterenmiddag de kwaliteit van het onderwijs verbetert.",
+    "en": "We know that Sophie improves the quality of education yesterday afternoon.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -66751,7 +66751,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04225",
     "nl": "Volgende week verbetert Sophie de kwaliteit van het onderwijs.",
-    "en": "Volgende week sophie improves the quality of education.",
+    "en": "Next week, Sophie improves the quality of education.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -66797,8 +66797,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-04228",
-    "nl": "Wij weten dat sophie volgende week de kwaliteit van het onderwijs verbetert.",
-    "en": "We know that sophie improves the quality of education next week.",
+    "nl": "Wij weten dat Sophie volgende week de kwaliteit van het onderwijs verbetert.",
+    "en": "We know that Sophie improves the quality of education next week.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -66830,7 +66830,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04230",
     "nl": "In het weekend verbetert Sophie de kwaliteit van het onderwijs.",
-    "en": "In het weekend sophie improves the quality of education.",
+    "en": "At the weekend, Sophie improves the quality of education.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -66876,8 +66876,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-04233",
-    "nl": "Wij weten dat sophie in het weekend de kwaliteit van het onderwijs verbetert.",
-    "en": "We know that sophie improves the quality of education at the weekend.",
+    "nl": "Wij weten dat Sophie in het weekend de kwaliteit van het onderwijs verbetert.",
+    "en": "We know that Sophie improves the quality of education at the weekend.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -66909,7 +66909,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04235",
     "nl": "Om acht uur verbetert Sophie de kwaliteit van het onderwijs.",
-    "en": "Om acht uur sophie improves the quality of education.",
+    "en": "At eight o'clock, Sophie improves the quality of education.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -66955,8 +66955,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-04238",
-    "nl": "Wij weten dat sophie om acht uur de kwaliteit van het onderwijs verbetert.",
-    "en": "We know that sophie improves the quality of education at eight o'clock.",
+    "nl": "Wij weten dat Sophie om acht uur de kwaliteit van het onderwijs verbetert.",
+    "en": "We know that Sophie improves the quality of education at eight o'clock.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -66988,7 +66988,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04240",
     "nl": "Regelmatig verbetert Sophie de kwaliteit van het onderwijs.",
-    "en": "Regelmatig sophie improves the quality of education.",
+    "en": "Regularly, Sophie improves the quality of education.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -67034,8 +67034,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-04243",
-    "nl": "Wij weten dat sophie regelmatig de kwaliteit van het onderwijs verbetert.",
-    "en": "We know that sophie improves the quality of education regularly.",
+    "nl": "Wij weten dat Sophie regelmatig de kwaliteit van het onderwijs verbetert.",
+    "en": "We know that Sophie improves the quality of education regularly.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -67067,7 +67067,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04245",
     "nl": "Vaak verbetert Sophie de kwaliteit van het onderwijs.",
-    "en": "Vaak sophie improves the quality of education.",
+    "en": "Often, Sophie improves the quality of education.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -67113,8 +67113,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-04248",
-    "nl": "Wij weten dat sophie vaak de kwaliteit van het onderwijs verbetert.",
-    "en": "We know that sophie improves the quality of education often.",
+    "nl": "Wij weten dat Sophie vaak de kwaliteit van het onderwijs verbetert.",
+    "en": "We know that Sophie improves the quality of education often.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -67146,7 +67146,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04250",
     "nl": "Op maandag verbetert Sophie de kwaliteit van het onderwijs.",
-    "en": "Op maandag sophie improves the quality of education.",
+    "en": "On Monday, Sophie improves the quality of education.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -67192,8 +67192,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-04253",
-    "nl": "Wij weten dat sophie op maandag de kwaliteit van het onderwijs verbetert.",
-    "en": "We know that sophie improves the quality of education on Monday.",
+    "nl": "Wij weten dat Sophie op maandag de kwaliteit van het onderwijs verbetert.",
+    "en": "We know that Sophie improves the quality of education on Monday.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -67225,7 +67225,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04255",
     "nl": "Tijdens de lunch verbetert Sophie de kwaliteit van het onderwijs.",
-    "en": "Tijdens de lunch sophie improves the quality of education.",
+    "en": "During lunch, Sophie improves the quality of education.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -67271,8 +67271,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-04258",
-    "nl": "Wij weten dat sophie tijdens de lunch de kwaliteit van het onderwijs verbetert.",
-    "en": "We know that sophie improves the quality of education during lunch.",
+    "nl": "Wij weten dat Sophie tijdens de lunch de kwaliteit van het onderwijs verbetert.",
+    "en": "We know that Sophie improves the quality of education during lunch.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -67304,7 +67304,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04260",
     "nl": "Na het werk verbetert Sophie de kwaliteit van het onderwijs.",
-    "en": "Na het werk sophie improves the quality of education.",
+    "en": "After work, Sophie improves the quality of education.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -67350,8 +67350,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-04263",
-    "nl": "Wij weten dat sophie na het werk de kwaliteit van het onderwijs verbetert.",
-    "en": "We know that sophie improves the quality of education after work.",
+    "nl": "Wij weten dat Sophie na het werk de kwaliteit van het onderwijs verbetert.",
+    "en": "We know that Sophie improves the quality of education after work.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -67383,7 +67383,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04265",
     "nl": "Sinds vorige maand verbetert Sophie de kwaliteit van het onderwijs.",
-    "en": "Sinds vorige maand sophie improves the quality of education.",
+    "en": "Since last month, Sophie improves the quality of education.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -67429,8 +67429,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-04268",
-    "nl": "Wij weten dat sophie sinds vorige maand de kwaliteit van het onderwijs verbetert.",
-    "en": "We know that sophie improves the quality of education since last month.",
+    "nl": "Wij weten dat Sophie sinds vorige maand de kwaliteit van het onderwijs verbetert.",
+    "en": "We know that Sophie improves the quality of education since last month.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -67462,7 +67462,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04270",
     "nl": "Met grote zorgvuldigheid verbetert Sophie de kwaliteit van het onderwijs.",
-    "en": "Met grote zorgvuldigheid sophie improves the quality of education.",
+    "en": "With great care, Sophie improves the quality of education.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -67508,8 +67508,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-04273",
-    "nl": "Wij weten dat sophie met grote zorgvuldigheid de kwaliteit van het onderwijs verbetert.",
-    "en": "We know that sophie improves the quality of education with great care.",
+    "nl": "Wij weten dat Sophie met grote zorgvuldigheid de kwaliteit van het onderwijs verbetert.",
+    "en": "We know that Sophie improves the quality of education with great care.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -67541,7 +67541,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04275",
     "nl": "Elke ochtend ontwerpt Sophie een duurzaam kantoorgebouw.",
-    "en": "Elke ochtend sophie designs a sustainable office building.",
+    "en": "Every morning, Sophie designs a sustainable office building.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -67587,8 +67587,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-04278",
-    "nl": "Wij weten dat sophie elke ochtend een duurzaam kantoorgebouw ontwerpt.",
-    "en": "We know that sophie designs a sustainable office building every morning.",
+    "nl": "Wij weten dat Sophie elke ochtend een duurzaam kantoorgebouw ontwerpt.",
+    "en": "We know that Sophie designs a sustainable office building every morning.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -67620,7 +67620,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04280",
     "nl": "Gisterenmiddag ontwerpt Sophie een duurzaam kantoorgebouw.",
-    "en": "Gisterenmiddag sophie designs a sustainable office building.",
+    "en": "Yesterday afternoon, Sophie designs a sustainable office building.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -67666,8 +67666,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-04283",
-    "nl": "Wij weten dat sophie gisterenmiddag een duurzaam kantoorgebouw ontwerpt.",
-    "en": "We know that sophie designs a sustainable office building yesterday afternoon.",
+    "nl": "Wij weten dat Sophie gisterenmiddag een duurzaam kantoorgebouw ontwerpt.",
+    "en": "We know that Sophie designs a sustainable office building yesterday afternoon.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -67699,7 +67699,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04285",
     "nl": "Volgende week ontwerpt Sophie een duurzaam kantoorgebouw.",
-    "en": "Volgende week sophie designs a sustainable office building.",
+    "en": "Next week, Sophie designs a sustainable office building.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -67745,8 +67745,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-04288",
-    "nl": "Wij weten dat sophie volgende week een duurzaam kantoorgebouw ontwerpt.",
-    "en": "We know that sophie designs a sustainable office building next week.",
+    "nl": "Wij weten dat Sophie volgende week een duurzaam kantoorgebouw ontwerpt.",
+    "en": "We know that Sophie designs a sustainable office building next week.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -67778,7 +67778,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04290",
     "nl": "In het weekend ontwerpt Sophie een duurzaam kantoorgebouw.",
-    "en": "In het weekend sophie designs a sustainable office building.",
+    "en": "At the weekend, Sophie designs a sustainable office building.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -67824,8 +67824,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-04293",
-    "nl": "Wij weten dat sophie in het weekend een duurzaam kantoorgebouw ontwerpt.",
-    "en": "We know that sophie designs a sustainable office building at the weekend.",
+    "nl": "Wij weten dat Sophie in het weekend een duurzaam kantoorgebouw ontwerpt.",
+    "en": "We know that Sophie designs a sustainable office building at the weekend.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -67857,7 +67857,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04295",
     "nl": "Om acht uur ontwerpt Sophie een duurzaam kantoorgebouw.",
-    "en": "Om acht uur sophie designs a sustainable office building.",
+    "en": "At eight o'clock, Sophie designs a sustainable office building.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -67903,8 +67903,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-04298",
-    "nl": "Wij weten dat sophie om acht uur een duurzaam kantoorgebouw ontwerpt.",
-    "en": "We know that sophie designs a sustainable office building at eight o'clock.",
+    "nl": "Wij weten dat Sophie om acht uur een duurzaam kantoorgebouw ontwerpt.",
+    "en": "We know that Sophie designs a sustainable office building at eight o'clock.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -67936,7 +67936,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04300",
     "nl": "Regelmatig ontwerpt Sophie een duurzaam kantoorgebouw.",
-    "en": "Regelmatig sophie designs a sustainable office building.",
+    "en": "Regularly, Sophie designs a sustainable office building.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -67982,8 +67982,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-04303",
-    "nl": "Wij weten dat sophie regelmatig een duurzaam kantoorgebouw ontwerpt.",
-    "en": "We know that sophie designs a sustainable office building regularly.",
+    "nl": "Wij weten dat Sophie regelmatig een duurzaam kantoorgebouw ontwerpt.",
+    "en": "We know that Sophie designs a sustainable office building regularly.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -68015,7 +68015,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04305",
     "nl": "Vaak ontwerpt Sophie een duurzaam kantoorgebouw.",
-    "en": "Vaak sophie designs a sustainable office building.",
+    "en": "Often, Sophie designs a sustainable office building.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -68061,8 +68061,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-04308",
-    "nl": "Wij weten dat sophie vaak een duurzaam kantoorgebouw ontwerpt.",
-    "en": "We know that sophie designs a sustainable office building often.",
+    "nl": "Wij weten dat Sophie vaak een duurzaam kantoorgebouw ontwerpt.",
+    "en": "We know that Sophie designs a sustainable office building often.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -68094,7 +68094,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04310",
     "nl": "Op maandag ontwerpt Sophie een duurzaam kantoorgebouw.",
-    "en": "Op maandag sophie designs a sustainable office building.",
+    "en": "On Monday, Sophie designs a sustainable office building.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -68140,8 +68140,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-04313",
-    "nl": "Wij weten dat sophie op maandag een duurzaam kantoorgebouw ontwerpt.",
-    "en": "We know that sophie designs a sustainable office building on Monday.",
+    "nl": "Wij weten dat Sophie op maandag een duurzaam kantoorgebouw ontwerpt.",
+    "en": "We know that Sophie designs a sustainable office building on Monday.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -68173,7 +68173,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04315",
     "nl": "Tijdens de lunch ontwerpt Sophie een duurzaam kantoorgebouw.",
-    "en": "Tijdens de lunch sophie designs a sustainable office building.",
+    "en": "During lunch, Sophie designs a sustainable office building.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -68219,8 +68219,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-04318",
-    "nl": "Wij weten dat sophie tijdens de lunch een duurzaam kantoorgebouw ontwerpt.",
-    "en": "We know that sophie designs a sustainable office building during lunch.",
+    "nl": "Wij weten dat Sophie tijdens de lunch een duurzaam kantoorgebouw ontwerpt.",
+    "en": "We know that Sophie designs a sustainable office building during lunch.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -68252,7 +68252,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04320",
     "nl": "Na het werk ontwerpt Sophie een duurzaam kantoorgebouw.",
-    "en": "Na het werk sophie designs a sustainable office building.",
+    "en": "After work, Sophie designs a sustainable office building.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -68298,8 +68298,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-04323",
-    "nl": "Wij weten dat sophie na het werk een duurzaam kantoorgebouw ontwerpt.",
-    "en": "We know that sophie designs a sustainable office building after work.",
+    "nl": "Wij weten dat Sophie na het werk een duurzaam kantoorgebouw ontwerpt.",
+    "en": "We know that Sophie designs a sustainable office building after work.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -68331,7 +68331,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04325",
     "nl": "Sinds vorige maand ontwerpt Sophie een duurzaam kantoorgebouw.",
-    "en": "Sinds vorige maand sophie designs a sustainable office building.",
+    "en": "Since last month, Sophie designs a sustainable office building.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -68377,8 +68377,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-04328",
-    "nl": "Wij weten dat sophie sinds vorige maand een duurzaam kantoorgebouw ontwerpt.",
-    "en": "We know that sophie designs a sustainable office building since last month.",
+    "nl": "Wij weten dat Sophie sinds vorige maand een duurzaam kantoorgebouw ontwerpt.",
+    "en": "We know that Sophie designs a sustainable office building since last month.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -68410,7 +68410,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04330",
     "nl": "Met grote zorgvuldigheid ontwerpt Sophie een duurzaam kantoorgebouw.",
-    "en": "Met grote zorgvuldigheid sophie designs a sustainable office building.",
+    "en": "With great care, Sophie designs a sustainable office building.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -68456,8 +68456,8 @@ globalThis.NP_SENTENCES = [
   },
   {
     "id": "snt-04333",
-    "nl": "Wij weten dat sophie met grote zorgvuldigheid een duurzaam kantoorgebouw ontwerpt.",
-    "en": "We know that sophie designs a sustainable office building with great care.",
+    "nl": "Wij weten dat Sophie met grote zorgvuldigheid een duurzaam kantoorgebouw ontwerpt.",
+    "en": "We know that Sophie designs a sustainable office building with great care.",
     "level": "B1",
     "tags": [
       "subordinate_clause",
@@ -68489,7 +68489,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04335",
     "nl": "Elke ochtend leest De student een interessant boek.",
-    "en": "Elke ochtend the student reads an interesting book.",
+    "en": "Every morning, the student reads an interesting book.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -68568,7 +68568,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04340",
     "nl": "Gisterenmiddag leest De student een interessant boek.",
-    "en": "Gisterenmiddag the student reads an interesting book.",
+    "en": "Yesterday afternoon, the student reads an interesting book.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -68647,7 +68647,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04345",
     "nl": "Volgende week leest De student een interessant boek.",
-    "en": "Volgende week the student reads an interesting book.",
+    "en": "Next week, the student reads an interesting book.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -68726,7 +68726,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04350",
     "nl": "In het weekend leest De student een interessant boek.",
-    "en": "In het weekend the student reads an interesting book.",
+    "en": "At the weekend, the student reads an interesting book.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -68805,7 +68805,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04355",
     "nl": "Om acht uur leest De student een interessant boek.",
-    "en": "Om acht uur the student reads an interesting book.",
+    "en": "At eight o'clock, the student reads an interesting book.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -68884,7 +68884,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04360",
     "nl": "Regelmatig leest De student een interessant boek.",
-    "en": "Regelmatig the student reads an interesting book.",
+    "en": "Regularly, the student reads an interesting book.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -68963,7 +68963,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04365",
     "nl": "Vaak leest De student een interessant boek.",
-    "en": "Vaak the student reads an interesting book.",
+    "en": "Often, the student reads an interesting book.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -69042,7 +69042,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04370",
     "nl": "Op maandag leest De student een interessant boek.",
-    "en": "Op maandag the student reads an interesting book.",
+    "en": "On Monday, the student reads an interesting book.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -69121,7 +69121,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04375",
     "nl": "Tijdens de lunch leest De student een interessant boek.",
-    "en": "Tijdens de lunch the student reads an interesting book.",
+    "en": "During lunch, the student reads an interesting book.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -69200,7 +69200,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04380",
     "nl": "Na het werk leest De student een interessant boek.",
-    "en": "Na het werk the student reads an interesting book.",
+    "en": "After work, the student reads an interesting book.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -69279,7 +69279,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04385",
     "nl": "Sinds vorige maand leest De student een interessant boek.",
-    "en": "Sinds vorige maand the student reads an interesting book.",
+    "en": "Since last month, the student reads an interesting book.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -69358,7 +69358,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04390",
     "nl": "Met grote zorgvuldigheid leest De student een interessant boek.",
-    "en": "Met grote zorgvuldigheid the student reads an interesting book.",
+    "en": "With great care, the student reads an interesting book.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -69437,7 +69437,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04395",
     "nl": "Elke ochtend schrijft De student een belangrijke e-mail.",
-    "en": "Elke ochtend the student writes an important email.",
+    "en": "Every morning, the student writes an important email.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -69516,7 +69516,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04400",
     "nl": "Gisterenmiddag schrijft De student een belangrijke e-mail.",
-    "en": "Gisterenmiddag the student writes an important email.",
+    "en": "Yesterday afternoon, the student writes an important email.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -69595,7 +69595,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04405",
     "nl": "Volgende week schrijft De student een belangrijke e-mail.",
-    "en": "Volgende week the student writes an important email.",
+    "en": "Next week, the student writes an important email.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -69674,7 +69674,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04410",
     "nl": "In het weekend schrijft De student een belangrijke e-mail.",
-    "en": "In het weekend the student writes an important email.",
+    "en": "At the weekend, the student writes an important email.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -69753,7 +69753,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04415",
     "nl": "Om acht uur schrijft De student een belangrijke e-mail.",
-    "en": "Om acht uur the student writes an important email.",
+    "en": "At eight o'clock, the student writes an important email.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -69832,7 +69832,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04420",
     "nl": "Regelmatig schrijft De student een belangrijke e-mail.",
-    "en": "Regelmatig the student writes an important email.",
+    "en": "Regularly, the student writes an important email.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -69911,7 +69911,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04425",
     "nl": "Vaak schrijft De student een belangrijke e-mail.",
-    "en": "Vaak the student writes an important email.",
+    "en": "Often, the student writes an important email.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -69990,7 +69990,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04430",
     "nl": "Op maandag schrijft De student een belangrijke e-mail.",
-    "en": "Op maandag the student writes an important email.",
+    "en": "On Monday, the student writes an important email.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -70069,7 +70069,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04435",
     "nl": "Tijdens de lunch schrijft De student een belangrijke e-mail.",
-    "en": "Tijdens de lunch the student writes an important email.",
+    "en": "During lunch, the student writes an important email.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -70148,7 +70148,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04440",
     "nl": "Na het werk schrijft De student een belangrijke e-mail.",
-    "en": "Na het werk the student writes an important email.",
+    "en": "After work, the student writes an important email.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -70227,7 +70227,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04445",
     "nl": "Sinds vorige maand schrijft De student een belangrijke e-mail.",
-    "en": "Sinds vorige maand the student writes an important email.",
+    "en": "Since last month, the student writes an important email.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -70306,7 +70306,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04450",
     "nl": "Met grote zorgvuldigheid schrijft De student een belangrijke e-mail.",
-    "en": "Met grote zorgvuldigheid the student writes an important email.",
+    "en": "With great care, the student writes an important email.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -70385,7 +70385,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04455",
     "nl": "Elke ochtend koopt De student verse groenten op de markt.",
-    "en": "Elke ochtend the student buys fresh vegetables at the market.",
+    "en": "Every morning, the student buys fresh vegetables at the market.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -70464,7 +70464,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04460",
     "nl": "Gisterenmiddag koopt De student verse groenten op de markt.",
-    "en": "Gisterenmiddag the student buys fresh vegetables at the market.",
+    "en": "Yesterday afternoon, the student buys fresh vegetables at the market.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -70543,7 +70543,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04465",
     "nl": "Volgende week koopt De student verse groenten op de markt.",
-    "en": "Volgende week the student buys fresh vegetables at the market.",
+    "en": "Next week, the student buys fresh vegetables at the market.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -70622,7 +70622,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04470",
     "nl": "In het weekend koopt De student verse groenten op de markt.",
-    "en": "In het weekend the student buys fresh vegetables at the market.",
+    "en": "At the weekend, the student buys fresh vegetables at the market.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -70701,7 +70701,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04475",
     "nl": "Om acht uur koopt De student verse groenten op de markt.",
-    "en": "Om acht uur the student buys fresh vegetables at the market.",
+    "en": "At eight o'clock, the student buys fresh vegetables at the market.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -70780,7 +70780,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04480",
     "nl": "Regelmatig koopt De student verse groenten op de markt.",
-    "en": "Regelmatig the student buys fresh vegetables at the market.",
+    "en": "Regularly, the student buys fresh vegetables at the market.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -70859,7 +70859,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04485",
     "nl": "Vaak koopt De student verse groenten op de markt.",
-    "en": "Vaak the student buys fresh vegetables at the market.",
+    "en": "Often, the student buys fresh vegetables at the market.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -70938,7 +70938,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04490",
     "nl": "Op maandag koopt De student verse groenten op de markt.",
-    "en": "Op maandag the student buys fresh vegetables at the market.",
+    "en": "On Monday, the student buys fresh vegetables at the market.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -71017,7 +71017,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04495",
     "nl": "Tijdens de lunch koopt De student verse groenten op de markt.",
-    "en": "Tijdens de lunch the student buys fresh vegetables at the market.",
+    "en": "During lunch, the student buys fresh vegetables at the market.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -71096,7 +71096,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04500",
     "nl": "Na het werk koopt De student verse groenten op de markt.",
-    "en": "Na het werk the student buys fresh vegetables at the market.",
+    "en": "After work, the student buys fresh vegetables at the market.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -71175,7 +71175,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04505",
     "nl": "Sinds vorige maand koopt De student verse groenten op de markt.",
-    "en": "Sinds vorige maand the student buys fresh vegetables at the market.",
+    "en": "Since last month, the student buys fresh vegetables at the market.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -71254,7 +71254,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04510",
     "nl": "Met grote zorgvuldigheid koopt De student verse groenten op de markt.",
-    "en": "Met grote zorgvuldigheid the student buys fresh vegetables at the market.",
+    "en": "With great care, the student buys fresh vegetables at the market.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -71333,7 +71333,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04515",
     "nl": "Elke ochtend maakt De student een heerlijke lunch.",
-    "en": "Elke ochtend the student makes a delicious lunch.",
+    "en": "Every morning, the student makes a delicious lunch.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -71412,7 +71412,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04520",
     "nl": "Gisterenmiddag maakt De student een heerlijke lunch.",
-    "en": "Gisterenmiddag the student makes a delicious lunch.",
+    "en": "Yesterday afternoon, the student makes a delicious lunch.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -71491,7 +71491,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04525",
     "nl": "Volgende week maakt De student een heerlijke lunch.",
-    "en": "Volgende week the student makes a delicious lunch.",
+    "en": "Next week, the student makes a delicious lunch.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -71570,7 +71570,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04530",
     "nl": "In het weekend maakt De student een heerlijke lunch.",
-    "en": "In het weekend the student makes a delicious lunch.",
+    "en": "At the weekend, the student makes a delicious lunch.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -71649,7 +71649,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04535",
     "nl": "Om acht uur maakt De student een heerlijke lunch.",
-    "en": "Om acht uur the student makes a delicious lunch.",
+    "en": "At eight o'clock, the student makes a delicious lunch.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -71728,7 +71728,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04540",
     "nl": "Regelmatig maakt De student een heerlijke lunch.",
-    "en": "Regelmatig the student makes a delicious lunch.",
+    "en": "Regularly, the student makes a delicious lunch.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -71807,7 +71807,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04545",
     "nl": "Vaak maakt De student een heerlijke lunch.",
-    "en": "Vaak the student makes a delicious lunch.",
+    "en": "Often, the student makes a delicious lunch.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -71886,7 +71886,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04550",
     "nl": "Op maandag maakt De student een heerlijke lunch.",
-    "en": "Op maandag the student makes a delicious lunch.",
+    "en": "On Monday, the student makes a delicious lunch.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -71965,7 +71965,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04555",
     "nl": "Tijdens de lunch maakt De student een heerlijke lunch.",
-    "en": "Tijdens de lunch the student makes a delicious lunch.",
+    "en": "During lunch, the student makes a delicious lunch.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -72044,7 +72044,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04560",
     "nl": "Na het werk maakt De student een heerlijke lunch.",
-    "en": "Na het werk the student makes a delicious lunch.",
+    "en": "After work, the student makes a delicious lunch.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -72123,7 +72123,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04565",
     "nl": "Sinds vorige maand maakt De student een heerlijke lunch.",
-    "en": "Sinds vorige maand the student makes a delicious lunch.",
+    "en": "Since last month, the student makes a delicious lunch.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -72202,7 +72202,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04570",
     "nl": "Met grote zorgvuldigheid maakt De student een heerlijke lunch.",
-    "en": "Met grote zorgvuldigheid the student makes a delicious lunch.",
+    "en": "With great care, the student makes a delicious lunch.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -72281,7 +72281,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04575",
     "nl": "Elke ochtend drinkt De student een kop verse muntthee.",
-    "en": "Elke ochtend the student drinks a cup of fresh mint tea.",
+    "en": "Every morning, the student drinks a cup of fresh mint tea.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -72360,7 +72360,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04580",
     "nl": "Gisterenmiddag drinkt De student een kop verse muntthee.",
-    "en": "Gisterenmiddag the student drinks a cup of fresh mint tea.",
+    "en": "Yesterday afternoon, the student drinks a cup of fresh mint tea.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -72439,7 +72439,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04585",
     "nl": "Volgende week drinkt De student een kop verse muntthee.",
-    "en": "Volgende week the student drinks a cup of fresh mint tea.",
+    "en": "Next week, the student drinks a cup of fresh mint tea.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -72518,7 +72518,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04590",
     "nl": "In het weekend drinkt De student een kop verse muntthee.",
-    "en": "In het weekend the student drinks a cup of fresh mint tea.",
+    "en": "At the weekend, the student drinks a cup of fresh mint tea.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -72597,7 +72597,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04595",
     "nl": "Om acht uur drinkt De student een kop verse muntthee.",
-    "en": "Om acht uur the student drinks a cup of fresh mint tea.",
+    "en": "At eight o'clock, the student drinks a cup of fresh mint tea.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -72676,7 +72676,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04600",
     "nl": "Regelmatig drinkt De student een kop verse muntthee.",
-    "en": "Regelmatig the student drinks a cup of fresh mint tea.",
+    "en": "Regularly, the student drinks a cup of fresh mint tea.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -72755,7 +72755,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04605",
     "nl": "Vaak drinkt De student een kop verse muntthee.",
-    "en": "Vaak the student drinks a cup of fresh mint tea.",
+    "en": "Often, the student drinks a cup of fresh mint tea.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -72834,7 +72834,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04610",
     "nl": "Op maandag drinkt De student een kop verse muntthee.",
-    "en": "Op maandag the student drinks a cup of fresh mint tea.",
+    "en": "On Monday, the student drinks a cup of fresh mint tea.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -72913,7 +72913,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04615",
     "nl": "Tijdens de lunch drinkt De student een kop verse muntthee.",
-    "en": "Tijdens de lunch the student drinks a cup of fresh mint tea.",
+    "en": "During lunch, the student drinks a cup of fresh mint tea.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -72992,7 +72992,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04620",
     "nl": "Na het werk drinkt De student een kop verse muntthee.",
-    "en": "Na het werk the student drinks a cup of fresh mint tea.",
+    "en": "After work, the student drinks a cup of fresh mint tea.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -73071,7 +73071,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04625",
     "nl": "Sinds vorige maand drinkt De student een kop verse muntthee.",
-    "en": "Sinds vorige maand the student drinks a cup of fresh mint tea.",
+    "en": "Since last month, the student drinks a cup of fresh mint tea.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -73150,7 +73150,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04630",
     "nl": "Met grote zorgvuldigheid drinkt De student een kop verse muntthee.",
-    "en": "Met grote zorgvuldigheid the student drinks a cup of fresh mint tea.",
+    "en": "With great care, the student drinks a cup of fresh mint tea.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -73229,7 +73229,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04635",
     "nl": "Elke ochtend bezoekt De student het historische museum.",
-    "en": "Elke ochtend the student visits the historical museum.",
+    "en": "Every morning, the student visits the historical museum.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -73308,7 +73308,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04640",
     "nl": "Gisterenmiddag bezoekt De student het historische museum.",
-    "en": "Gisterenmiddag the student visits the historical museum.",
+    "en": "Yesterday afternoon, the student visits the historical museum.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -73387,7 +73387,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04645",
     "nl": "Volgende week bezoekt De student het historische museum.",
-    "en": "Volgende week the student visits the historical museum.",
+    "en": "Next week, the student visits the historical museum.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -73466,7 +73466,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04650",
     "nl": "In het weekend bezoekt De student het historische museum.",
-    "en": "In het weekend the student visits the historical museum.",
+    "en": "At the weekend, the student visits the historical museum.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -73545,7 +73545,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04655",
     "nl": "Om acht uur bezoekt De student het historische museum.",
-    "en": "Om acht uur the student visits the historical museum.",
+    "en": "At eight o'clock, the student visits the historical museum.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -73624,7 +73624,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04660",
     "nl": "Regelmatig bezoekt De student het historische museum.",
-    "en": "Regelmatig the student visits the historical museum.",
+    "en": "Regularly, the student visits the historical museum.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -73703,7 +73703,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04665",
     "nl": "Vaak bezoekt De student het historische museum.",
-    "en": "Vaak the student visits the historical museum.",
+    "en": "Often, the student visits the historical museum.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -73782,7 +73782,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04670",
     "nl": "Op maandag bezoekt De student het historische museum.",
-    "en": "Op maandag the student visits the historical museum.",
+    "en": "On Monday, the student visits the historical museum.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -73861,7 +73861,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04675",
     "nl": "Tijdens de lunch bezoekt De student het historische museum.",
-    "en": "Tijdens de lunch the student visits the historical museum.",
+    "en": "During lunch, the student visits the historical museum.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -73940,7 +73940,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04680",
     "nl": "Na het werk bezoekt De student het historische museum.",
-    "en": "Na het werk the student visits the historical museum.",
+    "en": "After work, the student visits the historical museum.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -74019,7 +74019,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04685",
     "nl": "Sinds vorige maand bezoekt De student het historische museum.",
-    "en": "Sinds vorige maand the student visits the historical museum.",
+    "en": "Since last month, the student visits the historical museum.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -74098,7 +74098,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04690",
     "nl": "Met grote zorgvuldigheid bezoekt De student het historische museum.",
-    "en": "Met grote zorgvuldigheid the student visits the historical museum.",
+    "en": "With great care, the student visits the historical museum.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -74177,7 +74177,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04695",
     "nl": "Elke ochtend zoekt De student een nieuw appartement.",
-    "en": "Elke ochtend the student looks for a new apartment.",
+    "en": "Every morning, the student looks for a new apartment.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -74256,7 +74256,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04700",
     "nl": "Gisterenmiddag zoekt De student een nieuw appartement.",
-    "en": "Gisterenmiddag the student looks for a new apartment.",
+    "en": "Yesterday afternoon, the student looks for a new apartment.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -74335,7 +74335,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04705",
     "nl": "Volgende week zoekt De student een nieuw appartement.",
-    "en": "Volgende week the student looks for a new apartment.",
+    "en": "Next week, the student looks for a new apartment.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -74414,7 +74414,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04710",
     "nl": "In het weekend zoekt De student een nieuw appartement.",
-    "en": "In het weekend the student looks for a new apartment.",
+    "en": "At the weekend, the student looks for a new apartment.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -74493,7 +74493,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04715",
     "nl": "Om acht uur zoekt De student een nieuw appartement.",
-    "en": "Om acht uur the student looks for a new apartment.",
+    "en": "At eight o'clock, the student looks for a new apartment.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -74572,7 +74572,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04720",
     "nl": "Regelmatig zoekt De student een nieuw appartement.",
-    "en": "Regelmatig the student looks for a new apartment.",
+    "en": "Regularly, the student looks for a new apartment.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -74651,7 +74651,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04725",
     "nl": "Vaak zoekt De student een nieuw appartement.",
-    "en": "Vaak the student looks for a new apartment.",
+    "en": "Often, the student looks for a new apartment.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -74730,7 +74730,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04730",
     "nl": "Op maandag zoekt De student een nieuw appartement.",
-    "en": "Op maandag the student looks for a new apartment.",
+    "en": "On Monday, the student looks for a new apartment.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -74809,7 +74809,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04735",
     "nl": "Tijdens de lunch zoekt De student een nieuw appartement.",
-    "en": "Tijdens de lunch the student looks for a new apartment.",
+    "en": "During lunch, the student looks for a new apartment.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -74888,7 +74888,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04740",
     "nl": "Na het werk zoekt De student een nieuw appartement.",
-    "en": "Na het werk the student looks for a new apartment.",
+    "en": "After work, the student looks for a new apartment.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -74967,7 +74967,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04745",
     "nl": "Sinds vorige maand zoekt De student een nieuw appartement.",
-    "en": "Sinds vorige maand the student looks for a new apartment.",
+    "en": "Since last month, the student looks for a new apartment.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -75046,7 +75046,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04750",
     "nl": "Met grote zorgvuldigheid zoekt De student een nieuw appartement.",
-    "en": "Met grote zorgvuldigheid the student looks for a new apartment.",
+    "en": "With great care, the student looks for a new apartment.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -75125,7 +75125,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04755",
     "nl": "Elke ochtend ontmoet De student goede vrienden in de stad.",
-    "en": "Elke ochtend the student meets good friends in the city.",
+    "en": "Every morning, the student meets good friends in the city.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -75204,7 +75204,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04760",
     "nl": "Gisterenmiddag ontmoet De student goede vrienden in de stad.",
-    "en": "Gisterenmiddag the student meets good friends in the city.",
+    "en": "Yesterday afternoon, the student meets good friends in the city.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -75283,7 +75283,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04765",
     "nl": "Volgende week ontmoet De student goede vrienden in de stad.",
-    "en": "Volgende week the student meets good friends in the city.",
+    "en": "Next week, the student meets good friends in the city.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -75362,7 +75362,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04770",
     "nl": "In het weekend ontmoet De student goede vrienden in de stad.",
-    "en": "In het weekend the student meets good friends in the city.",
+    "en": "At the weekend, the student meets good friends in the city.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -75441,7 +75441,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04775",
     "nl": "Om acht uur ontmoet De student goede vrienden in de stad.",
-    "en": "Om acht uur the student meets good friends in the city.",
+    "en": "At eight o'clock, the student meets good friends in the city.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -75520,7 +75520,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04780",
     "nl": "Regelmatig ontmoet De student goede vrienden in de stad.",
-    "en": "Regelmatig the student meets good friends in the city.",
+    "en": "Regularly, the student meets good friends in the city.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -75599,7 +75599,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04785",
     "nl": "Vaak ontmoet De student goede vrienden in de stad.",
-    "en": "Vaak the student meets good friends in the city.",
+    "en": "Often, the student meets good friends in the city.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -75678,7 +75678,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04790",
     "nl": "Op maandag ontmoet De student goede vrienden in de stad.",
-    "en": "Op maandag the student meets good friends in the city.",
+    "en": "On Monday, the student meets good friends in the city.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -75757,7 +75757,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04795",
     "nl": "Tijdens de lunch ontmoet De student goede vrienden in de stad.",
-    "en": "Tijdens de lunch the student meets good friends in the city.",
+    "en": "During lunch, the student meets good friends in the city.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -75836,7 +75836,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04800",
     "nl": "Na het werk ontmoet De student goede vrienden in de stad.",
-    "en": "Na het werk the student meets good friends in the city.",
+    "en": "After work, the student meets good friends in the city.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -75915,7 +75915,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04805",
     "nl": "Sinds vorige maand ontmoet De student goede vrienden in de stad.",
-    "en": "Sinds vorige maand the student meets good friends in the city.",
+    "en": "Since last month, the student meets good friends in the city.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -75994,7 +75994,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04810",
     "nl": "Met grote zorgvuldigheid ontmoet De student goede vrienden in de stad.",
-    "en": "Met grote zorgvuldigheid the student meets good friends in the city.",
+    "en": "With great care, the student meets good friends in the city.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -76073,7 +76073,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04815",
     "nl": "Elke ochtend plant De student een lange reis naar het buitenland.",
-    "en": "Elke ochtend the student plans a long journey abroad.",
+    "en": "Every morning, the student plans a long journey abroad.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -76152,7 +76152,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04820",
     "nl": "Gisterenmiddag plant De student een lange reis naar het buitenland.",
-    "en": "Gisterenmiddag the student plans a long journey abroad.",
+    "en": "Yesterday afternoon, the student plans a long journey abroad.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -76231,7 +76231,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04825",
     "nl": "Volgende week plant De student een lange reis naar het buitenland.",
-    "en": "Volgende week the student plans a long journey abroad.",
+    "en": "Next week, the student plans a long journey abroad.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -76310,7 +76310,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04830",
     "nl": "In het weekend plant De student een lange reis naar het buitenland.",
-    "en": "In het weekend the student plans a long journey abroad.",
+    "en": "At the weekend, the student plans a long journey abroad.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -76389,7 +76389,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04835",
     "nl": "Om acht uur plant De student een lange reis naar het buitenland.",
-    "en": "Om acht uur the student plans a long journey abroad.",
+    "en": "At eight o'clock, the student plans a long journey abroad.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -76468,7 +76468,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04840",
     "nl": "Regelmatig plant De student een lange reis naar het buitenland.",
-    "en": "Regelmatig the student plans a long journey abroad.",
+    "en": "Regularly, the student plans a long journey abroad.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -76547,7 +76547,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04845",
     "nl": "Vaak plant De student een lange reis naar het buitenland.",
-    "en": "Vaak the student plans a long journey abroad.",
+    "en": "Often, the student plans a long journey abroad.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -76626,7 +76626,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04850",
     "nl": "Op maandag plant De student een lange reis naar het buitenland.",
-    "en": "Op maandag the student plans a long journey abroad.",
+    "en": "On Monday, the student plans a long journey abroad.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -76705,7 +76705,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04855",
     "nl": "Tijdens de lunch plant De student een lange reis naar het buitenland.",
-    "en": "Tijdens de lunch the student plans a long journey abroad.",
+    "en": "During lunch, the student plans a long journey abroad.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -76784,7 +76784,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04860",
     "nl": "Na het werk plant De student een lange reis naar het buitenland.",
-    "en": "Na het werk the student plans a long journey abroad.",
+    "en": "After work, the student plans a long journey abroad.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -76863,7 +76863,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04865",
     "nl": "Sinds vorige maand plant De student een lange reis naar het buitenland.",
-    "en": "Sinds vorige maand the student plans a long journey abroad.",
+    "en": "Since last month, the student plans a long journey abroad.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -76942,7 +76942,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04870",
     "nl": "Met grote zorgvuldigheid plant De student een lange reis naar het buitenland.",
-    "en": "Met grote zorgvuldigheid the student plans a long journey abroad.",
+    "en": "With great care, the student plans a long journey abroad.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -77021,7 +77021,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04875",
     "nl": "Elke ochtend organiseert De student een gezellige buurtbijeenkomst.",
-    "en": "Elke ochtend the student organizes a cosy neighbourhood meeting.",
+    "en": "Every morning, the student organizes a cosy neighbourhood meeting.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -77100,7 +77100,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04880",
     "nl": "Gisterenmiddag organiseert De student een gezellige buurtbijeenkomst.",
-    "en": "Gisterenmiddag the student organizes a cosy neighbourhood meeting.",
+    "en": "Yesterday afternoon, the student organizes a cosy neighbourhood meeting.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -77179,7 +77179,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04885",
     "nl": "Volgende week organiseert De student een gezellige buurtbijeenkomst.",
-    "en": "Volgende week the student organizes a cosy neighbourhood meeting.",
+    "en": "Next week, the student organizes a cosy neighbourhood meeting.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -77258,7 +77258,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04890",
     "nl": "In het weekend organiseert De student een gezellige buurtbijeenkomst.",
-    "en": "In het weekend the student organizes a cosy neighbourhood meeting.",
+    "en": "At the weekend, the student organizes a cosy neighbourhood meeting.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -77337,7 +77337,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04895",
     "nl": "Om acht uur organiseert De student een gezellige buurtbijeenkomst.",
-    "en": "Om acht uur the student organizes a cosy neighbourhood meeting.",
+    "en": "At eight o'clock, the student organizes a cosy neighbourhood meeting.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -77416,7 +77416,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04900",
     "nl": "Regelmatig organiseert De student een gezellige buurtbijeenkomst.",
-    "en": "Regelmatig the student organizes a cosy neighbourhood meeting.",
+    "en": "Regularly, the student organizes a cosy neighbourhood meeting.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -77495,7 +77495,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04905",
     "nl": "Vaak organiseert De student een gezellige buurtbijeenkomst.",
-    "en": "Vaak the student organizes a cosy neighbourhood meeting.",
+    "en": "Often, the student organizes a cosy neighbourhood meeting.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -77574,7 +77574,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04910",
     "nl": "Op maandag organiseert De student een gezellige buurtbijeenkomst.",
-    "en": "Op maandag the student organizes a cosy neighbourhood meeting.",
+    "en": "On Monday, the student organizes a cosy neighbourhood meeting.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -77653,7 +77653,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04915",
     "nl": "Tijdens de lunch organiseert De student een gezellige buurtbijeenkomst.",
-    "en": "Tijdens de lunch the student organizes a cosy neighbourhood meeting.",
+    "en": "During lunch, the student organizes a cosy neighbourhood meeting.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -77732,7 +77732,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04920",
     "nl": "Na het werk organiseert De student een gezellige buurtbijeenkomst.",
-    "en": "Na het werk the student organizes a cosy neighbourhood meeting.",
+    "en": "After work, the student organizes a cosy neighbourhood meeting.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -77811,7 +77811,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04925",
     "nl": "Sinds vorige maand organiseert De student een gezellige buurtbijeenkomst.",
-    "en": "Sinds vorige maand the student organizes a cosy neighbourhood meeting.",
+    "en": "Since last month, the student organizes a cosy neighbourhood meeting.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -77890,7 +77890,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04930",
     "nl": "Met grote zorgvuldigheid organiseert De student een gezellige buurtbijeenkomst.",
-    "en": "Met grote zorgvuldigheid the student organizes a cosy neighbourhood meeting.",
+    "en": "With great care, the student organizes a cosy neighbourhood meeting.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -77969,7 +77969,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04935",
     "nl": "Elke ochtend analyseert De student de complexe financiële resultaten.",
-    "en": "Elke ochtend the student analyzes the complex financial results.",
+    "en": "Every morning, the student analyzes the complex financial results.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -78048,7 +78048,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04940",
     "nl": "Gisterenmiddag analyseert De student de complexe financiële resultaten.",
-    "en": "Gisterenmiddag the student analyzes the complex financial results.",
+    "en": "Yesterday afternoon, the student analyzes the complex financial results.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -78127,7 +78127,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04945",
     "nl": "Volgende week analyseert De student de complexe financiële resultaten.",
-    "en": "Volgende week the student analyzes the complex financial results.",
+    "en": "Next week, the student analyzes the complex financial results.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -78206,7 +78206,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04950",
     "nl": "In het weekend analyseert De student de complexe financiële resultaten.",
-    "en": "In het weekend the student analyzes the complex financial results.",
+    "en": "At the weekend, the student analyzes the complex financial results.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -78285,7 +78285,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04955",
     "nl": "Om acht uur analyseert De student de complexe financiële resultaten.",
-    "en": "Om acht uur the student analyzes the complex financial results.",
+    "en": "At eight o'clock, the student analyzes the complex financial results.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -78364,7 +78364,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04960",
     "nl": "Regelmatig analyseert De student de complexe financiële resultaten.",
-    "en": "Regelmatig the student analyzes the complex financial results.",
+    "en": "Regularly, the student analyzes the complex financial results.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -78443,7 +78443,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04965",
     "nl": "Vaak analyseert De student de complexe financiële resultaten.",
-    "en": "Vaak the student analyzes the complex financial results.",
+    "en": "Often, the student analyzes the complex financial results.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -78522,7 +78522,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04970",
     "nl": "Op maandag analyseert De student de complexe financiële resultaten.",
-    "en": "Op maandag the student analyzes the complex financial results.",
+    "en": "On Monday, the student analyzes the complex financial results.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -78601,7 +78601,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04975",
     "nl": "Tijdens de lunch analyseert De student de complexe financiële resultaten.",
-    "en": "Tijdens de lunch the student analyzes the complex financial results.",
+    "en": "During lunch, the student analyzes the complex financial results.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -78680,7 +78680,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04980",
     "nl": "Na het werk analyseert De student de complexe financiële resultaten.",
-    "en": "Na het werk the student analyzes the complex financial results.",
+    "en": "After work, the student analyzes the complex financial results.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -78759,7 +78759,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04985",
     "nl": "Sinds vorige maand analyseert De student de complexe financiële resultaten.",
-    "en": "Sinds vorige maand the student analyzes the complex financial results.",
+    "en": "Since last month, the student analyzes the complex financial results.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -78838,7 +78838,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04990",
     "nl": "Met grote zorgvuldigheid analyseert De student de complexe financiële resultaten.",
-    "en": "Met grote zorgvuldigheid the student analyzes the complex financial results.",
+    "en": "With great care, the student analyzes the complex financial results.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -78917,7 +78917,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-04995",
     "nl": "Elke ochtend bespreekt De student de nieuwe beleidsvoorstellen.",
-    "en": "Elke ochtend the student discusses the new policy proposals.",
+    "en": "Every morning, the student discusses the new policy proposals.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -78996,7 +78996,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-05000",
     "nl": "Gisterenmiddag bespreekt De student de nieuwe beleidsvoorstellen.",
-    "en": "Gisterenmiddag the student discusses the new policy proposals.",
+    "en": "Yesterday afternoon, the student discusses the new policy proposals.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -79075,7 +79075,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-05005",
     "nl": "Volgende week bespreekt De student de nieuwe beleidsvoorstellen.",
-    "en": "Volgende week the student discusses the new policy proposals.",
+    "en": "Next week, the student discusses the new policy proposals.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -79154,7 +79154,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-05010",
     "nl": "In het weekend bespreekt De student de nieuwe beleidsvoorstellen.",
-    "en": "In het weekend the student discusses the new policy proposals.",
+    "en": "At the weekend, the student discusses the new policy proposals.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -79233,7 +79233,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-05015",
     "nl": "Om acht uur bespreekt De student de nieuwe beleidsvoorstellen.",
-    "en": "Om acht uur the student discusses the new policy proposals.",
+    "en": "At eight o'clock, the student discusses the new policy proposals.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -79312,7 +79312,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-05020",
     "nl": "Regelmatig bespreekt De student de nieuwe beleidsvoorstellen.",
-    "en": "Regelmatig the student discusses the new policy proposals.",
+    "en": "Regularly, the student discusses the new policy proposals.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -79391,7 +79391,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-05025",
     "nl": "Vaak bespreekt De student de nieuwe beleidsvoorstellen.",
-    "en": "Vaak the student discusses the new policy proposals.",
+    "en": "Often, the student discusses the new policy proposals.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -79470,7 +79470,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-05030",
     "nl": "Op maandag bespreekt De student de nieuwe beleidsvoorstellen.",
-    "en": "Op maandag the student discusses the new policy proposals.",
+    "en": "On Monday, the student discusses the new policy proposals.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -79549,7 +79549,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-05035",
     "nl": "Tijdens de lunch bespreekt De student de nieuwe beleidsvoorstellen.",
-    "en": "Tijdens de lunch the student discusses the new policy proposals.",
+    "en": "During lunch, the student discusses the new policy proposals.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -79628,7 +79628,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-05040",
     "nl": "Na het werk bespreekt De student de nieuwe beleidsvoorstellen.",
-    "en": "Na het werk the student discusses the new policy proposals.",
+    "en": "After work, the student discusses the new policy proposals.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -79707,7 +79707,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-05045",
     "nl": "Sinds vorige maand bespreekt De student de nieuwe beleidsvoorstellen.",
-    "en": "Sinds vorige maand the student discusses the new policy proposals.",
+    "en": "Since last month, the student discusses the new policy proposals.",
     "level": "A2",
     "tags": [
       "inversion",
@@ -79786,7 +79786,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-05050",
     "nl": "Met grote zorgvuldigheid bespreekt De student de nieuwe beleidsvoorstellen.",
-    "en": "Met grote zorgvuldigheid the student discusses the new policy proposals.",
+    "en": "With great care, the student discusses the new policy proposals.",
     "level": "A2",
     "tags": [
       "inversion",

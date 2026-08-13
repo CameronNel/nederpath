@@ -23,18 +23,18 @@ const BASE_SENTENCES = [
 ];
 
 const SUBJECTS = [
-  { nl: "Jan", en: "Jan", pers: "3s", aux: "heeft", auxEn: "has" },
-  { nl: "Lisa", en: "Lisa", pers: "3s", aux: "heeft", auxEn: "has" },
-  { nl: "Peter", en: "Peter", pers: "3s", aux: "heeft", auxEn: "has" },
-  { nl: "Sophie", en: "Sophie", pers: "3s", aux: "heeft", auxEn: "has" },
-  { nl: "De student", en: "The student", pers: "3s", aux: "heeft", auxEn: "has" },
-  { nl: "De leraar", en: "The teacher", pers: "3s", aux: "heeft", auxEn: "has" },
-  { nl: "De arts", en: "The doctor", pers: "3s", aux: "heeft", auxEn: "has" },
-  { nl: "De buurman", en: "The neighbour", pers: "3s", aux: "heeft", auxEn: "has" },
-  { nl: "De directeur", en: "The director", pers: "3s", aux: "heeft", auxEn: "has" },
-  { nl: "De onderzoeker", en: "The researcher", pers: "3s", aux: "heeft", auxEn: "has" },
-  { nl: "Wij", en: "We", pers: "1p", aux: "hebben", auxEn: "have" },
-  { nl: "Zij", en: "They", pers: "3p", aux: "hebben", auxEn: "have" }
+  { nl: "Jan", en: "Jan", pers: "3s", aux: "heeft", auxEn: "has", isProper: true },
+  { nl: "Lisa", en: "Lisa", pers: "3s", aux: "heeft", auxEn: "has", isProper: true },
+  { nl: "Peter", en: "Peter", pers: "3s", aux: "heeft", auxEn: "has", isProper: true },
+  { nl: "Sophie", en: "Sophie", pers: "3s", aux: "heeft", auxEn: "has", isProper: true },
+  { nl: "De student", en: "The student", pers: "3s", aux: "heeft", auxEn: "has", isProper: false },
+  { nl: "De leraar", en: "The teacher", pers: "3s", aux: "heeft", auxEn: "has", isProper: false },
+  { nl: "De arts", en: "The doctor", pers: "3s", aux: "heeft", auxEn: "has", isProper: false },
+  { nl: "De buurman", en: "The neighbour", pers: "3s", aux: "heeft", auxEn: "has", isProper: false },
+  { nl: "De directeur", en: "The director", pers: "3s", aux: "heeft", auxEn: "has", isProper: false },
+  { nl: "De onderzoeker", en: "The researcher", pers: "3s", aux: "heeft", auxEn: "has", isProper: false },
+  { nl: "Wij", en: "We", pers: "1p", aux: "hebben", auxEn: "have", isProper: false },
+  { nl: "Zij", en: "They", pers: "3p", aux: "hebben", auxEn: "have", isProper: false }
 ];
 
 const TIME_PHRASES = [
@@ -99,6 +99,8 @@ for (const subj of SUBJECTS) {
       const verb = isPlur ? act.pres1p : act.pres3s;
       const enVerbPres = isPlur ? act.enPres1p : act.enPres3s;
       const pastVerb = isPlur ? act.pastPl : act.past3s;
+      const subClauseSubjNl = subj.isProper ? subj.nl : subj.nl.toLowerCase();
+      const subClauseSubjEn = subj.isProper ? subj.en : subj.en.toLowerCase();
 
       // 1. Standard SVO Present: "Jan leest elke ochtend een interessant boek."
       sentences.push({
@@ -115,11 +117,12 @@ for (const subj of SUBJECTS) {
 
       // 2. Inverted VSO Present: "Elke ochtend leest Jan een interessant boek."
       if (sentences.length < 5050) {
-        const capTime = time.nl.charAt(0).toUpperCase() + time.nl.slice(1);
+        const capTimeNl = time.nl.charAt(0).toUpperCase() + time.nl.slice(1);
+        const capTimeEn = time.en.charAt(0).toUpperCase() + time.en.slice(1);
         sentences.push({
           id: "snt-" + String(counter).padStart(5, "0"),
-          nl: `${capTime} ${verb} ${subj.nl} ${act.obj.nl}.`,
-          en: `${capTime} ${subj.en.toLowerCase()} ${enVerbPres} ${act.obj.en}.`,
+          nl: `${capTimeNl} ${verb} ${subj.nl} ${act.obj.nl}.`,
+          en: `${capTimeEn}, ${subClauseSubjEn} ${enVerbPres} ${act.obj.en}.`,
           level: "A2",
           tags: ["inversion", "v2_order", "time_fronting"],
           category: act.cat,
@@ -159,12 +162,12 @@ for (const subj of SUBJECTS) {
         counter++;
       }
 
-      // 5. Subordinate clause with 'omdat': "... omdat Jan een interessant boek leest."
+      // 5. Subordinate clause with 'omdat' / 'dat': "... dat Jan een interessant boek leest."
       if (sentences.length < 5050) {
         sentences.push({
           id: "snt-" + String(counter).padStart(5, "0"),
-          nl: `Wij weten dat ${subj.nl.toLowerCase()} ${time.nl} ${act.obj.nl} ${verb}.`,
-          en: `We know that ${subj.en.toLowerCase()} ${enVerbPres} ${act.obj.en} ${time.en}.`,
+          nl: `Wij weten dat ${subClauseSubjNl} ${time.nl} ${act.obj.nl} ${verb}.`,
+          en: `We know that ${subClauseSubjEn} ${enVerbPres} ${act.obj.en} ${time.en}.`,
           level: "B1",
           tags: ["subordinate_clause", "sov_word_order", "conjunction_dat"],
           category: act.cat,

@@ -1,4 +1,4 @@
-// NederPath Comprehensive Quality Audit Script (35+ checks)
+// NederPath Comprehensive Quality Audit Script (45+ checks)
 import { readFileSync, existsSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -43,7 +43,8 @@ const requiredFiles = [
   "icons/icon-192.png",
   "icons/icon-512.png",
   "icons/maskable-512.png",
-  "icons/apple-touch-icon.png"
+  "icons/apple-touch-icon.png",
+  ".nojekyll"
 ];
 
 for (const file of requiredFiles) {
@@ -67,6 +68,9 @@ let dupIds = 0;
 let dupWords = 0;
 let uncuratedNounsWithoutArticle = 0;
 let nounsWithoutDisplayArticle = 0;
+let suspiciousInflections = 0;
+
+const FORBIDDEN_ADVERBS_INFLECTED = ["niette", "nietter", "welder", "tochter", "nooiter"];
 
 for (const w of words) {
   if (ids.has(w.id)) dupIds++;
@@ -82,12 +86,16 @@ for (const w of words) {
   if (w.pos === "noun" && w.article && (!w.displayWord || !w.displayWord.startsWith(w.article))) {
     nounsWithoutDisplayArticle++;
   }
+  if (FORBIDDEN_ADVERBS_INFLECTED.includes(norm)) {
+    suspiciousInflections++;
+  }
 }
 
 assert(dupIds === 0, "All word IDs are unique");
 assert(dupWords === 0, "All normalized Dutch word forms are unique");
 assert(uncuratedNounsWithoutArticle === 0, "All learnable Dutch nouns carry a verified de/het article");
 assert(nounsWithoutDisplayArticle === 0, "All learnable Dutch nouns have displayWord with article (e.g. 'de tafel', 'het huis')");
+assert(suspiciousInflections === 0, "Zero forbidden false inflections (niette/nietter/welder)");
 
 // 3. Grammar Curriculum (data/grammar.js)
 console.log("\n--- 3. Grammar Curriculum Validation (data/grammar.js) ---");
@@ -101,6 +109,7 @@ assert(grammar.length >= 120, `NP_GRAMMAR has >= 120 rules (actual: ${grammar.le
 const sectionsCovered = new Set(grammar.map((g) => g.section));
 assert(sectionsCovered.size === 8, `Grammar covers all 8 CEFR sections (actual: ${sectionsCovered.size})`);
 
+const exTypes = new Set();
 let invalidExercises = 0;
 for (const g of grammar) {
   if (!g.title || !g.titleNl || !g.summary || !Array.isArray(g.rules) || !Array.isArray(g.examples)) {
@@ -108,9 +117,14 @@ for (const g of grammar) {
   }
   if (!Array.isArray(g.exercises) || g.exercises.length === 0) {
     invalidExercises++;
+  } else {
+    for (const ex of g.exercises) {
+      exTypes.add(ex.type);
+    }
   }
 }
 assert(invalidExercises === 0, "All grammar rules have valid structures, examples, and exercises");
+assert(exTypes.size === 7, `All 7 exercise interaction types supported across curriculum (actual: ${exTypes.size})`);
 
 // 4. Idioms Bank (data/idioms.js)
 console.log("\n--- 4. Idioms Bank Validation (data/idioms.js) ---");
@@ -122,12 +136,17 @@ assert(Array.isArray(idioms), "NP_IDIOMS is an array");
 assert(idioms.length >= 500, `NP_IDIOMS count >= 500 (actual: ${idioms.length})`);
 
 let invalidIdioms = 0;
+let suspiciousIdiomStrings = 0;
 for (const idm of idioms) {
   if (!idm.dutch || !idm.meaning || !idm.example) {
     invalidIdioms++;
   }
+  if (idm.example.includes("rjestig") || idm.example.includes("jew") || idm.example.includes("mevrojew")) {
+    suspiciousIdiomStrings++;
+  }
 }
 assert(invalidIdioms === 0, "All idioms carry Dutch, meaning, and example sentences");
+assert(suspiciousIdiomStrings === 0, "Zero suspicious substrings in idioms (rjestig/jew/mevrojew)");
 
 // 5. Comprehension Bank (data/comprehension.js)
 console.log("\n--- 5. Comprehension Passages Validation (data/comprehension.js) ---");
@@ -136,17 +155,22 @@ const fnComp = new Function("globalThis", compSrc + "\nreturn globalThis.NP_COMP
 const comp = fnComp(dummyGlobal);
 
 assert(Array.isArray(comp), "NP_COMPREHENSION is an array");
-assert(comp.length >= 100, `NP_COMPREHENSION count >= 100 (actual: ${comp.length})`);
+assert(comp.length >= 120, `NP_COMPREHENSION count >= 120 (actual: ${comp.length})`);
 
 const compLevelCounts = {};
+let invalidPassages = 0;
 for (const p of comp) {
   compLevelCounts[p.level] = (compLevelCounts[p.level] || 0) + 1;
+  if (!p.title || !p.paragraphs || p.paragraphs.length < 2 || !p.translation || !p.questions || p.questions.length < 3) {
+    invalidPassages++;
+  }
 }
-assert(compLevelCounts["A1"] >= 20, `A1 passages >= 20 (actual: ${compLevelCounts["A1"]})`);
-assert(compLevelCounts["A2"] >= 20, `A2 passages >= 20 (actual: ${compLevelCounts["A2"]})`);
-assert(compLevelCounts["B1"] >= 20, `B1 passages >= 20 (actual: ${compLevelCounts["B1"]})`);
-assert(compLevelCounts["B2"] >= 20, `B2 passages >= 20 (actual: ${compLevelCounts["B2"]})`);
-assert(compLevelCounts["C1"] >= 20, `C1 passages >= 20 (actual: ${compLevelCounts["C1"]})`);
+assert(invalidPassages === 0, "All passages have 3+ paragraphs, translations, and 3+ questions");
+assert(compLevelCounts["A1"] >= 24, `A1 passages >= 24 (actual: ${compLevelCounts["A1"]})`);
+assert(compLevelCounts["A2"] >= 24, `A2 passages >= 24 (actual: ${compLevelCounts["A2"]})`);
+assert(compLevelCounts["B1"] >= 24, `B1 passages >= 24 (actual: ${compLevelCounts["B1"]})`);
+assert(compLevelCounts["B2"] >= 24, `B2 passages >= 24 (actual: ${compLevelCounts["B2"]})`);
+assert(compLevelCounts["C1"] >= 24, `C1 passages >= 24 (actual: ${compLevelCounts["C1"]})`);
 
 // 6. Sentence Bank (data/sentences.js)
 console.log("\n--- 6. Sentence Bank Validation (data/sentences.js) ---");
@@ -156,6 +180,14 @@ const sentences = fnSent(dummyGlobal);
 
 assert(Array.isArray(sentences), "NP_SENTENCES is an array");
 assert(sentences.length >= 5000, `NP_SENTENCES count >= 5,000 (actual: ${sentences.length})`);
+
+let malformedSentences = 0;
+for (const s of sentences) {
+  if (!s.nl || !s.en || s.en.includes("Met grote zorgvuldigheid the") || s.en.includes("elke ochtend the") || s.en.includes("analyseed")) {
+    malformedSentences++;
+  }
+}
+assert(malformedSentences === 0, "Zero malformed translations or mixed time fronting in sentences");
 
 // Summary
 console.log("\n=======================================================");

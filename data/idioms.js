@@ -517,7 +517,7 @@ globalThis.NP_IDIOMS = [
     "dutch": "Goedemorgen, hoe gaat het met u?",
     "meaning": "Good morning, how are you? (formal)",
     "literal": "",
-    "register": "formal",
+    "register": "neutral",
     "level": "A1",
     "example": "Goedemorgen, hoe gaat het met u mevrouw Jansen?",
     "exampleEn": "Good morning, how are you? (formal)",
@@ -525,7 +525,7 @@ globalThis.NP_IDIOMS = [
     "usageWarning": "",
     "tags": [
       "greetings_polite",
-      "spoken_formula"
+      "spoken"
     ],
     "related": []
   },
@@ -534,7 +534,7 @@ globalThis.NP_IDIOMS = [
     "dutch": "Goedemiddag, alles goed?",
     "meaning": "Good afternoon, everything good? (informal/neutral)",
     "literal": "",
-    "register": "formal",
+    "register": "neutral",
     "level": "A1",
     "example": "Hoi Jan, goedemiddag, alles goed?",
     "exampleEn": "Good afternoon, everything good? (informal/neutral)",
@@ -542,7 +542,7 @@ globalThis.NP_IDIOMS = [
     "usageWarning": "",
     "tags": [
       "greetings_polite",
-      "spoken_formula"
+      "spoken"
     ],
     "related": []
   },
@@ -551,7 +551,7 @@ globalThis.NP_IDIOMS = [
     "dutch": "Goedenavond allemaal",
     "meaning": "Good evening everyone",
     "literal": "",
-    "register": "formal",
+    "register": "neutral",
     "level": "A1",
     "example": "Goedenavond allemaal, welkom bij de presentatie.",
     "exampleEn": "Good evening everyone",
@@ -559,7 +559,7 @@ globalThis.NP_IDIOMS = [
     "usageWarning": "",
     "tags": [
       "greetings_polite",
-      "spoken_formula"
+      "spoken"
     ],
     "related": []
   },
@@ -568,7 +568,7 @@ globalThis.NP_IDIOMS = [
     "dutch": "Prettig weekend gewenst!",
     "meaning": "Have a pleasant weekend!",
     "literal": "",
-    "register": "formal",
+    "register": "neutral",
     "level": "A1",
     "example": "Tot maandag en een prettig weekend gewenst!",
     "exampleEn": "Have a pleasant weekend!",
@@ -576,7 +576,7 @@ globalThis.NP_IDIOMS = [
     "usageWarning": "",
     "tags": [
       "greetings_polite",
-      "spoken_formula"
+      "spoken"
     ],
     "related": []
   },
@@ -585,7 +585,7 @@ globalThis.NP_IDIOMS = [
     "dutch": "Fijne dag verder!",
     "meaning": "Have a nice day further!",
     "literal": "",
-    "register": "formal",
+    "register": "neutral",
     "level": "A1",
     "example": "Dank u wel voor uw hulp en een fijne dag verder!",
     "exampleEn": "Have a nice day further!",
@@ -593,7 +593,7 @@ globalThis.NP_IDIOMS = [
     "usageWarning": "",
     "tags": [
       "greetings_polite",
-      "spoken_formula"
+      "spoken"
     ],
     "related": []
   },
@@ -602,7 +602,7 @@ globalThis.NP_IDIOMS = [
     "dutch": "Tot ziens en tot de volgende keer",
     "meaning": "Goodbye and until next time",
     "literal": "",
-    "register": "formal",
+    "register": "neutral",
     "level": "A1",
     "example": "Bedankt voor het gezellige bezoek, tot ziens!",
     "exampleEn": "Goodbye and until next time",
@@ -610,7 +610,7 @@ globalThis.NP_IDIOMS = [
     "usageWarning": "",
     "tags": [
       "greetings_polite",
-      "spoken_formula"
+      "spoken"
     ],
     "related": []
   },
@@ -619,7 +619,7 @@ globalThis.NP_IDIOMS = [
     "dutch": "Eet smakelijk!",
     "meaning": "Enjoy your meal! / Bon appétit!",
     "literal": "",
-    "register": "formal",
+    "register": "neutral",
     "level": "A1",
     "example": "Het eten staat op tafel, eet smakelijk allemaal!",
     "exampleEn": "Enjoy your meal! / Bon appétit!",
@@ -627,7 +627,7 @@ globalThis.NP_IDIOMS = [
     "usageWarning": "",
     "tags": [
       "greetings_polite",
-      "spoken_formula"
+      "spoken"
     ],
     "related": []
   },
@@ -636,7 +636,7 @@ globalThis.NP_IDIOMS = [
     "dutch": "Gezondheid! / Proost!",
     "meaning": "Bless you! (after sneezing) / Cheers! (drinks)",
     "literal": "",
-    "register": "formal",
+    "register": "neutral",
     "level": "A1",
     "example": "Proost op het nieuwe jaar!",
     "exampleEn": "Bless you! (after sneezing) / Cheers! (drinks)",
@@ -644,7 +644,7 @@ globalThis.NP_IDIOMS = [
     "usageWarning": "",
     "tags": [
       "greetings_polite",
-      "spoken_formula"
+      "spoken"
     ],
     "related": []
   },
@@ -653,7 +653,7 @@ globalThis.NP_IDIOMS = [
     "dutch": "Hartelijk gefeliciteerd met je verjaardag!",
     "meaning": "Warm congratulations on your birthday!",
     "literal": "",
-    "register": "formal",
+    "register": "neutral",
     "level": "A1",
     "example": "Hartelijk gefeliciteerd met je 30e verjaardag!",
     "exampleEn": "Warm congratulations on your birthday!",
@@ -661,7 +661,7 @@ globalThis.NP_IDIOMS = [
     "usageWarning": "",
     "tags": [
       "greetings_polite",
-      "spoken_formula"
+      "spoken"
     ],
     "related": []
   },
@@ -670,7 +670,7 @@ globalThis.NP_IDIOMS = [
     "dutch": "Veel succes met het examen!",
     "meaning": "Best of luck with the exam!",
     "literal": "",
-    "register": "formal",
+    "register": "neutral",
     "level": "A1",
     "example": "Zet hem op morgen en veel succes met het examen!",
     "exampleEn": "Best of luck with the exam!",
@@ -678,7 +678,7 @@ globalThis.NP_IDIOMS = [
     "usageWarning": "",
     "tags": [
       "greetings_polite",
-      "spoken_formula"
+      "spoken"
     ],
     "related": []
   },
@@ -687,7 +687,7 @@ globalThis.NP_IDIOMS = [
     "dutch": "Zullen we even kort overleggen?",
     "meaning": "Shall we have a quick check-in / brief consultation?",
     "literal": "",
-    "register": "business",
+    "register": "colloquial",
     "level": "B1",
     "example": "Heb je vijf minuten? Zullen we even kort overleggen?",
     "exampleEn": "Shall we have a quick check-in / brief consultation?",
@@ -695,7 +695,7 @@ globalThis.NP_IDIOMS = [
     "usageWarning": "",
     "tags": [
       "workplace_business",
-      "spoken_formula"
+      "spoken"
     ],
     "related": []
   },
@@ -704,7 +704,7 @@ globalThis.NP_IDIOMS = [
     "dutch": "Ik kom hier later op terug",
     "meaning": "I will get back to you on this later",
     "literal": "",
-    "register": "business",
+    "register": "colloquial",
     "level": "B1",
     "example": "Ik heb die cijfers nu niet paraat, maar ik kom hier later op terug.",
     "exampleEn": "I will get back to you on this later",
@@ -712,7 +712,7 @@ globalThis.NP_IDIOMS = [
     "usageWarning": "",
     "tags": [
       "workplace_business",
-      "spoken_formula"
+      "spoken"
     ],
     "related": []
   },
@@ -721,7 +721,7 @@ globalThis.NP_IDIOMS = [
     "dutch": "Kun je dat even op de mail zetten?",
     "meaning": "Could you put that in an email?",
     "literal": "",
-    "register": "business",
+    "register": "colloquial",
     "level": "B1",
     "example": "Klinkt als een goed voorstel, kun je dat even op de mail zetten?",
     "exampleEn": "Could you put that in an email?",
@@ -729,7 +729,7 @@ globalThis.NP_IDIOMS = [
     "usageWarning": "",
     "tags": [
       "workplace_business",
-      "spoken_formula"
+      "spoken"
     ],
     "related": []
   },
@@ -738,7 +738,7 @@ globalThis.NP_IDIOMS = [
     "dutch": "Laten we de koppen bij elkaar steken",
     "meaning": "Let's put our heads together / brainstorm a solution",
     "literal": "",
-    "register": "business",
+    "register": "colloquial",
     "level": "B1",
     "example": "Dit is een lastig probleem; laten we de koppen bij elkaar steken.",
     "exampleEn": "Let's put our heads together / brainstorm a solution",
@@ -746,7 +746,7 @@ globalThis.NP_IDIOMS = [
     "usageWarning": "",
     "tags": [
       "workplace_business",
-      "spoken_formula"
+      "spoken"
     ],
     "related": []
   },
@@ -755,7 +755,7 @@ globalThis.NP_IDIOMS = [
     "dutch": "Ik zit vol tot het einde van de week",
     "meaning": "My schedule is fully booked until the end of the week",
     "literal": "",
-    "register": "business",
+    "register": "colloquial",
     "level": "B1",
     "example": "Helaas kan ik die afspraak niet aannemen; ik zit vol.",
     "exampleEn": "My schedule is fully booked until the end of the week",
@@ -763,7 +763,7 @@ globalThis.NP_IDIOMS = [
     "usageWarning": "",
     "tags": [
       "workplace_business",
-      "spoken_formula"
+      "spoken"
     ],
     "related": []
   },
@@ -772,7 +772,7 @@ globalThis.NP_IDIOMS = [
     "dutch": "Laten we even een streep trekken onder deze discussie",
     "meaning": "Let's draw a line under this discussion / wrap it up",
     "literal": "",
-    "register": "business",
+    "register": "colloquial",
     "level": "B1",
     "example": "We hebben alle standpunten gehoord, laten we nu een streep trekken.",
     "exampleEn": "Let's draw a line under this discussion / wrap it up",
@@ -780,7 +780,7 @@ globalThis.NP_IDIOMS = [
     "usageWarning": "",
     "tags": [
       "workplace_business",
-      "spoken_formula"
+      "spoken"
     ],
     "related": []
   },
@@ -789,7 +789,7 @@ globalThis.NP_IDIOMS = [
     "dutch": "Dat staat buiten kijf",
     "meaning": "That is beyond dispute / indisputable",
     "literal": "",
-    "register": "business",
+    "register": "colloquial",
     "level": "B1",
     "example": "Dat we meer personeel nodig hebben, staat buiten kijf.",
     "exampleEn": "That is beyond dispute / indisputable",
@@ -797,7 +797,7 @@ globalThis.NP_IDIOMS = [
     "usageWarning": "",
     "tags": [
       "workplace_business",
-      "spoken_formula"
+      "spoken"
     ],
     "related": []
   },
@@ -806,7 +806,7 @@ globalThis.NP_IDIOMS = [
     "dutch": "Iemand op de hoogte houden",
     "meaning": "To keep someone informed / in the loop",
     "literal": "",
-    "register": "business",
+    "register": "colloquial",
     "level": "B1",
     "example": "Ik zal je direct op de hoogte houden van nieuwe ontwikkelingen.",
     "exampleEn": "To keep someone informed / in the loop",
@@ -814,7 +814,7 @@ globalThis.NP_IDIOMS = [
     "usageWarning": "",
     "tags": [
       "workplace_business",
-      "spoken_formula"
+      "spoken"
     ],
     "related": []
   },
@@ -823,7 +823,7 @@ globalThis.NP_IDIOMS = [
     "dutch": "Een vinger aan de pols houden",
     "meaning": "To keep a finger on the pulse / closely monitor progress",
     "literal": "",
-    "register": "business",
+    "register": "colloquial",
     "level": "B1",
     "example": "We moeten een vinger aan de pols houden bij dit project.",
     "exampleEn": "To keep a finger on the pulse / closely monitor progress",
@@ -831,7 +831,7 @@ globalThis.NP_IDIOMS = [
     "usageWarning": "",
     "tags": [
       "workplace_business",
-      "spoken_formula"
+      "spoken"
     ],
     "related": []
   },
@@ -840,7 +840,7 @@ globalThis.NP_IDIOMS = [
     "dutch": "Met betrekking tot uw schrijven",
     "meaning": "With reference to your letter/email (formal)",
     "literal": "",
-    "register": "business",
+    "register": "colloquial",
     "level": "B1",
     "example": "Met betrekking tot uw schrijven van 12 mei delen wij u mede...",
     "exampleEn": "With reference to your letter/email (formal)",
@@ -848,7 +848,7 @@ globalThis.NP_IDIOMS = [
     "usageWarning": "",
     "tags": [
       "workplace_business",
-      "spoken_formula"
+      "spoken"
     ],
     "related": []
   },
@@ -857,7 +857,7 @@ globalThis.NP_IDIOMS = [
     "dutch": "Dat meen je niet!",
     "meaning": "You don't say! / You must be kidding!",
     "literal": "",
-    "register": "everyday",
+    "register": "colloquial",
     "level": "A2",
     "example": "Is de trein weer uitgevallen? Dat meen je niet!",
     "exampleEn": "You don't say! / You must be kidding!",
@@ -865,7 +865,7 @@ globalThis.NP_IDIOMS = [
     "usageWarning": "",
     "tags": [
       "reactions_emotions",
-      "spoken_formula"
+      "spoken"
     ],
     "related": []
   },
@@ -874,7 +874,7 @@ globalThis.NP_IDIOMS = [
     "dutch": "Geen probleem, graag gedaan!",
     "meaning": "No problem, you are very welcome!",
     "literal": "",
-    "register": "everyday",
+    "register": "colloquial",
     "level": "A2",
     "example": "Bedankt voor de lift! — Geen probleem, graag gedaan!",
     "exampleEn": "No problem, you are very welcome!",
@@ -882,7 +882,7 @@ globalThis.NP_IDIOMS = [
     "usageWarning": "",
     "tags": [
       "reactions_emotions",
-      "spoken_formula"
+      "spoken"
     ],
     "related": []
   },
@@ -891,7 +891,7 @@ globalThis.NP_IDIOMS = [
     "dutch": "Maak je geen zorgen",
     "meaning": "Don't worry",
     "literal": "",
-    "register": "everyday",
+    "register": "colloquial",
     "level": "A2",
     "example": "Alles komt goed, maak je geen zorgen.",
     "exampleEn": "Don't worry",
@@ -899,7 +899,7 @@ globalThis.NP_IDIOMS = [
     "usageWarning": "",
     "tags": [
       "reactions_emotions",
-      "spoken_formula"
+      "spoken"
     ],
     "related": []
   },
@@ -908,7 +908,7 @@ globalThis.NP_IDIOMS = [
     "dutch": "Dat hangt ervan af",
     "meaning": "That depends",
     "literal": "",
-    "register": "everyday",
+    "register": "colloquial",
     "level": "A2",
     "example": "Ga je mee naar het strand? — Dat hangt van het weer af.",
     "exampleEn": "That depends",
@@ -916,7 +916,7 @@ globalThis.NP_IDIOMS = [
     "usageWarning": "",
     "tags": [
       "reactions_emotions",
-      "spoken_formula"
+      "spoken"
     ],
     "related": []
   },
@@ -925,7 +925,7 @@ globalThis.NP_IDIOMS = [
     "dutch": "Nou en of!",
     "meaning": "You bet! / And how! / Absolutely!",
     "literal": "",
-    "register": "everyday",
+    "register": "colloquial",
     "level": "A2",
     "example": "Was het concert geweldig? — Nou en of!",
     "exampleEn": "You bet! / And how! / Absolutely!",
@@ -933,7 +933,7 @@ globalThis.NP_IDIOMS = [
     "usageWarning": "",
     "tags": [
       "reactions_emotions",
-      "spoken_formula"
+      "spoken"
     ],
     "related": []
   },
@@ -942,7 +942,7 @@ globalThis.NP_IDIOMS = [
     "dutch": "Wat een toeval!",
     "meaning": "What a coincidence!",
     "literal": "",
-    "register": "everyday",
+    "register": "colloquial",
     "level": "A2",
     "example": "Dat we elkaar hier in Amsterdam tegenkomen, wat een toeval!",
     "exampleEn": "What a coincidence!",
@@ -950,7 +950,7 @@ globalThis.NP_IDIOMS = [
     "usageWarning": "",
     "tags": [
       "reactions_emotions",
-      "spoken_formula"
+      "spoken"
     ],
     "related": []
   },
@@ -959,7 +959,7 @@ globalThis.NP_IDIOMS = [
     "dutch": "Het zit me tot hier",
     "meaning": "I have had it up to here / I am fed up",
     "literal": "",
-    "register": "everyday",
+    "register": "colloquial",
     "level": "A2",
     "example": "Die constante herrie; het zit me nu echt tot hier!",
     "exampleEn": "I have had it up to here / I am fed up",
@@ -967,7 +967,7 @@ globalThis.NP_IDIOMS = [
     "usageWarning": "",
     "tags": [
       "reactions_emotions",
-      "spoken_formula"
+      "spoken"
     ],
     "related": []
   },
@@ -976,7 +976,7 @@ globalThis.NP_IDIOMS = [
     "dutch": "Daar ben ik het helemaal mee eens",
     "meaning": "I completely agree with that",
     "literal": "",
-    "register": "everyday",
+    "register": "colloquial",
     "level": "A2",
     "example": "Je hebt gelijk, daar ben ik het helemaal mee eens.",
     "exampleEn": "I completely agree with that",
@@ -984,7 +984,7 @@ globalThis.NP_IDIOMS = [
     "usageWarning": "",
     "tags": [
       "reactions_emotions",
-      "spoken_formula"
+      "spoken"
     ],
     "related": []
   },
@@ -993,7 +993,7 @@ globalThis.NP_IDIOMS = [
     "dutch": "Ik heb er gemengde gevoelens over",
     "meaning": "I have mixed feelings about it",
     "literal": "",
-    "register": "everyday",
+    "register": "colloquial",
     "level": "A2",
     "example": "Over die nieuwe maatregel heb ik gemengde gevoelens.",
     "exampleEn": "I have mixed feelings about it",
@@ -1001,7 +1001,7 @@ globalThis.NP_IDIOMS = [
     "usageWarning": "",
     "tags": [
       "reactions_emotions",
-      "spoken_formula"
+      "spoken"
     ],
     "related": []
   },
@@ -1010,7 +1010,7 @@ globalThis.NP_IDIOMS = [
     "dutch": "Geen sprake van!",
     "meaning": "Out of the question! / No way!",
     "literal": "",
-    "register": "everyday",
+    "register": "colloquial",
     "level": "A2",
     "example": "Mag ik jouw auto lenen? — Geen sprake van!",
     "exampleEn": "Out of the question! / No way!",
@@ -1018,7 +1018,7 @@ globalThis.NP_IDIOMS = [
     "usageWarning": "",
     "tags": [
       "reactions_emotions",
-      "spoken_formula"
+      "spoken"
     ],
     "related": []
   },
@@ -1027,7 +1027,7 @@ globalThis.NP_IDIOMS = [
     "dutch": "Mag ik de rekening, alstublieft?",
     "meaning": "May I have the bill, please?",
     "literal": "",
-    "register": "everyday",
+    "register": "neutral",
     "level": "A1",
     "example": "We hebben heerlijk gegeten; mag ik de rekening alstublieft?",
     "exampleEn": "May I have the bill, please?",
@@ -1035,7 +1035,7 @@ globalThis.NP_IDIOMS = [
     "usageWarning": "",
     "tags": [
       "shopping_travel_dining",
-      "spoken_formula"
+      "spoken"
     ],
     "related": []
   },
@@ -1044,7 +1044,7 @@ globalThis.NP_IDIOMS = [
     "dutch": "Pinnen of contant?",
     "meaning": "Pay by card (debit pin) or cash?",
     "literal": "",
-    "register": "everyday",
+    "register": "neutral",
     "level": "A1",
     "example": "Dat is dan twaalf euro vijftig. Pinnen of contant?",
     "exampleEn": "Pay by card (debit pin) or cash?",
@@ -1052,7 +1052,7 @@ globalThis.NP_IDIOMS = [
     "usageWarning": "",
     "tags": [
       "shopping_travel_dining",
-      "spoken_formula"
+      "spoken"
     ],
     "related": []
   },
@@ -1061,7 +1061,7 @@ globalThis.NP_IDIOMS = [
     "dutch": "Wilt u er een bonnetje bij?",
     "meaning": "Would you like a receipt with that?",
     "literal": "",
-    "register": "everyday",
+    "register": "neutral",
     "level": "A1",
     "example": "Alstublieft uw wisselgeld. Wilt u er een bonnetje bij?",
     "exampleEn": "Would you like a receipt with that?",
@@ -1069,7 +1069,7 @@ globalThis.NP_IDIOMS = [
     "usageWarning": "",
     "tags": [
       "shopping_travel_dining",
-      "spoken_formula"
+      "spoken"
     ],
     "related": []
   },
@@ -1078,7 +1078,7 @@ globalThis.NP_IDIOMS = [
     "dutch": "Mag ik even passen?",
     "meaning": "May I try this on?",
     "literal": "",
-    "register": "everyday",
+    "register": "neutral",
     "level": "A1",
     "example": "Deze jas is mooi, mag ik hem even passen in de paskamer?",
     "exampleEn": "May I try this on?",
@@ -1086,109 +1086,109 @@ globalThis.NP_IDIOMS = [
     "usageWarning": "",
     "tags": [
       "shopping_travel_dining",
-      "spoken_formula"
+      "spoken"
     ],
     "related": []
   },
   {
     "id": "idm-0065",
-    "dutch": "Is deze stoel nog vrij?",
-    "meaning": "Is this seat still free/available?",
+    "dutch": "Waar kan ik het station vinden?",
+    "meaning": "Where can I find the train station?",
     "literal": "",
-    "register": "everyday",
+    "register": "neutral",
     "level": "A1",
-    "example": "Pardon mevrouw, is deze stoel naast u nog vrij?",
-    "exampleEn": "Is this seat still free/available?",
-    "contextNote": "asking politely on trains and in cafes",
+    "example": "Pardon meneer, waar kan ik het centrale station vinden?",
+    "exampleEn": "Where can I find the train station?",
+    "contextNote": "asking directions politely",
     "usageWarning": "",
     "tags": [
       "shopping_travel_dining",
-      "spoken_formula"
+      "spoken"
     ],
     "related": []
   },
   {
     "id": "idm-0066",
-    "dutch": "Kunt u mij vertellen waar het station is?",
-    "meaning": "Could you tell me where the station is?",
+    "dutch": "Is deze stoel nog vrij?",
+    "meaning": "Is this seat still free/unoccupied?",
     "literal": "",
-    "register": "everyday",
+    "register": "neutral",
     "level": "A1",
-    "example": "Pardon meneer, kunt u mij vertellen waar het centraal station is?",
-    "exampleEn": "Could you tell me where the station is?",
-    "contextNote": "asking for directions",
+    "example": "Mag ik hier zitten, of is deze stoel nog vrij?",
+    "exampleEn": "Is this seat still free/unoccupied?",
+    "contextNote": "asking for free seat in train/terrace",
     "usageWarning": "",
     "tags": [
       "shopping_travel_dining",
-      "spoken_formula"
+      "spoken"
     ],
     "related": []
   },
   {
     "id": "idm-0067",
-    "dutch": "Ik kijk gewoon even rond",
-    "meaning": "I am just looking around / browsing",
+    "dutch": "Wilt u hier iets bij drinken?",
+    "meaning": "Would you like something to drink with this?",
     "literal": "",
-    "register": "everyday",
+    "register": "neutral",
     "level": "A1",
-    "example": "Kan ik u helpen? — Nee dank u, ik kijk gewoon even rond.",
-    "exampleEn": "I am just looking around / browsing",
-    "contextNote": "polite response to shop assistants",
+    "example": "Een dagschotel voor twee. Wilt u hier iets bij drinken?",
+    "exampleEn": "Would you like something to drink with this?",
+    "contextNote": "restaurant server inquiry",
     "usageWarning": "",
     "tags": [
       "shopping_travel_dining",
-      "spoken_formula"
+      "spoken"
     ],
     "related": []
   },
   {
     "id": "idm-0068",
-    "dutch": "Wat mag het zijn?",
-    "meaning": "What can I get for you? / How can I help?",
+    "dutch": "Heeft u dit in een andere maat?",
+    "meaning": "Do you have this in another size?",
     "literal": "",
-    "register": "everyday",
+    "register": "neutral",
     "level": "A1",
-    "example": "Goedemorgen mevrouw, wat mag het zijn vandaag?",
-    "exampleEn": "What can I get for you? / How can I help?",
-    "contextNote": "traditional market/bakery greeting",
+    "example": "Deze trui is te klein; heeft u dit in maat L?",
+    "exampleEn": "Do you have this in another size?",
+    "contextNote": "clothing shopping question",
     "usageWarning": "",
     "tags": [
       "shopping_travel_dining",
-      "spoken_formula"
+      "spoken"
     ],
     "related": []
   },
   {
     "id": "idm-0069",
-    "dutch": "Heeft u een klantenkaart?",
-    "meaning": "Do you have a loyalty card / customer card?",
+    "dutch": "Tot hoe laat bent u open?",
+    "meaning": "Until what time are you open?",
     "literal": "",
-    "register": "everyday",
+    "register": "neutral",
     "level": "A1",
-    "example": "Goedemiddag, heeft u misschien een bonuskaart of klantenkaart?",
-    "exampleEn": "Do you have a loyalty card / customer card?",
-    "contextNote": "standard Dutch supermarket question",
+    "example": "Tot hoe laat bent u vanavond open voor klanten?",
+    "exampleEn": "Until what time are you open?",
+    "contextNote": "store opening hours inquiry",
     "usageWarning": "",
     "tags": [
       "shopping_travel_dining",
-      "spoken_formula"
+      "spoken"
     ],
     "related": []
   },
   {
     "id": "idm-0070",
-    "dutch": "Zullen we de rekening splitsen?",
-    "meaning": "Shall we split the bill? ('Going Dutch')",
+    "dutch": "Kan ik hier gratis parkeren?",
+    "meaning": "Can I park here for free?",
     "literal": "",
-    "register": "everyday",
+    "register": "neutral",
     "level": "A1",
-    "example": "We hebben samen gegeten, zullen we de rekening gewoon splitsen?",
-    "exampleEn": "Shall we split the bill? ('Going Dutch')",
-    "contextNote": "classic Dutch dining habit",
+    "example": "Is dit een blauwe zone of kan ik hier gratis parkeren?",
+    "exampleEn": "Can I park here for free?",
+    "contextNote": "parking inquiry",
     "usageWarning": "",
     "tags": [
       "shopping_travel_dining",
-      "spoken_formula"
+      "spoken"
     ],
     "related": []
   },
@@ -1534,167 +1534,354 @@ globalThis.NP_IDIOMS = [
   },
   {
     "id": "idm-0091",
-    "dutch": "Mag ik je even iets vragen?",
-    "meaning": "May I ask you something for a moment? (informal / bij)",
+    "dutch": "Kort door de bocht",
+    "meaning": "Oversimplified / jumping to conclusions",
     "literal": "",
-    "register": "informal",
-    "level": "A1",
-    "example": "Pardon mevrojew, mag ik u even iets vragen over de bushalte?",
-    "exampleEn": "May I ask you something for a moment? in context: bij de huisarts (at the doctor)",
-    "contextNote": "Spoken formula used bij de huisarts (at the doctor)",
+    "register": "idiom",
+    "level": "B1",
+    "example": "Die conclusie over alle jongeren is wel erg kort door de bocht.",
+    "exampleEn": "Oversimplified / jumping to conclusions",
+    "contextNote": "Authentic Dutch idiomatic phrase",
     "usageWarning": "",
     "tags": [
-      "conversational",
-      "bij"
+      "idiom",
+      "communication"
     ],
     "related": []
   },
   {
     "id": "idm-0092",
-    "dutch": "Kjent u dat alstublieft herhalen?",
-    "meaning": "Could you please repeat that? (informal / bij)",
+    "dutch": "Iemand in de watten leggen",
+    "meaning": "To pamper someone / spoil someone",
     "literal": "",
-    "register": "informal",
-    "level": "A1",
-    "example": "Het ging iets te snel, kjent u dat alstublieft herhalen?",
-    "exampleEn": "Could you please repeat that? in context: bij de huisarts (at the doctor)",
-    "contextNote": "Spoken formula used bij de huisarts (at the doctor)",
+    "register": "idiom",
+    "level": "A2",
+    "example": "Voor haar verjaardag werd oma heerlijk in de watten gelegd.",
+    "exampleEn": "To pamper someone / spoil someone",
+    "contextNote": "Authentic Dutch idiomatic phrase",
     "usageWarning": "",
     "tags": [
-      "conversational",
-      "bij"
+      "idiom",
+      "communication"
     ],
     "related": []
   },
   {
     "id": "idm-0093",
-    "dutch": "Wat bedoelt je precies met...?",
-    "meaning": "What exactly do you mean by...? (informal / bij)",
+    "dutch": "De handen uit de mouwen steken",
+    "meaning": "To roll up one's sleeves / get to work",
     "literal": "",
-    "register": "informal",
+    "register": "idiom",
     "level": "A2",
-    "example": "Wat bedoelt je precies met die voorwaarde in het contract?",
-    "exampleEn": "What exactly do you mean by...? in context: bij de huisarts (at the doctor)",
-    "contextNote": "Spoken formula used bij de huisarts (at the doctor)",
+    "example": "Er is veel te doen, dus laten we de handen uit de mouwen steken.",
+    "exampleEn": "To roll up one's sleeves / get to work",
+    "contextNote": "Authentic Dutch idiomatic phrase",
     "usageWarning": "",
     "tags": [
-      "conversational",
-      "bij"
+      "idiom",
+      "communication"
     ],
     "related": []
   },
   {
     "id": "idm-0094",
-    "dutch": "Daar heb ik nog niet over nagedacht",
-    "meaning": "I haven't thought about that yet (informal / bij)",
+    "dutch": "Spijkers met koppen slaan",
+    "meaning": "To take decisive action / get down to brass tacks",
     "literal": "",
-    "register": "informal",
-    "level": "A2",
-    "example": "Dat is een interessante vraag, daar heb ik nog niet over nagedacht.",
-    "exampleEn": "I haven't thought about that yet in context: bij de huisarts (at the doctor)",
-    "contextNote": "Spoken formula used bij de huisarts (at the doctor)",
+    "register": "idiom",
+    "level": "B1",
+    "example": "Laten we nu spijkers met koppen slaan en het contract tekenen.",
+    "exampleEn": "To take decisive action / get down to brass tacks",
+    "contextNote": "Authentic Dutch idiomatic phrase",
     "usageWarning": "",
     "tags": [
-      "conversational",
-      "bij"
+      "idiom",
+      "communication"
     ],
     "related": []
   },
   {
     "id": "idm-0095",
-    "dutch": "Zoje u mij kunnen doorverbinden met...?",
-    "meaning": "Could you connect me with...? (informal / bij)",
+    "dutch": "Het roer omgooien",
+    "meaning": "To change course / make a career shift",
     "literal": "",
-    "register": "informal",
+    "register": "idiom",
     "level": "B1",
-    "example": "Goedemorgen, zoje u mij kunnen doorverbinden met de afdeling administratie?",
-    "exampleEn": "Could you connect me with...? in context: bij de huisarts (at the doctor)",
-    "contextNote": "Spoken formula used bij de huisarts (at the doctor)",
+    "example": "Na twintig jaar gooide hij het roer om en begon een eigen bakkerij.",
+    "exampleEn": "To change course / make a career shift",
+    "contextNote": "Authentic Dutch idiomatic phrase",
     "usageWarning": "",
     "tags": [
-      "conversational",
-      "bij"
+      "idiom",
+      "communication"
     ],
     "related": []
   },
   {
     "id": "idm-0096",
-    "dutch": "Ik ben het er roerend mee eens",
-    "meaning": "I completely and wholeheartedly agree (informal / bij)",
+    "dutch": "Het bijltje erbij neergooien",
+    "meaning": "To throw in the towel / give up",
     "literal": "",
-    "register": "informal",
+    "register": "idiom",
     "level": "B1",
-    "example": "Met jojew visie op duurzaamheid ben ik het roerend eens.",
-    "exampleEn": "I completely and wholeheartedly agree in context: bij de huisarts (at the doctor)",
-    "contextNote": "Spoken formula used bij de huisarts (at the doctor)",
+    "example": "Het werk was te zwaar, dus gooide hij het bijltje erbij neer.",
+    "exampleEn": "To throw in the towel / give up",
+    "contextNote": "Authentic Dutch idiomatic phrase",
     "usageWarning": "",
     "tags": [
-      "conversational",
-      "bij"
+      "idiom",
+      "communication"
     ],
     "related": []
   },
   {
     "id": "idm-0097",
-    "dutch": "Dat is makkelijker gezegd dan gedaan",
-    "meaning": "That is easier said than done (informal / bij)",
+    "dutch": "Als sneeuw voor de zon verdwijnen",
+    "meaning": "To vanish into thin air / disappear rapidly",
     "literal": "",
-    "register": "informal",
+    "register": "idiom",
     "level": "A2",
-    "example": "Gezonder eten klinkt simpel, maar het is makkelijker gezegd dan gedaan.",
-    "exampleEn": "That is easier said than done in context: bij de huisarts (at the doctor)",
-    "contextNote": "Spoken formula used bij de huisarts (at the doctor)",
+    "example": "Mijn zorgen verdwenen als sneeuw voor de zon.",
+    "exampleEn": "To vanish into thin air / disappear rapidly",
+    "contextNote": "Authentic Dutch idiomatic phrase",
     "usageWarning": "",
     "tags": [
-      "conversational",
-      "bij"
+      "idiom",
+      "communication"
     ],
     "related": []
   },
   {
     "id": "idm-0098",
-    "dutch": "Neem de tijd",
-    "meaning": "Take your time (informal / bij)",
+    "dutch": "Na regen komt zonneschijn",
+    "meaning": "After rain comes sunshine",
     "literal": "",
-    "register": "informal",
+    "register": "idiom",
     "level": "A1",
-    "example": "Er is geen haast bij, neem rjestig de tijd.",
-    "exampleEn": "Take your time in context: bij de huisarts (at the doctor)",
-    "contextNote": "Spoken formula used bij de huisarts (at the doctor)",
+    "example": "Houd vol; na regen komt altijd weer zonneschijn.",
+    "exampleEn": "After rain comes sunshine",
+    "contextNote": "Authentic Dutch idiomatic phrase",
     "usageWarning": "",
     "tags": [
-      "conversational",
-      "bij"
+      "idiom",
+      "communication"
     ],
     "related": []
   },
   {
     "id": "idm-0099",
-    "dutch": "Het spijt me ontzettend",
-    "meaning": "I am terribly sorry (informal / bij)",
+    "dutch": "De tijd dringt",
+    "meaning": "Time is pressing / running out",
     "literal": "",
-    "register": "informal",
-    "level": "A2",
-    "example": "Het spijt me ontzettend dat ik te laat ben voor onze afspraak.",
-    "exampleEn": "I am terribly sorry in context: bij de huisarts (at the doctor)",
-    "contextNote": "Spoken formula used bij de huisarts (at the doctor)",
+    "register": "idiom",
+    "level": "B1",
+    "example": "We moeten nu handelen, want de tijd dringt.",
+    "exampleEn": "Time is pressing / running out",
+    "contextNote": "Authentic Dutch idiomatic phrase",
     "usageWarning": "",
     "tags": [
-      "conversational",
-      "bij"
+      "idiom",
+      "communication"
     ],
     "related": []
   },
   {
     "id": "idm-0100",
-    "dutch": "Alvast heel erg bedankt voor de moeite",
-    "meaning": "Thank you very much in advance for your trouble (informal / bij)",
+    "dutch": "Op het nippertje",
+    "meaning": "Just in the nick of time",
     "literal": "",
-    "register": "informal",
+    "register": "idiom",
     "level": "A2",
-    "example": "Ik zie jew reactie tegemoet, alvast heel erg bedankt voor de moeite!",
-    "exampleEn": "Thank you very much in advance for your trouble in context: bij de huisarts (at the doctor)",
-    "contextNote": "Spoken formula used bij de huisarts (at the doctor)",
+    "example": "We haalden de trein op het nippertje.",
+    "exampleEn": "Just in the nick of time",
+    "contextNote": "Authentic Dutch idiomatic phrase",
+    "usageWarning": "",
+    "tags": [
+      "idiom",
+      "communication"
+    ],
+    "related": []
+  },
+  {
+    "id": "idm-0101",
+    "dutch": "In een oogwenk",
+    "meaning": "In the blink of an eye",
+    "literal": "",
+    "register": "idiom",
+    "level": "A2",
+    "example": "De vakantie was in een oogwenk voorbij.",
+    "exampleEn": "In the blink of an eye",
+    "contextNote": "Authentic Dutch idiomatic phrase",
+    "usageWarning": "",
+    "tags": [
+      "idiom",
+      "communication"
+    ],
+    "related": []
+  },
+  {
+    "id": "idm-0102",
+    "dutch": "Geld over de balk gooien",
+    "meaning": "To squander money / throw money down the drain",
+    "literal": "",
+    "register": "idiom",
+    "level": "B1",
+    "example": "Zoveel uitgeven aan onzin is geld over de balk gooien.",
+    "exampleEn": "To squander money / throw money down the drain",
+    "contextNote": "Authentic Dutch idiomatic phrase",
+    "usageWarning": "",
+    "tags": [
+      "idiom",
+      "communication"
+    ],
+    "related": []
+  },
+  {
+    "id": "idm-0103",
+    "dutch": "De broekriem aanhalen",
+    "meaning": "To tighten one's belt / cut expenses",
+    "literal": "",
+    "register": "idiom",
+    "level": "B1",
+    "example": "Tijdens zware tijden moeten we allemaal de broekriem aanhalen.",
+    "exampleEn": "To tighten one's belt / cut expenses",
+    "contextNote": "Authentic Dutch idiomatic phrase",
+    "usageWarning": "",
+    "tags": [
+      "idiom",
+      "communication"
+    ],
+    "related": []
+  },
+  {
+    "id": "idm-0104",
+    "dutch": "Op grote voet leven",
+    "meaning": "To live extravagantly / high off the hog",
+    "literal": "",
+    "register": "idiom",
+    "level": "B1",
+    "example": "Hij verdient veel, maar leeft ook op grote voet.",
+    "exampleEn": "To live extravagantly / high off the hog",
+    "contextNote": "Authentic Dutch idiomatic phrase",
+    "usageWarning": "",
+    "tags": [
+      "idiom",
+      "communication"
+    ],
+    "related": []
+  },
+  {
+    "id": "idm-0105",
+    "dutch": "Geen cent te makken hebben",
+    "meaning": "To be completely broke",
+    "literal": "",
+    "register": "idiom",
+    "level": "A2",
+    "example": "Als student had ik soms geen cent te makken.",
+    "exampleEn": "To be completely broke",
+    "contextNote": "Authentic Dutch idiomatic phrase",
+    "usageWarning": "",
+    "tags": [
+      "idiom",
+      "communication"
+    ],
+    "related": []
+  },
+  {
+    "id": "idm-0106",
+    "dutch": "Doe maar gewoon, dan doe je al gek genoeg",
+    "meaning": "Just act normal, that's crazy enough already",
+    "literal": "",
+    "register": "idiom",
+    "level": "A2",
+    "example": "In Nederland geldt vaak: doe maar gewoon, dan doe je al gek genoeg.",
+    "exampleEn": "Just act normal, that's crazy enough already",
+    "contextNote": "Authentic Dutch idiomatic phrase",
+    "usageWarning": "",
+    "tags": [
+      "idiom",
+      "communication"
+    ],
+    "related": []
+  },
+  {
+    "id": "idm-0107",
+    "dutch": "Het hoogste woord voeren",
+    "meaning": "To dominate the conversation",
+    "literal": "",
+    "register": "idiom",
+    "level": "B1",
+    "example": "Tijdens het feest voerde hij constant het hoogste woord.",
+    "exampleEn": "To dominate the conversation",
+    "contextNote": "Authentic Dutch idiomatic phrase",
+    "usageWarning": "",
+    "tags": [
+      "idiom",
+      "communication"
+    ],
+    "related": []
+  },
+  {
+    "id": "idm-0108",
+    "dutch": "Een wit voetje halen",
+    "meaning": "To curry favor with someone",
+    "literal": "",
+    "register": "idiom",
+    "level": "B2",
+    "example": "Hij probeerde een wit voetje te halen bij de baas.",
+    "exampleEn": "To curry favor with someone",
+    "contextNote": "Authentic Dutch idiomatic phrase",
+    "usageWarning": "",
+    "tags": [
+      "idiom",
+      "communication"
+    ],
+    "related": []
+  },
+  {
+    "id": "idm-0109",
+    "dutch": "Uitwaaien aan zee",
+    "meaning": "To get a breath of fresh air on the coast",
+    "literal": "",
+    "register": "idiom",
+    "level": "A2",
+    "example": "Na een drukke week ging ze lekker uitwaaien aan zee in Scheveningen.",
+    "exampleEn": "To get a breath of fresh air on the coast",
+    "contextNote": "Authentic Dutch idiomatic phrase",
+    "usageWarning": "",
+    "tags": [
+      "idiom",
+      "communication"
+    ],
+    "related": []
+  },
+  {
+    "id": "idm-0110",
+    "dutch": "Het zonnetje in huis zijn",
+    "meaning": "To be a ray of sunshine / cheerful person",
+    "literal": "",
+    "register": "idiom",
+    "level": "A2",
+    "example": "Zij is altijd vrolijk en echt het zonnetje in huis.",
+    "exampleEn": "To be a ray of sunshine / cheerful person",
+    "contextNote": "Authentic Dutch idiomatic phrase",
+    "usageWarning": "",
+    "tags": [
+      "idiom",
+      "communication"
+    ],
+    "related": []
+  },
+  {
+    "id": "idm-0111",
+    "dutch": "Mag ik u even iets vragen?",
+    "meaning": "May I ask you something for a moment? (at the doctor)",
+    "literal": "",
+    "register": "polite",
+    "level": "A1",
+    "example": "Pardon mevrouw, mag ik u even iets vragen over de bushalte?",
+    "exampleEn": "May I ask you something for a moment? (at the doctor)",
+    "contextNote": "Spoken formula used in context: bij de huisarts (medisch consult)",
     "usageWarning": "",
     "tags": [
       "conversational",
@@ -1703,508 +1890,338 @@ globalThis.NP_IDIOMS = [
     "related": []
   },
   {
-    "id": "idm-0101",
-    "dutch": "Mag ik je even iets vragen?",
-    "meaning": "May I ask you something for a moment? (informal / op)",
-    "literal": "",
-    "register": "informal",
-    "level": "A1",
-    "example": "Pardon mevrojew, mag ik u even iets vragen over de bushalte?",
-    "exampleEn": "May I ask you something for a moment? in context: op het werk (at work)",
-    "contextNote": "Spoken formula used op het werk (at work)",
-    "usageWarning": "",
-    "tags": [
-      "conversational",
-      "op"
-    ],
-    "related": []
-  },
-  {
-    "id": "idm-0102",
-    "dutch": "Kjent u dat alstublieft herhalen?",
-    "meaning": "Could you please repeat that? (informal / op)",
-    "literal": "",
-    "register": "informal",
-    "level": "A1",
-    "example": "Het ging iets te snel, kjent u dat alstublieft herhalen?",
-    "exampleEn": "Could you please repeat that? in context: op het werk (at work)",
-    "contextNote": "Spoken formula used op het werk (at work)",
-    "usageWarning": "",
-    "tags": [
-      "conversational",
-      "op"
-    ],
-    "related": []
-  },
-  {
-    "id": "idm-0103",
-    "dutch": "Wat bedoelt je precies met...?",
-    "meaning": "What exactly do you mean by...? (informal / op)",
-    "literal": "",
-    "register": "informal",
-    "level": "A2",
-    "example": "Wat bedoelt je precies met die voorwaarde in het contract?",
-    "exampleEn": "What exactly do you mean by...? in context: op het werk (at work)",
-    "contextNote": "Spoken formula used op het werk (at work)",
-    "usageWarning": "",
-    "tags": [
-      "conversational",
-      "op"
-    ],
-    "related": []
-  },
-  {
-    "id": "idm-0104",
-    "dutch": "Daar heb ik nog niet over nagedacht",
-    "meaning": "I haven't thought about that yet (informal / op)",
-    "literal": "",
-    "register": "informal",
-    "level": "A2",
-    "example": "Dat is een interessante vraag, daar heb ik nog niet over nagedacht.",
-    "exampleEn": "I haven't thought about that yet in context: op het werk (at work)",
-    "contextNote": "Spoken formula used op het werk (at work)",
-    "usageWarning": "",
-    "tags": [
-      "conversational",
-      "op"
-    ],
-    "related": []
-  },
-  {
-    "id": "idm-0105",
-    "dutch": "Zoje u mij kunnen doorverbinden met...?",
-    "meaning": "Could you connect me with...? (informal / op)",
-    "literal": "",
-    "register": "informal",
-    "level": "B1",
-    "example": "Goedemorgen, zoje u mij kunnen doorverbinden met de afdeling administratie?",
-    "exampleEn": "Could you connect me with...? in context: op het werk (at work)",
-    "contextNote": "Spoken formula used op het werk (at work)",
-    "usageWarning": "",
-    "tags": [
-      "conversational",
-      "op"
-    ],
-    "related": []
-  },
-  {
-    "id": "idm-0106",
-    "dutch": "Ik ben het er roerend mee eens",
-    "meaning": "I completely and wholeheartedly agree (informal / op)",
-    "literal": "",
-    "register": "informal",
-    "level": "B1",
-    "example": "Met jojew visie op duurzaamheid ben ik het roerend eens.",
-    "exampleEn": "I completely and wholeheartedly agree in context: op het werk (at work)",
-    "contextNote": "Spoken formula used op het werk (at work)",
-    "usageWarning": "",
-    "tags": [
-      "conversational",
-      "op"
-    ],
-    "related": []
-  },
-  {
-    "id": "idm-0107",
-    "dutch": "Dat is makkelijker gezegd dan gedaan",
-    "meaning": "That is easier said than done (informal / op)",
-    "literal": "",
-    "register": "informal",
-    "level": "A2",
-    "example": "Gezonder eten klinkt simpel, maar het is makkelijker gezegd dan gedaan.",
-    "exampleEn": "That is easier said than done in context: op het werk (at work)",
-    "contextNote": "Spoken formula used op het werk (at work)",
-    "usageWarning": "",
-    "tags": [
-      "conversational",
-      "op"
-    ],
-    "related": []
-  },
-  {
-    "id": "idm-0108",
-    "dutch": "Neem de tijd",
-    "meaning": "Take your time (informal / op)",
-    "literal": "",
-    "register": "informal",
-    "level": "A1",
-    "example": "Er is geen haast bij, neem rjestig de tijd.",
-    "exampleEn": "Take your time in context: op het werk (at work)",
-    "contextNote": "Spoken formula used op het werk (at work)",
-    "usageWarning": "",
-    "tags": [
-      "conversational",
-      "op"
-    ],
-    "related": []
-  },
-  {
-    "id": "idm-0109",
-    "dutch": "Het spijt me ontzettend",
-    "meaning": "I am terribly sorry (informal / op)",
-    "literal": "",
-    "register": "informal",
-    "level": "A2",
-    "example": "Het spijt me ontzettend dat ik te laat ben voor onze afspraak.",
-    "exampleEn": "I am terribly sorry in context: op het werk (at work)",
-    "contextNote": "Spoken formula used op het werk (at work)",
-    "usageWarning": "",
-    "tags": [
-      "conversational",
-      "op"
-    ],
-    "related": []
-  },
-  {
-    "id": "idm-0110",
-    "dutch": "Alvast heel erg bedankt voor de moeite",
-    "meaning": "Thank you very much in advance for your trouble (informal / op)",
-    "literal": "",
-    "register": "informal",
-    "level": "A2",
-    "example": "Ik zie jew reactie tegemoet, alvast heel erg bedankt voor de moeite!",
-    "exampleEn": "Thank you very much in advance for your trouble in context: op het werk (at work)",
-    "contextNote": "Spoken formula used op het werk (at work)",
-    "usageWarning": "",
-    "tags": [
-      "conversational",
-      "op"
-    ],
-    "related": []
-  },
-  {
-    "id": "idm-0111",
-    "dutch": "Mag ik je even iets vragen?",
-    "meaning": "May I ask you something for a moment? (informal / in)",
-    "literal": "",
-    "register": "informal",
-    "level": "A1",
-    "example": "Pardon mevrojew, mag ik u even iets vragen over de bushalte?",
-    "exampleEn": "May I ask you something for a moment? in context: in het openbaar vervoer (on public transit)",
-    "contextNote": "Spoken formula used in het openbaar vervoer (on public transit)",
-    "usageWarning": "",
-    "tags": [
-      "conversational",
-      "in"
-    ],
-    "related": []
-  },
-  {
     "id": "idm-0112",
-    "dutch": "Kjent u dat alstublieft herhalen?",
-    "meaning": "Could you please repeat that? (informal / in)",
+    "dutch": "Kunt u dat alstublieft herhalen?",
+    "meaning": "Could you please repeat that? (at the doctor)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A1",
-    "example": "Het ging iets te snel, kjent u dat alstublieft herhalen?",
-    "exampleEn": "Could you please repeat that? in context: in het openbaar vervoer (on public transit)",
-    "contextNote": "Spoken formula used in het openbaar vervoer (on public transit)",
+    "example": "Het ging iets te snel, kunt u dat alstublieft herhalen?",
+    "exampleEn": "Could you please repeat that? (at the doctor)",
+    "contextNote": "Spoken formula used in context: bij de huisarts (medisch consult)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "in"
+      "bij"
     ],
     "related": []
   },
   {
     "id": "idm-0113",
-    "dutch": "Wat bedoelt je precies met...?",
-    "meaning": "What exactly do you mean by...? (informal / in)",
+    "dutch": "Wat bedoelt u precies met dit punt?",
+    "meaning": "What exactly do you mean by this point? (at the doctor)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
-    "example": "Wat bedoelt je precies met die voorwaarde in het contract?",
-    "exampleEn": "What exactly do you mean by...? in context: in het openbaar vervoer (on public transit)",
-    "contextNote": "Spoken formula used in het openbaar vervoer (on public transit)",
+    "example": "Wat bedoelt u precies met deze voorwaarde in het contract?",
+    "exampleEn": "What exactly do you mean by this point? (at the doctor)",
+    "contextNote": "Spoken formula used in context: bij de huisarts (medisch consult)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "in"
+      "bij"
     ],
     "related": []
   },
   {
     "id": "idm-0114",
     "dutch": "Daar heb ik nog niet over nagedacht",
-    "meaning": "I haven't thought about that yet (informal / in)",
+    "meaning": "I haven't thought about that yet (at the doctor)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
     "example": "Dat is een interessante vraag, daar heb ik nog niet over nagedacht.",
-    "exampleEn": "I haven't thought about that yet in context: in het openbaar vervoer (on public transit)",
-    "contextNote": "Spoken formula used in het openbaar vervoer (on public transit)",
+    "exampleEn": "I haven't thought about that yet (at the doctor)",
+    "contextNote": "Spoken formula used in context: bij de huisarts (medisch consult)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "in"
+      "bij"
     ],
     "related": []
   },
   {
     "id": "idm-0115",
-    "dutch": "Zoje u mij kunnen doorverbinden met...?",
-    "meaning": "Could you connect me with...? (informal / in)",
+    "dutch": "Zou u mij kunnen doorverbinden met de juiste afdeling?",
+    "meaning": "Could you connect me with the right department? (at the doctor)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "B1",
-    "example": "Goedemorgen, zoje u mij kunnen doorverbinden met de afdeling administratie?",
-    "exampleEn": "Could you connect me with...? in context: in het openbaar vervoer (on public transit)",
-    "contextNote": "Spoken formula used in het openbaar vervoer (on public transit)",
+    "example": "Goedemorgen, zou u mij kunnen doorverbinden met de afdeling administratie?",
+    "exampleEn": "Could you connect me with the right department? (at the doctor)",
+    "contextNote": "Spoken formula used in context: bij de huisarts (medisch consult)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "in"
+      "bij"
     ],
     "related": []
   },
   {
     "id": "idm-0116",
     "dutch": "Ik ben het er roerend mee eens",
-    "meaning": "I completely and wholeheartedly agree (informal / in)",
+    "meaning": "I completely and wholeheartedly agree (at the doctor)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "B1",
-    "example": "Met jojew visie op duurzaamheid ben ik het roerend eens.",
-    "exampleEn": "I completely and wholeheartedly agree in context: in het openbaar vervoer (on public transit)",
-    "contextNote": "Spoken formula used in het openbaar vervoer (on public transit)",
+    "example": "Met uw visie op duurzaamheid ben ik het roerend eens.",
+    "exampleEn": "I completely and wholeheartedly agree (at the doctor)",
+    "contextNote": "Spoken formula used in context: bij de huisarts (medisch consult)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "in"
+      "bij"
     ],
     "related": []
   },
   {
     "id": "idm-0117",
     "dutch": "Dat is makkelijker gezegd dan gedaan",
-    "meaning": "That is easier said than done (informal / in)",
+    "meaning": "That is easier said than done (at the doctor)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
     "example": "Gezonder eten klinkt simpel, maar het is makkelijker gezegd dan gedaan.",
-    "exampleEn": "That is easier said than done in context: in het openbaar vervoer (on public transit)",
-    "contextNote": "Spoken formula used in het openbaar vervoer (on public transit)",
+    "exampleEn": "That is easier said than done (at the doctor)",
+    "contextNote": "Spoken formula used in context: bij de huisarts (medisch consult)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "in"
+      "bij"
     ],
     "related": []
   },
   {
     "id": "idm-0118",
-    "dutch": "Neem de tijd",
-    "meaning": "Take your time (informal / in)",
+    "dutch": "Neem rustig de tijd",
+    "meaning": "Take your time (at the doctor)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A1",
-    "example": "Er is geen haast bij, neem rjestig de tijd.",
-    "exampleEn": "Take your time in context: in het openbaar vervoer (on public transit)",
-    "contextNote": "Spoken formula used in het openbaar vervoer (on public transit)",
+    "example": "Er is geen haast bij, neem rustig de tijd.",
+    "exampleEn": "Take your time (at the doctor)",
+    "contextNote": "Spoken formula used in context: bij de huisarts (medisch consult)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "in"
+      "bij"
     ],
     "related": []
   },
   {
     "id": "idm-0119",
-    "dutch": "Het spijt me ontzettend",
-    "meaning": "I am terribly sorry (informal / in)",
+    "dutch": "Het spijt me ontzettend voor het ongemak",
+    "meaning": "I am terribly sorry for the inconvenience (at the doctor)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
     "example": "Het spijt me ontzettend dat ik te laat ben voor onze afspraak.",
-    "exampleEn": "I am terribly sorry in context: in het openbaar vervoer (on public transit)",
-    "contextNote": "Spoken formula used in het openbaar vervoer (on public transit)",
+    "exampleEn": "I am terribly sorry for the inconvenience (at the doctor)",
+    "contextNote": "Spoken formula used in context: bij de huisarts (medisch consult)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "in"
+      "bij"
     ],
     "related": []
   },
   {
     "id": "idm-0120",
-    "dutch": "Alvast heel erg bedankt voor de moeite",
-    "meaning": "Thank you very much in advance for your trouble (informal / in)",
+    "dutch": "Alvast heel erg bedankt voor uw medewerking",
+    "meaning": "Thank you very much in advance for your cooperation (at the doctor)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
-    "example": "Ik zie jew reactie tegemoet, alvast heel erg bedankt voor de moeite!",
-    "exampleEn": "Thank you very much in advance for your trouble in context: in het openbaar vervoer (on public transit)",
-    "contextNote": "Spoken formula used in het openbaar vervoer (on public transit)",
+    "example": "Ik zie uw reactie tegemoet, alvast heel erg bedankt voor uw medewerking!",
+    "exampleEn": "Thank you very much in advance for your cooperation (at the doctor)",
+    "contextNote": "Spoken formula used in context: bij de huisarts (medisch consult)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "in"
+      "bij"
     ],
     "related": []
   },
   {
     "id": "idm-0121",
-    "dutch": "Mag ik je even iets vragen?",
-    "meaning": "May I ask you something for a moment? (informal / in)",
+    "dutch": "Mag ik u even iets vragen?",
+    "meaning": "May I ask you something for a moment? (at work)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A1",
-    "example": "Pardon mevrojew, mag ik u even iets vragen over de bushalte?",
-    "exampleEn": "May I ask you something for a moment? in context: in het restaurant (at the restaurant)",
-    "contextNote": "Spoken formula used in het restaurant (at the restaurant)",
+    "example": "Pardon mevrouw, mag ik u even iets vragen over de bushalte?",
+    "exampleEn": "May I ask you something for a moment? (at work)",
+    "contextNote": "Spoken formula used in context: op het werk (kantooroverleg)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "in"
+      "op"
     ],
     "related": []
   },
   {
     "id": "idm-0122",
-    "dutch": "Kjent u dat alstublieft herhalen?",
-    "meaning": "Could you please repeat that? (informal / in)",
+    "dutch": "Kunt u dat alstublieft herhalen?",
+    "meaning": "Could you please repeat that? (at work)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A1",
-    "example": "Het ging iets te snel, kjent u dat alstublieft herhalen?",
-    "exampleEn": "Could you please repeat that? in context: in het restaurant (at the restaurant)",
-    "contextNote": "Spoken formula used in het restaurant (at the restaurant)",
+    "example": "Het ging iets te snel, kunt u dat alstublieft herhalen?",
+    "exampleEn": "Could you please repeat that? (at work)",
+    "contextNote": "Spoken formula used in context: op het werk (kantooroverleg)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "in"
+      "op"
     ],
     "related": []
   },
   {
     "id": "idm-0123",
-    "dutch": "Wat bedoelt je precies met...?",
-    "meaning": "What exactly do you mean by...? (informal / in)",
+    "dutch": "Wat bedoelt u precies met dit punt?",
+    "meaning": "What exactly do you mean by this point? (at work)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
-    "example": "Wat bedoelt je precies met die voorwaarde in het contract?",
-    "exampleEn": "What exactly do you mean by...? in context: in het restaurant (at the restaurant)",
-    "contextNote": "Spoken formula used in het restaurant (at the restaurant)",
+    "example": "Wat bedoelt u precies met deze voorwaarde in het contract?",
+    "exampleEn": "What exactly do you mean by this point? (at work)",
+    "contextNote": "Spoken formula used in context: op het werk (kantooroverleg)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "in"
+      "op"
     ],
     "related": []
   },
   {
     "id": "idm-0124",
     "dutch": "Daar heb ik nog niet over nagedacht",
-    "meaning": "I haven't thought about that yet (informal / in)",
+    "meaning": "I haven't thought about that yet (at work)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
     "example": "Dat is een interessante vraag, daar heb ik nog niet over nagedacht.",
-    "exampleEn": "I haven't thought about that yet in context: in het restaurant (at the restaurant)",
-    "contextNote": "Spoken formula used in het restaurant (at the restaurant)",
+    "exampleEn": "I haven't thought about that yet (at work)",
+    "contextNote": "Spoken formula used in context: op het werk (kantooroverleg)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "in"
+      "op"
     ],
     "related": []
   },
   {
     "id": "idm-0125",
-    "dutch": "Zoje u mij kunnen doorverbinden met...?",
-    "meaning": "Could you connect me with...? (informal / in)",
+    "dutch": "Zou u mij kunnen doorverbinden met de juiste afdeling?",
+    "meaning": "Could you connect me with the right department? (at work)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "B1",
-    "example": "Goedemorgen, zoje u mij kunnen doorverbinden met de afdeling administratie?",
-    "exampleEn": "Could you connect me with...? in context: in het restaurant (at the restaurant)",
-    "contextNote": "Spoken formula used in het restaurant (at the restaurant)",
+    "example": "Goedemorgen, zou u mij kunnen doorverbinden met de afdeling administratie?",
+    "exampleEn": "Could you connect me with the right department? (at work)",
+    "contextNote": "Spoken formula used in context: op het werk (kantooroverleg)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "in"
+      "op"
     ],
     "related": []
   },
   {
     "id": "idm-0126",
     "dutch": "Ik ben het er roerend mee eens",
-    "meaning": "I completely and wholeheartedly agree (informal / in)",
+    "meaning": "I completely and wholeheartedly agree (at work)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "B1",
-    "example": "Met jojew visie op duurzaamheid ben ik het roerend eens.",
-    "exampleEn": "I completely and wholeheartedly agree in context: in het restaurant (at the restaurant)",
-    "contextNote": "Spoken formula used in het restaurant (at the restaurant)",
+    "example": "Met uw visie op duurzaamheid ben ik het roerend eens.",
+    "exampleEn": "I completely and wholeheartedly agree (at work)",
+    "contextNote": "Spoken formula used in context: op het werk (kantooroverleg)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "in"
+      "op"
     ],
     "related": []
   },
   {
     "id": "idm-0127",
     "dutch": "Dat is makkelijker gezegd dan gedaan",
-    "meaning": "That is easier said than done (informal / in)",
+    "meaning": "That is easier said than done (at work)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
     "example": "Gezonder eten klinkt simpel, maar het is makkelijker gezegd dan gedaan.",
-    "exampleEn": "That is easier said than done in context: in het restaurant (at the restaurant)",
-    "contextNote": "Spoken formula used in het restaurant (at the restaurant)",
+    "exampleEn": "That is easier said than done (at work)",
+    "contextNote": "Spoken formula used in context: op het werk (kantooroverleg)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "in"
+      "op"
     ],
     "related": []
   },
   {
     "id": "idm-0128",
-    "dutch": "Neem de tijd",
-    "meaning": "Take your time (informal / in)",
+    "dutch": "Neem rustig de tijd",
+    "meaning": "Take your time (at work)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A1",
-    "example": "Er is geen haast bij, neem rjestig de tijd.",
-    "exampleEn": "Take your time in context: in het restaurant (at the restaurant)",
-    "contextNote": "Spoken formula used in het restaurant (at the restaurant)",
+    "example": "Er is geen haast bij, neem rustig de tijd.",
+    "exampleEn": "Take your time (at work)",
+    "contextNote": "Spoken formula used in context: op het werk (kantooroverleg)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "in"
+      "op"
     ],
     "related": []
   },
   {
     "id": "idm-0129",
-    "dutch": "Het spijt me ontzettend",
-    "meaning": "I am terribly sorry (informal / in)",
+    "dutch": "Het spijt me ontzettend voor het ongemak",
+    "meaning": "I am terribly sorry for the inconvenience (at work)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
     "example": "Het spijt me ontzettend dat ik te laat ben voor onze afspraak.",
-    "exampleEn": "I am terribly sorry in context: in het restaurant (at the restaurant)",
-    "contextNote": "Spoken formula used in het restaurant (at the restaurant)",
+    "exampleEn": "I am terribly sorry for the inconvenience (at work)",
+    "contextNote": "Spoken formula used in context: op het werk (kantooroverleg)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "in"
+      "op"
     ],
     "related": []
   },
   {
     "id": "idm-0130",
-    "dutch": "Alvast heel erg bedankt voor de moeite",
-    "meaning": "Thank you very much in advance for your trouble (informal / in)",
+    "dutch": "Alvast heel erg bedankt voor uw medewerking",
+    "meaning": "Thank you very much in advance for your cooperation (at work)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
-    "example": "Ik zie jew reactie tegemoet, alvast heel erg bedankt voor de moeite!",
-    "exampleEn": "Thank you very much in advance for your trouble in context: in het restaurant (at the restaurant)",
-    "contextNote": "Spoken formula used in het restaurant (at the restaurant)",
+    "example": "Ik zie uw reactie tegemoet, alvast heel erg bedankt voor uw medewerking!",
+    "exampleEn": "Thank you very much in advance for your cooperation (at work)",
+    "contextNote": "Spoken formula used in context: op het werk (kantooroverleg)",
+    "usageWarning": "",
+    "tags": [
+      "conversational",
+      "op"
+    ],
+    "related": []
+  },
+  {
+    "id": "idm-0131",
+    "dutch": "Mag ik u even iets vragen?",
+    "meaning": "May I ask you something for a moment? (on public transit)",
+    "literal": "",
+    "register": "polite",
+    "level": "A1",
+    "example": "Pardon mevrouw, mag ik u even iets vragen over de bushalte?",
+    "exampleEn": "May I ask you something for a moment? (on public transit)",
+    "contextNote": "Spoken formula used in context: in het openbaar vervoer (reizen met trein en bus)",
     "usageWarning": "",
     "tags": [
       "conversational",
@@ -2213,1188 +2230,1188 @@ globalThis.NP_IDIOMS = [
     "related": []
   },
   {
-    "id": "idm-0131",
-    "dutch": "Mag ik je even iets vragen?",
-    "meaning": "May I ask you something for a moment? (informal / op)",
-    "literal": "",
-    "register": "informal",
-    "level": "A1",
-    "example": "Pardon mevrojew, mag ik u even iets vragen over de bushalte?",
-    "exampleEn": "May I ask you something for a moment? in context: op de markt (at the open-air market)",
-    "contextNote": "Spoken formula used op de markt (at the open-air market)",
-    "usageWarning": "",
-    "tags": [
-      "conversational",
-      "op"
-    ],
-    "related": []
-  },
-  {
     "id": "idm-0132",
-    "dutch": "Kjent u dat alstublieft herhalen?",
-    "meaning": "Could you please repeat that? (informal / op)",
+    "dutch": "Kunt u dat alstublieft herhalen?",
+    "meaning": "Could you please repeat that? (on public transit)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A1",
-    "example": "Het ging iets te snel, kjent u dat alstublieft herhalen?",
-    "exampleEn": "Could you please repeat that? in context: op de markt (at the open-air market)",
-    "contextNote": "Spoken formula used op de markt (at the open-air market)",
+    "example": "Het ging iets te snel, kunt u dat alstublieft herhalen?",
+    "exampleEn": "Could you please repeat that? (on public transit)",
+    "contextNote": "Spoken formula used in context: in het openbaar vervoer (reizen met trein en bus)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "op"
+      "in"
     ],
     "related": []
   },
   {
     "id": "idm-0133",
-    "dutch": "Wat bedoelt je precies met...?",
-    "meaning": "What exactly do you mean by...? (informal / op)",
+    "dutch": "Wat bedoelt u precies met dit punt?",
+    "meaning": "What exactly do you mean by this point? (on public transit)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
-    "example": "Wat bedoelt je precies met die voorwaarde in het contract?",
-    "exampleEn": "What exactly do you mean by...? in context: op de markt (at the open-air market)",
-    "contextNote": "Spoken formula used op de markt (at the open-air market)",
+    "example": "Wat bedoelt u precies met deze voorwaarde in het contract?",
+    "exampleEn": "What exactly do you mean by this point? (on public transit)",
+    "contextNote": "Spoken formula used in context: in het openbaar vervoer (reizen met trein en bus)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "op"
+      "in"
     ],
     "related": []
   },
   {
     "id": "idm-0134",
     "dutch": "Daar heb ik nog niet over nagedacht",
-    "meaning": "I haven't thought about that yet (informal / op)",
+    "meaning": "I haven't thought about that yet (on public transit)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
     "example": "Dat is een interessante vraag, daar heb ik nog niet over nagedacht.",
-    "exampleEn": "I haven't thought about that yet in context: op de markt (at the open-air market)",
-    "contextNote": "Spoken formula used op de markt (at the open-air market)",
+    "exampleEn": "I haven't thought about that yet (on public transit)",
+    "contextNote": "Spoken formula used in context: in het openbaar vervoer (reizen met trein en bus)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "op"
+      "in"
     ],
     "related": []
   },
   {
     "id": "idm-0135",
-    "dutch": "Zoje u mij kunnen doorverbinden met...?",
-    "meaning": "Could you connect me with...? (informal / op)",
+    "dutch": "Zou u mij kunnen doorverbinden met de juiste afdeling?",
+    "meaning": "Could you connect me with the right department? (on public transit)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "B1",
-    "example": "Goedemorgen, zoje u mij kunnen doorverbinden met de afdeling administratie?",
-    "exampleEn": "Could you connect me with...? in context: op de markt (at the open-air market)",
-    "contextNote": "Spoken formula used op de markt (at the open-air market)",
+    "example": "Goedemorgen, zou u mij kunnen doorverbinden met de afdeling administratie?",
+    "exampleEn": "Could you connect me with the right department? (on public transit)",
+    "contextNote": "Spoken formula used in context: in het openbaar vervoer (reizen met trein en bus)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "op"
+      "in"
     ],
     "related": []
   },
   {
     "id": "idm-0136",
     "dutch": "Ik ben het er roerend mee eens",
-    "meaning": "I completely and wholeheartedly agree (informal / op)",
+    "meaning": "I completely and wholeheartedly agree (on public transit)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "B1",
-    "example": "Met jojew visie op duurzaamheid ben ik het roerend eens.",
-    "exampleEn": "I completely and wholeheartedly agree in context: op de markt (at the open-air market)",
-    "contextNote": "Spoken formula used op de markt (at the open-air market)",
+    "example": "Met uw visie op duurzaamheid ben ik het roerend eens.",
+    "exampleEn": "I completely and wholeheartedly agree (on public transit)",
+    "contextNote": "Spoken formula used in context: in het openbaar vervoer (reizen met trein en bus)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "op"
+      "in"
     ],
     "related": []
   },
   {
     "id": "idm-0137",
     "dutch": "Dat is makkelijker gezegd dan gedaan",
-    "meaning": "That is easier said than done (informal / op)",
+    "meaning": "That is easier said than done (on public transit)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
     "example": "Gezonder eten klinkt simpel, maar het is makkelijker gezegd dan gedaan.",
-    "exampleEn": "That is easier said than done in context: op de markt (at the open-air market)",
-    "contextNote": "Spoken formula used op de markt (at the open-air market)",
+    "exampleEn": "That is easier said than done (on public transit)",
+    "contextNote": "Spoken formula used in context: in het openbaar vervoer (reizen met trein en bus)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "op"
+      "in"
     ],
     "related": []
   },
   {
     "id": "idm-0138",
-    "dutch": "Neem de tijd",
-    "meaning": "Take your time (informal / op)",
+    "dutch": "Neem rustig de tijd",
+    "meaning": "Take your time (on public transit)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A1",
-    "example": "Er is geen haast bij, neem rjestig de tijd.",
-    "exampleEn": "Take your time in context: op de markt (at the open-air market)",
-    "contextNote": "Spoken formula used op de markt (at the open-air market)",
+    "example": "Er is geen haast bij, neem rustig de tijd.",
+    "exampleEn": "Take your time (on public transit)",
+    "contextNote": "Spoken formula used in context: in het openbaar vervoer (reizen met trein en bus)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "op"
+      "in"
     ],
     "related": []
   },
   {
     "id": "idm-0139",
-    "dutch": "Het spijt me ontzettend",
-    "meaning": "I am terribly sorry (informal / op)",
+    "dutch": "Het spijt me ontzettend voor het ongemak",
+    "meaning": "I am terribly sorry for the inconvenience (on public transit)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
     "example": "Het spijt me ontzettend dat ik te laat ben voor onze afspraak.",
-    "exampleEn": "I am terribly sorry in context: op de markt (at the open-air market)",
-    "contextNote": "Spoken formula used op de markt (at the open-air market)",
+    "exampleEn": "I am terribly sorry for the inconvenience (on public transit)",
+    "contextNote": "Spoken formula used in context: in het openbaar vervoer (reizen met trein en bus)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "op"
+      "in"
     ],
     "related": []
   },
   {
     "id": "idm-0140",
-    "dutch": "Alvast heel erg bedankt voor de moeite",
-    "meaning": "Thank you very much in advance for your trouble (informal / op)",
+    "dutch": "Alvast heel erg bedankt voor uw medewerking",
+    "meaning": "Thank you very much in advance for your cooperation (on public transit)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
-    "example": "Ik zie jew reactie tegemoet, alvast heel erg bedankt voor de moeite!",
-    "exampleEn": "Thank you very much in advance for your trouble in context: op de markt (at the open-air market)",
-    "contextNote": "Spoken formula used op de markt (at the open-air market)",
+    "example": "Ik zie uw reactie tegemoet, alvast heel erg bedankt voor uw medewerking!",
+    "exampleEn": "Thank you very much in advance for your cooperation (on public transit)",
+    "contextNote": "Spoken formula used in context: in het openbaar vervoer (reizen met trein en bus)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "op"
+      "in"
     ],
     "related": []
   },
   {
     "id": "idm-0141",
-    "dutch": "Mag ik je even iets vragen?",
-    "meaning": "May I ask you something for a moment? (informal / met)",
+    "dutch": "Mag ik u even iets vragen?",
+    "meaning": "May I ask you something for a moment? (at the restaurant)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A1",
-    "example": "Pardon mevrojew, mag ik u even iets vragen over de bushalte?",
-    "exampleEn": "May I ask you something for a moment? in context: met de buren (with the neighbours)",
-    "contextNote": "Spoken formula used met de buren (with the neighbours)",
+    "example": "Pardon mevrouw, mag ik u even iets vragen over de bushalte?",
+    "exampleEn": "May I ask you something for a moment? (at the restaurant)",
+    "contextNote": "Spoken formula used in context: in het restaurant (horeca en dineren)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "met"
+      "in"
     ],
     "related": []
   },
   {
     "id": "idm-0142",
-    "dutch": "Kjent u dat alstublieft herhalen?",
-    "meaning": "Could you please repeat that? (informal / met)",
+    "dutch": "Kunt u dat alstublieft herhalen?",
+    "meaning": "Could you please repeat that? (at the restaurant)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A1",
-    "example": "Het ging iets te snel, kjent u dat alstublieft herhalen?",
-    "exampleEn": "Could you please repeat that? in context: met de buren (with the neighbours)",
-    "contextNote": "Spoken formula used met de buren (with the neighbours)",
+    "example": "Het ging iets te snel, kunt u dat alstublieft herhalen?",
+    "exampleEn": "Could you please repeat that? (at the restaurant)",
+    "contextNote": "Spoken formula used in context: in het restaurant (horeca en dineren)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "met"
+      "in"
     ],
     "related": []
   },
   {
     "id": "idm-0143",
-    "dutch": "Wat bedoelt je precies met...?",
-    "meaning": "What exactly do you mean by...? (informal / met)",
+    "dutch": "Wat bedoelt u precies met dit punt?",
+    "meaning": "What exactly do you mean by this point? (at the restaurant)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
-    "example": "Wat bedoelt je precies met die voorwaarde in het contract?",
-    "exampleEn": "What exactly do you mean by...? in context: met de buren (with the neighbours)",
-    "contextNote": "Spoken formula used met de buren (with the neighbours)",
+    "example": "Wat bedoelt u precies met deze voorwaarde in het contract?",
+    "exampleEn": "What exactly do you mean by this point? (at the restaurant)",
+    "contextNote": "Spoken formula used in context: in het restaurant (horeca en dineren)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "met"
+      "in"
     ],
     "related": []
   },
   {
     "id": "idm-0144",
     "dutch": "Daar heb ik nog niet over nagedacht",
-    "meaning": "I haven't thought about that yet (informal / met)",
+    "meaning": "I haven't thought about that yet (at the restaurant)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
     "example": "Dat is een interessante vraag, daar heb ik nog niet over nagedacht.",
-    "exampleEn": "I haven't thought about that yet in context: met de buren (with the neighbours)",
-    "contextNote": "Spoken formula used met de buren (with the neighbours)",
+    "exampleEn": "I haven't thought about that yet (at the restaurant)",
+    "contextNote": "Spoken formula used in context: in het restaurant (horeca en dineren)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "met"
+      "in"
     ],
     "related": []
   },
   {
     "id": "idm-0145",
-    "dutch": "Zoje u mij kunnen doorverbinden met...?",
-    "meaning": "Could you connect me with...? (informal / met)",
+    "dutch": "Zou u mij kunnen doorverbinden met de juiste afdeling?",
+    "meaning": "Could you connect me with the right department? (at the restaurant)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "B1",
-    "example": "Goedemorgen, zoje u mij kunnen doorverbinden met de afdeling administratie?",
-    "exampleEn": "Could you connect me with...? in context: met de buren (with the neighbours)",
-    "contextNote": "Spoken formula used met de buren (with the neighbours)",
+    "example": "Goedemorgen, zou u mij kunnen doorverbinden met de afdeling administratie?",
+    "exampleEn": "Could you connect me with the right department? (at the restaurant)",
+    "contextNote": "Spoken formula used in context: in het restaurant (horeca en dineren)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "met"
+      "in"
     ],
     "related": []
   },
   {
     "id": "idm-0146",
     "dutch": "Ik ben het er roerend mee eens",
-    "meaning": "I completely and wholeheartedly agree (informal / met)",
+    "meaning": "I completely and wholeheartedly agree (at the restaurant)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "B1",
-    "example": "Met jojew visie op duurzaamheid ben ik het roerend eens.",
-    "exampleEn": "I completely and wholeheartedly agree in context: met de buren (with the neighbours)",
-    "contextNote": "Spoken formula used met de buren (with the neighbours)",
+    "example": "Met uw visie op duurzaamheid ben ik het roerend eens.",
+    "exampleEn": "I completely and wholeheartedly agree (at the restaurant)",
+    "contextNote": "Spoken formula used in context: in het restaurant (horeca en dineren)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "met"
+      "in"
     ],
     "related": []
   },
   {
     "id": "idm-0147",
     "dutch": "Dat is makkelijker gezegd dan gedaan",
-    "meaning": "That is easier said than done (informal / met)",
+    "meaning": "That is easier said than done (at the restaurant)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
     "example": "Gezonder eten klinkt simpel, maar het is makkelijker gezegd dan gedaan.",
-    "exampleEn": "That is easier said than done in context: met de buren (with the neighbours)",
-    "contextNote": "Spoken formula used met de buren (with the neighbours)",
+    "exampleEn": "That is easier said than done (at the restaurant)",
+    "contextNote": "Spoken formula used in context: in het restaurant (horeca en dineren)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "met"
+      "in"
     ],
     "related": []
   },
   {
     "id": "idm-0148",
-    "dutch": "Neem de tijd",
-    "meaning": "Take your time (informal / met)",
+    "dutch": "Neem rustig de tijd",
+    "meaning": "Take your time (at the restaurant)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A1",
-    "example": "Er is geen haast bij, neem rjestig de tijd.",
-    "exampleEn": "Take your time in context: met de buren (with the neighbours)",
-    "contextNote": "Spoken formula used met de buren (with the neighbours)",
+    "example": "Er is geen haast bij, neem rustig de tijd.",
+    "exampleEn": "Take your time (at the restaurant)",
+    "contextNote": "Spoken formula used in context: in het restaurant (horeca en dineren)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "met"
+      "in"
     ],
     "related": []
   },
   {
     "id": "idm-0149",
-    "dutch": "Het spijt me ontzettend",
-    "meaning": "I am terribly sorry (informal / met)",
+    "dutch": "Het spijt me ontzettend voor het ongemak",
+    "meaning": "I am terribly sorry for the inconvenience (at the restaurant)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
     "example": "Het spijt me ontzettend dat ik te laat ben voor onze afspraak.",
-    "exampleEn": "I am terribly sorry in context: met de buren (with the neighbours)",
-    "contextNote": "Spoken formula used met de buren (with the neighbours)",
+    "exampleEn": "I am terribly sorry for the inconvenience (at the restaurant)",
+    "contextNote": "Spoken formula used in context: in het restaurant (horeca en dineren)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "met"
+      "in"
     ],
     "related": []
   },
   {
     "id": "idm-0150",
-    "dutch": "Alvast heel erg bedankt voor de moeite",
-    "meaning": "Thank you very much in advance for your trouble (informal / met)",
+    "dutch": "Alvast heel erg bedankt voor uw medewerking",
+    "meaning": "Thank you very much in advance for your cooperation (at the restaurant)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
-    "example": "Ik zie jew reactie tegemoet, alvast heel erg bedankt voor de moeite!",
-    "exampleEn": "Thank you very much in advance for your trouble in context: met de buren (with the neighbours)",
-    "contextNote": "Spoken formula used met de buren (with the neighbours)",
+    "example": "Ik zie uw reactie tegemoet, alvast heel erg bedankt voor uw medewerking!",
+    "exampleEn": "Thank you very much in advance for your cooperation (at the restaurant)",
+    "contextNote": "Spoken formula used in context: in het restaurant (horeca en dineren)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "met"
+      "in"
     ],
     "related": []
   },
   {
     "id": "idm-0151",
-    "dutch": "Mag ik je even iets vragen?",
-    "meaning": "May I ask you something for a moment? (informal / aan)",
+    "dutch": "Mag ik u even iets vragen?",
+    "meaning": "May I ask you something for a moment? (at the open-air market)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A1",
-    "example": "Pardon mevrojew, mag ik u even iets vragen over de bushalte?",
-    "exampleEn": "May I ask you something for a moment? in context: aan de telefoon (on the phone)",
-    "contextNote": "Spoken formula used aan de telefoon (on the phone)",
+    "example": "Pardon mevrouw, mag ik u even iets vragen over de bushalte?",
+    "exampleEn": "May I ask you something for a moment? (at the open-air market)",
+    "contextNote": "Spoken formula used in context: op de markt (boodschappen doen)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "aan"
+      "op"
     ],
     "related": []
   },
   {
     "id": "idm-0152",
-    "dutch": "Kjent u dat alstublieft herhalen?",
-    "meaning": "Could you please repeat that? (informal / aan)",
+    "dutch": "Kunt u dat alstublieft herhalen?",
+    "meaning": "Could you please repeat that? (at the open-air market)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A1",
-    "example": "Het ging iets te snel, kjent u dat alstublieft herhalen?",
-    "exampleEn": "Could you please repeat that? in context: aan de telefoon (on the phone)",
-    "contextNote": "Spoken formula used aan de telefoon (on the phone)",
+    "example": "Het ging iets te snel, kunt u dat alstublieft herhalen?",
+    "exampleEn": "Could you please repeat that? (at the open-air market)",
+    "contextNote": "Spoken formula used in context: op de markt (boodschappen doen)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "aan"
+      "op"
     ],
     "related": []
   },
   {
     "id": "idm-0153",
-    "dutch": "Wat bedoelt je precies met...?",
-    "meaning": "What exactly do you mean by...? (informal / aan)",
+    "dutch": "Wat bedoelt u precies met dit punt?",
+    "meaning": "What exactly do you mean by this point? (at the open-air market)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
-    "example": "Wat bedoelt je precies met die voorwaarde in het contract?",
-    "exampleEn": "What exactly do you mean by...? in context: aan de telefoon (on the phone)",
-    "contextNote": "Spoken formula used aan de telefoon (on the phone)",
+    "example": "Wat bedoelt u precies met deze voorwaarde in het contract?",
+    "exampleEn": "What exactly do you mean by this point? (at the open-air market)",
+    "contextNote": "Spoken formula used in context: op de markt (boodschappen doen)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "aan"
+      "op"
     ],
     "related": []
   },
   {
     "id": "idm-0154",
     "dutch": "Daar heb ik nog niet over nagedacht",
-    "meaning": "I haven't thought about that yet (informal / aan)",
+    "meaning": "I haven't thought about that yet (at the open-air market)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
     "example": "Dat is een interessante vraag, daar heb ik nog niet over nagedacht.",
-    "exampleEn": "I haven't thought about that yet in context: aan de telefoon (on the phone)",
-    "contextNote": "Spoken formula used aan de telefoon (on the phone)",
+    "exampleEn": "I haven't thought about that yet (at the open-air market)",
+    "contextNote": "Spoken formula used in context: op de markt (boodschappen doen)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "aan"
+      "op"
     ],
     "related": []
   },
   {
     "id": "idm-0155",
-    "dutch": "Zoje u mij kunnen doorverbinden met...?",
-    "meaning": "Could you connect me with...? (informal / aan)",
+    "dutch": "Zou u mij kunnen doorverbinden met de juiste afdeling?",
+    "meaning": "Could you connect me with the right department? (at the open-air market)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "B1",
-    "example": "Goedemorgen, zoje u mij kunnen doorverbinden met de afdeling administratie?",
-    "exampleEn": "Could you connect me with...? in context: aan de telefoon (on the phone)",
-    "contextNote": "Spoken formula used aan de telefoon (on the phone)",
+    "example": "Goedemorgen, zou u mij kunnen doorverbinden met de afdeling administratie?",
+    "exampleEn": "Could you connect me with the right department? (at the open-air market)",
+    "contextNote": "Spoken formula used in context: op de markt (boodschappen doen)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "aan"
+      "op"
     ],
     "related": []
   },
   {
     "id": "idm-0156",
     "dutch": "Ik ben het er roerend mee eens",
-    "meaning": "I completely and wholeheartedly agree (informal / aan)",
+    "meaning": "I completely and wholeheartedly agree (at the open-air market)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "B1",
-    "example": "Met jojew visie op duurzaamheid ben ik het roerend eens.",
-    "exampleEn": "I completely and wholeheartedly agree in context: aan de telefoon (on the phone)",
-    "contextNote": "Spoken formula used aan de telefoon (on the phone)",
+    "example": "Met uw visie op duurzaamheid ben ik het roerend eens.",
+    "exampleEn": "I completely and wholeheartedly agree (at the open-air market)",
+    "contextNote": "Spoken formula used in context: op de markt (boodschappen doen)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "aan"
+      "op"
     ],
     "related": []
   },
   {
     "id": "idm-0157",
     "dutch": "Dat is makkelijker gezegd dan gedaan",
-    "meaning": "That is easier said than done (informal / aan)",
+    "meaning": "That is easier said than done (at the open-air market)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
     "example": "Gezonder eten klinkt simpel, maar het is makkelijker gezegd dan gedaan.",
-    "exampleEn": "That is easier said than done in context: aan de telefoon (on the phone)",
-    "contextNote": "Spoken formula used aan de telefoon (on the phone)",
+    "exampleEn": "That is easier said than done (at the open-air market)",
+    "contextNote": "Spoken formula used in context: op de markt (boodschappen doen)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "aan"
+      "op"
     ],
     "related": []
   },
   {
     "id": "idm-0158",
-    "dutch": "Neem de tijd",
-    "meaning": "Take your time (informal / aan)",
+    "dutch": "Neem rustig de tijd",
+    "meaning": "Take your time (at the open-air market)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A1",
-    "example": "Er is geen haast bij, neem rjestig de tijd.",
-    "exampleEn": "Take your time in context: aan de telefoon (on the phone)",
-    "contextNote": "Spoken formula used aan de telefoon (on the phone)",
+    "example": "Er is geen haast bij, neem rustig de tijd.",
+    "exampleEn": "Take your time (at the open-air market)",
+    "contextNote": "Spoken formula used in context: op de markt (boodschappen doen)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "aan"
+      "op"
     ],
     "related": []
   },
   {
     "id": "idm-0159",
-    "dutch": "Het spijt me ontzettend",
-    "meaning": "I am terribly sorry (informal / aan)",
+    "dutch": "Het spijt me ontzettend voor het ongemak",
+    "meaning": "I am terribly sorry for the inconvenience (at the open-air market)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
     "example": "Het spijt me ontzettend dat ik te laat ben voor onze afspraak.",
-    "exampleEn": "I am terribly sorry in context: aan de telefoon (on the phone)",
-    "contextNote": "Spoken formula used aan de telefoon (on the phone)",
+    "exampleEn": "I am terribly sorry for the inconvenience (at the open-air market)",
+    "contextNote": "Spoken formula used in context: op de markt (boodschappen doen)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "aan"
+      "op"
     ],
     "related": []
   },
   {
     "id": "idm-0160",
-    "dutch": "Alvast heel erg bedankt voor de moeite",
-    "meaning": "Thank you very much in advance for your trouble (informal / aan)",
+    "dutch": "Alvast heel erg bedankt voor uw medewerking",
+    "meaning": "Thank you very much in advance for your cooperation (at the open-air market)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
-    "example": "Ik zie jew reactie tegemoet, alvast heel erg bedankt voor de moeite!",
-    "exampleEn": "Thank you very much in advance for your trouble in context: aan de telefoon (on the phone)",
-    "contextNote": "Spoken formula used aan de telefoon (on the phone)",
+    "example": "Ik zie uw reactie tegemoet, alvast heel erg bedankt voor uw medewerking!",
+    "exampleEn": "Thank you very much in advance for your cooperation (at the open-air market)",
+    "contextNote": "Spoken formula used in context: op de markt (boodschappen doen)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "aan"
+      "op"
     ],
     "related": []
   },
   {
     "id": "idm-0161",
-    "dutch": "Mag ik je even iets vragen?",
-    "meaning": "May I ask you something for a moment? (informal / in)",
+    "dutch": "Mag ik u even iets vragen?",
+    "meaning": "May I ask you something for a moment? (with the neighbours)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A1",
-    "example": "Pardon mevrojew, mag ik u even iets vragen over de bushalte?",
-    "exampleEn": "May I ask you something for a moment? in context: in een vergadering (in a business meeting)",
-    "contextNote": "Spoken formula used in een vergadering (in a business meeting)",
+    "example": "Pardon mevrouw, mag ik u even iets vragen over de bushalte?",
+    "exampleEn": "May I ask you something for a moment? (with the neighbours)",
+    "contextNote": "Spoken formula used in context: met de buren (buurtcontact)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "in"
+      "met"
     ],
     "related": []
   },
   {
     "id": "idm-0162",
-    "dutch": "Kjent u dat alstublieft herhalen?",
-    "meaning": "Could you please repeat that? (informal / in)",
+    "dutch": "Kunt u dat alstublieft herhalen?",
+    "meaning": "Could you please repeat that? (with the neighbours)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A1",
-    "example": "Het ging iets te snel, kjent u dat alstublieft herhalen?",
-    "exampleEn": "Could you please repeat that? in context: in een vergadering (in a business meeting)",
-    "contextNote": "Spoken formula used in een vergadering (in a business meeting)",
+    "example": "Het ging iets te snel, kunt u dat alstublieft herhalen?",
+    "exampleEn": "Could you please repeat that? (with the neighbours)",
+    "contextNote": "Spoken formula used in context: met de buren (buurtcontact)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "in"
+      "met"
     ],
     "related": []
   },
   {
     "id": "idm-0163",
-    "dutch": "Wat bedoelt je precies met...?",
-    "meaning": "What exactly do you mean by...? (informal / in)",
+    "dutch": "Wat bedoelt u precies met dit punt?",
+    "meaning": "What exactly do you mean by this point? (with the neighbours)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
-    "example": "Wat bedoelt je precies met die voorwaarde in het contract?",
-    "exampleEn": "What exactly do you mean by...? in context: in een vergadering (in a business meeting)",
-    "contextNote": "Spoken formula used in een vergadering (in a business meeting)",
+    "example": "Wat bedoelt u precies met deze voorwaarde in het contract?",
+    "exampleEn": "What exactly do you mean by this point? (with the neighbours)",
+    "contextNote": "Spoken formula used in context: met de buren (buurtcontact)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "in"
+      "met"
     ],
     "related": []
   },
   {
     "id": "idm-0164",
     "dutch": "Daar heb ik nog niet over nagedacht",
-    "meaning": "I haven't thought about that yet (informal / in)",
+    "meaning": "I haven't thought about that yet (with the neighbours)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
     "example": "Dat is een interessante vraag, daar heb ik nog niet over nagedacht.",
-    "exampleEn": "I haven't thought about that yet in context: in een vergadering (in a business meeting)",
-    "contextNote": "Spoken formula used in een vergadering (in a business meeting)",
+    "exampleEn": "I haven't thought about that yet (with the neighbours)",
+    "contextNote": "Spoken formula used in context: met de buren (buurtcontact)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "in"
+      "met"
     ],
     "related": []
   },
   {
     "id": "idm-0165",
-    "dutch": "Zoje u mij kunnen doorverbinden met...?",
-    "meaning": "Could you connect me with...? (informal / in)",
+    "dutch": "Zou u mij kunnen doorverbinden met de juiste afdeling?",
+    "meaning": "Could you connect me with the right department? (with the neighbours)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "B1",
-    "example": "Goedemorgen, zoje u mij kunnen doorverbinden met de afdeling administratie?",
-    "exampleEn": "Could you connect me with...? in context: in een vergadering (in a business meeting)",
-    "contextNote": "Spoken formula used in een vergadering (in a business meeting)",
+    "example": "Goedemorgen, zou u mij kunnen doorverbinden met de afdeling administratie?",
+    "exampleEn": "Could you connect me with the right department? (with the neighbours)",
+    "contextNote": "Spoken formula used in context: met de buren (buurtcontact)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "in"
+      "met"
     ],
     "related": []
   },
   {
     "id": "idm-0166",
     "dutch": "Ik ben het er roerend mee eens",
-    "meaning": "I completely and wholeheartedly agree (informal / in)",
+    "meaning": "I completely and wholeheartedly agree (with the neighbours)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "B1",
-    "example": "Met jojew visie op duurzaamheid ben ik het roerend eens.",
-    "exampleEn": "I completely and wholeheartedly agree in context: in een vergadering (in a business meeting)",
-    "contextNote": "Spoken formula used in een vergadering (in a business meeting)",
+    "example": "Met uw visie op duurzaamheid ben ik het roerend eens.",
+    "exampleEn": "I completely and wholeheartedly agree (with the neighbours)",
+    "contextNote": "Spoken formula used in context: met de buren (buurtcontact)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "in"
+      "met"
     ],
     "related": []
   },
   {
     "id": "idm-0167",
     "dutch": "Dat is makkelijker gezegd dan gedaan",
-    "meaning": "That is easier said than done (informal / in)",
+    "meaning": "That is easier said than done (with the neighbours)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
     "example": "Gezonder eten klinkt simpel, maar het is makkelijker gezegd dan gedaan.",
-    "exampleEn": "That is easier said than done in context: in een vergadering (in a business meeting)",
-    "contextNote": "Spoken formula used in een vergadering (in a business meeting)",
+    "exampleEn": "That is easier said than done (with the neighbours)",
+    "contextNote": "Spoken formula used in context: met de buren (buurtcontact)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "in"
+      "met"
     ],
     "related": []
   },
   {
     "id": "idm-0168",
-    "dutch": "Neem de tijd",
-    "meaning": "Take your time (informal / in)",
+    "dutch": "Neem rustig de tijd",
+    "meaning": "Take your time (with the neighbours)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A1",
-    "example": "Er is geen haast bij, neem rjestig de tijd.",
-    "exampleEn": "Take your time in context: in een vergadering (in a business meeting)",
-    "contextNote": "Spoken formula used in een vergadering (in a business meeting)",
+    "example": "Er is geen haast bij, neem rustig de tijd.",
+    "exampleEn": "Take your time (with the neighbours)",
+    "contextNote": "Spoken formula used in context: met de buren (buurtcontact)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "in"
+      "met"
     ],
     "related": []
   },
   {
     "id": "idm-0169",
-    "dutch": "Het spijt me ontzettend",
-    "meaning": "I am terribly sorry (informal / in)",
+    "dutch": "Het spijt me ontzettend voor het ongemak",
+    "meaning": "I am terribly sorry for the inconvenience (with the neighbours)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
     "example": "Het spijt me ontzettend dat ik te laat ben voor onze afspraak.",
-    "exampleEn": "I am terribly sorry in context: in een vergadering (in a business meeting)",
-    "contextNote": "Spoken formula used in een vergadering (in a business meeting)",
+    "exampleEn": "I am terribly sorry for the inconvenience (with the neighbours)",
+    "contextNote": "Spoken formula used in context: met de buren (buurtcontact)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "in"
+      "met"
     ],
     "related": []
   },
   {
     "id": "idm-0170",
-    "dutch": "Alvast heel erg bedankt voor de moeite",
-    "meaning": "Thank you very much in advance for your trouble (informal / in)",
+    "dutch": "Alvast heel erg bedankt voor uw medewerking",
+    "meaning": "Thank you very much in advance for your cooperation (with the neighbours)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
-    "example": "Ik zie jew reactie tegemoet, alvast heel erg bedankt voor de moeite!",
-    "exampleEn": "Thank you very much in advance for your trouble in context: in een vergadering (in a business meeting)",
-    "contextNote": "Spoken formula used in een vergadering (in a business meeting)",
+    "example": "Ik zie uw reactie tegemoet, alvast heel erg bedankt voor uw medewerking!",
+    "exampleEn": "Thank you very much in advance for your cooperation (with the neighbours)",
+    "contextNote": "Spoken formula used in context: met de buren (buurtcontact)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "in"
+      "met"
     ],
     "related": []
   },
   {
     "id": "idm-0171",
-    "dutch": "Mag ik je even iets vragen?",
-    "meaning": "May I ask you something for a moment? (informal / tijdens)",
+    "dutch": "Mag ik u even iets vragen?",
+    "meaning": "May I ask you something for a moment? (on the phone)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A1",
-    "example": "Pardon mevrojew, mag ik u even iets vragen over de bushalte?",
-    "exampleEn": "May I ask you something for a moment? in context: tijdens een borrel (during drinks/reception)",
-    "contextNote": "Spoken formula used tijdens een borrel (during drinks/reception)",
+    "example": "Pardon mevrouw, mag ik u even iets vragen over de bushalte?",
+    "exampleEn": "May I ask you something for a moment? (on the phone)",
+    "contextNote": "Spoken formula used in context: aan de telefoon (telefonisch gesprek)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "tijdens"
+      "aan"
     ],
     "related": []
   },
   {
     "id": "idm-0172",
-    "dutch": "Kjent u dat alstublieft herhalen?",
-    "meaning": "Could you please repeat that? (informal / tijdens)",
+    "dutch": "Kunt u dat alstublieft herhalen?",
+    "meaning": "Could you please repeat that? (on the phone)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A1",
-    "example": "Het ging iets te snel, kjent u dat alstublieft herhalen?",
-    "exampleEn": "Could you please repeat that? in context: tijdens een borrel (during drinks/reception)",
-    "contextNote": "Spoken formula used tijdens een borrel (during drinks/reception)",
+    "example": "Het ging iets te snel, kunt u dat alstublieft herhalen?",
+    "exampleEn": "Could you please repeat that? (on the phone)",
+    "contextNote": "Spoken formula used in context: aan de telefoon (telefonisch gesprek)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "tijdens"
+      "aan"
     ],
     "related": []
   },
   {
     "id": "idm-0173",
-    "dutch": "Wat bedoelt je precies met...?",
-    "meaning": "What exactly do you mean by...? (informal / tijdens)",
+    "dutch": "Wat bedoelt u precies met dit punt?",
+    "meaning": "What exactly do you mean by this point? (on the phone)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
-    "example": "Wat bedoelt je precies met die voorwaarde in het contract?",
-    "exampleEn": "What exactly do you mean by...? in context: tijdens een borrel (during drinks/reception)",
-    "contextNote": "Spoken formula used tijdens een borrel (during drinks/reception)",
+    "example": "Wat bedoelt u precies met deze voorwaarde in het contract?",
+    "exampleEn": "What exactly do you mean by this point? (on the phone)",
+    "contextNote": "Spoken formula used in context: aan de telefoon (telefonisch gesprek)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "tijdens"
+      "aan"
     ],
     "related": []
   },
   {
     "id": "idm-0174",
     "dutch": "Daar heb ik nog niet over nagedacht",
-    "meaning": "I haven't thought about that yet (informal / tijdens)",
+    "meaning": "I haven't thought about that yet (on the phone)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
     "example": "Dat is een interessante vraag, daar heb ik nog niet over nagedacht.",
-    "exampleEn": "I haven't thought about that yet in context: tijdens een borrel (during drinks/reception)",
-    "contextNote": "Spoken formula used tijdens een borrel (during drinks/reception)",
+    "exampleEn": "I haven't thought about that yet (on the phone)",
+    "contextNote": "Spoken formula used in context: aan de telefoon (telefonisch gesprek)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "tijdens"
+      "aan"
     ],
     "related": []
   },
   {
     "id": "idm-0175",
-    "dutch": "Zoje u mij kunnen doorverbinden met...?",
-    "meaning": "Could you connect me with...? (informal / tijdens)",
+    "dutch": "Zou u mij kunnen doorverbinden met de juiste afdeling?",
+    "meaning": "Could you connect me with the right department? (on the phone)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "B1",
-    "example": "Goedemorgen, zoje u mij kunnen doorverbinden met de afdeling administratie?",
-    "exampleEn": "Could you connect me with...? in context: tijdens een borrel (during drinks/reception)",
-    "contextNote": "Spoken formula used tijdens een borrel (during drinks/reception)",
+    "example": "Goedemorgen, zou u mij kunnen doorverbinden met de afdeling administratie?",
+    "exampleEn": "Could you connect me with the right department? (on the phone)",
+    "contextNote": "Spoken formula used in context: aan de telefoon (telefonisch gesprek)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "tijdens"
+      "aan"
     ],
     "related": []
   },
   {
     "id": "idm-0176",
     "dutch": "Ik ben het er roerend mee eens",
-    "meaning": "I completely and wholeheartedly agree (informal / tijdens)",
+    "meaning": "I completely and wholeheartedly agree (on the phone)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "B1",
-    "example": "Met jojew visie op duurzaamheid ben ik het roerend eens.",
-    "exampleEn": "I completely and wholeheartedly agree in context: tijdens een borrel (during drinks/reception)",
-    "contextNote": "Spoken formula used tijdens een borrel (during drinks/reception)",
+    "example": "Met uw visie op duurzaamheid ben ik het roerend eens.",
+    "exampleEn": "I completely and wholeheartedly agree (on the phone)",
+    "contextNote": "Spoken formula used in context: aan de telefoon (telefonisch gesprek)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "tijdens"
+      "aan"
     ],
     "related": []
   },
   {
     "id": "idm-0177",
     "dutch": "Dat is makkelijker gezegd dan gedaan",
-    "meaning": "That is easier said than done (informal / tijdens)",
+    "meaning": "That is easier said than done (on the phone)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
     "example": "Gezonder eten klinkt simpel, maar het is makkelijker gezegd dan gedaan.",
-    "exampleEn": "That is easier said than done in context: tijdens een borrel (during drinks/reception)",
-    "contextNote": "Spoken formula used tijdens een borrel (during drinks/reception)",
+    "exampleEn": "That is easier said than done (on the phone)",
+    "contextNote": "Spoken formula used in context: aan de telefoon (telefonisch gesprek)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "tijdens"
+      "aan"
     ],
     "related": []
   },
   {
     "id": "idm-0178",
-    "dutch": "Neem de tijd",
-    "meaning": "Take your time (informal / tijdens)",
+    "dutch": "Neem rustig de tijd",
+    "meaning": "Take your time (on the phone)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A1",
-    "example": "Er is geen haast bij, neem rjestig de tijd.",
-    "exampleEn": "Take your time in context: tijdens een borrel (during drinks/reception)",
-    "contextNote": "Spoken formula used tijdens een borrel (during drinks/reception)",
+    "example": "Er is geen haast bij, neem rustig de tijd.",
+    "exampleEn": "Take your time (on the phone)",
+    "contextNote": "Spoken formula used in context: aan de telefoon (telefonisch gesprek)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "tijdens"
+      "aan"
     ],
     "related": []
   },
   {
     "id": "idm-0179",
-    "dutch": "Het spijt me ontzettend",
-    "meaning": "I am terribly sorry (informal / tijdens)",
+    "dutch": "Het spijt me ontzettend voor het ongemak",
+    "meaning": "I am terribly sorry for the inconvenience (on the phone)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
     "example": "Het spijt me ontzettend dat ik te laat ben voor onze afspraak.",
-    "exampleEn": "I am terribly sorry in context: tijdens een borrel (during drinks/reception)",
-    "contextNote": "Spoken formula used tijdens een borrel (during drinks/reception)",
+    "exampleEn": "I am terribly sorry for the inconvenience (on the phone)",
+    "contextNote": "Spoken formula used in context: aan de telefoon (telefonisch gesprek)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "tijdens"
+      "aan"
     ],
     "related": []
   },
   {
     "id": "idm-0180",
-    "dutch": "Alvast heel erg bedankt voor de moeite",
-    "meaning": "Thank you very much in advance for your trouble (informal / tijdens)",
+    "dutch": "Alvast heel erg bedankt voor uw medewerking",
+    "meaning": "Thank you very much in advance for your cooperation (on the phone)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
-    "example": "Ik zie jew reactie tegemoet, alvast heel erg bedankt voor de moeite!",
-    "exampleEn": "Thank you very much in advance for your trouble in context: tijdens een borrel (during drinks/reception)",
-    "contextNote": "Spoken formula used tijdens een borrel (during drinks/reception)",
+    "example": "Ik zie uw reactie tegemoet, alvast heel erg bedankt voor uw medewerking!",
+    "exampleEn": "Thank you very much in advance for your cooperation (on the phone)",
+    "contextNote": "Spoken formula used in context: aan de telefoon (telefonisch gesprek)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "tijdens"
+      "aan"
     ],
     "related": []
   },
   {
     "id": "idm-0181",
-    "dutch": "Mag ik je even iets vragen?",
-    "meaning": "May I ask you something for a moment? (informal / bij)",
+    "dutch": "Mag ik u even iets vragen?",
+    "meaning": "May I ask you something for a moment? (in a meeting)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A1",
-    "example": "Pardon mevrojew, mag ik u even iets vragen over de bushalte?",
-    "exampleEn": "May I ask you something for a moment? in context: bij de gemeente (at city hall/bureaucracy)",
-    "contextNote": "Spoken formula used bij de gemeente (at city hall/bureaucracy)",
+    "example": "Pardon mevrouw, mag ik u even iets vragen over de bushalte?",
+    "exampleEn": "May I ask you something for a moment? (in a meeting)",
+    "contextNote": "Spoken formula used in context: in een vergadering (zakelijk overleg)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "bij"
+      "in"
     ],
     "related": []
   },
   {
     "id": "idm-0182",
-    "dutch": "Kjent u dat alstublieft herhalen?",
-    "meaning": "Could you please repeat that? (informal / bij)",
+    "dutch": "Kunt u dat alstublieft herhalen?",
+    "meaning": "Could you please repeat that? (in a meeting)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A1",
-    "example": "Het ging iets te snel, kjent u dat alstublieft herhalen?",
-    "exampleEn": "Could you please repeat that? in context: bij de gemeente (at city hall/bureaucracy)",
-    "contextNote": "Spoken formula used bij de gemeente (at city hall/bureaucracy)",
+    "example": "Het ging iets te snel, kunt u dat alstublieft herhalen?",
+    "exampleEn": "Could you please repeat that? (in a meeting)",
+    "contextNote": "Spoken formula used in context: in een vergadering (zakelijk overleg)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "bij"
+      "in"
     ],
     "related": []
   },
   {
     "id": "idm-0183",
-    "dutch": "Wat bedoelt je precies met...?",
-    "meaning": "What exactly do you mean by...? (informal / bij)",
+    "dutch": "Wat bedoelt u precies met dit punt?",
+    "meaning": "What exactly do you mean by this point? (in a meeting)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
-    "example": "Wat bedoelt je precies met die voorwaarde in het contract?",
-    "exampleEn": "What exactly do you mean by...? in context: bij de gemeente (at city hall/bureaucracy)",
-    "contextNote": "Spoken formula used bij de gemeente (at city hall/bureaucracy)",
+    "example": "Wat bedoelt u precies met deze voorwaarde in het contract?",
+    "exampleEn": "What exactly do you mean by this point? (in a meeting)",
+    "contextNote": "Spoken formula used in context: in een vergadering (zakelijk overleg)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "bij"
+      "in"
     ],
     "related": []
   },
   {
     "id": "idm-0184",
     "dutch": "Daar heb ik nog niet over nagedacht",
-    "meaning": "I haven't thought about that yet (informal / bij)",
+    "meaning": "I haven't thought about that yet (in a meeting)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
     "example": "Dat is een interessante vraag, daar heb ik nog niet over nagedacht.",
-    "exampleEn": "I haven't thought about that yet in context: bij de gemeente (at city hall/bureaucracy)",
-    "contextNote": "Spoken formula used bij de gemeente (at city hall/bureaucracy)",
+    "exampleEn": "I haven't thought about that yet (in a meeting)",
+    "contextNote": "Spoken formula used in context: in een vergadering (zakelijk overleg)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "bij"
+      "in"
     ],
     "related": []
   },
   {
     "id": "idm-0185",
-    "dutch": "Zoje u mij kunnen doorverbinden met...?",
-    "meaning": "Could you connect me with...? (informal / bij)",
+    "dutch": "Zou u mij kunnen doorverbinden met de juiste afdeling?",
+    "meaning": "Could you connect me with the right department? (in a meeting)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "B1",
-    "example": "Goedemorgen, zoje u mij kunnen doorverbinden met de afdeling administratie?",
-    "exampleEn": "Could you connect me with...? in context: bij de gemeente (at city hall/bureaucracy)",
-    "contextNote": "Spoken formula used bij de gemeente (at city hall/bureaucracy)",
+    "example": "Goedemorgen, zou u mij kunnen doorverbinden met de afdeling administratie?",
+    "exampleEn": "Could you connect me with the right department? (in a meeting)",
+    "contextNote": "Spoken formula used in context: in een vergadering (zakelijk overleg)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "bij"
+      "in"
     ],
     "related": []
   },
   {
     "id": "idm-0186",
     "dutch": "Ik ben het er roerend mee eens",
-    "meaning": "I completely and wholeheartedly agree (informal / bij)",
+    "meaning": "I completely and wholeheartedly agree (in a meeting)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "B1",
-    "example": "Met jojew visie op duurzaamheid ben ik het roerend eens.",
-    "exampleEn": "I completely and wholeheartedly agree in context: bij de gemeente (at city hall/bureaucracy)",
-    "contextNote": "Spoken formula used bij de gemeente (at city hall/bureaucracy)",
+    "example": "Met uw visie op duurzaamheid ben ik het roerend eens.",
+    "exampleEn": "I completely and wholeheartedly agree (in a meeting)",
+    "contextNote": "Spoken formula used in context: in een vergadering (zakelijk overleg)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "bij"
+      "in"
     ],
     "related": []
   },
   {
     "id": "idm-0187",
     "dutch": "Dat is makkelijker gezegd dan gedaan",
-    "meaning": "That is easier said than done (informal / bij)",
+    "meaning": "That is easier said than done (in a meeting)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
     "example": "Gezonder eten klinkt simpel, maar het is makkelijker gezegd dan gedaan.",
-    "exampleEn": "That is easier said than done in context: bij de gemeente (at city hall/bureaucracy)",
-    "contextNote": "Spoken formula used bij de gemeente (at city hall/bureaucracy)",
+    "exampleEn": "That is easier said than done (in a meeting)",
+    "contextNote": "Spoken formula used in context: in een vergadering (zakelijk overleg)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "bij"
+      "in"
     ],
     "related": []
   },
   {
     "id": "idm-0188",
-    "dutch": "Neem de tijd",
-    "meaning": "Take your time (informal / bij)",
+    "dutch": "Neem rustig de tijd",
+    "meaning": "Take your time (in a meeting)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A1",
-    "example": "Er is geen haast bij, neem rjestig de tijd.",
-    "exampleEn": "Take your time in context: bij de gemeente (at city hall/bureaucracy)",
-    "contextNote": "Spoken formula used bij de gemeente (at city hall/bureaucracy)",
+    "example": "Er is geen haast bij, neem rustig de tijd.",
+    "exampleEn": "Take your time (in a meeting)",
+    "contextNote": "Spoken formula used in context: in een vergadering (zakelijk overleg)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "bij"
+      "in"
     ],
     "related": []
   },
   {
     "id": "idm-0189",
-    "dutch": "Het spijt me ontzettend",
-    "meaning": "I am terribly sorry (informal / bij)",
+    "dutch": "Het spijt me ontzettend voor het ongemak",
+    "meaning": "I am terribly sorry for the inconvenience (in a meeting)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
     "example": "Het spijt me ontzettend dat ik te laat ben voor onze afspraak.",
-    "exampleEn": "I am terribly sorry in context: bij de gemeente (at city hall/bureaucracy)",
-    "contextNote": "Spoken formula used bij de gemeente (at city hall/bureaucracy)",
+    "exampleEn": "I am terribly sorry for the inconvenience (in a meeting)",
+    "contextNote": "Spoken formula used in context: in een vergadering (zakelijk overleg)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "bij"
+      "in"
     ],
     "related": []
   },
   {
     "id": "idm-0190",
-    "dutch": "Alvast heel erg bedankt voor de moeite",
-    "meaning": "Thank you very much in advance for your trouble (informal / bij)",
+    "dutch": "Alvast heel erg bedankt voor uw medewerking",
+    "meaning": "Thank you very much in advance for your cooperation (in a meeting)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
-    "example": "Ik zie jew reactie tegemoet, alvast heel erg bedankt voor de moeite!",
-    "exampleEn": "Thank you very much in advance for your trouble in context: bij de gemeente (at city hall/bureaucracy)",
-    "contextNote": "Spoken formula used bij de gemeente (at city hall/bureaucracy)",
+    "example": "Ik zie uw reactie tegemoet, alvast heel erg bedankt voor uw medewerking!",
+    "exampleEn": "Thank you very much in advance for your cooperation (in a meeting)",
+    "contextNote": "Spoken formula used in context: in een vergadering (zakelijk overleg)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "bij"
+      "in"
     ],
     "related": []
   },
   {
     "id": "idm-0191",
-    "dutch": "Mag ik je even iets vragen?",
-    "meaning": "May I ask you something for a moment? (informal / bij)",
+    "dutch": "Mag ik u even iets vragen?",
+    "meaning": "May I ask you something for a moment? (during drinks)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A1",
-    "example": "Pardon mevrojew, mag ik u even iets vragen over de bushalte?",
-    "exampleEn": "May I ask you something for a moment? in context: bij de huisarts (at the doctor)",
-    "contextNote": "Spoken formula used bij de huisarts (at the doctor)",
+    "example": "Pardon mevrouw, mag ik u even iets vragen over de bushalte?",
+    "exampleEn": "May I ask you something for a moment? (during drinks)",
+    "contextNote": "Spoken formula used in context: tijdens een borrel (sociale bijeenkomst)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "bij"
+      "tijdens"
     ],
     "related": []
   },
   {
     "id": "idm-0192",
-    "dutch": "Kjent u dat alstublieft herhalen?",
-    "meaning": "Could you please repeat that? (informal / bij)",
+    "dutch": "Kunt u dat alstublieft herhalen?",
+    "meaning": "Could you please repeat that? (during drinks)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A1",
-    "example": "Het ging iets te snel, kjent u dat alstublieft herhalen?",
-    "exampleEn": "Could you please repeat that? in context: bij de huisarts (at the doctor)",
-    "contextNote": "Spoken formula used bij de huisarts (at the doctor)",
+    "example": "Het ging iets te snel, kunt u dat alstublieft herhalen?",
+    "exampleEn": "Could you please repeat that? (during drinks)",
+    "contextNote": "Spoken formula used in context: tijdens een borrel (sociale bijeenkomst)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "bij"
+      "tijdens"
     ],
     "related": []
   },
   {
     "id": "idm-0193",
-    "dutch": "Wat bedoelt je precies met...?",
-    "meaning": "What exactly do you mean by...? (informal / bij)",
+    "dutch": "Wat bedoelt u precies met dit punt?",
+    "meaning": "What exactly do you mean by this point? (during drinks)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
-    "example": "Wat bedoelt je precies met die voorwaarde in het contract?",
-    "exampleEn": "What exactly do you mean by...? in context: bij de huisarts (at the doctor)",
-    "contextNote": "Spoken formula used bij de huisarts (at the doctor)",
+    "example": "Wat bedoelt u precies met deze voorwaarde in het contract?",
+    "exampleEn": "What exactly do you mean by this point? (during drinks)",
+    "contextNote": "Spoken formula used in context: tijdens een borrel (sociale bijeenkomst)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "bij"
+      "tijdens"
     ],
     "related": []
   },
   {
     "id": "idm-0194",
     "dutch": "Daar heb ik nog niet over nagedacht",
-    "meaning": "I haven't thought about that yet (informal / bij)",
+    "meaning": "I haven't thought about that yet (during drinks)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
     "example": "Dat is een interessante vraag, daar heb ik nog niet over nagedacht.",
-    "exampleEn": "I haven't thought about that yet in context: bij de huisarts (at the doctor)",
-    "contextNote": "Spoken formula used bij de huisarts (at the doctor)",
+    "exampleEn": "I haven't thought about that yet (during drinks)",
+    "contextNote": "Spoken formula used in context: tijdens een borrel (sociale bijeenkomst)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "bij"
+      "tijdens"
     ],
     "related": []
   },
   {
     "id": "idm-0195",
-    "dutch": "Zoje u mij kunnen doorverbinden met...?",
-    "meaning": "Could you connect me with...? (informal / bij)",
+    "dutch": "Zou u mij kunnen doorverbinden met de juiste afdeling?",
+    "meaning": "Could you connect me with the right department? (during drinks)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "B1",
-    "example": "Goedemorgen, zoje u mij kunnen doorverbinden met de afdeling administratie?",
-    "exampleEn": "Could you connect me with...? in context: bij de huisarts (at the doctor)",
-    "contextNote": "Spoken formula used bij de huisarts (at the doctor)",
+    "example": "Goedemorgen, zou u mij kunnen doorverbinden met de afdeling administratie?",
+    "exampleEn": "Could you connect me with the right department? (during drinks)",
+    "contextNote": "Spoken formula used in context: tijdens een borrel (sociale bijeenkomst)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "bij"
+      "tijdens"
     ],
     "related": []
   },
   {
     "id": "idm-0196",
     "dutch": "Ik ben het er roerend mee eens",
-    "meaning": "I completely and wholeheartedly agree (informal / bij)",
+    "meaning": "I completely and wholeheartedly agree (during drinks)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "B1",
-    "example": "Met jojew visie op duurzaamheid ben ik het roerend eens.",
-    "exampleEn": "I completely and wholeheartedly agree in context: bij de huisarts (at the doctor)",
-    "contextNote": "Spoken formula used bij de huisarts (at the doctor)",
+    "example": "Met uw visie op duurzaamheid ben ik het roerend eens.",
+    "exampleEn": "I completely and wholeheartedly agree (during drinks)",
+    "contextNote": "Spoken formula used in context: tijdens een borrel (sociale bijeenkomst)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "bij"
+      "tijdens"
     ],
     "related": []
   },
   {
     "id": "idm-0197",
     "dutch": "Dat is makkelijker gezegd dan gedaan",
-    "meaning": "That is easier said than done (informal / bij)",
+    "meaning": "That is easier said than done (during drinks)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
     "example": "Gezonder eten klinkt simpel, maar het is makkelijker gezegd dan gedaan.",
-    "exampleEn": "That is easier said than done in context: bij de huisarts (at the doctor)",
-    "contextNote": "Spoken formula used bij de huisarts (at the doctor)",
+    "exampleEn": "That is easier said than done (during drinks)",
+    "contextNote": "Spoken formula used in context: tijdens een borrel (sociale bijeenkomst)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "bij"
+      "tijdens"
     ],
     "related": []
   },
   {
     "id": "idm-0198",
-    "dutch": "Neem de tijd",
-    "meaning": "Take your time (informal / bij)",
+    "dutch": "Neem rustig de tijd",
+    "meaning": "Take your time (during drinks)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A1",
-    "example": "Er is geen haast bij, neem rjestig de tijd.",
-    "exampleEn": "Take your time in context: bij de huisarts (at the doctor)",
-    "contextNote": "Spoken formula used bij de huisarts (at the doctor)",
+    "example": "Er is geen haast bij, neem rustig de tijd.",
+    "exampleEn": "Take your time (during drinks)",
+    "contextNote": "Spoken formula used in context: tijdens een borrel (sociale bijeenkomst)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "bij"
+      "tijdens"
     ],
     "related": []
   },
   {
     "id": "idm-0199",
-    "dutch": "Het spijt me ontzettend",
-    "meaning": "I am terribly sorry (informal / bij)",
+    "dutch": "Het spijt me ontzettend voor het ongemak",
+    "meaning": "I am terribly sorry for the inconvenience (during drinks)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
     "example": "Het spijt me ontzettend dat ik te laat ben voor onze afspraak.",
-    "exampleEn": "I am terribly sorry in context: bij de huisarts (at the doctor)",
-    "contextNote": "Spoken formula used bij de huisarts (at the doctor)",
+    "exampleEn": "I am terribly sorry for the inconvenience (during drinks)",
+    "contextNote": "Spoken formula used in context: tijdens een borrel (sociale bijeenkomst)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "bij"
+      "tijdens"
     ],
     "related": []
   },
   {
     "id": "idm-0200",
-    "dutch": "Alvast heel erg bedankt voor de moeite",
-    "meaning": "Thank you very much in advance for your trouble (informal / bij)",
+    "dutch": "Alvast heel erg bedankt voor uw medewerking",
+    "meaning": "Thank you very much in advance for your cooperation (during drinks)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
-    "example": "Ik zie jew reactie tegemoet, alvast heel erg bedankt voor de moeite!",
-    "exampleEn": "Thank you very much in advance for your trouble in context: bij de huisarts (at the doctor)",
-    "contextNote": "Spoken formula used bij de huisarts (at the doctor)",
+    "example": "Ik zie uw reactie tegemoet, alvast heel erg bedankt voor uw medewerking!",
+    "exampleEn": "Thank you very much in advance for your cooperation (during drinks)",
+    "contextNote": "Spoken formula used in context: tijdens een borrel (sociale bijeenkomst)",
+    "usageWarning": "",
+    "tags": [
+      "conversational",
+      "tijdens"
+    ],
+    "related": []
+  },
+  {
+    "id": "idm-0201",
+    "dutch": "Mag ik u even iets vragen?",
+    "meaning": "May I ask you something for a moment? (at city hall)",
+    "literal": "",
+    "register": "polite",
+    "level": "A1",
+    "example": "Pardon mevrouw, mag ik u even iets vragen over de bushalte?",
+    "exampleEn": "May I ask you something for a moment? (at city hall)",
+    "contextNote": "Spoken formula used in context: bij de gemeente (burgerzaken)",
     "usageWarning": "",
     "tags": [
       "conversational",
@@ -3403,508 +3420,508 @@ globalThis.NP_IDIOMS = [
     "related": []
   },
   {
-    "id": "idm-0201",
-    "dutch": "Mag ik je even iets vragen?",
-    "meaning": "May I ask you something for a moment? (informal / op)",
-    "literal": "",
-    "register": "informal",
-    "level": "A1",
-    "example": "Pardon mevrojew, mag ik u even iets vragen over de bushalte?",
-    "exampleEn": "May I ask you something for a moment? in context: op het werk (at work)",
-    "contextNote": "Spoken formula used op het werk (at work)",
-    "usageWarning": "",
-    "tags": [
-      "conversational",
-      "op"
-    ],
-    "related": []
-  },
-  {
     "id": "idm-0202",
-    "dutch": "Kjent u dat alstublieft herhalen?",
-    "meaning": "Could you please repeat that? (informal / op)",
+    "dutch": "Kunt u dat alstublieft herhalen?",
+    "meaning": "Could you please repeat that? (at city hall)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A1",
-    "example": "Het ging iets te snel, kjent u dat alstublieft herhalen?",
-    "exampleEn": "Could you please repeat that? in context: op het werk (at work)",
-    "contextNote": "Spoken formula used op het werk (at work)",
+    "example": "Het ging iets te snel, kunt u dat alstublieft herhalen?",
+    "exampleEn": "Could you please repeat that? (at city hall)",
+    "contextNote": "Spoken formula used in context: bij de gemeente (burgerzaken)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "op"
+      "bij"
     ],
     "related": []
   },
   {
     "id": "idm-0203",
-    "dutch": "Wat bedoelt je precies met...?",
-    "meaning": "What exactly do you mean by...? (informal / op)",
+    "dutch": "Wat bedoelt u precies met dit punt?",
+    "meaning": "What exactly do you mean by this point? (at city hall)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
-    "example": "Wat bedoelt je precies met die voorwaarde in het contract?",
-    "exampleEn": "What exactly do you mean by...? in context: op het werk (at work)",
-    "contextNote": "Spoken formula used op het werk (at work)",
+    "example": "Wat bedoelt u precies met deze voorwaarde in het contract?",
+    "exampleEn": "What exactly do you mean by this point? (at city hall)",
+    "contextNote": "Spoken formula used in context: bij de gemeente (burgerzaken)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "op"
+      "bij"
     ],
     "related": []
   },
   {
     "id": "idm-0204",
     "dutch": "Daar heb ik nog niet over nagedacht",
-    "meaning": "I haven't thought about that yet (informal / op)",
+    "meaning": "I haven't thought about that yet (at city hall)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
     "example": "Dat is een interessante vraag, daar heb ik nog niet over nagedacht.",
-    "exampleEn": "I haven't thought about that yet in context: op het werk (at work)",
-    "contextNote": "Spoken formula used op het werk (at work)",
+    "exampleEn": "I haven't thought about that yet (at city hall)",
+    "contextNote": "Spoken formula used in context: bij de gemeente (burgerzaken)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "op"
+      "bij"
     ],
     "related": []
   },
   {
     "id": "idm-0205",
-    "dutch": "Zoje u mij kunnen doorverbinden met...?",
-    "meaning": "Could you connect me with...? (informal / op)",
+    "dutch": "Zou u mij kunnen doorverbinden met de juiste afdeling?",
+    "meaning": "Could you connect me with the right department? (at city hall)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "B1",
-    "example": "Goedemorgen, zoje u mij kunnen doorverbinden met de afdeling administratie?",
-    "exampleEn": "Could you connect me with...? in context: op het werk (at work)",
-    "contextNote": "Spoken formula used op het werk (at work)",
+    "example": "Goedemorgen, zou u mij kunnen doorverbinden met de afdeling administratie?",
+    "exampleEn": "Could you connect me with the right department? (at city hall)",
+    "contextNote": "Spoken formula used in context: bij de gemeente (burgerzaken)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "op"
+      "bij"
     ],
     "related": []
   },
   {
     "id": "idm-0206",
     "dutch": "Ik ben het er roerend mee eens",
-    "meaning": "I completely and wholeheartedly agree (informal / op)",
+    "meaning": "I completely and wholeheartedly agree (at city hall)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "B1",
-    "example": "Met jojew visie op duurzaamheid ben ik het roerend eens.",
-    "exampleEn": "I completely and wholeheartedly agree in context: op het werk (at work)",
-    "contextNote": "Spoken formula used op het werk (at work)",
+    "example": "Met uw visie op duurzaamheid ben ik het roerend eens.",
+    "exampleEn": "I completely and wholeheartedly agree (at city hall)",
+    "contextNote": "Spoken formula used in context: bij de gemeente (burgerzaken)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "op"
+      "bij"
     ],
     "related": []
   },
   {
     "id": "idm-0207",
     "dutch": "Dat is makkelijker gezegd dan gedaan",
-    "meaning": "That is easier said than done (informal / op)",
+    "meaning": "That is easier said than done (at city hall)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
     "example": "Gezonder eten klinkt simpel, maar het is makkelijker gezegd dan gedaan.",
-    "exampleEn": "That is easier said than done in context: op het werk (at work)",
-    "contextNote": "Spoken formula used op het werk (at work)",
+    "exampleEn": "That is easier said than done (at city hall)",
+    "contextNote": "Spoken formula used in context: bij de gemeente (burgerzaken)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "op"
+      "bij"
     ],
     "related": []
   },
   {
     "id": "idm-0208",
-    "dutch": "Neem de tijd",
-    "meaning": "Take your time (informal / op)",
+    "dutch": "Neem rustig de tijd",
+    "meaning": "Take your time (at city hall)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A1",
-    "example": "Er is geen haast bij, neem rjestig de tijd.",
-    "exampleEn": "Take your time in context: op het werk (at work)",
-    "contextNote": "Spoken formula used op het werk (at work)",
+    "example": "Er is geen haast bij, neem rustig de tijd.",
+    "exampleEn": "Take your time (at city hall)",
+    "contextNote": "Spoken formula used in context: bij de gemeente (burgerzaken)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "op"
+      "bij"
     ],
     "related": []
   },
   {
     "id": "idm-0209",
-    "dutch": "Het spijt me ontzettend",
-    "meaning": "I am terribly sorry (informal / op)",
+    "dutch": "Het spijt me ontzettend voor het ongemak",
+    "meaning": "I am terribly sorry for the inconvenience (at city hall)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
     "example": "Het spijt me ontzettend dat ik te laat ben voor onze afspraak.",
-    "exampleEn": "I am terribly sorry in context: op het werk (at work)",
-    "contextNote": "Spoken formula used op het werk (at work)",
+    "exampleEn": "I am terribly sorry for the inconvenience (at city hall)",
+    "contextNote": "Spoken formula used in context: bij de gemeente (burgerzaken)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "op"
+      "bij"
     ],
     "related": []
   },
   {
     "id": "idm-0210",
-    "dutch": "Alvast heel erg bedankt voor de moeite",
-    "meaning": "Thank you very much in advance for your trouble (informal / op)",
+    "dutch": "Alvast heel erg bedankt voor uw medewerking",
+    "meaning": "Thank you very much in advance for your cooperation (at city hall)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
-    "example": "Ik zie jew reactie tegemoet, alvast heel erg bedankt voor de moeite!",
-    "exampleEn": "Thank you very much in advance for your trouble in context: op het werk (at work)",
-    "contextNote": "Spoken formula used op het werk (at work)",
+    "example": "Ik zie uw reactie tegemoet, alvast heel erg bedankt voor uw medewerking!",
+    "exampleEn": "Thank you very much in advance for your cooperation (at city hall)",
+    "contextNote": "Spoken formula used in context: bij de gemeente (burgerzaken)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "op"
+      "bij"
     ],
     "related": []
   },
   {
     "id": "idm-0211",
-    "dutch": "Mag ik je even iets vragen?",
-    "meaning": "May I ask you something for a moment? (informal / in)",
+    "dutch": "Mag ik u even iets vragen?",
+    "meaning": "May I ask you something for a moment? (at the doctor)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A1",
-    "example": "Pardon mevrojew, mag ik u even iets vragen over de bushalte?",
-    "exampleEn": "May I ask you something for a moment? in context: in het openbaar vervoer (on public transit)",
-    "contextNote": "Spoken formula used in het openbaar vervoer (on public transit)",
+    "example": "Pardon mevrouw, mag ik u even iets vragen over de bushalte?",
+    "exampleEn": "May I ask you something for a moment? (at the doctor)",
+    "contextNote": "Spoken formula used in context: bij de huisarts (medisch consult)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "in"
+      "bij"
     ],
     "related": []
   },
   {
     "id": "idm-0212",
-    "dutch": "Kjent u dat alstublieft herhalen?",
-    "meaning": "Could you please repeat that? (informal / in)",
+    "dutch": "Kunt u dat alstublieft herhalen?",
+    "meaning": "Could you please repeat that? (at the doctor)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A1",
-    "example": "Het ging iets te snel, kjent u dat alstublieft herhalen?",
-    "exampleEn": "Could you please repeat that? in context: in het openbaar vervoer (on public transit)",
-    "contextNote": "Spoken formula used in het openbaar vervoer (on public transit)",
+    "example": "Het ging iets te snel, kunt u dat alstublieft herhalen?",
+    "exampleEn": "Could you please repeat that? (at the doctor)",
+    "contextNote": "Spoken formula used in context: bij de huisarts (medisch consult)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "in"
+      "bij"
     ],
     "related": []
   },
   {
     "id": "idm-0213",
-    "dutch": "Wat bedoelt je precies met...?",
-    "meaning": "What exactly do you mean by...? (informal / in)",
+    "dutch": "Wat bedoelt u precies met dit punt?",
+    "meaning": "What exactly do you mean by this point? (at the doctor)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
-    "example": "Wat bedoelt je precies met die voorwaarde in het contract?",
-    "exampleEn": "What exactly do you mean by...? in context: in het openbaar vervoer (on public transit)",
-    "contextNote": "Spoken formula used in het openbaar vervoer (on public transit)",
+    "example": "Wat bedoelt u precies met deze voorwaarde in het contract?",
+    "exampleEn": "What exactly do you mean by this point? (at the doctor)",
+    "contextNote": "Spoken formula used in context: bij de huisarts (medisch consult)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "in"
+      "bij"
     ],
     "related": []
   },
   {
     "id": "idm-0214",
     "dutch": "Daar heb ik nog niet over nagedacht",
-    "meaning": "I haven't thought about that yet (informal / in)",
+    "meaning": "I haven't thought about that yet (at the doctor)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
     "example": "Dat is een interessante vraag, daar heb ik nog niet over nagedacht.",
-    "exampleEn": "I haven't thought about that yet in context: in het openbaar vervoer (on public transit)",
-    "contextNote": "Spoken formula used in het openbaar vervoer (on public transit)",
+    "exampleEn": "I haven't thought about that yet (at the doctor)",
+    "contextNote": "Spoken formula used in context: bij de huisarts (medisch consult)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "in"
+      "bij"
     ],
     "related": []
   },
   {
     "id": "idm-0215",
-    "dutch": "Zoje u mij kunnen doorverbinden met...?",
-    "meaning": "Could you connect me with...? (informal / in)",
+    "dutch": "Zou u mij kunnen doorverbinden met de juiste afdeling?",
+    "meaning": "Could you connect me with the right department? (at the doctor)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "B1",
-    "example": "Goedemorgen, zoje u mij kunnen doorverbinden met de afdeling administratie?",
-    "exampleEn": "Could you connect me with...? in context: in het openbaar vervoer (on public transit)",
-    "contextNote": "Spoken formula used in het openbaar vervoer (on public transit)",
+    "example": "Goedemorgen, zou u mij kunnen doorverbinden met de afdeling administratie?",
+    "exampleEn": "Could you connect me with the right department? (at the doctor)",
+    "contextNote": "Spoken formula used in context: bij de huisarts (medisch consult)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "in"
+      "bij"
     ],
     "related": []
   },
   {
     "id": "idm-0216",
     "dutch": "Ik ben het er roerend mee eens",
-    "meaning": "I completely and wholeheartedly agree (informal / in)",
+    "meaning": "I completely and wholeheartedly agree (at the doctor)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "B1",
-    "example": "Met jojew visie op duurzaamheid ben ik het roerend eens.",
-    "exampleEn": "I completely and wholeheartedly agree in context: in het openbaar vervoer (on public transit)",
-    "contextNote": "Spoken formula used in het openbaar vervoer (on public transit)",
+    "example": "Met uw visie op duurzaamheid ben ik het roerend eens.",
+    "exampleEn": "I completely and wholeheartedly agree (at the doctor)",
+    "contextNote": "Spoken formula used in context: bij de huisarts (medisch consult)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "in"
+      "bij"
     ],
     "related": []
   },
   {
     "id": "idm-0217",
     "dutch": "Dat is makkelijker gezegd dan gedaan",
-    "meaning": "That is easier said than done (informal / in)",
+    "meaning": "That is easier said than done (at the doctor)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
     "example": "Gezonder eten klinkt simpel, maar het is makkelijker gezegd dan gedaan.",
-    "exampleEn": "That is easier said than done in context: in het openbaar vervoer (on public transit)",
-    "contextNote": "Spoken formula used in het openbaar vervoer (on public transit)",
+    "exampleEn": "That is easier said than done (at the doctor)",
+    "contextNote": "Spoken formula used in context: bij de huisarts (medisch consult)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "in"
+      "bij"
     ],
     "related": []
   },
   {
     "id": "idm-0218",
-    "dutch": "Neem de tijd",
-    "meaning": "Take your time (informal / in)",
+    "dutch": "Neem rustig de tijd",
+    "meaning": "Take your time (at the doctor)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A1",
-    "example": "Er is geen haast bij, neem rjestig de tijd.",
-    "exampleEn": "Take your time in context: in het openbaar vervoer (on public transit)",
-    "contextNote": "Spoken formula used in het openbaar vervoer (on public transit)",
+    "example": "Er is geen haast bij, neem rustig de tijd.",
+    "exampleEn": "Take your time (at the doctor)",
+    "contextNote": "Spoken formula used in context: bij de huisarts (medisch consult)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "in"
+      "bij"
     ],
     "related": []
   },
   {
     "id": "idm-0219",
-    "dutch": "Het spijt me ontzettend",
-    "meaning": "I am terribly sorry (informal / in)",
+    "dutch": "Het spijt me ontzettend voor het ongemak",
+    "meaning": "I am terribly sorry for the inconvenience (at the doctor)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
     "example": "Het spijt me ontzettend dat ik te laat ben voor onze afspraak.",
-    "exampleEn": "I am terribly sorry in context: in het openbaar vervoer (on public transit)",
-    "contextNote": "Spoken formula used in het openbaar vervoer (on public transit)",
+    "exampleEn": "I am terribly sorry for the inconvenience (at the doctor)",
+    "contextNote": "Spoken formula used in context: bij de huisarts (medisch consult)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "in"
+      "bij"
     ],
     "related": []
   },
   {
     "id": "idm-0220",
-    "dutch": "Alvast heel erg bedankt voor de moeite",
-    "meaning": "Thank you very much in advance for your trouble (informal / in)",
+    "dutch": "Alvast heel erg bedankt voor uw medewerking",
+    "meaning": "Thank you very much in advance for your cooperation (at the doctor)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
-    "example": "Ik zie jew reactie tegemoet, alvast heel erg bedankt voor de moeite!",
-    "exampleEn": "Thank you very much in advance for your trouble in context: in het openbaar vervoer (on public transit)",
-    "contextNote": "Spoken formula used in het openbaar vervoer (on public transit)",
+    "example": "Ik zie uw reactie tegemoet, alvast heel erg bedankt voor uw medewerking!",
+    "exampleEn": "Thank you very much in advance for your cooperation (at the doctor)",
+    "contextNote": "Spoken formula used in context: bij de huisarts (medisch consult)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "in"
+      "bij"
     ],
     "related": []
   },
   {
     "id": "idm-0221",
-    "dutch": "Mag ik je even iets vragen?",
-    "meaning": "May I ask you something for a moment? (informal / in)",
+    "dutch": "Mag ik u even iets vragen?",
+    "meaning": "May I ask you something for a moment? (at work)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A1",
-    "example": "Pardon mevrojew, mag ik u even iets vragen over de bushalte?",
-    "exampleEn": "May I ask you something for a moment? in context: in het restaurant (at the restaurant)",
-    "contextNote": "Spoken formula used in het restaurant (at the restaurant)",
+    "example": "Pardon mevrouw, mag ik u even iets vragen over de bushalte?",
+    "exampleEn": "May I ask you something for a moment? (at work)",
+    "contextNote": "Spoken formula used in context: op het werk (kantooroverleg)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "in"
+      "op"
     ],
     "related": []
   },
   {
     "id": "idm-0222",
-    "dutch": "Kjent u dat alstublieft herhalen?",
-    "meaning": "Could you please repeat that? (informal / in)",
+    "dutch": "Kunt u dat alstublieft herhalen?",
+    "meaning": "Could you please repeat that? (at work)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A1",
-    "example": "Het ging iets te snel, kjent u dat alstublieft herhalen?",
-    "exampleEn": "Could you please repeat that? in context: in het restaurant (at the restaurant)",
-    "contextNote": "Spoken formula used in het restaurant (at the restaurant)",
+    "example": "Het ging iets te snel, kunt u dat alstublieft herhalen?",
+    "exampleEn": "Could you please repeat that? (at work)",
+    "contextNote": "Spoken formula used in context: op het werk (kantooroverleg)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "in"
+      "op"
     ],
     "related": []
   },
   {
     "id": "idm-0223",
-    "dutch": "Wat bedoelt je precies met...?",
-    "meaning": "What exactly do you mean by...? (informal / in)",
+    "dutch": "Wat bedoelt u precies met dit punt?",
+    "meaning": "What exactly do you mean by this point? (at work)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
-    "example": "Wat bedoelt je precies met die voorwaarde in het contract?",
-    "exampleEn": "What exactly do you mean by...? in context: in het restaurant (at the restaurant)",
-    "contextNote": "Spoken formula used in het restaurant (at the restaurant)",
+    "example": "Wat bedoelt u precies met deze voorwaarde in het contract?",
+    "exampleEn": "What exactly do you mean by this point? (at work)",
+    "contextNote": "Spoken formula used in context: op het werk (kantooroverleg)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "in"
+      "op"
     ],
     "related": []
   },
   {
     "id": "idm-0224",
     "dutch": "Daar heb ik nog niet over nagedacht",
-    "meaning": "I haven't thought about that yet (informal / in)",
+    "meaning": "I haven't thought about that yet (at work)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
     "example": "Dat is een interessante vraag, daar heb ik nog niet over nagedacht.",
-    "exampleEn": "I haven't thought about that yet in context: in het restaurant (at the restaurant)",
-    "contextNote": "Spoken formula used in het restaurant (at the restaurant)",
+    "exampleEn": "I haven't thought about that yet (at work)",
+    "contextNote": "Spoken formula used in context: op het werk (kantooroverleg)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "in"
+      "op"
     ],
     "related": []
   },
   {
     "id": "idm-0225",
-    "dutch": "Zoje u mij kunnen doorverbinden met...?",
-    "meaning": "Could you connect me with...? (informal / in)",
+    "dutch": "Zou u mij kunnen doorverbinden met de juiste afdeling?",
+    "meaning": "Could you connect me with the right department? (at work)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "B1",
-    "example": "Goedemorgen, zoje u mij kunnen doorverbinden met de afdeling administratie?",
-    "exampleEn": "Could you connect me with...? in context: in het restaurant (at the restaurant)",
-    "contextNote": "Spoken formula used in het restaurant (at the restaurant)",
+    "example": "Goedemorgen, zou u mij kunnen doorverbinden met de afdeling administratie?",
+    "exampleEn": "Could you connect me with the right department? (at work)",
+    "contextNote": "Spoken formula used in context: op het werk (kantooroverleg)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "in"
+      "op"
     ],
     "related": []
   },
   {
     "id": "idm-0226",
     "dutch": "Ik ben het er roerend mee eens",
-    "meaning": "I completely and wholeheartedly agree (informal / in)",
+    "meaning": "I completely and wholeheartedly agree (at work)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "B1",
-    "example": "Met jojew visie op duurzaamheid ben ik het roerend eens.",
-    "exampleEn": "I completely and wholeheartedly agree in context: in het restaurant (at the restaurant)",
-    "contextNote": "Spoken formula used in het restaurant (at the restaurant)",
+    "example": "Met uw visie op duurzaamheid ben ik het roerend eens.",
+    "exampleEn": "I completely and wholeheartedly agree (at work)",
+    "contextNote": "Spoken formula used in context: op het werk (kantooroverleg)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "in"
+      "op"
     ],
     "related": []
   },
   {
     "id": "idm-0227",
     "dutch": "Dat is makkelijker gezegd dan gedaan",
-    "meaning": "That is easier said than done (informal / in)",
+    "meaning": "That is easier said than done (at work)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
     "example": "Gezonder eten klinkt simpel, maar het is makkelijker gezegd dan gedaan.",
-    "exampleEn": "That is easier said than done in context: in het restaurant (at the restaurant)",
-    "contextNote": "Spoken formula used in het restaurant (at the restaurant)",
+    "exampleEn": "That is easier said than done (at work)",
+    "contextNote": "Spoken formula used in context: op het werk (kantooroverleg)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "in"
+      "op"
     ],
     "related": []
   },
   {
     "id": "idm-0228",
-    "dutch": "Neem de tijd",
-    "meaning": "Take your time (informal / in)",
+    "dutch": "Neem rustig de tijd",
+    "meaning": "Take your time (at work)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A1",
-    "example": "Er is geen haast bij, neem rjestig de tijd.",
-    "exampleEn": "Take your time in context: in het restaurant (at the restaurant)",
-    "contextNote": "Spoken formula used in het restaurant (at the restaurant)",
+    "example": "Er is geen haast bij, neem rustig de tijd.",
+    "exampleEn": "Take your time (at work)",
+    "contextNote": "Spoken formula used in context: op het werk (kantooroverleg)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "in"
+      "op"
     ],
     "related": []
   },
   {
     "id": "idm-0229",
-    "dutch": "Het spijt me ontzettend",
-    "meaning": "I am terribly sorry (informal / in)",
+    "dutch": "Het spijt me ontzettend voor het ongemak",
+    "meaning": "I am terribly sorry for the inconvenience (at work)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
     "example": "Het spijt me ontzettend dat ik te laat ben voor onze afspraak.",
-    "exampleEn": "I am terribly sorry in context: in het restaurant (at the restaurant)",
-    "contextNote": "Spoken formula used in het restaurant (at the restaurant)",
+    "exampleEn": "I am terribly sorry for the inconvenience (at work)",
+    "contextNote": "Spoken formula used in context: op het werk (kantooroverleg)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "in"
+      "op"
     ],
     "related": []
   },
   {
     "id": "idm-0230",
-    "dutch": "Alvast heel erg bedankt voor de moeite",
-    "meaning": "Thank you very much in advance for your trouble (informal / in)",
+    "dutch": "Alvast heel erg bedankt voor uw medewerking",
+    "meaning": "Thank you very much in advance for your cooperation (at work)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
-    "example": "Ik zie jew reactie tegemoet, alvast heel erg bedankt voor de moeite!",
-    "exampleEn": "Thank you very much in advance for your trouble in context: in het restaurant (at the restaurant)",
-    "contextNote": "Spoken formula used in het restaurant (at the restaurant)",
+    "example": "Ik zie uw reactie tegemoet, alvast heel erg bedankt voor uw medewerking!",
+    "exampleEn": "Thank you very much in advance for your cooperation (at work)",
+    "contextNote": "Spoken formula used in context: op het werk (kantooroverleg)",
+    "usageWarning": "",
+    "tags": [
+      "conversational",
+      "op"
+    ],
+    "related": []
+  },
+  {
+    "id": "idm-0231",
+    "dutch": "Mag ik u even iets vragen?",
+    "meaning": "May I ask you something for a moment? (on public transit)",
+    "literal": "",
+    "register": "polite",
+    "level": "A1",
+    "example": "Pardon mevrouw, mag ik u even iets vragen over de bushalte?",
+    "exampleEn": "May I ask you something for a moment? (on public transit)",
+    "contextNote": "Spoken formula used in context: in het openbaar vervoer (reizen met trein en bus)",
     "usageWarning": "",
     "tags": [
       "conversational",
@@ -3913,1188 +3930,1188 @@ globalThis.NP_IDIOMS = [
     "related": []
   },
   {
-    "id": "idm-0231",
-    "dutch": "Mag ik je even iets vragen?",
-    "meaning": "May I ask you something for a moment? (informal / op)",
-    "literal": "",
-    "register": "informal",
-    "level": "A1",
-    "example": "Pardon mevrojew, mag ik u even iets vragen over de bushalte?",
-    "exampleEn": "May I ask you something for a moment? in context: op de markt (at the open-air market)",
-    "contextNote": "Spoken formula used op de markt (at the open-air market)",
-    "usageWarning": "",
-    "tags": [
-      "conversational",
-      "op"
-    ],
-    "related": []
-  },
-  {
     "id": "idm-0232",
-    "dutch": "Kjent u dat alstublieft herhalen?",
-    "meaning": "Could you please repeat that? (informal / op)",
+    "dutch": "Kunt u dat alstublieft herhalen?",
+    "meaning": "Could you please repeat that? (on public transit)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A1",
-    "example": "Het ging iets te snel, kjent u dat alstublieft herhalen?",
-    "exampleEn": "Could you please repeat that? in context: op de markt (at the open-air market)",
-    "contextNote": "Spoken formula used op de markt (at the open-air market)",
+    "example": "Het ging iets te snel, kunt u dat alstublieft herhalen?",
+    "exampleEn": "Could you please repeat that? (on public transit)",
+    "contextNote": "Spoken formula used in context: in het openbaar vervoer (reizen met trein en bus)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "op"
+      "in"
     ],
     "related": []
   },
   {
     "id": "idm-0233",
-    "dutch": "Wat bedoelt je precies met...?",
-    "meaning": "What exactly do you mean by...? (informal / op)",
+    "dutch": "Wat bedoelt u precies met dit punt?",
+    "meaning": "What exactly do you mean by this point? (on public transit)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
-    "example": "Wat bedoelt je precies met die voorwaarde in het contract?",
-    "exampleEn": "What exactly do you mean by...? in context: op de markt (at the open-air market)",
-    "contextNote": "Spoken formula used op de markt (at the open-air market)",
+    "example": "Wat bedoelt u precies met deze voorwaarde in het contract?",
+    "exampleEn": "What exactly do you mean by this point? (on public transit)",
+    "contextNote": "Spoken formula used in context: in het openbaar vervoer (reizen met trein en bus)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "op"
+      "in"
     ],
     "related": []
   },
   {
     "id": "idm-0234",
     "dutch": "Daar heb ik nog niet over nagedacht",
-    "meaning": "I haven't thought about that yet (informal / op)",
+    "meaning": "I haven't thought about that yet (on public transit)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
     "example": "Dat is een interessante vraag, daar heb ik nog niet over nagedacht.",
-    "exampleEn": "I haven't thought about that yet in context: op de markt (at the open-air market)",
-    "contextNote": "Spoken formula used op de markt (at the open-air market)",
+    "exampleEn": "I haven't thought about that yet (on public transit)",
+    "contextNote": "Spoken formula used in context: in het openbaar vervoer (reizen met trein en bus)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "op"
+      "in"
     ],
     "related": []
   },
   {
     "id": "idm-0235",
-    "dutch": "Zoje u mij kunnen doorverbinden met...?",
-    "meaning": "Could you connect me with...? (informal / op)",
+    "dutch": "Zou u mij kunnen doorverbinden met de juiste afdeling?",
+    "meaning": "Could you connect me with the right department? (on public transit)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "B1",
-    "example": "Goedemorgen, zoje u mij kunnen doorverbinden met de afdeling administratie?",
-    "exampleEn": "Could you connect me with...? in context: op de markt (at the open-air market)",
-    "contextNote": "Spoken formula used op de markt (at the open-air market)",
+    "example": "Goedemorgen, zou u mij kunnen doorverbinden met de afdeling administratie?",
+    "exampleEn": "Could you connect me with the right department? (on public transit)",
+    "contextNote": "Spoken formula used in context: in het openbaar vervoer (reizen met trein en bus)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "op"
+      "in"
     ],
     "related": []
   },
   {
     "id": "idm-0236",
     "dutch": "Ik ben het er roerend mee eens",
-    "meaning": "I completely and wholeheartedly agree (informal / op)",
+    "meaning": "I completely and wholeheartedly agree (on public transit)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "B1",
-    "example": "Met jojew visie op duurzaamheid ben ik het roerend eens.",
-    "exampleEn": "I completely and wholeheartedly agree in context: op de markt (at the open-air market)",
-    "contextNote": "Spoken formula used op de markt (at the open-air market)",
+    "example": "Met uw visie op duurzaamheid ben ik het roerend eens.",
+    "exampleEn": "I completely and wholeheartedly agree (on public transit)",
+    "contextNote": "Spoken formula used in context: in het openbaar vervoer (reizen met trein en bus)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "op"
+      "in"
     ],
     "related": []
   },
   {
     "id": "idm-0237",
     "dutch": "Dat is makkelijker gezegd dan gedaan",
-    "meaning": "That is easier said than done (informal / op)",
+    "meaning": "That is easier said than done (on public transit)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
     "example": "Gezonder eten klinkt simpel, maar het is makkelijker gezegd dan gedaan.",
-    "exampleEn": "That is easier said than done in context: op de markt (at the open-air market)",
-    "contextNote": "Spoken formula used op de markt (at the open-air market)",
+    "exampleEn": "That is easier said than done (on public transit)",
+    "contextNote": "Spoken formula used in context: in het openbaar vervoer (reizen met trein en bus)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "op"
+      "in"
     ],
     "related": []
   },
   {
     "id": "idm-0238",
-    "dutch": "Neem de tijd",
-    "meaning": "Take your time (informal / op)",
+    "dutch": "Neem rustig de tijd",
+    "meaning": "Take your time (on public transit)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A1",
-    "example": "Er is geen haast bij, neem rjestig de tijd.",
-    "exampleEn": "Take your time in context: op de markt (at the open-air market)",
-    "contextNote": "Spoken formula used op de markt (at the open-air market)",
+    "example": "Er is geen haast bij, neem rustig de tijd.",
+    "exampleEn": "Take your time (on public transit)",
+    "contextNote": "Spoken formula used in context: in het openbaar vervoer (reizen met trein en bus)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "op"
+      "in"
     ],
     "related": []
   },
   {
     "id": "idm-0239",
-    "dutch": "Het spijt me ontzettend",
-    "meaning": "I am terribly sorry (informal / op)",
+    "dutch": "Het spijt me ontzettend voor het ongemak",
+    "meaning": "I am terribly sorry for the inconvenience (on public transit)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
     "example": "Het spijt me ontzettend dat ik te laat ben voor onze afspraak.",
-    "exampleEn": "I am terribly sorry in context: op de markt (at the open-air market)",
-    "contextNote": "Spoken formula used op de markt (at the open-air market)",
+    "exampleEn": "I am terribly sorry for the inconvenience (on public transit)",
+    "contextNote": "Spoken formula used in context: in het openbaar vervoer (reizen met trein en bus)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "op"
+      "in"
     ],
     "related": []
   },
   {
     "id": "idm-0240",
-    "dutch": "Alvast heel erg bedankt voor de moeite",
-    "meaning": "Thank you very much in advance for your trouble (informal / op)",
+    "dutch": "Alvast heel erg bedankt voor uw medewerking",
+    "meaning": "Thank you very much in advance for your cooperation (on public transit)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
-    "example": "Ik zie jew reactie tegemoet, alvast heel erg bedankt voor de moeite!",
-    "exampleEn": "Thank you very much in advance for your trouble in context: op de markt (at the open-air market)",
-    "contextNote": "Spoken formula used op de markt (at the open-air market)",
+    "example": "Ik zie uw reactie tegemoet, alvast heel erg bedankt voor uw medewerking!",
+    "exampleEn": "Thank you very much in advance for your cooperation (on public transit)",
+    "contextNote": "Spoken formula used in context: in het openbaar vervoer (reizen met trein en bus)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "op"
+      "in"
     ],
     "related": []
   },
   {
     "id": "idm-0241",
-    "dutch": "Mag ik je even iets vragen?",
-    "meaning": "May I ask you something for a moment? (informal / met)",
+    "dutch": "Mag ik u even iets vragen?",
+    "meaning": "May I ask you something for a moment? (at the restaurant)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A1",
-    "example": "Pardon mevrojew, mag ik u even iets vragen over de bushalte?",
-    "exampleEn": "May I ask you something for a moment? in context: met de buren (with the neighbours)",
-    "contextNote": "Spoken formula used met de buren (with the neighbours)",
+    "example": "Pardon mevrouw, mag ik u even iets vragen over de bushalte?",
+    "exampleEn": "May I ask you something for a moment? (at the restaurant)",
+    "contextNote": "Spoken formula used in context: in het restaurant (horeca en dineren)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "met"
+      "in"
     ],
     "related": []
   },
   {
     "id": "idm-0242",
-    "dutch": "Kjent u dat alstublieft herhalen?",
-    "meaning": "Could you please repeat that? (informal / met)",
+    "dutch": "Kunt u dat alstublieft herhalen?",
+    "meaning": "Could you please repeat that? (at the restaurant)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A1",
-    "example": "Het ging iets te snel, kjent u dat alstublieft herhalen?",
-    "exampleEn": "Could you please repeat that? in context: met de buren (with the neighbours)",
-    "contextNote": "Spoken formula used met de buren (with the neighbours)",
+    "example": "Het ging iets te snel, kunt u dat alstublieft herhalen?",
+    "exampleEn": "Could you please repeat that? (at the restaurant)",
+    "contextNote": "Spoken formula used in context: in het restaurant (horeca en dineren)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "met"
+      "in"
     ],
     "related": []
   },
   {
     "id": "idm-0243",
-    "dutch": "Wat bedoelt je precies met...?",
-    "meaning": "What exactly do you mean by...? (informal / met)",
+    "dutch": "Wat bedoelt u precies met dit punt?",
+    "meaning": "What exactly do you mean by this point? (at the restaurant)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
-    "example": "Wat bedoelt je precies met die voorwaarde in het contract?",
-    "exampleEn": "What exactly do you mean by...? in context: met de buren (with the neighbours)",
-    "contextNote": "Spoken formula used met de buren (with the neighbours)",
+    "example": "Wat bedoelt u precies met deze voorwaarde in het contract?",
+    "exampleEn": "What exactly do you mean by this point? (at the restaurant)",
+    "contextNote": "Spoken formula used in context: in het restaurant (horeca en dineren)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "met"
+      "in"
     ],
     "related": []
   },
   {
     "id": "idm-0244",
     "dutch": "Daar heb ik nog niet over nagedacht",
-    "meaning": "I haven't thought about that yet (informal / met)",
+    "meaning": "I haven't thought about that yet (at the restaurant)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
     "example": "Dat is een interessante vraag, daar heb ik nog niet over nagedacht.",
-    "exampleEn": "I haven't thought about that yet in context: met de buren (with the neighbours)",
-    "contextNote": "Spoken formula used met de buren (with the neighbours)",
+    "exampleEn": "I haven't thought about that yet (at the restaurant)",
+    "contextNote": "Spoken formula used in context: in het restaurant (horeca en dineren)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "met"
+      "in"
     ],
     "related": []
   },
   {
     "id": "idm-0245",
-    "dutch": "Zoje u mij kunnen doorverbinden met...?",
-    "meaning": "Could you connect me with...? (informal / met)",
+    "dutch": "Zou u mij kunnen doorverbinden met de juiste afdeling?",
+    "meaning": "Could you connect me with the right department? (at the restaurant)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "B1",
-    "example": "Goedemorgen, zoje u mij kunnen doorverbinden met de afdeling administratie?",
-    "exampleEn": "Could you connect me with...? in context: met de buren (with the neighbours)",
-    "contextNote": "Spoken formula used met de buren (with the neighbours)",
+    "example": "Goedemorgen, zou u mij kunnen doorverbinden met de afdeling administratie?",
+    "exampleEn": "Could you connect me with the right department? (at the restaurant)",
+    "contextNote": "Spoken formula used in context: in het restaurant (horeca en dineren)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "met"
+      "in"
     ],
     "related": []
   },
   {
     "id": "idm-0246",
     "dutch": "Ik ben het er roerend mee eens",
-    "meaning": "I completely and wholeheartedly agree (informal / met)",
+    "meaning": "I completely and wholeheartedly agree (at the restaurant)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "B1",
-    "example": "Met jojew visie op duurzaamheid ben ik het roerend eens.",
-    "exampleEn": "I completely and wholeheartedly agree in context: met de buren (with the neighbours)",
-    "contextNote": "Spoken formula used met de buren (with the neighbours)",
+    "example": "Met uw visie op duurzaamheid ben ik het roerend eens.",
+    "exampleEn": "I completely and wholeheartedly agree (at the restaurant)",
+    "contextNote": "Spoken formula used in context: in het restaurant (horeca en dineren)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "met"
+      "in"
     ],
     "related": []
   },
   {
     "id": "idm-0247",
     "dutch": "Dat is makkelijker gezegd dan gedaan",
-    "meaning": "That is easier said than done (informal / met)",
+    "meaning": "That is easier said than done (at the restaurant)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
     "example": "Gezonder eten klinkt simpel, maar het is makkelijker gezegd dan gedaan.",
-    "exampleEn": "That is easier said than done in context: met de buren (with the neighbours)",
-    "contextNote": "Spoken formula used met de buren (with the neighbours)",
+    "exampleEn": "That is easier said than done (at the restaurant)",
+    "contextNote": "Spoken formula used in context: in het restaurant (horeca en dineren)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "met"
+      "in"
     ],
     "related": []
   },
   {
     "id": "idm-0248",
-    "dutch": "Neem de tijd",
-    "meaning": "Take your time (informal / met)",
+    "dutch": "Neem rustig de tijd",
+    "meaning": "Take your time (at the restaurant)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A1",
-    "example": "Er is geen haast bij, neem rjestig de tijd.",
-    "exampleEn": "Take your time in context: met de buren (with the neighbours)",
-    "contextNote": "Spoken formula used met de buren (with the neighbours)",
+    "example": "Er is geen haast bij, neem rustig de tijd.",
+    "exampleEn": "Take your time (at the restaurant)",
+    "contextNote": "Spoken formula used in context: in het restaurant (horeca en dineren)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "met"
+      "in"
     ],
     "related": []
   },
   {
     "id": "idm-0249",
-    "dutch": "Het spijt me ontzettend",
-    "meaning": "I am terribly sorry (informal / met)",
+    "dutch": "Het spijt me ontzettend voor het ongemak",
+    "meaning": "I am terribly sorry for the inconvenience (at the restaurant)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
     "example": "Het spijt me ontzettend dat ik te laat ben voor onze afspraak.",
-    "exampleEn": "I am terribly sorry in context: met de buren (with the neighbours)",
-    "contextNote": "Spoken formula used met de buren (with the neighbours)",
+    "exampleEn": "I am terribly sorry for the inconvenience (at the restaurant)",
+    "contextNote": "Spoken formula used in context: in het restaurant (horeca en dineren)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "met"
+      "in"
     ],
     "related": []
   },
   {
     "id": "idm-0250",
-    "dutch": "Alvast heel erg bedankt voor de moeite",
-    "meaning": "Thank you very much in advance for your trouble (informal / met)",
+    "dutch": "Alvast heel erg bedankt voor uw medewerking",
+    "meaning": "Thank you very much in advance for your cooperation (at the restaurant)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
-    "example": "Ik zie jew reactie tegemoet, alvast heel erg bedankt voor de moeite!",
-    "exampleEn": "Thank you very much in advance for your trouble in context: met de buren (with the neighbours)",
-    "contextNote": "Spoken formula used met de buren (with the neighbours)",
+    "example": "Ik zie uw reactie tegemoet, alvast heel erg bedankt voor uw medewerking!",
+    "exampleEn": "Thank you very much in advance for your cooperation (at the restaurant)",
+    "contextNote": "Spoken formula used in context: in het restaurant (horeca en dineren)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "met"
+      "in"
     ],
     "related": []
   },
   {
     "id": "idm-0251",
-    "dutch": "Mag ik je even iets vragen?",
-    "meaning": "May I ask you something for a moment? (informal / aan)",
+    "dutch": "Mag ik u even iets vragen?",
+    "meaning": "May I ask you something for a moment? (at the open-air market)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A1",
-    "example": "Pardon mevrojew, mag ik u even iets vragen over de bushalte?",
-    "exampleEn": "May I ask you something for a moment? in context: aan de telefoon (on the phone)",
-    "contextNote": "Spoken formula used aan de telefoon (on the phone)",
+    "example": "Pardon mevrouw, mag ik u even iets vragen over de bushalte?",
+    "exampleEn": "May I ask you something for a moment? (at the open-air market)",
+    "contextNote": "Spoken formula used in context: op de markt (boodschappen doen)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "aan"
+      "op"
     ],
     "related": []
   },
   {
     "id": "idm-0252",
-    "dutch": "Kjent u dat alstublieft herhalen?",
-    "meaning": "Could you please repeat that? (informal / aan)",
+    "dutch": "Kunt u dat alstublieft herhalen?",
+    "meaning": "Could you please repeat that? (at the open-air market)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A1",
-    "example": "Het ging iets te snel, kjent u dat alstublieft herhalen?",
-    "exampleEn": "Could you please repeat that? in context: aan de telefoon (on the phone)",
-    "contextNote": "Spoken formula used aan de telefoon (on the phone)",
+    "example": "Het ging iets te snel, kunt u dat alstublieft herhalen?",
+    "exampleEn": "Could you please repeat that? (at the open-air market)",
+    "contextNote": "Spoken formula used in context: op de markt (boodschappen doen)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "aan"
+      "op"
     ],
     "related": []
   },
   {
     "id": "idm-0253",
-    "dutch": "Wat bedoelt je precies met...?",
-    "meaning": "What exactly do you mean by...? (informal / aan)",
+    "dutch": "Wat bedoelt u precies met dit punt?",
+    "meaning": "What exactly do you mean by this point? (at the open-air market)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
-    "example": "Wat bedoelt je precies met die voorwaarde in het contract?",
-    "exampleEn": "What exactly do you mean by...? in context: aan de telefoon (on the phone)",
-    "contextNote": "Spoken formula used aan de telefoon (on the phone)",
+    "example": "Wat bedoelt u precies met deze voorwaarde in het contract?",
+    "exampleEn": "What exactly do you mean by this point? (at the open-air market)",
+    "contextNote": "Spoken formula used in context: op de markt (boodschappen doen)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "aan"
+      "op"
     ],
     "related": []
   },
   {
     "id": "idm-0254",
     "dutch": "Daar heb ik nog niet over nagedacht",
-    "meaning": "I haven't thought about that yet (informal / aan)",
+    "meaning": "I haven't thought about that yet (at the open-air market)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
     "example": "Dat is een interessante vraag, daar heb ik nog niet over nagedacht.",
-    "exampleEn": "I haven't thought about that yet in context: aan de telefoon (on the phone)",
-    "contextNote": "Spoken formula used aan de telefoon (on the phone)",
+    "exampleEn": "I haven't thought about that yet (at the open-air market)",
+    "contextNote": "Spoken formula used in context: op de markt (boodschappen doen)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "aan"
+      "op"
     ],
     "related": []
   },
   {
     "id": "idm-0255",
-    "dutch": "Zoje u mij kunnen doorverbinden met...?",
-    "meaning": "Could you connect me with...? (informal / aan)",
+    "dutch": "Zou u mij kunnen doorverbinden met de juiste afdeling?",
+    "meaning": "Could you connect me with the right department? (at the open-air market)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "B1",
-    "example": "Goedemorgen, zoje u mij kunnen doorverbinden met de afdeling administratie?",
-    "exampleEn": "Could you connect me with...? in context: aan de telefoon (on the phone)",
-    "contextNote": "Spoken formula used aan de telefoon (on the phone)",
+    "example": "Goedemorgen, zou u mij kunnen doorverbinden met de afdeling administratie?",
+    "exampleEn": "Could you connect me with the right department? (at the open-air market)",
+    "contextNote": "Spoken formula used in context: op de markt (boodschappen doen)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "aan"
+      "op"
     ],
     "related": []
   },
   {
     "id": "idm-0256",
     "dutch": "Ik ben het er roerend mee eens",
-    "meaning": "I completely and wholeheartedly agree (informal / aan)",
+    "meaning": "I completely and wholeheartedly agree (at the open-air market)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "B1",
-    "example": "Met jojew visie op duurzaamheid ben ik het roerend eens.",
-    "exampleEn": "I completely and wholeheartedly agree in context: aan de telefoon (on the phone)",
-    "contextNote": "Spoken formula used aan de telefoon (on the phone)",
+    "example": "Met uw visie op duurzaamheid ben ik het roerend eens.",
+    "exampleEn": "I completely and wholeheartedly agree (at the open-air market)",
+    "contextNote": "Spoken formula used in context: op de markt (boodschappen doen)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "aan"
+      "op"
     ],
     "related": []
   },
   {
     "id": "idm-0257",
     "dutch": "Dat is makkelijker gezegd dan gedaan",
-    "meaning": "That is easier said than done (informal / aan)",
+    "meaning": "That is easier said than done (at the open-air market)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
     "example": "Gezonder eten klinkt simpel, maar het is makkelijker gezegd dan gedaan.",
-    "exampleEn": "That is easier said than done in context: aan de telefoon (on the phone)",
-    "contextNote": "Spoken formula used aan de telefoon (on the phone)",
+    "exampleEn": "That is easier said than done (at the open-air market)",
+    "contextNote": "Spoken formula used in context: op de markt (boodschappen doen)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "aan"
+      "op"
     ],
     "related": []
   },
   {
     "id": "idm-0258",
-    "dutch": "Neem de tijd",
-    "meaning": "Take your time (informal / aan)",
+    "dutch": "Neem rustig de tijd",
+    "meaning": "Take your time (at the open-air market)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A1",
-    "example": "Er is geen haast bij, neem rjestig de tijd.",
-    "exampleEn": "Take your time in context: aan de telefoon (on the phone)",
-    "contextNote": "Spoken formula used aan de telefoon (on the phone)",
+    "example": "Er is geen haast bij, neem rustig de tijd.",
+    "exampleEn": "Take your time (at the open-air market)",
+    "contextNote": "Spoken formula used in context: op de markt (boodschappen doen)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "aan"
+      "op"
     ],
     "related": []
   },
   {
     "id": "idm-0259",
-    "dutch": "Het spijt me ontzettend",
-    "meaning": "I am terribly sorry (informal / aan)",
+    "dutch": "Het spijt me ontzettend voor het ongemak",
+    "meaning": "I am terribly sorry for the inconvenience (at the open-air market)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
     "example": "Het spijt me ontzettend dat ik te laat ben voor onze afspraak.",
-    "exampleEn": "I am terribly sorry in context: aan de telefoon (on the phone)",
-    "contextNote": "Spoken formula used aan de telefoon (on the phone)",
+    "exampleEn": "I am terribly sorry for the inconvenience (at the open-air market)",
+    "contextNote": "Spoken formula used in context: op de markt (boodschappen doen)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "aan"
+      "op"
     ],
     "related": []
   },
   {
     "id": "idm-0260",
-    "dutch": "Alvast heel erg bedankt voor de moeite",
-    "meaning": "Thank you very much in advance for your trouble (informal / aan)",
+    "dutch": "Alvast heel erg bedankt voor uw medewerking",
+    "meaning": "Thank you very much in advance for your cooperation (at the open-air market)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
-    "example": "Ik zie jew reactie tegemoet, alvast heel erg bedankt voor de moeite!",
-    "exampleEn": "Thank you very much in advance for your trouble in context: aan de telefoon (on the phone)",
-    "contextNote": "Spoken formula used aan de telefoon (on the phone)",
+    "example": "Ik zie uw reactie tegemoet, alvast heel erg bedankt voor uw medewerking!",
+    "exampleEn": "Thank you very much in advance for your cooperation (at the open-air market)",
+    "contextNote": "Spoken formula used in context: op de markt (boodschappen doen)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "aan"
+      "op"
     ],
     "related": []
   },
   {
     "id": "idm-0261",
-    "dutch": "Mag ik je even iets vragen?",
-    "meaning": "May I ask you something for a moment? (informal / in)",
+    "dutch": "Mag ik u even iets vragen?",
+    "meaning": "May I ask you something for a moment? (with the neighbours)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A1",
-    "example": "Pardon mevrojew, mag ik u even iets vragen over de bushalte?",
-    "exampleEn": "May I ask you something for a moment? in context: in een vergadering (in a business meeting)",
-    "contextNote": "Spoken formula used in een vergadering (in a business meeting)",
+    "example": "Pardon mevrouw, mag ik u even iets vragen over de bushalte?",
+    "exampleEn": "May I ask you something for a moment? (with the neighbours)",
+    "contextNote": "Spoken formula used in context: met de buren (buurtcontact)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "in"
+      "met"
     ],
     "related": []
   },
   {
     "id": "idm-0262",
-    "dutch": "Kjent u dat alstublieft herhalen?",
-    "meaning": "Could you please repeat that? (informal / in)",
+    "dutch": "Kunt u dat alstublieft herhalen?",
+    "meaning": "Could you please repeat that? (with the neighbours)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A1",
-    "example": "Het ging iets te snel, kjent u dat alstublieft herhalen?",
-    "exampleEn": "Could you please repeat that? in context: in een vergadering (in a business meeting)",
-    "contextNote": "Spoken formula used in een vergadering (in a business meeting)",
+    "example": "Het ging iets te snel, kunt u dat alstublieft herhalen?",
+    "exampleEn": "Could you please repeat that? (with the neighbours)",
+    "contextNote": "Spoken formula used in context: met de buren (buurtcontact)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "in"
+      "met"
     ],
     "related": []
   },
   {
     "id": "idm-0263",
-    "dutch": "Wat bedoelt je precies met...?",
-    "meaning": "What exactly do you mean by...? (informal / in)",
+    "dutch": "Wat bedoelt u precies met dit punt?",
+    "meaning": "What exactly do you mean by this point? (with the neighbours)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
-    "example": "Wat bedoelt je precies met die voorwaarde in het contract?",
-    "exampleEn": "What exactly do you mean by...? in context: in een vergadering (in a business meeting)",
-    "contextNote": "Spoken formula used in een vergadering (in a business meeting)",
+    "example": "Wat bedoelt u precies met deze voorwaarde in het contract?",
+    "exampleEn": "What exactly do you mean by this point? (with the neighbours)",
+    "contextNote": "Spoken formula used in context: met de buren (buurtcontact)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "in"
+      "met"
     ],
     "related": []
   },
   {
     "id": "idm-0264",
     "dutch": "Daar heb ik nog niet over nagedacht",
-    "meaning": "I haven't thought about that yet (informal / in)",
+    "meaning": "I haven't thought about that yet (with the neighbours)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
     "example": "Dat is een interessante vraag, daar heb ik nog niet over nagedacht.",
-    "exampleEn": "I haven't thought about that yet in context: in een vergadering (in a business meeting)",
-    "contextNote": "Spoken formula used in een vergadering (in a business meeting)",
+    "exampleEn": "I haven't thought about that yet (with the neighbours)",
+    "contextNote": "Spoken formula used in context: met de buren (buurtcontact)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "in"
+      "met"
     ],
     "related": []
   },
   {
     "id": "idm-0265",
-    "dutch": "Zoje u mij kunnen doorverbinden met...?",
-    "meaning": "Could you connect me with...? (informal / in)",
+    "dutch": "Zou u mij kunnen doorverbinden met de juiste afdeling?",
+    "meaning": "Could you connect me with the right department? (with the neighbours)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "B1",
-    "example": "Goedemorgen, zoje u mij kunnen doorverbinden met de afdeling administratie?",
-    "exampleEn": "Could you connect me with...? in context: in een vergadering (in a business meeting)",
-    "contextNote": "Spoken formula used in een vergadering (in a business meeting)",
+    "example": "Goedemorgen, zou u mij kunnen doorverbinden met de afdeling administratie?",
+    "exampleEn": "Could you connect me with the right department? (with the neighbours)",
+    "contextNote": "Spoken formula used in context: met de buren (buurtcontact)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "in"
+      "met"
     ],
     "related": []
   },
   {
     "id": "idm-0266",
     "dutch": "Ik ben het er roerend mee eens",
-    "meaning": "I completely and wholeheartedly agree (informal / in)",
+    "meaning": "I completely and wholeheartedly agree (with the neighbours)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "B1",
-    "example": "Met jojew visie op duurzaamheid ben ik het roerend eens.",
-    "exampleEn": "I completely and wholeheartedly agree in context: in een vergadering (in a business meeting)",
-    "contextNote": "Spoken formula used in een vergadering (in a business meeting)",
+    "example": "Met uw visie op duurzaamheid ben ik het roerend eens.",
+    "exampleEn": "I completely and wholeheartedly agree (with the neighbours)",
+    "contextNote": "Spoken formula used in context: met de buren (buurtcontact)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "in"
+      "met"
     ],
     "related": []
   },
   {
     "id": "idm-0267",
     "dutch": "Dat is makkelijker gezegd dan gedaan",
-    "meaning": "That is easier said than done (informal / in)",
+    "meaning": "That is easier said than done (with the neighbours)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
     "example": "Gezonder eten klinkt simpel, maar het is makkelijker gezegd dan gedaan.",
-    "exampleEn": "That is easier said than done in context: in een vergadering (in a business meeting)",
-    "contextNote": "Spoken formula used in een vergadering (in a business meeting)",
+    "exampleEn": "That is easier said than done (with the neighbours)",
+    "contextNote": "Spoken formula used in context: met de buren (buurtcontact)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "in"
+      "met"
     ],
     "related": []
   },
   {
     "id": "idm-0268",
-    "dutch": "Neem de tijd",
-    "meaning": "Take your time (informal / in)",
+    "dutch": "Neem rustig de tijd",
+    "meaning": "Take your time (with the neighbours)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A1",
-    "example": "Er is geen haast bij, neem rjestig de tijd.",
-    "exampleEn": "Take your time in context: in een vergadering (in a business meeting)",
-    "contextNote": "Spoken formula used in een vergadering (in a business meeting)",
+    "example": "Er is geen haast bij, neem rustig de tijd.",
+    "exampleEn": "Take your time (with the neighbours)",
+    "contextNote": "Spoken formula used in context: met de buren (buurtcontact)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "in"
+      "met"
     ],
     "related": []
   },
   {
     "id": "idm-0269",
-    "dutch": "Het spijt me ontzettend",
-    "meaning": "I am terribly sorry (informal / in)",
+    "dutch": "Het spijt me ontzettend voor het ongemak",
+    "meaning": "I am terribly sorry for the inconvenience (with the neighbours)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
     "example": "Het spijt me ontzettend dat ik te laat ben voor onze afspraak.",
-    "exampleEn": "I am terribly sorry in context: in een vergadering (in a business meeting)",
-    "contextNote": "Spoken formula used in een vergadering (in a business meeting)",
+    "exampleEn": "I am terribly sorry for the inconvenience (with the neighbours)",
+    "contextNote": "Spoken formula used in context: met de buren (buurtcontact)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "in"
+      "met"
     ],
     "related": []
   },
   {
     "id": "idm-0270",
-    "dutch": "Alvast heel erg bedankt voor de moeite",
-    "meaning": "Thank you very much in advance for your trouble (informal / in)",
+    "dutch": "Alvast heel erg bedankt voor uw medewerking",
+    "meaning": "Thank you very much in advance for your cooperation (with the neighbours)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
-    "example": "Ik zie jew reactie tegemoet, alvast heel erg bedankt voor de moeite!",
-    "exampleEn": "Thank you very much in advance for your trouble in context: in een vergadering (in a business meeting)",
-    "contextNote": "Spoken formula used in een vergadering (in a business meeting)",
+    "example": "Ik zie uw reactie tegemoet, alvast heel erg bedankt voor uw medewerking!",
+    "exampleEn": "Thank you very much in advance for your cooperation (with the neighbours)",
+    "contextNote": "Spoken formula used in context: met de buren (buurtcontact)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "in"
+      "met"
     ],
     "related": []
   },
   {
     "id": "idm-0271",
-    "dutch": "Mag ik je even iets vragen?",
-    "meaning": "May I ask you something for a moment? (informal / tijdens)",
+    "dutch": "Mag ik u even iets vragen?",
+    "meaning": "May I ask you something for a moment? (on the phone)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A1",
-    "example": "Pardon mevrojew, mag ik u even iets vragen over de bushalte?",
-    "exampleEn": "May I ask you something for a moment? in context: tijdens een borrel (during drinks/reception)",
-    "contextNote": "Spoken formula used tijdens een borrel (during drinks/reception)",
+    "example": "Pardon mevrouw, mag ik u even iets vragen over de bushalte?",
+    "exampleEn": "May I ask you something for a moment? (on the phone)",
+    "contextNote": "Spoken formula used in context: aan de telefoon (telefonisch gesprek)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "tijdens"
+      "aan"
     ],
     "related": []
   },
   {
     "id": "idm-0272",
-    "dutch": "Kjent u dat alstublieft herhalen?",
-    "meaning": "Could you please repeat that? (informal / tijdens)",
+    "dutch": "Kunt u dat alstublieft herhalen?",
+    "meaning": "Could you please repeat that? (on the phone)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A1",
-    "example": "Het ging iets te snel, kjent u dat alstublieft herhalen?",
-    "exampleEn": "Could you please repeat that? in context: tijdens een borrel (during drinks/reception)",
-    "contextNote": "Spoken formula used tijdens een borrel (during drinks/reception)",
+    "example": "Het ging iets te snel, kunt u dat alstublieft herhalen?",
+    "exampleEn": "Could you please repeat that? (on the phone)",
+    "contextNote": "Spoken formula used in context: aan de telefoon (telefonisch gesprek)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "tijdens"
+      "aan"
     ],
     "related": []
   },
   {
     "id": "idm-0273",
-    "dutch": "Wat bedoelt je precies met...?",
-    "meaning": "What exactly do you mean by...? (informal / tijdens)",
+    "dutch": "Wat bedoelt u precies met dit punt?",
+    "meaning": "What exactly do you mean by this point? (on the phone)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
-    "example": "Wat bedoelt je precies met die voorwaarde in het contract?",
-    "exampleEn": "What exactly do you mean by...? in context: tijdens een borrel (during drinks/reception)",
-    "contextNote": "Spoken formula used tijdens een borrel (during drinks/reception)",
+    "example": "Wat bedoelt u precies met deze voorwaarde in het contract?",
+    "exampleEn": "What exactly do you mean by this point? (on the phone)",
+    "contextNote": "Spoken formula used in context: aan de telefoon (telefonisch gesprek)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "tijdens"
+      "aan"
     ],
     "related": []
   },
   {
     "id": "idm-0274",
     "dutch": "Daar heb ik nog niet over nagedacht",
-    "meaning": "I haven't thought about that yet (informal / tijdens)",
+    "meaning": "I haven't thought about that yet (on the phone)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
     "example": "Dat is een interessante vraag, daar heb ik nog niet over nagedacht.",
-    "exampleEn": "I haven't thought about that yet in context: tijdens een borrel (during drinks/reception)",
-    "contextNote": "Spoken formula used tijdens een borrel (during drinks/reception)",
+    "exampleEn": "I haven't thought about that yet (on the phone)",
+    "contextNote": "Spoken formula used in context: aan de telefoon (telefonisch gesprek)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "tijdens"
+      "aan"
     ],
     "related": []
   },
   {
     "id": "idm-0275",
-    "dutch": "Zoje u mij kunnen doorverbinden met...?",
-    "meaning": "Could you connect me with...? (informal / tijdens)",
+    "dutch": "Zou u mij kunnen doorverbinden met de juiste afdeling?",
+    "meaning": "Could you connect me with the right department? (on the phone)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "B1",
-    "example": "Goedemorgen, zoje u mij kunnen doorverbinden met de afdeling administratie?",
-    "exampleEn": "Could you connect me with...? in context: tijdens een borrel (during drinks/reception)",
-    "contextNote": "Spoken formula used tijdens een borrel (during drinks/reception)",
+    "example": "Goedemorgen, zou u mij kunnen doorverbinden met de afdeling administratie?",
+    "exampleEn": "Could you connect me with the right department? (on the phone)",
+    "contextNote": "Spoken formula used in context: aan de telefoon (telefonisch gesprek)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "tijdens"
+      "aan"
     ],
     "related": []
   },
   {
     "id": "idm-0276",
     "dutch": "Ik ben het er roerend mee eens",
-    "meaning": "I completely and wholeheartedly agree (informal / tijdens)",
+    "meaning": "I completely and wholeheartedly agree (on the phone)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "B1",
-    "example": "Met jojew visie op duurzaamheid ben ik het roerend eens.",
-    "exampleEn": "I completely and wholeheartedly agree in context: tijdens een borrel (during drinks/reception)",
-    "contextNote": "Spoken formula used tijdens een borrel (during drinks/reception)",
+    "example": "Met uw visie op duurzaamheid ben ik het roerend eens.",
+    "exampleEn": "I completely and wholeheartedly agree (on the phone)",
+    "contextNote": "Spoken formula used in context: aan de telefoon (telefonisch gesprek)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "tijdens"
+      "aan"
     ],
     "related": []
   },
   {
     "id": "idm-0277",
     "dutch": "Dat is makkelijker gezegd dan gedaan",
-    "meaning": "That is easier said than done (informal / tijdens)",
+    "meaning": "That is easier said than done (on the phone)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
     "example": "Gezonder eten klinkt simpel, maar het is makkelijker gezegd dan gedaan.",
-    "exampleEn": "That is easier said than done in context: tijdens een borrel (during drinks/reception)",
-    "contextNote": "Spoken formula used tijdens een borrel (during drinks/reception)",
+    "exampleEn": "That is easier said than done (on the phone)",
+    "contextNote": "Spoken formula used in context: aan de telefoon (telefonisch gesprek)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "tijdens"
+      "aan"
     ],
     "related": []
   },
   {
     "id": "idm-0278",
-    "dutch": "Neem de tijd",
-    "meaning": "Take your time (informal / tijdens)",
+    "dutch": "Neem rustig de tijd",
+    "meaning": "Take your time (on the phone)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A1",
-    "example": "Er is geen haast bij, neem rjestig de tijd.",
-    "exampleEn": "Take your time in context: tijdens een borrel (during drinks/reception)",
-    "contextNote": "Spoken formula used tijdens een borrel (during drinks/reception)",
+    "example": "Er is geen haast bij, neem rustig de tijd.",
+    "exampleEn": "Take your time (on the phone)",
+    "contextNote": "Spoken formula used in context: aan de telefoon (telefonisch gesprek)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "tijdens"
+      "aan"
     ],
     "related": []
   },
   {
     "id": "idm-0279",
-    "dutch": "Het spijt me ontzettend",
-    "meaning": "I am terribly sorry (informal / tijdens)",
+    "dutch": "Het spijt me ontzettend voor het ongemak",
+    "meaning": "I am terribly sorry for the inconvenience (on the phone)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
     "example": "Het spijt me ontzettend dat ik te laat ben voor onze afspraak.",
-    "exampleEn": "I am terribly sorry in context: tijdens een borrel (during drinks/reception)",
-    "contextNote": "Spoken formula used tijdens een borrel (during drinks/reception)",
+    "exampleEn": "I am terribly sorry for the inconvenience (on the phone)",
+    "contextNote": "Spoken formula used in context: aan de telefoon (telefonisch gesprek)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "tijdens"
+      "aan"
     ],
     "related": []
   },
   {
     "id": "idm-0280",
-    "dutch": "Alvast heel erg bedankt voor de moeite",
-    "meaning": "Thank you very much in advance for your trouble (informal / tijdens)",
+    "dutch": "Alvast heel erg bedankt voor uw medewerking",
+    "meaning": "Thank you very much in advance for your cooperation (on the phone)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
-    "example": "Ik zie jew reactie tegemoet, alvast heel erg bedankt voor de moeite!",
-    "exampleEn": "Thank you very much in advance for your trouble in context: tijdens een borrel (during drinks/reception)",
-    "contextNote": "Spoken formula used tijdens een borrel (during drinks/reception)",
+    "example": "Ik zie uw reactie tegemoet, alvast heel erg bedankt voor uw medewerking!",
+    "exampleEn": "Thank you very much in advance for your cooperation (on the phone)",
+    "contextNote": "Spoken formula used in context: aan de telefoon (telefonisch gesprek)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "tijdens"
+      "aan"
     ],
     "related": []
   },
   {
     "id": "idm-0281",
-    "dutch": "Mag ik je even iets vragen?",
-    "meaning": "May I ask you something for a moment? (informal / bij)",
+    "dutch": "Mag ik u even iets vragen?",
+    "meaning": "May I ask you something for a moment? (in a meeting)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A1",
-    "example": "Pardon mevrojew, mag ik u even iets vragen over de bushalte?",
-    "exampleEn": "May I ask you something for a moment? in context: bij de gemeente (at city hall/bureaucracy)",
-    "contextNote": "Spoken formula used bij de gemeente (at city hall/bureaucracy)",
+    "example": "Pardon mevrouw, mag ik u even iets vragen over de bushalte?",
+    "exampleEn": "May I ask you something for a moment? (in a meeting)",
+    "contextNote": "Spoken formula used in context: in een vergadering (zakelijk overleg)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "bij"
+      "in"
     ],
     "related": []
   },
   {
     "id": "idm-0282",
-    "dutch": "Kjent u dat alstublieft herhalen?",
-    "meaning": "Could you please repeat that? (informal / bij)",
+    "dutch": "Kunt u dat alstublieft herhalen?",
+    "meaning": "Could you please repeat that? (in a meeting)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A1",
-    "example": "Het ging iets te snel, kjent u dat alstublieft herhalen?",
-    "exampleEn": "Could you please repeat that? in context: bij de gemeente (at city hall/bureaucracy)",
-    "contextNote": "Spoken formula used bij de gemeente (at city hall/bureaucracy)",
+    "example": "Het ging iets te snel, kunt u dat alstublieft herhalen?",
+    "exampleEn": "Could you please repeat that? (in a meeting)",
+    "contextNote": "Spoken formula used in context: in een vergadering (zakelijk overleg)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "bij"
+      "in"
     ],
     "related": []
   },
   {
     "id": "idm-0283",
-    "dutch": "Wat bedoelt je precies met...?",
-    "meaning": "What exactly do you mean by...? (informal / bij)",
+    "dutch": "Wat bedoelt u precies met dit punt?",
+    "meaning": "What exactly do you mean by this point? (in a meeting)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
-    "example": "Wat bedoelt je precies met die voorwaarde in het contract?",
-    "exampleEn": "What exactly do you mean by...? in context: bij de gemeente (at city hall/bureaucracy)",
-    "contextNote": "Spoken formula used bij de gemeente (at city hall/bureaucracy)",
+    "example": "Wat bedoelt u precies met deze voorwaarde in het contract?",
+    "exampleEn": "What exactly do you mean by this point? (in a meeting)",
+    "contextNote": "Spoken formula used in context: in een vergadering (zakelijk overleg)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "bij"
+      "in"
     ],
     "related": []
   },
   {
     "id": "idm-0284",
     "dutch": "Daar heb ik nog niet over nagedacht",
-    "meaning": "I haven't thought about that yet (informal / bij)",
+    "meaning": "I haven't thought about that yet (in a meeting)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
     "example": "Dat is een interessante vraag, daar heb ik nog niet over nagedacht.",
-    "exampleEn": "I haven't thought about that yet in context: bij de gemeente (at city hall/bureaucracy)",
-    "contextNote": "Spoken formula used bij de gemeente (at city hall/bureaucracy)",
+    "exampleEn": "I haven't thought about that yet (in a meeting)",
+    "contextNote": "Spoken formula used in context: in een vergadering (zakelijk overleg)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "bij"
+      "in"
     ],
     "related": []
   },
   {
     "id": "idm-0285",
-    "dutch": "Zoje u mij kunnen doorverbinden met...?",
-    "meaning": "Could you connect me with...? (informal / bij)",
+    "dutch": "Zou u mij kunnen doorverbinden met de juiste afdeling?",
+    "meaning": "Could you connect me with the right department? (in a meeting)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "B1",
-    "example": "Goedemorgen, zoje u mij kunnen doorverbinden met de afdeling administratie?",
-    "exampleEn": "Could you connect me with...? in context: bij de gemeente (at city hall/bureaucracy)",
-    "contextNote": "Spoken formula used bij de gemeente (at city hall/bureaucracy)",
+    "example": "Goedemorgen, zou u mij kunnen doorverbinden met de afdeling administratie?",
+    "exampleEn": "Could you connect me with the right department? (in a meeting)",
+    "contextNote": "Spoken formula used in context: in een vergadering (zakelijk overleg)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "bij"
+      "in"
     ],
     "related": []
   },
   {
     "id": "idm-0286",
     "dutch": "Ik ben het er roerend mee eens",
-    "meaning": "I completely and wholeheartedly agree (informal / bij)",
+    "meaning": "I completely and wholeheartedly agree (in a meeting)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "B1",
-    "example": "Met jojew visie op duurzaamheid ben ik het roerend eens.",
-    "exampleEn": "I completely and wholeheartedly agree in context: bij de gemeente (at city hall/bureaucracy)",
-    "contextNote": "Spoken formula used bij de gemeente (at city hall/bureaucracy)",
+    "example": "Met uw visie op duurzaamheid ben ik het roerend eens.",
+    "exampleEn": "I completely and wholeheartedly agree (in a meeting)",
+    "contextNote": "Spoken formula used in context: in een vergadering (zakelijk overleg)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "bij"
+      "in"
     ],
     "related": []
   },
   {
     "id": "idm-0287",
     "dutch": "Dat is makkelijker gezegd dan gedaan",
-    "meaning": "That is easier said than done (informal / bij)",
+    "meaning": "That is easier said than done (in a meeting)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
     "example": "Gezonder eten klinkt simpel, maar het is makkelijker gezegd dan gedaan.",
-    "exampleEn": "That is easier said than done in context: bij de gemeente (at city hall/bureaucracy)",
-    "contextNote": "Spoken formula used bij de gemeente (at city hall/bureaucracy)",
+    "exampleEn": "That is easier said than done (in a meeting)",
+    "contextNote": "Spoken formula used in context: in een vergadering (zakelijk overleg)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "bij"
+      "in"
     ],
     "related": []
   },
   {
     "id": "idm-0288",
-    "dutch": "Neem de tijd",
-    "meaning": "Take your time (informal / bij)",
+    "dutch": "Neem rustig de tijd",
+    "meaning": "Take your time (in a meeting)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A1",
-    "example": "Er is geen haast bij, neem rjestig de tijd.",
-    "exampleEn": "Take your time in context: bij de gemeente (at city hall/bureaucracy)",
-    "contextNote": "Spoken formula used bij de gemeente (at city hall/bureaucracy)",
+    "example": "Er is geen haast bij, neem rustig de tijd.",
+    "exampleEn": "Take your time (in a meeting)",
+    "contextNote": "Spoken formula used in context: in een vergadering (zakelijk overleg)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "bij"
+      "in"
     ],
     "related": []
   },
   {
     "id": "idm-0289",
-    "dutch": "Het spijt me ontzettend",
-    "meaning": "I am terribly sorry (informal / bij)",
+    "dutch": "Het spijt me ontzettend voor het ongemak",
+    "meaning": "I am terribly sorry for the inconvenience (in a meeting)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
     "example": "Het spijt me ontzettend dat ik te laat ben voor onze afspraak.",
-    "exampleEn": "I am terribly sorry in context: bij de gemeente (at city hall/bureaucracy)",
-    "contextNote": "Spoken formula used bij de gemeente (at city hall/bureaucracy)",
+    "exampleEn": "I am terribly sorry for the inconvenience (in a meeting)",
+    "contextNote": "Spoken formula used in context: in een vergadering (zakelijk overleg)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "bij"
+      "in"
     ],
     "related": []
   },
   {
     "id": "idm-0290",
-    "dutch": "Alvast heel erg bedankt voor de moeite",
-    "meaning": "Thank you very much in advance for your trouble (informal / bij)",
+    "dutch": "Alvast heel erg bedankt voor uw medewerking",
+    "meaning": "Thank you very much in advance for your cooperation (in a meeting)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
-    "example": "Ik zie jew reactie tegemoet, alvast heel erg bedankt voor de moeite!",
-    "exampleEn": "Thank you very much in advance for your trouble in context: bij de gemeente (at city hall/bureaucracy)",
-    "contextNote": "Spoken formula used bij de gemeente (at city hall/bureaucracy)",
+    "example": "Ik zie uw reactie tegemoet, alvast heel erg bedankt voor uw medewerking!",
+    "exampleEn": "Thank you very much in advance for your cooperation (in a meeting)",
+    "contextNote": "Spoken formula used in context: in een vergadering (zakelijk overleg)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "bij"
+      "in"
     ],
     "related": []
   },
   {
     "id": "idm-0291",
-    "dutch": "Mag ik je even iets vragen?",
-    "meaning": "May I ask you something for a moment? (informal / bij)",
+    "dutch": "Mag ik u even iets vragen?",
+    "meaning": "May I ask you something for a moment? (during drinks)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A1",
-    "example": "Pardon mevrojew, mag ik u even iets vragen over de bushalte?",
-    "exampleEn": "May I ask you something for a moment? in context: bij de huisarts (at the doctor)",
-    "contextNote": "Spoken formula used bij de huisarts (at the doctor)",
+    "example": "Pardon mevrouw, mag ik u even iets vragen over de bushalte?",
+    "exampleEn": "May I ask you something for a moment? (during drinks)",
+    "contextNote": "Spoken formula used in context: tijdens een borrel (sociale bijeenkomst)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "bij"
+      "tijdens"
     ],
     "related": []
   },
   {
     "id": "idm-0292",
-    "dutch": "Kjent u dat alstublieft herhalen?",
-    "meaning": "Could you please repeat that? (informal / bij)",
+    "dutch": "Kunt u dat alstublieft herhalen?",
+    "meaning": "Could you please repeat that? (during drinks)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A1",
-    "example": "Het ging iets te snel, kjent u dat alstublieft herhalen?",
-    "exampleEn": "Could you please repeat that? in context: bij de huisarts (at the doctor)",
-    "contextNote": "Spoken formula used bij de huisarts (at the doctor)",
+    "example": "Het ging iets te snel, kunt u dat alstublieft herhalen?",
+    "exampleEn": "Could you please repeat that? (during drinks)",
+    "contextNote": "Spoken formula used in context: tijdens een borrel (sociale bijeenkomst)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "bij"
+      "tijdens"
     ],
     "related": []
   },
   {
     "id": "idm-0293",
-    "dutch": "Wat bedoelt je precies met...?",
-    "meaning": "What exactly do you mean by...? (informal / bij)",
+    "dutch": "Wat bedoelt u precies met dit punt?",
+    "meaning": "What exactly do you mean by this point? (during drinks)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
-    "example": "Wat bedoelt je precies met die voorwaarde in het contract?",
-    "exampleEn": "What exactly do you mean by...? in context: bij de huisarts (at the doctor)",
-    "contextNote": "Spoken formula used bij de huisarts (at the doctor)",
+    "example": "Wat bedoelt u precies met deze voorwaarde in het contract?",
+    "exampleEn": "What exactly do you mean by this point? (during drinks)",
+    "contextNote": "Spoken formula used in context: tijdens een borrel (sociale bijeenkomst)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "bij"
+      "tijdens"
     ],
     "related": []
   },
   {
     "id": "idm-0294",
     "dutch": "Daar heb ik nog niet over nagedacht",
-    "meaning": "I haven't thought about that yet (informal / bij)",
+    "meaning": "I haven't thought about that yet (during drinks)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
     "example": "Dat is een interessante vraag, daar heb ik nog niet over nagedacht.",
-    "exampleEn": "I haven't thought about that yet in context: bij de huisarts (at the doctor)",
-    "contextNote": "Spoken formula used bij de huisarts (at the doctor)",
+    "exampleEn": "I haven't thought about that yet (during drinks)",
+    "contextNote": "Spoken formula used in context: tijdens een borrel (sociale bijeenkomst)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "bij"
+      "tijdens"
     ],
     "related": []
   },
   {
     "id": "idm-0295",
-    "dutch": "Zoje u mij kunnen doorverbinden met...?",
-    "meaning": "Could you connect me with...? (informal / bij)",
+    "dutch": "Zou u mij kunnen doorverbinden met de juiste afdeling?",
+    "meaning": "Could you connect me with the right department? (during drinks)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "B1",
-    "example": "Goedemorgen, zoje u mij kunnen doorverbinden met de afdeling administratie?",
-    "exampleEn": "Could you connect me with...? in context: bij de huisarts (at the doctor)",
-    "contextNote": "Spoken formula used bij de huisarts (at the doctor)",
+    "example": "Goedemorgen, zou u mij kunnen doorverbinden met de afdeling administratie?",
+    "exampleEn": "Could you connect me with the right department? (during drinks)",
+    "contextNote": "Spoken formula used in context: tijdens een borrel (sociale bijeenkomst)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "bij"
+      "tijdens"
     ],
     "related": []
   },
   {
     "id": "idm-0296",
     "dutch": "Ik ben het er roerend mee eens",
-    "meaning": "I completely and wholeheartedly agree (informal / bij)",
+    "meaning": "I completely and wholeheartedly agree (during drinks)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "B1",
-    "example": "Met jojew visie op duurzaamheid ben ik het roerend eens.",
-    "exampleEn": "I completely and wholeheartedly agree in context: bij de huisarts (at the doctor)",
-    "contextNote": "Spoken formula used bij de huisarts (at the doctor)",
+    "example": "Met uw visie op duurzaamheid ben ik het roerend eens.",
+    "exampleEn": "I completely and wholeheartedly agree (during drinks)",
+    "contextNote": "Spoken formula used in context: tijdens een borrel (sociale bijeenkomst)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "bij"
+      "tijdens"
     ],
     "related": []
   },
   {
     "id": "idm-0297",
     "dutch": "Dat is makkelijker gezegd dan gedaan",
-    "meaning": "That is easier said than done (informal / bij)",
+    "meaning": "That is easier said than done (during drinks)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
     "example": "Gezonder eten klinkt simpel, maar het is makkelijker gezegd dan gedaan.",
-    "exampleEn": "That is easier said than done in context: bij de huisarts (at the doctor)",
-    "contextNote": "Spoken formula used bij de huisarts (at the doctor)",
+    "exampleEn": "That is easier said than done (during drinks)",
+    "contextNote": "Spoken formula used in context: tijdens een borrel (sociale bijeenkomst)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "bij"
+      "tijdens"
     ],
     "related": []
   },
   {
     "id": "idm-0298",
-    "dutch": "Neem de tijd",
-    "meaning": "Take your time (informal / bij)",
+    "dutch": "Neem rustig de tijd",
+    "meaning": "Take your time (during drinks)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A1",
-    "example": "Er is geen haast bij, neem rjestig de tijd.",
-    "exampleEn": "Take your time in context: bij de huisarts (at the doctor)",
-    "contextNote": "Spoken formula used bij de huisarts (at the doctor)",
+    "example": "Er is geen haast bij, neem rustig de tijd.",
+    "exampleEn": "Take your time (during drinks)",
+    "contextNote": "Spoken formula used in context: tijdens een borrel (sociale bijeenkomst)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "bij"
+      "tijdens"
     ],
     "related": []
   },
   {
     "id": "idm-0299",
-    "dutch": "Het spijt me ontzettend",
-    "meaning": "I am terribly sorry (informal / bij)",
+    "dutch": "Het spijt me ontzettend voor het ongemak",
+    "meaning": "I am terribly sorry for the inconvenience (during drinks)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
     "example": "Het spijt me ontzettend dat ik te laat ben voor onze afspraak.",
-    "exampleEn": "I am terribly sorry in context: bij de huisarts (at the doctor)",
-    "contextNote": "Spoken formula used bij de huisarts (at the doctor)",
+    "exampleEn": "I am terribly sorry for the inconvenience (during drinks)",
+    "contextNote": "Spoken formula used in context: tijdens een borrel (sociale bijeenkomst)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "bij"
+      "tijdens"
     ],
     "related": []
   },
   {
     "id": "idm-0300",
-    "dutch": "Alvast heel erg bedankt voor de moeite",
-    "meaning": "Thank you very much in advance for your trouble (informal / bij)",
+    "dutch": "Alvast heel erg bedankt voor uw medewerking",
+    "meaning": "Thank you very much in advance for your cooperation (during drinks)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
-    "example": "Ik zie jew reactie tegemoet, alvast heel erg bedankt voor de moeite!",
-    "exampleEn": "Thank you very much in advance for your trouble in context: bij de huisarts (at the doctor)",
-    "contextNote": "Spoken formula used bij de huisarts (at the doctor)",
+    "example": "Ik zie uw reactie tegemoet, alvast heel erg bedankt voor uw medewerking!",
+    "exampleEn": "Thank you very much in advance for your cooperation (during drinks)",
+    "contextNote": "Spoken formula used in context: tijdens een borrel (sociale bijeenkomst)",
+    "usageWarning": "",
+    "tags": [
+      "conversational",
+      "tijdens"
+    ],
+    "related": []
+  },
+  {
+    "id": "idm-0301",
+    "dutch": "Mag ik u even iets vragen?",
+    "meaning": "May I ask you something for a moment? (at city hall)",
+    "literal": "",
+    "register": "polite",
+    "level": "A1",
+    "example": "Pardon mevrouw, mag ik u even iets vragen over de bushalte?",
+    "exampleEn": "May I ask you something for a moment? (at city hall)",
+    "contextNote": "Spoken formula used in context: bij de gemeente (burgerzaken)",
     "usageWarning": "",
     "tags": [
       "conversational",
@@ -5103,508 +5120,508 @@ globalThis.NP_IDIOMS = [
     "related": []
   },
   {
-    "id": "idm-0301",
-    "dutch": "Mag ik je even iets vragen?",
-    "meaning": "May I ask you something for a moment? (informal / op)",
-    "literal": "",
-    "register": "informal",
-    "level": "A1",
-    "example": "Pardon mevrojew, mag ik u even iets vragen over de bushalte?",
-    "exampleEn": "May I ask you something for a moment? in context: op het werk (at work)",
-    "contextNote": "Spoken formula used op het werk (at work)",
-    "usageWarning": "",
-    "tags": [
-      "conversational",
-      "op"
-    ],
-    "related": []
-  },
-  {
     "id": "idm-0302",
-    "dutch": "Kjent u dat alstublieft herhalen?",
-    "meaning": "Could you please repeat that? (informal / op)",
+    "dutch": "Kunt u dat alstublieft herhalen?",
+    "meaning": "Could you please repeat that? (at city hall)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A1",
-    "example": "Het ging iets te snel, kjent u dat alstublieft herhalen?",
-    "exampleEn": "Could you please repeat that? in context: op het werk (at work)",
-    "contextNote": "Spoken formula used op het werk (at work)",
+    "example": "Het ging iets te snel, kunt u dat alstublieft herhalen?",
+    "exampleEn": "Could you please repeat that? (at city hall)",
+    "contextNote": "Spoken formula used in context: bij de gemeente (burgerzaken)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "op"
+      "bij"
     ],
     "related": []
   },
   {
     "id": "idm-0303",
-    "dutch": "Wat bedoelt je precies met...?",
-    "meaning": "What exactly do you mean by...? (informal / op)",
+    "dutch": "Wat bedoelt u precies met dit punt?",
+    "meaning": "What exactly do you mean by this point? (at city hall)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
-    "example": "Wat bedoelt je precies met die voorwaarde in het contract?",
-    "exampleEn": "What exactly do you mean by...? in context: op het werk (at work)",
-    "contextNote": "Spoken formula used op het werk (at work)",
+    "example": "Wat bedoelt u precies met deze voorwaarde in het contract?",
+    "exampleEn": "What exactly do you mean by this point? (at city hall)",
+    "contextNote": "Spoken formula used in context: bij de gemeente (burgerzaken)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "op"
+      "bij"
     ],
     "related": []
   },
   {
     "id": "idm-0304",
     "dutch": "Daar heb ik nog niet over nagedacht",
-    "meaning": "I haven't thought about that yet (informal / op)",
+    "meaning": "I haven't thought about that yet (at city hall)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
     "example": "Dat is een interessante vraag, daar heb ik nog niet over nagedacht.",
-    "exampleEn": "I haven't thought about that yet in context: op het werk (at work)",
-    "contextNote": "Spoken formula used op het werk (at work)",
+    "exampleEn": "I haven't thought about that yet (at city hall)",
+    "contextNote": "Spoken formula used in context: bij de gemeente (burgerzaken)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "op"
+      "bij"
     ],
     "related": []
   },
   {
     "id": "idm-0305",
-    "dutch": "Zoje u mij kunnen doorverbinden met...?",
-    "meaning": "Could you connect me with...? (informal / op)",
+    "dutch": "Zou u mij kunnen doorverbinden met de juiste afdeling?",
+    "meaning": "Could you connect me with the right department? (at city hall)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "B1",
-    "example": "Goedemorgen, zoje u mij kunnen doorverbinden met de afdeling administratie?",
-    "exampleEn": "Could you connect me with...? in context: op het werk (at work)",
-    "contextNote": "Spoken formula used op het werk (at work)",
+    "example": "Goedemorgen, zou u mij kunnen doorverbinden met de afdeling administratie?",
+    "exampleEn": "Could you connect me with the right department? (at city hall)",
+    "contextNote": "Spoken formula used in context: bij de gemeente (burgerzaken)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "op"
+      "bij"
     ],
     "related": []
   },
   {
     "id": "idm-0306",
     "dutch": "Ik ben het er roerend mee eens",
-    "meaning": "I completely and wholeheartedly agree (informal / op)",
+    "meaning": "I completely and wholeheartedly agree (at city hall)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "B1",
-    "example": "Met jojew visie op duurzaamheid ben ik het roerend eens.",
-    "exampleEn": "I completely and wholeheartedly agree in context: op het werk (at work)",
-    "contextNote": "Spoken formula used op het werk (at work)",
+    "example": "Met uw visie op duurzaamheid ben ik het roerend eens.",
+    "exampleEn": "I completely and wholeheartedly agree (at city hall)",
+    "contextNote": "Spoken formula used in context: bij de gemeente (burgerzaken)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "op"
+      "bij"
     ],
     "related": []
   },
   {
     "id": "idm-0307",
     "dutch": "Dat is makkelijker gezegd dan gedaan",
-    "meaning": "That is easier said than done (informal / op)",
+    "meaning": "That is easier said than done (at city hall)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
     "example": "Gezonder eten klinkt simpel, maar het is makkelijker gezegd dan gedaan.",
-    "exampleEn": "That is easier said than done in context: op het werk (at work)",
-    "contextNote": "Spoken formula used op het werk (at work)",
+    "exampleEn": "That is easier said than done (at city hall)",
+    "contextNote": "Spoken formula used in context: bij de gemeente (burgerzaken)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "op"
+      "bij"
     ],
     "related": []
   },
   {
     "id": "idm-0308",
-    "dutch": "Neem de tijd",
-    "meaning": "Take your time (informal / op)",
+    "dutch": "Neem rustig de tijd",
+    "meaning": "Take your time (at city hall)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A1",
-    "example": "Er is geen haast bij, neem rjestig de tijd.",
-    "exampleEn": "Take your time in context: op het werk (at work)",
-    "contextNote": "Spoken formula used op het werk (at work)",
+    "example": "Er is geen haast bij, neem rustig de tijd.",
+    "exampleEn": "Take your time (at city hall)",
+    "contextNote": "Spoken formula used in context: bij de gemeente (burgerzaken)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "op"
+      "bij"
     ],
     "related": []
   },
   {
     "id": "idm-0309",
-    "dutch": "Het spijt me ontzettend",
-    "meaning": "I am terribly sorry (informal / op)",
+    "dutch": "Het spijt me ontzettend voor het ongemak",
+    "meaning": "I am terribly sorry for the inconvenience (at city hall)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
     "example": "Het spijt me ontzettend dat ik te laat ben voor onze afspraak.",
-    "exampleEn": "I am terribly sorry in context: op het werk (at work)",
-    "contextNote": "Spoken formula used op het werk (at work)",
+    "exampleEn": "I am terribly sorry for the inconvenience (at city hall)",
+    "contextNote": "Spoken formula used in context: bij de gemeente (burgerzaken)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "op"
+      "bij"
     ],
     "related": []
   },
   {
     "id": "idm-0310",
-    "dutch": "Alvast heel erg bedankt voor de moeite",
-    "meaning": "Thank you very much in advance for your trouble (informal / op)",
+    "dutch": "Alvast heel erg bedankt voor uw medewerking",
+    "meaning": "Thank you very much in advance for your cooperation (at city hall)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
-    "example": "Ik zie jew reactie tegemoet, alvast heel erg bedankt voor de moeite!",
-    "exampleEn": "Thank you very much in advance for your trouble in context: op het werk (at work)",
-    "contextNote": "Spoken formula used op het werk (at work)",
+    "example": "Ik zie uw reactie tegemoet, alvast heel erg bedankt voor uw medewerking!",
+    "exampleEn": "Thank you very much in advance for your cooperation (at city hall)",
+    "contextNote": "Spoken formula used in context: bij de gemeente (burgerzaken)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "op"
+      "bij"
     ],
     "related": []
   },
   {
     "id": "idm-0311",
-    "dutch": "Mag ik je even iets vragen?",
-    "meaning": "May I ask you something for a moment? (informal / in)",
+    "dutch": "Mag ik u even iets vragen?",
+    "meaning": "May I ask you something for a moment? (at the doctor)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A1",
-    "example": "Pardon mevrojew, mag ik u even iets vragen over de bushalte?",
-    "exampleEn": "May I ask you something for a moment? in context: in het openbaar vervoer (on public transit)",
-    "contextNote": "Spoken formula used in het openbaar vervoer (on public transit)",
+    "example": "Pardon mevrouw, mag ik u even iets vragen over de bushalte?",
+    "exampleEn": "May I ask you something for a moment? (at the doctor)",
+    "contextNote": "Spoken formula used in context: bij de huisarts (medisch consult)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "in"
+      "bij"
     ],
     "related": []
   },
   {
     "id": "idm-0312",
-    "dutch": "Kjent u dat alstublieft herhalen?",
-    "meaning": "Could you please repeat that? (informal / in)",
+    "dutch": "Kunt u dat alstublieft herhalen?",
+    "meaning": "Could you please repeat that? (at the doctor)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A1",
-    "example": "Het ging iets te snel, kjent u dat alstublieft herhalen?",
-    "exampleEn": "Could you please repeat that? in context: in het openbaar vervoer (on public transit)",
-    "contextNote": "Spoken formula used in het openbaar vervoer (on public transit)",
+    "example": "Het ging iets te snel, kunt u dat alstublieft herhalen?",
+    "exampleEn": "Could you please repeat that? (at the doctor)",
+    "contextNote": "Spoken formula used in context: bij de huisarts (medisch consult)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "in"
+      "bij"
     ],
     "related": []
   },
   {
     "id": "idm-0313",
-    "dutch": "Wat bedoelt je precies met...?",
-    "meaning": "What exactly do you mean by...? (informal / in)",
+    "dutch": "Wat bedoelt u precies met dit punt?",
+    "meaning": "What exactly do you mean by this point? (at the doctor)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
-    "example": "Wat bedoelt je precies met die voorwaarde in het contract?",
-    "exampleEn": "What exactly do you mean by...? in context: in het openbaar vervoer (on public transit)",
-    "contextNote": "Spoken formula used in het openbaar vervoer (on public transit)",
+    "example": "Wat bedoelt u precies met deze voorwaarde in het contract?",
+    "exampleEn": "What exactly do you mean by this point? (at the doctor)",
+    "contextNote": "Spoken formula used in context: bij de huisarts (medisch consult)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "in"
+      "bij"
     ],
     "related": []
   },
   {
     "id": "idm-0314",
     "dutch": "Daar heb ik nog niet over nagedacht",
-    "meaning": "I haven't thought about that yet (informal / in)",
+    "meaning": "I haven't thought about that yet (at the doctor)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
     "example": "Dat is een interessante vraag, daar heb ik nog niet over nagedacht.",
-    "exampleEn": "I haven't thought about that yet in context: in het openbaar vervoer (on public transit)",
-    "contextNote": "Spoken formula used in het openbaar vervoer (on public transit)",
+    "exampleEn": "I haven't thought about that yet (at the doctor)",
+    "contextNote": "Spoken formula used in context: bij de huisarts (medisch consult)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "in"
+      "bij"
     ],
     "related": []
   },
   {
     "id": "idm-0315",
-    "dutch": "Zoje u mij kunnen doorverbinden met...?",
-    "meaning": "Could you connect me with...? (informal / in)",
+    "dutch": "Zou u mij kunnen doorverbinden met de juiste afdeling?",
+    "meaning": "Could you connect me with the right department? (at the doctor)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "B1",
-    "example": "Goedemorgen, zoje u mij kunnen doorverbinden met de afdeling administratie?",
-    "exampleEn": "Could you connect me with...? in context: in het openbaar vervoer (on public transit)",
-    "contextNote": "Spoken formula used in het openbaar vervoer (on public transit)",
+    "example": "Goedemorgen, zou u mij kunnen doorverbinden met de afdeling administratie?",
+    "exampleEn": "Could you connect me with the right department? (at the doctor)",
+    "contextNote": "Spoken formula used in context: bij de huisarts (medisch consult)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "in"
+      "bij"
     ],
     "related": []
   },
   {
     "id": "idm-0316",
     "dutch": "Ik ben het er roerend mee eens",
-    "meaning": "I completely and wholeheartedly agree (informal / in)",
+    "meaning": "I completely and wholeheartedly agree (at the doctor)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "B1",
-    "example": "Met jojew visie op duurzaamheid ben ik het roerend eens.",
-    "exampleEn": "I completely and wholeheartedly agree in context: in het openbaar vervoer (on public transit)",
-    "contextNote": "Spoken formula used in het openbaar vervoer (on public transit)",
+    "example": "Met uw visie op duurzaamheid ben ik het roerend eens.",
+    "exampleEn": "I completely and wholeheartedly agree (at the doctor)",
+    "contextNote": "Spoken formula used in context: bij de huisarts (medisch consult)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "in"
+      "bij"
     ],
     "related": []
   },
   {
     "id": "idm-0317",
     "dutch": "Dat is makkelijker gezegd dan gedaan",
-    "meaning": "That is easier said than done (informal / in)",
+    "meaning": "That is easier said than done (at the doctor)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
     "example": "Gezonder eten klinkt simpel, maar het is makkelijker gezegd dan gedaan.",
-    "exampleEn": "That is easier said than done in context: in het openbaar vervoer (on public transit)",
-    "contextNote": "Spoken formula used in het openbaar vervoer (on public transit)",
+    "exampleEn": "That is easier said than done (at the doctor)",
+    "contextNote": "Spoken formula used in context: bij de huisarts (medisch consult)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "in"
+      "bij"
     ],
     "related": []
   },
   {
     "id": "idm-0318",
-    "dutch": "Neem de tijd",
-    "meaning": "Take your time (informal / in)",
+    "dutch": "Neem rustig de tijd",
+    "meaning": "Take your time (at the doctor)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A1",
-    "example": "Er is geen haast bij, neem rjestig de tijd.",
-    "exampleEn": "Take your time in context: in het openbaar vervoer (on public transit)",
-    "contextNote": "Spoken formula used in het openbaar vervoer (on public transit)",
+    "example": "Er is geen haast bij, neem rustig de tijd.",
+    "exampleEn": "Take your time (at the doctor)",
+    "contextNote": "Spoken formula used in context: bij de huisarts (medisch consult)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "in"
+      "bij"
     ],
     "related": []
   },
   {
     "id": "idm-0319",
-    "dutch": "Het spijt me ontzettend",
-    "meaning": "I am terribly sorry (informal / in)",
+    "dutch": "Het spijt me ontzettend voor het ongemak",
+    "meaning": "I am terribly sorry for the inconvenience (at the doctor)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
     "example": "Het spijt me ontzettend dat ik te laat ben voor onze afspraak.",
-    "exampleEn": "I am terribly sorry in context: in het openbaar vervoer (on public transit)",
-    "contextNote": "Spoken formula used in het openbaar vervoer (on public transit)",
+    "exampleEn": "I am terribly sorry for the inconvenience (at the doctor)",
+    "contextNote": "Spoken formula used in context: bij de huisarts (medisch consult)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "in"
+      "bij"
     ],
     "related": []
   },
   {
     "id": "idm-0320",
-    "dutch": "Alvast heel erg bedankt voor de moeite",
-    "meaning": "Thank you very much in advance for your trouble (informal / in)",
+    "dutch": "Alvast heel erg bedankt voor uw medewerking",
+    "meaning": "Thank you very much in advance for your cooperation (at the doctor)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
-    "example": "Ik zie jew reactie tegemoet, alvast heel erg bedankt voor de moeite!",
-    "exampleEn": "Thank you very much in advance for your trouble in context: in het openbaar vervoer (on public transit)",
-    "contextNote": "Spoken formula used in het openbaar vervoer (on public transit)",
+    "example": "Ik zie uw reactie tegemoet, alvast heel erg bedankt voor uw medewerking!",
+    "exampleEn": "Thank you very much in advance for your cooperation (at the doctor)",
+    "contextNote": "Spoken formula used in context: bij de huisarts (medisch consult)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "in"
+      "bij"
     ],
     "related": []
   },
   {
     "id": "idm-0321",
-    "dutch": "Mag ik je even iets vragen?",
-    "meaning": "May I ask you something for a moment? (informal / in)",
+    "dutch": "Mag ik u even iets vragen?",
+    "meaning": "May I ask you something for a moment? (at work)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A1",
-    "example": "Pardon mevrojew, mag ik u even iets vragen over de bushalte?",
-    "exampleEn": "May I ask you something for a moment? in context: in het restaurant (at the restaurant)",
-    "contextNote": "Spoken formula used in het restaurant (at the restaurant)",
+    "example": "Pardon mevrouw, mag ik u even iets vragen over de bushalte?",
+    "exampleEn": "May I ask you something for a moment? (at work)",
+    "contextNote": "Spoken formula used in context: op het werk (kantooroverleg)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "in"
+      "op"
     ],
     "related": []
   },
   {
     "id": "idm-0322",
-    "dutch": "Kjent u dat alstublieft herhalen?",
-    "meaning": "Could you please repeat that? (informal / in)",
+    "dutch": "Kunt u dat alstublieft herhalen?",
+    "meaning": "Could you please repeat that? (at work)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A1",
-    "example": "Het ging iets te snel, kjent u dat alstublieft herhalen?",
-    "exampleEn": "Could you please repeat that? in context: in het restaurant (at the restaurant)",
-    "contextNote": "Spoken formula used in het restaurant (at the restaurant)",
+    "example": "Het ging iets te snel, kunt u dat alstublieft herhalen?",
+    "exampleEn": "Could you please repeat that? (at work)",
+    "contextNote": "Spoken formula used in context: op het werk (kantooroverleg)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "in"
+      "op"
     ],
     "related": []
   },
   {
     "id": "idm-0323",
-    "dutch": "Wat bedoelt je precies met...?",
-    "meaning": "What exactly do you mean by...? (informal / in)",
+    "dutch": "Wat bedoelt u precies met dit punt?",
+    "meaning": "What exactly do you mean by this point? (at work)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
-    "example": "Wat bedoelt je precies met die voorwaarde in het contract?",
-    "exampleEn": "What exactly do you mean by...? in context: in het restaurant (at the restaurant)",
-    "contextNote": "Spoken formula used in het restaurant (at the restaurant)",
+    "example": "Wat bedoelt u precies met deze voorwaarde in het contract?",
+    "exampleEn": "What exactly do you mean by this point? (at work)",
+    "contextNote": "Spoken formula used in context: op het werk (kantooroverleg)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "in"
+      "op"
     ],
     "related": []
   },
   {
     "id": "idm-0324",
     "dutch": "Daar heb ik nog niet over nagedacht",
-    "meaning": "I haven't thought about that yet (informal / in)",
+    "meaning": "I haven't thought about that yet (at work)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
     "example": "Dat is een interessante vraag, daar heb ik nog niet over nagedacht.",
-    "exampleEn": "I haven't thought about that yet in context: in het restaurant (at the restaurant)",
-    "contextNote": "Spoken formula used in het restaurant (at the restaurant)",
+    "exampleEn": "I haven't thought about that yet (at work)",
+    "contextNote": "Spoken formula used in context: op het werk (kantooroverleg)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "in"
+      "op"
     ],
     "related": []
   },
   {
     "id": "idm-0325",
-    "dutch": "Zoje u mij kunnen doorverbinden met...?",
-    "meaning": "Could you connect me with...? (informal / in)",
+    "dutch": "Zou u mij kunnen doorverbinden met de juiste afdeling?",
+    "meaning": "Could you connect me with the right department? (at work)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "B1",
-    "example": "Goedemorgen, zoje u mij kunnen doorverbinden met de afdeling administratie?",
-    "exampleEn": "Could you connect me with...? in context: in het restaurant (at the restaurant)",
-    "contextNote": "Spoken formula used in het restaurant (at the restaurant)",
+    "example": "Goedemorgen, zou u mij kunnen doorverbinden met de afdeling administratie?",
+    "exampleEn": "Could you connect me with the right department? (at work)",
+    "contextNote": "Spoken formula used in context: op het werk (kantooroverleg)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "in"
+      "op"
     ],
     "related": []
   },
   {
     "id": "idm-0326",
     "dutch": "Ik ben het er roerend mee eens",
-    "meaning": "I completely and wholeheartedly agree (informal / in)",
+    "meaning": "I completely and wholeheartedly agree (at work)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "B1",
-    "example": "Met jojew visie op duurzaamheid ben ik het roerend eens.",
-    "exampleEn": "I completely and wholeheartedly agree in context: in het restaurant (at the restaurant)",
-    "contextNote": "Spoken formula used in het restaurant (at the restaurant)",
+    "example": "Met uw visie op duurzaamheid ben ik het roerend eens.",
+    "exampleEn": "I completely and wholeheartedly agree (at work)",
+    "contextNote": "Spoken formula used in context: op het werk (kantooroverleg)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "in"
+      "op"
     ],
     "related": []
   },
   {
     "id": "idm-0327",
     "dutch": "Dat is makkelijker gezegd dan gedaan",
-    "meaning": "That is easier said than done (informal / in)",
+    "meaning": "That is easier said than done (at work)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
     "example": "Gezonder eten klinkt simpel, maar het is makkelijker gezegd dan gedaan.",
-    "exampleEn": "That is easier said than done in context: in het restaurant (at the restaurant)",
-    "contextNote": "Spoken formula used in het restaurant (at the restaurant)",
+    "exampleEn": "That is easier said than done (at work)",
+    "contextNote": "Spoken formula used in context: op het werk (kantooroverleg)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "in"
+      "op"
     ],
     "related": []
   },
   {
     "id": "idm-0328",
-    "dutch": "Neem de tijd",
-    "meaning": "Take your time (informal / in)",
+    "dutch": "Neem rustig de tijd",
+    "meaning": "Take your time (at work)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A1",
-    "example": "Er is geen haast bij, neem rjestig de tijd.",
-    "exampleEn": "Take your time in context: in het restaurant (at the restaurant)",
-    "contextNote": "Spoken formula used in het restaurant (at the restaurant)",
+    "example": "Er is geen haast bij, neem rustig de tijd.",
+    "exampleEn": "Take your time (at work)",
+    "contextNote": "Spoken formula used in context: op het werk (kantooroverleg)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "in"
+      "op"
     ],
     "related": []
   },
   {
     "id": "idm-0329",
-    "dutch": "Het spijt me ontzettend",
-    "meaning": "I am terribly sorry (informal / in)",
+    "dutch": "Het spijt me ontzettend voor het ongemak",
+    "meaning": "I am terribly sorry for the inconvenience (at work)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
     "example": "Het spijt me ontzettend dat ik te laat ben voor onze afspraak.",
-    "exampleEn": "I am terribly sorry in context: in het restaurant (at the restaurant)",
-    "contextNote": "Spoken formula used in het restaurant (at the restaurant)",
+    "exampleEn": "I am terribly sorry for the inconvenience (at work)",
+    "contextNote": "Spoken formula used in context: op het werk (kantooroverleg)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "in"
+      "op"
     ],
     "related": []
   },
   {
     "id": "idm-0330",
-    "dutch": "Alvast heel erg bedankt voor de moeite",
-    "meaning": "Thank you very much in advance for your trouble (informal / in)",
+    "dutch": "Alvast heel erg bedankt voor uw medewerking",
+    "meaning": "Thank you very much in advance for your cooperation (at work)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
-    "example": "Ik zie jew reactie tegemoet, alvast heel erg bedankt voor de moeite!",
-    "exampleEn": "Thank you very much in advance for your trouble in context: in het restaurant (at the restaurant)",
-    "contextNote": "Spoken formula used in het restaurant (at the restaurant)",
+    "example": "Ik zie uw reactie tegemoet, alvast heel erg bedankt voor uw medewerking!",
+    "exampleEn": "Thank you very much in advance for your cooperation (at work)",
+    "contextNote": "Spoken formula used in context: op het werk (kantooroverleg)",
+    "usageWarning": "",
+    "tags": [
+      "conversational",
+      "op"
+    ],
+    "related": []
+  },
+  {
+    "id": "idm-0331",
+    "dutch": "Mag ik u even iets vragen?",
+    "meaning": "May I ask you something for a moment? (on public transit)",
+    "literal": "",
+    "register": "polite",
+    "level": "A1",
+    "example": "Pardon mevrouw, mag ik u even iets vragen over de bushalte?",
+    "exampleEn": "May I ask you something for a moment? (on public transit)",
+    "contextNote": "Spoken formula used in context: in het openbaar vervoer (reizen met trein en bus)",
     "usageWarning": "",
     "tags": [
       "conversational",
@@ -5613,1188 +5630,1188 @@ globalThis.NP_IDIOMS = [
     "related": []
   },
   {
-    "id": "idm-0331",
-    "dutch": "Mag ik je even iets vragen?",
-    "meaning": "May I ask you something for a moment? (informal / op)",
-    "literal": "",
-    "register": "informal",
-    "level": "A1",
-    "example": "Pardon mevrojew, mag ik u even iets vragen over de bushalte?",
-    "exampleEn": "May I ask you something for a moment? in context: op de markt (at the open-air market)",
-    "contextNote": "Spoken formula used op de markt (at the open-air market)",
-    "usageWarning": "",
-    "tags": [
-      "conversational",
-      "op"
-    ],
-    "related": []
-  },
-  {
     "id": "idm-0332",
-    "dutch": "Kjent u dat alstublieft herhalen?",
-    "meaning": "Could you please repeat that? (informal / op)",
+    "dutch": "Kunt u dat alstublieft herhalen?",
+    "meaning": "Could you please repeat that? (on public transit)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A1",
-    "example": "Het ging iets te snel, kjent u dat alstublieft herhalen?",
-    "exampleEn": "Could you please repeat that? in context: op de markt (at the open-air market)",
-    "contextNote": "Spoken formula used op de markt (at the open-air market)",
+    "example": "Het ging iets te snel, kunt u dat alstublieft herhalen?",
+    "exampleEn": "Could you please repeat that? (on public transit)",
+    "contextNote": "Spoken formula used in context: in het openbaar vervoer (reizen met trein en bus)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "op"
+      "in"
     ],
     "related": []
   },
   {
     "id": "idm-0333",
-    "dutch": "Wat bedoelt je precies met...?",
-    "meaning": "What exactly do you mean by...? (informal / op)",
+    "dutch": "Wat bedoelt u precies met dit punt?",
+    "meaning": "What exactly do you mean by this point? (on public transit)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
-    "example": "Wat bedoelt je precies met die voorwaarde in het contract?",
-    "exampleEn": "What exactly do you mean by...? in context: op de markt (at the open-air market)",
-    "contextNote": "Spoken formula used op de markt (at the open-air market)",
+    "example": "Wat bedoelt u precies met deze voorwaarde in het contract?",
+    "exampleEn": "What exactly do you mean by this point? (on public transit)",
+    "contextNote": "Spoken formula used in context: in het openbaar vervoer (reizen met trein en bus)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "op"
+      "in"
     ],
     "related": []
   },
   {
     "id": "idm-0334",
     "dutch": "Daar heb ik nog niet over nagedacht",
-    "meaning": "I haven't thought about that yet (informal / op)",
+    "meaning": "I haven't thought about that yet (on public transit)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
     "example": "Dat is een interessante vraag, daar heb ik nog niet over nagedacht.",
-    "exampleEn": "I haven't thought about that yet in context: op de markt (at the open-air market)",
-    "contextNote": "Spoken formula used op de markt (at the open-air market)",
+    "exampleEn": "I haven't thought about that yet (on public transit)",
+    "contextNote": "Spoken formula used in context: in het openbaar vervoer (reizen met trein en bus)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "op"
+      "in"
     ],
     "related": []
   },
   {
     "id": "idm-0335",
-    "dutch": "Zoje u mij kunnen doorverbinden met...?",
-    "meaning": "Could you connect me with...? (informal / op)",
+    "dutch": "Zou u mij kunnen doorverbinden met de juiste afdeling?",
+    "meaning": "Could you connect me with the right department? (on public transit)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "B1",
-    "example": "Goedemorgen, zoje u mij kunnen doorverbinden met de afdeling administratie?",
-    "exampleEn": "Could you connect me with...? in context: op de markt (at the open-air market)",
-    "contextNote": "Spoken formula used op de markt (at the open-air market)",
+    "example": "Goedemorgen, zou u mij kunnen doorverbinden met de afdeling administratie?",
+    "exampleEn": "Could you connect me with the right department? (on public transit)",
+    "contextNote": "Spoken formula used in context: in het openbaar vervoer (reizen met trein en bus)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "op"
+      "in"
     ],
     "related": []
   },
   {
     "id": "idm-0336",
     "dutch": "Ik ben het er roerend mee eens",
-    "meaning": "I completely and wholeheartedly agree (informal / op)",
+    "meaning": "I completely and wholeheartedly agree (on public transit)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "B1",
-    "example": "Met jojew visie op duurzaamheid ben ik het roerend eens.",
-    "exampleEn": "I completely and wholeheartedly agree in context: op de markt (at the open-air market)",
-    "contextNote": "Spoken formula used op de markt (at the open-air market)",
+    "example": "Met uw visie op duurzaamheid ben ik het roerend eens.",
+    "exampleEn": "I completely and wholeheartedly agree (on public transit)",
+    "contextNote": "Spoken formula used in context: in het openbaar vervoer (reizen met trein en bus)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "op"
+      "in"
     ],
     "related": []
   },
   {
     "id": "idm-0337",
     "dutch": "Dat is makkelijker gezegd dan gedaan",
-    "meaning": "That is easier said than done (informal / op)",
+    "meaning": "That is easier said than done (on public transit)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
     "example": "Gezonder eten klinkt simpel, maar het is makkelijker gezegd dan gedaan.",
-    "exampleEn": "That is easier said than done in context: op de markt (at the open-air market)",
-    "contextNote": "Spoken formula used op de markt (at the open-air market)",
+    "exampleEn": "That is easier said than done (on public transit)",
+    "contextNote": "Spoken formula used in context: in het openbaar vervoer (reizen met trein en bus)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "op"
+      "in"
     ],
     "related": []
   },
   {
     "id": "idm-0338",
-    "dutch": "Neem de tijd",
-    "meaning": "Take your time (informal / op)",
+    "dutch": "Neem rustig de tijd",
+    "meaning": "Take your time (on public transit)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A1",
-    "example": "Er is geen haast bij, neem rjestig de tijd.",
-    "exampleEn": "Take your time in context: op de markt (at the open-air market)",
-    "contextNote": "Spoken formula used op de markt (at the open-air market)",
+    "example": "Er is geen haast bij, neem rustig de tijd.",
+    "exampleEn": "Take your time (on public transit)",
+    "contextNote": "Spoken formula used in context: in het openbaar vervoer (reizen met trein en bus)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "op"
+      "in"
     ],
     "related": []
   },
   {
     "id": "idm-0339",
-    "dutch": "Het spijt me ontzettend",
-    "meaning": "I am terribly sorry (informal / op)",
+    "dutch": "Het spijt me ontzettend voor het ongemak",
+    "meaning": "I am terribly sorry for the inconvenience (on public transit)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
     "example": "Het spijt me ontzettend dat ik te laat ben voor onze afspraak.",
-    "exampleEn": "I am terribly sorry in context: op de markt (at the open-air market)",
-    "contextNote": "Spoken formula used op de markt (at the open-air market)",
+    "exampleEn": "I am terribly sorry for the inconvenience (on public transit)",
+    "contextNote": "Spoken formula used in context: in het openbaar vervoer (reizen met trein en bus)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "op"
+      "in"
     ],
     "related": []
   },
   {
     "id": "idm-0340",
-    "dutch": "Alvast heel erg bedankt voor de moeite",
-    "meaning": "Thank you very much in advance for your trouble (informal / op)",
+    "dutch": "Alvast heel erg bedankt voor uw medewerking",
+    "meaning": "Thank you very much in advance for your cooperation (on public transit)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
-    "example": "Ik zie jew reactie tegemoet, alvast heel erg bedankt voor de moeite!",
-    "exampleEn": "Thank you very much in advance for your trouble in context: op de markt (at the open-air market)",
-    "contextNote": "Spoken formula used op de markt (at the open-air market)",
+    "example": "Ik zie uw reactie tegemoet, alvast heel erg bedankt voor uw medewerking!",
+    "exampleEn": "Thank you very much in advance for your cooperation (on public transit)",
+    "contextNote": "Spoken formula used in context: in het openbaar vervoer (reizen met trein en bus)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "op"
+      "in"
     ],
     "related": []
   },
   {
     "id": "idm-0341",
-    "dutch": "Mag ik je even iets vragen?",
-    "meaning": "May I ask you something for a moment? (informal / met)",
+    "dutch": "Mag ik u even iets vragen?",
+    "meaning": "May I ask you something for a moment? (at the restaurant)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A1",
-    "example": "Pardon mevrojew, mag ik u even iets vragen over de bushalte?",
-    "exampleEn": "May I ask you something for a moment? in context: met de buren (with the neighbours)",
-    "contextNote": "Spoken formula used met de buren (with the neighbours)",
+    "example": "Pardon mevrouw, mag ik u even iets vragen over de bushalte?",
+    "exampleEn": "May I ask you something for a moment? (at the restaurant)",
+    "contextNote": "Spoken formula used in context: in het restaurant (horeca en dineren)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "met"
+      "in"
     ],
     "related": []
   },
   {
     "id": "idm-0342",
-    "dutch": "Kjent u dat alstublieft herhalen?",
-    "meaning": "Could you please repeat that? (informal / met)",
+    "dutch": "Kunt u dat alstublieft herhalen?",
+    "meaning": "Could you please repeat that? (at the restaurant)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A1",
-    "example": "Het ging iets te snel, kjent u dat alstublieft herhalen?",
-    "exampleEn": "Could you please repeat that? in context: met de buren (with the neighbours)",
-    "contextNote": "Spoken formula used met de buren (with the neighbours)",
+    "example": "Het ging iets te snel, kunt u dat alstublieft herhalen?",
+    "exampleEn": "Could you please repeat that? (at the restaurant)",
+    "contextNote": "Spoken formula used in context: in het restaurant (horeca en dineren)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "met"
+      "in"
     ],
     "related": []
   },
   {
     "id": "idm-0343",
-    "dutch": "Wat bedoelt je precies met...?",
-    "meaning": "What exactly do you mean by...? (informal / met)",
+    "dutch": "Wat bedoelt u precies met dit punt?",
+    "meaning": "What exactly do you mean by this point? (at the restaurant)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
-    "example": "Wat bedoelt je precies met die voorwaarde in het contract?",
-    "exampleEn": "What exactly do you mean by...? in context: met de buren (with the neighbours)",
-    "contextNote": "Spoken formula used met de buren (with the neighbours)",
+    "example": "Wat bedoelt u precies met deze voorwaarde in het contract?",
+    "exampleEn": "What exactly do you mean by this point? (at the restaurant)",
+    "contextNote": "Spoken formula used in context: in het restaurant (horeca en dineren)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "met"
+      "in"
     ],
     "related": []
   },
   {
     "id": "idm-0344",
     "dutch": "Daar heb ik nog niet over nagedacht",
-    "meaning": "I haven't thought about that yet (informal / met)",
+    "meaning": "I haven't thought about that yet (at the restaurant)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
     "example": "Dat is een interessante vraag, daar heb ik nog niet over nagedacht.",
-    "exampleEn": "I haven't thought about that yet in context: met de buren (with the neighbours)",
-    "contextNote": "Spoken formula used met de buren (with the neighbours)",
+    "exampleEn": "I haven't thought about that yet (at the restaurant)",
+    "contextNote": "Spoken formula used in context: in het restaurant (horeca en dineren)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "met"
+      "in"
     ],
     "related": []
   },
   {
     "id": "idm-0345",
-    "dutch": "Zoje u mij kunnen doorverbinden met...?",
-    "meaning": "Could you connect me with...? (informal / met)",
+    "dutch": "Zou u mij kunnen doorverbinden met de juiste afdeling?",
+    "meaning": "Could you connect me with the right department? (at the restaurant)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "B1",
-    "example": "Goedemorgen, zoje u mij kunnen doorverbinden met de afdeling administratie?",
-    "exampleEn": "Could you connect me with...? in context: met de buren (with the neighbours)",
-    "contextNote": "Spoken formula used met de buren (with the neighbours)",
+    "example": "Goedemorgen, zou u mij kunnen doorverbinden met de afdeling administratie?",
+    "exampleEn": "Could you connect me with the right department? (at the restaurant)",
+    "contextNote": "Spoken formula used in context: in het restaurant (horeca en dineren)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "met"
+      "in"
     ],
     "related": []
   },
   {
     "id": "idm-0346",
     "dutch": "Ik ben het er roerend mee eens",
-    "meaning": "I completely and wholeheartedly agree (informal / met)",
+    "meaning": "I completely and wholeheartedly agree (at the restaurant)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "B1",
-    "example": "Met jojew visie op duurzaamheid ben ik het roerend eens.",
-    "exampleEn": "I completely and wholeheartedly agree in context: met de buren (with the neighbours)",
-    "contextNote": "Spoken formula used met de buren (with the neighbours)",
+    "example": "Met uw visie op duurzaamheid ben ik het roerend eens.",
+    "exampleEn": "I completely and wholeheartedly agree (at the restaurant)",
+    "contextNote": "Spoken formula used in context: in het restaurant (horeca en dineren)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "met"
+      "in"
     ],
     "related": []
   },
   {
     "id": "idm-0347",
     "dutch": "Dat is makkelijker gezegd dan gedaan",
-    "meaning": "That is easier said than done (informal / met)",
+    "meaning": "That is easier said than done (at the restaurant)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
     "example": "Gezonder eten klinkt simpel, maar het is makkelijker gezegd dan gedaan.",
-    "exampleEn": "That is easier said than done in context: met de buren (with the neighbours)",
-    "contextNote": "Spoken formula used met de buren (with the neighbours)",
+    "exampleEn": "That is easier said than done (at the restaurant)",
+    "contextNote": "Spoken formula used in context: in het restaurant (horeca en dineren)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "met"
+      "in"
     ],
     "related": []
   },
   {
     "id": "idm-0348",
-    "dutch": "Neem de tijd",
-    "meaning": "Take your time (informal / met)",
+    "dutch": "Neem rustig de tijd",
+    "meaning": "Take your time (at the restaurant)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A1",
-    "example": "Er is geen haast bij, neem rjestig de tijd.",
-    "exampleEn": "Take your time in context: met de buren (with the neighbours)",
-    "contextNote": "Spoken formula used met de buren (with the neighbours)",
+    "example": "Er is geen haast bij, neem rustig de tijd.",
+    "exampleEn": "Take your time (at the restaurant)",
+    "contextNote": "Spoken formula used in context: in het restaurant (horeca en dineren)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "met"
+      "in"
     ],
     "related": []
   },
   {
     "id": "idm-0349",
-    "dutch": "Het spijt me ontzettend",
-    "meaning": "I am terribly sorry (informal / met)",
+    "dutch": "Het spijt me ontzettend voor het ongemak",
+    "meaning": "I am terribly sorry for the inconvenience (at the restaurant)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
     "example": "Het spijt me ontzettend dat ik te laat ben voor onze afspraak.",
-    "exampleEn": "I am terribly sorry in context: met de buren (with the neighbours)",
-    "contextNote": "Spoken formula used met de buren (with the neighbours)",
+    "exampleEn": "I am terribly sorry for the inconvenience (at the restaurant)",
+    "contextNote": "Spoken formula used in context: in het restaurant (horeca en dineren)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "met"
+      "in"
     ],
     "related": []
   },
   {
     "id": "idm-0350",
-    "dutch": "Alvast heel erg bedankt voor de moeite",
-    "meaning": "Thank you very much in advance for your trouble (informal / met)",
+    "dutch": "Alvast heel erg bedankt voor uw medewerking",
+    "meaning": "Thank you very much in advance for your cooperation (at the restaurant)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
-    "example": "Ik zie jew reactie tegemoet, alvast heel erg bedankt voor de moeite!",
-    "exampleEn": "Thank you very much in advance for your trouble in context: met de buren (with the neighbours)",
-    "contextNote": "Spoken formula used met de buren (with the neighbours)",
+    "example": "Ik zie uw reactie tegemoet, alvast heel erg bedankt voor uw medewerking!",
+    "exampleEn": "Thank you very much in advance for your cooperation (at the restaurant)",
+    "contextNote": "Spoken formula used in context: in het restaurant (horeca en dineren)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "met"
+      "in"
     ],
     "related": []
   },
   {
     "id": "idm-0351",
-    "dutch": "Mag ik je even iets vragen?",
-    "meaning": "May I ask you something for a moment? (informal / aan)",
+    "dutch": "Mag ik u even iets vragen?",
+    "meaning": "May I ask you something for a moment? (at the open-air market)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A1",
-    "example": "Pardon mevrojew, mag ik u even iets vragen over de bushalte?",
-    "exampleEn": "May I ask you something for a moment? in context: aan de telefoon (on the phone)",
-    "contextNote": "Spoken formula used aan de telefoon (on the phone)",
+    "example": "Pardon mevrouw, mag ik u even iets vragen over de bushalte?",
+    "exampleEn": "May I ask you something for a moment? (at the open-air market)",
+    "contextNote": "Spoken formula used in context: op de markt (boodschappen doen)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "aan"
+      "op"
     ],
     "related": []
   },
   {
     "id": "idm-0352",
-    "dutch": "Kjent u dat alstublieft herhalen?",
-    "meaning": "Could you please repeat that? (informal / aan)",
+    "dutch": "Kunt u dat alstublieft herhalen?",
+    "meaning": "Could you please repeat that? (at the open-air market)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A1",
-    "example": "Het ging iets te snel, kjent u dat alstublieft herhalen?",
-    "exampleEn": "Could you please repeat that? in context: aan de telefoon (on the phone)",
-    "contextNote": "Spoken formula used aan de telefoon (on the phone)",
+    "example": "Het ging iets te snel, kunt u dat alstublieft herhalen?",
+    "exampleEn": "Could you please repeat that? (at the open-air market)",
+    "contextNote": "Spoken formula used in context: op de markt (boodschappen doen)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "aan"
+      "op"
     ],
     "related": []
   },
   {
     "id": "idm-0353",
-    "dutch": "Wat bedoelt je precies met...?",
-    "meaning": "What exactly do you mean by...? (informal / aan)",
+    "dutch": "Wat bedoelt u precies met dit punt?",
+    "meaning": "What exactly do you mean by this point? (at the open-air market)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
-    "example": "Wat bedoelt je precies met die voorwaarde in het contract?",
-    "exampleEn": "What exactly do you mean by...? in context: aan de telefoon (on the phone)",
-    "contextNote": "Spoken formula used aan de telefoon (on the phone)",
+    "example": "Wat bedoelt u precies met deze voorwaarde in het contract?",
+    "exampleEn": "What exactly do you mean by this point? (at the open-air market)",
+    "contextNote": "Spoken formula used in context: op de markt (boodschappen doen)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "aan"
+      "op"
     ],
     "related": []
   },
   {
     "id": "idm-0354",
     "dutch": "Daar heb ik nog niet over nagedacht",
-    "meaning": "I haven't thought about that yet (informal / aan)",
+    "meaning": "I haven't thought about that yet (at the open-air market)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
     "example": "Dat is een interessante vraag, daar heb ik nog niet over nagedacht.",
-    "exampleEn": "I haven't thought about that yet in context: aan de telefoon (on the phone)",
-    "contextNote": "Spoken formula used aan de telefoon (on the phone)",
+    "exampleEn": "I haven't thought about that yet (at the open-air market)",
+    "contextNote": "Spoken formula used in context: op de markt (boodschappen doen)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "aan"
+      "op"
     ],
     "related": []
   },
   {
     "id": "idm-0355",
-    "dutch": "Zoje u mij kunnen doorverbinden met...?",
-    "meaning": "Could you connect me with...? (informal / aan)",
+    "dutch": "Zou u mij kunnen doorverbinden met de juiste afdeling?",
+    "meaning": "Could you connect me with the right department? (at the open-air market)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "B1",
-    "example": "Goedemorgen, zoje u mij kunnen doorverbinden met de afdeling administratie?",
-    "exampleEn": "Could you connect me with...? in context: aan de telefoon (on the phone)",
-    "contextNote": "Spoken formula used aan de telefoon (on the phone)",
+    "example": "Goedemorgen, zou u mij kunnen doorverbinden met de afdeling administratie?",
+    "exampleEn": "Could you connect me with the right department? (at the open-air market)",
+    "contextNote": "Spoken formula used in context: op de markt (boodschappen doen)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "aan"
+      "op"
     ],
     "related": []
   },
   {
     "id": "idm-0356",
     "dutch": "Ik ben het er roerend mee eens",
-    "meaning": "I completely and wholeheartedly agree (informal / aan)",
+    "meaning": "I completely and wholeheartedly agree (at the open-air market)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "B1",
-    "example": "Met jojew visie op duurzaamheid ben ik het roerend eens.",
-    "exampleEn": "I completely and wholeheartedly agree in context: aan de telefoon (on the phone)",
-    "contextNote": "Spoken formula used aan de telefoon (on the phone)",
+    "example": "Met uw visie op duurzaamheid ben ik het roerend eens.",
+    "exampleEn": "I completely and wholeheartedly agree (at the open-air market)",
+    "contextNote": "Spoken formula used in context: op de markt (boodschappen doen)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "aan"
+      "op"
     ],
     "related": []
   },
   {
     "id": "idm-0357",
     "dutch": "Dat is makkelijker gezegd dan gedaan",
-    "meaning": "That is easier said than done (informal / aan)",
+    "meaning": "That is easier said than done (at the open-air market)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
     "example": "Gezonder eten klinkt simpel, maar het is makkelijker gezegd dan gedaan.",
-    "exampleEn": "That is easier said than done in context: aan de telefoon (on the phone)",
-    "contextNote": "Spoken formula used aan de telefoon (on the phone)",
+    "exampleEn": "That is easier said than done (at the open-air market)",
+    "contextNote": "Spoken formula used in context: op de markt (boodschappen doen)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "aan"
+      "op"
     ],
     "related": []
   },
   {
     "id": "idm-0358",
-    "dutch": "Neem de tijd",
-    "meaning": "Take your time (informal / aan)",
+    "dutch": "Neem rustig de tijd",
+    "meaning": "Take your time (at the open-air market)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A1",
-    "example": "Er is geen haast bij, neem rjestig de tijd.",
-    "exampleEn": "Take your time in context: aan de telefoon (on the phone)",
-    "contextNote": "Spoken formula used aan de telefoon (on the phone)",
+    "example": "Er is geen haast bij, neem rustig de tijd.",
+    "exampleEn": "Take your time (at the open-air market)",
+    "contextNote": "Spoken formula used in context: op de markt (boodschappen doen)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "aan"
+      "op"
     ],
     "related": []
   },
   {
     "id": "idm-0359",
-    "dutch": "Het spijt me ontzettend",
-    "meaning": "I am terribly sorry (informal / aan)",
+    "dutch": "Het spijt me ontzettend voor het ongemak",
+    "meaning": "I am terribly sorry for the inconvenience (at the open-air market)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
     "example": "Het spijt me ontzettend dat ik te laat ben voor onze afspraak.",
-    "exampleEn": "I am terribly sorry in context: aan de telefoon (on the phone)",
-    "contextNote": "Spoken formula used aan de telefoon (on the phone)",
+    "exampleEn": "I am terribly sorry for the inconvenience (at the open-air market)",
+    "contextNote": "Spoken formula used in context: op de markt (boodschappen doen)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "aan"
+      "op"
     ],
     "related": []
   },
   {
     "id": "idm-0360",
-    "dutch": "Alvast heel erg bedankt voor de moeite",
-    "meaning": "Thank you very much in advance for your trouble (informal / aan)",
+    "dutch": "Alvast heel erg bedankt voor uw medewerking",
+    "meaning": "Thank you very much in advance for your cooperation (at the open-air market)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
-    "example": "Ik zie jew reactie tegemoet, alvast heel erg bedankt voor de moeite!",
-    "exampleEn": "Thank you very much in advance for your trouble in context: aan de telefoon (on the phone)",
-    "contextNote": "Spoken formula used aan de telefoon (on the phone)",
+    "example": "Ik zie uw reactie tegemoet, alvast heel erg bedankt voor uw medewerking!",
+    "exampleEn": "Thank you very much in advance for your cooperation (at the open-air market)",
+    "contextNote": "Spoken formula used in context: op de markt (boodschappen doen)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "aan"
+      "op"
     ],
     "related": []
   },
   {
     "id": "idm-0361",
-    "dutch": "Mag ik je even iets vragen?",
-    "meaning": "May I ask you something for a moment? (informal / in)",
+    "dutch": "Mag ik u even iets vragen?",
+    "meaning": "May I ask you something for a moment? (with the neighbours)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A1",
-    "example": "Pardon mevrojew, mag ik u even iets vragen over de bushalte?",
-    "exampleEn": "May I ask you something for a moment? in context: in een vergadering (in a business meeting)",
-    "contextNote": "Spoken formula used in een vergadering (in a business meeting)",
+    "example": "Pardon mevrouw, mag ik u even iets vragen over de bushalte?",
+    "exampleEn": "May I ask you something for a moment? (with the neighbours)",
+    "contextNote": "Spoken formula used in context: met de buren (buurtcontact)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "in"
+      "met"
     ],
     "related": []
   },
   {
     "id": "idm-0362",
-    "dutch": "Kjent u dat alstublieft herhalen?",
-    "meaning": "Could you please repeat that? (informal / in)",
+    "dutch": "Kunt u dat alstublieft herhalen?",
+    "meaning": "Could you please repeat that? (with the neighbours)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A1",
-    "example": "Het ging iets te snel, kjent u dat alstublieft herhalen?",
-    "exampleEn": "Could you please repeat that? in context: in een vergadering (in a business meeting)",
-    "contextNote": "Spoken formula used in een vergadering (in a business meeting)",
+    "example": "Het ging iets te snel, kunt u dat alstublieft herhalen?",
+    "exampleEn": "Could you please repeat that? (with the neighbours)",
+    "contextNote": "Spoken formula used in context: met de buren (buurtcontact)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "in"
+      "met"
     ],
     "related": []
   },
   {
     "id": "idm-0363",
-    "dutch": "Wat bedoelt je precies met...?",
-    "meaning": "What exactly do you mean by...? (informal / in)",
+    "dutch": "Wat bedoelt u precies met dit punt?",
+    "meaning": "What exactly do you mean by this point? (with the neighbours)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
-    "example": "Wat bedoelt je precies met die voorwaarde in het contract?",
-    "exampleEn": "What exactly do you mean by...? in context: in een vergadering (in a business meeting)",
-    "contextNote": "Spoken formula used in een vergadering (in a business meeting)",
+    "example": "Wat bedoelt u precies met deze voorwaarde in het contract?",
+    "exampleEn": "What exactly do you mean by this point? (with the neighbours)",
+    "contextNote": "Spoken formula used in context: met de buren (buurtcontact)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "in"
+      "met"
     ],
     "related": []
   },
   {
     "id": "idm-0364",
     "dutch": "Daar heb ik nog niet over nagedacht",
-    "meaning": "I haven't thought about that yet (informal / in)",
+    "meaning": "I haven't thought about that yet (with the neighbours)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
     "example": "Dat is een interessante vraag, daar heb ik nog niet over nagedacht.",
-    "exampleEn": "I haven't thought about that yet in context: in een vergadering (in a business meeting)",
-    "contextNote": "Spoken formula used in een vergadering (in a business meeting)",
+    "exampleEn": "I haven't thought about that yet (with the neighbours)",
+    "contextNote": "Spoken formula used in context: met de buren (buurtcontact)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "in"
+      "met"
     ],
     "related": []
   },
   {
     "id": "idm-0365",
-    "dutch": "Zoje u mij kunnen doorverbinden met...?",
-    "meaning": "Could you connect me with...? (informal / in)",
+    "dutch": "Zou u mij kunnen doorverbinden met de juiste afdeling?",
+    "meaning": "Could you connect me with the right department? (with the neighbours)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "B1",
-    "example": "Goedemorgen, zoje u mij kunnen doorverbinden met de afdeling administratie?",
-    "exampleEn": "Could you connect me with...? in context: in een vergadering (in a business meeting)",
-    "contextNote": "Spoken formula used in een vergadering (in a business meeting)",
+    "example": "Goedemorgen, zou u mij kunnen doorverbinden met de afdeling administratie?",
+    "exampleEn": "Could you connect me with the right department? (with the neighbours)",
+    "contextNote": "Spoken formula used in context: met de buren (buurtcontact)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "in"
+      "met"
     ],
     "related": []
   },
   {
     "id": "idm-0366",
     "dutch": "Ik ben het er roerend mee eens",
-    "meaning": "I completely and wholeheartedly agree (informal / in)",
+    "meaning": "I completely and wholeheartedly agree (with the neighbours)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "B1",
-    "example": "Met jojew visie op duurzaamheid ben ik het roerend eens.",
-    "exampleEn": "I completely and wholeheartedly agree in context: in een vergadering (in a business meeting)",
-    "contextNote": "Spoken formula used in een vergadering (in a business meeting)",
+    "example": "Met uw visie op duurzaamheid ben ik het roerend eens.",
+    "exampleEn": "I completely and wholeheartedly agree (with the neighbours)",
+    "contextNote": "Spoken formula used in context: met de buren (buurtcontact)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "in"
+      "met"
     ],
     "related": []
   },
   {
     "id": "idm-0367",
     "dutch": "Dat is makkelijker gezegd dan gedaan",
-    "meaning": "That is easier said than done (informal / in)",
+    "meaning": "That is easier said than done (with the neighbours)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
     "example": "Gezonder eten klinkt simpel, maar het is makkelijker gezegd dan gedaan.",
-    "exampleEn": "That is easier said than done in context: in een vergadering (in a business meeting)",
-    "contextNote": "Spoken formula used in een vergadering (in a business meeting)",
+    "exampleEn": "That is easier said than done (with the neighbours)",
+    "contextNote": "Spoken formula used in context: met de buren (buurtcontact)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "in"
+      "met"
     ],
     "related": []
   },
   {
     "id": "idm-0368",
-    "dutch": "Neem de tijd",
-    "meaning": "Take your time (informal / in)",
+    "dutch": "Neem rustig de tijd",
+    "meaning": "Take your time (with the neighbours)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A1",
-    "example": "Er is geen haast bij, neem rjestig de tijd.",
-    "exampleEn": "Take your time in context: in een vergadering (in a business meeting)",
-    "contextNote": "Spoken formula used in een vergadering (in a business meeting)",
+    "example": "Er is geen haast bij, neem rustig de tijd.",
+    "exampleEn": "Take your time (with the neighbours)",
+    "contextNote": "Spoken formula used in context: met de buren (buurtcontact)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "in"
+      "met"
     ],
     "related": []
   },
   {
     "id": "idm-0369",
-    "dutch": "Het spijt me ontzettend",
-    "meaning": "I am terribly sorry (informal / in)",
+    "dutch": "Het spijt me ontzettend voor het ongemak",
+    "meaning": "I am terribly sorry for the inconvenience (with the neighbours)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
     "example": "Het spijt me ontzettend dat ik te laat ben voor onze afspraak.",
-    "exampleEn": "I am terribly sorry in context: in een vergadering (in a business meeting)",
-    "contextNote": "Spoken formula used in een vergadering (in a business meeting)",
+    "exampleEn": "I am terribly sorry for the inconvenience (with the neighbours)",
+    "contextNote": "Spoken formula used in context: met de buren (buurtcontact)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "in"
+      "met"
     ],
     "related": []
   },
   {
     "id": "idm-0370",
-    "dutch": "Alvast heel erg bedankt voor de moeite",
-    "meaning": "Thank you very much in advance for your trouble (informal / in)",
+    "dutch": "Alvast heel erg bedankt voor uw medewerking",
+    "meaning": "Thank you very much in advance for your cooperation (with the neighbours)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
-    "example": "Ik zie jew reactie tegemoet, alvast heel erg bedankt voor de moeite!",
-    "exampleEn": "Thank you very much in advance for your trouble in context: in een vergadering (in a business meeting)",
-    "contextNote": "Spoken formula used in een vergadering (in a business meeting)",
+    "example": "Ik zie uw reactie tegemoet, alvast heel erg bedankt voor uw medewerking!",
+    "exampleEn": "Thank you very much in advance for your cooperation (with the neighbours)",
+    "contextNote": "Spoken formula used in context: met de buren (buurtcontact)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "in"
+      "met"
     ],
     "related": []
   },
   {
     "id": "idm-0371",
-    "dutch": "Mag ik je even iets vragen?",
-    "meaning": "May I ask you something for a moment? (informal / tijdens)",
+    "dutch": "Mag ik u even iets vragen?",
+    "meaning": "May I ask you something for a moment? (on the phone)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A1",
-    "example": "Pardon mevrojew, mag ik u even iets vragen over de bushalte?",
-    "exampleEn": "May I ask you something for a moment? in context: tijdens een borrel (during drinks/reception)",
-    "contextNote": "Spoken formula used tijdens een borrel (during drinks/reception)",
+    "example": "Pardon mevrouw, mag ik u even iets vragen over de bushalte?",
+    "exampleEn": "May I ask you something for a moment? (on the phone)",
+    "contextNote": "Spoken formula used in context: aan de telefoon (telefonisch gesprek)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "tijdens"
+      "aan"
     ],
     "related": []
   },
   {
     "id": "idm-0372",
-    "dutch": "Kjent u dat alstublieft herhalen?",
-    "meaning": "Could you please repeat that? (informal / tijdens)",
+    "dutch": "Kunt u dat alstublieft herhalen?",
+    "meaning": "Could you please repeat that? (on the phone)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A1",
-    "example": "Het ging iets te snel, kjent u dat alstublieft herhalen?",
-    "exampleEn": "Could you please repeat that? in context: tijdens een borrel (during drinks/reception)",
-    "contextNote": "Spoken formula used tijdens een borrel (during drinks/reception)",
+    "example": "Het ging iets te snel, kunt u dat alstublieft herhalen?",
+    "exampleEn": "Could you please repeat that? (on the phone)",
+    "contextNote": "Spoken formula used in context: aan de telefoon (telefonisch gesprek)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "tijdens"
+      "aan"
     ],
     "related": []
   },
   {
     "id": "idm-0373",
-    "dutch": "Wat bedoelt je precies met...?",
-    "meaning": "What exactly do you mean by...? (informal / tijdens)",
+    "dutch": "Wat bedoelt u precies met dit punt?",
+    "meaning": "What exactly do you mean by this point? (on the phone)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
-    "example": "Wat bedoelt je precies met die voorwaarde in het contract?",
-    "exampleEn": "What exactly do you mean by...? in context: tijdens een borrel (during drinks/reception)",
-    "contextNote": "Spoken formula used tijdens een borrel (during drinks/reception)",
+    "example": "Wat bedoelt u precies met deze voorwaarde in het contract?",
+    "exampleEn": "What exactly do you mean by this point? (on the phone)",
+    "contextNote": "Spoken formula used in context: aan de telefoon (telefonisch gesprek)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "tijdens"
+      "aan"
     ],
     "related": []
   },
   {
     "id": "idm-0374",
     "dutch": "Daar heb ik nog niet over nagedacht",
-    "meaning": "I haven't thought about that yet (informal / tijdens)",
+    "meaning": "I haven't thought about that yet (on the phone)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
     "example": "Dat is een interessante vraag, daar heb ik nog niet over nagedacht.",
-    "exampleEn": "I haven't thought about that yet in context: tijdens een borrel (during drinks/reception)",
-    "contextNote": "Spoken formula used tijdens een borrel (during drinks/reception)",
+    "exampleEn": "I haven't thought about that yet (on the phone)",
+    "contextNote": "Spoken formula used in context: aan de telefoon (telefonisch gesprek)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "tijdens"
+      "aan"
     ],
     "related": []
   },
   {
     "id": "idm-0375",
-    "dutch": "Zoje u mij kunnen doorverbinden met...?",
-    "meaning": "Could you connect me with...? (informal / tijdens)",
+    "dutch": "Zou u mij kunnen doorverbinden met de juiste afdeling?",
+    "meaning": "Could you connect me with the right department? (on the phone)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "B1",
-    "example": "Goedemorgen, zoje u mij kunnen doorverbinden met de afdeling administratie?",
-    "exampleEn": "Could you connect me with...? in context: tijdens een borrel (during drinks/reception)",
-    "contextNote": "Spoken formula used tijdens een borrel (during drinks/reception)",
+    "example": "Goedemorgen, zou u mij kunnen doorverbinden met de afdeling administratie?",
+    "exampleEn": "Could you connect me with the right department? (on the phone)",
+    "contextNote": "Spoken formula used in context: aan de telefoon (telefonisch gesprek)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "tijdens"
+      "aan"
     ],
     "related": []
   },
   {
     "id": "idm-0376",
     "dutch": "Ik ben het er roerend mee eens",
-    "meaning": "I completely and wholeheartedly agree (informal / tijdens)",
+    "meaning": "I completely and wholeheartedly agree (on the phone)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "B1",
-    "example": "Met jojew visie op duurzaamheid ben ik het roerend eens.",
-    "exampleEn": "I completely and wholeheartedly agree in context: tijdens een borrel (during drinks/reception)",
-    "contextNote": "Spoken formula used tijdens een borrel (during drinks/reception)",
+    "example": "Met uw visie op duurzaamheid ben ik het roerend eens.",
+    "exampleEn": "I completely and wholeheartedly agree (on the phone)",
+    "contextNote": "Spoken formula used in context: aan de telefoon (telefonisch gesprek)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "tijdens"
+      "aan"
     ],
     "related": []
   },
   {
     "id": "idm-0377",
     "dutch": "Dat is makkelijker gezegd dan gedaan",
-    "meaning": "That is easier said than done (informal / tijdens)",
+    "meaning": "That is easier said than done (on the phone)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
     "example": "Gezonder eten klinkt simpel, maar het is makkelijker gezegd dan gedaan.",
-    "exampleEn": "That is easier said than done in context: tijdens een borrel (during drinks/reception)",
-    "contextNote": "Spoken formula used tijdens een borrel (during drinks/reception)",
+    "exampleEn": "That is easier said than done (on the phone)",
+    "contextNote": "Spoken formula used in context: aan de telefoon (telefonisch gesprek)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "tijdens"
+      "aan"
     ],
     "related": []
   },
   {
     "id": "idm-0378",
-    "dutch": "Neem de tijd",
-    "meaning": "Take your time (informal / tijdens)",
+    "dutch": "Neem rustig de tijd",
+    "meaning": "Take your time (on the phone)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A1",
-    "example": "Er is geen haast bij, neem rjestig de tijd.",
-    "exampleEn": "Take your time in context: tijdens een borrel (during drinks/reception)",
-    "contextNote": "Spoken formula used tijdens een borrel (during drinks/reception)",
+    "example": "Er is geen haast bij, neem rustig de tijd.",
+    "exampleEn": "Take your time (on the phone)",
+    "contextNote": "Spoken formula used in context: aan de telefoon (telefonisch gesprek)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "tijdens"
+      "aan"
     ],
     "related": []
   },
   {
     "id": "idm-0379",
-    "dutch": "Het spijt me ontzettend",
-    "meaning": "I am terribly sorry (informal / tijdens)",
+    "dutch": "Het spijt me ontzettend voor het ongemak",
+    "meaning": "I am terribly sorry for the inconvenience (on the phone)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
     "example": "Het spijt me ontzettend dat ik te laat ben voor onze afspraak.",
-    "exampleEn": "I am terribly sorry in context: tijdens een borrel (during drinks/reception)",
-    "contextNote": "Spoken formula used tijdens een borrel (during drinks/reception)",
+    "exampleEn": "I am terribly sorry for the inconvenience (on the phone)",
+    "contextNote": "Spoken formula used in context: aan de telefoon (telefonisch gesprek)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "tijdens"
+      "aan"
     ],
     "related": []
   },
   {
     "id": "idm-0380",
-    "dutch": "Alvast heel erg bedankt voor de moeite",
-    "meaning": "Thank you very much in advance for your trouble (informal / tijdens)",
+    "dutch": "Alvast heel erg bedankt voor uw medewerking",
+    "meaning": "Thank you very much in advance for your cooperation (on the phone)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
-    "example": "Ik zie jew reactie tegemoet, alvast heel erg bedankt voor de moeite!",
-    "exampleEn": "Thank you very much in advance for your trouble in context: tijdens een borrel (during drinks/reception)",
-    "contextNote": "Spoken formula used tijdens een borrel (during drinks/reception)",
+    "example": "Ik zie uw reactie tegemoet, alvast heel erg bedankt voor uw medewerking!",
+    "exampleEn": "Thank you very much in advance for your cooperation (on the phone)",
+    "contextNote": "Spoken formula used in context: aan de telefoon (telefonisch gesprek)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "tijdens"
+      "aan"
     ],
     "related": []
   },
   {
     "id": "idm-0381",
-    "dutch": "Mag ik je even iets vragen?",
-    "meaning": "May I ask you something for a moment? (informal / bij)",
+    "dutch": "Mag ik u even iets vragen?",
+    "meaning": "May I ask you something for a moment? (in a meeting)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A1",
-    "example": "Pardon mevrojew, mag ik u even iets vragen over de bushalte?",
-    "exampleEn": "May I ask you something for a moment? in context: bij de gemeente (at city hall/bureaucracy)",
-    "contextNote": "Spoken formula used bij de gemeente (at city hall/bureaucracy)",
+    "example": "Pardon mevrouw, mag ik u even iets vragen over de bushalte?",
+    "exampleEn": "May I ask you something for a moment? (in a meeting)",
+    "contextNote": "Spoken formula used in context: in een vergadering (zakelijk overleg)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "bij"
+      "in"
     ],
     "related": []
   },
   {
     "id": "idm-0382",
-    "dutch": "Kjent u dat alstublieft herhalen?",
-    "meaning": "Could you please repeat that? (informal / bij)",
+    "dutch": "Kunt u dat alstublieft herhalen?",
+    "meaning": "Could you please repeat that? (in a meeting)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A1",
-    "example": "Het ging iets te snel, kjent u dat alstublieft herhalen?",
-    "exampleEn": "Could you please repeat that? in context: bij de gemeente (at city hall/bureaucracy)",
-    "contextNote": "Spoken formula used bij de gemeente (at city hall/bureaucracy)",
+    "example": "Het ging iets te snel, kunt u dat alstublieft herhalen?",
+    "exampleEn": "Could you please repeat that? (in a meeting)",
+    "contextNote": "Spoken formula used in context: in een vergadering (zakelijk overleg)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "bij"
+      "in"
     ],
     "related": []
   },
   {
     "id": "idm-0383",
-    "dutch": "Wat bedoelt je precies met...?",
-    "meaning": "What exactly do you mean by...? (informal / bij)",
+    "dutch": "Wat bedoelt u precies met dit punt?",
+    "meaning": "What exactly do you mean by this point? (in a meeting)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
-    "example": "Wat bedoelt je precies met die voorwaarde in het contract?",
-    "exampleEn": "What exactly do you mean by...? in context: bij de gemeente (at city hall/bureaucracy)",
-    "contextNote": "Spoken formula used bij de gemeente (at city hall/bureaucracy)",
+    "example": "Wat bedoelt u precies met deze voorwaarde in het contract?",
+    "exampleEn": "What exactly do you mean by this point? (in a meeting)",
+    "contextNote": "Spoken formula used in context: in een vergadering (zakelijk overleg)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "bij"
+      "in"
     ],
     "related": []
   },
   {
     "id": "idm-0384",
     "dutch": "Daar heb ik nog niet over nagedacht",
-    "meaning": "I haven't thought about that yet (informal / bij)",
+    "meaning": "I haven't thought about that yet (in a meeting)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
     "example": "Dat is een interessante vraag, daar heb ik nog niet over nagedacht.",
-    "exampleEn": "I haven't thought about that yet in context: bij de gemeente (at city hall/bureaucracy)",
-    "contextNote": "Spoken formula used bij de gemeente (at city hall/bureaucracy)",
+    "exampleEn": "I haven't thought about that yet (in a meeting)",
+    "contextNote": "Spoken formula used in context: in een vergadering (zakelijk overleg)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "bij"
+      "in"
     ],
     "related": []
   },
   {
     "id": "idm-0385",
-    "dutch": "Zoje u mij kunnen doorverbinden met...?",
-    "meaning": "Could you connect me with...? (informal / bij)",
+    "dutch": "Zou u mij kunnen doorverbinden met de juiste afdeling?",
+    "meaning": "Could you connect me with the right department? (in a meeting)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "B1",
-    "example": "Goedemorgen, zoje u mij kunnen doorverbinden met de afdeling administratie?",
-    "exampleEn": "Could you connect me with...? in context: bij de gemeente (at city hall/bureaucracy)",
-    "contextNote": "Spoken formula used bij de gemeente (at city hall/bureaucracy)",
+    "example": "Goedemorgen, zou u mij kunnen doorverbinden met de afdeling administratie?",
+    "exampleEn": "Could you connect me with the right department? (in a meeting)",
+    "contextNote": "Spoken formula used in context: in een vergadering (zakelijk overleg)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "bij"
+      "in"
     ],
     "related": []
   },
   {
     "id": "idm-0386",
     "dutch": "Ik ben het er roerend mee eens",
-    "meaning": "I completely and wholeheartedly agree (informal / bij)",
+    "meaning": "I completely and wholeheartedly agree (in a meeting)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "B1",
-    "example": "Met jojew visie op duurzaamheid ben ik het roerend eens.",
-    "exampleEn": "I completely and wholeheartedly agree in context: bij de gemeente (at city hall/bureaucracy)",
-    "contextNote": "Spoken formula used bij de gemeente (at city hall/bureaucracy)",
+    "example": "Met uw visie op duurzaamheid ben ik het roerend eens.",
+    "exampleEn": "I completely and wholeheartedly agree (in a meeting)",
+    "contextNote": "Spoken formula used in context: in een vergadering (zakelijk overleg)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "bij"
+      "in"
     ],
     "related": []
   },
   {
     "id": "idm-0387",
     "dutch": "Dat is makkelijker gezegd dan gedaan",
-    "meaning": "That is easier said than done (informal / bij)",
+    "meaning": "That is easier said than done (in a meeting)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
     "example": "Gezonder eten klinkt simpel, maar het is makkelijker gezegd dan gedaan.",
-    "exampleEn": "That is easier said than done in context: bij de gemeente (at city hall/bureaucracy)",
-    "contextNote": "Spoken formula used bij de gemeente (at city hall/bureaucracy)",
+    "exampleEn": "That is easier said than done (in a meeting)",
+    "contextNote": "Spoken formula used in context: in een vergadering (zakelijk overleg)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "bij"
+      "in"
     ],
     "related": []
   },
   {
     "id": "idm-0388",
-    "dutch": "Neem de tijd",
-    "meaning": "Take your time (informal / bij)",
+    "dutch": "Neem rustig de tijd",
+    "meaning": "Take your time (in a meeting)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A1",
-    "example": "Er is geen haast bij, neem rjestig de tijd.",
-    "exampleEn": "Take your time in context: bij de gemeente (at city hall/bureaucracy)",
-    "contextNote": "Spoken formula used bij de gemeente (at city hall/bureaucracy)",
+    "example": "Er is geen haast bij, neem rustig de tijd.",
+    "exampleEn": "Take your time (in a meeting)",
+    "contextNote": "Spoken formula used in context: in een vergadering (zakelijk overleg)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "bij"
+      "in"
     ],
     "related": []
   },
   {
     "id": "idm-0389",
-    "dutch": "Het spijt me ontzettend",
-    "meaning": "I am terribly sorry (informal / bij)",
+    "dutch": "Het spijt me ontzettend voor het ongemak",
+    "meaning": "I am terribly sorry for the inconvenience (in a meeting)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
     "example": "Het spijt me ontzettend dat ik te laat ben voor onze afspraak.",
-    "exampleEn": "I am terribly sorry in context: bij de gemeente (at city hall/bureaucracy)",
-    "contextNote": "Spoken formula used bij de gemeente (at city hall/bureaucracy)",
+    "exampleEn": "I am terribly sorry for the inconvenience (in a meeting)",
+    "contextNote": "Spoken formula used in context: in een vergadering (zakelijk overleg)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "bij"
+      "in"
     ],
     "related": []
   },
   {
     "id": "idm-0390",
-    "dutch": "Alvast heel erg bedankt voor de moeite",
-    "meaning": "Thank you very much in advance for your trouble (informal / bij)",
+    "dutch": "Alvast heel erg bedankt voor uw medewerking",
+    "meaning": "Thank you very much in advance for your cooperation (in a meeting)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
-    "example": "Ik zie jew reactie tegemoet, alvast heel erg bedankt voor de moeite!",
-    "exampleEn": "Thank you very much in advance for your trouble in context: bij de gemeente (at city hall/bureaucracy)",
-    "contextNote": "Spoken formula used bij de gemeente (at city hall/bureaucracy)",
+    "example": "Ik zie uw reactie tegemoet, alvast heel erg bedankt voor uw medewerking!",
+    "exampleEn": "Thank you very much in advance for your cooperation (in a meeting)",
+    "contextNote": "Spoken formula used in context: in een vergadering (zakelijk overleg)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "bij"
+      "in"
     ],
     "related": []
   },
   {
     "id": "idm-0391",
-    "dutch": "Mag ik je even iets vragen?",
-    "meaning": "May I ask you something for a moment? (informal / bij)",
+    "dutch": "Mag ik u even iets vragen?",
+    "meaning": "May I ask you something for a moment? (during drinks)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A1",
-    "example": "Pardon mevrojew, mag ik u even iets vragen over de bushalte?",
-    "exampleEn": "May I ask you something for a moment? in context: bij de huisarts (at the doctor)",
-    "contextNote": "Spoken formula used bij de huisarts (at the doctor)",
+    "example": "Pardon mevrouw, mag ik u even iets vragen over de bushalte?",
+    "exampleEn": "May I ask you something for a moment? (during drinks)",
+    "contextNote": "Spoken formula used in context: tijdens een borrel (sociale bijeenkomst)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "bij"
+      "tijdens"
     ],
     "related": []
   },
   {
     "id": "idm-0392",
-    "dutch": "Kjent u dat alstublieft herhalen?",
-    "meaning": "Could you please repeat that? (informal / bij)",
+    "dutch": "Kunt u dat alstublieft herhalen?",
+    "meaning": "Could you please repeat that? (during drinks)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A1",
-    "example": "Het ging iets te snel, kjent u dat alstublieft herhalen?",
-    "exampleEn": "Could you please repeat that? in context: bij de huisarts (at the doctor)",
-    "contextNote": "Spoken formula used bij de huisarts (at the doctor)",
+    "example": "Het ging iets te snel, kunt u dat alstublieft herhalen?",
+    "exampleEn": "Could you please repeat that? (during drinks)",
+    "contextNote": "Spoken formula used in context: tijdens een borrel (sociale bijeenkomst)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "bij"
+      "tijdens"
     ],
     "related": []
   },
   {
     "id": "idm-0393",
-    "dutch": "Wat bedoelt je precies met...?",
-    "meaning": "What exactly do you mean by...? (informal / bij)",
+    "dutch": "Wat bedoelt u precies met dit punt?",
+    "meaning": "What exactly do you mean by this point? (during drinks)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
-    "example": "Wat bedoelt je precies met die voorwaarde in het contract?",
-    "exampleEn": "What exactly do you mean by...? in context: bij de huisarts (at the doctor)",
-    "contextNote": "Spoken formula used bij de huisarts (at the doctor)",
+    "example": "Wat bedoelt u precies met deze voorwaarde in het contract?",
+    "exampleEn": "What exactly do you mean by this point? (during drinks)",
+    "contextNote": "Spoken formula used in context: tijdens een borrel (sociale bijeenkomst)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "bij"
+      "tijdens"
     ],
     "related": []
   },
   {
     "id": "idm-0394",
     "dutch": "Daar heb ik nog niet over nagedacht",
-    "meaning": "I haven't thought about that yet (informal / bij)",
+    "meaning": "I haven't thought about that yet (during drinks)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
     "example": "Dat is een interessante vraag, daar heb ik nog niet over nagedacht.",
-    "exampleEn": "I haven't thought about that yet in context: bij de huisarts (at the doctor)",
-    "contextNote": "Spoken formula used bij de huisarts (at the doctor)",
+    "exampleEn": "I haven't thought about that yet (during drinks)",
+    "contextNote": "Spoken formula used in context: tijdens een borrel (sociale bijeenkomst)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "bij"
+      "tijdens"
     ],
     "related": []
   },
   {
     "id": "idm-0395",
-    "dutch": "Zoje u mij kunnen doorverbinden met...?",
-    "meaning": "Could you connect me with...? (informal / bij)",
+    "dutch": "Zou u mij kunnen doorverbinden met de juiste afdeling?",
+    "meaning": "Could you connect me with the right department? (during drinks)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "B1",
-    "example": "Goedemorgen, zoje u mij kunnen doorverbinden met de afdeling administratie?",
-    "exampleEn": "Could you connect me with...? in context: bij de huisarts (at the doctor)",
-    "contextNote": "Spoken formula used bij de huisarts (at the doctor)",
+    "example": "Goedemorgen, zou u mij kunnen doorverbinden met de afdeling administratie?",
+    "exampleEn": "Could you connect me with the right department? (during drinks)",
+    "contextNote": "Spoken formula used in context: tijdens een borrel (sociale bijeenkomst)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "bij"
+      "tijdens"
     ],
     "related": []
   },
   {
     "id": "idm-0396",
     "dutch": "Ik ben het er roerend mee eens",
-    "meaning": "I completely and wholeheartedly agree (informal / bij)",
+    "meaning": "I completely and wholeheartedly agree (during drinks)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "B1",
-    "example": "Met jojew visie op duurzaamheid ben ik het roerend eens.",
-    "exampleEn": "I completely and wholeheartedly agree in context: bij de huisarts (at the doctor)",
-    "contextNote": "Spoken formula used bij de huisarts (at the doctor)",
+    "example": "Met uw visie op duurzaamheid ben ik het roerend eens.",
+    "exampleEn": "I completely and wholeheartedly agree (during drinks)",
+    "contextNote": "Spoken formula used in context: tijdens een borrel (sociale bijeenkomst)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "bij"
+      "tijdens"
     ],
     "related": []
   },
   {
     "id": "idm-0397",
     "dutch": "Dat is makkelijker gezegd dan gedaan",
-    "meaning": "That is easier said than done (informal / bij)",
+    "meaning": "That is easier said than done (during drinks)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
     "example": "Gezonder eten klinkt simpel, maar het is makkelijker gezegd dan gedaan.",
-    "exampleEn": "That is easier said than done in context: bij de huisarts (at the doctor)",
-    "contextNote": "Spoken formula used bij de huisarts (at the doctor)",
+    "exampleEn": "That is easier said than done (during drinks)",
+    "contextNote": "Spoken formula used in context: tijdens een borrel (sociale bijeenkomst)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "bij"
+      "tijdens"
     ],
     "related": []
   },
   {
     "id": "idm-0398",
-    "dutch": "Neem de tijd",
-    "meaning": "Take your time (informal / bij)",
+    "dutch": "Neem rustig de tijd",
+    "meaning": "Take your time (during drinks)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A1",
-    "example": "Er is geen haast bij, neem rjestig de tijd.",
-    "exampleEn": "Take your time in context: bij de huisarts (at the doctor)",
-    "contextNote": "Spoken formula used bij de huisarts (at the doctor)",
+    "example": "Er is geen haast bij, neem rustig de tijd.",
+    "exampleEn": "Take your time (during drinks)",
+    "contextNote": "Spoken formula used in context: tijdens een borrel (sociale bijeenkomst)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "bij"
+      "tijdens"
     ],
     "related": []
   },
   {
     "id": "idm-0399",
-    "dutch": "Het spijt me ontzettend",
-    "meaning": "I am terribly sorry (informal / bij)",
+    "dutch": "Het spijt me ontzettend voor het ongemak",
+    "meaning": "I am terribly sorry for the inconvenience (during drinks)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
     "example": "Het spijt me ontzettend dat ik te laat ben voor onze afspraak.",
-    "exampleEn": "I am terribly sorry in context: bij de huisarts (at the doctor)",
-    "contextNote": "Spoken formula used bij de huisarts (at the doctor)",
+    "exampleEn": "I am terribly sorry for the inconvenience (during drinks)",
+    "contextNote": "Spoken formula used in context: tijdens een borrel (sociale bijeenkomst)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "bij"
+      "tijdens"
     ],
     "related": []
   },
   {
     "id": "idm-0400",
-    "dutch": "Alvast heel erg bedankt voor de moeite",
-    "meaning": "Thank you very much in advance for your trouble (informal / bij)",
+    "dutch": "Alvast heel erg bedankt voor uw medewerking",
+    "meaning": "Thank you very much in advance for your cooperation (during drinks)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
-    "example": "Ik zie jew reactie tegemoet, alvast heel erg bedankt voor de moeite!",
-    "exampleEn": "Thank you very much in advance for your trouble in context: bij de huisarts (at the doctor)",
-    "contextNote": "Spoken formula used bij de huisarts (at the doctor)",
+    "example": "Ik zie uw reactie tegemoet, alvast heel erg bedankt voor uw medewerking!",
+    "exampleEn": "Thank you very much in advance for your cooperation (during drinks)",
+    "contextNote": "Spoken formula used in context: tijdens een borrel (sociale bijeenkomst)",
+    "usageWarning": "",
+    "tags": [
+      "conversational",
+      "tijdens"
+    ],
+    "related": []
+  },
+  {
+    "id": "idm-0401",
+    "dutch": "Mag ik u even iets vragen?",
+    "meaning": "May I ask you something for a moment? (at city hall)",
+    "literal": "",
+    "register": "polite",
+    "level": "A1",
+    "example": "Pardon mevrouw, mag ik u even iets vragen over de bushalte?",
+    "exampleEn": "May I ask you something for a moment? (at city hall)",
+    "contextNote": "Spoken formula used in context: bij de gemeente (burgerzaken)",
     "usageWarning": "",
     "tags": [
       "conversational",
@@ -6803,508 +6820,508 @@ globalThis.NP_IDIOMS = [
     "related": []
   },
   {
-    "id": "idm-0401",
-    "dutch": "Mag ik je even iets vragen?",
-    "meaning": "May I ask you something for a moment? (informal / op)",
-    "literal": "",
-    "register": "informal",
-    "level": "A1",
-    "example": "Pardon mevrojew, mag ik u even iets vragen over de bushalte?",
-    "exampleEn": "May I ask you something for a moment? in context: op het werk (at work)",
-    "contextNote": "Spoken formula used op het werk (at work)",
-    "usageWarning": "",
-    "tags": [
-      "conversational",
-      "op"
-    ],
-    "related": []
-  },
-  {
     "id": "idm-0402",
-    "dutch": "Kjent u dat alstublieft herhalen?",
-    "meaning": "Could you please repeat that? (informal / op)",
+    "dutch": "Kunt u dat alstublieft herhalen?",
+    "meaning": "Could you please repeat that? (at city hall)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A1",
-    "example": "Het ging iets te snel, kjent u dat alstublieft herhalen?",
-    "exampleEn": "Could you please repeat that? in context: op het werk (at work)",
-    "contextNote": "Spoken formula used op het werk (at work)",
+    "example": "Het ging iets te snel, kunt u dat alstublieft herhalen?",
+    "exampleEn": "Could you please repeat that? (at city hall)",
+    "contextNote": "Spoken formula used in context: bij de gemeente (burgerzaken)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "op"
+      "bij"
     ],
     "related": []
   },
   {
     "id": "idm-0403",
-    "dutch": "Wat bedoelt je precies met...?",
-    "meaning": "What exactly do you mean by...? (informal / op)",
+    "dutch": "Wat bedoelt u precies met dit punt?",
+    "meaning": "What exactly do you mean by this point? (at city hall)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
-    "example": "Wat bedoelt je precies met die voorwaarde in het contract?",
-    "exampleEn": "What exactly do you mean by...? in context: op het werk (at work)",
-    "contextNote": "Spoken formula used op het werk (at work)",
+    "example": "Wat bedoelt u precies met deze voorwaarde in het contract?",
+    "exampleEn": "What exactly do you mean by this point? (at city hall)",
+    "contextNote": "Spoken formula used in context: bij de gemeente (burgerzaken)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "op"
+      "bij"
     ],
     "related": []
   },
   {
     "id": "idm-0404",
     "dutch": "Daar heb ik nog niet over nagedacht",
-    "meaning": "I haven't thought about that yet (informal / op)",
+    "meaning": "I haven't thought about that yet (at city hall)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
     "example": "Dat is een interessante vraag, daar heb ik nog niet over nagedacht.",
-    "exampleEn": "I haven't thought about that yet in context: op het werk (at work)",
-    "contextNote": "Spoken formula used op het werk (at work)",
+    "exampleEn": "I haven't thought about that yet (at city hall)",
+    "contextNote": "Spoken formula used in context: bij de gemeente (burgerzaken)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "op"
+      "bij"
     ],
     "related": []
   },
   {
     "id": "idm-0405",
-    "dutch": "Zoje u mij kunnen doorverbinden met...?",
-    "meaning": "Could you connect me with...? (informal / op)",
+    "dutch": "Zou u mij kunnen doorverbinden met de juiste afdeling?",
+    "meaning": "Could you connect me with the right department? (at city hall)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "B1",
-    "example": "Goedemorgen, zoje u mij kunnen doorverbinden met de afdeling administratie?",
-    "exampleEn": "Could you connect me with...? in context: op het werk (at work)",
-    "contextNote": "Spoken formula used op het werk (at work)",
+    "example": "Goedemorgen, zou u mij kunnen doorverbinden met de afdeling administratie?",
+    "exampleEn": "Could you connect me with the right department? (at city hall)",
+    "contextNote": "Spoken formula used in context: bij de gemeente (burgerzaken)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "op"
+      "bij"
     ],
     "related": []
   },
   {
     "id": "idm-0406",
     "dutch": "Ik ben het er roerend mee eens",
-    "meaning": "I completely and wholeheartedly agree (informal / op)",
+    "meaning": "I completely and wholeheartedly agree (at city hall)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "B1",
-    "example": "Met jojew visie op duurzaamheid ben ik het roerend eens.",
-    "exampleEn": "I completely and wholeheartedly agree in context: op het werk (at work)",
-    "contextNote": "Spoken formula used op het werk (at work)",
+    "example": "Met uw visie op duurzaamheid ben ik het roerend eens.",
+    "exampleEn": "I completely and wholeheartedly agree (at city hall)",
+    "contextNote": "Spoken formula used in context: bij de gemeente (burgerzaken)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "op"
+      "bij"
     ],
     "related": []
   },
   {
     "id": "idm-0407",
     "dutch": "Dat is makkelijker gezegd dan gedaan",
-    "meaning": "That is easier said than done (informal / op)",
+    "meaning": "That is easier said than done (at city hall)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
     "example": "Gezonder eten klinkt simpel, maar het is makkelijker gezegd dan gedaan.",
-    "exampleEn": "That is easier said than done in context: op het werk (at work)",
-    "contextNote": "Spoken formula used op het werk (at work)",
+    "exampleEn": "That is easier said than done (at city hall)",
+    "contextNote": "Spoken formula used in context: bij de gemeente (burgerzaken)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "op"
+      "bij"
     ],
     "related": []
   },
   {
     "id": "idm-0408",
-    "dutch": "Neem de tijd",
-    "meaning": "Take your time (informal / op)",
+    "dutch": "Neem rustig de tijd",
+    "meaning": "Take your time (at city hall)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A1",
-    "example": "Er is geen haast bij, neem rjestig de tijd.",
-    "exampleEn": "Take your time in context: op het werk (at work)",
-    "contextNote": "Spoken formula used op het werk (at work)",
+    "example": "Er is geen haast bij, neem rustig de tijd.",
+    "exampleEn": "Take your time (at city hall)",
+    "contextNote": "Spoken formula used in context: bij de gemeente (burgerzaken)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "op"
+      "bij"
     ],
     "related": []
   },
   {
     "id": "idm-0409",
-    "dutch": "Het spijt me ontzettend",
-    "meaning": "I am terribly sorry (informal / op)",
+    "dutch": "Het spijt me ontzettend voor het ongemak",
+    "meaning": "I am terribly sorry for the inconvenience (at city hall)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
     "example": "Het spijt me ontzettend dat ik te laat ben voor onze afspraak.",
-    "exampleEn": "I am terribly sorry in context: op het werk (at work)",
-    "contextNote": "Spoken formula used op het werk (at work)",
+    "exampleEn": "I am terribly sorry for the inconvenience (at city hall)",
+    "contextNote": "Spoken formula used in context: bij de gemeente (burgerzaken)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "op"
+      "bij"
     ],
     "related": []
   },
   {
     "id": "idm-0410",
-    "dutch": "Alvast heel erg bedankt voor de moeite",
-    "meaning": "Thank you very much in advance for your trouble (informal / op)",
+    "dutch": "Alvast heel erg bedankt voor uw medewerking",
+    "meaning": "Thank you very much in advance for your cooperation (at city hall)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
-    "example": "Ik zie jew reactie tegemoet, alvast heel erg bedankt voor de moeite!",
-    "exampleEn": "Thank you very much in advance for your trouble in context: op het werk (at work)",
-    "contextNote": "Spoken formula used op het werk (at work)",
+    "example": "Ik zie uw reactie tegemoet, alvast heel erg bedankt voor uw medewerking!",
+    "exampleEn": "Thank you very much in advance for your cooperation (at city hall)",
+    "contextNote": "Spoken formula used in context: bij de gemeente (burgerzaken)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "op"
+      "bij"
     ],
     "related": []
   },
   {
     "id": "idm-0411",
-    "dutch": "Mag ik je even iets vragen?",
-    "meaning": "May I ask you something for a moment? (informal / in)",
+    "dutch": "Mag ik u even iets vragen?",
+    "meaning": "May I ask you something for a moment? (at the doctor)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A1",
-    "example": "Pardon mevrojew, mag ik u even iets vragen over de bushalte?",
-    "exampleEn": "May I ask you something for a moment? in context: in het openbaar vervoer (on public transit)",
-    "contextNote": "Spoken formula used in het openbaar vervoer (on public transit)",
+    "example": "Pardon mevrouw, mag ik u even iets vragen over de bushalte?",
+    "exampleEn": "May I ask you something for a moment? (at the doctor)",
+    "contextNote": "Spoken formula used in context: bij de huisarts (medisch consult)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "in"
+      "bij"
     ],
     "related": []
   },
   {
     "id": "idm-0412",
-    "dutch": "Kjent u dat alstublieft herhalen?",
-    "meaning": "Could you please repeat that? (informal / in)",
+    "dutch": "Kunt u dat alstublieft herhalen?",
+    "meaning": "Could you please repeat that? (at the doctor)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A1",
-    "example": "Het ging iets te snel, kjent u dat alstublieft herhalen?",
-    "exampleEn": "Could you please repeat that? in context: in het openbaar vervoer (on public transit)",
-    "contextNote": "Spoken formula used in het openbaar vervoer (on public transit)",
+    "example": "Het ging iets te snel, kunt u dat alstublieft herhalen?",
+    "exampleEn": "Could you please repeat that? (at the doctor)",
+    "contextNote": "Spoken formula used in context: bij de huisarts (medisch consult)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "in"
+      "bij"
     ],
     "related": []
   },
   {
     "id": "idm-0413",
-    "dutch": "Wat bedoelt je precies met...?",
-    "meaning": "What exactly do you mean by...? (informal / in)",
+    "dutch": "Wat bedoelt u precies met dit punt?",
+    "meaning": "What exactly do you mean by this point? (at the doctor)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
-    "example": "Wat bedoelt je precies met die voorwaarde in het contract?",
-    "exampleEn": "What exactly do you mean by...? in context: in het openbaar vervoer (on public transit)",
-    "contextNote": "Spoken formula used in het openbaar vervoer (on public transit)",
+    "example": "Wat bedoelt u precies met deze voorwaarde in het contract?",
+    "exampleEn": "What exactly do you mean by this point? (at the doctor)",
+    "contextNote": "Spoken formula used in context: bij de huisarts (medisch consult)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "in"
+      "bij"
     ],
     "related": []
   },
   {
     "id": "idm-0414",
     "dutch": "Daar heb ik nog niet over nagedacht",
-    "meaning": "I haven't thought about that yet (informal / in)",
+    "meaning": "I haven't thought about that yet (at the doctor)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
     "example": "Dat is een interessante vraag, daar heb ik nog niet over nagedacht.",
-    "exampleEn": "I haven't thought about that yet in context: in het openbaar vervoer (on public transit)",
-    "contextNote": "Spoken formula used in het openbaar vervoer (on public transit)",
+    "exampleEn": "I haven't thought about that yet (at the doctor)",
+    "contextNote": "Spoken formula used in context: bij de huisarts (medisch consult)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "in"
+      "bij"
     ],
     "related": []
   },
   {
     "id": "idm-0415",
-    "dutch": "Zoje u mij kunnen doorverbinden met...?",
-    "meaning": "Could you connect me with...? (informal / in)",
+    "dutch": "Zou u mij kunnen doorverbinden met de juiste afdeling?",
+    "meaning": "Could you connect me with the right department? (at the doctor)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "B1",
-    "example": "Goedemorgen, zoje u mij kunnen doorverbinden met de afdeling administratie?",
-    "exampleEn": "Could you connect me with...? in context: in het openbaar vervoer (on public transit)",
-    "contextNote": "Spoken formula used in het openbaar vervoer (on public transit)",
+    "example": "Goedemorgen, zou u mij kunnen doorverbinden met de afdeling administratie?",
+    "exampleEn": "Could you connect me with the right department? (at the doctor)",
+    "contextNote": "Spoken formula used in context: bij de huisarts (medisch consult)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "in"
+      "bij"
     ],
     "related": []
   },
   {
     "id": "idm-0416",
     "dutch": "Ik ben het er roerend mee eens",
-    "meaning": "I completely and wholeheartedly agree (informal / in)",
+    "meaning": "I completely and wholeheartedly agree (at the doctor)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "B1",
-    "example": "Met jojew visie op duurzaamheid ben ik het roerend eens.",
-    "exampleEn": "I completely and wholeheartedly agree in context: in het openbaar vervoer (on public transit)",
-    "contextNote": "Spoken formula used in het openbaar vervoer (on public transit)",
+    "example": "Met uw visie op duurzaamheid ben ik het roerend eens.",
+    "exampleEn": "I completely and wholeheartedly agree (at the doctor)",
+    "contextNote": "Spoken formula used in context: bij de huisarts (medisch consult)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "in"
+      "bij"
     ],
     "related": []
   },
   {
     "id": "idm-0417",
     "dutch": "Dat is makkelijker gezegd dan gedaan",
-    "meaning": "That is easier said than done (informal / in)",
+    "meaning": "That is easier said than done (at the doctor)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
     "example": "Gezonder eten klinkt simpel, maar het is makkelijker gezegd dan gedaan.",
-    "exampleEn": "That is easier said than done in context: in het openbaar vervoer (on public transit)",
-    "contextNote": "Spoken formula used in het openbaar vervoer (on public transit)",
+    "exampleEn": "That is easier said than done (at the doctor)",
+    "contextNote": "Spoken formula used in context: bij de huisarts (medisch consult)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "in"
+      "bij"
     ],
     "related": []
   },
   {
     "id": "idm-0418",
-    "dutch": "Neem de tijd",
-    "meaning": "Take your time (informal / in)",
+    "dutch": "Neem rustig de tijd",
+    "meaning": "Take your time (at the doctor)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A1",
-    "example": "Er is geen haast bij, neem rjestig de tijd.",
-    "exampleEn": "Take your time in context: in het openbaar vervoer (on public transit)",
-    "contextNote": "Spoken formula used in het openbaar vervoer (on public transit)",
+    "example": "Er is geen haast bij, neem rustig de tijd.",
+    "exampleEn": "Take your time (at the doctor)",
+    "contextNote": "Spoken formula used in context: bij de huisarts (medisch consult)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "in"
+      "bij"
     ],
     "related": []
   },
   {
     "id": "idm-0419",
-    "dutch": "Het spijt me ontzettend",
-    "meaning": "I am terribly sorry (informal / in)",
+    "dutch": "Het spijt me ontzettend voor het ongemak",
+    "meaning": "I am terribly sorry for the inconvenience (at the doctor)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
     "example": "Het spijt me ontzettend dat ik te laat ben voor onze afspraak.",
-    "exampleEn": "I am terribly sorry in context: in het openbaar vervoer (on public transit)",
-    "contextNote": "Spoken formula used in het openbaar vervoer (on public transit)",
+    "exampleEn": "I am terribly sorry for the inconvenience (at the doctor)",
+    "contextNote": "Spoken formula used in context: bij de huisarts (medisch consult)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "in"
+      "bij"
     ],
     "related": []
   },
   {
     "id": "idm-0420",
-    "dutch": "Alvast heel erg bedankt voor de moeite",
-    "meaning": "Thank you very much in advance for your trouble (informal / in)",
+    "dutch": "Alvast heel erg bedankt voor uw medewerking",
+    "meaning": "Thank you very much in advance for your cooperation (at the doctor)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
-    "example": "Ik zie jew reactie tegemoet, alvast heel erg bedankt voor de moeite!",
-    "exampleEn": "Thank you very much in advance for your trouble in context: in het openbaar vervoer (on public transit)",
-    "contextNote": "Spoken formula used in het openbaar vervoer (on public transit)",
+    "example": "Ik zie uw reactie tegemoet, alvast heel erg bedankt voor uw medewerking!",
+    "exampleEn": "Thank you very much in advance for your cooperation (at the doctor)",
+    "contextNote": "Spoken formula used in context: bij de huisarts (medisch consult)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "in"
+      "bij"
     ],
     "related": []
   },
   {
     "id": "idm-0421",
-    "dutch": "Mag ik je even iets vragen?",
-    "meaning": "May I ask you something for a moment? (informal / in)",
+    "dutch": "Mag ik u even iets vragen?",
+    "meaning": "May I ask you something for a moment? (at work)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A1",
-    "example": "Pardon mevrojew, mag ik u even iets vragen over de bushalte?",
-    "exampleEn": "May I ask you something for a moment? in context: in het restaurant (at the restaurant)",
-    "contextNote": "Spoken formula used in het restaurant (at the restaurant)",
+    "example": "Pardon mevrouw, mag ik u even iets vragen over de bushalte?",
+    "exampleEn": "May I ask you something for a moment? (at work)",
+    "contextNote": "Spoken formula used in context: op het werk (kantooroverleg)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "in"
+      "op"
     ],
     "related": []
   },
   {
     "id": "idm-0422",
-    "dutch": "Kjent u dat alstublieft herhalen?",
-    "meaning": "Could you please repeat that? (informal / in)",
+    "dutch": "Kunt u dat alstublieft herhalen?",
+    "meaning": "Could you please repeat that? (at work)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A1",
-    "example": "Het ging iets te snel, kjent u dat alstublieft herhalen?",
-    "exampleEn": "Could you please repeat that? in context: in het restaurant (at the restaurant)",
-    "contextNote": "Spoken formula used in het restaurant (at the restaurant)",
+    "example": "Het ging iets te snel, kunt u dat alstublieft herhalen?",
+    "exampleEn": "Could you please repeat that? (at work)",
+    "contextNote": "Spoken formula used in context: op het werk (kantooroverleg)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "in"
+      "op"
     ],
     "related": []
   },
   {
     "id": "idm-0423",
-    "dutch": "Wat bedoelt je precies met...?",
-    "meaning": "What exactly do you mean by...? (informal / in)",
+    "dutch": "Wat bedoelt u precies met dit punt?",
+    "meaning": "What exactly do you mean by this point? (at work)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
-    "example": "Wat bedoelt je precies met die voorwaarde in het contract?",
-    "exampleEn": "What exactly do you mean by...? in context: in het restaurant (at the restaurant)",
-    "contextNote": "Spoken formula used in het restaurant (at the restaurant)",
+    "example": "Wat bedoelt u precies met deze voorwaarde in het contract?",
+    "exampleEn": "What exactly do you mean by this point? (at work)",
+    "contextNote": "Spoken formula used in context: op het werk (kantooroverleg)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "in"
+      "op"
     ],
     "related": []
   },
   {
     "id": "idm-0424",
     "dutch": "Daar heb ik nog niet over nagedacht",
-    "meaning": "I haven't thought about that yet (informal / in)",
+    "meaning": "I haven't thought about that yet (at work)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
     "example": "Dat is een interessante vraag, daar heb ik nog niet over nagedacht.",
-    "exampleEn": "I haven't thought about that yet in context: in het restaurant (at the restaurant)",
-    "contextNote": "Spoken formula used in het restaurant (at the restaurant)",
+    "exampleEn": "I haven't thought about that yet (at work)",
+    "contextNote": "Spoken formula used in context: op het werk (kantooroverleg)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "in"
+      "op"
     ],
     "related": []
   },
   {
     "id": "idm-0425",
-    "dutch": "Zoje u mij kunnen doorverbinden met...?",
-    "meaning": "Could you connect me with...? (informal / in)",
+    "dutch": "Zou u mij kunnen doorverbinden met de juiste afdeling?",
+    "meaning": "Could you connect me with the right department? (at work)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "B1",
-    "example": "Goedemorgen, zoje u mij kunnen doorverbinden met de afdeling administratie?",
-    "exampleEn": "Could you connect me with...? in context: in het restaurant (at the restaurant)",
-    "contextNote": "Spoken formula used in het restaurant (at the restaurant)",
+    "example": "Goedemorgen, zou u mij kunnen doorverbinden met de afdeling administratie?",
+    "exampleEn": "Could you connect me with the right department? (at work)",
+    "contextNote": "Spoken formula used in context: op het werk (kantooroverleg)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "in"
+      "op"
     ],
     "related": []
   },
   {
     "id": "idm-0426",
     "dutch": "Ik ben het er roerend mee eens",
-    "meaning": "I completely and wholeheartedly agree (informal / in)",
+    "meaning": "I completely and wholeheartedly agree (at work)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "B1",
-    "example": "Met jojew visie op duurzaamheid ben ik het roerend eens.",
-    "exampleEn": "I completely and wholeheartedly agree in context: in het restaurant (at the restaurant)",
-    "contextNote": "Spoken formula used in het restaurant (at the restaurant)",
+    "example": "Met uw visie op duurzaamheid ben ik het roerend eens.",
+    "exampleEn": "I completely and wholeheartedly agree (at work)",
+    "contextNote": "Spoken formula used in context: op het werk (kantooroverleg)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "in"
+      "op"
     ],
     "related": []
   },
   {
     "id": "idm-0427",
     "dutch": "Dat is makkelijker gezegd dan gedaan",
-    "meaning": "That is easier said than done (informal / in)",
+    "meaning": "That is easier said than done (at work)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
     "example": "Gezonder eten klinkt simpel, maar het is makkelijker gezegd dan gedaan.",
-    "exampleEn": "That is easier said than done in context: in het restaurant (at the restaurant)",
-    "contextNote": "Spoken formula used in het restaurant (at the restaurant)",
+    "exampleEn": "That is easier said than done (at work)",
+    "contextNote": "Spoken formula used in context: op het werk (kantooroverleg)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "in"
+      "op"
     ],
     "related": []
   },
   {
     "id": "idm-0428",
-    "dutch": "Neem de tijd",
-    "meaning": "Take your time (informal / in)",
+    "dutch": "Neem rustig de tijd",
+    "meaning": "Take your time (at work)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A1",
-    "example": "Er is geen haast bij, neem rjestig de tijd.",
-    "exampleEn": "Take your time in context: in het restaurant (at the restaurant)",
-    "contextNote": "Spoken formula used in het restaurant (at the restaurant)",
+    "example": "Er is geen haast bij, neem rustig de tijd.",
+    "exampleEn": "Take your time (at work)",
+    "contextNote": "Spoken formula used in context: op het werk (kantooroverleg)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "in"
+      "op"
     ],
     "related": []
   },
   {
     "id": "idm-0429",
-    "dutch": "Het spijt me ontzettend",
-    "meaning": "I am terribly sorry (informal / in)",
+    "dutch": "Het spijt me ontzettend voor het ongemak",
+    "meaning": "I am terribly sorry for the inconvenience (at work)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
     "example": "Het spijt me ontzettend dat ik te laat ben voor onze afspraak.",
-    "exampleEn": "I am terribly sorry in context: in het restaurant (at the restaurant)",
-    "contextNote": "Spoken formula used in het restaurant (at the restaurant)",
+    "exampleEn": "I am terribly sorry for the inconvenience (at work)",
+    "contextNote": "Spoken formula used in context: op het werk (kantooroverleg)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "in"
+      "op"
     ],
     "related": []
   },
   {
     "id": "idm-0430",
-    "dutch": "Alvast heel erg bedankt voor de moeite",
-    "meaning": "Thank you very much in advance for your trouble (informal / in)",
+    "dutch": "Alvast heel erg bedankt voor uw medewerking",
+    "meaning": "Thank you very much in advance for your cooperation (at work)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
-    "example": "Ik zie jew reactie tegemoet, alvast heel erg bedankt voor de moeite!",
-    "exampleEn": "Thank you very much in advance for your trouble in context: in het restaurant (at the restaurant)",
-    "contextNote": "Spoken formula used in het restaurant (at the restaurant)",
+    "example": "Ik zie uw reactie tegemoet, alvast heel erg bedankt voor uw medewerking!",
+    "exampleEn": "Thank you very much in advance for your cooperation (at work)",
+    "contextNote": "Spoken formula used in context: op het werk (kantooroverleg)",
+    "usageWarning": "",
+    "tags": [
+      "conversational",
+      "op"
+    ],
+    "related": []
+  },
+  {
+    "id": "idm-0431",
+    "dutch": "Mag ik u even iets vragen?",
+    "meaning": "May I ask you something for a moment? (on public transit)",
+    "literal": "",
+    "register": "polite",
+    "level": "A1",
+    "example": "Pardon mevrouw, mag ik u even iets vragen over de bushalte?",
+    "exampleEn": "May I ask you something for a moment? (on public transit)",
+    "contextNote": "Spoken formula used in context: in het openbaar vervoer (reizen met trein en bus)",
     "usageWarning": "",
     "tags": [
       "conversational",
@@ -7313,1188 +7330,1188 @@ globalThis.NP_IDIOMS = [
     "related": []
   },
   {
-    "id": "idm-0431",
-    "dutch": "Mag ik je even iets vragen?",
-    "meaning": "May I ask you something for a moment? (informal / op)",
-    "literal": "",
-    "register": "informal",
-    "level": "A1",
-    "example": "Pardon mevrojew, mag ik u even iets vragen over de bushalte?",
-    "exampleEn": "May I ask you something for a moment? in context: op de markt (at the open-air market)",
-    "contextNote": "Spoken formula used op de markt (at the open-air market)",
-    "usageWarning": "",
-    "tags": [
-      "conversational",
-      "op"
-    ],
-    "related": []
-  },
-  {
     "id": "idm-0432",
-    "dutch": "Kjent u dat alstublieft herhalen?",
-    "meaning": "Could you please repeat that? (informal / op)",
+    "dutch": "Kunt u dat alstublieft herhalen?",
+    "meaning": "Could you please repeat that? (on public transit)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A1",
-    "example": "Het ging iets te snel, kjent u dat alstublieft herhalen?",
-    "exampleEn": "Could you please repeat that? in context: op de markt (at the open-air market)",
-    "contextNote": "Spoken formula used op de markt (at the open-air market)",
+    "example": "Het ging iets te snel, kunt u dat alstublieft herhalen?",
+    "exampleEn": "Could you please repeat that? (on public transit)",
+    "contextNote": "Spoken formula used in context: in het openbaar vervoer (reizen met trein en bus)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "op"
+      "in"
     ],
     "related": []
   },
   {
     "id": "idm-0433",
-    "dutch": "Wat bedoelt je precies met...?",
-    "meaning": "What exactly do you mean by...? (informal / op)",
+    "dutch": "Wat bedoelt u precies met dit punt?",
+    "meaning": "What exactly do you mean by this point? (on public transit)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
-    "example": "Wat bedoelt je precies met die voorwaarde in het contract?",
-    "exampleEn": "What exactly do you mean by...? in context: op de markt (at the open-air market)",
-    "contextNote": "Spoken formula used op de markt (at the open-air market)",
+    "example": "Wat bedoelt u precies met deze voorwaarde in het contract?",
+    "exampleEn": "What exactly do you mean by this point? (on public transit)",
+    "contextNote": "Spoken formula used in context: in het openbaar vervoer (reizen met trein en bus)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "op"
+      "in"
     ],
     "related": []
   },
   {
     "id": "idm-0434",
     "dutch": "Daar heb ik nog niet over nagedacht",
-    "meaning": "I haven't thought about that yet (informal / op)",
+    "meaning": "I haven't thought about that yet (on public transit)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
     "example": "Dat is een interessante vraag, daar heb ik nog niet over nagedacht.",
-    "exampleEn": "I haven't thought about that yet in context: op de markt (at the open-air market)",
-    "contextNote": "Spoken formula used op de markt (at the open-air market)",
+    "exampleEn": "I haven't thought about that yet (on public transit)",
+    "contextNote": "Spoken formula used in context: in het openbaar vervoer (reizen met trein en bus)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "op"
+      "in"
     ],
     "related": []
   },
   {
     "id": "idm-0435",
-    "dutch": "Zoje u mij kunnen doorverbinden met...?",
-    "meaning": "Could you connect me with...? (informal / op)",
+    "dutch": "Zou u mij kunnen doorverbinden met de juiste afdeling?",
+    "meaning": "Could you connect me with the right department? (on public transit)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "B1",
-    "example": "Goedemorgen, zoje u mij kunnen doorverbinden met de afdeling administratie?",
-    "exampleEn": "Could you connect me with...? in context: op de markt (at the open-air market)",
-    "contextNote": "Spoken formula used op de markt (at the open-air market)",
+    "example": "Goedemorgen, zou u mij kunnen doorverbinden met de afdeling administratie?",
+    "exampleEn": "Could you connect me with the right department? (on public transit)",
+    "contextNote": "Spoken formula used in context: in het openbaar vervoer (reizen met trein en bus)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "op"
+      "in"
     ],
     "related": []
   },
   {
     "id": "idm-0436",
     "dutch": "Ik ben het er roerend mee eens",
-    "meaning": "I completely and wholeheartedly agree (informal / op)",
+    "meaning": "I completely and wholeheartedly agree (on public transit)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "B1",
-    "example": "Met jojew visie op duurzaamheid ben ik het roerend eens.",
-    "exampleEn": "I completely and wholeheartedly agree in context: op de markt (at the open-air market)",
-    "contextNote": "Spoken formula used op de markt (at the open-air market)",
+    "example": "Met uw visie op duurzaamheid ben ik het roerend eens.",
+    "exampleEn": "I completely and wholeheartedly agree (on public transit)",
+    "contextNote": "Spoken formula used in context: in het openbaar vervoer (reizen met trein en bus)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "op"
+      "in"
     ],
     "related": []
   },
   {
     "id": "idm-0437",
     "dutch": "Dat is makkelijker gezegd dan gedaan",
-    "meaning": "That is easier said than done (informal / op)",
+    "meaning": "That is easier said than done (on public transit)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
     "example": "Gezonder eten klinkt simpel, maar het is makkelijker gezegd dan gedaan.",
-    "exampleEn": "That is easier said than done in context: op de markt (at the open-air market)",
-    "contextNote": "Spoken formula used op de markt (at the open-air market)",
+    "exampleEn": "That is easier said than done (on public transit)",
+    "contextNote": "Spoken formula used in context: in het openbaar vervoer (reizen met trein en bus)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "op"
+      "in"
     ],
     "related": []
   },
   {
     "id": "idm-0438",
-    "dutch": "Neem de tijd",
-    "meaning": "Take your time (informal / op)",
+    "dutch": "Neem rustig de tijd",
+    "meaning": "Take your time (on public transit)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A1",
-    "example": "Er is geen haast bij, neem rjestig de tijd.",
-    "exampleEn": "Take your time in context: op de markt (at the open-air market)",
-    "contextNote": "Spoken formula used op de markt (at the open-air market)",
+    "example": "Er is geen haast bij, neem rustig de tijd.",
+    "exampleEn": "Take your time (on public transit)",
+    "contextNote": "Spoken formula used in context: in het openbaar vervoer (reizen met trein en bus)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "op"
+      "in"
     ],
     "related": []
   },
   {
     "id": "idm-0439",
-    "dutch": "Het spijt me ontzettend",
-    "meaning": "I am terribly sorry (informal / op)",
+    "dutch": "Het spijt me ontzettend voor het ongemak",
+    "meaning": "I am terribly sorry for the inconvenience (on public transit)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
     "example": "Het spijt me ontzettend dat ik te laat ben voor onze afspraak.",
-    "exampleEn": "I am terribly sorry in context: op de markt (at the open-air market)",
-    "contextNote": "Spoken formula used op de markt (at the open-air market)",
+    "exampleEn": "I am terribly sorry for the inconvenience (on public transit)",
+    "contextNote": "Spoken formula used in context: in het openbaar vervoer (reizen met trein en bus)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "op"
+      "in"
     ],
     "related": []
   },
   {
     "id": "idm-0440",
-    "dutch": "Alvast heel erg bedankt voor de moeite",
-    "meaning": "Thank you very much in advance for your trouble (informal / op)",
+    "dutch": "Alvast heel erg bedankt voor uw medewerking",
+    "meaning": "Thank you very much in advance for your cooperation (on public transit)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
-    "example": "Ik zie jew reactie tegemoet, alvast heel erg bedankt voor de moeite!",
-    "exampleEn": "Thank you very much in advance for your trouble in context: op de markt (at the open-air market)",
-    "contextNote": "Spoken formula used op de markt (at the open-air market)",
+    "example": "Ik zie uw reactie tegemoet, alvast heel erg bedankt voor uw medewerking!",
+    "exampleEn": "Thank you very much in advance for your cooperation (on public transit)",
+    "contextNote": "Spoken formula used in context: in het openbaar vervoer (reizen met trein en bus)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "op"
+      "in"
     ],
     "related": []
   },
   {
     "id": "idm-0441",
-    "dutch": "Mag ik je even iets vragen?",
-    "meaning": "May I ask you something for a moment? (informal / met)",
+    "dutch": "Mag ik u even iets vragen?",
+    "meaning": "May I ask you something for a moment? (at the restaurant)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A1",
-    "example": "Pardon mevrojew, mag ik u even iets vragen over de bushalte?",
-    "exampleEn": "May I ask you something for a moment? in context: met de buren (with the neighbours)",
-    "contextNote": "Spoken formula used met de buren (with the neighbours)",
+    "example": "Pardon mevrouw, mag ik u even iets vragen over de bushalte?",
+    "exampleEn": "May I ask you something for a moment? (at the restaurant)",
+    "contextNote": "Spoken formula used in context: in het restaurant (horeca en dineren)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "met"
+      "in"
     ],
     "related": []
   },
   {
     "id": "idm-0442",
-    "dutch": "Kjent u dat alstublieft herhalen?",
-    "meaning": "Could you please repeat that? (informal / met)",
+    "dutch": "Kunt u dat alstublieft herhalen?",
+    "meaning": "Could you please repeat that? (at the restaurant)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A1",
-    "example": "Het ging iets te snel, kjent u dat alstublieft herhalen?",
-    "exampleEn": "Could you please repeat that? in context: met de buren (with the neighbours)",
-    "contextNote": "Spoken formula used met de buren (with the neighbours)",
+    "example": "Het ging iets te snel, kunt u dat alstublieft herhalen?",
+    "exampleEn": "Could you please repeat that? (at the restaurant)",
+    "contextNote": "Spoken formula used in context: in het restaurant (horeca en dineren)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "met"
+      "in"
     ],
     "related": []
   },
   {
     "id": "idm-0443",
-    "dutch": "Wat bedoelt je precies met...?",
-    "meaning": "What exactly do you mean by...? (informal / met)",
+    "dutch": "Wat bedoelt u precies met dit punt?",
+    "meaning": "What exactly do you mean by this point? (at the restaurant)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
-    "example": "Wat bedoelt je precies met die voorwaarde in het contract?",
-    "exampleEn": "What exactly do you mean by...? in context: met de buren (with the neighbours)",
-    "contextNote": "Spoken formula used met de buren (with the neighbours)",
+    "example": "Wat bedoelt u precies met deze voorwaarde in het contract?",
+    "exampleEn": "What exactly do you mean by this point? (at the restaurant)",
+    "contextNote": "Spoken formula used in context: in het restaurant (horeca en dineren)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "met"
+      "in"
     ],
     "related": []
   },
   {
     "id": "idm-0444",
     "dutch": "Daar heb ik nog niet over nagedacht",
-    "meaning": "I haven't thought about that yet (informal / met)",
+    "meaning": "I haven't thought about that yet (at the restaurant)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
     "example": "Dat is een interessante vraag, daar heb ik nog niet over nagedacht.",
-    "exampleEn": "I haven't thought about that yet in context: met de buren (with the neighbours)",
-    "contextNote": "Spoken formula used met de buren (with the neighbours)",
+    "exampleEn": "I haven't thought about that yet (at the restaurant)",
+    "contextNote": "Spoken formula used in context: in het restaurant (horeca en dineren)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "met"
+      "in"
     ],
     "related": []
   },
   {
     "id": "idm-0445",
-    "dutch": "Zoje u mij kunnen doorverbinden met...?",
-    "meaning": "Could you connect me with...? (informal / met)",
+    "dutch": "Zou u mij kunnen doorverbinden met de juiste afdeling?",
+    "meaning": "Could you connect me with the right department? (at the restaurant)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "B1",
-    "example": "Goedemorgen, zoje u mij kunnen doorverbinden met de afdeling administratie?",
-    "exampleEn": "Could you connect me with...? in context: met de buren (with the neighbours)",
-    "contextNote": "Spoken formula used met de buren (with the neighbours)",
+    "example": "Goedemorgen, zou u mij kunnen doorverbinden met de afdeling administratie?",
+    "exampleEn": "Could you connect me with the right department? (at the restaurant)",
+    "contextNote": "Spoken formula used in context: in het restaurant (horeca en dineren)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "met"
+      "in"
     ],
     "related": []
   },
   {
     "id": "idm-0446",
     "dutch": "Ik ben het er roerend mee eens",
-    "meaning": "I completely and wholeheartedly agree (informal / met)",
+    "meaning": "I completely and wholeheartedly agree (at the restaurant)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "B1",
-    "example": "Met jojew visie op duurzaamheid ben ik het roerend eens.",
-    "exampleEn": "I completely and wholeheartedly agree in context: met de buren (with the neighbours)",
-    "contextNote": "Spoken formula used met de buren (with the neighbours)",
+    "example": "Met uw visie op duurzaamheid ben ik het roerend eens.",
+    "exampleEn": "I completely and wholeheartedly agree (at the restaurant)",
+    "contextNote": "Spoken formula used in context: in het restaurant (horeca en dineren)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "met"
+      "in"
     ],
     "related": []
   },
   {
     "id": "idm-0447",
     "dutch": "Dat is makkelijker gezegd dan gedaan",
-    "meaning": "That is easier said than done (informal / met)",
+    "meaning": "That is easier said than done (at the restaurant)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
     "example": "Gezonder eten klinkt simpel, maar het is makkelijker gezegd dan gedaan.",
-    "exampleEn": "That is easier said than done in context: met de buren (with the neighbours)",
-    "contextNote": "Spoken formula used met de buren (with the neighbours)",
+    "exampleEn": "That is easier said than done (at the restaurant)",
+    "contextNote": "Spoken formula used in context: in het restaurant (horeca en dineren)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "met"
+      "in"
     ],
     "related": []
   },
   {
     "id": "idm-0448",
-    "dutch": "Neem de tijd",
-    "meaning": "Take your time (informal / met)",
+    "dutch": "Neem rustig de tijd",
+    "meaning": "Take your time (at the restaurant)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A1",
-    "example": "Er is geen haast bij, neem rjestig de tijd.",
-    "exampleEn": "Take your time in context: met de buren (with the neighbours)",
-    "contextNote": "Spoken formula used met de buren (with the neighbours)",
+    "example": "Er is geen haast bij, neem rustig de tijd.",
+    "exampleEn": "Take your time (at the restaurant)",
+    "contextNote": "Spoken formula used in context: in het restaurant (horeca en dineren)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "met"
+      "in"
     ],
     "related": []
   },
   {
     "id": "idm-0449",
-    "dutch": "Het spijt me ontzettend",
-    "meaning": "I am terribly sorry (informal / met)",
+    "dutch": "Het spijt me ontzettend voor het ongemak",
+    "meaning": "I am terribly sorry for the inconvenience (at the restaurant)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
     "example": "Het spijt me ontzettend dat ik te laat ben voor onze afspraak.",
-    "exampleEn": "I am terribly sorry in context: met de buren (with the neighbours)",
-    "contextNote": "Spoken formula used met de buren (with the neighbours)",
+    "exampleEn": "I am terribly sorry for the inconvenience (at the restaurant)",
+    "contextNote": "Spoken formula used in context: in het restaurant (horeca en dineren)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "met"
+      "in"
     ],
     "related": []
   },
   {
     "id": "idm-0450",
-    "dutch": "Alvast heel erg bedankt voor de moeite",
-    "meaning": "Thank you very much in advance for your trouble (informal / met)",
+    "dutch": "Alvast heel erg bedankt voor uw medewerking",
+    "meaning": "Thank you very much in advance for your cooperation (at the restaurant)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
-    "example": "Ik zie jew reactie tegemoet, alvast heel erg bedankt voor de moeite!",
-    "exampleEn": "Thank you very much in advance for your trouble in context: met de buren (with the neighbours)",
-    "contextNote": "Spoken formula used met de buren (with the neighbours)",
+    "example": "Ik zie uw reactie tegemoet, alvast heel erg bedankt voor uw medewerking!",
+    "exampleEn": "Thank you very much in advance for your cooperation (at the restaurant)",
+    "contextNote": "Spoken formula used in context: in het restaurant (horeca en dineren)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "met"
+      "in"
     ],
     "related": []
   },
   {
     "id": "idm-0451",
-    "dutch": "Mag ik je even iets vragen?",
-    "meaning": "May I ask you something for a moment? (informal / aan)",
+    "dutch": "Mag ik u even iets vragen?",
+    "meaning": "May I ask you something for a moment? (at the open-air market)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A1",
-    "example": "Pardon mevrojew, mag ik u even iets vragen over de bushalte?",
-    "exampleEn": "May I ask you something for a moment? in context: aan de telefoon (on the phone)",
-    "contextNote": "Spoken formula used aan de telefoon (on the phone)",
+    "example": "Pardon mevrouw, mag ik u even iets vragen over de bushalte?",
+    "exampleEn": "May I ask you something for a moment? (at the open-air market)",
+    "contextNote": "Spoken formula used in context: op de markt (boodschappen doen)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "aan"
+      "op"
     ],
     "related": []
   },
   {
     "id": "idm-0452",
-    "dutch": "Kjent u dat alstublieft herhalen?",
-    "meaning": "Could you please repeat that? (informal / aan)",
+    "dutch": "Kunt u dat alstublieft herhalen?",
+    "meaning": "Could you please repeat that? (at the open-air market)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A1",
-    "example": "Het ging iets te snel, kjent u dat alstublieft herhalen?",
-    "exampleEn": "Could you please repeat that? in context: aan de telefoon (on the phone)",
-    "contextNote": "Spoken formula used aan de telefoon (on the phone)",
+    "example": "Het ging iets te snel, kunt u dat alstublieft herhalen?",
+    "exampleEn": "Could you please repeat that? (at the open-air market)",
+    "contextNote": "Spoken formula used in context: op de markt (boodschappen doen)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "aan"
+      "op"
     ],
     "related": []
   },
   {
     "id": "idm-0453",
-    "dutch": "Wat bedoelt je precies met...?",
-    "meaning": "What exactly do you mean by...? (informal / aan)",
+    "dutch": "Wat bedoelt u precies met dit punt?",
+    "meaning": "What exactly do you mean by this point? (at the open-air market)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
-    "example": "Wat bedoelt je precies met die voorwaarde in het contract?",
-    "exampleEn": "What exactly do you mean by...? in context: aan de telefoon (on the phone)",
-    "contextNote": "Spoken formula used aan de telefoon (on the phone)",
+    "example": "Wat bedoelt u precies met deze voorwaarde in het contract?",
+    "exampleEn": "What exactly do you mean by this point? (at the open-air market)",
+    "contextNote": "Spoken formula used in context: op de markt (boodschappen doen)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "aan"
+      "op"
     ],
     "related": []
   },
   {
     "id": "idm-0454",
     "dutch": "Daar heb ik nog niet over nagedacht",
-    "meaning": "I haven't thought about that yet (informal / aan)",
+    "meaning": "I haven't thought about that yet (at the open-air market)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
     "example": "Dat is een interessante vraag, daar heb ik nog niet over nagedacht.",
-    "exampleEn": "I haven't thought about that yet in context: aan de telefoon (on the phone)",
-    "contextNote": "Spoken formula used aan de telefoon (on the phone)",
+    "exampleEn": "I haven't thought about that yet (at the open-air market)",
+    "contextNote": "Spoken formula used in context: op de markt (boodschappen doen)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "aan"
+      "op"
     ],
     "related": []
   },
   {
     "id": "idm-0455",
-    "dutch": "Zoje u mij kunnen doorverbinden met...?",
-    "meaning": "Could you connect me with...? (informal / aan)",
+    "dutch": "Zou u mij kunnen doorverbinden met de juiste afdeling?",
+    "meaning": "Could you connect me with the right department? (at the open-air market)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "B1",
-    "example": "Goedemorgen, zoje u mij kunnen doorverbinden met de afdeling administratie?",
-    "exampleEn": "Could you connect me with...? in context: aan de telefoon (on the phone)",
-    "contextNote": "Spoken formula used aan de telefoon (on the phone)",
+    "example": "Goedemorgen, zou u mij kunnen doorverbinden met de afdeling administratie?",
+    "exampleEn": "Could you connect me with the right department? (at the open-air market)",
+    "contextNote": "Spoken formula used in context: op de markt (boodschappen doen)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "aan"
+      "op"
     ],
     "related": []
   },
   {
     "id": "idm-0456",
     "dutch": "Ik ben het er roerend mee eens",
-    "meaning": "I completely and wholeheartedly agree (informal / aan)",
+    "meaning": "I completely and wholeheartedly agree (at the open-air market)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "B1",
-    "example": "Met jojew visie op duurzaamheid ben ik het roerend eens.",
-    "exampleEn": "I completely and wholeheartedly agree in context: aan de telefoon (on the phone)",
-    "contextNote": "Spoken formula used aan de telefoon (on the phone)",
+    "example": "Met uw visie op duurzaamheid ben ik het roerend eens.",
+    "exampleEn": "I completely and wholeheartedly agree (at the open-air market)",
+    "contextNote": "Spoken formula used in context: op de markt (boodschappen doen)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "aan"
+      "op"
     ],
     "related": []
   },
   {
     "id": "idm-0457",
     "dutch": "Dat is makkelijker gezegd dan gedaan",
-    "meaning": "That is easier said than done (informal / aan)",
+    "meaning": "That is easier said than done (at the open-air market)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
     "example": "Gezonder eten klinkt simpel, maar het is makkelijker gezegd dan gedaan.",
-    "exampleEn": "That is easier said than done in context: aan de telefoon (on the phone)",
-    "contextNote": "Spoken formula used aan de telefoon (on the phone)",
+    "exampleEn": "That is easier said than done (at the open-air market)",
+    "contextNote": "Spoken formula used in context: op de markt (boodschappen doen)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "aan"
+      "op"
     ],
     "related": []
   },
   {
     "id": "idm-0458",
-    "dutch": "Neem de tijd",
-    "meaning": "Take your time (informal / aan)",
+    "dutch": "Neem rustig de tijd",
+    "meaning": "Take your time (at the open-air market)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A1",
-    "example": "Er is geen haast bij, neem rjestig de tijd.",
-    "exampleEn": "Take your time in context: aan de telefoon (on the phone)",
-    "contextNote": "Spoken formula used aan de telefoon (on the phone)",
+    "example": "Er is geen haast bij, neem rustig de tijd.",
+    "exampleEn": "Take your time (at the open-air market)",
+    "contextNote": "Spoken formula used in context: op de markt (boodschappen doen)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "aan"
+      "op"
     ],
     "related": []
   },
   {
     "id": "idm-0459",
-    "dutch": "Het spijt me ontzettend",
-    "meaning": "I am terribly sorry (informal / aan)",
+    "dutch": "Het spijt me ontzettend voor het ongemak",
+    "meaning": "I am terribly sorry for the inconvenience (at the open-air market)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
     "example": "Het spijt me ontzettend dat ik te laat ben voor onze afspraak.",
-    "exampleEn": "I am terribly sorry in context: aan de telefoon (on the phone)",
-    "contextNote": "Spoken formula used aan de telefoon (on the phone)",
+    "exampleEn": "I am terribly sorry for the inconvenience (at the open-air market)",
+    "contextNote": "Spoken formula used in context: op de markt (boodschappen doen)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "aan"
+      "op"
     ],
     "related": []
   },
   {
     "id": "idm-0460",
-    "dutch": "Alvast heel erg bedankt voor de moeite",
-    "meaning": "Thank you very much in advance for your trouble (informal / aan)",
+    "dutch": "Alvast heel erg bedankt voor uw medewerking",
+    "meaning": "Thank you very much in advance for your cooperation (at the open-air market)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
-    "example": "Ik zie jew reactie tegemoet, alvast heel erg bedankt voor de moeite!",
-    "exampleEn": "Thank you very much in advance for your trouble in context: aan de telefoon (on the phone)",
-    "contextNote": "Spoken formula used aan de telefoon (on the phone)",
+    "example": "Ik zie uw reactie tegemoet, alvast heel erg bedankt voor uw medewerking!",
+    "exampleEn": "Thank you very much in advance for your cooperation (at the open-air market)",
+    "contextNote": "Spoken formula used in context: op de markt (boodschappen doen)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "aan"
+      "op"
     ],
     "related": []
   },
   {
     "id": "idm-0461",
-    "dutch": "Mag ik je even iets vragen?",
-    "meaning": "May I ask you something for a moment? (informal / in)",
+    "dutch": "Mag ik u even iets vragen?",
+    "meaning": "May I ask you something for a moment? (with the neighbours)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A1",
-    "example": "Pardon mevrojew, mag ik u even iets vragen over de bushalte?",
-    "exampleEn": "May I ask you something for a moment? in context: in een vergadering (in a business meeting)",
-    "contextNote": "Spoken formula used in een vergadering (in a business meeting)",
+    "example": "Pardon mevrouw, mag ik u even iets vragen over de bushalte?",
+    "exampleEn": "May I ask you something for a moment? (with the neighbours)",
+    "contextNote": "Spoken formula used in context: met de buren (buurtcontact)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "in"
+      "met"
     ],
     "related": []
   },
   {
     "id": "idm-0462",
-    "dutch": "Kjent u dat alstublieft herhalen?",
-    "meaning": "Could you please repeat that? (informal / in)",
+    "dutch": "Kunt u dat alstublieft herhalen?",
+    "meaning": "Could you please repeat that? (with the neighbours)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A1",
-    "example": "Het ging iets te snel, kjent u dat alstublieft herhalen?",
-    "exampleEn": "Could you please repeat that? in context: in een vergadering (in a business meeting)",
-    "contextNote": "Spoken formula used in een vergadering (in a business meeting)",
+    "example": "Het ging iets te snel, kunt u dat alstublieft herhalen?",
+    "exampleEn": "Could you please repeat that? (with the neighbours)",
+    "contextNote": "Spoken formula used in context: met de buren (buurtcontact)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "in"
+      "met"
     ],
     "related": []
   },
   {
     "id": "idm-0463",
-    "dutch": "Wat bedoelt je precies met...?",
-    "meaning": "What exactly do you mean by...? (informal / in)",
+    "dutch": "Wat bedoelt u precies met dit punt?",
+    "meaning": "What exactly do you mean by this point? (with the neighbours)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
-    "example": "Wat bedoelt je precies met die voorwaarde in het contract?",
-    "exampleEn": "What exactly do you mean by...? in context: in een vergadering (in a business meeting)",
-    "contextNote": "Spoken formula used in een vergadering (in a business meeting)",
+    "example": "Wat bedoelt u precies met deze voorwaarde in het contract?",
+    "exampleEn": "What exactly do you mean by this point? (with the neighbours)",
+    "contextNote": "Spoken formula used in context: met de buren (buurtcontact)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "in"
+      "met"
     ],
     "related": []
   },
   {
     "id": "idm-0464",
     "dutch": "Daar heb ik nog niet over nagedacht",
-    "meaning": "I haven't thought about that yet (informal / in)",
+    "meaning": "I haven't thought about that yet (with the neighbours)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
     "example": "Dat is een interessante vraag, daar heb ik nog niet over nagedacht.",
-    "exampleEn": "I haven't thought about that yet in context: in een vergadering (in a business meeting)",
-    "contextNote": "Spoken formula used in een vergadering (in a business meeting)",
+    "exampleEn": "I haven't thought about that yet (with the neighbours)",
+    "contextNote": "Spoken formula used in context: met de buren (buurtcontact)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "in"
+      "met"
     ],
     "related": []
   },
   {
     "id": "idm-0465",
-    "dutch": "Zoje u mij kunnen doorverbinden met...?",
-    "meaning": "Could you connect me with...? (informal / in)",
+    "dutch": "Zou u mij kunnen doorverbinden met de juiste afdeling?",
+    "meaning": "Could you connect me with the right department? (with the neighbours)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "B1",
-    "example": "Goedemorgen, zoje u mij kunnen doorverbinden met de afdeling administratie?",
-    "exampleEn": "Could you connect me with...? in context: in een vergadering (in a business meeting)",
-    "contextNote": "Spoken formula used in een vergadering (in a business meeting)",
+    "example": "Goedemorgen, zou u mij kunnen doorverbinden met de afdeling administratie?",
+    "exampleEn": "Could you connect me with the right department? (with the neighbours)",
+    "contextNote": "Spoken formula used in context: met de buren (buurtcontact)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "in"
+      "met"
     ],
     "related": []
   },
   {
     "id": "idm-0466",
     "dutch": "Ik ben het er roerend mee eens",
-    "meaning": "I completely and wholeheartedly agree (informal / in)",
+    "meaning": "I completely and wholeheartedly agree (with the neighbours)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "B1",
-    "example": "Met jojew visie op duurzaamheid ben ik het roerend eens.",
-    "exampleEn": "I completely and wholeheartedly agree in context: in een vergadering (in a business meeting)",
-    "contextNote": "Spoken formula used in een vergadering (in a business meeting)",
+    "example": "Met uw visie op duurzaamheid ben ik het roerend eens.",
+    "exampleEn": "I completely and wholeheartedly agree (with the neighbours)",
+    "contextNote": "Spoken formula used in context: met de buren (buurtcontact)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "in"
+      "met"
     ],
     "related": []
   },
   {
     "id": "idm-0467",
     "dutch": "Dat is makkelijker gezegd dan gedaan",
-    "meaning": "That is easier said than done (informal / in)",
+    "meaning": "That is easier said than done (with the neighbours)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
     "example": "Gezonder eten klinkt simpel, maar het is makkelijker gezegd dan gedaan.",
-    "exampleEn": "That is easier said than done in context: in een vergadering (in a business meeting)",
-    "contextNote": "Spoken formula used in een vergadering (in a business meeting)",
+    "exampleEn": "That is easier said than done (with the neighbours)",
+    "contextNote": "Spoken formula used in context: met de buren (buurtcontact)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "in"
+      "met"
     ],
     "related": []
   },
   {
     "id": "idm-0468",
-    "dutch": "Neem de tijd",
-    "meaning": "Take your time (informal / in)",
+    "dutch": "Neem rustig de tijd",
+    "meaning": "Take your time (with the neighbours)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A1",
-    "example": "Er is geen haast bij, neem rjestig de tijd.",
-    "exampleEn": "Take your time in context: in een vergadering (in a business meeting)",
-    "contextNote": "Spoken formula used in een vergadering (in a business meeting)",
+    "example": "Er is geen haast bij, neem rustig de tijd.",
+    "exampleEn": "Take your time (with the neighbours)",
+    "contextNote": "Spoken formula used in context: met de buren (buurtcontact)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "in"
+      "met"
     ],
     "related": []
   },
   {
     "id": "idm-0469",
-    "dutch": "Het spijt me ontzettend",
-    "meaning": "I am terribly sorry (informal / in)",
+    "dutch": "Het spijt me ontzettend voor het ongemak",
+    "meaning": "I am terribly sorry for the inconvenience (with the neighbours)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
     "example": "Het spijt me ontzettend dat ik te laat ben voor onze afspraak.",
-    "exampleEn": "I am terribly sorry in context: in een vergadering (in a business meeting)",
-    "contextNote": "Spoken formula used in een vergadering (in a business meeting)",
+    "exampleEn": "I am terribly sorry for the inconvenience (with the neighbours)",
+    "contextNote": "Spoken formula used in context: met de buren (buurtcontact)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "in"
+      "met"
     ],
     "related": []
   },
   {
     "id": "idm-0470",
-    "dutch": "Alvast heel erg bedankt voor de moeite",
-    "meaning": "Thank you very much in advance for your trouble (informal / in)",
+    "dutch": "Alvast heel erg bedankt voor uw medewerking",
+    "meaning": "Thank you very much in advance for your cooperation (with the neighbours)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
-    "example": "Ik zie jew reactie tegemoet, alvast heel erg bedankt voor de moeite!",
-    "exampleEn": "Thank you very much in advance for your trouble in context: in een vergadering (in a business meeting)",
-    "contextNote": "Spoken formula used in een vergadering (in a business meeting)",
+    "example": "Ik zie uw reactie tegemoet, alvast heel erg bedankt voor uw medewerking!",
+    "exampleEn": "Thank you very much in advance for your cooperation (with the neighbours)",
+    "contextNote": "Spoken formula used in context: met de buren (buurtcontact)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "in"
+      "met"
     ],
     "related": []
   },
   {
     "id": "idm-0471",
-    "dutch": "Mag ik je even iets vragen?",
-    "meaning": "May I ask you something for a moment? (informal / tijdens)",
+    "dutch": "Mag ik u even iets vragen?",
+    "meaning": "May I ask you something for a moment? (on the phone)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A1",
-    "example": "Pardon mevrojew, mag ik u even iets vragen over de bushalte?",
-    "exampleEn": "May I ask you something for a moment? in context: tijdens een borrel (during drinks/reception)",
-    "contextNote": "Spoken formula used tijdens een borrel (during drinks/reception)",
+    "example": "Pardon mevrouw, mag ik u even iets vragen over de bushalte?",
+    "exampleEn": "May I ask you something for a moment? (on the phone)",
+    "contextNote": "Spoken formula used in context: aan de telefoon (telefonisch gesprek)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "tijdens"
+      "aan"
     ],
     "related": []
   },
   {
     "id": "idm-0472",
-    "dutch": "Kjent u dat alstublieft herhalen?",
-    "meaning": "Could you please repeat that? (informal / tijdens)",
+    "dutch": "Kunt u dat alstublieft herhalen?",
+    "meaning": "Could you please repeat that? (on the phone)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A1",
-    "example": "Het ging iets te snel, kjent u dat alstublieft herhalen?",
-    "exampleEn": "Could you please repeat that? in context: tijdens een borrel (during drinks/reception)",
-    "contextNote": "Spoken formula used tijdens een borrel (during drinks/reception)",
+    "example": "Het ging iets te snel, kunt u dat alstublieft herhalen?",
+    "exampleEn": "Could you please repeat that? (on the phone)",
+    "contextNote": "Spoken formula used in context: aan de telefoon (telefonisch gesprek)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "tijdens"
+      "aan"
     ],
     "related": []
   },
   {
     "id": "idm-0473",
-    "dutch": "Wat bedoelt je precies met...?",
-    "meaning": "What exactly do you mean by...? (informal / tijdens)",
+    "dutch": "Wat bedoelt u precies met dit punt?",
+    "meaning": "What exactly do you mean by this point? (on the phone)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
-    "example": "Wat bedoelt je precies met die voorwaarde in het contract?",
-    "exampleEn": "What exactly do you mean by...? in context: tijdens een borrel (during drinks/reception)",
-    "contextNote": "Spoken formula used tijdens een borrel (during drinks/reception)",
+    "example": "Wat bedoelt u precies met deze voorwaarde in het contract?",
+    "exampleEn": "What exactly do you mean by this point? (on the phone)",
+    "contextNote": "Spoken formula used in context: aan de telefoon (telefonisch gesprek)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "tijdens"
+      "aan"
     ],
     "related": []
   },
   {
     "id": "idm-0474",
     "dutch": "Daar heb ik nog niet over nagedacht",
-    "meaning": "I haven't thought about that yet (informal / tijdens)",
+    "meaning": "I haven't thought about that yet (on the phone)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
     "example": "Dat is een interessante vraag, daar heb ik nog niet over nagedacht.",
-    "exampleEn": "I haven't thought about that yet in context: tijdens een borrel (during drinks/reception)",
-    "contextNote": "Spoken formula used tijdens een borrel (during drinks/reception)",
+    "exampleEn": "I haven't thought about that yet (on the phone)",
+    "contextNote": "Spoken formula used in context: aan de telefoon (telefonisch gesprek)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "tijdens"
+      "aan"
     ],
     "related": []
   },
   {
     "id": "idm-0475",
-    "dutch": "Zoje u mij kunnen doorverbinden met...?",
-    "meaning": "Could you connect me with...? (informal / tijdens)",
+    "dutch": "Zou u mij kunnen doorverbinden met de juiste afdeling?",
+    "meaning": "Could you connect me with the right department? (on the phone)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "B1",
-    "example": "Goedemorgen, zoje u mij kunnen doorverbinden met de afdeling administratie?",
-    "exampleEn": "Could you connect me with...? in context: tijdens een borrel (during drinks/reception)",
-    "contextNote": "Spoken formula used tijdens een borrel (during drinks/reception)",
+    "example": "Goedemorgen, zou u mij kunnen doorverbinden met de afdeling administratie?",
+    "exampleEn": "Could you connect me with the right department? (on the phone)",
+    "contextNote": "Spoken formula used in context: aan de telefoon (telefonisch gesprek)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "tijdens"
+      "aan"
     ],
     "related": []
   },
   {
     "id": "idm-0476",
     "dutch": "Ik ben het er roerend mee eens",
-    "meaning": "I completely and wholeheartedly agree (informal / tijdens)",
+    "meaning": "I completely and wholeheartedly agree (on the phone)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "B1",
-    "example": "Met jojew visie op duurzaamheid ben ik het roerend eens.",
-    "exampleEn": "I completely and wholeheartedly agree in context: tijdens een borrel (during drinks/reception)",
-    "contextNote": "Spoken formula used tijdens een borrel (during drinks/reception)",
+    "example": "Met uw visie op duurzaamheid ben ik het roerend eens.",
+    "exampleEn": "I completely and wholeheartedly agree (on the phone)",
+    "contextNote": "Spoken formula used in context: aan de telefoon (telefonisch gesprek)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "tijdens"
+      "aan"
     ],
     "related": []
   },
   {
     "id": "idm-0477",
     "dutch": "Dat is makkelijker gezegd dan gedaan",
-    "meaning": "That is easier said than done (informal / tijdens)",
+    "meaning": "That is easier said than done (on the phone)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
     "example": "Gezonder eten klinkt simpel, maar het is makkelijker gezegd dan gedaan.",
-    "exampleEn": "That is easier said than done in context: tijdens een borrel (during drinks/reception)",
-    "contextNote": "Spoken formula used tijdens een borrel (during drinks/reception)",
+    "exampleEn": "That is easier said than done (on the phone)",
+    "contextNote": "Spoken formula used in context: aan de telefoon (telefonisch gesprek)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "tijdens"
+      "aan"
     ],
     "related": []
   },
   {
     "id": "idm-0478",
-    "dutch": "Neem de tijd",
-    "meaning": "Take your time (informal / tijdens)",
+    "dutch": "Neem rustig de tijd",
+    "meaning": "Take your time (on the phone)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A1",
-    "example": "Er is geen haast bij, neem rjestig de tijd.",
-    "exampleEn": "Take your time in context: tijdens een borrel (during drinks/reception)",
-    "contextNote": "Spoken formula used tijdens een borrel (during drinks/reception)",
+    "example": "Er is geen haast bij, neem rustig de tijd.",
+    "exampleEn": "Take your time (on the phone)",
+    "contextNote": "Spoken formula used in context: aan de telefoon (telefonisch gesprek)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "tijdens"
+      "aan"
     ],
     "related": []
   },
   {
     "id": "idm-0479",
-    "dutch": "Het spijt me ontzettend",
-    "meaning": "I am terribly sorry (informal / tijdens)",
+    "dutch": "Het spijt me ontzettend voor het ongemak",
+    "meaning": "I am terribly sorry for the inconvenience (on the phone)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
     "example": "Het spijt me ontzettend dat ik te laat ben voor onze afspraak.",
-    "exampleEn": "I am terribly sorry in context: tijdens een borrel (during drinks/reception)",
-    "contextNote": "Spoken formula used tijdens een borrel (during drinks/reception)",
+    "exampleEn": "I am terribly sorry for the inconvenience (on the phone)",
+    "contextNote": "Spoken formula used in context: aan de telefoon (telefonisch gesprek)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "tijdens"
+      "aan"
     ],
     "related": []
   },
   {
     "id": "idm-0480",
-    "dutch": "Alvast heel erg bedankt voor de moeite",
-    "meaning": "Thank you very much in advance for your trouble (informal / tijdens)",
+    "dutch": "Alvast heel erg bedankt voor uw medewerking",
+    "meaning": "Thank you very much in advance for your cooperation (on the phone)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
-    "example": "Ik zie jew reactie tegemoet, alvast heel erg bedankt voor de moeite!",
-    "exampleEn": "Thank you very much in advance for your trouble in context: tijdens een borrel (during drinks/reception)",
-    "contextNote": "Spoken formula used tijdens een borrel (during drinks/reception)",
+    "example": "Ik zie uw reactie tegemoet, alvast heel erg bedankt voor uw medewerking!",
+    "exampleEn": "Thank you very much in advance for your cooperation (on the phone)",
+    "contextNote": "Spoken formula used in context: aan de telefoon (telefonisch gesprek)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "tijdens"
+      "aan"
     ],
     "related": []
   },
   {
     "id": "idm-0481",
-    "dutch": "Mag ik je even iets vragen?",
-    "meaning": "May I ask you something for a moment? (informal / bij)",
+    "dutch": "Mag ik u even iets vragen?",
+    "meaning": "May I ask you something for a moment? (in a meeting)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A1",
-    "example": "Pardon mevrojew, mag ik u even iets vragen over de bushalte?",
-    "exampleEn": "May I ask you something for a moment? in context: bij de gemeente (at city hall/bureaucracy)",
-    "contextNote": "Spoken formula used bij de gemeente (at city hall/bureaucracy)",
+    "example": "Pardon mevrouw, mag ik u even iets vragen over de bushalte?",
+    "exampleEn": "May I ask you something for a moment? (in a meeting)",
+    "contextNote": "Spoken formula used in context: in een vergadering (zakelijk overleg)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "bij"
+      "in"
     ],
     "related": []
   },
   {
     "id": "idm-0482",
-    "dutch": "Kjent u dat alstublieft herhalen?",
-    "meaning": "Could you please repeat that? (informal / bij)",
+    "dutch": "Kunt u dat alstublieft herhalen?",
+    "meaning": "Could you please repeat that? (in a meeting)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A1",
-    "example": "Het ging iets te snel, kjent u dat alstublieft herhalen?",
-    "exampleEn": "Could you please repeat that? in context: bij de gemeente (at city hall/bureaucracy)",
-    "contextNote": "Spoken formula used bij de gemeente (at city hall/bureaucracy)",
+    "example": "Het ging iets te snel, kunt u dat alstublieft herhalen?",
+    "exampleEn": "Could you please repeat that? (in a meeting)",
+    "contextNote": "Spoken formula used in context: in een vergadering (zakelijk overleg)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "bij"
+      "in"
     ],
     "related": []
   },
   {
     "id": "idm-0483",
-    "dutch": "Wat bedoelt je precies met...?",
-    "meaning": "What exactly do you mean by...? (informal / bij)",
+    "dutch": "Wat bedoelt u precies met dit punt?",
+    "meaning": "What exactly do you mean by this point? (in a meeting)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
-    "example": "Wat bedoelt je precies met die voorwaarde in het contract?",
-    "exampleEn": "What exactly do you mean by...? in context: bij de gemeente (at city hall/bureaucracy)",
-    "contextNote": "Spoken formula used bij de gemeente (at city hall/bureaucracy)",
+    "example": "Wat bedoelt u precies met deze voorwaarde in het contract?",
+    "exampleEn": "What exactly do you mean by this point? (in a meeting)",
+    "contextNote": "Spoken formula used in context: in een vergadering (zakelijk overleg)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "bij"
+      "in"
     ],
     "related": []
   },
   {
     "id": "idm-0484",
     "dutch": "Daar heb ik nog niet over nagedacht",
-    "meaning": "I haven't thought about that yet (informal / bij)",
+    "meaning": "I haven't thought about that yet (in a meeting)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
     "example": "Dat is een interessante vraag, daar heb ik nog niet over nagedacht.",
-    "exampleEn": "I haven't thought about that yet in context: bij de gemeente (at city hall/bureaucracy)",
-    "contextNote": "Spoken formula used bij de gemeente (at city hall/bureaucracy)",
+    "exampleEn": "I haven't thought about that yet (in a meeting)",
+    "contextNote": "Spoken formula used in context: in een vergadering (zakelijk overleg)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "bij"
+      "in"
     ],
     "related": []
   },
   {
     "id": "idm-0485",
-    "dutch": "Zoje u mij kunnen doorverbinden met...?",
-    "meaning": "Could you connect me with...? (informal / bij)",
+    "dutch": "Zou u mij kunnen doorverbinden met de juiste afdeling?",
+    "meaning": "Could you connect me with the right department? (in a meeting)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "B1",
-    "example": "Goedemorgen, zoje u mij kunnen doorverbinden met de afdeling administratie?",
-    "exampleEn": "Could you connect me with...? in context: bij de gemeente (at city hall/bureaucracy)",
-    "contextNote": "Spoken formula used bij de gemeente (at city hall/bureaucracy)",
+    "example": "Goedemorgen, zou u mij kunnen doorverbinden met de afdeling administratie?",
+    "exampleEn": "Could you connect me with the right department? (in a meeting)",
+    "contextNote": "Spoken formula used in context: in een vergadering (zakelijk overleg)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "bij"
+      "in"
     ],
     "related": []
   },
   {
     "id": "idm-0486",
     "dutch": "Ik ben het er roerend mee eens",
-    "meaning": "I completely and wholeheartedly agree (informal / bij)",
+    "meaning": "I completely and wholeheartedly agree (in a meeting)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "B1",
-    "example": "Met jojew visie op duurzaamheid ben ik het roerend eens.",
-    "exampleEn": "I completely and wholeheartedly agree in context: bij de gemeente (at city hall/bureaucracy)",
-    "contextNote": "Spoken formula used bij de gemeente (at city hall/bureaucracy)",
+    "example": "Met uw visie op duurzaamheid ben ik het roerend eens.",
+    "exampleEn": "I completely and wholeheartedly agree (in a meeting)",
+    "contextNote": "Spoken formula used in context: in een vergadering (zakelijk overleg)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "bij"
+      "in"
     ],
     "related": []
   },
   {
     "id": "idm-0487",
     "dutch": "Dat is makkelijker gezegd dan gedaan",
-    "meaning": "That is easier said than done (informal / bij)",
+    "meaning": "That is easier said than done (in a meeting)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
     "example": "Gezonder eten klinkt simpel, maar het is makkelijker gezegd dan gedaan.",
-    "exampleEn": "That is easier said than done in context: bij de gemeente (at city hall/bureaucracy)",
-    "contextNote": "Spoken formula used bij de gemeente (at city hall/bureaucracy)",
+    "exampleEn": "That is easier said than done (in a meeting)",
+    "contextNote": "Spoken formula used in context: in een vergadering (zakelijk overleg)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "bij"
+      "in"
     ],
     "related": []
   },
   {
     "id": "idm-0488",
-    "dutch": "Neem de tijd",
-    "meaning": "Take your time (informal / bij)",
+    "dutch": "Neem rustig de tijd",
+    "meaning": "Take your time (in a meeting)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A1",
-    "example": "Er is geen haast bij, neem rjestig de tijd.",
-    "exampleEn": "Take your time in context: bij de gemeente (at city hall/bureaucracy)",
-    "contextNote": "Spoken formula used bij de gemeente (at city hall/bureaucracy)",
+    "example": "Er is geen haast bij, neem rustig de tijd.",
+    "exampleEn": "Take your time (in a meeting)",
+    "contextNote": "Spoken formula used in context: in een vergadering (zakelijk overleg)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "bij"
+      "in"
     ],
     "related": []
   },
   {
     "id": "idm-0489",
-    "dutch": "Het spijt me ontzettend",
-    "meaning": "I am terribly sorry (informal / bij)",
+    "dutch": "Het spijt me ontzettend voor het ongemak",
+    "meaning": "I am terribly sorry for the inconvenience (in a meeting)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
     "example": "Het spijt me ontzettend dat ik te laat ben voor onze afspraak.",
-    "exampleEn": "I am terribly sorry in context: bij de gemeente (at city hall/bureaucracy)",
-    "contextNote": "Spoken formula used bij de gemeente (at city hall/bureaucracy)",
+    "exampleEn": "I am terribly sorry for the inconvenience (in a meeting)",
+    "contextNote": "Spoken formula used in context: in een vergadering (zakelijk overleg)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "bij"
+      "in"
     ],
     "related": []
   },
   {
     "id": "idm-0490",
-    "dutch": "Alvast heel erg bedankt voor de moeite",
-    "meaning": "Thank you very much in advance for your trouble (informal / bij)",
+    "dutch": "Alvast heel erg bedankt voor uw medewerking",
+    "meaning": "Thank you very much in advance for your cooperation (in a meeting)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
-    "example": "Ik zie jew reactie tegemoet, alvast heel erg bedankt voor de moeite!",
-    "exampleEn": "Thank you very much in advance for your trouble in context: bij de gemeente (at city hall/bureaucracy)",
-    "contextNote": "Spoken formula used bij de gemeente (at city hall/bureaucracy)",
+    "example": "Ik zie uw reactie tegemoet, alvast heel erg bedankt voor uw medewerking!",
+    "exampleEn": "Thank you very much in advance for your cooperation (in a meeting)",
+    "contextNote": "Spoken formula used in context: in een vergadering (zakelijk overleg)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "bij"
+      "in"
     ],
     "related": []
   },
   {
     "id": "idm-0491",
-    "dutch": "Mag ik je even iets vragen?",
-    "meaning": "May I ask you something for a moment? (informal / bij)",
+    "dutch": "Mag ik u even iets vragen?",
+    "meaning": "May I ask you something for a moment? (during drinks)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A1",
-    "example": "Pardon mevrojew, mag ik u even iets vragen over de bushalte?",
-    "exampleEn": "May I ask you something for a moment? in context: bij de huisarts (at the doctor)",
-    "contextNote": "Spoken formula used bij de huisarts (at the doctor)",
+    "example": "Pardon mevrouw, mag ik u even iets vragen over de bushalte?",
+    "exampleEn": "May I ask you something for a moment? (during drinks)",
+    "contextNote": "Spoken formula used in context: tijdens een borrel (sociale bijeenkomst)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "bij"
+      "tijdens"
     ],
     "related": []
   },
   {
     "id": "idm-0492",
-    "dutch": "Kjent u dat alstublieft herhalen?",
-    "meaning": "Could you please repeat that? (informal / bij)",
+    "dutch": "Kunt u dat alstublieft herhalen?",
+    "meaning": "Could you please repeat that? (during drinks)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A1",
-    "example": "Het ging iets te snel, kjent u dat alstublieft herhalen?",
-    "exampleEn": "Could you please repeat that? in context: bij de huisarts (at the doctor)",
-    "contextNote": "Spoken formula used bij de huisarts (at the doctor)",
+    "example": "Het ging iets te snel, kunt u dat alstublieft herhalen?",
+    "exampleEn": "Could you please repeat that? (during drinks)",
+    "contextNote": "Spoken formula used in context: tijdens een borrel (sociale bijeenkomst)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "bij"
+      "tijdens"
     ],
     "related": []
   },
   {
     "id": "idm-0493",
-    "dutch": "Wat bedoelt je precies met...?",
-    "meaning": "What exactly do you mean by...? (informal / bij)",
+    "dutch": "Wat bedoelt u precies met dit punt?",
+    "meaning": "What exactly do you mean by this point? (during drinks)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
-    "example": "Wat bedoelt je precies met die voorwaarde in het contract?",
-    "exampleEn": "What exactly do you mean by...? in context: bij de huisarts (at the doctor)",
-    "contextNote": "Spoken formula used bij de huisarts (at the doctor)",
+    "example": "Wat bedoelt u precies met deze voorwaarde in het contract?",
+    "exampleEn": "What exactly do you mean by this point? (during drinks)",
+    "contextNote": "Spoken formula used in context: tijdens een borrel (sociale bijeenkomst)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "bij"
+      "tijdens"
     ],
     "related": []
   },
   {
     "id": "idm-0494",
     "dutch": "Daar heb ik nog niet over nagedacht",
-    "meaning": "I haven't thought about that yet (informal / bij)",
+    "meaning": "I haven't thought about that yet (during drinks)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
     "example": "Dat is een interessante vraag, daar heb ik nog niet over nagedacht.",
-    "exampleEn": "I haven't thought about that yet in context: bij de huisarts (at the doctor)",
-    "contextNote": "Spoken formula used bij de huisarts (at the doctor)",
+    "exampleEn": "I haven't thought about that yet (during drinks)",
+    "contextNote": "Spoken formula used in context: tijdens een borrel (sociale bijeenkomst)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "bij"
+      "tijdens"
     ],
     "related": []
   },
   {
     "id": "idm-0495",
-    "dutch": "Zoje u mij kunnen doorverbinden met...?",
-    "meaning": "Could you connect me with...? (informal / bij)",
+    "dutch": "Zou u mij kunnen doorverbinden met de juiste afdeling?",
+    "meaning": "Could you connect me with the right department? (during drinks)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "B1",
-    "example": "Goedemorgen, zoje u mij kunnen doorverbinden met de afdeling administratie?",
-    "exampleEn": "Could you connect me with...? in context: bij de huisarts (at the doctor)",
-    "contextNote": "Spoken formula used bij de huisarts (at the doctor)",
+    "example": "Goedemorgen, zou u mij kunnen doorverbinden met de afdeling administratie?",
+    "exampleEn": "Could you connect me with the right department? (during drinks)",
+    "contextNote": "Spoken formula used in context: tijdens een borrel (sociale bijeenkomst)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "bij"
+      "tijdens"
     ],
     "related": []
   },
   {
     "id": "idm-0496",
     "dutch": "Ik ben het er roerend mee eens",
-    "meaning": "I completely and wholeheartedly agree (informal / bij)",
+    "meaning": "I completely and wholeheartedly agree (during drinks)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "B1",
-    "example": "Met jojew visie op duurzaamheid ben ik het roerend eens.",
-    "exampleEn": "I completely and wholeheartedly agree in context: bij de huisarts (at the doctor)",
-    "contextNote": "Spoken formula used bij de huisarts (at the doctor)",
+    "example": "Met uw visie op duurzaamheid ben ik het roerend eens.",
+    "exampleEn": "I completely and wholeheartedly agree (during drinks)",
+    "contextNote": "Spoken formula used in context: tijdens een borrel (sociale bijeenkomst)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "bij"
+      "tijdens"
     ],
     "related": []
   },
   {
     "id": "idm-0497",
     "dutch": "Dat is makkelijker gezegd dan gedaan",
-    "meaning": "That is easier said than done (informal / bij)",
+    "meaning": "That is easier said than done (during drinks)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
     "example": "Gezonder eten klinkt simpel, maar het is makkelijker gezegd dan gedaan.",
-    "exampleEn": "That is easier said than done in context: bij de huisarts (at the doctor)",
-    "contextNote": "Spoken formula used bij de huisarts (at the doctor)",
+    "exampleEn": "That is easier said than done (during drinks)",
+    "contextNote": "Spoken formula used in context: tijdens een borrel (sociale bijeenkomst)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "bij"
+      "tijdens"
     ],
     "related": []
   },
   {
     "id": "idm-0498",
-    "dutch": "Neem de tijd",
-    "meaning": "Take your time (informal / bij)",
+    "dutch": "Neem rustig de tijd",
+    "meaning": "Take your time (during drinks)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A1",
-    "example": "Er is geen haast bij, neem rjestig de tijd.",
-    "exampleEn": "Take your time in context: bij de huisarts (at the doctor)",
-    "contextNote": "Spoken formula used bij de huisarts (at the doctor)",
+    "example": "Er is geen haast bij, neem rustig de tijd.",
+    "exampleEn": "Take your time (during drinks)",
+    "contextNote": "Spoken formula used in context: tijdens een borrel (sociale bijeenkomst)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "bij"
+      "tijdens"
     ],
     "related": []
   },
   {
     "id": "idm-0499",
-    "dutch": "Het spijt me ontzettend",
-    "meaning": "I am terribly sorry (informal / bij)",
+    "dutch": "Het spijt me ontzettend voor het ongemak",
+    "meaning": "I am terribly sorry for the inconvenience (during drinks)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
     "example": "Het spijt me ontzettend dat ik te laat ben voor onze afspraak.",
-    "exampleEn": "I am terribly sorry in context: bij de huisarts (at the doctor)",
-    "contextNote": "Spoken formula used bij de huisarts (at the doctor)",
+    "exampleEn": "I am terribly sorry for the inconvenience (during drinks)",
+    "contextNote": "Spoken formula used in context: tijdens een borrel (sociale bijeenkomst)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "bij"
+      "tijdens"
     ],
     "related": []
   },
   {
     "id": "idm-0500",
-    "dutch": "Alvast heel erg bedankt voor de moeite",
-    "meaning": "Thank you very much in advance for your trouble (informal / bij)",
+    "dutch": "Alvast heel erg bedankt voor uw medewerking",
+    "meaning": "Thank you very much in advance for your cooperation (during drinks)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
-    "example": "Ik zie jew reactie tegemoet, alvast heel erg bedankt voor de moeite!",
-    "exampleEn": "Thank you very much in advance for your trouble in context: bij de huisarts (at the doctor)",
-    "contextNote": "Spoken formula used bij de huisarts (at the doctor)",
+    "example": "Ik zie uw reactie tegemoet, alvast heel erg bedankt voor uw medewerking!",
+    "exampleEn": "Thank you very much in advance for your cooperation (during drinks)",
+    "contextNote": "Spoken formula used in context: tijdens een borrel (sociale bijeenkomst)",
+    "usageWarning": "",
+    "tags": [
+      "conversational",
+      "tijdens"
+    ],
+    "related": []
+  },
+  {
+    "id": "idm-0501",
+    "dutch": "Mag ik u even iets vragen?",
+    "meaning": "May I ask you something for a moment? (at city hall)",
+    "literal": "",
+    "register": "polite",
+    "level": "A1",
+    "example": "Pardon mevrouw, mag ik u even iets vragen over de bushalte?",
+    "exampleEn": "May I ask you something for a moment? (at city hall)",
+    "contextNote": "Spoken formula used in context: bij de gemeente (burgerzaken)",
     "usageWarning": "",
     "tags": [
       "conversational",
@@ -8503,172 +8520,155 @@ globalThis.NP_IDIOMS = [
     "related": []
   },
   {
-    "id": "idm-0501",
-    "dutch": "Mag ik je even iets vragen?",
-    "meaning": "May I ask you something for a moment? (informal / op)",
-    "literal": "",
-    "register": "informal",
-    "level": "A1",
-    "example": "Pardon mevrojew, mag ik u even iets vragen over de bushalte?",
-    "exampleEn": "May I ask you something for a moment? in context: op het werk (at work)",
-    "contextNote": "Spoken formula used op het werk (at work)",
-    "usageWarning": "",
-    "tags": [
-      "conversational",
-      "op"
-    ],
-    "related": []
-  },
-  {
     "id": "idm-0502",
-    "dutch": "Kjent u dat alstublieft herhalen?",
-    "meaning": "Could you please repeat that? (informal / op)",
+    "dutch": "Kunt u dat alstublieft herhalen?",
+    "meaning": "Could you please repeat that? (at city hall)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A1",
-    "example": "Het ging iets te snel, kjent u dat alstublieft herhalen?",
-    "exampleEn": "Could you please repeat that? in context: op het werk (at work)",
-    "contextNote": "Spoken formula used op het werk (at work)",
+    "example": "Het ging iets te snel, kunt u dat alstublieft herhalen?",
+    "exampleEn": "Could you please repeat that? (at city hall)",
+    "contextNote": "Spoken formula used in context: bij de gemeente (burgerzaken)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "op"
+      "bij"
     ],
     "related": []
   },
   {
     "id": "idm-0503",
-    "dutch": "Wat bedoelt je precies met...?",
-    "meaning": "What exactly do you mean by...? (informal / op)",
+    "dutch": "Wat bedoelt u precies met dit punt?",
+    "meaning": "What exactly do you mean by this point? (at city hall)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
-    "example": "Wat bedoelt je precies met die voorwaarde in het contract?",
-    "exampleEn": "What exactly do you mean by...? in context: op het werk (at work)",
-    "contextNote": "Spoken formula used op het werk (at work)",
+    "example": "Wat bedoelt u precies met deze voorwaarde in het contract?",
+    "exampleEn": "What exactly do you mean by this point? (at city hall)",
+    "contextNote": "Spoken formula used in context: bij de gemeente (burgerzaken)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "op"
+      "bij"
     ],
     "related": []
   },
   {
     "id": "idm-0504",
     "dutch": "Daar heb ik nog niet over nagedacht",
-    "meaning": "I haven't thought about that yet (informal / op)",
+    "meaning": "I haven't thought about that yet (at city hall)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
     "example": "Dat is een interessante vraag, daar heb ik nog niet over nagedacht.",
-    "exampleEn": "I haven't thought about that yet in context: op het werk (at work)",
-    "contextNote": "Spoken formula used op het werk (at work)",
+    "exampleEn": "I haven't thought about that yet (at city hall)",
+    "contextNote": "Spoken formula used in context: bij de gemeente (burgerzaken)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "op"
+      "bij"
     ],
     "related": []
   },
   {
     "id": "idm-0505",
-    "dutch": "Zoje u mij kunnen doorverbinden met...?",
-    "meaning": "Could you connect me with...? (informal / op)",
+    "dutch": "Zou u mij kunnen doorverbinden met de juiste afdeling?",
+    "meaning": "Could you connect me with the right department? (at city hall)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "B1",
-    "example": "Goedemorgen, zoje u mij kunnen doorverbinden met de afdeling administratie?",
-    "exampleEn": "Could you connect me with...? in context: op het werk (at work)",
-    "contextNote": "Spoken formula used op het werk (at work)",
+    "example": "Goedemorgen, zou u mij kunnen doorverbinden met de afdeling administratie?",
+    "exampleEn": "Could you connect me with the right department? (at city hall)",
+    "contextNote": "Spoken formula used in context: bij de gemeente (burgerzaken)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "op"
+      "bij"
     ],
     "related": []
   },
   {
     "id": "idm-0506",
     "dutch": "Ik ben het er roerend mee eens",
-    "meaning": "I completely and wholeheartedly agree (informal / op)",
+    "meaning": "I completely and wholeheartedly agree (at city hall)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "B1",
-    "example": "Met jojew visie op duurzaamheid ben ik het roerend eens.",
-    "exampleEn": "I completely and wholeheartedly agree in context: op het werk (at work)",
-    "contextNote": "Spoken formula used op het werk (at work)",
+    "example": "Met uw visie op duurzaamheid ben ik het roerend eens.",
+    "exampleEn": "I completely and wholeheartedly agree (at city hall)",
+    "contextNote": "Spoken formula used in context: bij de gemeente (burgerzaken)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "op"
+      "bij"
     ],
     "related": []
   },
   {
     "id": "idm-0507",
     "dutch": "Dat is makkelijker gezegd dan gedaan",
-    "meaning": "That is easier said than done (informal / op)",
+    "meaning": "That is easier said than done (at city hall)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
     "example": "Gezonder eten klinkt simpel, maar het is makkelijker gezegd dan gedaan.",
-    "exampleEn": "That is easier said than done in context: op het werk (at work)",
-    "contextNote": "Spoken formula used op het werk (at work)",
+    "exampleEn": "That is easier said than done (at city hall)",
+    "contextNote": "Spoken formula used in context: bij de gemeente (burgerzaken)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "op"
+      "bij"
     ],
     "related": []
   },
   {
     "id": "idm-0508",
-    "dutch": "Neem de tijd",
-    "meaning": "Take your time (informal / op)",
+    "dutch": "Neem rustig de tijd",
+    "meaning": "Take your time (at city hall)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A1",
-    "example": "Er is geen haast bij, neem rjestig de tijd.",
-    "exampleEn": "Take your time in context: op het werk (at work)",
-    "contextNote": "Spoken formula used op het werk (at work)",
+    "example": "Er is geen haast bij, neem rustig de tijd.",
+    "exampleEn": "Take your time (at city hall)",
+    "contextNote": "Spoken formula used in context: bij de gemeente (burgerzaken)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "op"
+      "bij"
     ],
     "related": []
   },
   {
     "id": "idm-0509",
-    "dutch": "Het spijt me ontzettend",
-    "meaning": "I am terribly sorry (informal / op)",
+    "dutch": "Het spijt me ontzettend voor het ongemak",
+    "meaning": "I am terribly sorry for the inconvenience (at city hall)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
     "example": "Het spijt me ontzettend dat ik te laat ben voor onze afspraak.",
-    "exampleEn": "I am terribly sorry in context: op het werk (at work)",
-    "contextNote": "Spoken formula used op het werk (at work)",
+    "exampleEn": "I am terribly sorry for the inconvenience (at city hall)",
+    "contextNote": "Spoken formula used in context: bij de gemeente (burgerzaken)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "op"
+      "bij"
     ],
     "related": []
   },
   {
     "id": "idm-0510",
-    "dutch": "Alvast heel erg bedankt voor de moeite",
-    "meaning": "Thank you very much in advance for your trouble (informal / op)",
+    "dutch": "Alvast heel erg bedankt voor uw medewerking",
+    "meaning": "Thank you very much in advance for your cooperation (at city hall)",
     "literal": "",
-    "register": "informal",
+    "register": "polite",
     "level": "A2",
-    "example": "Ik zie jew reactie tegemoet, alvast heel erg bedankt voor de moeite!",
-    "exampleEn": "Thank you very much in advance for your trouble in context: op het werk (at work)",
-    "contextNote": "Spoken formula used op het werk (at work)",
+    "example": "Ik zie uw reactie tegemoet, alvast heel erg bedankt voor uw medewerking!",
+    "exampleEn": "Thank you very much in advance for your cooperation (at city hall)",
+    "contextNote": "Spoken formula used in context: bij de gemeente (burgerzaken)",
     "usageWarning": "",
     "tags": [
       "conversational",
-      "op"
+      "bij"
     ],
     "related": []
   }
