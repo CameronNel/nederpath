@@ -2,7 +2,7 @@
 
 A calm, comprehensive, offline-first Dutch language-learning web application (PWA) designed around three core learning pillars: **Vocabulary**, **Grammar**, and **Comprehension**.
 
-NederPath runs entirely in the browser, stores all state in local storage under the `nederpath-v1` namespace, operates 100% offline via its built-in Service Worker, and deploys automatically to GitHub Pages.
+NederPath runs entirely in the browser, stores all state in local storage under the `nederpath-v1` namespace, and deploys automatically to GitHub Pages. Its Service Worker keeps the app shell and previously visited data banks available offline; a never-visited bank shows a recoverable retry state until connectivity returns.
 
 Public Application URL: **`https://cameronnel.github.io/nederpath/`**
 
@@ -127,11 +127,11 @@ npm run serve
 - **5,050** benchmark and practice sentences.
 - **48/48** audit checks passed.
 - **8/8** unit and smoke tests passed.
-- **20/20** regression tests passed (including direct noun plurals and oracle equivalence).
+- **22/22** regression tests passed (including direct noun plurals, oracle equivalence, loader timeout recovery, and partial-bank retry isolation).
 - **23/23** authoritative Service Worker & offline sandbox tests passed.
-- **55/55** headless browser end-to-end assertions passed (0 console errors).
+- **80/80** headless browser end-to-end assertions passed (0 unexpected console errors), including a controlled Service Worker offline-failure and online-retry flow.
 - **64/64** build artifact integrity checks passed.
-- **Initial Runtime Transfer Budget**: ~911 KB uncompressed on Today view (target <= 1.5 MB; ~12.9 MB saved on initial startup via promise-cached lazy loading).
+- **Initial Runtime Transfer Budget**: ~918 KB uncompressed on Today view (target <= 1.5 MB; ~12.9 MB saved on initial startup via promise-cached lazy loading).
 
 ---
 
