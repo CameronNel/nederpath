@@ -4,6 +4,7 @@ const V = (w, l, m, c, p) => [w, "verb", l, "", m, c, "", p || ""];
 const A = (w, l, m, c, p) => [w, "adjective", l, "", m, c, "", p || ""];
 const D = (w, l, m, c, p) => [w, "adverb", l, "", m, c, "", p || ""];
 const O = (w, p, l, m, c, s) => [w, p, l, "", m, c, s || "", ""];
+const P = (w, l, m, c, s) => [w, "phrase", l, "", m, c, s || "", ""];
 
 module.exports = { WORDS: [
 // healthcare & medicine
@@ -122,7 +123,7 @@ V("concluderen","B1","to conclude, infer","actions",""),
 V("veronderstellen","B2","to assume, presuppose","actions",""),
 V("aannemen","A2","to assume; accept (job/call); adopt","actions","sep=aangenomen"),
 V("beseffen","B1","to realize, be aware of","actions",""),
-V("zich realiseren","B1","to realize (reflexive)","actions",""),
+P("zich realiseren","B1","to realize (reflexive)","actions"),
 V("begrijpen","A1","to understand, comprehend","actions","begrijp|begrijpt|begreep|begrepen|begrepen"),
 V("doorgronden","C1","to fathom, penetrate, comprehend deeply","actions",""),
 V("onthouden","A2","to remember, memorize","actions","onthoud|onthoudt|onthield|onthielden|onthouden"),

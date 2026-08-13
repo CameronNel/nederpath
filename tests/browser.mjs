@@ -274,6 +274,71 @@ async function runBrowserTests() {
     });
     assert(wordsUnlabeled === 0, "All search and filter controls on Words view have associated accessible labels");
 
+    // 4b. Lexical Truthfulness Browser Searches: Lemma, Plural, Diminutive Plural, Phrase, Ordinal
+    // 1. Search Lemma: 'huis'
+    await page.click("#btn-clear-search");
+    await page.type("#words-search-input", "huis");
+    await new Promise((r) => setTimeout(r, 200));
+    const lemmaCard = await page.evaluateHandle(() => {
+      const cards = Array.from(document.querySelectorAll(".word-item-card"));
+      return cards.find((c) => c.querySelector(".word-title")?.textContent.trim() === "het huis");
+    });
+    const lemmaTitle = await lemmaCard.$eval(".word-title", (el) => el.textContent.trim());
+    const lemmaBadge = await lemmaCard.$eval(".badge-tag", (el) => el.textContent.trim());
+    assert(lemmaTitle === "het huis", `Lemma card displays verified neuter article 'het': '${lemmaTitle}'`);
+    assert(lemmaBadge === "Lemma", `Lemma card carries badge 'Lemma': '${lemmaBadge}'`);
+
+    // 2. Search Plural: 'huizen'
+    await page.click("#btn-clear-search");
+    await page.type("#words-search-input", "huizen");
+    await new Promise((r) => setTimeout(r, 200));
+    const pluralCard = await page.$(".word-item-card");
+    const pluralTitle = await pluralCard.$eval(".word-title", (el) => el.textContent.trim());
+    const pluralBadge = await pluralCard.$eval(".badge-tag", (el) => el.textContent.trim());
+    const pluralGram = await pluralCard.$eval(".word-gram-form", (el) => el.textContent.trim());
+    const pluralLemmaLink = await pluralCard.$eval(".word-lemma-link", (el) => el.textContent.trim());
+    assert(pluralTitle.includes("de") && pluralTitle.includes("huizen"), `Plural card displays article 'de': '${pluralTitle}'`);
+    assert(pluralBadge.includes("Afgeleide"), `Plural card is badged as derived reference: '${pluralBadge}'`);
+    assert(pluralGram.includes("meervoud"), `Plural card indicates meervoud grammatical form: '${pluralGram}'`);
+    assert(pluralLemmaLink.includes("huis"), `Plural card links back to base lemma 'huis': '${pluralLemmaLink}'`);
+
+    // 3. Search Diminutive Plural: 'huisjes'
+    await page.click("#btn-clear-search");
+    await page.type("#words-search-input", "huisjes");
+    await new Promise((r) => setTimeout(r, 200));
+    const dimPlCard = await page.$(".word-item-card");
+    const dimPlTitle = await dimPlCard.$eval(".word-title", (el) => el.textContent.trim());
+    const dimPlGram = await dimPlCard.$eval(".word-gram-form", (el) => el.textContent.trim());
+    assert(dimPlTitle.includes("de") && dimPlTitle.includes("huisjes"), `Diminutive plural displays article 'de' (never 'het'): '${dimPlTitle}'`);
+    assert(dimPlGram.includes("verkleinwoord meervoud"), `Diminutive plural form indicates verkleinwoord meervoud: '${dimPlGram}'`);
+
+    // 4. Search Phrase: 'houden van'
+    await page.click("#btn-clear-search");
+    await page.type("#words-search-input", "houden van");
+    await new Promise((r) => setTimeout(r, 200));
+    const phraseCard = await page.$(".word-item-card");
+    const phraseTitle = await phraseCard.$eval(".word-title", (el) => el.textContent.trim());
+    const phraseBadge = await phraseCard.$eval(".badge-tag", (el) => el.textContent.trim());
+    const phraseLvl = await phraseCard.$eval(".word-level-badge", (el) => el.textContent.trim());
+    assert(phraseTitle === "houden van", `Phrase title matches 'houden van': '${phraseTitle}'`);
+    assert(phraseBadge === "Vaste uitdrukking", `Phrase card is badged 'Vaste uitdrukking': '${phraseBadge}'`);
+    assert(["A1", "A2", "B1", "B2", "C1"].includes(phraseLvl), `Phrase card has valid CEFR level (not 'phrase'): '${phraseLvl}'`);
+
+    // 5. Search Ordinal: 'eerste'
+    await page.click("#btn-clear-search");
+    await page.type("#words-search-input", "eerste");
+    await new Promise((r) => setTimeout(r, 200));
+    const ordCard = await page.evaluateHandle(() => {
+      const cards = Array.from(document.querySelectorAll(".word-item-card"));
+      return cards.find((c) => c.querySelector(".word-title")?.textContent.trim() === "eerste");
+    });
+    const ordTitle = await ordCard.$eval(".word-title", (el) => el.textContent.trim());
+    const ordGram = await ordCard.$eval(".word-gram-form", (el) => el.textContent.trim());
+    const ordEx = await ordCard.$eval(".word-example", (el) => el.textContent.trim());
+    assert(ordTitle === "eerste", `Ordinal card title is 'eerste': '${ordTitle}'`);
+    assert(ordGram.includes("rangtelwoord"), `Ordinal card indicates rangtelwoord: '${ordGram}'`);
+    assert(ordEx.includes("keer dat we dit museum bezoeken"), `Ordinal example uses correct authentic frame: '${ordEx}'`);
+
     // 5. Navigation: Grammatica (Grammar Curriculum & Word Order Duplicate Tokens Keyboard Flow)
     await page.click("#nav-grammar");
     await page.waitForSelector(".grammar-catalog-container");

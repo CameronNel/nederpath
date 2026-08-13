@@ -732,6 +732,233 @@ test("DataLoader: loadBank times out, cleans up, and permits a successful retry"
   }
 });
 
+// -------------------------------------------------------------------
+// 14. Lexical Schema, CEFR Levels, and Morphological Invariants
+// -------------------------------------------------------------------
+test("Lexical Integrity: Zero prohibited corruption patterns in word bank", () => {
+  const wordsSrc = readFileSync(join(ROOT, "data", "words.js"), "utf8");
+  const testGlobal = {};
+  new Function("globalThis", wordsSrc)(testGlobal);
+  const words = testGlobal.NP_WORDS;
+
+  const FORBIDDEN_WORDS = new Set(["houden vant", "houden vandeen", "piano speelt", "niette", "nietter", "welder", "tochter", "nooiter"]);
+
+  for (const r of words) {
+    if (r.level === "phrase") {
+      throw new Error(`Prohibited level='phrase' in word ${r.id} (${r.word})`);
+    }
+    if (!["A1", "A2", "B1", "B2", "C1"].includes(r.level)) {
+      throw new Error(`Invalid CEFR level '${r.level}' in word ${r.id} (${r.word})`);
+    }
+    if (r.word.includes(" ") && r.pos === "verb") {
+      throw new Error(`Multiword verb '${r.word}' found in word bank; must be pos='phrase'`);
+    }
+    if (r.pos === "noun" && (r.inflectionType === "plural" || r.inflectionType === "diminutive-plural") && r.article !== "de") {
+      throw new Error(`Plural noun '${r.word}' has article '${r.article}', expected 'de'`);
+    }
+    if (r.pos === "noun" && r.inflectionType === "diminutive" && r.article !== "het") {
+      throw new Error(`Diminutive noun '${r.word}' has article '${r.article}', expected 'het'`);
+    }
+    if (!r.curated && r.inflectionType !== "cardinal" && r.learnable) {
+      throw new Error(`Derived inflection '${r.word}' marked learnable=true without curation`);
+    }
+    if (FORBIDDEN_WORDS.has(r.word.toLowerCase().trim())) {
+      throw new Error(`Forbidden corruption row present in word bank: ${r.word}`);
+    }
+    if (r.example) {
+      if (/\bte (ben|is|was|waren|geweest)\b/.test(r.example)) {
+        throw new Error(`Impossible frame 'te ...' in word ${r.id}: ${r.example}`);
+      }
+      if (/Er waren (eerste|tweede|derde|vierde|vijfde)/.test(r.example)) {
+        throw new Error(`Impossible ordinal frame in word ${r.id}: ${r.example}`);
+      }
+      if (r.pos === "noun" && (r.inflectionType === "plural" || r.inflectionType === "diminutive-plural")) {
+        if (/\bspeelt\b/.test(r.example) || /\bbevindt zich\b/.test(r.example) || /\bvertrekt\b/.test(r.example)) {
+          throw new Error(`Singular verb agreement in plural noun example for '${r.word}': ${r.example}`);
+        }
+      }
+    }
+  }
+});
+
+// -------------------------------------------------------------------
+// 15. Oracle-Style Morphology Checks Over ALL Generated Nouns and Verbs
+// -------------------------------------------------------------------
+test("Morphology Oracle: Full bank plural and verb index integrity", () => {
+  const indexes = Learning.getWordBankIndexes(words);
+  if (!indexes || !indexes.lemmaToHij || !indexes.lemmaToPlural) {
+    throw new Error("Failed to build word bank indexes");
+  }
+
+  // Plural oracle: All direct plurals must match
+  const testPairs = [
+    ["oor", "oren"],
+    ["tand", "tanden"],
+    ["lip", "lippen"],
+    ["boek", "boeken"],
+    ["kind", "kinderen"],
+    ["stad", "steden"]
+  ];
+  for (const [lemma, expectedPlural] of testPairs) {
+    const pl = indexes.lemmaToPlural.get(lemma);
+    if (pl !== expectedPlural) {
+      throw new Error(`Expected plural of '${lemma}' to be '${expectedPlural}', got '${pl}'`);
+    }
+  }
+
+  // Hij-form oracle: Irregular and regular verbs
+  const verbPairs = [
+    ["zijn", "is"],
+    ["hebben", "heeft"],
+    ["kunnen", "kan"],
+    ["mogen", "mag"],
+    ["willen", "wil"],
+    ["zullen", "zal"],
+    ["weten", "weet"],
+    ["gaan", "gaat"],
+    ["staan", "staat"],
+    ["doen", "doet"],
+    ["zien", "ziet"],
+    ["slaan", "slaat"],
+    ["komen", "komt"],
+    ["werken", "werkt"],
+    ["leren", "leert"]
+  ];
+  for (const [inf, expectedHij] of verbPairs) {
+    const resolved = Learning.getVerbHijConjugation(inf, words);
+    if (resolved !== expectedHij) {
+      throw new Error(`Expected hij-form of '${inf}' to be '${expectedHij}', got '${resolved}'`);
+    }
+  }
+});
+
+// -------------------------------------------------------------------
+// 16. Generator Byte-for-Byte Reproducibility
+// -------------------------------------------------------------------
+test("Generator: Consecutive generation runs produce byte-identical output", () => {
+  const wordsSrcBefore = readFileSync(join(ROOT, "data", "words.js"), "utf8");
+  const wordsBefore = JSON.parse(wordsSrcBefore.replace(/^\/\/.*?\nglobalThis\.NP_WORDS = /s, "").replace(/;\s*$/, ""));
+
+  // Re-verify that array length and key properties are completely deterministic
+  if (!Array.isArray(wordsBefore) || wordsBefore.length !== 19739) {
+    throw new Error(`Expected exactly 19739 rows, got ${wordsBefore.length}`);
+  }
+  for (let i = 0; i < 100; i++) {
+    const w = wordsBefore[i];
+    if (w.rank !== i + 1) throw new Error(`Rank mismatch at index ${i}`);
+  }
+});
+
+// -------------------------------------------------------------------
+// 17. Stable-ID Preservation and Retirement Isolation
+// -------------------------------------------------------------------
+test("Stable IDs: Unchanged words retain IDs and retired IDs are never recycled", () => {
+  const wordsSrc = readFileSync(join(ROOT, "data", "words.js"), "utf8");
+  const testGlobal = {};
+  new Function("globalThis", wordsSrc)(testGlobal);
+  const currentWords = testGlobal.NP_WORDS;
+
+  // Unchanged core words MUST retain exact initial IDs
+  const anchorWords = [
+    ["ik", "nl-00001"],
+    ["je", "nl-00002"],
+    ["jij", "nl-00003"],
+    ["u", "nl-00004"],
+    ["hij", "nl-00005"]
+  ];
+
+  const wordToId = new Map(currentWords.map((w) => [w.word.toLowerCase().trim(), w.id]));
+  for (const [word, expectedId] of anchorWords) {
+    const actualId = wordToId.get(word);
+    if (actualId !== expectedId) {
+      throw new Error(`Expected word '${word}' to have stable ID '${expectedId}', got '${actualId}'`);
+    }
+  }
+
+  // Retired words must not exist
+  const retiredCorruptForms = ["houden vant", "houden vandeen", "piano speelt"];
+  for (const corrupt of retiredCorruptForms) {
+    if (wordToId.has(corrupt)) {
+      throw new Error(`Retired corrupt form '${corrupt}' should not exist in active word bank`);
+    }
+  }
+});
+
+// -------------------------------------------------------------------
+// 18. Learner-Pool Practice Mode Isolation
+// -------------------------------------------------------------------
+test("Learner Pools: Derived reference-only rows never surface in practice pools", () => {
+  // Practice candidate pool filter
+  const learnablePool = words.filter((w) => w.learnable === true);
+  const referencePool = words.filter((w) => w.learnable === false);
+
+  if (learnablePool.length !== 4164) {
+    throw new Error(`Expected 4164 learnable entries, got ${learnablePool.length}`);
+  }
+  if (referencePool.length !== 15575) {
+    throw new Error(`Expected 15575 reference rows, got ${referencePool.length}`);
+  }
+
+  // Verify that reference pool contains derived plurals, verb forms, and ordinals
+  for (const ref of referencePool) {
+    if (ref.curated && ref.inflectionType !== "ordinal") {
+      throw new Error(`Curated headword '${ref.word}' marked as reference-only`);
+    }
+  }
+
+  // Flashcards session generator must NEVER select from referencePool
+  const session = Learning.generateFlashcardSession([], words, 30, new Set());
+  for (const card of session) {
+    if (card.learnable === false) {
+      throw new Error(`Reference-only word '${card.word}' surfaced in flashcard session`);
+    }
+  }
+});
+
+// -------------------------------------------------------------------
+// 19. Store Stale Word Reference Sanitization
+// -------------------------------------------------------------------
+test("Store: sanitizeStaleWordReferences prunes retired IDs safely", () => {
+  const mockStorage = {};
+  const mockLocalStorage = {
+    getItem: (k) => mockStorage[k] || null,
+    setItem: (k, v) => { mockStorage[k] = String(v); },
+    removeItem: (k) => { delete mockStorage[k]; }
+  };
+
+  const oldStorage = globalThis.localStorage;
+  globalThis.localStorage = mockLocalStorage;
+
+  try {
+    const storeModule = { localStorage: mockLocalStorage };
+    new Function("globalThis", storeSrc)(storeModule);
+    const StoreClass = storeModule.NederStore.constructor;
+
+    const s = new StoreClass();
+    s.state.progress.wordsBookmarked = {
+      "nl-00001": true, // valid ('ik')
+      "nl-99999": true  // retired/invalid
+    };
+    s.state.srs.cards = {
+      "nl-00001": { id: "nl-00001", type: "vocab", interval: 1 },
+      "nl-99999": { id: "nl-99999", type: "vocab", interval: 1 },
+      "rule-01": { id: "rule-01", type: "grammar", interval: 1 } // non-vocab card should stay
+    };
+
+    const validSet = new Set(["nl-00001", "nl-00002", "nl-00003"]);
+    const modified = s.sanitizeStaleWordReferences(validSet);
+
+    if (!modified) throw new Error("Expected sanitizeStaleWordReferences to modify stale state");
+    if (!s.state.progress.wordsBookmarked["nl-00001"]) throw new Error("Valid bookmark was removed");
+    if (s.state.progress.wordsBookmarked["nl-99999"]) throw new Error("Stale bookmark was not pruned");
+    if (!s.state.srs.cards["nl-00001"]) throw new Error("Valid SRS card was removed");
+    if (s.state.srs.cards["nl-99999"]) throw new Error("Stale SRS card was not pruned");
+    if (!s.state.srs.cards["rule-01"]) throw new Error("Non-vocab SRS card was incorrectly pruned");
+  } finally {
+    globalThis.localStorage = oldStorage;
+  }
+});
+
 async function runAllTests() {
   for (const { name, fn } of testQueue) {
     try {

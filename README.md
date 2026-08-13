@@ -13,11 +13,12 @@ Public Application URL: **`https://cameronnel.github.io/nederpath/`**
 ### 1. Exactly Three Learning Pillars
 
 1. **Vocabulary (Woordenschat)**:
-   - Exactly **20,000 unique Dutch word-form rows** with frequency ranks and CEFR levels (A1–C1).
+   - Exactly **19,739 unique Dutch word forms**, comprising **4,147 curated headwords and idiomatic phrases** alongside derived inflectional reference forms with frequency ranks and CEFR levels (A1–C1).
+   - **Learnability Policy**: Genuinely teachable curated lemmas and phrases are learnable (`learnable: true`); derived inflections (e.g. conjugated verb forms, derived plurals, participles, ordinals) serve as searchable dictionary reference entries (`learnable: false`).
    - Every learnable Dutch noun is taught and displayed with its gender article (**`de`** or **`het`**), e.g., `de tafel`, `het huis`.
-   - Comprehensive morphology: noun plurals, diminutives, verb stems, `'t kofschip` past tenses, irregular ablaut principal parts, separable prefixes (`scheidbare werkwoorden`), and adjective `-e` inflections.
+   - Comprehensive morphology: noun plurals (all direct plurals carrying `de`), singular diminutives (`het`), diminutive plurals (`de`), verb stems, `'t kofschip` past tenses, irregular ablaut principal parts, separable prefixes (`scheidbare werkwoorden`), and adjective `-e` inflections.
    - **10 Vocabulary Learning & Practice Modes**:
-     1. *Flashcards (SRS)*: Tap/Space to reveal, 1–4 keyboard shortcuts, mobile touch taps, SM-2 scheduling, session completion summary. Prioritizes genuinely due SRS cards first before sampling from the full 20,000-word bank.
+     1. *Flashcards (SRS)*: Tap/Space to reveal, 1–4 keyboard shortcuts, mobile touch taps, SM-2 scheduling, session completion summary. Prioritizes genuinely due SRS cards first before sampling from the curated learnable vocabulary bank.
      2. *De of Het Drill*: Fast-paced noun gender trainer with grammatical explanations and separate accuracy tracking.
      3. *Spelling & Typing*: Strict Dutch spelling and diacritic input with whitespace/capitalization normalization.
      4. *Fill in the Blank*: Sentence cloze with contextual distractors, stable per-card question model, and exact normalized grading.
@@ -26,7 +27,7 @@ Public Application URL: **`https://cameronnel.github.io/nederpath/`**
      7. *Synonyms & Antonyms*: Vocabulary relationship practice with dynamic option pooling.
      8. *Plural & Diminutive Practice*: Morphology spelling rules trainer testing verified plural pairings.
      9. *Context Practice*: Situational word choice exercises.
-     10. *20,000-Word Dictionary*: Sub-millisecond search across Dutch words, articles, English meanings, and lemmas with filters for CEFR, Part of Speech, `de`/`het`, and Bookmarks.
+     10. *Comprehensive Dictionary & Search Engine*: Sub-millisecond search across all 19,739 Dutch word forms, articles, English meanings, and base lemmas with filters for CEFR, Part of Speech, `de`/`het`, and Bookmarks. Clear visual badges distinguish lemmas, fixed phrases, and derived reference forms.
 
 2. **Grammar (Grammatica)**:
    - Exactly **120 structured grammar rules** organized across **8 CEFR sections** (A0 through C1).
@@ -118,20 +119,21 @@ npm run serve
 
 ## Quality & Compliance Verification
 
-- **20,000 / 20,000** unique word-form rows in `data/words.js`.
+- **19,739** unique Dutch word forms in `data/words.js` (4,147 curated headwords/phrases + 15,575 derived reference forms).
 - **0** learnable nouns without verified `de`/`het` article.
 - **100%** of learnable nouns have `displayWord` formatted as `de [word]` or `het [word]`.
+- **100%** of plural nouns and diminutive plurals carry article `de`.
 - **120** grammar lessons with 7 exercise interaction types.
 - **120** comprehension reading passages (24 A1, 24 A2, 24 B1, 24 B2, 24 C1) with quizzes.
 - **510** authentic Dutch idioms and conversational formulas.
 - **5,050** benchmark and practice sentences.
-- **48/48** audit checks passed.
+- **57/57** audit checks passed.
 - **8/8** unit and smoke tests passed.
-- **22/22** regression tests passed (including direct noun plurals, oracle equivalence, loader timeout recovery, and partial-bank retry isolation).
+- **28/28** regression tests passed (including direct noun plurals, oracle equivalence, loader timeout recovery, stable-ID preservation, and partial-bank retry isolation).
 - **23/23** authoritative Service Worker & offline sandbox tests passed.
-- **80/80** headless browser end-to-end assertions passed (0 unexpected console errors), including a controlled Service Worker offline-failure and online-retry flow.
+- **94/94** headless browser end-to-end assertions passed (0 unexpected console errors), including controlled offline error recovery, keyboard accessibility, and 5-category dictionary searches.
 - **64/64** build artifact integrity checks passed.
-- **Initial Runtime Transfer Budget**: ~918 KB uncompressed on Today view (target <= 1.5 MB; ~12.9 MB saved on initial startup via promise-cached lazy loading).
+- **Initial Runtime Transfer Budget**: ~922 KB uncompressed on Today view (target <= 1.5 MB; ~12.9 MB saved on initial startup via promise-cached lazy loading).
 
 ---
 

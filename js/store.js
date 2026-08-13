@@ -257,6 +257,40 @@
       this.save();
     }
 
+    /**
+     * Safely prunes stale or retired word IDs from bookmarks and SRS cards.
+     * Prevents retired invalid IDs from colliding with newly assigned words.
+     */
+    sanitizeStaleWordReferences(validWordIds) {
+      if (!validWordIds) return false;
+      const validSet = validWordIds instanceof Set ? validWordIds : new Set(validWordIds);
+      let modified = false;
+
+      if (this.state.progress && this.state.progress.wordsBookmarked) {
+        for (const id of Object.keys(this.state.progress.wordsBookmarked)) {
+          if (!validSet.has(id)) {
+            delete this.state.progress.wordsBookmarked[id];
+            modified = true;
+          }
+        }
+      }
+
+      if (this.state.srs && this.state.srs.cards) {
+        for (const id of Object.keys(this.state.srs.cards)) {
+          const card = this.state.srs.cards[id];
+          if (card && card.type === "vocab" && !validSet.has(id)) {
+            delete this.state.srs.cards[id];
+            modified = true;
+          }
+        }
+      }
+
+      if (modified) {
+        this.save();
+      }
+      return modified;
+    }
+
     resetAllData() {
       this.state = JSON.parse(JSON.stringify(DEFAULT_STATE));
       this.save();

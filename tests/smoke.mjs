@@ -75,12 +75,12 @@ test("SRS: Failed review resets interval and records lapse", () => {
 });
 
 // 2. Data Structure Smoke Tests
-test("Data: All 20,000 words load and have valid properties", () => {
+test("Data: All 19,739 authentic words load and have valid properties", () => {
   const wordsSrc = readFileSync(join(ROOT, "data", "words.js"), "utf8");
   new Function(wordsSrc)();
   const words = globalThis.NP_WORDS;
 
-  if (!Array.isArray(words) || words.length !== 20000) throw new Error(`Word count is ${words.length}, expected 20000`);
+  if (!Array.isArray(words) || words.length !== 19739) throw new Error(`Word count is ${words.length}, expected 19739`);
   const first = words[0];
   if (!first.id || !first.word || first.rank !== 1) throw new Error("First word structure invalid");
 });
