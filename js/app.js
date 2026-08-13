@@ -1312,7 +1312,7 @@
                   <button class="btn btn-sm btn-outline" id="btn-next-grammar-ex" ${this.activeGrammarExIndex >= exercises.length - 1 ? 'disabled' : ''}>Volgende →</button>
                 </div>
               </div>
-              
+
               ${allDone ? `
                 <div class="card session-complete-card animate-fade" style="margin-top: 1rem; text-align: center;">
                   <div class="complete-icon">🌟</div>

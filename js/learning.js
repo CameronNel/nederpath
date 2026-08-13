@@ -49,15 +49,31 @@
   }
 
   /**
-   * Validates if a string is a legitimate, finite ISO date within reasonable range.
+   * Validates if a string is a legitimate, finite ISO date with strict calendar and leap-year validation.
    */
   function isValidISODateString(str) {
     if (typeof str !== "string" || str.length > 35) return false;
-    if (!/^\d{4}-\d{2}-\d{2}(T\d{2}:\d{2}:\d{2}(\.\d{1,3})?Z?)?$/.test(str)) return false;
+    const match = str.match(/^(\d{4})-(\d{2})-(\d{2})(?:T(\d{2}):(\d{2}):(\d{2})(?:\.(\d{1,3}))?(?:Z|[+-]\d{2}:\d{2})?)?$/);
+    if (!match) return false;
+    const [, yStr, mStr, dStr, hrStr, minStr, secStr] = match;
+    const year = parseInt(yStr, 10);
+    const month = parseInt(mStr, 10);
+    const day = parseInt(dStr, 10);
+    if (year < 2000 || year > 2100 || month < 1 || month > 12 || day < 1 || day > 31) return false;
+
+    const isLeap = (year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0);
+    const daysInMonth = [31, isLeap ? 29 : 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+    if (day > daysInMonth[month - 1]) return false;
+
+    if (hrStr !== undefined) {
+      const hr = parseInt(hrStr, 10);
+      const min = parseInt(minStr, 10);
+      const sec = parseInt(secStr, 10);
+      if (hr < 0 || hr > 23 || min < 0 || min > 59 || sec < 0 || sec > 59) return false;
+    }
+
     const d = new Date(str);
-    if (isNaN(d.getTime())) return false;
-    const year = d.getUTCFullYear();
-    return year >= 2000 && year <= 2100;
+    return !isNaN(d.getTime());
   }
 
   /**
@@ -412,13 +428,13 @@
     // Validate and merge user
     if (parsed.user && typeof parsed.user === "object" && !Array.isArray(parsed.user)) {
       if (typeof parsed.user.name === "string") {
-        // Sanitize name: strip HTML tags, preserve normal Unicode letters, numbers, spaces, hyphens
+        // Sanitize name: strip HTML tags and control characters, preserving normal international Unicode names
         const sanitizedName = parsed.user.name
           .replace(/<[^>]*>/g, "")
-          .replace(/[^a-zA-Z0-9\s\-\.\u00C0-\u024F\u1E00-\u1EFF]/g, "")
+          .replace(/[\u0000-\u001F\u007F-\u009F]/g, "")
           .replace(/\s+/g, " ")
           .trim()
-          .slice(0, 40);
+          .slice(0, 50);
         if (sanitizedName.length > 0) {
           merged.user.name = sanitizedName;
         }

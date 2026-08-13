@@ -313,7 +313,138 @@ test("Word Order: Duplicate tokens have distinct pool indices and can be placed 
 });
 
 // -------------------------------------------------------------------
-// 7. Security: Recursive Prototype Pollution, HTML Sanitization, Bounds
+// 7. Local Calendar Date Formatting
+// -------------------------------------------------------------------
+test("Dates: getLocalISODate formats local calendar date around late local time without UTC shifting", () => {
+  const lateEvening = new Date(2026, 7, 13, 23, 30); // 13 August 2026, 23:30 local time
+  const isoLate = Learning.getLocalISODate(lateEvening);
+  if (isoLate !== "2026-08-13") throw new Error(`Expected '2026-08-13', got '${isoLate}'`);
+
+  const earlyMorning = new Date(2026, 0, 1, 0, 15); // 1 January 2026, 00:15 local time
+  const isoEarly = Learning.getLocalISODate(earlyMorning);
+  if (isoEarly !== "2026-01-01") throw new Error(`Expected '2026-01-01', got '${isoEarly}'`);
+});
+
+// -------------------------------------------------------------------
+// 8. Strict Calendar and Leap-Year Date Validation
+// -------------------------------------------------------------------
+test("Dates: isValidISODateString enforces strict calendar dates and leap-year correctness", () => {
+  // Invalid calendar dates must return false
+  if (Learning.isValidISODateString("2026-02-30") !== false) {
+    throw new Error("2026-02-30 was falsely validated as a valid date");
+  }
+  if (Learning.isValidISODateString("2025-02-29") !== false) {
+    throw new Error("2025-02-29 (non-leap year) was falsely validated as a valid date");
+  }
+  if (Learning.isValidISODateString("2026-04-31") !== false) {
+    throw new Error("2026-04-31 (April only has 30 days) was falsely validated as a valid date");
+  }
+  if (Learning.isValidISODateString("invalid-date") !== false) {
+    throw new Error("'invalid-date' was falsely validated as a valid date");
+  }
+
+  // Valid calendar dates must return true
+  if (Learning.isValidISODateString("2024-02-29") !== true) {
+    throw new Error("2024-02-29 (leap year) was rejected");
+  }
+  if (Learning.isValidISODateString("2026-08-13") !== true) {
+    throw new Error("2026-08-13 was rejected");
+  }
+  if (Learning.isValidISODateString("2026-08-13T22:04:44.123Z") !== true) {
+    throw new Error("2026-08-13T22:04:44.123Z was rejected");
+  }
+});
+
+// -------------------------------------------------------------------
+// 9. Complete Valid Backup Merge & Schema Preservation
+// -------------------------------------------------------------------
+test("Backup: Complete valid backup merges allowed fields and preserves defaults for missing fields", () => {
+  const defaultState = {
+    version: 1,
+    user: { name: "Learner", level: "A1", dailyGoal: 15, sessionSize: 10, streak: 0, totalXp: 0, lastActiveDate: null },
+    settings: { theme: "dark", sessionSize: 10, dailyGoal: 15, autoAdvance: true, hapticFeedback: true },
+    srs: { cards: {} },
+    progress: {
+      grammarCompleted: {},
+      comprehensionCompleted: {},
+      wordsBookmarked: {},
+      studyDays: {},
+      articleStats: { totalDrilled: 0, correct: 0, mistakes: {} },
+      dailyStats: { date: "2026-08-13", learnedToday: 0 }
+    }
+  };
+
+  const completeBackup = {
+    user: {
+      name: "Cameron",
+      level: "B1",
+      dailyGoal: 25,
+      sessionSize: 15,
+      streak: 12,
+      totalXp: 1850,
+      lastActiveDate: "2026-08-13"
+    },
+    settings: {
+      theme: "light",
+      autoAdvance: false
+    },
+    progress: {
+      wordsBookmarked: { "nl-00001": true, "nl-00002": true },
+      grammarCompleted: { "g-001": { score: 100, attempts: 2, completedAt: "2026-08-13T10:00:00Z" } },
+      comprehensionCompleted: { "comp-001": { score: 100, totalQuestions: 4, completedAt: "2026-08-13T10:30:00Z" } },
+      studyDays: { "2026-08-13": 25 },
+      articleStats: { totalDrilled: 30, correct: 28, mistakes: { tafel: 2 } },
+      dailyStats: { date: "2026-08-13", learnedToday: 25 }
+    },
+    srs: {
+      cards: {
+        "nl-00001": { id: "nl-00001", type: "vocab", interval: 4, repetitions: 2, easeFactor: 2.5, lapses: 0, dueDate: "2026-08-17T10:00:00Z", state: "review" }
+      }
+    }
+  };
+
+  const merged = Learning.validateAndMergeBackup(completeBackup, defaultState);
+
+  // Assert user fields merged
+  if (merged.user.name !== "Cameron") throw new Error("user.name failed to merge");
+  if (merged.user.level !== "B1") throw new Error("user.level failed to merge");
+  if (merged.user.dailyGoal !== 25) throw new Error("user.dailyGoal failed to merge");
+  if (merged.user.sessionSize !== 15) throw new Error("user.sessionSize failed to merge");
+  if (merged.user.streak !== 12) throw new Error("user.streak failed to merge");
+  if (merged.user.totalXp !== 1850) throw new Error("user.totalXp failed to merge");
+  if (merged.user.lastActiveDate !== "2026-08-13") throw new Error("user.lastActiveDate failed to merge");
+
+  // Assert settings fields merged
+  if (merged.settings.theme !== "light") throw new Error("settings.theme failed to merge");
+  if (merged.settings.autoAdvance !== false) throw new Error("settings.autoAdvance failed to merge");
+  // Missing settings field retained default
+  if (merged.settings.hapticFeedback !== true) throw new Error("settings.hapticFeedback default was lost");
+
+  // Assert progress merged
+  if (!merged.progress.wordsBookmarked["nl-00001"] || !merged.progress.wordsBookmarked["nl-00002"]) {
+    throw new Error("progress.wordsBookmarked failed to merge");
+  }
+  if (!merged.progress.grammarCompleted["g-001"] || merged.progress.grammarCompleted["g-001"].score !== 100) {
+    throw new Error("progress.grammarCompleted failed to merge");
+  }
+  if (!merged.progress.comprehensionCompleted["comp-001"]) {
+    throw new Error("progress.comprehensionCompleted failed to merge");
+  }
+  if (merged.progress.studyDays["2026-08-13"] !== 25) {
+    throw new Error("progress.studyDays failed to merge");
+  }
+  if (merged.progress.articleStats.totalDrilled !== 30 || merged.progress.articleStats.correct !== 28) {
+    throw new Error("progress.articleStats failed to merge");
+  }
+
+  // Assert SRS merged
+  if (!merged.srs.cards["nl-00001"] || merged.srs.cards["nl-00001"].interval !== 4) {
+    throw new Error("srs.cards failed to merge");
+  }
+});
+
+// -------------------------------------------------------------------
+// 10. Security: Recursive Prototype Pollution, International Unicode, Bounds
 // -------------------------------------------------------------------
 test("Security: Recursive prototype-pollution injection is rejected and Object.prototype is pristine", () => {
   const defaultState = {
@@ -358,7 +489,7 @@ test("Security: Recursive prototype-pollution injection is rejected and Object.p
   if (({}).polluted3 !== undefined) throw new Error("Object.prototype was polluted with polluted3!");
 });
 
-test("Security: HTML injection via user.name is sanitized and escapeHTML escapes HTML sinks", () => {
+test("Security: International Unicode names (Søren 李) are preserved while HTML/XSS sinks are sanitized and escaped", () => {
   const defaultState = {
     version: 1,
     user: { name: "Learner", level: "A1", dailyGoal: 15, sessionSize: 10, streak: 0, totalXp: 0 },
@@ -367,17 +498,33 @@ test("Security: HTML injection via user.name is sanitized and escapeHTML escapes
     progress: { grammarCompleted: {}, comprehensionCompleted: {}, wordsBookmarked: {}, studyDays: {}, articleStats: { totalDrilled: 0, correct: 0, mistakes: {} }, dailyStats: { date: "2026-08-13", learnedToday: 0 } }
   };
 
+  // International Unicode name with tags stripped
+  const unicodeBackup = {
+    user: { name: "<script>alert(1)</script> Søren 李" }
+  };
+  const mergedUnicode = Learning.validateAndMergeBackup(unicodeBackup, defaultState);
+  if (!mergedUnicode.user.name.includes("Søren 李")) {
+    throw new Error(`International Unicode name was not preserved: '${mergedUnicode.user.name}'`);
+  }
+  if (mergedUnicode.user.name.includes("<script>") || mergedUnicode.user.name.includes("</script>")) {
+    throw new Error(`Unsanitized script tags found in user.name: '${mergedUnicode.user.name}'`);
+  }
+
+  // HTML injection with img tag
   const xssBackup = {
     user: { name: "<img src=x onerror=alert('pwned')> Cameron" }
   };
-
-  const merged = Learning.validateAndMergeBackup(xssBackup, defaultState);
-  if (merged.user.name.includes("<") || merged.user.name.includes(">") || merged.user.name.includes("onerror")) {
-    throw new Error(`Unsanitized HTML tag characters found in merged user.name: '${merged.user.name}'`);
+  const mergedXSS = Learning.validateAndMergeBackup(xssBackup, defaultState);
+  if (mergedXSS.user.name.includes("<") || mergedXSS.user.name.includes(">")) {
+    throw new Error(`Unsanitized HTML tag characters found in merged user.name: '${mergedXSS.user.name}'`);
+  }
+  if (!mergedXSS.user.name.includes("Cameron")) {
+    throw new Error(`Name Cameron was lost: '${mergedXSS.user.name}'`);
   }
 
-  const escaped = Learning.escapeHTML("<script>alert(1)</script>");
-  if (escaped !== "&lt;script&gt;alert(1)&lt;/script&gt;") {
+  // escapeHTML escapes all dangerous HTML characters
+  const escaped = Learning.escapeHTML("<script>alert('pwned') & \"quotes\"</script>");
+  if (escaped !== "&lt;script&gt;alert(&#39;pwned&#39;) &amp; &quot;quotes&quot;&lt;/script&gt;") {
     throw new Error(`escapeHTML failed: '${escaped}'`);
   }
 });
@@ -395,7 +542,7 @@ test("Security: Invalid dates, absurd numeric counters, and oversized collection
     user: {
       totalXp: 99999999999999, // Absurd XP
       streak: -50,              // Negative streak
-      lastActiveDate: "invalid-date"
+      lastActiveDate: "2026-02-30" // Impossible date
     },
     settings: {
       dailyGoal: 99999999       // Absurd goal
@@ -418,14 +565,14 @@ test("Security: Invalid dates, absurd numeric counters, and oversized collection
 
   if (merged.user.totalXp > 10000000) throw new Error(`totalXp was not capped: ${merged.user.totalXp}`);
   if (merged.user.streak < 0) throw new Error(`Negative streak was admitted: ${merged.user.streak}`);
-  if (merged.user.lastActiveDate === "invalid-date") throw new Error("Invalid date was admitted into lastActiveDate");
+  if (merged.user.lastActiveDate === "2026-02-30") throw new Error("Impossible calendar date 2026-02-30 was admitted into lastActiveDate");
   if (merged.settings.dailyGoal > 500) throw new Error(`dailyGoal was not capped: ${merged.settings.dailyGoal}`);
   if (merged.progress.studyDays["9999-99-99"] !== undefined) throw new Error("Invalid date key in studyDays was admitted");
   if (Object.keys(merged.progress.grammarCompleted).length > 500) throw new Error("grammarCompleted collection was not capped to safe limit");
 });
 
 // -------------------------------------------------------------------
-// 8. Spaced Repetition Due Card Filtering
+// 11. Spaced Repetition Due Card Filtering
 // -------------------------------------------------------------------
 test("SRS: getDueCards accurately identifies cards with past due dates", () => {
   const dummyStore = {
