@@ -51,7 +51,8 @@ function readMergePolicy(root) {
   const file = join(root, "data", "lexical_merge_policy.json");
   if (!existsSync(file)) return { version: 1, primary: {}, article: {} };
   const policy = JSON.parse(readFileSync(file, "utf8"));
-  if (!policy || policy.version !== 1 || typeof policy.primary !== "object" || typeof policy.article !== "object") {
+  const isRecord = (value) => value && typeof value === "object" && !Array.isArray(value);
+  if (!policy || policy.version !== 1 || !isRecord(policy.primary) || !isRecord(policy.article)) {
     throw new Error("data/lexical_merge_policy.json has an invalid schema");
   }
   return policy;
@@ -75,9 +76,9 @@ function metaQuality(pos, meta, word) {
 
 /**
  * Merge repeated source rows into one lexical owner while preserving every
- * source sense in an explicit `senses` array. The raw rows remain available to
- * the audit, and the merge policy contains only exceptional primary/article
- * decisions that cannot be inferred from a stable rule.
+ * source sense in an explicit `senses` array. The learner-facing canonical
+ * fields are drawn only from the selected primary POS; unrelated homograph
+ * senses remain represented in `senses` and in their explicit derived forms.
  */
 export function loadCanonicalRows(root = ROOT) {
   const { files, rows } = loadCuratedRows(root);
@@ -88,6 +89,29 @@ export function loadCanonicalRows(root = ROOT) {
     groups.get(norm).push(record);
   }
   const policy = readMergePolicy(root);
+
+  // Policy entries are executable editorial decisions. A stale source index or
+  // typo must fail closed rather than silently falling back to an inferred row.
+  for (const [norm, recordKey] of Object.entries(policy.primary)) {
+    if (norm !== normalizeLexicalForm(norm) || typeof recordKey !== "string") {
+      throw new Error(`Invalid primary merge-policy entry '${norm}' -> '${recordKey}'`);
+    }
+    const group = groups.get(norm);
+    if (!group) throw new Error(`Primary merge-policy entry '${norm}' has no source group`);
+    if (!group.some((record) => sourceRecordKey(record) === recordKey)) {
+      throw new Error(`Primary merge-policy entry '${norm}' points to missing source row '${recordKey}'`);
+    }
+  }
+  for (const [norm, article] of Object.entries(policy.article)) {
+    if (norm !== normalizeLexicalForm(norm) || !["de", "het"].includes(article)) {
+      throw new Error(`Invalid article merge-policy entry '${norm}' -> '${article}'`);
+    }
+    const group = groups.get(norm);
+    if (!group?.some((record) => record.row[1] === "noun")) {
+      throw new Error(`Article merge-policy entry '${norm}' has no noun source sense`);
+    }
+  }
+
   const canonical = [];
   for (const [norm, records] of groups) {
     const override = policy.primary[norm];
@@ -120,13 +144,16 @@ export function loadCanonicalRows(root = ROOT) {
       return metaQuality(bFields.pos, bFields.meta, bFields.word) - metaQuality(aFields.pos, aFields.meta, aFields.word);
     })[0];
     const mergedMeta = bestMeta ? sourceFields(bestMeta).meta : primaryFields.meta;
-    const meanings = [...new Set(records
+
+    // Do not leak noun/verb/adjective homograph meanings into the selected
+    // learner-facing POS. Same-POS duplicate senses may still be combined.
+    const meanings = [...new Set(samePos
       .flatMap((record) => String(record.row[4]).split(/\s*;\s*/u))
       .map((meaning) => meaning.trim())
       .filter(Boolean))];
-    const synonyms = [...new Set(records.flatMap((record) => sourceFields(record).synonyms))];
+    const synonyms = [...new Set(samePos.flatMap((record) => sourceFields(record).synonyms))];
     const levelRank = { A1: 1, A2: 2, B1: 3, B2: 4, C1: 5 };
-    const mergedLevel = records.slice().sort((a, b) => (levelRank[a.row[2]] || 99) - (levelRank[b.row[2]] || 99))[0].row[2];
+    const mergedLevel = samePos.slice().sort((a, b) => (levelRank[a.row[2]] || 99) - (levelRank[b.row[2]] || 99))[0].row[2];
     const senses = records.map((record) => {
       const fields = sourceFields(record);
       return { source: sourceRecordKey(record), ...fields };
@@ -184,12 +211,13 @@ export function duplicateSourceGroups(rows) {
 
 export function parseNounMeta(word, rawMeta) {
   const meta = String(rawMeta ?? "");
-  const [pluralSpec = "", diminutiveSpec = ""] = meta.split("|");
+  const parts = meta.split("|");
+  if (parts.length > 2) throw new Error(`Noun metadata has too many fields: '${meta}' for '${word}'`);
+  const [pluralSpec = "", diminutiveSpec = ""] = parts;
   let plural = null;
   if (pluralSpec === "s") plural = `${word}s`;
   else if (pluralSpec === "'s") plural = `${word}'s`;
   else if (pluralSpec === "eren") plural = `${word}eren`;
-  else if (pluralSpec === "n") plural = `${word}n`;
   else if (pluralSpec.startsWith("=") && pluralSpec.length > 1) plural = pluralSpec.slice(1);
   else if (pluralSpec === "" || pluralSpec === "inv") plural = null;
   else throw new Error(`Unsupported noun metadata '${meta}' for '${word}'`);
@@ -230,7 +258,7 @@ export function parseVerbMeta(rawMeta) {
 export function parseAdjectiveMeta(rawMeta) {
   const meta = String(rawMeta ?? "");
   if (!meta || meta === "-") return { kind: meta === "-" ? "non-comparable" : "none", forms: [] };
-  if (!meta.startsWith("|")) return { kind: "synonyms", forms: [] };
+  if (!meta.startsWith("|")) throw new Error(`Unsupported adjective metadata '${meta}'`);
   const parts = meta.split("|");
   if (parts.length !== 3 || !parts[1] || !parts[2]) throw new Error(`Adjective metadata must be |comparative|superlative: '${meta}'`);
   return { kind: "comparison", forms: [{ word: parts[1], kind: "comparative" }, { word: parts[2], kind: "superlative" }] };
