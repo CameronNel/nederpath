@@ -572,7 +572,7 @@
           <!-- Practice Mode Selector Bar -->
           <div class="practice-nav-bar">
             ${modes.map((m) => `
-              <button class="btn btn-sm ${this.practiceMode === m.id ? 'btn-primary' : 'btn-outline'}" data-mode="${m.id}">
+              <button class="btn btn-sm ${this.practiceMode === m.id ? 'btn-primary' : 'btn-outline'}" data-mode="${m.id}" aria-pressed="${this.practiceMode === m.id ? 'true' : 'false'}">
                 ${m.icon} ${m.name}
               </button>
             `).join("")}
@@ -2224,7 +2224,7 @@
                       <span class="word-level-badge badge-${Learning.escapeHTML(w.level.toLowerCase())}">${Learning.escapeHTML(w.level)}</span>
                       ${badgeType}
                     </div>
-                    <button class="btn-star ${isStarred ? 'starred' : ''}" data-star-id="${Learning.escapeHTML(w.id)}" title="Favoriet opslaan">
+                    <button class="btn-star ${isStarred ? 'starred' : ''}" data-star-id="${Learning.escapeHTML(w.id)}" title="${isStarred ? 'Favoriet verwijderen' : 'Favoriet opslaan'}" aria-pressed="${isStarred ? 'true' : 'false'}" aria-label="Favoriet">
                       ${isStarred ? '★' : '☆'}
                     </button>
                   </div>
