@@ -570,11 +570,16 @@ globalThis.NP_GRAMMAR = [
     "relatedRules": [],
     "exercises": [
       {
-        "type": "typed_conjugation",
-        "infinitive": "kind (plural)",
-        "subject": "plural",
-        "targetTense": "plural",
-        "correctForm": "kinderen",
+        "type": "fill_in_the_blank",
+        "prompt": "Form the plural of 'kind':",
+        "blankWord": "kinderen",
+        "sentenceWithBlank": "De ___ spelen in de tuin.",
+        "hints": [
+          "kinderen",
+          "kinder",
+          "kinden",
+          "kinders"
+        ],
         "explanation": "'Kind' takes '-eren' -> 'kinderen'."
       },
       {

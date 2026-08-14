@@ -231,7 +231,7 @@ const RULES_DATA = [
     commonMistake: "Writing 'autos' without apostrophe or 'kinden' instead of 'kinderen'.",
     correction: "Add apostrophe before '-s' after single vowel endings ('auto's') and memorize the '-eren' group ('kinderen').",
     exercises: [
-      { type: "typed_conjugation", infinitive: "kind (plural)", subject: "plural", targetTense: "plural", correctForm: "kinderen", explanation: "'Kind' takes '-eren' -> 'kinderen'." },
+      { type: "fill_in_the_blank", prompt: "Form the plural of 'kind':", blankWord: "kinderen", sentenceWithBlank: "De ___ spelen in de tuin.", hints: ["kinderen", "kinder", "kinden", "kinders"], explanation: "'Kind' takes '-eren' -> 'kinderen'." },
       { type: "fill_in_the_blank", prompt: "Form plural of 'auto':", blankWord: "auto's", sentenceWithBlank: "Op de parkeerplaats staan veel ___.", hints: ["auto's", "autos", "autoen"] },
       { type: "multiple_choice", question: "What is the plural of 'tafel'?", options: ["tafelen", "tafels", "tafels'", "tafellente"], correct: 1, explanation: "Nouns ending in unstressed -el take '-s'." }
     ]
