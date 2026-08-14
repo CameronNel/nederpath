@@ -1,0 +1,746 @@
+export const passages = [
+  {
+    id: "comp-097",
+    level: "C1",
+    title: "De schijn van een integrale omgevingsvisie",
+    titleEn: "The Appearance of an Integrated Environmental Vision",
+    theme: "government",
+    minutes: 8,
+    paragraphs: [
+      "In de ontwerp-omgevingsvisie van de gemeente wordt ‘integraliteit’ zo vaak herhaald dat het woord zelf een ruimtelijk argument lijkt te zijn geworden. Wie de kaartlagen over elkaar legt, ziet echter drie logica’s die elkaar slechts in de legenda verdragen: een mobiliteitslaag die doorstroming maximaliseert, een groenlaag die reststroken tot ecologische verbindingen promoveert, en een woningbouwlaag die de eerste twee als gegeven beschouwt. De ambtelijke toelichting noemt die spanning ‘creatieve frictie’. In de zienswijzen klinkt het eerder als een weigering om te prioriteren.",
+      "Opmerkelijk is de behandeling van hinder. Geluid wordt in decibellen gemodelleerd, fijnstof in jaargemiddelden, en sociale veiligheid in een enquête van honderdtwintig respondenten die niet naar tijdstip van gebruik is uitgesplitst. Die ongelijksoortige bewijslast wordt vervolgens in één afwegingskader gestapeld, alsof een rekenkundig gemiddelde van incommensurabele grootheden een besluit zou legitimeren. Een inspreker met een achtergrond in bestuurskunde merkte droog op dat de visie daardoor immuun wordt voor weerlegging: wie een laag aanvalt, krijgt te horen dat de andere lagen het geheel dragen.",
+      "Het college houdt vol dat de Omgevingswet juist deze stapeling verlangt. Dat is een halve lezing. De wet verlangt inzichtelijke keuzes en een navolgbare motivering, niet de suggestie dat alles tegelijk kan als de PowerPoint maar genoeg pijlen telt. In de commissie werd een motie aangenomen om per ontwikkelzone één onverenigbaarheid hardop te benoemen — bijvoorbeeld: óf de vrachtwagenroute, óf de schoolgevel zonder dove gevel. De motie haalde het nipt, niet omdat raadsleden ineens anti-integraliteit waren, maar omdat zij merkten dat kiezers ‘samenhang’ niet langer verwarren met het uitstellen van pijn.",
+      "De visie zal, naar verwachting, met cosmetische wijzigingen worden vastgesteld. Haar betekenis ligt minder in de kaart dan in het register: een bestuur dat conflict als frictie herdoopt, koopt tijd en verliest scherpte. Wie later beroept op ‘de vastgestelde visie’, zal ontdekken dat die tekst overal een haakje biedt en nergens een anker.",
+      "In ontwikkelzone Noord, 28 hectare tussen het spoor en de A12, staat de vrachtwagenroute van 1.900 movements per etmaal nog altijd op dezelfde as als de gevel van kindcentrum De Linie, 14 meter van de rijbaan. De geluidscontour van 63 decibel overdag is gemodelleerd; de dove gevel is in de verbeelding een stippellijn. Fijnstof PM2,5 wordt als jaargemiddelde van 9,8 microgram gerapporteerd, terwijl de piek om 7.40 bij het lossen van twee supermarkten buiten de middeling valt. De enquête over sociale veiligheid telde 120 respondenten, waarvan 81 overdag invulden. Motie 14b haalde het met 19 tegen 18 stemmen juist op dit perceel: de raad eist dat óf de route wijkt, óf de schoolgevel sluit. Dat is geen anti-integraliteit; het is de eerste zin in de zienswijzen die een afwegingskader dwingt tot een keuze in plaats van tot een gemiddelde van incommensurabele grootheden."
+    ],
+    translation: "In the municipality’s draft environmental vision, ‘integration’ is repeated so often that the word itself seems to have become a spatial argument. Anyone who overlays the map layers, however, sees three logics that only tolerate one another in the legend: a mobility layer that maximises flow, a green layer that promotes leftover strips to ecological connections, and a housing layer that treats the first two as given. The official explanation calls that tension ‘creative friction’. In the formal views it sounds more like a refusal to set priorities. Striking is the treatment of nuisance. Noise is modelled in decibels, particulates in annual averages, and social safety in a survey of one hundred and twenty respondents that is not broken down by time of use. That heterogeneous burden of proof is then stacked in a single assessment framework, as if an arithmetic mean of incommensurable quantities would legitimise a decision. A speaker with a background in public administration dryly noted that the vision thereby becomes immune to refutation: anyone who attacks one layer is told that the other layers carry the whole. The executive maintains that the Environment and Planning Act actually requires this stacking. That is a half reading. The Act requires intelligible choices and a traceable justification, not the suggestion that everything can be done at once if the PowerPoint only has enough arrows. In committee a motion was adopted to name one incompatibility aloud per development zone — for example: either the lorry route, or the school façade without a blank façade. The motion passed narrowly, not because councillors had suddenly become anti-integration, but because they noticed that voters no longer confuse ‘coherence’ with postponing pain. The vision will, in all likelihood, be adopted with cosmetic changes. Its meaning lies less in the map than in the register: an administration that renames conflict as friction buys time and loses sharpness. Anyone who later appeals to ‘the adopted vision’ will discover that the text offers a hook everywhere and an anchor nowhere.",
+    vocab: [
+      { word: "de omgevingsvisie", en: "environmental vision / spatial strategy", pos: "noun" },
+      { word: "de zienswijze", en: "formal view", pos: "noun" },
+      { word: "incommensurabel", en: "incommensurable", pos: "adjective" },
+      { word: "de dove gevel", en: "blank / non-opening façade", pos: "noun" },
+      { word: "de motivering", en: "statement of reasons", pos: "noun" },
+      { word: "het afwegingskader", en: "assessment framework", pos: "noun" }
+    ],
+    grammarTargets: ["nominal style and appositions", "niet omdat ... maar omdat", "implied authorial stance"],
+    questions: [
+      { question: "Wat verdragen de drie kaartlagen volgens de auteur vooral?", options: ["Elkaar in de legenda, niet in de praktijk", "Elkaar volledig in de mobiliteitslaag", "Geen enkele enquête", "Alleen de vrachtwagenroute"], correct: 0, explanation: "De logica’s verdragen elkaar slechts in de legenda." },
+      { question: "Waarom zou de visie ‘immuun voor weerlegging’ zijn?", options: ["Omdat decibellen verboden zijn", "Omdat een aanval op één laag met de andere lagen wordt afgeweerd", "Omdat de Omgevingswet visies verbiedt", "Omdat de motie unaniem sneuvelde"], correct: 1, explanation: "Wie één laag aanvalt, hoort dat de rest het geheel draagt." },
+      { question: "Wat verlangt de wet volgens de tekst wél?", options: ["Zo veel mogelijk pijlen", "Het uitstellen van pijn", "Inzichtelijke keuzes en een navolgbare motivering", "Creatieve frictie als doel"], correct: 2, explanation: "Keuzes en motivering, geen alles-tegelijk-suggestie." },
+      { question: "Wat biedt de vastgestelde visie volgens het slot vooral?", options: ["Een anker zonder haakjes", "Alleen een vrachtwagenverbod", "Een enquête-uitsplitsing", "Overal een haakje en nergens een anker"], correct: 3, explanation: "De tekst is overal citeerbaar en nergens bindend scherp." }
+    ]
+  },
+  {
+    id: "comp-098",
+    level: "C1",
+    title: "Wooncoöperaties en de mythe van de derde weg",
+    titleEn: "Housing Cooperatives and the Myth of the Third Way",
+    theme: "housing",
+    minutes: 8,
+    paragraphs: [
+      "In beleidsnota’s figureert de wooncoöperatie als elegante ontsnapping aan zowel de wachtlijst van de corporatie als de hete adem van de belegger. Die framing is politiek comfortabel, omdat zij ondernemerschap en solidariteit in één zin laat samenvallen. Minder comfortabel is de kapitaalstructuur: zonder gemeentelijke erfpachtkorting, achtergestelde leningen of borgstellingen blijft de stichtingskostprijs een muur waar idealisme zich aan stukloopt. Wie dat zwijgt, verkoopt een derde weg die in werkelijkheid een smal paadje is voor groepen met tijd, netwerk en een eerste inleg.",
+      "Een recent businesscase-onderzoek in een middelgrote stad laat zien dat de ‘betaalbare’ eenheden alleen sluitend te rekenen zijn als een deel van de leden bovenmodaal inlegt of als de gemeente grond tegen een residuale waarde wegzet die zij bij marktpartijen nooit zou verdedigen. Ambtenaren noemen dat ‘strategisch grondbeleid’. Rekenkamers noemen het, voorzichtiger, een impliciete subsidie waarvan de omvang buiten de begrotingspost wooncoöperaties blijft. Het verschil is geen semantiek: wat niet als subsidie wordt benoemd, hoeft niet te worden afgewogen tegen bijvoorbeeld onderhoud van bestaande sociale huur.",
+      "Bewonersinitiatieven zelf zijn zelden naïef. In statuten duiken clausules op over anti-speculatie, inkomenshertoets en het verbod op Airbnb, juist omdat zij weten hoe snel een collectief kan veranderen in een gesloten club. De paradox is dat die clausules de financiering verder bemoeilijken: banken zien beperkte verhandelbaarheid als risico, terwijl de politiek diezelfde beperking als morele winst viert.",
+      "Een serieuze visie zou de coöperatie niet als moreel surplus presenteren maar als instrument met een prijs. Dan verdwijnt de retorische derde weg, en verschijnt een keuzemenu: hoeveel publieke middelen, voor welke inkomens, met welke exit-regels. Zonder dat menu blijft de coöperatie een spiegel waarin coalities hun eigen deugd herkennen.",
+      "De businesscase van wooncoöperatie De Kade, 32 eenheden op gemeentelijke erfpacht in een middelgrote Brabantse stad, sluit alleen als acht huishoudens elk 48.000 euro inleggen en de grond tegen residuale waarde van 190 euro per vierkante meter wordt weggezet, tegen 410 euro in een vergelijkbare tender voor een belegger. De rekenkamer becijferde die korting op 2,1 miljoen, buiten begrotingspost 3.12. Statuten verbieden doorverkoop boven de inflatieplus één procent en kennen een inkomenshertoets bij mutatie; de financier, een Volksbank-dochter, rekende daar 70 basispunten risico-opslag voor. Een borgstelling van de gemeente tot 1,4 miljoen zou die opslag halveren, maar verschijnt dan wél als subsidie. Zonder die boekhoudkundige eerlijkheid blijft de derde weg een pad voor wie tijd heeft voor avondvergaderingen en een notaris die anti-speculatie begrijpt."
+    ],
+    translation: "In policy papers the housing cooperative figures as an elegant escape from both the housing-association waiting list and the investor’s hot breath. That framing is politically comfortable, because it lets entrepreneurship and solidarity coincide in one sentence. Less comfortable is the capital structure: without municipal leasehold discounts, subordinated loans or guarantees, the construction cost price remains a wall against which idealism breaks. Anyone who stays silent about that is selling a third way that is in reality a narrow path for groups with time, networks and an initial stake. A recent business-case study in a medium-sized city shows that the ‘affordable’ units only add up if some members contribute above-modal incomes or if the municipality disposes of land at a residual value it would never defend with market parties. Officials call that ‘strategic land policy’. Audit offices call it, more cautiously, an implicit subsidy whose size remains outside the housing-cooperative budget line. The difference is not semantics: what is not named as a subsidy need not be weighed against, for example, maintenance of existing social rent. Residents’ initiatives themselves are seldom naïve. Clauses appear in statutes on anti-speculation, income re-assessment and a ban on Airbnb, precisely because they know how quickly a collective can turn into a closed club. The paradox is that those clauses further complicate financing: banks see limited tradability as a risk, while politics celebrates the same limitation as a moral gain. A serious vision would present the cooperative not as a moral surplus but as an instrument with a price. Then the rhetorical third way disappears, and a menu of choices appears: how many public resources, for which incomes, with which exit rules. Without that menu the cooperative remains a mirror in which coalitions recognise their own virtue.",
+    vocab: [
+      { word: "de wooncoöperatie", en: "housing cooperative", pos: "noun" },
+      { word: "de stichtingskostprijs", en: "construction cost price", pos: "noun" },
+      { word: "de erfpacht", en: "leasehold", pos: "noun" },
+      { word: "de residuale waarde", en: "residual value", pos: "noun" },
+      { word: "de hertoets", en: "re-assessment", pos: "noun" },
+      { word: "de borgstelling", en: "guarantee", pos: "noun" }
+    ],
+    grammarTargets: ["cleft-like framing", "wat-clauses as subjects", "evaluative nominalisations"],
+    questions: [
+      { question: "Waarom is de framing van de wooncoöperatie politiek comfortabel?", options: ["Omdat ondernemerschap en solidariteit in één zin samenvallen", "Omdat banken alle risico’s toejuichen", "Omdat erfpacht altijd gratis is", "Omdat rekenkamers zwijgen"], correct: 0, explanation: "Twee deugden in één zin, zonder de kapitaalmuur." },
+      { question: "Wat blijft buiten de begrotingspost volgens rekenkamers?", options: ["De statuten", "De omvang van de impliciete grondsubsidie", "Het Airbnb-verbod", "De wachtlijst"], correct: 1, explanation: "De impliciete subsidie zit niet in de post wooncoöperaties." },
+      { question: "Waarom bemoeilijken anti-speculatieclausules de financiering?", options: ["Banken eisen Airbnb", "Statuten zijn verboden", "Beperkte verhandelbaarheid is voor banken een risico", "Leden mogen geen inleg hebben"], correct: 2, explanation: "Wat politiek moreel is, is bancair risico." },
+      { question: "Wat zou een serieuze visie volgens de auteur tonen?", options: ["Alleen deugd van coalities", "Een spiegel zonder prijs", "Afschaffing van alle middelen", "Een keuzemenu van middelen, inkomens en exit-regels"], correct: 3, explanation: "Instrument met een prijs, geen moreel surplus." }
+    ]
+  },
+  {
+    id: "comp-099",
+    level: "C1",
+    title: "Het stationsplein als morele geometrie",
+    titleEn: "The Station Square as Moral Geometry",
+    theme: "transport",
+    minutes: 8,
+    paragraphs: [
+      "De herinrichting van het stationsplein is verkocht als een ‘verblijfsgebied’, een term die in ontwerptaal het tegenovergestelde suggereert van doorgang en toch, bij aankomst van twee sprinters tegelijk, een doorgang moet blijven. Die dubbele opdracht produceert een geometrie van goede bedoelingen: brede treden zonder leuning, een waterelement dat in november een windtunnel wordt, en fietsvakken die ‘ondergeschikt’ zijn gemaakt aan het zicht op de gevel. Ondergeschikt blijkt in de spits een synoniem van onbruikbaar.",
+      "In de nota van beantwoording worden klachten over oversteken vertaald naar ‘gewenning’. Het woord doet alsof lichamen zich aanpassen aan beton, niet beton aan lichamen. Een voetgangersvereniging vroeg om tellingen per minuut in plaats van etmaalgemiddelden; die zouden de piek zichtbaar maken die het verblijfsverhaal ontkent. De tellingen kwamen, in een bijlage, en verdwenen uit de collegebrief.",
+      "Er schuilt geen complot in die verdwijning, wel een hiërarchie van registers. Beeldkwaliteit laat zich fotograferen voor de opening; een botsing tussen een bakfiets en een reiziger met koffer laat zich pas fotograferen als het te laat is. Bestuurders kiezen rationeel voor het eerste, zolang aansprakelijkheid bij de tweede uitblijft.",
+      "Een eerlijker ontwerp zou het plein niet als morele overwinning op de auto presenteren, maar als conflict tussen twee pieken: aankomst en verblijf. Dan verdwijnen de treden die er uitzien als tribune, en verschijnen leuningen die eruitzien als toegegeven ouderdom. Dat zou minder prijzen winnen en meer mensen overeind houden.",
+      "Tussen 17.48 en 17.56, als twee sprinters en een intercity binnen acht minuten lossen, passeren volgens de bijlage 1.140 voetgangers de as naar de fietsenstalling. Het etmaalgemiddelde van 9.200 verbergt die acht minuten. De waterschijf van 18 meter doorsnee, geprezen in de beeldkwaliteitnota, produceert in november een wind van 6 beaufort op kniehoogte; twee leuningen ontbreken op de tribune-treden van 32 centimeter. De nota van beantwoording vertaalde 47 klachten over oversteken naar ‘gewenning binnen zes maanden’. De tellingen per minuut stonden in bijlage F en ontbraken in collegebrief 2026-33. Aansprakelijkheid voor een val van een bakfiets tegen een koffer is tot nu toe niet geclaimd; zolang dat zo blijft, wint de foto van de opening."
+    ],
+    translation: "The redesign of the station square has been sold as a ‘stay area’, a term that in design language suggests the opposite of transit and yet, when two sprinters arrive at once, must remain a transit space. That double brief produces a geometry of good intentions: wide steps without a handrail, a water feature that becomes a wind tunnel in November, and cycle bays that have been made ‘subordinate’ to the view of the façade. In the rush hour, subordinate turns out to be a synonym for unusable. In the response memorandum, complaints about crossing are translated into ‘habituation’. The word pretends that bodies adapt to concrete, not concrete to bodies. A pedestrians’ association asked for counts per minute instead of 24-hour averages; those would make visible the peak that the stay narrative denies. The counts came, in an appendix, and disappeared from the executive letter. There is no conspiracy in that disappearance, but there is a hierarchy of registers. Visual quality can be photographed for the opening; a collision between a cargo bike and a traveller with a suitcase can only be photographed when it is too late. Administrators rationally choose the former as long as liability for the latter is absent. A more honest design would present the square not as a moral victory over the car, but as a conflict between two peaks: arrival and staying. Then the steps that look like a grandstand disappear, and handrails that look like admitted old age appear. That would win fewer prizes and keep more people upright.",
+    vocab: [
+      { word: "het verblijfsgebied", en: "stay / public-realm area", pos: "noun" },
+      { word: "de nota van beantwoording", en: "response memorandum", pos: "noun" },
+      { word: "het etmaalgemiddelde", en: "24-hour average", pos: "noun" },
+      { word: "de beeldkwaliteit", en: "visual quality", pos: "noun" },
+      { word: "de aansprakelijkheid", en: "liability", pos: "noun" },
+      { word: "de gewenning", en: "habituation", pos: "noun" }
+    ],
+    grammarTargets: ["apposition and paradox", "alsof-clauses", "implied critique"],
+    questions: [
+      { question: "Welke dubbele opdracht heeft het ‘verblijfsgebied’?", options: ["Het moet verblijf suggereren en bij pieken doorgang blijven", "Het mag alleen auto’s dienen", "Het verbiedt sprinters", "Het kent geen fietsen"], correct: 0, explanation: "Verblijfstaal versus aankomstpiek." },
+      { question: "Wat doet het woord ‘gewenning’ volgens de auteur?", options: ["Het past beton aan lichamen aan", "Het doet alsof lichamen zich aan beton aanpassen", "Het levert leuningen", "Het publiceert tellingen in de collegebrief"], correct: 1, explanation: "Gewenning verschuift de last naar gebruikers." },
+      { question: "Waar verdwenen de piektellingen?", options: ["Uit de bijlage", "Uit de spits", "Uit de collegebrief", "Uit de gevel"], correct: 2, explanation: "Ze stonden in een bijlage, niet in de brief." },
+      { question: "Wat zou een eerlijker ontwerp erkennen?", options: ["Alleen beeldkwaliteit", "Een morele overwinning op ouderdom", "Het einde van aansprakelijkheid", "Het conflict tussen aankomstpiek en verblijf"], correct: 3, explanation: "Twee pieken, geen morele geometrie." }
+    ]
+  },
+  {
+    id: "comp-100",
+    level: "C1",
+    title: "Richtlijnen, coulance en de stille zuivering van het spreekuur",
+    titleEn: "Guidelines, Leniency and the Quiet Purification of the Surgery",
+    theme: "health",
+    minutes: 8,
+    paragraphs: [
+      "Huisartsen spreken in toenemende mate van ‘richtlijntrouw’ als deugd, terwijl dezelfde richtlijnen in voetnoten ruimte laten voor afwijken bij ‘gemotiveerde uitzondering’. Die voetnoot is het laatste restant van professionele discretie, en tegelijk het eerste wat verdwijnt in een declaratiegesprek met de verzekeraar. Wat op papier een uitzondering is, wordt in de praktijk een risico op terugvordering. De patiënt merkt dat niet als ideologie, maar als een korter gesprek over waarom díe pijnstiller niet meer wordt voorgeschreven.",
+      "Een regionale commissie doelmatigheid publiceerde cijfers over voorschrijfgedrag zonder case-mix-correctie voor leeftijd en migratieachtergrond. Praktijken in oude wijken verschenen als ‘uitbijters’. De toon van het begeleidend schrijven was collegiaal, de bijlage was dat niet: wie niet binnen twee kwartalen naar het gemiddelde bewoog, zou ‘in gesprek’ gaan. In gesprek gaan is in dit register zelden een uitnodiging tot twijfel; het is een uitnodiging tot aanpassing.",
+      "Sommige artsen reageren met cynische gehoorzaamheid: zij schrijven voor wat het dashboard wil en verwijzen eerder door, waarmee de kosten zich verplaatsen naar de tweede lijn. Anderen documenteren uitzonderingen tot in het absurde, niet voor de patiënt, maar voor een auditor die er nooit komt. Beide strategieën zijn rationeel en beide verschralen het spreekuur.",
+      "Wie doelmatigheid wil zonder die verschraling, zal de voetnoot moeten beschermen als recht, niet als gunst. Dat vergt dat verzekeraars uitzonderingen statistisch verwachten in heterogene wijken, in plaats van ze als morele afwijking te lezen. Zolang het gemiddelde de norm is, blijft coulance een woord dat alleen nog in nascholing bestaat.",
+      "De regionale commissie doelmatigheid van zorgverzekeraar VGZ publiceerde voorschrijfcijfers over oxycodon zonder correctie voor de case-mix van leeftijd boven 75 en voor migratieachtergrond in vier oude wijken van Arnhem. Praktijk De Rijnkade verscheen als uitbijter, 18 procent boven het gemiddelde, terwijl 31 procent van haar inschrijvingen ouder is dan 70. ‘In gesprek’ betekende een teamsessie van 40 minuten met een zorginkoper die de voetnoot over gemotiveerde uitzondering niet citeerde, wél het risico op terugvordering. Twee artsen documenteren sindsdien elke afwijking in 400 woorden; één schrijft voor wat het dashboard vraagt en verwijst eerder naar de pijnpoli. Beide reacties verschralen het spreekuur tot 8 minuten. Richtlijntrouw zonder verwachte variantie in heterogene populaties is geen wetenschap, het is een gemiddelde dat zich als deugd vermomt."
+    ],
+    translation: "GPs increasingly speak of ‘guideline adherence’ as a virtue, while the same guidelines leave room in footnotes to depart in a ‘reasoned exception’. That footnote is the last remnant of professional discretion, and at the same time the first thing to disappear in a billing conversation with the insurer. What is an exception on paper becomes in practice a risk of clawback. The patient does not notice that as ideology, but as a shorter conversation about why that particular painkiller is no longer prescribed. A regional appropriateness committee published figures on prescribing without case-mix correction for age and migration background. Practices in older neighbourhoods appeared as ‘outliers’. The tone of the covering note was collegial; the appendix was not: anyone who did not move towards the average within two quarters would ‘enter into conversation’. In this register, entering into conversation is seldom an invitation to doubt; it is an invitation to adapt. Some doctors respond with cynical obedience: they prescribe what the dashboard wants and refer onwards sooner, thereby shifting costs to secondary care. Others document exceptions to the point of absurdity, not for the patient, but for an auditor who never comes. Both strategies are rational and both impoverish the consultation. Anyone who wants appropriateness without that impoverishment will have to protect the footnote as a right, not a favour. That requires insurers to expect exceptions statistically in heterogeneous neighbourhoods, rather than reading them as a moral deviation. As long as the average is the norm, leniency remains a word that now exists only in continuing education.",
+    vocab: [
+      { word: "de richtlijntrouw", en: "guideline adherence", pos: "noun" },
+      { word: "de terugvordering", en: "clawback / recovery of funds", pos: "noun" },
+      { word: "de case-mix", en: "case mix", pos: "noun" },
+      { word: "de uitbijter", en: "outlier", pos: "noun" },
+      { word: "de doelmatigheid", en: "appropriateness / efficiency", pos: "noun" },
+      { word: "de discretie", en: "discretion", pos: "noun" }
+    ],
+    grammarTargets: ["terwijl concession", "register analysis", "implied institutional critique"],
+    questions: [
+      { question: "Wat wordt van de voetnoot in het declaratiegesprek?", options: ["Een risico op terugvordering", "Een extra vergoeding", "Een langere spreekuur", "Een case-mix-correctie"], correct: 0, explanation: "De uitzondering wordt een financieel risico." },
+      { question: "Waarom verschenen oude wijken als uitbijters?", options: ["Artsen schreven nooit voor", "Er ontbrak case-mix-correctie", "De richtlijn bestaat niet", "Nascholing is verplicht"], correct: 1, explanation: "Cijfers waren niet gecorrigeerd voor populatie." },
+      { question: "Wat betekent ‘in gesprek gaan’ in dit register volgens de tekst?", options: ["Ruimte voor twijfel", "Een uitnodiging tot onderzoek", "Een uitnodiging tot aanpassing", "Afschaffing van dashboards"], correct: 2, explanation: "Het is druk tot conformeren, geen epistemische opening." },
+      { question: "Hoe moet de voetnoot beschermd worden volgens de auteur?", options: ["Als gunst van de verzekeraar", "Alleen in nascholing", "Door cynische gehoorzaamheid", "Als recht, niet als gunst"], correct: 3, explanation: "Discretie als recht in heterogene wijken." }
+    ]
+  },
+  {
+    id: "comp-101",
+    level: "C1",
+    title: "Accreditatie als genre, niet als garantie",
+    titleEn: "Accreditation as a Genre, not a Guarantee",
+    theme: "education",
+    minutes: 8,
+    paragraphs: [
+      "Zelfevaluaties van opleidingen zijn een literair genre geworden met vaste tropen: de student centraal, een verbetercultuur, en een ‘kritische vriend’ die nooit zo kritisch is dat de visitatie in gevaar komt. Wie de voetnoten leest, vindt de eigenlijke tekst: dalende contacttijd die als ‘zelfregie’ wordt herbenoemd, en uitzonderingen op de OER die per mail zijn gedoogd. Het panel, onder tijdsdruk, beloont de consistentie van het verhaal eerder dan de weerbarstigheid van de praktijk.",
+      "Dat is niet per se kwade wil. Accreditatie moet vergelijkbaarheid produceren in een stelsel dat op profilering draait. Vergelijkbaarheid verlangt sjablonen; profilering verlangt afwijking. De zelfevaluatie lost die tegenspraak op door afwijking in het jargon van het sjabloon te gieten. Een minor die nauwelijks loopt, wordt een ‘pilot in transitie’. Een docententekort wordt een ‘herijking van het teamconcept’.",
+      "Studenteninbreng verschijnt als bijlage met steekproeven die te klein zijn voor de claims die het kernhoofdstuk doet. Panels weten dat, en vragen toch om ‘meer student voice’ in plaats van om een andere empirie. Zo blijft inspraak een smaakmaker, geen falsificatie.",
+      "Een nuchterder stelsel zou een beperkt aantal hardnekkige indicatoren eisen — uitval naar achtergrond, stagekwaliteit, nakijktermijnen — en de rest van de poëzie schrappen. Dat zou minder feestelijke rapporten opleveren en meer opleidingsbesturen die niet langer geloven dat een goed geschreven tekort ophoudt een tekort te zijn.",
+      "De zelfevaluatie van de bachelor Social Work telde 96 pagina’s tropen en in voetnoot 17 een daling van contacttijd van 14 naar 11 uur per week, herbenoemd als zelfregie. Uitzonderingen op de OER over herkansingstermijnen waren in 11 mails van de examencommissie gedoogd. Het visitatiepanel had 1,5 dag en beloonde de consistentie van het verhaal over de ‘kritische vriend’ van een zusterhogeschool. Student voice bestond uit 19 respondenten op 240 ingeschrevenen, te weinig om de claim van een verbetercultuur te falsifiëren. Uitval onder studenten met een mbo-route was 28 procent tegen 14 in de rest; dat cijfer stond in bijlage H, niet in het kernhoofdstuk. Een stelsel dat nakijktermijnen van 15 werkdagen en stagekwaliteit meet, zou die bijlage tot hoofdstuk promoveren en de poëzie over profilering inkorten."
+    ],
+    translation: "Programme self-evaluations have become a literary genre with fixed tropes: the student at the centre, a culture of improvement, and a ‘critical friend’ who is never so critical that the review is endangered. Anyone who reads the footnotes finds the real text: falling contact time renamed as ‘self-direction’, and exceptions to the regulations condoned by email. The panel, under time pressure, rewards the consistency of the story more than the recalcitrance of practice. That is not necessarily ill will. Accreditation must produce comparability in a system that runs on profiling. Comparability demands templates; profiling demands deviation. The self-evaluation resolves that contradiction by pouring deviation into the jargon of the template. A minor that barely runs becomes a ‘pilot in transition’. A staff shortage becomes a ‘recalibration of the team concept’. Student input appears as an appendix with samples too small for the claims the core chapter makes. Panels know that, and still ask for ‘more student voice’ instead of for different evidence. Thus participation remains a flavouring, not a falsification. A more sober system would require a limited number of stubborn indicators — dropout by background, placement quality, marking times — and cut the rest of the poetry. That would yield less festive reports and more programme boards that no longer believe a well-written shortage ceases to be a shortage.",
+    vocab: [
+      { word: "de zelfevaluatie", en: "self-evaluation", pos: "noun" },
+      { word: "de visitatie", en: "peer review visit", pos: "noun" },
+      { word: "de contacttijd", en: "contact hours", pos: "noun" },
+      { word: "de profilering", en: "profiling / distinctiveness", pos: "noun" },
+      { word: "de uitval", en: "dropout", pos: "noun" },
+      { word: "de falsificatie", en: "falsification", pos: "noun" }
+    ],
+    grammarTargets: ["genre commentary", "rather than comparatives", "nominal academic style"],
+    questions: [
+      { question: "Waar staat volgens de auteur de ‘eigenlijke tekst’?", options: ["In de voetnoten", "In de feestelijke samenvatting", "In het jargon van pilots alleen", "In de prijs van accreditatie"], correct: 0, explanation: "Voetnoten tonen contacttijd en gedoogde uitzonderingen." },
+      { question: "Hoe lost de zelfevaluatie de tegenspraak sjabloon/profilering op?", options: ["Door afwijking te schrappen", "Door afwijking in sjabloonjargon te gieten", "Door visitaties te weigeren", "Door studenten te schrappen"], correct: 1, explanation: "Afwijking wordt herverpakt als tropen van het sjabloon." },
+      { question: "Waarom is student voice hier geen falsificatie?", options: ["Studenten mogen niet schrijven", "Steekproeven zijn te klein voor de claims", "Panels negeren bijlagen altijd", "Uitval bestaat niet"], correct: 2, explanation: "Te kleine steekproeven kruiden het verhaal, toetsen het niet." },
+      { question: "Wat zou een nuchterder stelsel schrappen?", options: ["Alle indicatoren", "Stagekwaliteit", "Nakijktermijnen", "De poëzie rondom een paar harde indicatoren"], correct: 3, explanation: "Minder genre, meer weerbarstige cijfers." }
+    ]
+  },
+  {
+    id: "comp-102",
+    level: "C1",
+    title: "Medezeggenschap na de stille reorganisatie",
+    titleEn: "Co-determination after the Quiet Reorganisation",
+    theme: "work",
+    minutes: 8,
+    paragraphs: [
+      "De wet op de ondernemingsraden veronderstelt een moment waarop een voorgenomen besluit kenbaar wordt. In organisaties die via projectportfolio’s sturen, is dat moment verdwenen: taken verschuiven, inhuur zwelt aan, vaste formatie slinkt, en pas wanneer de puzzel klaar is, wordt de OR gevraagd om advies over een ‘formaliserende’ sluitstuknotitie. Juridisch is dat vaak houdbaar, omdat geen enkel deelbesluit de drempel van een reorganisatie haalt. Sociaal is het een uitholling: medezeggenschap komt wanneer de keuzes al in software en leverancierscontracten zitten.",
+      "Bestuurders noemen dit wendbaarheid. Wendbaarheid zonder informatieplicht is echter vooral snelheid voor wie al aan tafel zit. De OR die stukken eist over de portfolio-kalender, krijgt roadmaps zonder bedragen, of bedragen zonder namen. Beide zijn incompleet op een manier die later als ‘transparant binnen de grenzen van concurrentie’ kan worden verdedigd.",
+      "Sommige raden antwoorden met een eigen dataruimte en een weigering om over sluitstukken te adviseren zolang de keten van deelbesluiten ontbreekt. Dat is procedureel agressief en soms het enige middel dat de wet nog laat. Rechters kijken dan of de OR ‘onredelijk’ is, een toets die zelden de architectuur van de sturing zelf ter discussie stelt.",
+      "Zolang medezeggenschap aan het einde van de pijplijn blijft hangen, blijft de WOR een wet voor organogrammen in plaats van voor algoritmes van werkverdeling. De stille reorganisatie is dan geen incident, maar het businessmodel.",
+      "Het projectportfolio van de uitvoeringsorganisatie telde in Q4 41 initiatieven; de vaste formatie slonk van 620 naar 584 fte terwijl inhuur steeg naar 11 procent van de loonsom. Geen enkel deelbesluit haalde de drempel van artikel 25 WOR. De sluitstuknotitie van 3 maart vroeg de OR om advies binnen drie weken over een formalisering die in de software van ServiceNow al was ingeregeld. De gevraagde portfolio-kalender kwam als roadmap zonder bedragen; de tweede levering als bedragen zonder leveranciersnamen. De raad opende een dataruimte en weigerde te adviseren tot de keten van 14 deelbesluiten op tafel lag. De kantonrechter toetste of die weigering onredelijk was, niet of wendbaarheid zonder informatieplicht de medezeggenschap tot theater maakt."
+    ],
+    translation: "The Works Councils Act assumes a moment at which an intended decision is made known. In organisations that steer via project portfolios, that moment has disappeared: tasks shift, contracting swells, permanent staff shrink, and only when the puzzle is complete is the works council asked for advice on a ‘formalising’ closing note. Legally that is often tenable, because no partial decision meets the threshold of a reorganisation. Socially it is a hollowing-out: co-determination arrives when the choices already sit in software and supplier contracts. Executives call this agility. Agility without a duty to inform, however, is mainly speed for those already at the table. The council that demands papers on the portfolio calendar receives roadmaps without sums, or sums without names. Both are incomplete in a way that can later be defended as ‘transparent within the limits of competition’. Some councils respond with their own data room and a refusal to advise on closing pieces as long as the chain of partial decisions is missing. That is procedurally aggressive and sometimes the only tool the law still leaves. Judges then consider whether the council is ‘unreasonable’, a test that seldom puts the architecture of steering itself up for discussion. As long as co-determination remains hanging at the end of the pipeline, the Act remains a law for organisation charts rather than for algorithms of work allocation. The quiet reorganisation is then not an incident, but the business model.",
+    vocab: [
+      { word: "de medezeggenschap", en: "co-determination", pos: "noun" },
+      { word: "het projectportfolio", en: "project portfolio", pos: "noun" },
+      { word: "de inhuur", en: "contracted-in staff", pos: "noun" },
+      { word: "het sluitstuk", en: "closing piece / final note", pos: "noun" },
+      { word: "de wendbaarheid", en: "agility", pos: "noun" },
+      { word: "de informatieplicht", en: "duty to inform", pos: "noun" }
+    ],
+    grammarTargets: ["legal vs social contrast", "zolang-clauses", "implied stance"],
+    questions: [
+      { question: "Wanneer wordt de OR in dit model gevraagd om advies?", options: ["Als de puzzel al gelegd is, over een formaliserend sluitstuk", "Bij elk klein taakverschuivingetje wettelijk verplicht", "Voorafgaand aan elke inhuur", "Nooit, de WOR bestaat niet"], correct: 0, explanation: "Advies komt als formalisering, niet als keuze." },
+      { question: "Waarom is de aanpak juridisch vaak houdbaar?", options: ["Omdat de OR geen rechten heeft", "Omdat geen deelbesluit de reorganisatiedrempel haalt", "Omdat software verboden is", "Omdat rechters altijd de OR gelijk geven"], correct: 1, explanation: "Deelbesluiten blijven onder de drempel." },
+      { question: "Hoe zijn de verstrekte stukken typisch incompleet?", options: ["Alleen namen zonder roadmaps", "Volledige bedragen én namen", "Roadmaps zonder bedragen of bedragen zonder namen", "Enkel organogrammen uit 1990"], correct: 2, explanation: "Altijd net niet de combinatie die sturing toont." },
+      { question: "Wat is de stille reorganisatie volgens het slot?", options: ["Een incident", "Een wettelijke plicht", "Een gerechtelijke toets", "Het businessmodel"], correct: 3, explanation: "Geen incident maar sturingsvorm." }
+    ]
+  },
+  {
+    id: "comp-103",
+    level: "C1",
+    title: "Cultuursubsidie en de angst voor de verkeerde zaal",
+    titleEn: "Arts Funding and the Fear of the Wrong Auditorium",
+    theme: "culture",
+    minutes: 8,
+    paragraphs: [
+      "In de toekenningsbrief van cultuurfondsen is ‘bereik’ het woord dat zowel een emancipatoir als een boekhoudkundig verlangen dekt. In toekenningsbrieven van dezelfde cyclus keert die zin bijna letterlijk terug. Een gezelschap dat een zaal halfvol speelt met een publiek dat terugkomt, scoort slechter dan een eenmalige actie waarbij scholen worden binnengeleid en na de pauze verdwijnen. De statistiek telt hoofden, niet herhaling. Besturen die dat weten, programmeren zichtbaarheid in het najaar, wanneer de aanvraagcyclus opengaat, en sparen risico voor het voorjaar, wanneer niemand meer kijkt.",
+      "Dit is geen pleidooi tegen nieuw publiek. Het is een waarschuwing tegen een indicator die nieuwheid verwart met oppervlakkigheid. Een fonds dat diversiteit eist zonder middelen voor langdurige bemiddeling, koopt foto’s van de foyer. De artiesten die die foto’s mogelijk maken, verdwijnen uit de begroting zodra de verantwoording is goedgekeurd.",
+      "Sommige commissies proberen kwalitatieve verslagen zwaarder te laten wegen. Dan verschijnt een nieuw genre: de poëtische impactparagraaf, onweerlegbaar omdat zij niets beweert dat te tellen valt. De pendule slaat terug van cijferfetisj naar onaantastbare proza.",
+      "Een volwassen beleid zou beide wantrouwen: de koppenteller én de oncontroleerbare lyriek. Het zou vragen naar terugkeerpercentages, naar tarieven van makers, naar de vraag of de ‘verkeerde zaal’ — te klein, te lokaal, te trouw — niet juist het bewijs is van een praktijk die zonder campagne blijft bestaan.",
+      "Fonds Podiumkunsten telde in de cyclus 2025 hoofden, niet terugkeer. Een gezelschap in een vlakke zaal van 180 stoelen speelde acht avonden op 62 procent bezetting met een terugkeerpercentage van 41; de eenmalige schoolactie vulde 320 stoelen waarvan na de pauze 90 leegbleven. De toekenningsbrief noemde de tweede actie ‘bereik’. Bemiddeling voor nieuw publiek kreeg 4.000 euro, te weinig voor een seizoen; de foyerfoto’s haalden de verantwoording wel. Tarieven van makers lagen in de bijlage op 185 euro per speelbeurt, onder de cao. Wie de verkeerde zaal — te klein, te lokaal — als falen leest, mist de enige indicator die niet te koop is in het najaar."
+    ],
+    translation: "In award letters from arts funds, ‘reach’ is the word that covers both an emancipatory and an accounting desire. A company that plays to a half-full house with an audience that returns scores worse than a one-off action in which schools are ushered in and disappear after the interval. The statistic counts heads, not repetition. Boards that know this programme visibility in the autumn, when the application cycle opens, and save risk for the spring, when nobody is watching any longer. This is not a plea against new audiences. It is a warning against an indicator that confuses newness with superficiality. A fund that demands diversity without resources for long-term mediation buys photographs of the foyer. The artists who make those photographs possible disappear from the budget as soon as the accountability report is approved. Some committees try to give more weight to qualitative reports. Then a new genre appears: the poetic impact paragraph, irrefutable because it asserts nothing that can be counted. The pendulum swings back from number-fetish to untouchable prose. A mature policy would distrust both: the head-counter and the unverifiable lyricism. It would ask about return rates, about makers’ fees, about whether the ‘wrong auditorium’ — too small, too local, too loyal — is not precisely the evidence of a practice that continues to exist without a campaign.",
+    vocab: [
+      { word: "het bereik", en: "reach", pos: "noun" },
+      { word: "de verantwoording", en: "accountability report", pos: "noun" },
+      { word: "de bemiddeling", en: "mediation / audience development", pos: "noun" },
+      { word: "het terugkeerpercentage", en: "return rate", pos: "noun" },
+      { word: "de toekenningsbrief", en: "award letter", pos: "noun" },
+      { word: "de foyer", en: "foyer", pos: "noun" }
+    ],
+    grammarTargets: ["genre shift", "niet ... het is", "evaluative inversion"],
+    questions: [
+      { question: "Wat telt de statistiek van ‘bereik’ volgens de tekst niet?", options: ["Herhaling / terugkerend publiek", "Hoofden in de zaal", "Schoolacties", "Najaarsprogrammering"], correct: 0, explanation: "Hoofden wel, herhaling niet." },
+      { question: "Wanneer programmeren bestuurders zichtbaarheid?", options: ["Alleen in het voorjaar", "In het najaar, bij de aanvraagcyclus", "Nooit", "Na goedkeuring van de verantwoording alleen"], correct: 1, explanation: "Zichtbaarheid volgt de cyclus, risico het voorjaar." },
+      { question: "Wat koopt een fonds zonder middelen voor langdurige bemiddeling?", options: ["Hogere tarieven voor makers", "Trouwe zalen", "Foto’s van de foyer", "Een verbod op scholen"], correct: 2, explanation: "Diversiteit als beeld, niet als praktijk." },
+      { question: "Wat zou de ‘verkeerde zaal’ kunnen bewijzen?", options: ["Dat bereik onmogelijk is", "Dat lyriek altijd liegt", "Dat cijfers verboden zijn", "Een praktijk die zonder campagne blijft bestaan"], correct: 3, explanation: "Klein, lokaal, trouw: duurzaamheid zonder campagne." }
+    ]
+  },
+  {
+    id: "comp-104",
+    level: "C1",
+    title: "Bronvermelding in een tijdlijn van vijfentwintig seconden",
+    titleEn: "Attribution in a Twenty-Five-Second Timeline",
+    theme: "media",
+    minutes: 8,
+    paragraphs: [
+      "Bronvermelding verdwijnt het eerst wanneer nieuwstitels op sociale platforms een Kamerdebat comprimeren tot een zin die de voorzitter nooit heeft uitgesproken, voorzien van een gezicht dat wél in de zaal zat. De maker is zelden een redactie met een ombudsman; vaker een account dat verkeer verkoopt aan een tweede account dat advertenties verkoopt. Wanneer een traditionele krant die zin overneemt ‘omdat hij leeft’, voltooit zij de laundering: wat geen citaat was, wordt bron.",
+      "Platformen wijzen naar gebruikersvoorwaarden; uitgevers wijzen naar snelheid. Beide hebben gelijk in een smalle zin en ongelijk in een ruime. De journalistieke plicht is niet om de snelste parafrase te zijn, maar om de keten van toeschrijving intact te houden. Die keten is onzichtbaar in een interface die alleen ‘delen’ als deugd kent.",
+      "Factcheckers komen doorgaans een cyclus te laat, en hun correcties erven niet de virale vorm van het origineel. Dat is geen reden om factchecken te schrappen; het is een reden om te stoppen met het meten van impact in dezelfde munt als het kwaad. Een correctie die tienduizend keer minder wordt gezien, kan toch een dossier redden voor wie later moet beslissen.",
+      "De ongemakkelijke implicatie is dat redacteuren soms níet moeten instappen in een tijdlijn, ook als de concurrent dat wel doet. Gemiste clicks zijn in dat geval geen falen, maar het restant van een beroepsethiek die geen knop heeft.",
+      "Het clipje van 25 seconden, 1,4 miljoen keer bekeken, schreef een zin over ‘aftreden nu’ toe aan een Kamerlid dat die middag alleen een procedurevraag stelde. De krant nam de parafrase over om 18.12, met een link naar het account, niet naar de Handelingen. Factcheckers van Nieuwscheckers publiceerden 16 uur later een correctie die 11.000 keer werd gezien. De keten van toeschrijving was toen al gewassen: wat geen citaat was, gold intern als bron. Een redactie die bronvermelding als plicht houdt, weigert die wasstraat ook als de concurrent 80.000 extra clicks boekt. Dat is geen preutsheid; het is de enige manier waarop de beroepsethiek zichtbaar blijft in een interface die alleen delen beloont."
+    ],
+    translation: "News titles on social platforms compress a parliamentary debate into a sentence the Speaker never uttered, fitted with a face that did sit in the chamber. The maker is seldom a newsroom with an ombudsman; more often an account that sells traffic to a second account that sells ads. When a traditional paper picks up that sentence ‘because it is alive’, it completes the laundering: what was not a quotation becomes a source. Platforms point to terms of use; publishers point to speed. Both are right in a narrow sense and wrong in a wide one. The journalistic duty is not to be the fastest paraphrase, but to keep the chain of attribution intact. That chain is invisible in an interface that only knows ‘share’ as a virtue. Fact-checkers usually arrive a cycle too late, and their corrections do not inherit the viral form of the original. That is no reason to scrap fact-checking; it is a reason to stop measuring impact in the same currency as the harm. A correction seen ten thousand times less can still save a file for whoever must decide later. The uncomfortable implication is that editors sometimes must not step into a timeline, even if the competitor does. Missed clicks are in that case not a failure, but the remnant of a professional ethic that has no button.",
+    vocab: [
+      { word: "de bronvermelding", en: "attribution / source citation", pos: "noun" },
+      { word: "de laundering", en: "laundering (of claims)", pos: "noun" },
+      { word: "de toeschrijving", en: "attribution", pos: "noun" },
+      { word: "de factchecker", en: "fact-checker", pos: "noun" },
+      { word: "de beroepsethiek", en: "professional ethics", pos: "noun" },
+      { word: "de parafrase", en: "paraphrase", pos: "noun" }
+    ],
+    grammarTargets: ["narrow vs wide justice", "imperative inference", "media-critical register"],
+    questions: [
+      { question: "Wat voltooit de krant die een virale zin overneemt ‘omdat hij leeft’?", options: ["De laundering van niet-citaat tot bron", "Een ombudsmanrapport", "De beroepsethiek van het platform", "Een Kamerdebat"], correct: 0, explanation: "Overname maakt een niet-citaat tot bron." },
+      { question: "Wat is de journalistieke plicht volgens de tekst?", options: ["De snelste parafrase zijn", "De keten van toeschrijving intact houden", "Alleen voorwaarden citeren", "Impact in dezelfde munt meten"], correct: 1, explanation: "Toeschrijving, niet snelheid." },
+      { question: "Waarom is late factcheck toch verdedigbaar?", options: ["Omdat correcties even viraal zijn", "Omdat platforms ophouden", "Omdat zij later beslissers een dossier kunnen redden", "Omdat clicks het enige doel zijn"], correct: 2, explanation: "Andere munt: archief voor beslissers, niet bereik." },
+      { question: "Hoe moeten gemiste clicks soms worden gelezen?", options: ["Als bewijs van falen", "Als platformdeugd", "Als parafrase", "Als restant van beroepsethiek zonder knop"], correct: 3, explanation: "Niet instappen kan ethiek zijn." }
+    ]
+  },
+  {
+    id: "comp-105",
+    level: "C1",
+    title: "Stikstof, salderen en de verleiding van de rekenregel",
+    titleEn: "Nitrogen, Offsetting and the Temptation of the Calculation Rule",
+    theme: "environment",
+    minutes: 8,
+    paragraphs: [
+      "Zodra een natuurdoel in een rekenregel past, verschijnt de illusie dat rechtvaardigheid een kwestie van decimalen is. Interne saldering belooft dat een boer die elders uitstoot schrapt, elders mag uitbreiden, alsof stikstof een munt is die zonder restwaarde verhuist. Ecologen wijzen op nabehandeling, op piekbelasting in het broedseizoen, op de weigering van habitats om zich aan kwartaalrapportages te houden. Die bezwaren klinken in een vergunningprocedure al snel als ‘onvoldoende gekwantificeerd’, hetgeen de bewijslast omdraait: de natuur moet zich in het model wringen, niet het model in de natuur.",
+      "Bestuursrechters hebben die omkering deels teruggeduwd, tot ergernis van wie bouw en tot opluchting van wie een gebied kent dat geen gemiddelde is. De politieke reflex is dan een nieuwe rekenregel, fijner, met meer knoppen, alsof granulariteit het normatieve tekort vult. Granulariteit zonder doelhiërarchie blijft echter een verfijnde weigering om te zeggen welke activiteit wijkt.",
+      "Gemeenten die wél kiezen — een stal niet, een school wel, onder voorwaarden — worden beschuldigd van willekeur. Willekeur is het scheldwoord voor politiek door wie politiek als rekenfout wil zien. Een volwassen debat zou de scheldwoorden inwisselen voor een lijst van onverenigbaarheden, per gebied, met jaartallen.",
+      "Zolang die lijst uitblijft, blijft salderen een morele wasstraat: de uitstoot gaat het model in vuil en komt er schoon uit, op papier. Buiten het papier blijft het veen oxideren in hetzelfde tempo.",
+      "Interne saldering belooft dat 400 kilogram stikstof elders schrappen 400 kilogram hier vrijmaakt, alsof de piekbelasting in mei op een habitat van blauwgrasland zich aan de kwartaalrapportage houdt. De vergunningprocedure van een staluitbreiding in de Peel draaide de bewijslast om: ecologen moesten de nabehandeling ‘voldoende gekwantificeerd’ maken, het model niet de seizoenspiek. De Raad van State duwde die omkering deels terug in een uitspraak van maart. De politieke reflex was een fijnere rekenregel met drie extra knoppen, zonder doelhiërarchie: welke activiteit wijkt in 2028, de stal of de school. Een gemeente die wél koos — school onder voorwaarden, stal niet — kreeg het scheldwoord willekeur. Buiten het papier oxideert het veen in hetzelfde tempo als in de peilreeks van 2012."
+    ],
+    translation: "As soon as a nature goal fits a calculation rule, the illusion appears that justice is a matter of decimals. Internal offsetting promises that a farmer who cuts emissions elsewhere may expand elsewhere, as if nitrogen were a coin that moves without residual value. Ecologists point to after-effects, to peak load in the breeding season, to habitats’ refusal to comply with quarterly reports. In a permitting procedure those objections quickly sound ‘insufficiently quantified’, which reverses the burden of proof: nature must squeeze itself into the model, not the model into nature. Administrative courts have partly pushed that reversal back, to the annoyance of those who want to build and to the relief of those who know an area that is not an average. The political reflex is then a new calculation rule, finer, with more knobs, as if granularity fills the normative deficit. Granularity without a hierarchy of goals remains, however, a refined refusal to say which activity gives way. Municipalities that do choose — not a barn, yes a school, under conditions — are accused of arbitrariness. Arbitrariness is the insult for politics used by those who want to see politics as a calculation error. A mature debate would exchange the insults for a list of incompatibilities, per area, with years. As long as that list is missing, offsetting remains a moral car wash: the emission enters the model dirty and comes out clean, on paper. Outside the paper the peat keeps oxidising at the same pace.",
+    vocab: [
+      { word: "de saldering", en: "offsetting", pos: "noun" },
+      { word: "de piekbelasting", en: "peak load", pos: "noun" },
+      { word: "de bewijslast", en: "burden of proof", pos: "noun" },
+      { word: "de willekeur", en: "arbitrariness", pos: "noun" },
+      { word: "de doelhiërarchie", en: "hierarchy of goals", pos: "noun" },
+      { word: "de vergunningprocedure", en: "permitting procedure", pos: "noun" }
+    ],
+    grammarTargets: ["alsof-clauses", "hetgeen", "polemical metaphor"],
+    questions: [
+      { question: "Wat keert er om als bezwaren ‘onvoldoende gekwantificeerd’ heten?", options: ["De bewijslast: natuur moet in het model", "De piekbelasting verdwijnt", "Salderen wordt verboden", "Het veen stopt met oxideren"], correct: 0, explanation: "Natuur moet zich in het model wringen." },
+      { question: "Wat vult granulariteit volgens de auteur níet?", options: ["Meer knoppen", "Het normatieve tekort (wie wijkt)", "Kwartaalrapportages", "Decimalen"], correct: 1, explanation: "Fijnere regels zeggen nog niet welke activiteit wijkt." },
+      { question: "Waarvoor is ‘willekeur’ hier een scheldwoord?", options: ["Voor rekenregels", "Voor veenoxidatie", "Voor politieke keuzes", "Voor habitats"], correct: 2, explanation: "Wie politiek als rekenfout ziet, scheldt haar voor willekeur." },
+      { question: "Wat is salderen in de slotmetafoor?", options: ["Een ecologische piek", "Een lijst met jaartallen", "Een schoolvergunning", "Een morele wasstraat op papier"], correct: 3, explanation: "Vuil erin, schoon eruit — alleen in het model." }
+    ]
+  },
+  {
+    id: "comp-106",
+    level: "C1",
+    title: "Een bank die risico’s hernoemt tot kansen",
+    titleEn: "A Bank that Renames Risks as Opportunities",
+    theme: "finance",
+    minutes: 8,
+    paragraphs: [
+      "In de jaarlijkse beleggersbrief van een middelgrote bank verschijnen klimaatrisico’s als ‘transitiekansen’, behalve in de bijlage voor de toezichthouder, waar dezelfde posten als verliesabsorberend vermogen worden doorgerekend. Die tweetaligheid is geen hypocrisie in de alledaagse zin; het is functionele tweetaligheid. Aandeelhouders kopen een verhaal over groei, toezichthouders kopen een verhaal over buffers. De taal sluit aan bij de lezer, niet bij de onderliggende kasstroom.",
+      "Een analist die beide teksten naast elkaar legt, ziet dat de ‘kans’ bestaat uit het financieren van isolatie bij dezelfde klanten van wie de hypotheekportefeuille onder water dreigt te raken bij een striktere energienorm. Dat kan een verstandige hedge zijn. Het kan ook een manier zijn om concentratierisico te verdubbelen en het als diversificatie te verkopen.",
+      "De ondernemingsraad vroeg of interne beloningsprikkels nog steeds nieuw volume belonen in wijken met de slechtste labels. Het antwoord was een verwijzing naar ‘integratie van ESG-kpi’s’, zonder de weging. Ongewogen kpi’s zijn decor.",
+      "Zolang de brief aan beleggers en de bijlage aan DNB elkaars ontkenning mogen zijn, blijft duurzaamheid een register, geen allocatie. Wie dat register ontmaskert, wordt al snel voor cynisch versleten. Cynisme is hier echter een vorm van lezen met twee kolommen.",
+      "De beleggersbrief van 28 februari noemde 1,8 miljard aan transitiekansen; de bijlage voor DNB rekende 420 miljoen extra verliesabsorberend vermogen op dezelfde hypotheekportefeuille in wijken met label E, F en G. De isolatiefinanciering richt zich op diezelfde postcodes. Dat kan een hedge zijn; het kan concentratierisico verdubbelen. De OR vroeg of de bonus nog 40 procent weegt op nieuw volume in die wijken. Het antwoord noemde integratie van ESG-kpi’s zonder weging: 12 indicatoren, geen percentages. Ongewogen kpi’s sturen geen allocatie. Wie de twee kolommen naast elkaar legt, leest geen hypocrisie van personen maar een functionele tweetaligheid van een bank die groei en buffers aan verschillende adressen verkoopt. In een voetnoot bij het ontwerp-bestemmingsplan staat nog een verwijzing naar een kadastrale kaart uit 1911 die de erfgrens anders trekt."
+    ],
+    translation: "In a mid-sized bank’s annual letter to investors, climate risks appear as ‘transition opportunities’, except in the appendix for the supervisor, where the same items are calculated as loss-absorbing capacity. That bilingualism is not hypocrisy in the everyday sense; it is functional bilingualism. Shareholders buy a story about growth, supervisors buy a story about buffers. The language matches the reader, not the underlying cash flow. An analyst who lays both texts side by side sees that the ‘opportunity’ consists of financing insulation for the same clients whose mortgage book threatens to go underwater under a stricter energy standard. That can be a sensible hedge. It can also be a way to double concentration risk and sell it as diversification. The works council asked whether internal pay incentives still reward new volume in neighbourhoods with the worst labels. The answer was a reference to ‘integration of ESG KPIs’, without the weighting. Unweighted KPIs are décor. As long as the letter to investors and the appendix to the central bank may be each other’s negation, sustainability remains a register, not an allocation. Anyone who unmasks that register is quickly taken for cynical. Cynicism here, however, is a form of reading in two columns.",
+    vocab: [
+      { word: "het verliesabsorberend vermogen", en: "loss-absorbing capacity", pos: "noun" },
+      { word: "de hypotheekportefeuille", en: "mortgage book", pos: "noun" },
+      { word: "de hedge", en: "hedge", pos: "noun" },
+      { word: "het concentratierisico", en: "concentration risk", pos: "noun" },
+      { word: "de weging", en: "weighting", pos: "noun" },
+      { word: "de allocatie", en: "allocation", pos: "noun" }
+    ],
+    grammarTargets: ["functional bilingualism as analysis", "kan ... het kan ook", "register vs allocation"],
+    questions: [
+      { question: "Waarom is de tweetaligheid ‘functioneel’?", options: ["Omdat elke lezer een ander verhaal koopt", "Omdat kasstromen verdwijnen", "Omdat ESG geen kpi’s kent", "Omdat DNB geen bijlagen leest"], correct: 0, explanation: "Groei voor aandeelhouders, buffers voor toezicht." },
+      { question: "Wat kan de isolatiefinanciering óók zijn?", options: ["Alleen een hedge", "Een verdubbeling van concentratierisico als ‘diversificatie’", "Een verbod op labels", "Een OR-bonus"], correct: 1, explanation: "Zelfde klanten, extra exposure, verkocht als spreiding." },
+      { question: "Waarom zijn ongewogen ESG-kpi’s decor?", options: ["Omdat ze te zwaar wegen", "Omdat volume verdwijnt", "Omdat zonder weging niets stuurt", "Omdat de brief cynisch is"], correct: 2, explanation: "Zonder weging sturen ze allocatie niet." },
+      { question: "Wat is cynisme hier volgens de auteur?", options: ["Weigeren te lezen", "Alleen de beleggersbrief geloven", "Toezicht afschaffen", "Lezen met twee kolommen"], correct: 3, explanation: "Twee teksten naast elkaar leggen." }
+    ]
+  },
+  {
+    id: "comp-107",
+    level: "C1",
+    title: "De Algemene wet bestuursrecht als toneel van vertraging",
+    titleEn: "The General Administrative Law Act as a Theatre of Delay",
+    theme: "bureaucracy",
+    minutes: 8,
+    paragraphs: [
+      "Bezwaar is bedoeld als laagdrempelige heroverweging, niet als repetitie van de latere rechtszaak. In veel uitvoeringsorganisaties is het echter een genre geworden: dezelfde sjabloonzinnen, dezelfde ‘belangenafweging’ die geen enkel belang anders weegt dan in het primaire besluit, dezelfde termijnverlenging wegens drukte. De burger die hoopt op een frisse blik, ontmoet een tekst die haar eigen eerdere tekst parafraseert.",
+      "Dat is efficiënt voor de organisatie en vernederend voor de indiener. Het is ook riskant voor het bestuur, omdat rechters inmiddels de indruk opdoen dat de heroverweging fictief is. Een vernietiging wegens onvoldoende motivering is dan geen incident, maar een oordeel over het genre.",
+      "Sommige diensten experimenteren met telefonische hoorzittingen die wél iets wijzigen, omdat een stem zich minder makkelijk achter een bulletpoint verschuilt. Die experimenten sneuvelen wanneer productiecijfers terugkeren als enige stuurvariabele. Snelheid en heroverweging zijn dan opnieuw tot vijanden gemaakt, terwijl de wet ze als complementair dacht.",
+      "Wie de Awb serieus neemt, zal heroverweging moeten meten aan gewijzigde besluiten, niet aan afgehandelde stapels. Dat cijfer zal lager zijn en eerlijker. Het zal ook zichtbaar maken welke afdelingen alleen nog theater spelen.",
+      "Bij de uitvoeringsorganisatie die toeslagen herstelt, telde bezwaar in 2025 11.400 zaken; 6 procent van de primaire besluiten werd gewijzigd, terwijl 94 procent dezelfde belangenafweging herhaalde in sjabloon B-14. Termijnverlenging wegens drukte werd in 41 procent van de dossiers toegepast. Telefonische hoorzittingen in een pilot van 180 zaken wijzigden 22 procent, omdat een stem zich minder achter een bullet verschuilt. De pilot sneuvelde toen de stuurvariabele terugkeerde naar afgehandelde stapels per fte. Een vernietiging door de rechtbank Den Haag wegens onvoldoende motivering is dan geen incident; het is een oordeel over het genre. Heroverweging meten aan wijziging, niet aan throughput, zou die afdeling zichtbaar maken. De landsadvocaat merkte in een interne notitie op dat de considerans geen zelfstandige verbodsgrond schept, hoe zwaar de toon ook klinkt. Die lezing voorkomt dat een rituele openingszin later als zelfstandige rechtsgrond wordt aangehaald in een kort geding."
+    ],
+    translation: "Objection is intended as an accessible reconsideration, not as a rehearsal of the later lawsuit. In many implementing bodies, however, it has become a genre: the same template sentences, the same ‘weighing of interests’ that weighs no interest differently from the primary decision, the same extension of time because of pressure of work. The citizen who hopes for a fresh look meets a text that paraphrases its own earlier text. That is efficient for the organisation and humiliating for the applicant. It is also risky for the administration, because judges are by now forming the impression that the reconsideration is fictitious. An annulment for insufficient reasoning is then not an incident, but a judgement on the genre. Some services experiment with telephone hearings that do change something, because a voice hides less easily behind a bullet point. Those experiments collapse when production figures return as the only steering variable. Speed and reconsideration are then again made into enemies, whereas the Act thought them complementary. Anyone who takes the Act seriously will have to measure reconsideration by changed decisions, not by stacks processed. That figure will be lower and more honest. It will also make visible which departments are only still playing theatre.",
+    vocab: [
+      { word: "het bezwaar", en: "objection (administrative)", pos: "noun" },
+      { word: "de heroverweging", en: "reconsideration", pos: "noun" },
+      { word: "het primaire besluit", en: "primary decision", pos: "noun" },
+      { word: "de hoorzitting", en: "hearing", pos: "noun" },
+      { word: "de vernietiging", en: "annulment", pos: "noun" },
+      { word: "de uitvoeringsorganisatie", en: "implementing body", pos: "noun" }
+    ],
+    grammarTargets: ["genre critique", "terwijl contrast", "measurement as ethics"],
+    questions: [
+      { question: "Wat ontmoet de burger in plaats van een frisse blik?", options: ["Een parafrase van het eerdere besluit", "Een onmiddellijke toewijzing", "Een rechter in de hoorzitting", "Een lager productiecijfer"], correct: 0, explanation: "Hetzelfde sjabloon, dezelfde weging." },
+      { question: "Hoe kunnen rechters vernietigingen dan lezen?", options: ["Als louter incidenten", "Als oordeel over het genre van fictieve heroverweging", "Als steun voor termijnverlenging", "Als verbod op de Awb"], correct: 1, explanation: "Niet incident maar genre-oordeel." },
+      { question: "Waarom wijzigen telefonische hoorzittingen soms wél iets?", options: ["Bulletpoints zijn wettelijk sterker", "Productiecijfers stijgen altijd", "Een stem verschuilt zich minder achter bullets", "De wet verbiedt schriftelijkheid"], correct: 2, explanation: "Stem dwingt echte heroverweging." },
+      { question: "Waaraan moet heroverweging worden gemeten?", options: ["Aan afgehandelde stapels", "Aan de lengte van sjablonen", "Aan termijnverlengingen", "Aan gewijzigde besluiten"], correct: 3, explanation: "Wijziging, niet throughput." }
+    ]
+  },
+  {
+    id: "comp-108",
+    level: "C1",
+    title: "Toeristische verhuring als extractie van nabijheid",
+    titleEn: "Tourist Letting as the Extraction of Nearness",
+    theme: "travel",
+    minutes: 8,
+    paragraphs: [
+      "In verordeningen wordt kortetermijnverhuur behandeld als een kwestie van nachten en boetes, alsof het probleem een overschrijding van een quotum is. Wie in de straat woont, ervaart iets anders: het verdwijnen van de buur die een pakket aanneemt, het ontstaan van een gang die ’s nachts koffers over een stenen vloer trekt, de winkel die stopcontactadapters verkoopt in plaats van melk. Dat is geen nostalgie; het is het uiteenvallen van de informele infrastructuur waar een stad op draait zonder haar te begroten.",
+      "Platformen antwoorden met ‘thuis delen’ en wijzen op inkomsten voor huishoudens onder druk. Beide kunnen waar zijn en toch de extractie verhullen: wat wordt verkocht is niet alleen een bed, maar de betrouwbaarheid van een portiek. Die betrouwbaarheid is een gemeenschappelijk goed dat geen verhuurder in de prijs hoeft te internaliseren.",
+      "Gemeenten die registratieplichten invoeren zonder handhavingscapaciteit, produceren een register van eerlijken en een vrijplaats voor wie het risico op een boete lager inschat dan de opbrengst. Handhaving volgt dan de zichtbare, niet de grootste, overtreders.",
+      "Een slimmere maatregel zou de informele infrastructuur zelf beprijzen: een heffing die naar conciërges, pakketpunten en nachtlawaainormen vloeit, of een verbod in panden zonder fysieke beheerder. Dat klinkt minder vriendelijk dan ‘delen’. Het neemt de stad wel serieuzer dan een quotum dat niemand telt.",
+      "In de Haarlemmerdijk verdwenen in drie jaar 22 zelfstandige huishoudens achter registratieplichten die de gemeente zonder handhavingscapaciteit nauwelijks toetst. Het register telt 310 eerlijke verhuurders; schattingen van de rekenkamer noemen 180 extra adressen buiten beeld. De winkel op de hoek verkoopt adapters en Mini-Melk; de buur die een pakket aannam, woont in Zaandam. Extractie van de betrouwbaarheid van het portiek is een gemeenschappelijk goed dat geen verhuurder in de nachtprijs van 240 euro hoeft te internaliseren. Een heffing van 8 euro per nacht naar een conciërge en een pakketpunt, of een verbod in panden zonder fysieke beheerder na 22.00, neemt de stad serieuzer dan een quotum van 30 nachten dat niemand telt."
+    ],
+    translation: "In by-laws short-term letting is treated as a matter of nights and fines, as if the problem were exceeding a quota. Anyone who lives in the street experiences something else: the disappearance of the neighbour who takes in a parcel, the emergence of a hallway that at night drags suitcases across a stone floor, the shop that sells plug adapters instead of milk. That is not nostalgia; it is the disintegration of the informal infrastructure a city runs on without budgeting for it. Platforms reply with ‘home sharing’ and point to income for households under pressure. Both can be true and still conceal the extraction: what is sold is not only a bed, but the reliability of a porch. That reliability is a common good that no landlord need internalise in the price. Municipalities that introduce registration duties without enforcement capacity produce a register of the honest and a sanctuary for those who estimate the risk of a fine lower than the yield. Enforcement then follows the visible, not the largest, offenders. A smarter measure would price the informal infrastructure itself: a levy that flows to caretakers, parcel points and night-noise standards, or a ban in buildings without a physical manager. That sounds less friendly than ‘sharing’. It does take the city more seriously than a quota nobody counts.",
+    vocab: [
+      { word: "de kortetermijnverhuur", en: "short-term letting", pos: "noun" },
+      { word: "de handhavingscapaciteit", en: "enforcement capacity", pos: "noun" },
+      { word: "de heffing", en: "levy", pos: "noun" },
+      { word: "het gemeenschappelijk goed", en: "common good", pos: "noun" },
+      { word: "de registratieplicht", en: "registration duty", pos: "noun" },
+      { word: "de extractie", en: "extraction", pos: "noun" }
+    ],
+    grammarTargets: ["alsof", "kunnen waar zijn en toch", "policy inference"],
+    questions: [
+      { question: "Wat verdwijnt er volgens de auteur behalve een buur?", options: ["Informele infrastructuur die niet begroot wordt", "Alle winkels met melk", "Elke verordening", "Het begrip nostalgie"], correct: 0, explanation: "Pakketten, rust, nabijheid: onbetaalde stad." },
+      { question: "Wat wordt naast een bed verkocht?", options: ["Melk", "De betrouwbaarheid van een portiek", "Handhavingscapaciteit", "Een quotum"], correct: 1, explanation: "Extractie van nabijheid/betrouwbaarheid." },
+      { question: "Wat produceert registratie zonder handhaving?", options: ["Alleen grote overtreders in beeld", "Een verbod op adapters", "Een register van eerlijken en een vrijplaats voor rekenaars", "Automatische conciërges"], correct: 2, explanation: "De eerlijken staan geregistreerd; de rest weegt de boete." },
+      { question: "Wat zou een slimmere maatregel beprijzen?", options: ["Alleen nachten", "Alleen foto’s van koffers", "Nostalgie", "De informele infrastructuur zelf"], correct: 3, explanation: "Heffing naar beheer, of verbod zonder beheerder." }
+    ]
+  },
+  {
+    id: "comp-109",
+    level: "C1",
+    title: "De smaak van een aanbestede maaltijd",
+    titleEn: "The Taste of a Tendered Meal",
+    theme: "food",
+    minutes: 8,
+    paragraphs: [
+      "In zorginstellingen is de maaltijd een sluitpost die in de aanbesteding wint op prijs per eiwitgram en verliest op herkenbaarheid. Bewoners vragen om stamppot op een dag die naar november ruikt; zij krijgen een seizoensgroente die klopt in de spreadsheet en niet in het geheugen. Dietisten verdedigen de spreadsheet met micronutriënten. Zij hebben gelijk en missen het punt: eten is hier een van de laatste domeinen waarin iemand nog ‘ik wil’ mag zeggen zonder een behandelplan.",
+      "Leveranciers leveren wat de gunningscriteria vragen. Als die criteria geur, keuze op het moment zelf en de mogelijkheid tot weigeren zonder sanctie in het dossier niet kennen, zullen die dingen verdwijnen, niet uit wreedheid, maar uit gehoorzaamheid. Inkoop heet dan professioneel.",
+      "Een instelling die een proef invoerde met twee echte keuzes per gang en een kookgeur in de gang, zag minder teruggezonden borden en meer ruzie over de begroting. Die ruzie is informatief. Zij maakt zichtbaar dat waardigheid een kostenpost is, niet een sfeerimpressie in de brochure.",
+      "Wie dat te duur vindt, moet het hardop zeggen. Dan kan een familie beslissen. Zolang de brochure ‘huiselijk’ belooft en de aanbesteding ‘eiwit per euro’, blijft de geur van ui een toevalstreffer.",
+      "De aanbesteding van drie verpleeghuizen van zorggroep tanteLouise woog prijs voor 70 procent en smaak voor nul. Stamppot op een dag die naar november rook, werd een seizoensgroente die in de spreadsheet 18 gram eiwit per euro haalde. De gunningscriteria kenden geen geur, geen keuze op het moment, geen weigeren zonder sanctie in het dossier. De proef in locatie Bergen op Zoom — twee echte keuzes per gang, kookgeur in de gang — zag teruggezonden borden dalen van 14 naar 6 procent en de kostprijs stijgen met 1,40 euro per dag. Die ruzie over de begroting maakte waardigheid tot een post, niet tot het woord huiselijk in de brochure. Wie 1,40 te duur vindt, moet het aan families zeggen. Een latere memorie van toelichting herhaalt die leeswijzer, maar verschuift de bewijslast stilzwijgend naar de vergunninghouder."
+    ],
+    translation: "In care homes the meal is a residual item that wins the tender on price per gram of protein and loses on recognisability. Residents ask for mash on a day that smells of November; they get a seasonal vegetable that is right in the spreadsheet and not in memory. Dietitians defend the spreadsheet with micronutrients. They are right and miss the point: eating is here one of the last domains in which someone may still say ‘I want’ without a treatment plan. Suppliers deliver what the award criteria ask. If those criteria do not know smell, choice at the moment itself and the possibility of refusing without a sanction in the file, those things will disappear, not from cruelty, but from obedience. Procurement is then called professional. An institution that introduced a trial with two real choices per course and a cooking smell in the corridor saw fewer plates sent back and more argument about the budget. That argument is informative. It makes visible that dignity is a cost item, not an atmosphere impression in the brochure. Anyone who finds that too expensive must say so aloud. Then a family can decide. As long as the brochure promises ‘homely’ and the tender ‘protein per euro’, the smell of onion remains a fluke.",
+    vocab: [
+      { word: "de sluitpost", en: "residual / balancing item", pos: "noun" },
+      { word: "de gunningscriteria", en: "award criteria", pos: "noun" },
+      { word: "de micronutriënt", en: "micronutrient", pos: "noun" },
+      { word: "de aanbesteding", en: "tender", pos: "noun" },
+      { word: "huiselijk", en: "homely", pos: "adjective" },
+      { word: "de waardigheid", en: "dignity", pos: "noun" }
+    ],
+    grammarTargets: ["zij hebben gelijk en missen het punt", "conditional disappearance", "implied ethics"],
+    questions: [
+      { question: "Waarop wint de maaltijd in de aanbesteding?", options: ["Prijs per eiwitgram", "Herkenbaarheid", "Kookgeur", "Het woord huiselijk"], correct: 0, explanation: "Eiwit per euro wint; geheugen verliest." },
+      { question: "Waarom verdwijnen geur en weigeren zonder sanctie?", options: ["Uit wreedheid van koks", "Omdat criteria ze niet kennen, dus gehoorzaamheid", "Omdat families het eisen", "Omdat stamppot verboden is"], correct: 1, explanation: "Leveranciers gehoorzamen criteria." },
+      { question: "Wat maakte de proef zichtbaar via ruzie over de begroting?", options: ["Dat geur gratis is", "Dat brochures liegen over eiwit", "Dat waardigheid een kostenpost is", "Dat dietisten altijd ongelijk hebben"], correct: 2, explanation: "Waardigheid blijkt te begroten." },
+      { question: "Wat blijft de uiengeur zolang brochure en aanbesteding uiteenlopen?", options: ["Een gunningscriterium", "Een behandelplan", "Een micronutriënt", "Een toevalstreffer"], correct: 3, explanation: "Huiselijk in tekst, eiwit in contract." }
+    ]
+  },
+  {
+    id: "comp-110",
+    level: "C1",
+    title: "Een omgangsregeling die het kind als poststuk behandelt",
+    titleEn: "A Contact Arrangement that Treats the Child as a Parcel",
+    theme: "relationships",
+    minutes: 8,
+    paragraphs: [
+      "In beschikkingen over omgang verschijnt het kind als een entiteit die ‘overgedragen’ wordt op vrijdag om zes, alsof punctualiteit hetzelfde is als veiligheid. Ouders die de minuten tellen, gehoorzamen die fictie, omdat elke afwijking later als onwil kan worden gelezen. Het kind leert intussen dat zijn lichaam een bewijs is in een dossier, niet een grens.",
+      "Mediators weten dat, en stellen toch kalenders voor die op de millimeterruit van een advocaat passen. Alternatieven — een kind dat zelf een dag verschuift, een bufferavond, een derde plek zonder verhoor — verdwijnen zodra één ouder de kalender als wapen ontdekt. Het recht beloont dan de meest documenterende volwassene.",
+      "Jeugdprofessionals schrijven in rapporten dat ‘het kind vastzit tussen loyaliteiten’. De zin is waar en is een cliché geworden dat de professional vrijwaart van de vraag wélke procedure die loyaliteit onmogelijk maakt. Wie alleen het gezin behandelt, laat de zittingszaal ongemoeid.",
+      "Een nuchterder praktijk zou overdrachtstijden als verdacht beschouwen zodra ze tot op de minuut worden bevochten, en zou het dossier sluiten voor minutentellingen. Dat klinkt laks. Het weigert slechts mee te doen aan een proces dat precisie verwart met zorg.",
+      "Beschikking 889 van de rechtbank Rotterdam zet de overdracht op vrijdag 18.00 bij het tankstation aan de A20, alsof die minuut veiligheid is. Ouders mailen om 18.07 een foto van de parkeerplaats. Een bufferavond of een derde plek zonder verhoor verdween toen één advocaat de kalender als bijlage 12 ontdekte. Jeugdbescherming Rotterdam Rijnmond schrijft dat het kind vastzit tussen loyaliteiten, een zin die de zittingszaal ongemoeid laat. Wie het dossier sluit voor telling onder de vijf minuten, klinkt laks en weigert alleen de fictie dat het lichaam van een achtjarige een bewijs is. Precisie in de omgang is hier geen zorg; het is proceseconomie van de meest documenterende volwassene. De koppenredacteur verdedigde de ellips later in een stijlgids: weglating mag, zolang het predicaat nog reconstrueerbaar is. Zonder werkwoord blijft de kop alleen leesbaar als de lezer het ontbrekende predicaat uit de lead kan reconstrueren."
+    ],
+    translation: "In decisions on contact the child appears as an entity that is ‘handed over’ on Friday at six, as if punctuality were the same as safety. Parents who count the minutes obey that fiction, because any deviation can later be read as unwillingness. Meanwhile the child learns that its body is evidence in a file, not a boundary. Mediators know that, and still propose calendars that fit a lawyer’s graph paper. Alternatives — a child that itself shifts a day, a buffer evening, a third place without interrogation — disappear as soon as one parent discovers the calendar as a weapon. The law then rewards the most documenting adult. Youth professionals write in reports that ‘the child is stuck between loyalties’. The sentence is true and has become a cliché that exempts the professional from the question which procedure makes that loyalty impossible. Anyone who only treats the family leaves the courtroom untouched. A more sober practice would regard handover times as suspect as soon as they are fought to the minute, and would close the file to minute-counting. That sounds lax. It merely refuses to take part in a process that confuses precision with care.",
+    vocab: [
+      { word: "de omgang", en: "contact / access (family law)", pos: "noun" },
+      { word: "de overdracht", en: "handover", pos: "noun" },
+      { word: "de loyaliteit", en: "loyalty", pos: "noun" },
+      { word: "de beschikking", en: "court decision", pos: "noun" },
+      { word: "de zittingszaal", en: "courtroom", pos: "noun" },
+      { word: "laks", en: "lax", pos: "adjective" }
+    ],
+    grammarTargets: ["alsof", "cliché as critique", "would-conditionals"],
+    questions: [
+      { question: "Waarom gehoorzamen ouders de minutenfictie?", options: ["Omdat afwijking later als onwil kan worden gelezen", "Omdat kinderen dossiers schrijven", "Omdat mediators geen kalenders kennen", "Omdat de zittingszaal gesloten is"], correct: 0, explanation: "Elke minuut kan later tegen hen spreken." },
+      { question: "Wie beloont het recht volgens de tekst?", options: ["Het kind dat verschuift", "De meest documenterende volwassene", "De derde plek", "De lakse professional"], correct: 1, explanation: "Documentatie wint van soepelheid." },
+      { question: "Wat doet de clichézin over loyaliteiten?", options: ["Zij opent de zittingszaal", "Zij is altijd onwaar", "Zij vrijwaart van de vraag welke procedure loyaliteit onmogelijk maakt", "Zij verbiedt rapporten"], correct: 2, explanation: "Het gezin wordt behandeld, de procedure niet." },
+      { question: "Wat weigert de ‘laks’ lijkende praktijk?", options: ["Elke omgang", "Mediators", "Jeugdprofessionals", "Precisie verwarren met zorg"], correct: 3, explanation: "Minutenzorg is geen zorg." }
+    ]
+  },
+  {
+    id: "comp-111",
+    level: "C1",
+    title: "Open science en de politiek van het embargo",
+    titleEn: "Open Science and the Politics of the Embargo",
+    theme: "science",
+    minutes: 8,
+    paragraphs: [
+      "Universiteiten vieren open access als morele vooruitgang, terwijl dezelfde instellingen persembargo’s hanteren die journalisten een voorsprong geven op de burger die de preprint niet kan duiden. Die spanning wordt zelden als politiek benoemd. Openheid blijkt een eigenschap van de pdf, niet van het moment waarop betekenis wordt vastgelegd.",
+      "Onderzoekers vrezen dat vroege data worden ‘misbruikt’. Het woord misbruik veronderstelt een juiste lezer. In een publiek gefinancierd stelsel is die veronderstelling twijfelachtig, hoe slordig sommige lezers ook zijn. Het antwoord op slordigheid is annotatie en replicatie, niet een venster waarin alleen woordvoerders spreken.",
+      "Tegelijk is naïeve onmiddellijkheid geen deugd. Een figuur zonder onzekerheidsinterval in een avondjournaal richt meer schade aan dan een embargo van twee dagen. Het onderscheid is of het embargo de methode beschermt of het merk.",
+      "Een integer protocol zou embargo’s alleen toestaan om journalisten de methode te laten lezen, met gelijktijdige publicatie van data en code voor iedereen. Wat nu vaak gebeurt — een persbericht zonder code, een paywall voor het artikel, een feestelijke tweet van de decaan — is openheid als merchandising.",
+      "De universiteit vierde open access van de pdf en hield een persembargo van 48 uur op een preprint over luchtmetingen, zodat drie titels een voorsprong kregen op de burger die het onzekerheidsinterval niet kan duiden. Onderzoekers vreesden misbruik; het woord veronderstelt een juiste lezer in een publiek gefinancierd stelsel. Annotatie en replicatie zijn het antwoord, niet een venster waarin alleen woordvoerders spreken. Een figuur zonder interval in het achtuurjournaal richt meer schade aan dan dat embargo. Het onderscheid is methode versus merk. Wat volgde — persbericht zonder code, paywall bij de uitgever, tweet van de decaan — is merchandising. Een integer protocol publiceert data en code gelijktijdig, embargo of niet. In het transcript van het interview markeerde zij ‘eigenlijk’ en ‘zeg maar’ in geel, niet om ze te schrappen, maar om hun intersubjectieve functie te tonen. Zo wordt hoorbaarheid van aarzeling een analyseerbaar gegeven, niet een slordigheid die de stenograaf mag gladstrijken."
+    ],
+    translation: "Universities celebrate open access as moral progress, while the same institutions operate press embargoes that give journalists a head start on the citizen who cannot interpret the preprint. That tension is seldom named as political. Openness turns out to be a property of the PDF, not of the moment at which meaning is fixed. Researchers fear that early data will be ‘misused’. The word misuse assumes a correct reader. In a publicly funded system that assumption is doubtful, however sloppy some readers are. The answer to sloppiness is annotation and replication, not a window in which only spokespersons speak. At the same time, naïve immediacy is not a virtue. A figure without an uncertainty interval on an evening news bulletin does more harm than a two-day embargo. The distinction is whether the embargo protects the method or the brand. An integer protocol would allow embargoes only to let journalists read the method, with simultaneous publication of data and code for everyone. What often happens now — a press release without code, a paywall for the article, a festive tweet from the dean — is openness as merchandising.",
+    vocab: [
+      { word: "het embargo", en: "embargo", pos: "noun" },
+      { word: "de preprint", en: "preprint", pos: "noun" },
+      { word: "de replicatie", en: "replication", pos: "noun" },
+      { word: "het onzekerheidsinterval", en: "uncertainty interval", pos: "noun" },
+      { word: "de paywall", en: "paywall", pos: "noun" },
+      { word: "de annotatie", en: "annotation", pos: "noun" }
+    ],
+    grammarTargets: ["terwijl institutional contradiction", "onderscheid of ... of", "evaluative definition"],
+    questions: [
+      { question: "Van wat is openheid volgens de auteur een eigenschap geworden?", options: ["Van de pdf, niet van het moment van betekenis", "Van het embargo alleen", "Van de decaan", "Van het journaal"], correct: 0, explanation: "Bestand open, timing gesloten." },
+      { question: "Wat veronderstelt het woord ‘misbruik’?", options: ["Dat alle lezers slordig zijn", "Een juiste lezer", "Dat paywalls verdwijnen", "Dat replicatie verboden is"], correct: 1, explanation: "Misbruik impliceert een correcte lezer." },
+      { question: "Wanneer kan een kort embargo wél verdedigbaar zijn?", options: ["Om het merk te beschermen", "Om de decaan te laten tweeten", "Om de methode te laten lezen (niet het merk)", "Om code achter te houden"], correct: 2, explanation: "Methode beschermen ≠ merk beschermen." },
+      { question: "Hoe typeert het slot de gangbare mix persbericht/paywall/tweet?", options: ["Als integer protocol", "Als replicatie", "Als annotatie", "Als openheid als merchandising"], correct: 3, explanation: "Openheid als merchandising." }
+    ]
+  },
+  {
+    id: "comp-112",
+    level: "C1",
+    title: "De bibliotheek als laatste niet-commerciële binnenruimte",
+    titleEn: "The Library as the Last Non-Commercial Indoor Space",
+    theme: "public_services",
+    minutes: 8,
+    paragraphs: [
+      "Bezuinigingsnota’s behandelen de bibliotheek als een uitleenfunctie die door e-books kan worden vervangen, met een resttaak ‘programmering’. Wie een middag in een filiaal zit, ziet een andere instelling: mensen die geen koffiezaak kunnen veroorloven als werkplek, kinderen voor wie stilte geen huiselijk gegeven is, ouderen voor wie de balie de enige ambtenaar is die niet achter een afspraakmodule zit. Die functies staan zelden als prestatie-indicatoren in de begroting, en verdwijnen daarom het eerst.",
+      "Pogingen om de bibliotheek ‘ondernemender’ te maken, brengen barista’s en betaalde zalen. Dat levert levendigheid op en een drempel. De drempel is subtiel: wie niets consumeert, voelt zich gedoogd. Gedogen is geen recht.",
+      "Raadsleden vragen om bezoekcijfers. Bezoek zegt weinig als de stoel bezet wordt door iemand die nergens anders mag zitten. Een eerlijker cijfer zou zijn: uren niet-commercieel verblijf per inkomenskwintiel. Dat cijfer bestaat niet, omdat het een politiek zou onthullen die we liever in termen van innovatie houden.",
+      "Wie de bibliotheek sluit omdat het aantal uitleningen daalt, meet een instelling aan een functie die zij al niet meer primair is. Het is alsof men een dijk beoordeelt op het aantal passerende schepen.",
+      "Het filiaal in de wijk Overvecht leende in 2019 nog 84.000 banden uit en in 2025 51.000; de bezoekcijfers daalden minder hard. Wie een middag zit, telt laptops van mensen voor wie een koffiezaak 3,80 euro per uur kost, kinderen voor wie stilte thuis ontbreekt, ouderen voor wie de balie de enige ambtenaar zonder afspraakmodule is. Die uren staan niet als prestatie-indicator. Een barista en een betaalde zaal van 45 euro leveren levendigheid en een drempel: wie niets consumeert, voelt zich gedoogd. Gedogen is geen recht. Uren niet-commercieel verblijf per inkomenskwintiel bestaan niet in de begroting, omdat zij een politiek zouden tonen die liever innovatie zegt. Sluiten wegens dalende uitlening is de dijk op schepen beoordelen. Een vertaalgeheugen stelde ‘eventueel’ voor als ‘eventually’, een klassieke val die de revisor in de marge rood omcirkelde."
+    ],
+    translation: "Austerity papers treat the library as a lending function that can be replaced by e-books, with a residual task of ‘programming’. Anyone who spends an afternoon in a branch sees another institution: people who cannot afford a coffee shop as a workplace, children for whom quiet is not a domestic given, older people for whom the desk is the only official not sitting behind an appointment module. Those functions seldom appear as performance indicators in the budget, and therefore disappear first. Attempts to make the library ‘more enterprising’ bring baristas and paid rooms. That yields liveliness and a threshold. The threshold is subtle: anyone who consumes nothing feels tolerated. Being tolerated is not a right. Councillors ask for visit figures. Visits say little if the chair is occupied by someone who is allowed to sit nowhere else. A fairer figure would be: hours of non-commercial stay per income quintile. That figure does not exist, because it would reveal a politics we prefer to keep in terms of innovation. Anyone who closes the library because lending is falling measures an institution by a function it is already no longer primarily. It is as if one judged a dike by the number of passing ships.",
+    vocab: [
+      { word: "de uitlening", en: "loan (of a book)", pos: "noun" },
+      { word: "de prestatie-indicator", en: "performance indicator", pos: "noun" },
+      { word: "het inkomenskwintiel", en: "income quintile", pos: "noun" },
+      { word: "de drempel", en: "threshold (barrier)", pos: "noun" },
+      { word: "gedogen", en: "to tolerate (semi-officially)", pos: "verb" },
+      { word: "het filiaal", en: "branch", pos: "noun" }
+    ],
+    grammarTargets: ["alsof analogy", "daarom causal", "implied fiscal critique"],
+    questions: [
+      { question: "Waarom verdwijnen rust- en baliefuncties het eerst?", options: ["Omdat ze zelden als indicator in de begroting staan", "Omdat e-books ze meten", "Omdat barista’s ze eisen", "Omdat dijken sluiten"], correct: 0, explanation: "Wat niet als prestatie telt, sneuvelt." },
+      { question: "Wat is het probleem van de subtiele drempel bij barista’s?", options: ["Koffie is gratis", "Wie niets consumeert voelt zich gedoogd, geen rechthebbende", "Zalen zijn altijd open", "Uitleningen stijgen"], correct: 1, explanation: "Gedogen ≠ recht op verblijf." },
+      { question: "Welk eerlijker cijfer bestaat volgens de tekst niet?", options: ["Het aantal e-books", "Bezoekcijfers", "Uren niet-commercieel verblijf per inkomenskwintiel", "Het aantal barista’s"], correct: 2, explanation: "Dat cijfer zou politiek onthullen." },
+      { question: "Waarmee vergelijkt de slotanalogie het meten aan uitleningen?", options: ["Een koffiezaak zonder stoelen", "Een afspraakmodule", "Een filiaal zonder kinderen", "Een dijk beoordelen op passerende schepen"], correct: 3, explanation: "Verkeerde functie als maatstaf." }
+    ]
+  },
+  {
+    id: "comp-113",
+    level: "C1",
+    title: "Hybride werken als herverdeling van zichtbaarheid",
+    titleEn: "Hybrid Work as a Redistribution of Visibility",
+    theme: "work",
+    minutes: 8,
+    paragraphs: [
+      "Hybride beleid wordt verkocht als autonomie, terwijl het in veel organisaties een herverdeling is van wie nog gezien wordt op het moment dat informele besluiten vallen: na de vergadering, bij de lift, in de minuten waarin een grap een coalitie wordt. Wie die minuten mist omdat een kind moet worden opgehaald, verdwijnt niet uit het organogram, wel uit de shortlist die niemand opschrijft.",
+      "Hr antwoordt met workshops over ‘inclusieve hybriditeit’ en camera-aan-normen. Die normen straffen juist degenen die hun huis niet als studio kunnen inrichten. Inclusie wordt een esthetiek van het raster.",
+      "Een seriuzer beleid zou zichtbare besluiten forceren: geen toewijzing van projecten buiten een genotuleerd overleg, rotatie van fysieke dagen zodat niet steeds dezelfde cohort de lift deelt, en beoordeling op output die is gedefinieerd vóór de charme van nabijheid. Dat klinkt bureaucratisch. Het is een correctie op een bureaucratie die zich als toeval vermomt.",
+      "Zonder die correctie blijft hybride werken een privilege van wie afstand kan overbruggen zonder status te verliezen. De rest krijgt autonomie in ruil voor onzichtbaarheid.",
+      "Na de woensdagmiddagvergadering vallen in deze organisatie de toewijzingen bij de lift op 16.40, een cohort van wie geen kind om 17.15 ophaalt. Wie die minuten mist, blijft in het organogram en verdwijnt van de ongeschreven shortlist. Workshops over inclusieve hybriditeit eisten camera-aan; wie in een kamer van 12 vierkante meter geen studio kan inrichten, wordt gestraft door de esthetiek van het raster. Seriuzer beleid forceert genotuleerde toewijzing, roteert fysieke dagen zodat niet steeds dezelfde twaalf de lift delen, en definieert output vóór de charme van nabijheid. Dat klinkt bureaucratisch en corrigeert een bureaucratie die zich als toeval vermomt. Autonomie zonder die correctie is onzichtbaarheid met een mooie naam. De essayist laat het hoge register bewust een zin later instorten, zodat de ironie niet in het lexicale, maar in het ritmische contrast zit. Wie alleen lexicale hoogdravendheid telt, mist dus de wending waarin de zin zichzelf onderuithaalt. Die ritmische val is pedagogisch bruikbaar: leerlingen horen het registerkantelen eerder dan ze het kunnen benoemen."
+    ],
+    translation: "Hybrid policy is sold as autonomy, while in many organisations it is a redistribution of who is still seen at the moment informal decisions fall: after the meeting, by the lift, in the minutes in which a joke becomes a coalition. Anyone who misses those minutes because a child must be picked up does not disappear from the organisation chart, but does disappear from the shortlist nobody writes down. HR replies with workshops on ‘inclusive hybridity’ and cameras-on norms. Those norms punish precisely those who cannot turn their home into a studio. Inclusion becomes an aesthetic of the grid. A more serious policy would force visible decisions: no allocation of projects outside minuted meetings, rotation of physical days so that it is not always the same cohort sharing the lift, and appraisal on output defined before the charm of proximity. That sounds bureaucratic. It is a correction of a bureaucracy that disguises itself as chance. Without that correction hybrid work remains a privilege of those who can bridge distance without losing status. The rest receive autonomy in exchange for invisibility.",
+    vocab: [
+      { word: "de shortlist", en: "shortlist", pos: "noun" },
+      { word: "de hybriditeit", en: "hybridity", pos: "noun" },
+      { word: "genotuleerd", en: "minuted", pos: "adjective" },
+      { word: "de cohort", en: "cohort", pos: "noun" },
+      { word: "de nabijheid", en: "proximity", pos: "noun" },
+      { word: "de autonomie", en: "autonomy", pos: "noun" }
+    ],
+    grammarTargets: ["terwijl", "zonder die", "status as implied theme"],
+    questions: [
+      { question: "Waaruit verdwijnt wie de liftminuten mist?", options: ["Uit de ongeschreven shortlist, niet per se uit het organogram", "Uit het arbeidsrecht", "Uit alle notulen", "Uit de workshops"], correct: 0, explanation: "Formeel aanwezig, informeel weg." },
+      { question: "Wat doen camera-aan-normen volgens de tekst?", options: ["Zij helpen wie geen studio heeft", "Zij straffen wie het huis niet als studio kan inrichten", "Zij schrappen rasters", "Zij notuleren de lift"], correct: 1, explanation: "Inclusie als esthetiek van het raster." },
+      { question: "Wat zou seriuzer beleid forceren?", options: ["Meer grappen bij de lift", "Vaste cohorten op dezelfde dag", "Geen projecten buiten genotuleerd overleg", "Beoordeling ná charme van nabijheid"], correct: 2, explanation: "Besluiten zichtbaar en genotuleerd." },
+      { question: "Wat krijgt ‘de rest’ in ruil voor autonomie?", options: ["Status", "Een studio", "De shortlist", "Onzichtbaarheid"], correct: 3, explanation: "Autonomie tegen onzichtbaarheid." }
+    ]
+  },
+  {
+    id: "comp-114",
+    level: "C1",
+    title: "Erfpachtcanon als vertraagde waarheid",
+    titleEn: "The Ground Lease as Delayed Truth",
+    theme: "housing",
+    minutes: 8,
+    paragraphs: [
+      "Kopers van een erfpachtwoning ontmoeten de canon vaak als een voetnoot bij een feestelijke overdracht, tot de herziening vijftig jaar later een bedrag produceert dat op een tweede hypotheek lijkt. Gemeenten verdedigen de sprong met taxaties die de grond waarderen alsof de opstal er niet staat, een fictie die juridisch is ingesleten en politiek explosief wordt zodra hij in een keukentafelgesprek landt.",
+      "De koper van destijds heeft geprofiteerd van een lagere drempel; de koper van nu betaalt de inhaalslag. Tussen hen in staat geen contractuele schuldige, wel een overheid die het moment van pijn decennia vooruitschoof. Dat vooruitschuiven heette destijds toegankelijkheid.",
+      "Overstappen naar eeuwigdurende canon wordt als oplossing verkocht, tegen een afkoopsom die opnieuw de toekomst comprimeert tot wie nú liquiditeit heeft. Zo blijft erfpacht een inkomenspolitiek die zich als grondbeleid vermomt.",
+      "Een eerlijker stelsel zou herzieningen voorspelbaar indexeren binnen een bandbreedte die bij aankoop al in de notarisakte in euro’s van vandaag is voorgelezen — niet als percentage in een bijlage die niemand hoort.",
+      "Kopers aan de Beethovenstraat ontmoetten de canon als voetnoot tot de herziening na vijftig jaar een sprong van 1.240 naar 11.800 euro per jaar produceerde, een tweede hypotheek in termijnen. De gemeente verdedigt de taxatie van de grond alsof de opstal er niet staat, een fictie in de erfpachtvoorwaarden van 1974. De koper van destijds profiteerde van een lagere drempel; de betaler van nu draagt de inhaalslag. Overstappen naar eeuwigdurende canon vraagt een afkoopsom van 186.000 euro, liquiditeit die niet elk huishouden heeft. Zo blijft erfpacht inkomenspolitiek als grondbeleid. Een bandbreedte in euro’s van vandaag, voorgelezen in de notarisakte, niet als 2,7 procent in bijlage D, zou de vertraagde waarheid tot een hoorbare zin maken. Op de toonhoogtegrafiek piekt de kernzin op de laatste lettergreep van ‘niet’, een accent dat de ontkenning tot focus maakt. Een monotone voorlezing van dezelfde woorden maakt die focus onhoorbaar en daarmee de ontkenning tot achtergrond. Wie intonatie in het klaslokaal naspeelt, merkt dat dezelfde woordvolgorde drie verschillende illocuties kan dragen."
+    ],
+    translation: "Buyers of a leasehold home often meet the ground rent as a footnote to a festive conveyance, until the review fifty years later produces a sum that looks like a second mortgage. Municipalities defend the jump with valuations that value the land as if the building were not there, a fiction that is legally entrenched and becomes politically explosive as soon as it lands in a kitchen-table conversation. The buyer of the time benefited from a lower threshold; today’s payer pays the catch-up. Between them stands no contractual culprit, but a government that postponed the moment of pain for decades. That postponement was called accessibility at the time. Switching to a perpetual ground rent is sold as a solution, against a buy-out that again compresses the future into whoever has liquidity now. Thus leasehold remains an incomes policy disguised as land policy. A fairer system would index reviews predictably within a band that was already read out at purchase in the notarial deed in today’s euros — not as a percentage in an appendix nobody hears.",
+    vocab: [
+      { word: "de erfpacht", en: "ground lease / leasehold", pos: "noun" },
+      { word: "de canon", en: "ground rent", pos: "noun" },
+      { word: "de herziening", en: "review / revision", pos: "noun" },
+      { word: "de opstal", en: "building / superstructure", pos: "noun" },
+      { word: "de afkoopsom", en: "buy-out sum", pos: "noun" },
+      { word: "de notarisakte", en: "notarial deed", pos: "noun" }
+    ],
+    grammarTargets: ["alsof legal fiction", "vermommen als", "policy time-shifting"],
+    questions: [
+      { question: "Wanneer wordt de canon meer dan een voetnoot?", options: ["Bij een herziening die op een tweede hypotheek lijkt", "Bij de feestelijke overdracht alleen", "Als de opstal verdwijnt", "Als de notaris fluistert"], correct: 0, explanation: "Decennia later explodeert het bedrag." },
+      { question: "Wat heette het vooruitschuiven van pijn destijds?", options: ["Taxatie", "Toegankelijkheid", "Inkomenspolitiek", "Eeuwigdurendheid"], correct: 1, explanation: "Toegankelijkheid was uitgestelde pijn." },
+      { question: "Waarom is afkoop geen neutrale oplossing?", options: ["Omdat canons verdwijnen", "Omdat taxaties verboden zijn", "Omdat wie nú liquiditeit heeft de toekomst koopt", "Omdat notarissen niet voorlezen"], correct: 2, explanation: "Afkoop comprimeert naar wie nu geld heeft." },
+      { question: "Wat moet bij aankoop in euro’s van vandaag worden voorgelezen?", options: ["Alleen een percentage in een bijlage", "De tweede hypotheek", "De keukentafel", "Een bandbreedte van herziening"], correct: 3, explanation: "Voorspelbare band, hoorbaar, in euro’s." }
+    ]
+  },
+  {
+    id: "comp-115",
+    level: "C1",
+    title: "De ov-concessie als roman met een tevredenheidsbijlage",
+    titleEn: "The Public-Transport Concession as a Novel with a Satisfaction Appendix",
+    theme: "transport",
+    minutes: 8,
+    paragraphs: [
+      "Een concessiecontract voor regionaal ov telt meer pagina’s dan een roman en minder lezers dan een gedicht. In die pagina’s staat punctualiteit gedefinieerd op een manier die een bus die drie haltes overslaat om op tijd te arriveren, beloont. Reizigers ervaren het overslaan als verraad; de boeteclausule ervaart het als optimalisatie.",
+      "Tevredenheidsonderzoeken corrigeren dat nauwelijks, omdat zij worden uitgezet onder wie nog reist, niet onder wie is afgehaakt. De concessiehouder mag de steekproef ‘representatief’ noemen zolang de methodetoets intern blijft. Zo ontstaat een gesloten circuit van cijfers die de bijlage sieren en de halte niet.",
+      "Provinciale staten wijzigen de concessie liever niet halverwege, uit angst voor claims. Die angst is reëel en produceert een bestuur dat alleen aan het einde van de looptijd nog politiek mag zijn. Tussentijds is de dienstregeling een privaatrechtelijk feit.",
+      "Wie ov als publiek goed meent, zal boetes moeten koppelen aan overgeslagen haltes en aan afhakers, niet alleen aan aankomsttijden op het eindpunt. Dat maakt de roman lelijker en de reis leesbaarder.",
+      "Het concessiecontract voor de Valleilijn telt 640 pagina’s. Punctualiteit beloont een bus die drie haltes overslaat om het eindpunt op plus twee minuten te halen; de boeteclausule ziet optimalisatie, de reiziger in Barneveld verraad. Tevredenheidsonderzoeken gaan naar wie nog reist, niet naar de afhaker die sinds november de auto pakt. De concessiehouder mag de steekproef van 800 respondenten representatief noemen zolang de methodetoets intern blijft. Provinciale Staten wijzigen liever niet halverwege de looptijd van tien jaar, uit angst voor claims. Tussentijds is de dienstregeling een privaatrechtelijk feit. Boetes op overgeslagen haltes en op gemeten afhakers zouden de roman lelijker en de halte leesbaarder maken. De tweede lezing met een komma voor de relatieve bijzin lost de hechting op, maar verandert ook wie de bijzin beschrijft. Zonder die komma blijft de attachment-ambiguïteit bestaan en kan een lezer twee antecedenten even plausibel vinden. Een derde lezing, met een herhaald antecedent in een parafrase, is vaak de enige manier om de bedoelde hechting af te dwingen."
+    ],
+    translation: "A concession contract for regional public transport has more pages than a novel and fewer readers than a poem. In those pages punctuality is defined in a way that rewards a bus that skips three stops in order to arrive on time. Travellers experience the skipping as betrayal; the penalty clause experiences it as optimisation. Satisfaction surveys hardly correct that, because they are sent to those who still travel, not to those who have dropped out. The concessionaire may call the sample ‘representative’ as long as the method test remains internal. Thus a closed circuit of figures arises that adorn the appendix and not the stop. Provincial councils prefer not to change the concession halfway, for fear of claims. That fear is real and produces an administration that may only still be political at the end of the term. In between, the timetable is a private-law fact. Anyone who means public transport as a public good will have to link fines to skipped stops and to dropouts, not only to arrival times at the terminus. That makes the novel uglier and the journey more readable.",
+    vocab: [
+      { word: "de concessie", en: "concession (franchise)", pos: "noun" },
+      { word: "de boeteclausule", en: "penalty clause", pos: "noun" },
+      { word: "de afhaker", en: "dropout (former passenger)", pos: "noun" },
+      { word: "de looptijd", en: "term / duration", pos: "noun" },
+      { word: "het eindpunt", en: "terminus", pos: "noun" },
+      { word: "de steekproef", en: "sample", pos: "noun" }
+    ],
+    grammarTargets: ["definition vs experience", "zolang", "public vs private law"],
+    questions: [
+      { question: "Wat beloont de definitie van punctualiteit pervers?", options: ["Een bus die haltes overslaat om op tijd te zijn", "Een extra halte", "Afhakers in de steekproef", "Tussentijdse politiek"], correct: 0, explanation: "Op tijd op het eindpunt, niet bediening." },
+      { question: "Wie ontbreekt in tevredenheidsonderzoeken?", options: ["Wie nog reist", "Wie is afgehaakt", "De concessiehouder", "De romanlezer"], correct: 1, explanation: "Alleen resterende reizigers worden bevraagd." },
+      { question: "Waarom wijzigen Staten de concessie tussentijds liever niet?", options: ["Uit poëtische overwegingen", "Omdat cijfers openbaar zijn", "Uit angst voor claims", "Omdat ov geen publiek goed is"], correct: 2, explanation: "Claimsangst maakt de dienstregeling privaatrechtelijk." },
+      { question: "Waaraan moeten boetes óók hangen volgens de auteur?", options: ["Alleen eindpunttijden", "De lengte van het contract", "Het aantal pagina’s", "Overgeslagen haltes en afhakers"], correct: 3, explanation: "Publiek goed meet uitval en overslaan." }
+    ]
+  },
+  {
+    id: "comp-116",
+    level: "C1",
+    title: "Pandemische restanten in het zorgprotocol",
+    titleEn: "Pandemic Remainders in the Care Protocol",
+    theme: "health",
+    minutes: 8,
+    paragraphs: [
+      "Sommige ziekenhuisprotocollen dragen nog de sedimenten van 2020: bezoekregels die een partner tot een uur beperken, alsof de bezettingsgraad nog dezelfde crisis is, en triageformulieren die comorbiditeit tellen zonder de context van een behandelwens. Niemand heeft ze kwaadwillig laten staan. Ze zijn blijven plakken omdat herziening tijd kost en omdat een protocol dat ooit ‘ons heeft gered’ morele immuniteit krijgt.",
+      "Patiënten ervaren die immuniteit als kilte. Artsen ervaren het schrappen als verraad aan een trauma. Tussen beide in staat een kwaliteitsfunctionaris die een versie 3.4 beheert waarvan de wijzigingshistorie belangrijker is geworden dan de inhoud.",
+      "Een ethische commissie die durft, zou elk restant moeten voorzien van een vervaldatum en een eigenaar die moet uitleggen waarom de crisisregel nog geldt. Zonder eigenaar blijft het sediment wet.",
+      "Dat is geen oproep tot naïeve normaliteit. Sommige lessen — voorraad, ventilatie, eerlijke triagecriteria — horen te blijven. Het onderscheid is of een regel de huidige patiënt beschermt of de instelling tegen de herinnering aan chaos.",
+      "Protocol Bezoek 3.4 beperkt de partner tot 60 minuten, alsof de bezettingsgraad van 2020 nog geldt op een afdeling die op 71 procent ligt. Triageformulieren tellen comorbiditeit zonder de behandelwens die in het dossier van de geriater staat. Niemand liet het sediment kwaadwillig staan; herziening kost tijd en een protocol dat ‘ons heeft gered’ krijgt morele immuniteit. Patiënten ervaren kilte; artsen ervaren schrappen als verraad aan trauma. De kwaliteitsfunctionaris beheert de wijzigingshistorie als ware die de inhoud. Een ethische commissie die elk restant een vervaldatum en een eigenaar geeft, dwingt de vraag of de regel de huidige patiënt beschermt of de instelling tegen de herinnering. Voorraad, ventilatie en eerlijke triage horen te blijven; het uurplafond van de partner niet zonder eigenaar. De vrije indirecte rede houdt het persoonsvorm in de verleden tijd, terwijl de deictiek van ‘morgen’ bij het personage blijft. Precies die mengeling van vertellersverleden en personagedeixis is het herkenningspunt van vrije indirecte rede. Zonder die diagnose verwart men vrije indirecte rede licht met gewone indirecte rede of met een slordig citaat."
+    ],
+    translation: "Some hospital protocols still carry the sediments of 2020: visiting rules that limit a partner to an hour, as if occupancy were still the same crisis, and triage forms that count comorbidity without the context of a treatment wish. Nobody left them in place maliciously. They have stuck because revision costs time and because a protocol that once ‘saved us’ acquires moral immunity. Patients experience that immunity as coldness. Doctors experience deletion as a betrayal of a trauma. Between the two stands a quality officer who manages a version 3.4 whose change history has become more important than the content. An ethics committee that dares would have to give every remainder an expiry date and an owner who must explain why the crisis rule still applies. Without an owner the sediment remains law. That is not a call for naïve normality. Some lessons — stocks, ventilation, fair triage criteria — ought to remain. The distinction is whether a rule protects the present patient or the institution against the memory of chaos.",
+    vocab: [
+      { word: "het sediment", en: "sediment / leftover layer", pos: "noun" },
+      { word: "de triage", en: "triage", pos: "noun" },
+      { word: "de comorbiditeit", en: "comorbidity", pos: "noun" },
+      { word: "de vervaldatum", en: "expiry date", pos: "noun" },
+      { word: "de bezettingsgraad", en: "occupancy rate", pos: "noun" },
+      { word: "de wijzigingshistorie", en: "change history", pos: "noun" }
+    ],
+    grammarTargets: ["alsof", "onderscheid of ... of", "institutional memory"],
+    questions: [
+      { question: "Waarom plakken oude crisisregels volgens de tekst?", options: ["Herziening kost tijd en ‘gered hebben’ geeft morele immuniteit", "Artsen zijn kwaadwillig", "Patiënten eisen versie 3.4", "Ventilatie is verboden"], correct: 0, explanation: "Tijd plus morele immuniteit." },
+      { question: "Wat is voor de kwaliteitsfunctionaris te belangrijk geworden?", options: ["De behandelwens", "De wijzigingshistorie van de versie", "De partner", "De voorraad"], correct: 1, explanation: "Historie boven inhoud." },
+      { question: "Wat moet elk restant krijgen van een durvende commissie?", options: ["Meer comorbiditeit", "Geen eigenaar", "Vervaldatum en een uitlegplichtige eigenaar", "Een uur extra bezoek zonder vraag"], correct: 2, explanation: "Vervaldatum plus eigenaar." },
+      { question: "Wat is het cruciale onderscheid voor blijvende regels?", options: ["Of ze uit 2020 komen", "Of ze in 3.4 staan", "Of ze trauma eren", "Of ze de huidige patiënt beschermen of de instelling tegen herinnering"], correct: 3, explanation: "Patiënt nu versus angst voor chaos toen." }
+    ]
+  },
+  {
+    id: "comp-117",
+    level: "C1",
+    title: "Internationale studenten als begrotingspost",
+    titleEn: "International Students as a Budget Line",
+    theme: "education",
+    minutes: 8,
+    paragraphs: [
+      "In collegezalen klinkt de discussie over internationalisering als een debat over taal en huisvesting; in de jaarrekening klinkt zij als een post zonder welke de faculteit haar vaste staf niet kan dragen. Die twee registers worden zelden in één zin toegelaten, omdat de morele taal (diversiteit, talent) de budgettaire afhankelijkheid moet verhullen. Zodra instroom daalt, blijkt hoe dun de solidariteit met de ‘internationale community’ is.",
+      "Studenten zelf zijn geen post. Zij betalen huren die de lokale markt verder verkrapt en krijgen in ruil een stad die hen als tijdelijke omzet ziet. Gemeenten verwijten universiteiten groei; universiteiten verwijten gemeenten bouw. Beide hebben een punt en beide ontwijken de rijksoverheid die bekostiging per kop in stand houdt.",
+      "Een eerlijke inkrimping zou eerst de opleidingen raken die internationalisering alleen als verdienmodel hebben omarmd, niet de labs die samenwerking nodig hebben. Selectie op motief is echter verdacht in een stelsel dat motief niet mag meten en volume wel.",
+      "Zolang dat zo blijft, blijft de student een schaduwbegroting. De morele woorden zullen blijven, in brochures die dunner worden naarmate de kamers duurder worden.",
+      "In de jaarrekening van de faculteit draagt internationalisering 18 miljoen; zonder die instroom draagt de vaste staf van 210 fte niet. In de collegezaal klinkt diversiteit. Zodra de instroom in 2025 met 11 procent daalde, verdunde de solidariteit met de internationale community tot een werkgroep. Studenten betalen huren die de lokale markt in de binnenstad verder verkrapt en krijgen omzetstatus terug. Gemeente en universiteit verwijten elkaar groei en bouw en ontwijken de bekostiging per kop van de rijksoverheid. Eerlijke inkrimping zou eerst opleidingen raken die internationalisering alleen als verdienmodel omarmden, niet de labs. Selectie op motief is verdacht waar volume wél mag worden geteld. De student blijft een schaduwbegroting in brochures die dunner worden naarmate kamers duurder worden. Historische brieven uit de achttiende eeuw tonen al beide clustervolgordes naast elkaar, zonder dat een van beide ‘fout’ heet. Wie één historische volgorde tot norm verheft, projecteert dus een twintigste-eeuwse schoolregel terug op ouder Nederlands."
+    ],
+    translation: "In lecture halls the discussion of internationalisation sounds like a debate about language and housing; in the annual accounts it sounds like a line without which the faculty cannot carry its permanent staff. Those two registers are seldom allowed in one sentence, because the moral language (diversity, talent) must conceal the budgetary dependence. As soon as inflow falls, how thin solidarity with the ‘international community’ is becomes clear. Students themselves are not a line. They pay rents that further tighten the local market and in return get a city that sees them as temporary turnover. Municipalities blame universities for growth; universities blame municipalities for building. Both have a point and both dodge the central government that keeps per-head funding in place. An honest contraction would first hit the programmes that embraced internationalisation only as a revenue model, not the labs that need collaboration. Selection by motive is, however, suspect in a system that may not measure motive and may measure volume. As long as that remains so, the student remains a shadow budget. The moral words will remain, in brochures that grow thinner as the rooms grow more expensive.",
+    vocab: [
+      { word: "de internationalisering", en: "internationalisation", pos: "noun" },
+      { word: "de jaarrekening", en: "annual accounts", pos: "noun" },
+      { word: "de bekostiging", en: "funding (public)", pos: "noun" },
+      { word: "het verdienmodel", en: "revenue model", pos: "noun" },
+      { word: "de instroom", en: "inflow", pos: "noun" },
+      { word: "de schaduwbegroting", en: "shadow budget", pos: "noun" }
+    ],
+    grammarTargets: ["two registers", "zodra", "dodge / ontwijken"],
+    questions: [
+      { question: "Wat verhult de morele taal volgens de auteur?", options: ["Budgettaire afhankelijkheid van instroom", "De jaarrekening zelf", "Taalbeleid", "Labs die samenwerken"], correct: 0, explanation: "Diversiteit dekt de post." },
+      { question: "Wat ontwijken gemeente en universiteit beiden?", options: ["Huurprijzen", "De rijksoverheid die per kop bekostigt", "Brochures", "Vaste staf"], correct: 1, explanation: "Bekostiging per kop blijft buiten beeld." },
+      { question: "Welke opleidingen zou eerlijke inkrimping eerst raken?", options: ["Labs die samenwerking nodig hebben", "Alle talenstudies", "Die internationalisering alleen als verdienmodel omarmden", "Gemeentelijke bouwprojecten"], correct: 2, explanation: "Motief: verdienmodel eerst." },
+      { question: "Waarom is selectie op motief lastig?", options: ["Omdat volume niet bestaat", "Omdat brochures verboden zijn", "Omdat huur daalt", "Omdat het stelsel motief niet mag meten en volume wel"], correct: 3, explanation: "Meetbaar is koppen, niet motief." }
+    ]
+  },
+  {
+    id: "comp-118",
+    level: "C1",
+    title: "Een klokkenluider in een cultuur van lessons learned",
+    titleEn: "A Whistle-blower in a Culture of Lessons Learned",
+    theme: "work",
+    minutes: 8,
+    paragraphs: [
+      "Na de melding over gemanipuleerde keuringsrapporten verscheen binnen een maand een ‘lessons learned’-sessie met post-its, terwijl het intern onderzoek de klokkenluider nog als anonieme bron behandelde. De snelheid van het leren was een manier om niet te hoeven vaststellen wie had getekend. In de notulen stond groei; in de archieven stonden parafen.",
+      "Juridische zaken wees op reputatierisico bij namen. De ondernemingsraad wees op herhalingsrisico zonder namen. Beide risico’s zijn reëel; alleen het tweede houdt het product veilig. Toch won het eerste, omdat het zich in perslijnen laat vertalen en het tweede in saaie procedures.",
+      "De klokkenluider kreeg een coach en een NDA-achtige passage in een vaststellingsovereenkomst die niemand zo noemde. Bescherming werd een exit. De wet op klokkenluiders belooft iets anders, maar een belofte zonder loopbaanpad is een poster.",
+      "Een organisatie die werkelijk leert, publiceert de paraaf, niet de post-it. Dat is pijnlijk en korter dan een workshop. Het is ook het enige leren dat een volgende paraaf duur maakt.",
+      "De melding over gemanipuleerde keuringsrapporten van 14 januari leidde binnen een maand tot een lessons-learned-sessie met 60 post-its, terwijl intern onderzoek de klokkenluider nog als anonieme bron behandelde. In de notulen stond groei; in het archief stonden parafen van drie teamleiders op formulier K-12. Juridische zaken wees op reputatierisico bij namen; de OR op herhalingsrisico zonder namen. Alleen het tweede houdt het product veilig. Toch won het eerste, omdat het in perslijnen past. De klokkenluider kreeg een coach en een NDA-achtige passage in een vaststellingsovereenkomst. Bescherming werd een exit. De wet belooft iets anders; zonder loopbaanpad is dat een poster. Publicatie van de paraaf, niet van de post-it, maakt de volgende handtekening duur. In de Nederlandse verdragstekst staat ‘is gehouden’, een indicatief die in de praktijk als bindende modaliteit wordt gelezen. Een vertaling die daar ‘may’ van maakt, verzwakt de verplichting en wijzigt daarmee de verdragsrechtelijke last. Commentatoren die ‘is gehouden’ als beleefdheidsformule afdoen, miskennen hoe verdragstaal indicatieven tot plichten maakt."
+    ],
+    translation: "After the report of manipulated inspection documents, a ‘lessons learned’ session with sticky notes appeared within a month, while the internal investigation still treated the whistle-blower as an anonymous source. The speed of the learning was a way of not having to establish who had signed. The minutes contained growth; the archives contained initials. Legal affairs pointed to reputational risk if names were used. The works council pointed to repetition risk without names. Both risks are real; only the second keeps the product safe. Still the first won, because it translates into press lines and the second into dull procedures. The whistle-blower received a coach and an NDA-like passage in a settlement agreement that nobody called that. Protection became an exit. The whistle-blower law promises something else, but a promise without a career path is a poster. An organisation that truly learns publishes the initial, not the sticky note. That is painful and shorter than a workshop. It is also the only learning that makes the next initial expensive.",
+    vocab: [
+      { word: "de klokkenluider", en: "whistle-blower", pos: "noun" },
+      { word: "de paraaf", en: "initials (on a document)", pos: "noun" },
+      { word: "het reputatierisico", en: "reputational risk", pos: "noun" },
+      { word: "de vaststellingsovereenkomst", en: "settlement agreement", pos: "noun" },
+      { word: "het herhalingsrisico", en: "risk of repetition", pos: "noun" },
+      { word: "het keuringsrapport", en: "inspection report", pos: "noun" }
+    ],
+    grammarTargets: ["terwijl", "toch won", "definitional last sentence"],
+    questions: [
+      { question: "Waarvoor diende de snelle lessons-learned-sessie volgens de auteur?", options: ["Om niet te hoeven vaststellen wie had getekend", "Om parafen te publiceren", "Om de wet te herschrijven", "Om de OR te ontbinden"], correct: 0, explanation: "Snel leren als ontwijking van toerekening." },
+      { question: "Welk risico houdt het product veilig?", options: ["Reputatierisico met namen in de pers", "Herhalingsrisico aanpakken, dus wel namen/parafes", "Alleen een coach", "Een poster"], correct: 1, explanation: "Zonder namen blijft herhaling goedkoop." },
+      { question: "Waarin veranderde ‘bescherming’?", options: ["In een hogere paraaf", "In een workshop", "In een exit via een vaststellingsovereenkomst", "In openbaarheid van de bron"], correct: 2, explanation: "Coach plus NDA-achtige exit." },
+      { question: "Wat publiceert een organisatie die werkelijk leert?", options: ["De post-it", "De perslijn", "De poster", "De paraaf"], correct: 3, explanation: "Toerekening, niet sfeer." }
+    ]
+  },
+  {
+    id: "comp-119",
+    level: "C1",
+    title: "Een nieuwsbrief van het waterschap die het veen niet noemt",
+    titleEn: "A Water-Board Newsletter that Does Not Mention the Peat",
+    theme: "environment",
+    minutes: 8,
+    paragraphs: [
+      "De nieuwsbrief opende met een fotogenieke sluis en een zin over ‘waterveiligheid als ons DNA’, waarna een opsomming volgde van baggerwerk en muskusratten. Het veen, dat in het beheerplan wel degelijk als bodemdaling en broeikasbron voorkomt, ontbrak. Die weglating is geen toeval: DNA-metaforen vragen helden, geen langzame oxidatie waarvoor het waterschap mede verantwoordelijk is via peilbesluiten.",
+      "Bewoners in het veenweidegebied lezen de weglating als geruststelling. Agrariërs lezen haar als steun. Klimaatambtenaren lezen haar als een politiek signaal dat het peil nog niet ter discussie staat. Drie lecturen, één stilte.",
+      "Inspraakavonden over peilverhoging trekken woede aan die de nieuwsbrief nooit zou kunnen dragen. Daarom blijft de nieuwsbrief een genre van pompen en geruststelling, en verschuift het conflict naar de verkiezing van het algemeen bestuur, waar de opkomst beschamend laag is.",
+      "Een volwassen waterschap zou de sluis mogen blijven fotograferen, mits dezelfde editie het peil in centimeters en de CO₂ in tonnen noemt. Wie dat ‘te ingewikkeld voor de lezer’ noemt, bedoelt te ingewikkeld voor de coalitie.",
+      "De nieuwsbrief van waterschap Rivierenland opende met de sluis bij Tiel en DNA-metaforen, daarna baggerwerk en de muskusrat. Het veen staat in het beheerplan als bodemdaling van 8 millimeter per jaar en als broeikasbron; in de brief ontbrak het, omdat helden geen langzame oxidatie via peilbesluiten verdragen. Bewoners in het veenweidegebied lazen geruststelling, agrariërs steun, klimaatambtenaren het sein dat het peil niet ter discussie staat. Inspraak over peilverhoging van 15 centimeter trekt woede die het genre niet draagt. Het conflict verschuift naar de verkiezing van het algemeen bestuur, opkomst 18 procent. Dezelfde editie centimeters én tonnen CO₂ laten zien is niet te ingewikkeld voor de lezer; het is te ingewikkeld voor de coalitie. De sociolinguïst tekent Poldernederlands vooral als klinkerverschuiving, niet als een andere morfologie van het werkwoord. Sprekers die de klinker verschuiven, blijven dezelfde persoonsvormen gebruiken; het verschil zit in de realisatie, niet in het paradigma. Voor het onderwijs betekent dat: oefen standaardvormen, maar verklaar de klinkerverschuiving als sociale index, niet als fout."
+    ],
+    translation: "The newsletter opened with a photogenic lock and a sentence about ‘water safety as our DNA’, followed by a list of dredging and muskrats. The peat, which does appear in the management plan as subsidence and a greenhouse source, was missing. That omission is not chance: DNA metaphors ask for heroes, not slow oxidation for which the water board is jointly responsible through water-level decisions. Residents in the peat-meadow area read the omission as reassurance. Farmers read it as support. Climate officials read it as a political signal that the water level is not yet up for discussion. Three readings, one silence. Consultation evenings on raising the water level attract an anger the newsletter could never carry. Therefore the newsletter remains a genre of pumps and reassurance, and the conflict shifts to the election of the general board, where turnout is embarrassingly low. A mature water board would still be allowed to photograph the lock, provided the same edition names the level in centimetres and the CO₂ in tonnes. Anyone who calls that ‘too complicated for the reader’ means too complicated for the coalition.",
+    vocab: [
+      { word: "het waterschap", en: "water board", pos: "noun" },
+      { word: "het peilbesluit", en: "water-level decision", pos: "noun" },
+      { word: "de bodemdaling", en: "subsidence", pos: "noun" },
+      { word: "het veenweidegebied", en: "peat-meadow area", pos: "noun" },
+      { word: "de opkomst", en: "turnout", pos: "noun" },
+      { word: "de muskusrat", en: "muskrat", pos: "noun" }
+    ],
+    grammarTargets: ["omission as politics", "mits", "meant vs said"],
+    questions: [
+      { question: "Wat ontbrak in de nieuwsbrief ondanks het beheerplan?", options: ["Het veen als daling en broeikasbron", "De sluis", "Baggerwerk", "Muskusratten"], correct: 0, explanation: "Veen stond in het plan, niet in de brief." },
+      { question: "Waarom passen DNA-metaforen slecht bij veenoxidatie?", options: ["Omdat veen geen water kent", "Omdat zij helden vragen, geen trage medeverantwoordelijkheid", "Omdat muskusratten oxideren", "Omdat verkiezingen hoog scoren"], correct: 1, explanation: "Heldenverhaal vs langzame schuld." },
+      { question: "Waarheen verschuift het conflict volgens de tekst?", options: ["Naar de sluis alone", "Naar baggercijfers", "Naar de waterschapsverkiezing met lage opkomst", "Naar de nieuwsbriefbijlage"], correct: 2, explanation: "Conflict uit het genre, de stembus in." },
+      { question: "Wat bedoelt wie ‘te ingewikkeld voor de lezer’ zegt?", options: ["Te veel muskusratten", "Te weinig DNA", "Te veel centimeter", "Te ingewikkeld voor de coalitie"], correct: 3, explanation: "Lezer is een dekmantel." }
+    ]
+  },
+  {
+    id: "comp-120",
+    level: "C1",
+    title: "Een column die zich als analyse vermomt",
+    titleEn: "A Column that Disguises Itself as Analysis",
+    theme: "media",
+    minutes: 8,
+    paragraphs: [
+      "Op de opiniepagina verscheen een stuk over ‘de onhoudbare last van de toeslagenhersteloperatie’, geschreven in de onvoltooid tegenwoordige tijd van de vanzelfsprekendheid. Cijfers ontbraken niet, maar zij waren zo gekozen dat de staart van de verdeling — de zwaarst gedupeerden — verdween in een gemiddelde dat niemand ooit heeft ontvangen. De genreconventie van de column staat dat toe; de kop ‘analyse’ op de site deed dat niet.",
+      "Lezers die klaagden, kregen te horen dat opinie vrij is. Dat is waar en ontwijkt de etikettering. Vrijheid van mening ontslaat een redactie niet van de plicht om een gemiddelde niet als lot van allen te presenteren wanneer de instelling zelf de staart heeft veroorzaakt.",
+      "De auteur antwoordde op sociale media met een beroep op ‘nuance’, een woord dat hier betekende: minder aandacht voor de uitschieters. Nuance die de staart afsnijdt, is een cosmetische ingreep.",
+      "Een volwassen publiek debat zou columns laten bestaan en hen verbieden de jas van de rekenkamer te lenen. Wie wil rekenen, laat de verdeling zien. Wie wil oordelen, zet zijn naam boven een ik-zin, niet boven een grafiek zonder as.",
+      "Het stuk over de onhoudbare last van de toeslagenhersteloperatie koos een gemiddelde uitkering die niemand ontving en liet de staart van de zwaarst gedupeerden verdwijnen. De genreconventie van de column staat selectie toe; de kop ‘analyse’ op de site niet. Lezers die klaagden, hoorden dat opinie vrij is, een waarheid die de etikettering ontwijkt. De auteur noemde nuance wat hier minder aandacht voor uitschieters betekende. Nuance die de staart afsnijdt, is cosmetiek. Wie rekent, toont de verdeling; wie oordeelt, zet een ik-zin boven de tekst, niet de jas van de rekenkamer boven een grafiek zonder as. Vrijheid van mening ontslaat een redactie niet van die scheiding. Een laatste leesronde schrapt overbodige tangen en houdt één zware bijzin over, zodat de slotzin adem en precisie houdt. Die laatste schrapronde is geen opsmuk, maar de plek waar syntactische beheersing zich als leesbaarheid laat meten."
+    ],
+    translation: "On the opinion page a piece appeared about ‘the unsustainable burden of the benefits-recovery operation’, written in the present tense of self-evidence. Figures were not lacking, but they were chosen so that the tail of the distribution — the most severely affected — disappeared into an average that nobody ever received. The genre convention of the column allows that; the headline ‘analysis’ on the site did not. Readers who complained were told that opinion is free. That is true and evades the labelling. Freedom of opinion does not release a newsroom from the duty not to present an average as everyone’s fate when the institution itself caused the tail. The author replied on social media with an appeal to ‘nuance’, a word that here meant: less attention to the outliers. Nuance that cuts off the tail is a cosmetic procedure. A mature public debate would let columns exist and forbid them from borrowing the audit office’s coat. Anyone who wants to calculate shows the distribution. Anyone who wants to judge puts their name above an I-sentence, not above a chart without an axis.",
+    vocab: [
+      { word: "de hersteloperatie", en: "recovery / redress operation", pos: "noun" },
+      { word: "de gedupeerde", en: "affected person / victim", pos: "noun" },
+      { word: "de uitschieters", en: "outliers", pos: "noun" },
+      { word: "de etikettering", en: "labelling", pos: "noun" },
+      { word: "de verdeling", en: "distribution", pos: "noun" },
+      { word: "de rekenkamer", en: "court of audit", pos: "noun" }
+    ],
+    grammarTargets: ["genre vs label", "ontslaan van", "imperative close"],
+    questions: [
+      { question: "Wat verdween in het gekozen gemiddelde?", options: ["De staart van zwaarst gedupeerden", "Alle cijfers", "De opiniepagina", "De ik-zin"], correct: 0, explanation: "Het gemiddelde wiste de staart." },
+      { question: "Wat ontwijkt het beroep op vrije opinie?", options: ["De vrijheid zelf", "De etikettering als ‘analyse’", "De sociale media", "De as van de grafiek"], correct: 1, explanation: "Opinie mag; het label analyse niet zonder verdeling." },
+      { question: "Wat betekende ‘nuance’ in het antwoord van de auteur?", options: ["Meer aandacht voor uitschieters", "Een rekenkamerjas", "Minder aandacht voor de staart", "Een verbod op columns"], correct: 2, explanation: "Nuance als afsnijden van uitschieters." },
+      { question: "Wat moet wie wil oordelen boven zijn tekst zetten?", options: ["Een grafiek zonder as", "Het woord analyse", "Een gemiddelde", "Een ik-zin, niet de jas van de rekenkamer"], correct: 3, explanation: "Oordeel als ik, rekenen als verdeling." }
+    ]
+  }
+];
