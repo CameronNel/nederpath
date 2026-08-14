@@ -38,7 +38,7 @@ export const passages = [
     minutes: 5,
     paragraphs: [
       "Milan had een sollicitatiegesprek in Den Haag, maar de sprinter vanuit Leiden stopte plotseling bij Voorschoten. Over de omroep zei de conducteur dat er een seinstoring was en dat reizigers beter konden overstappen op een bus die NS had geregeld. Hoewel de bus vol zat, vond Milan nog een staanplaats naast iemand die dezelfde storing live op Twitter volgde.",
-      "Omdat hij niet precies wist hoe laat hij zou aankomen, stuurde hij de recruiter een kort bericht met een screenshot van de storing. Zij antwoordde dat het gesprek een half uur later kon beginnen, mits hij bij binnenkomst eerst bij de receptie zou aanmelden. Die rustige reactie zorgde ervoor dat hij minder zenuwachtig werd.",
+      "Omdat hij niet precies wist hoe laat hij zou aankomen, stuurde hij de recruiter een kort bericht met een screenshot van de storing. Zij antwoordde dat het gesprek een half uur later kon beginnen, mits hij zich bij binnenkomst eerst bij de receptie aanmeldde. Die rustige reactie zorgde ervoor dat hij minder zenuwachtig werd.",
       "In Den Haag liep hij alsnog zwetend het kantoor binnen, maar hij had zijn ov-chipkaart netjes uitgecheckt bij de bushalte. Na afloop vroeg de recruiter niet alleen naar zijn cv, maar ook hoe hij met onverwachte situaties omgaat. Milan merkte dat de late trein onbedoeld een gesprekonderwerp was geworden dat in zijn voordeel werkte.",
       "Het kantoor zat een kwartier lopen vanaf Hollands Spoor, en de app toonde die ochtend een flinke vertraging. Milan bewaarde het storingsnummer in zijn mail, omdat de recruiter later vroeg of hij extra reistijd wilde declareren. Hij weigerde een dure taxi, nam de stadsbus en schreef ’s avonds dat een screenshot sterker is dan een vaag excuus."
     ],
@@ -48,14 +48,14 @@ export const passages = [
       { word: "de conducteur", en: "conductor", pos: "noun" },
       { word: "overstappen", en: "to transfer", pos: "verb" },
       { word: "de recruiter", en: "recruiter", pos: "noun" },
-      { word: "aanmelden", en: "to check in / register", pos: "verb" },
+      { word: "aanmeldde", en: "checked in / registered", pos: "verb" },
       { word: "de ov-chipkaart", en: "public-transport smart card", pos: "noun" }
     ],
     grammarTargets: ["hoewel", "omdat", "mits conditional"],
     questions: [
       { question: "Waar stopte de sprinter onverwacht?", options: ["Bij Voorschoten", "In Rotterdam", "Op Schiphol", "In Utrecht"], correct: 0, explanation: "De trein stopte bij Voorschoten door een seinstoring." },
       { question: "Wat stuurde Milan naar de recruiter?", options: ["Zijn volledige cv opnieuw", "Een screenshot van de storing", "Een klacht naar NS", "Een taxi-bon"], correct: 1, explanation: "Hij stuurde een kort bericht met een screenshot." },
-      { question: "Onder welke voorwaarde kon het gesprek later beginnen?", options: ["Als hij een nieuwe kaart kocht", "Als hij de bus bestuurde", "Als hij zich bij de receptie aanmeldde", "Als hij de storing live filmde"], correct: 2, explanation: "De recruiter noemde aanmelden bij de receptie." },
+      { question: "Onder welke voorwaarde kon het gesprek later beginnen?", options: ["Als hij een nieuwe kaart kocht", "Als hij de bus bestuurde", "Als hij zich bij de receptie aanmeldde", "Als hij de storing live filmde"], correct: 2, explanation: "De recruiter vroeg dat hij zich bij de receptie meldde." },
       { question: "Hoe werkte de vertraging uiteindelijk voor Milan?", options: ["Hij miste het gesprek helemaal", "Hij kreeg een boete van NS", "De recruiter vroeg alleen naar zijn hobby’s", "Het werd een voorbeeld van omgaan met tegenslag"], correct: 3, explanation: "De recruiter vroeg hoe hij met onverwachte situaties omgaat." }
     ]
   },
@@ -68,7 +68,7 @@ export const passages = [
     minutes: 5,
     paragraphs: [
       "Sinds drie weken heeft Yasmin pijn in haar rechterknie wanneer zij de trap oploopt. De huisarts onderzocht de knie, schreef eerst rust en een ontstekingsremmer voor en zei dat een doorverwijzing naar de orthopeed nodig was als de pijn niet afnam. Yasmin hoopte dat het vanzelf overging, hoewel ze merkte dat fietsen naar haar werk steeds lastiger werd.",
-      "Op de patiëntenportaal zag ze dat de verwijsbrief al klaarstond, maar de wachttijd bij het ziekenhuis was acht weken. Omdat haar werk fysiek is, vroeg ze de bedrijfsarts om tijdelijk ander werk, zoals baliediensten. Die afspraak kostte een extra gesprek, maar haar leidinggevende begreep het toen beter.",
+      "Op het patiëntenportaal zag ze dat de verwijsbrief al klaarstond, maar de wachttijd bij het ziekenhuis was acht weken. Omdat haar werk fysiek is, vroeg ze de bedrijfsarts om tijdelijk ander werk, zoals baliediensten. Die afspraak kostte een extra gesprek, maar haar leidinggevende begreep het toen beter.",
       "Intussen doet Yasmin de oefeningen die de huisarts heeft uitgeprint en houdt ze een pijndagboek bij. Ze belt de poli nog één keer om te vragen of er een afzegging is, want een eerdere patiënt kan altijd ziek worden. Zo blijft ze actief zonder de wachttijd alleen maar af te wachten.",
       "Haar huisartsenpraktijk zette de verwijsbrief al klaar, en Yasmin belde de poli op het enige kwartier waarop de wachtlijstmedewerker opnam. Die week was er één afzegging die niet bij haar dienst paste, en een latere plek bij een andere orthopeed. De bedrijfsarts schreef tijdelijk meer balie-uren voor tot er een scan is."
     ],
@@ -307,12 +307,12 @@ export const passages = [
     theme: "bureaucracy",
     minutes: 5,
     paragraphs: [
-      "Zonder DigiD kon Hassan zijn zorgtoeslag niet aanpassen nadat hij meer uren was gaan werken. In de bibliotheek hielp een mediacoach hem de aanvraag te starten met zijn burgerservicenummer en een geldig paspoort. De activeringscode zou per post komen, wat drie werkdagen kon duren.",
-      "Toen de brief er was, bleek de code vijf dagen geldig. Hassan activeerde het account meteen op een computer van de bibliotheek, omdat hij zijn telefoon nog niet als tweede stap had ingesteld. De coach liet zien hoe een sms-controle werkt en waarom je de code niet aan bellers moet geven.",
+      "Zonder DigiD kon Hassan zijn zorgtoeslag niet aanpassen nadat hij meer uren was gaan werken. In de bibliotheek hielp een mediacoach hem de aanvraag te starten met zijn burgerservicenummer en een geldig paspoort. De brief met activeringscode zou binnen vijf werkdagen per post komen.",
+      "Toen de brief er was, zei de coach dat hij de DigiD binnen eenentwintig dagen moest activeren, omdat de code daarna verloopt. Hassan activeerde het account meteen op een computer van de bibliotheek, omdat hij zijn telefoon nog niet als tweede stap had ingesteld. De coach liet zien hoe een sms-controle werkt en waarom je de code niet aan bellers moet geven.",
       "Daarna logde hij in op MijnToeslagen en wijzigde het geschatte jaarinkomen. Het scherm waarschuwde dat hij mogelijk moet terugbetalen als het inkomen hoger uitvalt. Hassan zette een herinnering in zijn agenda voor november, zodat hij de schatting nog eens controleert.",
       "De bibliotheek reserveert een avond zonder afspraak voor de mediacoach. Hassan schatte zijn jaarinkomen hoger in, omdat hij meer uren was gaan werken, en de toeslag daalde volgens het scherm. In november wil hij een recente loonstrook meenemen, zodat hij later niet veel moet terugbetalen."
     ],
-    translation: "Without DigiD Hassan could not adjust his healthcare allowance after he had started working more hours. In the library a media coach helped him start the application with his citizen service number and a valid passport. The activation code would arrive by post, which could take three working days. When the letter came, the code turned out to be valid for five days. Hassan activated the account immediately on a library computer, because he had not yet set up his phone as a second step. The coach showed how an SMS check works and why you should not give the code to callers. After that he logged in to MijnToeslagen and changed the estimated annual income. The screen warned that he may have to pay money back if income turns out higher. Hassan put a reminder in his calendar for November so that he checks the estimate once more. The library reserves an evening without an appointment for the media coach. Hassan estimated his annual income higher because he had started working more hours, and the allowance fell according to the screen. In November he wants to bring a recent payslip so that he does not have to repay a lot later.",
+    translation: "Without DigiD Hassan could not adjust his healthcare allowance after he had started working more hours. In the library a media coach helped him start the application with his citizen service number and a valid passport. The letter with the activation code would arrive by post within five working days. When the letter came, the coach said he had to activate DigiD within twenty-one days, because after that the code expires. Hassan activated the account immediately on a library computer, because he had not yet set up his phone as a second step. The coach showed how an SMS check works and why you should not give the code to callers. After that he logged in to MijnToeslagen and changed the estimated annual income. The screen warned that he may have to pay money back if income turns out higher. Hassan put a reminder in his calendar for November so that he checks the estimate once more. The library reserves an evening without an appointment for the media coach. Hassan estimated his annual income higher because he had started working more hours, and the allowance fell according to the screen. In November he wants to bring a recent payslip so that he does not have to repay a lot later.",
     vocab: [
       { word: "de zorgtoeslag", en: "healthcare allowance", pos: "noun" },
       { word: "het burgerservicenummer", en: "citizen service number", pos: "noun" },
@@ -324,7 +324,7 @@ export const passages = [
     grammarTargets: ["omdat", "relatives", "zodat"],
     questions: [
       { question: "Waarom had Hassan DigiD nodig?", options: ["Om zijn zorgtoeslag aan te passen", "Om een auto te kopen", "Om te stemmen in het buitenland", "Om de bibliotheek te sluiten"], correct: 0, explanation: "Zonder DigiD kon hij de toeslag niet aanpassen." },
-      { question: "Hoe lang is de activeringscode geldig?", options: ["Eén uur", "Vijf dagen", "Vijf jaar", "Onbeperkt"], correct: 1, explanation: "De code is vijf dagen geldig." },
+      { question: "Binnen hoeveel dagen moet Hassan zijn DigiD activeren?", options: ["Eén uur", "Eenentwintig dagen", "Vijf jaar", "Onbeperkt"], correct: 1, explanation: "De activeringscode verloopt na eenentwintig dagen." },
       { question: "Waar activeerde hij het account?", options: ["Op straat via wifi", "Bij de buren", "Op een computer van de bibliotheek", "Alleen bij de belastingdienstbalie"], correct: 2, explanation: "Hij activeerde het op een bibliotheekcomputer." },
       { question: "Wat zet hij in zijn agenda voor november?", options: ["Een vakantie naar Spanje", "Het inleveren van zijn paspoort", "Het opzeggen van DigiD", "Een herinnering om het inkomen te controleren"], correct: 3, explanation: "Hij wil de schatting in november nakijken." }
     ]
@@ -698,24 +698,24 @@ export const passages = [
     minutes: 5,
     paragraphs: [
       "Voor haar aangifte inkomstenbelasting moest Chiara inloggen met DigiD en een extra controle via de app, laat op een donderdagavond. De eerste keer mislukte het omdat haar telefoonklok automatisch op de verkeerde tijdzone stond na een reis van drie dagen. Een chatmedewerker, die alleen standaardzinnen leek te gebruiken, wees haar toch op die klok en vroeg haar de pagina te vernieuwen.",
-      "Toen ze binnen was, zag ze vooringevulde gegevens van haar werkgever die bijna klopten, inclusief het loon en de ingehouden premie. Alleen de aftrek voor studiekosten ontbrak, hoewel ze de facturen van de avondcursus had bewaard in een map. Ze uploadde de pdf’s en zette een toelichting in het vrije tekstveld over welke module het betrof.",
-      "Voor ze verzond, liet ze een vriend meekijken die vaker aangifte doet en rustig de schermen afloopt. Hij zag een kleine fout bij de rekening waarop teruggaaf binnenkomt, één cijfer dat was omgedraaid. Chiara corrigeerde het nummer en bewaarde de bevestiging in een map met de naam van het belastingjaar, naast de facturen.",
-      "Na een weekend in het buitenland stond haar telefoonklok een uur verkeerd, en de app weigerde ’s avonds. Ze uploadde de facturen van haar avondcursus als studiekosten. Haar vriend zag twee omgedraaide cijfers in het rekeningnummer; de bevestiging bewaarde ze naast die facturen."
+      "Toen ze binnen was, zag ze vooringevulde gegevens van haar hoofdbaan die bijna klopten, inclusief het loon en de ingehouden loonheffing. Alleen de jaaropgaaf van haar zaterdagbaan in de boekhandel ontbrak. Ze voegde dat loon handmatig toe en zette een korte toelichting in het vrije tekstveld.",
+      "Voor ze verzond, liet ze een vriend meekijken die vaker aangifte doet en rustig de schermen afloopt. Hij zag een kleine fout bij de rekening waarop teruggaaf binnenkomt, één cijfer dat was omgedraaid. Chiara corrigeerde het nummer en bewaarde de bevestiging in een map met de naam van het belastingjaar, naast de jaaropgaven.",
+      "Na een weekend in het buitenland stond haar telefoonklok een uur verkeerd, en de app weigerde ’s avonds. Ze voegde het loon van de zaterdagbaan toe. Haar vriend zag twee omgedraaide cijfers in het rekeningnummer; de bevestiging bewaarde ze naast de jaaropgaven."
     ],
-    translation: "For her income-tax return Chiara had to log in with DigiD and an extra check via the app, late on a Thursday evening. The first time it failed because her phone clock was automatically on the wrong time zone after a trip of three days. A chat employee, who seemed to use only standard sentences, still pointed her to that clock and asked her to refresh the page. Once inside she saw pre-filled data from her employer that were almost correct, including the wage and the withheld contribution. Only the deduction for study costs was missing, although she had kept the invoices from the evening course in a folder. She uploaded the PDFs and put an explanation in the free text field about which module it concerned. Before she submitted, she had a friend who files returns more often look along and calmly walk through the screens. He spotted a small error in the account to which a refund arrives, one digit that had been swapped. Chiara corrected the number and saved the confirmation in a folder named after the tax year, next to the invoices. After a weekend abroad her phone clock was an hour wrong, and the app refused in the evening. She uploaded the invoices from her evening course as study costs. Her friend saw two swapped digits in the account number; she saved the confirmation next to those invoices.",
+    translation: "For her income-tax return Chiara had to log in with DigiD and an extra check via the app, late on a Thursday evening. The first time it failed because her phone clock was automatically on the wrong time zone after a trip of three days. A chat employee, who seemed to use only standard sentences, still pointed her to that clock and asked her to refresh the page. Once inside she saw pre-filled data from her main job that were almost correct, including the wage and the withheld payroll tax. Only the annual statement from her Saturday job in the bookshop was missing. She added that wage by hand and put a short note in the free text field. Before she submitted, she had a friend who files returns more often look along and calmly walk through the screens. He spotted a small error in the account to which a refund arrives, one digit that had been swapped. Chiara corrected the number and saved the confirmation in a folder named after the tax year, next to the annual statements. After a weekend abroad her phone clock was an hour wrong, and the app refused in the evening. She added the wage from the Saturday job. Her friend saw two swapped digits in the account number; she saved the confirmation next to the annual statements.",
     vocab: [
       { word: "de aangifte", en: "tax return", pos: "noun" },
       { word: "vooringevuld", en: "pre-filled", pos: "adjective" },
-      { word: "de aftrek", en: "deduction", pos: "noun" },
-      { word: "de studiekosten", en: "study costs", pos: "noun" },
+      { word: "de jaaropgaaf", en: "annual income statement", pos: "noun" },
+      { word: "de loonheffing", en: "payroll tax", pos: "noun" },
       { word: "de teruggaaf", en: "refund", pos: "noun" },
       { word: "de tijdzone", en: "time zone", pos: "noun" }
     ],
     grammarTargets: ["omdat", "hoewel", "relative die"],
     questions: [
-      { question: "Waarom mislukte het eerste inloggen?", options: ["De telefoonklok stond in de verkeerde tijdzone", "Ze had geen DigiD", "De vriend verzond de aangifte", "Studiekosten zijn verboden"], correct: 0, explanation: "Na een reis stond de klok verkeerd." },
-      { question: "Wat ontbrak bij de vooringevulde gegevens?", options: ["Haar naam", "De aftrek voor studiekosten", "Het belastingjaar", "De chat"], correct: 1, explanation: "Studiekostenaftrek ontbrak." },
-      { question: "Wat uploadde Chiara?", options: ["Een video van de reis", "Haar hele fotoalbum", "Pdf’s van de facturen", "Een nieuwe telefoon"], correct: 2, explanation: "Ze uploadde de pdf’s van de facturen." },
+      { question: "Waarom mislukte het eerste inloggen?", options: ["De telefoonklok stond in de verkeerde tijdzone", "Ze had geen DigiD", "De vriend verzond de aangifte", "Jaaropgaven zijn verboden"], correct: 0, explanation: "Na een reis stond de klok verkeerd." },
+      { question: "Wat ontbrak bij de vooringevulde gegevens?", options: ["Haar naam", "De jaaropgaaf van haar zaterdagbaan", "Het belastingjaar", "De chat"], correct: 1, explanation: "Het loon van de zaterdagbaan stond er nog niet in." },
+      { question: "Wat voegde Chiara toe?", options: ["Een video van de reis", "Haar hele fotoalbum", "Het loon van de zaterdagbaan", "Een nieuwe telefoon"], correct: 2, explanation: "Ze voegde het loon van de boekhandel handmatig toe." },
       { question: "Welke fout zag haar vriend?", options: ["Een verkeerde tijdzone opnieuw", "Een ontbrekende DigiD", "Een te hoge studie", "Een fout rekeningnummer voor de teruggaaf"], correct: 3, explanation: "Het rekeningnummer voor de teruggaaf klopte niet." }
     ]
   }

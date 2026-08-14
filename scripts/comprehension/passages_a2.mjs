@@ -211,14 +211,14 @@ export const passages = [
     minutes: 4,
     paragraphs: [
       "In maart logt Esra in op de site van de Belastingdienst met haar DigiD. Ze doet voor het eerst aangifte, omdat ze vorig jaar een bijbaan in een magazijn had. Het magazijn ligt bij het kanaal in Alphen aan den Rijn. Haar laptop staat op een bureau bij het raam.",
-      "Als een vakje onduidelijk is, belt ze de hulptelefoon. Een medewerker legt uit dat ze reiskosten mag aftrekken als ze meer dan tien kilometer fietste. Esra zoekt haar loonstrook in een groene map. Ze drinkt thee terwijl ze wacht.",
+      "Als een vakje onduidelijk is, belt ze de hulptelefoon. Een medewerker legt uit dat ze de vooringevulde loongegevens moet vergelijken met haar jaaropgaaf. Esra zoekt die jaaropgaaf in een groene map. Ze drinkt thee terwijl ze wacht.",
       "Esra controleert haar burgerservicenummer en verstuurt het formulier. Een week later ziet ze een teruggave van honderdtwintig euro. Ze zet het geld opzij voor een nieuwe winterjas. In de etalage van winkel De Wol hangt al een grijze jas met houten knopen."
     ],
-    translation: "In March Esra logs in to the Tax and Customs Administration site with her DigiD. She files a return for the first time, because last year she had a part-time job in a warehouse. The warehouse is by the canal in Alphen aan den Rijn. Her laptop stands on a desk by the window. If a box is unclear, she calls the help line. An employee explains that she may deduct travel costs if she cycled more than ten kilometres. Esra looks for her payslip in a green folder. She drinks tea while she waits. Esra checks her citizen service number and submits the form. A week later she sees a refund of one hundred and twenty euros. She puts the money aside for a new winter coat. In the window of shop De Wol a grey coat already hangs.",
+    translation: "In March Esra logs in to the Tax and Customs Administration site with her DigiD. She files a return for the first time, because last year she had a part-time job in a warehouse. The warehouse is by the canal in Alphen aan den Rijn. Her laptop stands on a desk by the window. If a box is unclear, she calls the help line. An employee explains that she should compare the pre-filled wage figures with her annual statement. Esra looks for that annual statement in a green folder. She drinks tea while she waits. Esra checks her citizen service number and submits the form. A week later she sees a refund of one hundred and twenty euros. She puts the money aside for a new winter coat. In the window of shop De Wol a grey coat already hangs.",
     vocab: [
       { word: "de aangifte", en: "tax return", pos: "noun" },
-      { word: "aftrekken", en: "to deduct", pos: "verb" },
-      { word: "de reiskosten", en: "travel costs", pos: "noun" },
+      { word: "vooringevuld", en: "pre-filled", pos: "adjective" },
+      { word: "de jaaropgaaf", en: "annual income statement", pos: "noun" },
       { word: "het burgerservicenummer", en: "citizen service number", pos: "noun" },
       { word: "de teruggave", en: "refund", pos: "noun" },
       { word: "het magazijn", en: "warehouse", pos: "noun" }
@@ -226,7 +226,7 @@ export const passages = [
     grammarTargets: ["Conditional 'als'", "Modal verb 'mogen'"],
     questions: [
       { question: "Waarom doet Esra aangifte?", options: ["Omdat ze een huis koopt", "Omdat ze een auto heeft", "Omdat ze vorig jaar een bijbaan had", "Omdat ze verhuist"], correct: 2, explanation: "Ze doet aangifte, omdat ze vorig jaar een bijbaan had." },
-      { question: "Wanneer mag ze reiskosten aftrekken volgens de medewerker?", options: ["Als ze met de taxi ging", "Als ze vloog", "Als ze een auto leende", "Als ze meer dan tien kilometer fietste"], correct: 3, explanation: "Ze mag reiskosten aftrekken als ze meer dan tien kilometer fietste." },
+      { question: "Wat moet Esra vergelijken volgens de medewerker?", options: ["Haar fiets met de trein", "Haar jas met de etalage", "Haar thee met koffie", "De vooringevulde loongegevens met haar jaaropgaaf"], correct: 3, explanation: "Ze moet de vooringevulde loongegevens naast de jaaropgaaf leggen." },
       { question: "Hoeveel is de teruggave?", options: ["Honderdtwintig euro", "Twintig euro", "Duizend euro", "Nul euro"], correct: 0, explanation: "Ze ziet een teruggave van honderdtwintig euro." },
       { question: "Waarvoor zet ze het geld opzij?", options: ["Voor een vakantie", "Voor een nieuwe winterjas", "Voor een feest", "Voor een telefoon"], correct: 1, explanation: "Ze zet het geld opzij voor een nieuwe winterjas." }
     ]

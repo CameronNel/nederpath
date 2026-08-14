@@ -212,6 +212,24 @@ test("Quiz answer positions are varied and every question is valid", () => {
   }
 });
 
+test("Declared current-fact claims have matching source passages", () => {
+  const registry = JSON.parse(readFileSync(join(ROOT, "tests", "fixtures", "comprehension_current_claims.json"), "utf8"));
+  const byId = new Map(passages.map((p) => [p.id, p]));
+  if (!Array.isArray(registry.claims) || registry.claims.length < 1) {
+    throw new Error("current-claims registry is empty");
+  }
+  for (const claim of registry.claims) {
+    const passage = byId.get(claim.id);
+    if (!passage) throw new Error(`provenance id missing from corpus: ${claim.id}`);
+    const body = `${passage.paragraphs.join(" ")}\n${passage.translation}`.toLocaleLowerCase("nl-NL");
+    for (const token of claim.mustInclude || []) {
+      if (!body.includes(String(token).toLocaleLowerCase("nl-NL"))) {
+        throw new Error(`${claim.id} missing declared current-fact token: ${token}`);
+      }
+    }
+  }
+});
+
 test("Two real generator runs are byte-identical and checkout is canonical", () => {
   const before = readFileSync(DATA_PATH, "utf8");
   for (let run = 0; run < 2; run++) {

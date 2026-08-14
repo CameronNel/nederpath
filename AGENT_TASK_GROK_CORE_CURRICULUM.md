@@ -338,6 +338,16 @@ This pass is mandatory and must be meaningfully separate from Pass 1.
 - [x] Re-check `git status`.
 - [x] If any issue is found, fix it and restart Pass 2.
 
+**Factual-truthfulness pass (2026-08-14, after independent-review head `7b2a452`):**
+
+Confirmed defects fixed: 050 reflexive *aanmelden*; 051 *het patiëntenportaal*; 073 July social-rent 4,1% (not 5,5%) and WWS better-label → more points; 059 DigiD 5 werkdagen / 21 dagen; 072 study-cost deduction removed.
+
+Additional defects found in full audit: 032 false cycling-deduction advice; ~30 B2/C1 last paragraphs that mixed real organisations with invented dossiers (generalised). Off-topic leftover in 119 (klinkerverschuiving) removed.
+
+NL/EN sentence counts after rewrite: **1665 / 1665**.
+
+Independent-review tests `074086f` and `7b2a452` preserved.
+
 **Pass 2 evidence (remediation):**
 
 Artifact grep: no `officiëel`, no `boeken op het autowiel`, no deskundigen templates. g-109 in `data/grammar.js` distinguishes `op … na` / `tot … toe` / `van daaruit` / `ervan uitgaan`. Translation completeness re-measured on the generated file (1653=1653). Remaining limitation: Windows `npm.ps1` policy; `tests/regression.mjs` words-canonical check still dirties unowned word files (restored, not committed). Browser suite not re-run in this remediations pass (no app.js change).

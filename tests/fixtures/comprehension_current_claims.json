@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "verifiedAsOf": "2026-08",
+  "claims": [
+    {
+      "id": "comp-026",
+      "topic": "BRP registration after a stay of more than four months",
+      "mustInclude": ["inschrijven", "vier maanden"]
+    },
+    {
+      "id": "comp-032",
+      "topic": "Check pre-filled wage data against jaaropgaaf",
+      "mustInclude": ["jaaropgaaf"]
+    },
+    {
+      "id": "comp-048",
+      "topic": "Childcare allowance via DigiD",
+      "mustInclude": ["kinderopvangtoeslag", "DigiD"]
+    },
+    {
+      "id": "comp-059",
+      "topic": "DigiD letter in 5 working days; activate within 21 days",
+      "mustInclude": ["vijf werkdagen", "eenentwintig"]
+    },
+    {
+      "id": "comp-072",
+      "topic": "Second-job jaaropgaaf, not study-cost deduction",
+      "mustInclude": ["jaaropgaaf"]
+    },
+    {
+      "id": "comp-073",
+      "topic": "4.1% ordinary social-rent maximum from 1 July 2026; better label raises WWS ceiling",
+      "mustInclude": ["4,1 procent", "energiepunten"]
+    },
+    {
+      "id": "comp-083",
+      "topic": "Woo four-week term",
+      "mustInclude": ["vier weken"]
+    }
+  ]
+}
