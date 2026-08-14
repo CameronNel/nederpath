@@ -1,34 +1,19 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "pass": 1,
-  "perspective": "implementation-complete review",
+  "perspective": "independent review correction",
   "generatedAt": "2026-08-14",
-  "commitAtGeneration": "ffbd93748d7f874fb4714ae85e7c000e667bb5e2",
+  "status": "INCOMPLETE",
   "sourceRows": 6428,
-  "canonicalRows": 4261,
-  "generatedRows": 10811,
-  "learnerRows": 4245,
-  "exhaustiveLedgerRows": 6428,
-  "exhaustiveLedgerNeedsEvidence": 0,
-  "duplicateGroupsReviewed": 1463,
-  "mixedPOSGroupsReviewed": 36,
-  "nounRowsReviewed": 4806,
-  "sourceIssues": 0,
-  "duplicateGeneratedForms": 0,
-  "duplicateGeneratedIDs": 0,
-  "articleFailures": 0,
-  "stableIDDrift": 0,
-  "checksRun": [
-    "npm run words",
-    "git diff --exit-code -- data/words.js data/word_ids.json",
-    "node scripts/lexical_audit.mjs --strict",
-    "node tests/lexical.mjs",
-    "node tests/lexical_orthography.mjs",
-    "node tests/lexical_review_ledger.mjs",
-    "npm test",
-    "npm run build",
-    "npm run audit:artifact",
-    "git diff --check"
-  ],
-  "status": "PASS"
+  "automatedStructuralCoverageRows": 6428,
+  "semanticReviewComplete": false,
+  "semanticRowsNeedEvidence": 6428,
+  "previousPassStatus": "SUPERSEDED",
+  "reason": "The former pass treated an automatically generated consistency ledger as proof of row-by-row semantic review. That inference is invalid under the Task 007 contract.",
+  "engineeringValidationAtClaimedHead": {
+    "head": "0a9c7e18d8c860a555bafbf79057bf834337f0d9",
+    "githubActionsRun": 31830196448,
+    "result": "PASS"
+  },
+  "remainingGate": "Independent row-specific lexical truth review for every curated source row."
 }
