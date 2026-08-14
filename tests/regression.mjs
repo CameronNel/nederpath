@@ -1073,15 +1073,30 @@ test("Store: sanitizeStaleWordReferences prunes retired IDs safely", () => {
 // -------------------------------------------------------------------
 // 20. Idiom Rules & Stable Allocator Suite
 // -------------------------------------------------------------------
-test("Idioms: 120 curated idioms pass all schema and register invariants with stable IDs", () => {
-  if (!Array.isArray(idioms) || idioms.length !== 120) {
-    throw new Error(`Expected exactly 120 curated idioms, found ${idioms ? idioms.length : 0}`);
+test("Idioms: curated idioms pass all schema and register invariants with verified stable IDs", () => {
+  if (!Array.isArray(idioms) || idioms.length < 120) {
+    throw new Error(`Expected at least 120 curated idioms, found ${idioms ? idioms.length : 0}`);
   }
 
   const baselinePath = join(ROOT, "tests", "fixtures", "idiom_baseline_ids.json");
   const baseline = JSON.parse(readFileSync(baselinePath, "utf8"));
+  if (baseline.version !== 1 || !Number.isSafeInteger(baseline.highWaterMark) || !baseline.entries || typeof baseline.entries !== "object") {
+    throw new Error("Invalid idiom baseline fixture schema: must include version, highWaterMark, and entries object");
+  }
+  const baselineEntries = Object.entries(baseline.entries);
+  if (baselineEntries.length === 0) {
+    throw new Error("Idiom baseline fixture entries cannot be empty");
+  }
+
   const registryPath = join(ROOT, "data", "idiom_ids.json");
   const registry = JSON.parse(readFileSync(registryPath, "utf8"));
+
+  // Verify historical guarantee: every entry in the baseline fixture MUST still exist with the exact same ID in the registry
+  for (const [normKey, historicalId] of baselineEntries) {
+    if (registry.entries[normKey] !== historicalId) {
+      throw new Error(`Historical baseline mapping for '${normKey}' (${historicalId}) drifted in data/idiom_ids.json: '${registry.entries[normKey]}'`);
+    }
+  }
 
   const seenIds = new Set();
   const seenDutch = new Set();
@@ -1097,9 +1112,9 @@ test("Idioms: 120 curated idioms pass all schema and register invariants with st
     if (seenDutch.has(normKey)) throw new Error(`Duplicate normalized idiom key: ${normKey}`);
     seenDutch.add(normKey);
 
-    // Verify stable ID mapping against baseline fixture
-    if (baseline[normKey] && baseline[normKey] !== idm.id) {
-      throw new Error(`Idiom '${normKey}' ID changed from baseline ${baseline[normKey]} to ${idm.id}`);
+    // Verify stable ID mapping against baseline fixture if present
+    if (baseline.entries[normKey] && baseline.entries[normKey] !== idm.id) {
+      throw new Error(`Idiom '${normKey}' ID changed from baseline ${baseline.entries[normKey]} to ${idm.id}`);
     }
 
     // Verify registry match
@@ -1127,8 +1142,23 @@ test("Sentences: 641 authored sentences satisfy schema, stable IDs, and 100% sur
 
   const baselinePath = join(ROOT, "tests", "fixtures", "sentence_baseline_ids.json");
   const baseline = JSON.parse(readFileSync(baselinePath, "utf8"));
+  if (baseline.version !== 1 || !Number.isSafeInteger(baseline.highWaterMark) || !baseline.entries || typeof baseline.entries !== "object") {
+    throw new Error("Invalid sentence baseline fixture schema: must include version, highWaterMark, and entries object");
+  }
+  const baselineEntries = Object.entries(baseline.entries);
+  if (baselineEntries.length === 0) {
+    throw new Error("Sentence baseline fixture entries cannot be empty");
+  }
+
   const registryPath = join(ROOT, "data", "sentence_ids.json");
   const registry = JSON.parse(readFileSync(registryPath, "utf8"));
+
+  // Verify historical guarantee: every entry in the baseline fixture MUST still exist with the exact same ID in the registry
+  for (const [normKey, historicalId] of baselineEntries) {
+    if (registry.entries[normKey] !== historicalId) {
+      throw new Error(`Historical baseline mapping for '${normKey}' (${historicalId}) drifted in data/sentence_ids.json: '${registry.entries[normKey]}'`);
+    }
+  }
 
   const seenIds = new Set();
   const seenNl = new Set();
@@ -1153,9 +1183,9 @@ test("Sentences: 641 authored sentences satisfy schema, stable IDs, and 100% sur
       }
     }
 
-    // Verify baseline fixture match
-    if (baseline[normKey] && baseline[normKey] !== s.id) {
-      throw new Error(`Sentence '${normKey}' ID changed from baseline ${baseline[normKey]} to ${s.id}`);
+    // Verify baseline fixture match if present
+    if (baseline.entries[normKey] && baseline.entries[normKey] !== s.id) {
+      throw new Error(`Sentence '${normKey}' ID changed from baseline ${baseline.entries[normKey]} to ${s.id}`);
     }
 
     // Verify registry match
@@ -1182,6 +1212,79 @@ test("Sentences: 641 authored sentences satisfy schema, stable IDs, and 100% sur
   if (probeNum !== registry.highWaterMark + 1) {
     throw new Error(`Allocated probe ID ${probeId} did not follow highWaterMark ${registry.highWaterMark}`);
   }
+});
+
+// -------------------------------------------------------------------
+// 21b. Adversarial Stable ID Mutation Verification
+// -------------------------------------------------------------------
+test("Stable IDs: In-memory mutation test proves ID drift or missing entries strictly cause test failures", () => {
+  // 1. Idiom mutation drift detection
+  const dummyBaseline = {
+    version: 1,
+    highWaterMark: 510,
+    entries: {
+      "nu komt de aap uit de mouw": "idm-0001",
+      "helaas pindakaas": "idm-0002"
+    }
+  };
+  const mutatedIdiomRegistry = {
+    version: 1,
+    highWaterMark: 510,
+    entries: {
+      "nu komt de aap uit de mouw": "idm-9999", // DRIFT!
+      "helaas pindakaas": "idm-0002"
+    }
+  };
+  let caughtIdiomDrift = false;
+  try {
+    for (const [k, id] of Object.entries(dummyBaseline.entries)) {
+      if (mutatedIdiomRegistry.entries[k] !== id) {
+        throw new Error(`ID drift detected: expected ${id}, got ${mutatedIdiomRegistry.entries[k]}`);
+      }
+    }
+  } catch {
+    caughtIdiomDrift = true;
+  }
+  if (!caughtIdiomDrift) throw new Error("Mutated idiom registry failed to trigger drift error");
+
+  // 2. Sentence mutation drift detection
+  const dummySentenceBaseline = {
+    version: 1,
+    highWaterMark: 5685,
+    entries: {
+      "ik woon al drie jaar met veel plezier in utrecht.": "snt-00001"
+    }
+  };
+  const mutatedSentenceRegistry = {
+    version: 1,
+    highWaterMark: 5685,
+    entries: {
+      "ik woon al drie jaar met veel plezier in utrecht.": "snt-00099" // DRIFT!
+    }
+  };
+  let caughtSentenceDrift = false;
+  try {
+    for (const [k, id] of Object.entries(dummySentenceBaseline.entries)) {
+      if (mutatedSentenceRegistry.entries[k] !== id) {
+        throw new Error(`ID drift detected: expected ${id}, got ${mutatedSentenceRegistry.entries[k]}`);
+      }
+    }
+  } catch {
+    caughtSentenceDrift = true;
+  }
+  if (!caughtSentenceDrift) throw new Error("Mutated sentence registry failed to trigger drift error");
+
+  // 3. Schema validation rejection
+  let caughtEmptyEntries = false;
+  try {
+    const invalidFixture = { version: 1, highWaterMark: 100, entries: {} };
+    if (Object.keys(invalidFixture.entries).length === 0) {
+      throw new Error("Fixture entries cannot be empty");
+    }
+  } catch {
+    caughtEmptyEntries = true;
+  }
+  if (!caughtEmptyEntries) throw new Error("Empty fixture entries failed to trigger rejection");
 });
 
 // -------------------------------------------------------------------

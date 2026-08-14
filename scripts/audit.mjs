@@ -2,6 +2,16 @@
 import { readFileSync, existsSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
+import {
+  normalizeExpression,
+  validateIdiomRow,
+  exampleDemonstratesExpression
+} from "./idiom_rules.mjs";
+import {
+  normalizeSentenceKey,
+  targetOccursInSurface,
+  validateSentenceRow
+} from "./sentence_norm.mjs";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 
@@ -220,20 +230,16 @@ let duplicateIdiomIds = 0;
 let duplicateIdiomPhrases = 0;
 let suspiciousIdiomStrings = 0;
 let unregisteredIdiomIds = 0;
+let unprovenExamples = 0;
 const idiomIds = new Set();
 const idiomPhrases = new Set();
 const idiomLevelCounts = {};
-function normIdiom(value) {
-  return String(value ?? "").normalize("NFKC").trim().replace(/\s+/gu, " ").toLocaleLowerCase("nl-NL");
-}
-
-const validIdiomRegisters = new Set(["idiom", "proverb", "colloquial", "neutral", "polite"]);
 
 for (const idm of idioms) {
   if (idiomIds.has(idm.id)) duplicateIdiomIds++;
   idiomIds.add(idm.id);
 
-  const normDutch = normIdiom(idm.dutch);
+  const normDutch = normalizeExpression(idm.dutch);
   if (idiomPhrases.has(normDutch)) duplicateIdiomPhrases++;
   idiomPhrases.add(normDutch);
 
@@ -241,24 +247,25 @@ for (const idm of idioms) {
     unregisteredIdiomIds++;
   }
 
-  if (
-    !/^idm-\d{3,}$/.test(idm.id || "") ||
-    !idm.dutch || !idm.meaning || !idm.example ||
-    (idm.exampleEn !== null && typeof idm.exampleEn !== "string") ||
-    !["A1", "A2", "B1", "B2", "C1"].includes(idm.level) ||
-    !validIdiomRegisters.has(idm.register)
-  ) {
+  const errs = validateIdiomRow(idm);
+  if (errs.length > 0) {
     invalidIdioms++;
+  }
+
+  const demonstrated = exampleDemonstratesExpression(idm.dutch, idm.example);
+  if (!demonstrated) {
+    unprovenExamples++;
   }
 
   idiomLevelCounts[idm.level] = (idiomLevelCounts[idm.level] || 0) + 1;
 
-  if (idm.example.includes("rjestig") || idm.example.includes("jew") || idm.example.includes("mevrojew")) {
+  if (idm.example && (idm.example.includes("rjestig") || idm.example.includes("jew") || idm.example.includes("mevrojew"))) {
     suspiciousIdiomStrings++;
   }
 }
 
 assert(invalidIdioms === 0, "All idioms satisfy strict schema, valid registers, and CEFR levels");
+assert(unprovenExamples === 0, "All idiom examples demonstrably illustrate the target expression");
 assert(duplicateIdiomIds === 0, "All idiom IDs are unique");
 assert(duplicateIdiomPhrases === 0, "All Dutch idiom expressions are unique");
 assert(unregisteredIdiomIds === 0, "All idiom IDs match data/idiom_ids.json stable registry");
@@ -342,27 +349,11 @@ const sentIds = new Set();
 const sentTexts = new Set();
 const sentLevelCounts = {};
 
-function normSentence(value) {
-  return String(value ?? "").normalize("NFKC").trim().replace(/\s+/gu, " ").toLocaleLowerCase("nl-NL");
-}
-
-function surfaceTargetOccurs(target, sentenceNl) {
-  if (typeof target !== "string" || !target.trim() || typeof sentenceNl !== "string" || !sentenceNl.trim()) {
-    return false;
-  }
-  const normS = sentenceNl.normalize("NFKC").toLocaleLowerCase("nl-NL");
-  const normT = target.normalize("NFKC").trim().toLocaleLowerCase("nl-NL");
-  if (normS.includes(normT)) return true;
-  const escaped = normT.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-  const regex = new RegExp(`(^|[^\\p{L}\\p{M}\\p{N}_])(${escaped})(?=$|[^\\p{L}\\p{M}\\p{N}_])`, "iu");
-  return regex.test(normS);
-}
-
 for (const s of sentences) {
   if (sentIds.has(s.id)) duplicateSentenceIds++;
   sentIds.add(s.id);
 
-  const normNl = normSentence(s.nl);
+  const normNl = normalizeSentenceKey(s.nl);
   if (sentTexts.has(normNl)) duplicateSentenceTexts++;
   sentTexts.add(normNl);
 
@@ -370,30 +361,32 @@ for (const s of sentences) {
     unregisteredSentenceIds++;
   }
 
-  if (
-    !/^snt-\d{5}$/.test(s.id || "") ||
-    !s.nl || !s.en || !s.targetWord || !s.category ||
-    !["A1", "A2", "B1", "B2", "C1"].includes(s.level) ||
-    s.en.includes("Met grote zorgvuldigheid the") ||
-    s.en.includes("elke ochtend the") ||
-    s.en.includes("analyseed")
-  ) {
+  const errs = validateSentenceRow(s);
+  if (errs.length > 0) {
     malformedSentences++;
   }
 
-  // Verify surface target word exists in Dutch sentence
-  if (!surfaceTargetOccurs(s.targetWord, s.nl)) {
-    missingSurfaceTargets++;
+  // Verify surface target word exists in Dutch sentence as a full token/span
+  for (const tw of s.targetWords || [s.targetWord]) {
+    if (!targetOccursInSurface(tw, s.nl)) {
+      missingSurfaceTargets++;
+    }
   }
 
   sentLevelCounts[s.level] = (sentLevelCounts[s.level] || 0) + 1;
 }
 
+// Adversarial substring tests proving strict boundary enforcement in audit
+const rejectedSubstring1 = !targetOccursInSurface("ver", "Ik vertrek morgen om acht uur.");
+const rejectedSubstring2 = !targetOccursInSurface("tand", "De tandarts controleert mijn gebit.");
+const acceptedExactToken = targetOccursInSurface("tandarts", "De tandarts controleert mijn gebit.");
+
 assert(malformedSentences === 0, "Zero malformed translations, schema errors, or mixed time fronting in sentences");
 assert(duplicateSentenceIds === 0, "All sentence IDs are unique");
 assert(duplicateSentenceTexts === 0, "All Dutch sentence texts are unique");
 assert(unregisteredSentenceIds === 0, "All sentence IDs match data/sentence_ids.json stable registry");
-assert(missingSurfaceTargets === 0, "All sentence rows have targetWord present as a surface token in the Dutch sentence");
+assert(missingSurfaceTargets === 0, "All sentence rows have targetWord/targetWords present as strict surface tokens");
+assert(rejectedSubstring1 && rejectedSubstring2 && acceptedExactToken, "Audit target presence strictly enforces Unicode token boundaries against substring false positives");
 assert(Object.keys(sentLevelCounts).length === 5, `Sentences cover all 5 CEFR levels: ${JSON.stringify(sentLevelCounts)}`);
 
 // Summary

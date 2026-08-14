@@ -133,7 +133,7 @@ const THEMES = [
       ["Goedemiddag, alles goed?", "Good afternoon, all well? (informal/neutral)", "Hoi Peter, goedemiddag, alles goed met de studie?"],
       ["Goedenavond allemaal", "Good evening everyone", "Goedenavond allemaal, welkom bij deze presentatie."],
       ["Prettig weekend gewenst!", "Have a nice weekend!", "Het werk zit erop; prettig weekend gewenst iedereen!"],
-      ["Fijne dag verder!", "Have a nice day further!", "Dank u wel voor uw hulp en een fijne dag verder!"],
+      ["Fijne dag verder!", "Have a nice rest of your day!", "Dank u wel voor uw hulp en een fijne dag verder!"],
       ["Tot ziens en tot de volgende keer", "Goodbye and see you next time", "Bedankt voor de gezellige les en tot ziens en tot de volgende keer!"]
     ]
   },
@@ -143,7 +143,8 @@ const THEMES = [
     register: "neutral",
     items: [
       ["Eet smakelijk!", "Enjoy your meal! / Bon appétit!", "Het eten staat op tafel: eet smakelijk allemaal!"],
-      ["Gezondheid! / Proost!", "Bless you! (after sneezing) / Cheers! (toast)", "Zij hieven het glas: proost op het goede nieuws!"],
+      ["Proost!", "Cheers! (toast)", "Zij hieven het glas: proost op het goede nieuws!"],
+      ["Gezondheid!", "Bless you! (after sneezing) / Good health!", "Toen hij niesde, zei iedereen direct: gezondheid!"],
       ["Hartelijk gefeliciteerd met je verjaardag!", "Warm congratulations on your birthday!", "Hartelijk gefeliciteerd met je verjaardag en een fijne dag toegewenst!"],
       ["Veel succes met het examen!", "Good luck with the exam!", "Je hebt goed geoefend, dus veel succes met het examen morgen!"]
     ]
@@ -192,9 +193,9 @@ const THEMES = [
       ["Wilt u er een bonnetje bij?", "Would you like a receipt with that?", "Alstublieft uw wisselgeld. Wilt u er een bonnetje bij?"],
       ["Mag ik even passen?", "May I try this on for a moment?", "Deze jas is erg mooi, mag ik hem even passen in het pashokje?"],
       ["Waar kan ik het station vinden?", "Where can I find the station?", "Pardon meneer, weet u waar ik het centrale treinstation kan vinden?"],
-      ["Is deze stoel nog vrij?", "Is this seat still free / taken?", "Pardon mevrouw, is deze stoel naast u in de trein nog vrij?"],
+      ["Is deze stoel nog vrij?", "Is this seat still available?", "Pardon mevrouw, is deze stoel naast u in de trein nog vrij?"],
       ["Wilt u hier iets bij drinken?", "Would you like something to drink with this?", "Welkom in ons café. Wilt u hier alvast iets bij drinken?"],
-      ["Heeft u dit in een andere maat?", "Do you have this in a different size?", "Dit shirt is iets te klein, heeft u deze trui in een grotere maat?"],
+      ["Heeft u dit in een andere maat?", "Do you have this in a different size?", "Deze trui is iets te klein, heeft u deze trui in een grotere maat?"],
       ["Tot hoe laat bent u open?", "Until what time are you open?", "Goedemiddag, tot hoe laat bent u vanavond eigenlijk open?"],
       ["Kan ik hier gratis parkeren?", "Can I park here for free?", "Is dit een blauwe zone of kan ik hier overdag gratis parkeren?"]
     ]
@@ -223,7 +224,7 @@ for (const theme of THEMES) {
 
 // Additional high-frequency authentic expressions
 const EXTRA_SAYINGS = [
-  ["Iets voor lief nemen", "To take something for granted / accept something as inevitable", "B2", "De vertragingen bij slecht weer moet je helaas voor lief nemen."],
+  ["Iets voor lief nemen", "To accept the drawbacks of something / accept something as inevitable", "B2", "De vertragingen bij slecht weer moet je helaas voor lief nemen."],
   ["Een zucht van verlichting slaken", "To breathe a sigh of relief", "B1", "Toen het verlossende telefoontje kwam, slaakte iedereen een zucht van verlichting."],
   ["Op rozen zitten", "To be in clover / be in an advantageous position", "B2", "Met die vaste baan en dat mooie huis zit hij werkelijk op rozen."],
   ["Aan de bel trekken", "To sound the alarm / raise the alarm", "B1", "Toen de veiligheid in het geding kwam, trok de werknemer direct aan de bel."],

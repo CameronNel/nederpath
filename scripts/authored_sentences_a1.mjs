@@ -63,14 +63,14 @@ export const AUTHORED_SENTENCES_A1 = [
   { nl: "Heb je zin om vanavond thee te drinken?", en: "Do you feel like drinking tea tonight?", level: "A1", category: "relationships_social", tags: ["invitations", "te_infinitive"], targetWords: ["zin", "drinken"] },
   { nl: "Zij belt haar moeder elke zondagavond.", en: "She calls her mother every Sunday evening.", level: "A1", category: "relationships_social", tags: ["family", "routine"], targetWords: ["belt", "moeder"] },
   { nl: "Bedankt voor de gezellige middag!", en: "Thank you for the pleasant afternoon!", level: "A1", category: "relationships_social", tags: ["polite_expressions", "adjectives"], targetWords: ["Bedankt", "gezellige"] },
-  { nl: "Mijn zus heeft twee kleine katten als huisdier.", en: "My sister has two small cats as pets.", level: "A1", category: "relationships_social", tags: ["pets", "plurals"], targetWords: ["zus", "katten"] },
+  { nl: "Mijn zus heeft twee kleine katten als huisdieren.", en: "My sister has two small cats as pets.", level: "A1", category: "relationships_social", tags: ["pets", "plurals"], targetWords: ["katten", "huisdieren"] },
   { nl: "Ik stuur een verjaardagskaart naar mijn opa.", en: "I am sending a birthday card to my grandfather.", level: "A1", category: "relationships_social", tags: ["family", "mail"], targetWords: ["verjaardagskaart", "opa"] },
   { nl: "Wij bekijken oude foto's van onze familie.", en: "We look at old photos of our family.", level: "A1", category: "relationships_social", tags: ["memories", "family"], targetWords: ["bekijken", "familie"] },
   { nl: "Wij bezoeken onze grootouders op zondagmiddag.", en: "We visit our grandparents on Sunday afternoon.", level: "A1", category: "relationships_social", tags: ["family", "visits"], targetWords: ["grootouders", "zondagmiddag"] },
 
   // --- Food & Dining (A1) ---
   { nl: "Ik wil graag een kopje koffie bestellen.", en: "I would like to order a cup of coffee.", level: "A1", category: "food_dining", tags: ["ordering", "polite_modal"], targetWords: ["graag", "bestellen"] },
-  { nl: "De soep smaakt erg lekker en warm.", en: "The soup tastes very delicious and warm.", level: "A1", category: "food_dining", tags: ["taste", "adjectives"], targetWords: ["smaakt", "lekker"] },
+  { nl: "De warme soep smaakt erg lekker.", en: "The hot soup tastes very delicious.", level: "A1", category: "food_dining", tags: ["taste", "adjectives"], targetWords: ["warme", "smaakt"] },
   { nl: "Wij eten vanavond pannenkoeken met stroop.", en: "We are eating pancakes with syrup tonight.", level: "A1", category: "food_dining", tags: ["dutch_food", "prepositions"], targetWords: ["pannenkoeken", "stroop"] },
   { nl: "Pardon ober, mag ik de menukaart zien?", en: "Excuse me waiter, may I see the menu?", level: "A1", category: "food_dining", tags: ["restaurants", "polite_u"], targetWords: ["ober", "menukaart"] },
   { nl: "Zij drinkt altijd water met ijs bij het diner.", en: "She always drinks water with ice at dinner.", level: "A1", category: "food_dining", tags: ["beverages", "routine"], targetWords: ["water", "diner"] },
@@ -107,7 +107,7 @@ export const AUTHORED_SENTENCES_A1 = [
   { nl: "De dokter onderzoekt mijn zere keel.", en: "The doctor examines my sore throat.", level: "A1", category: "healthcare", tags: ["medical", "body_parts"], targetWords: ["dokter", "keel"] },
   { nl: "Neem deze pillen twee keer per dag met water.", en: "Take these pills twice a day with water.", level: "A1", category: "healthcare", tags: ["imperative", "medicine"], targetWords: ["pillen", "water"] },
   { nl: "De apotheek bevindt zich naast het ziekenhuis.", en: "The pharmacy is situated next to the hospital.", level: "A1", category: "healthcare", tags: ["directions", "prepositions"], targetWords: ["apotheek", "ziekenhuis"] },
-  { nl: "De dokter schrijft een recept voor oogdruppels voor.", en: "The doctor prescribes eye drops.", level: "A1", category: "healthcare", tags: ["medical", "prescriptions"], targetWords: ["recept", "oogdruppels"] },
+  { nl: "De dokter schrijft oogdruppels voor.", en: "The doctor prescribes eye drops.", level: "A1", category: "healthcare", tags: ["medical", "prescriptions"], targetWords: ["oogdruppels", "schrijft"] },
   { nl: "Het ziekenhuis heeft een grote parkeerplaats voor bezoekers.", en: "The hospital has a large car park for visitors.", level: "A1", category: "healthcare", tags: ["hospital", "parking"], targetWords: ["parkeerplaats", "bezoekers"] },
   { nl: "De tandarts controleert mijn gebit elk half jaar.", en: "The dentist checks my teeth every six months.", level: "A1", category: "healthcare", tags: ["dentistry", "routine"], targetWords: ["tandarts", "gebit"] },
 
@@ -121,7 +121,7 @@ export const AUTHORED_SENTENCES_A1 = [
 
   // --- Banking & Finance (A1) ---
   { nl: "Ik betaal deze rekening met mijn pinpas.", en: "I pay this bill with my debit card.", level: "A1", category: "banking_finance", tags: ["payment", "present_tense"], targetWords: ["betaal", "pinpas"] },
-  { nl: "Kan ik hier contactloos betalen met mijn telefoon?", en: "Can I pay contactless with my phone here?", level: "A1", category: "banking_finance", tags: ["questions", "contactless"], targetWords: ["contactloos", "betalen"] },
+  { nl: "Kan ik hier contactloos betalen met mijn telefoon?", en: "Can I pay using contactless with my phone here?", level: "A1", category: "banking_finance", tags: ["questions", "contactless"], targetWords: ["contactloos", "betalen"] },
   { nl: "De geldautomaat bevindt zich in de muur van de bank.", en: "The cash machine is in the wall of the bank.", level: "A1", category: "banking_finance", tags: ["atms", "directions"], targetWords: ["geldautomaat", "muur"] },
 
   // --- Housing & Neighborhood (A1) ---
@@ -146,7 +146,7 @@ export const AUTHORED_SENTENCES_A1 = [
 
   // --- Environment & Weather (A1) ---
   { nl: "Het regent vaak in de herfst in Nederland.", en: "It often rains in the autumn in the Netherlands.", level: "A1", category: "environment", tags: ["weather", "seasons"], targetWords: ["regent", "herfst"] },
-  { nl: "De zon schijnt warm aan de blauwe hemel.", en: "The sun shines warmly in the blue sky.", level: "A1", category: "environment", tags: ["nature", "colors"], targetWords: ["zon", "hemel"] },
+  { nl: "De zon schijnt fel aan de blauwe hemel.", en: "The sun is shining brightly in the blue sky.", level: "A1", category: "environment", tags: ["nature", "weather"], targetWords: ["zon", "hemel"] },
   { nl: "In de winter vriest het soms heel hard.", en: "In the winter it sometimes freezes very hard.", level: "A1", category: "environment", tags: ["weather", "inversion"], targetWords: ["vriest", "winter"] },
   { nl: "De wind waait krachtig over de dijk.", en: "The wind blows strongly across the dyke.", level: "A1", category: "environment", tags: ["geography", "weather"], targetWords: ["wind", "dijk"] },
   { nl: "Het regent zachtjes op het raam van mijn slaapkamer.", en: "It is raining gently on the window of my bedroom.", level: "A1", category: "environment", tags: ["weather", "home"], targetWords: ["zachtjes", "slaapkamer"] },

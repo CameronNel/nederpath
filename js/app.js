@@ -615,7 +615,7 @@
           this.session.currentIndex = 0;
           this.session.revealed = false;
           this.session.feedback = null;
-          this.session.startXp = (this.store && this.store.state && this.store.state.progress && this.store.state.progress.xp) || 0;
+          this.session.startXp = (this.store && this.store.state && this.store.state.user && this.store.state.user.totalXp) || 0;
           this.render();
         });
       });
@@ -627,7 +627,7 @@
           this.session.currentIndex = 0;
           this.session.revealed = false;
           this.session.feedback = null;
-          this.session.startXp = (this.store && this.store.state && this.store.state.progress && this.store.state.progress.xp) || 0;
+          this.session.startXp = (this.store && this.store.state && this.store.state.user && this.store.state.user.totalXp) || 0;
           this.render();
         });
       }
@@ -688,7 +688,7 @@
         this.session.currentIndex = 0;
         this.session.revealed = false;
         this.session.itemNoun = "kaarten";
-        this.session.startXp = (this.store && this.store.state && this.store.state.progress && this.store.state.progress.xp) || 0;
+        this.session.startXp = (this.store && this.store.state && this.store.state.user && this.store.state.user.totalXp) || 0;
       }
 
       if (this.session.currentIndex >= this.session.cards.length) {
@@ -788,8 +788,8 @@
     }
 
     renderSessionCompleteScreen() {
-      const startXp = typeof this.session.startXp === "number" ? this.session.startXp : ((this.store && this.store.state && this.store.state.progress && this.store.state.progress.xp) || 0);
-      const currentXp = (this.store && this.store.state && this.store.state.progress && this.store.state.progress.xp) || 0;
+      const startXp = typeof this.session.startXp === "number" ? this.session.startXp : ((this.store && this.store.state && this.store.state.user && this.store.state.user.totalXp) || 0);
+      const currentXp = (this.store && this.store.state && this.store.state.user && this.store.state.user.totalXp) || 0;
       const earnedXp = Math.max(0, currentXp - startXp);
       const noun = this.session.itemNoun || "kaarten";
       const count = this.session.cards ? this.session.cards.length : 0;
@@ -829,7 +829,7 @@
         this.session.score = 0;
         this.session.feedback = null;
         this.session.itemNoun = "vragen";
-        this.session.startXp = (this.store && this.store.state && this.store.state.progress && this.store.state.progress.xp) || 0;
+        this.session.startXp = (this.store && this.store.state && this.store.state.user && this.store.state.user.totalXp) || 0;
       }
 
       if (this.session.currentIndex >= this.session.cards.length) {
@@ -906,7 +906,7 @@
         this.session.currentIndex = 0;
         this.session.feedback = null;
         this.session.itemNoun = "woorden";
-        this.session.startXp = (this.store && this.store.state && this.store.state.progress && this.store.state.progress.xp) || 0;
+        this.session.startXp = (this.store && this.store.state && this.store.state.user && this.store.state.user.totalXp) || 0;
       }
 
       if (this.session.currentIndex >= this.session.cards.length) {
@@ -983,7 +983,7 @@
         this.session.currentIndex = 0;
         this.session.feedback = null;
         this.session.itemNoun = "zinnen";
-        this.session.startXp = (this.store && this.store.state && this.store.state.progress && this.store.state.progress.xp) || 0;
+        this.session.startXp = (this.store && this.store.state && this.store.state.user && this.store.state.user.totalXp) || 0;
       }
 
       if (this.session.currentIndex >= this.session.cards.length) {
@@ -1066,7 +1066,7 @@
         this.session.currentIndex = 0;
         this.session.feedback = null;
         this.session.itemNoun = "vragen";
-        this.session.startXp = (this.store && this.store.state && this.store.state.progress && this.store.state.progress.xp) || 0;
+        this.session.startXp = (this.store && this.store.state && this.store.state.user && this.store.state.user.totalXp) || 0;
       }
 
       if (this.session.currentIndex >= this.session.cards.length) {
@@ -1145,7 +1145,7 @@
         this.session.currentIndex = 0;
         this.session.feedback = null;
         this.session.itemNoun = "werkwoorden";
-        this.session.startXp = (this.store && this.store.state && this.store.state.progress && this.store.state.progress.xp) || 0;
+        this.session.startXp = (this.store && this.store.state && this.store.state.user && this.store.state.user.totalXp) || 0;
       }
 
       if (this.session.currentIndex >= this.session.cards.length) {
@@ -1224,7 +1224,7 @@
         this.session.currentIndex = 0;
         this.session.feedback = null;
         this.session.itemNoun = "woorden";
-        this.session.startXp = (this.store && this.store.state && this.store.state.progress && this.store.state.progress.xp) || 0;
+        this.session.startXp = (this.store && this.store.state && this.store.state.user && this.store.state.user.totalXp) || 0;
       }
 
       if (this.session.currentIndex >= this.session.cards.length) {
@@ -1308,7 +1308,7 @@
         this.session.currentIndex = 0;
         this.session.feedback = null;
         this.session.itemNoun = "woorden";
-        this.session.startXp = (this.store && this.store.state && this.store.state.progress && this.store.state.progress.xp) || 0;
+        this.session.startXp = (this.store && this.store.state && this.store.state.user && this.store.state.user.totalXp) || 0;
       }
 
       if (this.session.currentIndex >= this.session.cards.length) {
@@ -1380,7 +1380,7 @@
         this.session.currentIndex = 0;
         this.session.feedback = null;
         this.session.itemNoun = "zinnen";
-        this.session.startXp = (this.store && this.store.state && this.store.state.progress && this.store.state.progress.xp) || 0;
+        this.session.startXp = (this.store && this.store.state && this.store.state.user && this.store.state.user.totalXp) || 0;
       }
 
       if (this.session.currentIndex >= this.session.cards.length) {
@@ -2583,6 +2583,7 @@
     }
     if (!global.NederApp) {
       global.NederApp = new NederPathApp();
+      global.NederPathApp = global.NederApp;
     }
   }
 

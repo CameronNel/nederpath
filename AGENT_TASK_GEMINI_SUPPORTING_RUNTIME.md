@@ -177,7 +177,7 @@ Ensure substantial authored coverage of:
 **Sentence-bank evidence:**
 
 - 641 curated sentences modularized across `scripts/authored_sentences_a1.mjs` through `_c1.mjs`.
-- Registry `data/sentence_ids.json` with `highWaterMark: 5685`.
+- Registry `data/sentence_ids.json` with `highWaterMark: 5689`.
 - 100% of rows pass strict Unicode boundary token presence matching for both `targetWord` and `targetWords`.
 - Zero mixed English-Dutch templates (`Met grote zorgvuldigheid the...` or `elke ochtend the...`).
 
@@ -218,7 +218,7 @@ For content owned by this task, quality tests must prove truthfulness rather tha
 
 **Audit evidence:**
 
-- `node scripts/audit.mjs` passes 69 checks with 0 failures.
+- `node scripts/audit.mjs` passes 71 checks with 0 failures.
 - `node tests/smoke.mjs` passes 8 invariant tests with 0 failures.
 
 ---
@@ -257,7 +257,7 @@ The current shared completion UI reports `cards.length × 10 XP`, which is false
 - [x] Replace estimated XP with the amount **actually earned in that session**.
 - [x] Use an architectural source of truth such as XP-at-session-start versus XP-at-completion or another central actual-award mechanism.
 - [x] Do not create another hard-coded per-mode XP table that can drift from Store logic.
-- [x] Session restart creates a fresh baseline (`this.session.startXp = this.store.state.progress.xp`).
+- [x] Session restart creates a fresh baseline (`this.session.startXp = this.store.state.user.totalXp`).
 - [x] Session reset creates a fresh baseline.
 - [x] Flashcards with different ratings report exact earned XP.
 - [x] Article drill correct/incorrect combinations report exact earned XP.
@@ -271,7 +271,7 @@ The current shared completion UI reports `cards.length × 10 XP`, which is false
 
 - Snapshotted `this.session.startXp` and `this.session.itemNoun` across all 9 practice modes in `js/app.js`.
 - Replaced calculation in `renderSessionCompleteScreen()` with `earnedXp = Math.max(0, currentXp - startXp)`.
-- Verified in regression test section 23 & 26 in `tests/regression.mjs`.
+- Verified in regression test section 23 & 26 in `tests/regression.mjs` and end-to-end browser integration tests in `tests/browser.mjs`.
 
 ---
 
@@ -309,7 +309,7 @@ Because this task touches `app.js`, perform a fresh audit of affected runtime pa
 
 **Runtime review evidence:**
 
-- 102 browser test assertions pass with 0 console errors across desktop and mobile viewports (`tests/browser.mjs`).
+- 106 browser test assertions pass with 0 console errors across desktop and mobile viewports (`tests/browser.mjs`).
 - Service worker offline recovery verified (`tests/offline.mjs`).
 
 ---
@@ -318,7 +318,7 @@ Because this task touches `app.js`, perform a fresh audit of affected runtime pa
 
 - [x] README uses actual generated/audited metrics rather than marketing targets.
 - [x] README explicitly distinguishes authored sentences from generated variants.
-- [x] README reports unique idiom inventory truthfully (120).
+- [x] README reports unique idiom inventory truthfully (121).
 - [x] README distinguishes curated/reference/generated content where relevant.
 - [x] Remove obsolete claims implying 5,000 independently curated sentences.
 - [x] Remove obsolete claims implying padded idiom counts prove quality.
@@ -327,7 +327,7 @@ Because this task touches `app.js`, perform a fresh audit of affected runtime pa
 
 **README evidence:**
 
-- Updated `README.md` with 120 curated idioms, 641 authored sentences across 22 domains, pure SRS button previews, and truthful session XP deltas.
+- Updated `README.md` with 121 curated idioms, 641 authored sentences across 22 domains, pure SRS button previews, and truthful session XP deltas.
 
 ---
 
@@ -379,14 +379,14 @@ Because this task touches `app.js`, perform a fresh audit of affected runtime pa
 
 **Test evidence:**
 
-- 41 regression tests pass in `tests/regression.mjs`.
+- 42 regression tests pass in `tests/regression.mjs`.
 - 5 review follow-up tests pass in `tests/review_followup.mjs`.
 - 1 sentence surface audit passes in `tests/sentence_surface_audit.mjs` (641/641 sentences verified).
 - 8 smoke tests pass in `tests/smoke.mjs`.
-- 69 quality checks pass in `scripts/audit.mjs`.
+- 71 quality checks pass in `scripts/audit.mjs`.
 - 64 artifact checks pass in `scripts/audit-artifact.mjs`.
 - 26 service worker tests pass in `tests/offline.mjs`.
-- 102 browser tests pass in `tests/browser.mjs`.
+- 106 browser tests pass in `tests/browser.mjs`.
 
 ---
 
@@ -446,7 +446,7 @@ This pass is mandatory.
 - Zero concurrent file boundary violations: did not edit grammar/comprehension files.
 - Verified 641 distinct authentic sentence records across 22 domains.
 - Verified exact matching between previewReview calculations and actual SM-2 review transitions.
-- Verified all 97 browser assertions in automated headless environment.
+- Verified all 106 browser assertions in automated headless environment.
 
 ---
 

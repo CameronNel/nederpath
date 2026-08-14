@@ -49,7 +49,7 @@ Public Application URL: **`https://cameronnel.github.io/nederpath/`**
 
 ## 2. Supporting Content Banks
 
-- **Idioms & Everyday Expressions ([`data/idioms.js`](data/idioms.js))**: Exactly **120** curated idioms, proverbs, and everyday conversational formulas across CEFR levels A1–B2. Each expression includes natural Dutch usage, English translations, literal glosses where applicable, communicative register, and examples. Managed via a deterministic, append-only ID registry ([`data/idiom_ids.json`](data/idiom_ids.json)).
+- **Idioms & Everyday Expressions ([`data/idioms.js`](data/idioms.js))**: Exactly **121** curated idioms, proverbs, and everyday conversational formulas across CEFR levels A1–B2. Each expression includes natural Dutch usage, English translations, literal glosses where applicable, communicative register, and examples. Managed via a deterministic, append-only ID registry ([`data/idiom_ids.json`](data/idiom_ids.json)).
 - **Dutch Sentence Bank ([`data/sentences.js`](data/sentences.js))**: Exactly **641** genuinely authored Dutch benchmark and practice sentences covering 22 real-world domains and all 5 CEFR levels (A1 through C1 with $\ge 120$ sentences per level). Every sentence features verified Dutch surface target words, grammatical tags, English translations, and deterministic, append-only ID tracking ([`data/sentence_ids.json`](data/sentence_ids.json)).
 
 ---

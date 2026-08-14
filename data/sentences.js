@@ -990,8 +990,8 @@ globalThis.NP_SENTENCES = [
     "curated": true
   },
   {
-    "id": "snt-05102",
-    "nl": "Mijn zus heeft twee kleine katten als huisdier.",
+    "id": "snt-05686",
+    "nl": "Mijn zus heeft twee kleine katten als huisdieren.",
     "en": "My sister has two small cats as pets.",
     "level": "A1",
     "tags": [
@@ -999,10 +999,10 @@ globalThis.NP_SENTENCES = [
       "plurals"
     ],
     "category": "relationships_social",
-    "targetWord": "zus",
+    "targetWord": "katten",
     "targetWords": [
-      "zus",
-      "katten"
+      "katten",
+      "huisdieren"
     ],
     "clozeEligible": true,
     "provenance": "curated",
@@ -1085,19 +1085,19 @@ globalThis.NP_SENTENCES = [
     "curated": true
   },
   {
-    "id": "snt-05107",
-    "nl": "De soep smaakt erg lekker en warm.",
-    "en": "The soup tastes very delicious and warm.",
+    "id": "snt-05687",
+    "nl": "De warme soep smaakt erg lekker.",
+    "en": "The hot soup tastes very delicious.",
     "level": "A1",
     "tags": [
       "taste",
       "adjectives"
     ],
     "category": "food_dining",
-    "targetWord": "smaakt",
+    "targetWord": "warme",
     "targetWords": [
-      "smaakt",
-      "lekker"
+      "warme",
+      "smaakt"
     ],
     "clozeEligible": true,
     "provenance": "curated",
@@ -1674,8 +1674,8 @@ globalThis.NP_SENTENCES = [
     "curated": true
   },
   {
-    "id": "snt-05138",
-    "nl": "De dokter schrijft een recept voor oogdruppels voor.",
+    "id": "snt-05688",
+    "nl": "De dokter schrijft oogdruppels voor.",
     "en": "The doctor prescribes eye drops.",
     "level": "A1",
     "tags": [
@@ -1683,10 +1683,10 @@ globalThis.NP_SENTENCES = [
       "prescriptions"
     ],
     "category": "healthcare",
-    "targetWord": "recept",
+    "targetWord": "oogdruppels",
     "targetWords": [
-      "recept",
-      "oogdruppels"
+      "oogdruppels",
+      "schrijft"
     ],
     "clozeEligible": true,
     "provenance": "curated",
@@ -1866,7 +1866,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-05148",
     "nl": "Kan ik hier contactloos betalen met mijn telefoon?",
-    "en": "Can I pay contactless with my phone here?",
+    "en": "Can I pay using contactless with my phone here?",
     "level": "A1",
     "tags": [
       "questions",
@@ -2225,13 +2225,13 @@ globalThis.NP_SENTENCES = [
     "curated": true
   },
   {
-    "id": "snt-05167",
-    "nl": "De zon schijnt warm aan de blauwe hemel.",
-    "en": "The sun shines warmly in the blue sky.",
+    "id": "snt-05689",
+    "nl": "De zon schijnt fel aan de blauwe hemel.",
+    "en": "The sun is shining brightly in the blue sky.",
     "level": "A1",
     "tags": [
       "nature",
-      "colors"
+      "weather"
     ],
     "category": "environment",
     "targetWord": "zon",
@@ -2748,10 +2748,10 @@ globalThis.NP_SENTENCES = [
       "separable_verbs"
     ],
     "category": "public_transport",
-    "targetWord": "vergeten",
+    "targetWord": "ov-chipkaart",
     "targetWords": [
-      "vergeten",
-      "laden"
+      "ov-chipkaart",
+      "vergeten"
     ],
     "clozeEligible": true,
     "provenance": "curated",
@@ -4166,7 +4166,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-05265",
     "nl": "Omdat zij geen contant geld bij zich had, betaalde zij contactloos met haar telefoon.",
-    "en": "Because she had no cash with her, she paid contactless with her phone.",
+    "en": "Because she had no cash with her, she paid using contactless with her phone.",
     "level": "A2",
     "tags": [
       "digital_payment",
@@ -4537,7 +4537,7 @@ globalThis.NP_SENTENCES = [
     "targetWord": "energieverbruik",
     "targetWords": [
       "energieverbruik",
-      "houden"
+      "handige"
     ],
     "clozeEligible": true,
     "provenance": "curated",
