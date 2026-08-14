@@ -912,12 +912,13 @@ globalThis.NP_GRAMMAR = [
         "explanation": "Floor numbers use ordinals: tweede."
       },
       {
-        "type": "typed_conjugation",
-        "infinitive": "achten (ordinal stem acht)",
-        "subject": "de",
-        "targetTense": "ordinal",
-        "correctForm": "achtste",
-        "explanation": "8 takes -ste, not -de."
+        "type": "fill_in_the_blank",
+        "prompt": "Ordinal for 8 before verdieping.",
+        "blankWord": "achtste",
+        "sentenceWithBlank": "Zij wonen op de ___ verdieping.",
+        "hints": [
+          "8 takes -ste, not -de"
+        ]
       }
     ]
   },
