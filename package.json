@@ -18,11 +18,11 @@
     "audit:artifact": "node scripts/audit-artifact.mjs",
     "test:unit": "node scripts/audit.mjs && node tests/smoke.mjs",
     "test:regression": "node tests/regression.mjs",
-    "test:integrity": "node tests/pr1-integrity.mjs",
+    "test:integrity": "node tests/pr1-integrity.mjs && node tests/pr1-boundaries.mjs",
     "test:comprehension": "node tests/comprehension.mjs",
     "test:offline": "node tests/offline.mjs",
     "test:browser": "node tests/browser.mjs",
-    "test": "node scripts/audit.mjs && node tests/smoke.mjs && node tests/regression.mjs && node tests/pr1-integrity.mjs && node tests/comprehension.mjs && node tests/offline.mjs && node tests/browser.mjs",
+    "test": "node scripts/audit.mjs && node tests/smoke.mjs && node tests/regression.mjs && node tests/pr1-integrity.mjs && node tests/pr1-boundaries.mjs && node tests/comprehension.mjs && node tests/offline.mjs && node tests/browser.mjs",
     "serve": "node scripts/serve.mjs"
   },
   "keywords": [
