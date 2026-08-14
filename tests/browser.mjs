@@ -200,7 +200,7 @@ async function runBrowserTests() {
     });
     await page.waitForSelector(".today-subtitle");
     const fractionalSubtitle = await page.$eval(".today-subtitle", (el) => el.textContent);
-    assert(fractionalSubtitle.includes("0.6 dagen") && !fractionalSubtitle.includes("0.6 dag"), `Fractional streak stays plural and unrounded: '${fractionalSubtitle.trim()}'`);
+    assert(fractionalSubtitle.includes("0.6 dagen") && !/0\.6 dag(?!en)/.test(fractionalSubtitle), `Fractional streak stays plural and unrounded: '${fractionalSubtitle.trim()}'`);
 
     // 2. Lazy Data Loading & Asset Budget Verification
     const requestedWords = requestedUrls.some((u) => u.includes("data/words.js"));
