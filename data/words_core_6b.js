@@ -1,5 +1,8 @@
 // NederPath curated word core 6b - B2-C1 vocabulary: science, philosophy, law, politics, culture, environment, economics.
-const N = (w, a, l, m, c, s, p) => [w, "noun", l, a, m, c, s || "", p || ""];
+const N = (w, a, l, m, c, s, p) => {
+  const legacyMeta = !p && typeof s === "string" && /^(?:s|inv|n|'s|=.+)$/u.test(s) ? s : "";
+  return [w, "noun", l, a, m, c, legacyMeta ? "" : (s || ""), legacyMeta || (p || "")];
+};
 const V = (w, l, m, c, p) => [w, "verb", l, "", m, c, "", p || ""];
 const A = (w, l, m, c, p) => [w, "adjective", l, "", m, c, "", p || ""];
 const D = (w, l, m, c, p) => [w, "adverb", l, "", m, c, "", p || ""];
@@ -69,9 +72,9 @@ N("magistraat","de","C1","magistrate","law","rechter","=magistraten"),
 N("advocaat","de","B1","lawyer, attorney; avocado","law","raadsman","=advocaten"),
 N("raadsman","de","B2","counsel, legal adviser","law","advocaat","=raadslieden"),
 N("aanklager","de","B2","prosecutor, accuser","law","officier van justitie","s"),
-N("verdachte","de","B1","suspect","law","beklaagde","n"),
-N("beklaagde","de","B2","accused, defendant","law","verdachte","n"),
-N("getuige","de","B1","witness","law","","n"),
+N("verdachte","de","B1","suspect","law","beklaagde","=verdachten"),
+N("beklaagde","de","B2","accused, defendant","law","verdachte","=beklaagden"),
+N("getuige","de","B1","witness","law","","=getuigen"),
 N("getuigenis","de","B2","testimony, witness statement","law","=getuigenissen"),
 N("vonnis","het","B1","verdict, sentence, ruling","law","uitspraak","=vonnissen"),
 N("uitspraak","de","B1","pronunciation; court ruling","law","vonnis"),
@@ -81,8 +84,8 @@ N("straf","de","A2","punishment, sentence, penalty","law","sanctie"),
 N("sanctie","de","B2","sanction, penalty","law","straf","s"),
 N("boete","de","A2","fine, penalty","law","","s"),
 N("gevangenis","de","A2","prison, jail","law","bajes","=gevangenissen"),
-N("gevangene","de","B1","prisoner, inmate","law","gedetineerde","n"),
-N("gedetineerde","de","B2","detainee, prisoner","law","gevangene","n"),
+N("gevangene","de","B1","prisoner, inmate","law","gedetineerde","=gevangenen"),
+N("gedetineerde","de","B2","detainee, prisoner","law","gevangene","=gedetineerden"),
 N("misdaad","de","B1","crime, felony","law","delict","=misdaden"),
 N("misdrijf","het","B2","offence, crime, felony","law","misdaad","=misdrijven"),
 N("delict","het","B2","offence, crime","law","misdrijf"),

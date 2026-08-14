@@ -1,5 +1,8 @@
 // NederPath curated word core 7 - Comprehensive verbs (A1-C1) with principal parts, separable prefixes, and reflexive/modal verbs.
-const N = (w, a, l, m, c, s, p) => [w, "noun", l, a, m, c, s || "", p || ""];
+const N = (w, a, l, m, c, s, p) => {
+  const legacyMeta = !p && typeof s === "string" && /^(?:s|inv|n|'s|=.+)$/u.test(s) ? s : "";
+  return [w, "noun", l, a, m, c, legacyMeta ? "" : (s || ""), legacyMeta || (p || "")];
+};
 const V = (w, l, m, c, p) => [w, "verb", l, "", m, c, "", p || ""];
 const A = (w, l, m, c, p) => [w, "adjective", l, "", m, c, "", p || ""];
 const D = (w, l, m, c, p) => [w, "adverb", l, "", m, c, "", p || ""];
@@ -266,7 +269,7 @@ N("faculteit","de","B1","faculty, university department","education","=faculteit
 N("decaan","de","B2","dean (faculty); student counsellor","education","=decanen"),
 N("rector","de","B2","rector (university head)","education","","s"),
 N("hoogleraar","de","B1","full professor","education","professor","=hoogleraren"),
-N("docent","de","A1","lecturer, instructor, teacher","education","leerkracht","en"),
+N("docent","de","A1","lecturer, instructor, teacher","education","leerkracht","=docenten"),
 N("leerkracht","de","A2","teacher, educator","education","docent"),
 N("meester","de","A1","schoolmaster; master","education","","s"),
 N("juf","de","A1","schoolmistress, female teacher","education","juffrouw","=juffen"),

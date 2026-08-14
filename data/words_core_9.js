@@ -1,5 +1,8 @@
 // NederPath curated word core 9 - Nature, animals, plants, geography, food, house, and everyday objects (A1-C1).
-const N = (w, a, l, m, c, s, p) => [w, "noun", l, a, m, c, s || "", p || ""];
+const N = (w, a, l, m, c, s, p) => {
+  const legacyMeta = !p && typeof s === "string" && /^(?:s|inv|n|'s|=.+)$/u.test(s) ? s : "";
+  return [w, "noun", l, a, m, c, legacyMeta ? "" : (s || ""), legacyMeta || (p || "")];
+};
 const V = (w, l, m, c, p) => [w, "verb", l, "", m, c, "", p || ""];
 const A = (w, l, m, c, p) => [w, "adjective", l, "", m, c, "", p || ""];
 const D = (w, l, m, c, p) => [w, "adverb", l, "", m, c, "", p || ""];

@@ -1,0 +1,59 @@
+{
+  "nouns": [
+    { "lemma": "huis", "article": "het", "plural": "huizen" },
+    { "lemma": "oog", "article": "het", "plural": "ogen" },
+    { "lemma": "kind", "article": "het", "plural": "kinderen" },
+    { "lemma": "persoon", "article": "de", "plural": "personen" },
+    { "lemma": "museum", "article": "het", "plural": "musea" },
+    { "lemma": "criterium", "article": "het", "plural": "criteria" },
+    { "lemma": "sfeer", "article": "de", "plural": "sferen" },
+    { "lemma": "kussen", "article": "het", "plural": "kussens" },
+    { "lemma": "ei", "article": "het", "plural": "eieren" },
+    { "lemma": "medicijn", "article": "het", "plural": "medicijnen" },
+    { "lemma": "tablet", "article": "de", "plural": "tabletten" },
+    { "lemma": "duin", "article": "het", "plural": "duinen" },
+    { "lemma": "basilicum", "article": "het", "plural": null },
+    { "lemma": "leem", "article": "het", "plural": null },
+    { "lemma": "broodrooster", "article": "het", "plural": "broodroosters" },
+    { "lemma": "weiland", "article": "het", "plural": "weilanden" },
+    { "lemma": "noedel", "article": "de", "plural": "noedels" },
+    { "lemma": "linze", "article": "de", "plural": "linzen" },
+    { "lemma": "spruitje", "article": "het", "plural": "spruitjes" },
+    { "lemma": "spruit", "article": "de", "plural": "spruiten" },
+    { "lemma": "dadel", "article": "de", "plural": "dadels" },
+    { "lemma": "bes", "article": "de", "plural": "bessen" },
+    { "lemma": "specerij", "article": "de", "plural": "specerijen" },
+    { "lemma": "kruid", "article": "het", "plural": "kruiden" },
+    { "lemma": "vitamine", "article": "de", "plural": "vitaminen" },
+    { "lemma": "aankoop", "article": "de", "plural": "aankopen" },
+    { "lemma": "munt", "article": "de", "plural": "munten" },
+    { "lemma": "uitgave", "article": "de", "plural": "uitgaven" }
+  ],
+  "verbs": [
+    { "lemma": "zijn", "forms": { "ik-form": "ben", "hij-form": "is", "past-singular": "was", "past-plural": "waren", "past-participle": "geweest" } },
+    { "lemma": "zien", "forms": { "ik-form": "zie", "hij-form": "ziet", "past-singular": "zag", "past-plural": "zagen", "past-participle": "gezien" } },
+    { "lemma": "begrijpen", "forms": { "ik-form": "begrijp", "hij-form": "begrijpt", "past-singular": "begreep", "past-plural": "begrepen", "past-participle": "begrepen" } },
+    { "lemma": "afrekenen", "forms": { "past-participle": "afgerekend" } },
+    { "lemma": "opslaan", "forms": { "past-participle": "opgeslagen" } },
+    { "lemma": "bezoeken", "forms": { "past-participle": "bezocht" } }
+  ],
+  "adjectives": [
+    { "lemma": "goed", "forms": { "comparative": "beter", "superlative": "best" } },
+    { "lemma": "groot", "forms": { "comparative": "groter", "superlative": "grootst" } },
+    { "lemma": "vers", "forms": { "comparative": "verser", "superlative": "verst" } },
+    { "lemma": "gratis", "forms": {} }
+  ],
+  "phrases": [
+    "de weg vragen",
+    "met mij gaat het goed",
+    "hoe gaat het"
+  ],
+  "stableIds": {
+    "ik": "nl-00001",
+    "zijn": "nl-00025",
+    "vraag": "nl-00343",
+    "huis": "nl-01356",
+    "kind": "nl-01352",
+    "oog": "nl-01372"
+  }
+}

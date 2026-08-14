@@ -104,10 +104,10 @@ V("kweken","A2","to cultivate, grow, breed","nature",""),
 V("verzorgen","A1","to care for, tend, groom","social",""),
 V("wandelen","A1","to walk, stroll, hike","transport",""),
 V("fietsen","A1","to cycle, ride a bicycle","transport",""),
-V("vliegen","A1","to fly, soar; rush","transport","vloog|vlogen|gevlogen"),
-V("rijden","A1","to drive, ride (bike/car)","transport","reed|reden|gereden"),
-V("varen","A1","to sail, navigate, boat","transport","voer|voeren|gevaren"),
-V("zwemmen","A1","to swim","sports","zwom|zwommen|gezwommen"),
-V("springen","A1","to jump, leap, spring","sports","sprong|sprongen|gesprongen"),
-V("klimmen","A1","to climb, ascend, scramble","sports","klom|klommen|geklommen")
+V("vliegen","A1","to fly, soar; rush","transport","vlieg|vliegt|vloog|vlogen|gevlogen"),
+V("rijden","A1","to drive, ride (bike/car)","transport","rijd|rijdt|reed|reden|gereden"),
+V("varen","A1","to sail, navigate, boat","transport","vaar|vaart|voer|voeren|gevaren"),
+V("zwemmen","A1","to swim","sports","zwem|zwemt|zwom|zwommen|gezwommen"),
+V("springen","A1","to jump, leap, spring","sports","spring|springt|sprong|sprongen|gesprongen"),
+V("klimmen","A1","to climb, ascend, scramble","sports","klim|klimt|klom|klommen|geklommen")
 ]};

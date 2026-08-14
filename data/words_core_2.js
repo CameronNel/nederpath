@@ -6,7 +6,7 @@ const D = (w, l, m, c, p) => [w, "adverb", l, "", m, c, "", p || ""];
 const O = (w, p, l, m, c, s) => [w, p, l, "", m, c, s || "", ""];
 const P = (w, l, m, c, s) => [w, "phrase", l, "", m, c, s || "", ""];
 module.exports = { WORDS: [
-V("zijn","A1","to be (dup guard)","actions","ben|is|was|waren|geweest"),
+V("zijn","A1","to be","actions","ben|is|was|waren|geweest"),
 V("bijten","B1","to bite","animals","bijt|bijt|beet|beten|gebeten"),
 V("drijven","B1","to float; to drive","nature","drijf|drijft|dreef|dreven|gedreven"),
 V("grijpen","B1","to grab, to seize","actions","grijp|grijpt|greep|grepen|gegrepen"),
@@ -279,7 +279,7 @@ V("toegeven","B1","to admit; to give in","abstract","sep=toegegeven"),
 V("toepassen","B1","to apply","abstract","sep=toegepast"),
 V("toevoegen","B1","to add","abstract","sep=toegevoegd"),
 V("toestemmen","B2","to consent","abstract","sep=toegestemd"),
-V("toekomend","B2","future (attributive)","time",""),
+A("toekomend","B2","future (attributive)","time","-"),
 V("misbruiken","B2","to abuse, to misuse","abstract","misbruik|misbruikt|misbruikte|misbruikten|misbruikt"),
 V("mislukken","B1","to fail","abstract","misluk|mislukt|mislukte|mislukten|mislukt"),
 V("misleiden","B2","to mislead","abstract","misleid|misleidt|misleidde|misleidden|misleid"),
@@ -343,7 +343,6 @@ V("ruziën","B1","to quarrel","feelings","ruzie|ruziet|ruziede|ruzieden|geruzied
 V("knuffelen","A2","to cuddle, to hug","people","knuffel|knuffelt|knuffelde|knuffelden|geknuffeld"),
 V("kletsen","B1","to chat","actions","klets|kletst|kletste|kletsten|gekletst"),
 V("babbelen","B1","to chatter","actions","babbel|babbelt|babbelde|babbelden|gebabbeld"),
-P("stilte vallen","B2","to fall silent","feelings"),
 V("aarzelen","B1","to hesitate","actions","aarzel|aarzelt|aarzelde|aarzelden|geaarzeld"),
 V("overleggen","B1","to consult, to discuss","work","overleg|overlegt|overlegde|overlegden|overlegd"),
 V("afvragen","B1","to wonder (zich)","abstract","sep=afgevraagd"),

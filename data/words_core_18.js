@@ -72,19 +72,19 @@ N("huid","de","A1","skin, hide, complexion","body","vel","=huiden"),
 
 // useful everyday verbs
 V("glimlachen","A1","to smile","emotion",""),
-V("lachen","A1","to laugh; giggle","emotion","lachte|lachten|gelachen"),
+V("lachen","A1","to laugh; giggle","emotion","lach|lacht|lachte|lachten|gelachen"),
 V("huilen","A1","to cry, weep","emotion",""),
 V("ademen","A1","to breathe, respire","body",""),
-V("slik","A1","to swallow, gulp (root)","body",""),
-V("bewegen","A1","to move, exercise; agitate","body","bewoog|bewogen|bewogen"),
+V("slikken","A1","to swallow, gulp","body","slik|slikt|slikte|slikten|geslikt"),
+V("bewegen","A1","to move, exercise; agitate","body","beweeg|beweegt|bewoog|bewogen|bewogen"),
 V("ontspannen","A2","to relax, unwind, ease up","body","sep=ontspannen"),
 V("haasten","A2","to hurry, rush, make haste","action",""),
 V("vertrouwen","A2","to trust, rely upon, confide","social",""),
 V("twijfelen","A2","to doubt, hesitate","psychology",""),
-V("bewijzen","B1","to prove, demonstrate, verify","science","bewees|bewezen|bewezen"),
+V("bewijzen","B1","to prove, demonstrate, verify","science","bewijs|bewijst|bewees|bewezen|bewezen"),
 V("berekenen","A2","to calculate, compute, charge","science",""),
 V("oplossen","A2","to solve (problem); dissolve (sugar)","science","sep=opgelost"),
 V("verzamelen","A2","to collect, gather, assemble","action",""),
 V("versturen","A1","to send, dispatch, post","communication",""),
-V("ontvangen","A1","to receive, get, welcome","communication","ontving|ontvingen|ontvangen")
+V("ontvangen","A1","to receive, get, welcome","communication","ontvang|ontvangt|ontving|ontvingen|ontvangen")
 ]};

@@ -1,5 +1,8 @@
 // NederPath curated word core 6 - Technology, computing, media, transport, urban infrastructure, and geography.
-const N = (w, a, l, m, c, s, p) => [w, "noun", l, a, m, c, s || "", p || ""];
+const N = (w, a, l, m, c, s, p) => {
+  const legacyMeta = !p && typeof s === "string" && /^(?:s|inv|n|'s|=.+)$/u.test(s) ? s : "";
+  return [w, "noun", l, a, m, c, legacyMeta ? "" : (s || ""), legacyMeta || (p || "")];
+};
 const V = (w, l, m, c, p) => [w, "verb", l, "", m, c, "", p || ""];
 const A = (w, l, m, c, p) => [w, "adjective", l, "", m, c, "", p || ""];
 const D = (w, l, m, c, p) => [w, "adverb", l, "", m, c, "", p || ""];
@@ -87,7 +90,7 @@ N("titel","de","A1","title, headline; academic title","media","naam","s"),
 N("stad","de","A1","city, town","city","gemeente","=steden"),
 N("dorp","het","A1","village, small town","city","gehucht"),
 N("gehucht","het","B1","hamlet, tiny settlement","city","dorp"),
-N("gemeente","de","A2","municipality, local council","city","stad","n"),
+N("gemeente","de","A2","municipality, local council","city","stad","=gemeenten"),
 N("wijk","de","A1","neighbourhood, district, quarter","city","buurt"),
 N("buurt","de","A1","neighbourhood, vicinity","city","wijk"),
 N("centrum","het","A1","centre, city centre, downtown","city","binnenstad","=centra"),

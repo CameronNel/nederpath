@@ -10,6 +10,8 @@
 // The registry schema is: { version: 1, highWaterMark: <int>, entries: { norm: "nl-00001" } }
 // where `norm` is the lowercase-trimmed Dutch word form.
 
+import { normalizeLexicalForm } from "./lexical_data.mjs";
+
 export const ID_PATTERN = /^nl-(\d+)$/;
 export const REGISTRY_VERSION = 1;
 
@@ -86,7 +88,7 @@ export function createIdAllocator(validated) {
    * @param {string} rawWord - the word form (normalized inside)
    */
   function assignId(rawWord) {
-    const norm = String(rawWord || "").toLowerCase().trim();
+    const norm = normalizeLexicalForm(rawWord);
     if (!norm) throw new RegistryError("cannot assign an ID to an empty word");
     const existing = entries.get(norm);
     if (existing !== undefined) return existing;
@@ -104,7 +106,7 @@ export function createIdAllocator(validated) {
 
   /** Historical ID for a normalized word, or undefined when never assigned. */
   function lookupId(rawWord) {
-    return entries.get(String(rawWord || "").toLowerCase().trim());
+    return entries.get(normalizeLexicalForm(rawWord));
   }
 
   /** Owner (normalized word) of an ID, or undefined when the ID is unowned. */

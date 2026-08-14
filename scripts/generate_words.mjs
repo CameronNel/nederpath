@@ -5,11 +5,12 @@
 // Enforces schema invariants, safe learnability policies,
 // and deterministic stable ID assignment with high-water mark across regeneration.
 import { readFileSync, writeFileSync, readdirSync, existsSync } from "node:fs";
-import { join, dirname } from "node:path";
-import { fileURLToPath } from "node:url";
+import { join } from "node:path";
 import { validateRegistry, createIdAllocator, RegistryError } from "./id_allocator.mjs";
-
-const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
+import {
+  ROOT, loadCanonicalRows, normalizeLexicalForm, parseAdjectiveMeta, parseNounMeta,
+  parseVerbMeta, sourceFields
+} from "./lexical_data.mjs";
 
 // Allowed schema constants
 const ALLOWED_POS = new Set([
@@ -78,7 +79,7 @@ if (!existsSync(wordsPath)) {
       console.error("FATAL: data/words.js contains a row with missing word or id:", JSON.stringify(w));
       process.exit(1);
     }
-    const norm = w.word.toLowerCase().trim();
+    const norm = normalizeLexicalForm(w.word);
     if (seenNorm.has(norm)) {
       console.error(`FATAL: data/words.js has duplicate normalized word '${norm}' (IDs: ${seenNorm.get(norm)}, ${w.id}).`);
       process.exit(1);
@@ -117,43 +118,29 @@ if (!existsSync(wordsPath)) {
 // 2. Conservative Explicit-Form Helpers
 // ---------------------------------------------------------------------------
 function explicitNounForms(word, meta) {
-  const [pluralSpec = "", diminutiveSpec = ""] = String(meta || "").split("|");
-  let plural = null;
-  if (pluralSpec === "s") plural = `${word}s`;
-  else if (pluralSpec === "'s") plural = `${word}'s`;
-  else if (pluralSpec === "eren") plural = `${word}eren`;
-  else if (pluralSpec.startsWith("=") && pluralSpec.length > 1) plural = pluralSpec.slice(1);
-
-  const diminutive = diminutiveSpec || null;
-  const diminutivePlural = diminutive ? `${diminutive}s` : null;
-  return { plural, diminutive, diminutivePlural };
+  return parseNounMeta(word, meta);
 }
 
 function explicitVerbForms(meta) {
-  const value = String(meta || "");
-  if (value.startsWith("sep=")) {
-    const participle = value.slice(4).trim();
-    return participle ? [{ word: participle, kind: "past-participle", grammaticalForm: "voltooid deelwoord" }] : [];
-  }
-  if (!value.includes("|")) return [];
-  const [ik, hij, pastSingular, pastPlural, pastParticiple] = value.split("|");
-  return [
-    { word: ik, kind: "ik-form", grammaticalForm: "tegenwoordige tijd (ik)" },
-    { word: hij, kind: "hij-form", grammaticalForm: "tegenwoordige tijd (hij/zij)" },
-    { word: pastSingular, kind: "past-singular", grammaticalForm: "verleden tijd enkelvoud" },
-    { word: pastPlural, kind: "past-plural", grammaticalForm: "verleden tijd meervoud" },
-    { word: pastParticiple === "-" ? "" : pastParticiple, kind: "past-participle", grammaticalForm: "voltooid deelwoord" }
-  ].filter((form) => form.word);
+  return parseVerbMeta(meta).forms.map((form) => ({
+    ...form,
+    grammaticalForm: {
+      "ik-form": "tegenwoordige tijd (ik)",
+      "hij-form": "tegenwoordige tijd (hij/zij)",
+      "past-singular": "verleden tijd enkelvoud",
+      "past-plural": "verleden tijd meervoud",
+      "past-participle": "voltooid deelwoord"
+    }[form.kind]
+  }));
 }
 
 function explicitAdjectiveForms(meta) {
-  const value = String(meta || "");
-  if (!value.includes("|")) return [];
-  const [, comparative, superlative] = value.split("|");
-  return [
-    { word: comparative, kind: "comparative", grammaticalForm: "vergrotende trap (comparatief)" },
-    { word: superlative, kind: "superlative", grammaticalForm: "overtreffende trap (superlatief)" }
-  ].filter((form) => form.word);
+  return parseAdjectiveMeta(meta).forms.map((form) => ({
+    ...form,
+    grammaticalForm: form.kind === "comparative"
+      ? "vergrotende trap (comparatief)"
+      : "overtreffende trap (superlatief)"
+  }));
 }
 
 // ---------------------------------------------------------------------------
@@ -237,10 +224,33 @@ for (const file of readdirSync(join(ROOT, "data")).filter((f) => /^words_core_.*
     if (word.includes(" ") && pos === "verb") {
       throw new Error(`Multiword verb phrase '${word}' in ${file} must be pos='phrase'`);
     }
-    if (pos === "noun" && !["de", "het"].includes(article)) {
+    if (pos === "noun" && !["de", "het"].includes(article) && !(article === "" && category === "proper-name")) {
       throw new Error(`Noun '${word}' in ${file} must carry article='de' or article='het'`);
     }
     cores.push(c);
+  }
+}
+
+const coreRecords = loadCanonicalRows(ROOT).rows;
+const normalizedCores = coreRecords.map((record) => ({
+  record,
+  ...sourceFields(record),
+  senses: record.senses || [{ source: `${record.file}:${record.index}`, ...sourceFields(record) }]
+}));
+const sourceOwners = new Map();
+for (const core of normalizedCores) {
+  const { record, word, pos, meta } = core;
+  const norm = normalizeLexicalForm(word);
+  if (sourceOwners.has(norm)) {
+    const previous = sourceOwners.get(norm);
+    throw new Error(`Duplicate normalized source form '${norm}' in ${previous.file}:${previous.index} and ${record.file}:${record.index}; merge it explicitly before generation`);
+  }
+  sourceOwners.set(norm, record);
+  if (pos === "noun") explicitNounForms(word, meta);
+  if (pos === "verb") explicitVerbForms(meta);
+  if (pos === "adjective") explicitAdjectiveForms(meta);
+  if (!["noun", "verb", "adjective", "adverb"].includes(pos) && meta) {
+    throw new Error(`Unsupported metadata '${meta}' for ${pos} '${word}'`);
   }
 }
 
@@ -249,54 +259,63 @@ for (const file of readdirSync(join(ROOT, "data")).filter((f) => /^words_core_.*
 // ---------------------------------------------------------------------------
 const rows = [];
 const seen = new Map(); // normalized word -> index in rows
+const curatedRows = new Map();
+const curatedNorms = new Set(normalizedCores.map((core) => normalizeLexicalForm(core.word)));
 
 const addRow = (r) => {
-  const norm = r.word.toLowerCase().trim();
+  const norm = normalizeLexicalForm(r.word);
+  // Reserve every curated surface even before its source-order turn. This
+  // preserves source-order ranks while preventing an earlier derived form
+  // from consuming a later curated homograph.
+  if (!r.curated && curatedNorms.has(norm) && !seen.has(norm)) return false;
   if (seen.has(norm)) return false;
   seen.set(norm, rows.length);
   rows.push(r);
   return true;
 };
 
-for (const c of cores) {
-  const [word, pos, level, article, meaning, category, synonyms, meta = ""] = c;
-  const isPhrase = pos === "phrase";
-
-  const base = {
+for (const c of normalizedCores) {
+  const { word, pos, level, article, meaning, category, synonyms, meta, senses } = c;
+  const curatedRow = {
     word,
     pos,
     level,
     article: article || null,
     meaning: meaning || null,
     category,
-    synonyms: synonyms ? (Array.isArray(synonyms) ? synonyms : synonyms.split(";").filter(Boolean)) : [],
+    synonyms,
     curated: true,
-    learnable: true,
+    // Proper names remain curated and searchable, but are not general
+    // article-bearing learner cards: country/city names do not take de/het.
+    learnable: !(pos === "noun" && category === "proper-name"),
     lemma: word,
     meta,
-    inflectionType: isPhrase ? "phrase" : "lemma",
-    grammaticalForm: isPhrase ? "gecureerde woordgroep / frase" : "basisvorm / lemma"
+    senses,
+    inflectionType: pos === "phrase" ? "phrase" : "lemma",
+    grammaticalForm: pos === "phrase" ? "gecureerde woordgroep / frase" : "basisvorm / lemma"
   };
+  addRow(curatedRow);
+  curatedRows.set(normalizeLexicalForm(word), curatedRow);
+  for (const sense of c.senses) {
+    const { word, pos, level, article, meaning, category, meta } = sense;
 
-  addRow(base);
+    // Multiword phrases never enter single-word inflection engines.
+    if (pos === "phrase") continue;
 
-  // Multiword phrases never enter single-word inflection engines
-  if (isPhrase) continue;
+    const gen = [];
 
-  const gen = [];
+    if (pos === "noun") {
+      const { plural, diminutive, diminutivePlural } = explicitNounForms(word, meta);
+      if (plural) gen.push({ word: plural, kind: "plural", grammaticalForm: "meervoud (mv.)" });
+      if (diminutive) gen.push({ word: diminutive, kind: "diminutive", grammaticalForm: "verkleinwoord (o.)" });
+      if (diminutivePlural) gen.push({ word: diminutivePlural, kind: "diminutive-plural", grammaticalForm: "verkleinwoord meervoud" });
+    } else if (pos === "verb") {
+      gen.push(...explicitVerbForms(meta));
+    } else if (pos === "adjective") {
+      gen.push(...explicitAdjectiveForms(meta));
+    }
 
-  if (pos === "noun") {
-    const { plural, diminutive, diminutivePlural } = explicitNounForms(word, meta);
-    if (plural) gen.push({ word: plural, kind: "plural", grammaticalForm: "meervoud (mv.)" });
-    if (diminutive) gen.push({ word: diminutive, kind: "diminutive", grammaticalForm: "verkleinwoord (o.)" });
-    if (diminutivePlural) gen.push({ word: diminutivePlural, kind: "diminutive-plural", grammaticalForm: "verkleinwoord meervoud" });
-  } else if (pos === "verb") {
-    gen.push(...explicitVerbForms(meta));
-  } else if (pos === "adjective") {
-    gen.push(...explicitAdjectiveForms(meta));
-  }
-
-  for (const g of gen) {
+    for (const g of gen) {
     const kindLabel = {
       plural: "plural of",
       diminutive: "diminutive of",
@@ -322,7 +341,7 @@ for (const c of cores) {
       ? (g.kind === "plural" || g.kind === "diminutive-plural" ? "de" : (g.kind === "diminutive" ? "het" : article))
       : null;
 
-    addRow({
+      const derivedRow = {
       word: g.word,
       pos: pos === "noun" ? "noun" : pos === "verb" ? "verb" : "adjective",
       level,
@@ -336,7 +355,33 @@ for (const c of cores) {
       meta: "",
       inflectionType: g.kind,
       grammaticalForm: g.grammaticalForm
-    });
+      };
+      if (!addRow(derivedRow)) {
+        const surfaceNorm = normalizeLexicalForm(g.word);
+        const surfaceOwner = rows[seen.get(surfaceNorm)];
+        const alreadyRepresented = surfaceOwner?.lemma === derivedRow.lemma
+          && surfaceOwner?.pos === derivedRow.pos
+          && surfaceOwner?.inflectionType === derivedRow.inflectionType;
+        if (alreadyRepresented) continue;
+        curatedRow.shadowedForms ||= [];
+        const collisionKey = `${surfaceNorm}|${g.kind}|${pos}`;
+        if (!curatedRow.shadowedForms.some((form) => form.collisionKey === collisionKey)) {
+          curatedRow.shadowedForms.push({
+            collisionKey,
+            word: derivedRow.word,
+            pos: derivedRow.pos,
+            level: derivedRow.level,
+            article: derivedRow.article,
+            meaning: derivedRow.meaning,
+            category: derivedRow.category,
+            lemma: derivedRow.lemma,
+            inflectionType: derivedRow.inflectionType,
+            grammaticalForm: derivedRow.grammaticalForm,
+            representedBy: surfaceOwner?.word || (curatedNorms.has(surfaceNorm) ? g.word : null)
+          });
+        }
+      }
+    }
   }
 }
 
@@ -388,7 +433,7 @@ for (let n = 0; n <= 999; n++) {
 // No fabricated examples — set to null.
 
 const final = rows.map((r, i) => {
-  const norm = r.word.toLowerCase().trim();
+  const norm = normalizeLexicalForm(r.word);
   const assignedId = allocator.assignId(norm);
 
   const displayWord = r.pos === "noun" && r.article ? `${r.article} ${r.word}` : r.word;
@@ -407,8 +452,10 @@ const final = rows.map((r, i) => {
     level: r.level || "A1",
     pos: r.pos,
     meaning: r.meaning || r.word,
+    senses: r.senses || null,
     category: r.category || "general",
     synonyms: r.synonyms || [],
+    shadowedForms: r.shadowedForms || [],
     example: null, // No hand-authored examples in cores
     exampleEn: null,
     curated: !!r.curated,
@@ -418,7 +465,7 @@ const final = rows.map((r, i) => {
 
 // Invariant assertions
 const ids = new Set(final.map((r) => r.id));
-const finalWords = new Set(final.map((r) => r.word.toLowerCase().trim()));
+const finalWords = new Set(final.map((r) => normalizeLexicalForm(r.word)));
 if (ids.size !== final.length) throw new Error("duplicate ids in generated word bank");
 if (finalWords.size !== final.length) throw new Error("duplicate normalized words in generated word bank");
 
