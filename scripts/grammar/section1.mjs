@@ -338,7 +338,7 @@ export const lessons = [
       { type: "multiple_choice", question: "How do you write 21 as a Dutch cardinal?", options: ["twintigeen", "eentwintig", "eenentwintig", "twintig en een"], correct: 2, explanation: "Unit + en + ten as one word." },
       { type: "fill_in_the_blank", prompt: "Ordinal for 1 before trein.", blankWord: "eerste", sentenceWithBlank: "De ___ trein naar Leiden is al weg.", hints: ["irregular eerste"] },
       { type: "error_correction", sentenceWithError: "Wij wonen op de twee verdieping.", correctedSentence: "Wij wonen op de tweede verdieping.", explanation: "Floor numbers use ordinals: tweede." },
-      { type: "typed_conjugation", infinitive: "achten (ordinal stem acht)", subject: "de", targetTense: "ordinal", correctForm: "achtste", explanation: "8 takes -ste, not -de." }
+      { type: "fill_in_the_blank", prompt: "Ordinal for 8 before verdieping.", blankWord: "achtste", sentenceWithBlank: "Zij wonen op de ___ verdieping.", hints: ["8 takes -ste, not -de"] }
     ]
   },
   {
