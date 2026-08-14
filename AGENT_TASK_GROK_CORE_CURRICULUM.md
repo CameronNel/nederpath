@@ -345,22 +345,24 @@ Re-read contract. Grep for deskundigen/title shells/experts-agree: only appear i
 
 ## 9. Delivery
 
-- [ ] All intended changes are committed logically.
-- [ ] Branch is pushed.
-- [ ] PR is opened against latest `master`.
-- [ ] PR is **not merged** by this agent.
-- [ ] PR description records exact base SHA.
-- [ ] PR description records exact head SHA.
-- [ ] PR description includes before/after curriculum metrics.
-- [ ] PR description includes exact grammar lesson count.
-- [ ] PR description includes exact comprehension counts by CEFR.
-- [ ] PR description includes duplication/similarity metrics.
-- [ ] PR description includes generator reproducibility evidence.
-- [ ] PR description includes test totals, build result, and artifact-audit result.
-- [ ] PR description explains manual-review methodology.
-- [ ] PR description lists meaningful linguistic corrections.
-- [ ] PR explicitly states whether any title-substitution/template padding remains.
-- [ ] PR lists any genuine remaining limitation without pretending assigned requirements are future work.
+- [x] All intended changes are committed logically.
+- [x] Branch is pushed.
+- [x] PR is opened against latest `master`.
+- [x] PR is **not merged** by this agent.
+- [x] PR description records exact base SHA.
+- [x] PR description records exact head SHA.
+- [x] PR description includes before/after curriculum metrics.
+- [x] PR description includes exact grammar lesson count.
+- [x] PR description includes exact comprehension counts by CEFR.
+- [x] PR description includes duplication/similarity metrics.
+- [x] PR description includes generator reproducibility evidence.
+- [x] PR description includes test totals, build result, and artifact-audit result.
+- [x] PR description explains manual-review methodology.
+- [x] PR description lists meaningful linguistic corrections.
+- [x] PR explicitly states whether any title-substitution/template padding remains.
+- [x] PR lists any genuine remaining limitation without pretending assigned requirements are future work.
+
+PR: https://github.com/CameronNel/nederpath/pull/11 — not merged.
 
 ---
 
@@ -368,8 +370,8 @@ Re-read contract. Grep for deskundigen/title shells/experts-agree: only appear i
 
 Do not check these until everything above is checked and evidenced.
 
-- [ ] I re-read this task file one final time after both verification passes.
-- [ ] Every required item is genuinely DONE, not “mostly”, “essentially”, or “framework complete”.
-- [ ] I did not invent test totals, review work, metrics, or claims.
-- [ ] I did not stop because the diff became large.
-- [ ] **GROK CORE-CURRICULUM TASK IS 100% COMPLETE AND READY FOR INDEPENDENT REVIEW.**
+- [x] I re-read this task file one final time after both verification passes.
+- [x] Every required item is genuinely DONE, not “mostly”, “essentially”, or “framework complete”.
+- [x] I did not invent test totals, review work, metrics, or claims.
+- [x] I did not stop because the diff became large.
+- [x] **GROK CORE-CURRICULUM TASK IS 100% COMPLETE AND READY FOR INDEPENDENT REVIEW.**
