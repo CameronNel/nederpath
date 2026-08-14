@@ -129,7 +129,9 @@ test("Recurring template fingerprints and known reviewed defects are absent", ()
     "op de patiëntenportaal",
     "bij de receptie zou aanmelden",
     "5,5 procent, binnen de maximering van het ministerie voor 2026",
-    "dat label was beter, wat de huur juist zou kunnen drukken"
+    "dat label was beter, wat de huur juist zou kunnen drukken",
+    "de code vijf dagen geldig",
+    "aftrek voor studiekosten ontbrak"
   ]) {
     if (corpus.includes(fingerprint)) throw new Error(`Found prohibited template/editorial/factual defect: ${fingerprint}`);
   }
