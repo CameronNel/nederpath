@@ -16,6 +16,12 @@ const canonicalRows = loadCanonicalRows(ROOT).rows;
 const generatedRows = loadGeneratedWords(ROOT);
 const head = execFileSync("git", ["rev-parse", "HEAD"], { cwd: ROOT, encoding: "utf8" }).trim();
 
+if (!Number.isInteger(acceptance.totalRows) || acceptance.totalRows !== sourceRows.length) {
+  throw new Error(
+    `Refusing to write final lexical completion evidence: acceptance denominator is stale (${acceptance.totalRows}/${sourceRows.length} live source rows).`
+  );
+}
+
 const semanticResult = validateSemanticLedger({ requireComplete: true });
 if (!semanticResult.complete || semanticResult.statusCounts.NEEDS_EVIDENCE !== 0) {
   throw new Error("Refusing to write final lexical completion evidence: semantic ledger is structurally incomplete.");

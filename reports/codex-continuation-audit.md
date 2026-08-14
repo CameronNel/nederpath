@@ -91,3 +91,28 @@ The continuation was committed locally as `1b49a66` (`codex continuation:
 persist lexical corrections`) on `task/007-lexical-gold-standard`. The branch
 is one commit ahead of `origin/task/007-lexical-gold-standard`; it was not
 pushed.
+
+## Handover execution pass
+
+The later handover execution found and corrected the following stale state:
+
+- The live curated source has 6,427 rows after the `dooie` retirement. The
+  acceptance denominator is now 6,427; `acceptedRows` remains 0 and
+  `independentAcceptance` remains false.
+- `scripts/write_lexical_final_evidence.mjs` now fails closed when
+  `acceptance.totalRows` differs from the live source-row count. With the
+  current acceptance record it correctly refuses final evidence at 0/6,427.
+- The automated structural ledger was regenerated to 6,427 rows with 6,427
+  `NEEDS-EVIDENCE` entries. All semantic-ledger source keys match live
+  `(sourceFile, sourceIndex, word, pos)` tuples.
+- The `dooi` semantic record now records removal of the retired `dooie`
+  synonym as `FIXED_THIS_REVIEW`. `dooie` is absent from source and generated
+  data; its historical registry ID `nl-10515` remains preserved. `dooi`
+  retains registry/generated ID `nl-09880`.
+- The Qwen manifest audit confirms 32 field fixes and 163 synonym removals,
+  all applied with zero mismatches, plus the separate one-row retirement.
+
+The complete handover validation suite passed after these corrections,
+including lexical audits, ledger validation, merge review, independent
+structural verification, `npm test`, `npm run build`, `npm run audit:artifact`,
+and `git diff --check`.
