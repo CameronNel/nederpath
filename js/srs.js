@@ -50,12 +50,12 @@
         cards[cardId] = {
           id: cardId,
           type: ALLOWED_CARD_TYPES.has(type) ? type : "vocab",
-          interval: 0, // days
-          easeFactor: 2.5, // default SM-2 ease factor
+          interval: 0,
+          easeFactor: 2.5,
           repetitions: 0,
           lapses: 0,
           dueDate: new Date().toISOString(),
-          state: "new", // 'new' | 'learning' | 'review'
+          state: "new",
           lastReview: null
         };
       }
@@ -64,16 +64,15 @@
 
     /**
      * Process review rating according to the app's SM-2-inspired scheduler.
-     * rating:
-     * 1: Again (failed)
-     * 2: Hard
-     * 3: Good
-     * 4: Easy
+     * 1: Again, 2: Hard, 3: Good, 4: Easy.
      */
     review(cardId, rating, type = "vocab") {
-      // Validate before card creation so malformed calls cannot mutate state.
+      // Validate every dependency before card creation so rejected calls are non-mutating.
       if (!Number.isInteger(rating) || rating < 1 || rating > 4) {
         throw new RangeError("SRS rating must be an integer from 1 through 4.");
+      }
+      if (!this.store || typeof this.store.recordActivity !== "function") {
+        throw new Error("SRS store cannot record review activity.");
       }
 
       const card = this.getCard(cardId, type, true);
@@ -84,18 +83,16 @@
       card.easeFactor = clampEase(card.easeFactor);
       card.repetitions = clampInteger(card.repetitions, 0, 100000, 0);
       card.lapses = clampInteger(card.lapses, 0, 100000, 0);
-      card.id = cardId; // Object key is the authoritative card identity.
+      card.id = cardId;
       card.type = ALLOWED_CARD_TYPES.has(card.type) ? card.type : (ALLOWED_CARD_TYPES.has(type) ? type : "vocab");
 
       if (rating === 1) {
-        // Failed / Again
         card.lapses = Math.min(100000, card.lapses + 1);
         card.repetitions = 0;
         card.interval = 1;
         card.state = "learning";
         card.easeFactor = Math.max(1.3, card.easeFactor - 0.2);
       } else {
-        // Successful recall
         if (card.repetitions === 0) {
           card.interval = 1;
         } else if (card.repetitions === 1) {
@@ -104,7 +101,6 @@
           card.interval = Math.round(card.interval * card.easeFactor);
         }
 
-        // Adjust ease factor using the SM-2 quality formula on a 3..5 grade scale.
         const grade = rating + 1;
         card.easeFactor = clampEase(
           card.easeFactor + (0.1 - (5 - grade) * (0.08 + (5 - grade) * 0.02))
@@ -121,15 +117,11 @@
         card.state = "review";
       }
 
-      // Schedule next due date from a finite, bounded interval.
       card.interval = clampInteger(card.interval, 1, MAX_INTERVAL_DAYS, 1);
       const nextDue = new Date(now.getTime() + card.interval * 24 * 60 * 60 * 1000);
       card.dueDate = nextDue.toISOString();
       card.lastReview = now.toISOString();
 
-      if (!this.store || typeof this.store.recordActivity !== "function") {
-        throw new Error("SRS store cannot record review activity.");
-      }
       this.store.recordActivity(rating >= 2 ? 10 : 3);
       return card;
     }
