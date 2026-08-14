@@ -63,6 +63,15 @@ export function rebuildLedger() {
   const specByRow = new Map();
   const deletedByFile = new Map(); // file -> Set of pre-edit indices removed from source
   const batches = [];
+  // deletions declared in the authored fix manifest apply even before a batch spec exists,
+  // so the carried-over prior records stay aligned with the post-edit source.
+  try {
+    const manifest = JSON.parse(readFileSync(join(ROOT, "reports", "qwen-review-fixes.json"), "utf8"));
+    for (const del of manifest.deletedRows || []) {
+      if (!deletedByFile.has(del.file)) deletedByFile.set(del.file, new Set());
+      deletedByFile.get(del.file).add(del.preEditIndex);
+    }
+  } catch { /* manifest optional */ }
   for (const file of readdirSync(BATCH_DIR).filter((f) => f.endsWith(".json")).sort()) {
     const spec = JSON.parse(readFileSync(join(BATCH_DIR, file), "utf8"));
     batches.push({ file, spec });

@@ -111,7 +111,7 @@
         "words_core_14.js:62"
       ],
       "selectedLearnerPOS": "noun",
-      "selectedMeaning": "lake; more",
+      "selectedMeaning": "lake",
       "selectedCategory": "geography",
       "selectedCEFR": "A1",
       "selectedArticle": "het",
@@ -694,7 +694,7 @@
         "words_core_8.js:106"
       ],
       "selectedLearnerPOS": "adjective",
-      "selectedMeaning": "true, real; where",
+      "selectedMeaning": "true, real",
       "selectedCategory": "qualities",
       "selectedCEFR": "A1",
       "selectedArticle": null,
@@ -731,7 +731,7 @@
         "words_core_8.js:102"
       ],
       "selectedLearnerPOS": "adjective",
-      "selectedMeaning": "correct, right, accurate; precisely",
+      "selectedMeaning": "correct, right, accurate",
       "selectedCategory": "qualities",
       "selectedCEFR": "A1",
       "selectedArticle": null,
@@ -2817,7 +2817,7 @@
         "words_core_3b.js:106"
       ],
       "selectedLearnerPOS": "noun",
-      "selectedMeaning": "pillow, cushion; kiss (dim.); pillow; cushion, pillow",
+      "selectedMeaning": "pillow, cushion; pillow; cushion, pillow",
       "selectedCategory": "home",
       "selectedCEFR": "A1",
       "selectedArticle": "het",
@@ -18376,7 +18376,7 @@
           "word": "trots",
           "pos": "noun",
           "category": "emotion",
-          "meaning": "pride; proud",
+          "meaning": "pride",
           "cefr": "A2"
         },
         {
@@ -23686,7 +23686,7 @@
       "explicitPrimarySelector": null,
       "selectorMatches": [],
       "selectedLearnerPOS": "verb",
-      "selectedMeaning": "to prevent; to occur; occur, happen; to prevent, avert",
+      "selectedMeaning": "to occur, happen; to prevent; to prevent, avert",
       "selectedCategory": "abstract",
       "selectedCEFR": "B1",
       "selectedArticle": null,
@@ -25916,7 +25916,7 @@
       "explicitPrimarySelector": null,
       "selectorMatches": [],
       "selectedLearnerPOS": "noun",
-      "selectedMeaning": "hail, hailstones; chocolate hail; hail; chocolate sprinkles",
+      "selectedMeaning": "hail, hailstones; hail; chocolate sprinkles",
       "selectedCategory": "nature",
       "selectedCEFR": "A1",
       "selectedArticle": "de",
