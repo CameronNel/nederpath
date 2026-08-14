@@ -48,6 +48,7 @@ jobs:
           node scripts/build_lexical_review_ledger.mjs
           node scripts/review_lexical_merges.mjs
           node tests/lexical_review_ledger.mjs
+          node scripts/validate_lexical_semantic_review.mjs --strict
           node scripts/verify_lexical_independent.mjs
 
       - name: Run Quality Audit, Smoke, Regression, and Browser Tests
