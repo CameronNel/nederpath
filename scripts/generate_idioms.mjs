@@ -1,27 +1,34 @@
-// NederPath Idioms & Spoken Expressions Generator (500+ authentic Dutch idioms, expressions, and formulas)
-import { writeFileSync } from "node:fs";
+// NederPath Idioms & Everyday Expressions Generator
+// Produces an authentic, curated bank of Dutch idioms, expressions, proverbs,
+// and conversational formulas with stable, append-only IDs.
+import { readFileSync, writeFileSync, existsSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
+import {
+  exampleDemonstratesExpression,
+  normalizeExpression,
+  validateIdiomRow
+} from "./idiom_rules.mjs";
+import { validateRegistry, createIdAllocator, RegistryError } from "./id_allocator.mjs";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 
-// Curated authentic Dutch idioms, proverbs, conversational formulas, and expressions
+// Curated authentic Dutch idioms, expressions, and proverbs with complete metadata.
 const RAW_EXPRESSIONS = [
-  // 1. Classic Idioms & Figurative Sayings
-  ["Nu komt de aap uit de mouw", "Now the truth comes out / the real motive is revealed", "Now the monkey comes out of the sleeve", "idiom", "A2", "Toen hij om geld vroeg, kwam de aap uit de mouw.", "When he asked for money, the real motive was revealed.", "Used when someone's true hidden intention or the truth is finally disclosed.", "Very common in daily speech.", "truth, discovery"],
-  ["Helaas pindakaas", "Too bad / that's tough luck", "Unfortunately peanut butter", "colloquial", "A1", "Zijn de kaartjes uitverkocht? Helaas pindakaas!", "Are the tickets sold out? That's tough luck!", "Playful rhyming expression used to soften a disappointment.", "Informal; do not use in very solemn contexts.", "informal, humor, regret"],
-  ["Voor een appel en een ei", "For next to nothing / very cheaply", "For an apple and an egg", "idiom", "A2", "Ik heb deze mooie fiets voor een appel en een ei gekocht op Marktplaats.", "I bought this nice bicycle for next to nothing on Marktplaats.", "Used for great bargains or very cheap items.", "", "shopping, money"],
-  ["Met de gebakken peren zitten", "To be left dealing with the mess / suffering consequences", "To sit with the baked pears", "idiom", "B1", "Zij namen het risico, maar wij zitten nu met de gebakken peren.", "They took the risk, but we are now left dealing with the mess.", "Used when someone else creates trouble and you are stuck with consequences.", "", "trouble, consequences"],
-  ["Iets onder de knie krijgen", "To master something / get the hang of something", "To get something under the knee", "idiom", "A2", "Nederlandse grammatica is lastig, maar je krijgt het snel onder de knie.", "Dutch grammar is tricky, but you will quickly get the hang of it.", "Describes learning a skill until it becomes second nature.", "", "learning, skills"],
-  ["De kat uit de boom kijken", "To adopt a wait-and-see attitude / see how the wind blows", "To look the cat out of the tree", "idiom", "B1", "Laten we eerst de kat uit de boom kijken voordat we een beslissing nemen.", "Let's adopt a wait-and-see attitude first before making a decision.", "Common in Dutch business and decision-making culture.", "", "patience, strategy"],
-  ["Een open deur intrappen", "To state the obvious / preach to the choir", "To kick in an open door", "idiom", "B1", "Zeggen dat beweging gezond is, is een open deur intrappen.", "Saying exercise is healthy is stating the obvious.", "Frequently heard in discussions and news commentary.", "", "debate, opinion"],
-  ["Water naar de zee dragen", "Carrying coals to Newcastle / completely pointless task", "Carrying water to the sea", "idiom", "B1", "Nog meer reclame maken in die markt is water naar de zee dragen.", "Advertising even more in that market is carrying coals to Newcastle.", "Used for futile or redundant actions.", "", "work, futility"],
-  ["Iets met een korreltje zout nemen", "To take something with a grain of salt", "To take something with a grain of salt", "idiom", "A2", "Je moet zijn wilde verhalen met een korreltje zout nemen.", "You should take his wild stories with a grain of salt.", "Universal expression identical to English.", "", "skepticism, advice"],
-  ["De knoop doorhakken", "To cut the Gordian knot / make a decisive choice", "To chop through the knot", "idiom", "B1", "Na maanden van overleg moeten we vandaag de knoop doorhakken.", "After months of consultation we must make the decisive choice today.", "A staple of Dutch consensus culture (poldermodel) when deliberation must end.", "", "decision, business"],
-  ["Op eieren lopen", "To walk on eggshells / act very delicately", "To walk on eggs", "idiom", "B1", "Als de directeur boos is, loopt iedereen op kantoor op eieren.", "When the director is angry, everyone in the office walks on eggshells.", "Used in tense social or workplace environments.", "", "tension, emotion"],
-  ["Over koetjes en kalfjes praten", "To make small talk / chat about trivial matters", "To talk about little cows and little calves", "idiom", "A2", "We dronken koffie en praatten wat over koetjes en kalfjes.", "We drank coffee and made some small talk.", "Essential for Dutch social gatherings (borrels).", "", "conversation, social"],
-  ["Niet geschoten is altijd mis", "You miss 100% of the shots you don't take / nothing ventured, nothing gained", "Not shot is always missed", "proverb", "A2", "Solliciteer gewoon naar die baan; niet geschoten is altijd mis!", "Just apply for that job; you miss 100% of the shots you don't take!", "Very popular Dutch encouragement phrase popularized in sports and business.", "", "encouragement, ambition"],
-  ["Wie het kleine niet eert, is het grote niet weerd", "Look after the pennies and the pounds will look after themselves", "He who does not honour the small, is not worth the big", "proverb", "B1", "Spaar elke euro, want wie het kleine niet eert, is het grote niet weerd.", "Save every euro, because small things add up to greatness.", "Traditional Dutch thrift proverb.", "", "money, wisdom"],
+  ["Nu komt de aap uit de mouw", "Now the truth is revealed / the cat is out of the bag", "Now the monkey comes out of the sleeve", "idiom", "B1", "Toen hij zijn ware bedoelingen bekende, kwam de aap uit de mouw.", "When he confessed his true intentions, the truth finally came out.", "Used when hidden motives or facts are finally revealed.", "", "truth, revelation"],
+  ["Helaas pindakaas", "Too bad / that's tough luck (informal, humorous)", "Unfortunately peanut butter", "colloquial", "A2", "De winkel is al gesloten, dus helaas pindakaas!", "The shop is already closed, so too bad!", "Playful Dutch rhyming expression used when something cannot be changed.", "Informal; do not use in solemn/formal contexts.", "daily, informal"],
+  ["Voor een appel en een ei", "For next to nothing / very cheaply", "For an apple and an egg", "idiom", "A2", "Hij kocht die prachtige vintage fiets voor een appel en een ei op de markt.", "He bought that beautiful vintage bicycle for next to nothing at the market.", "Extremely common everyday price idiom.", "", "shopping, money"],
+  ["Met de gebakken peren zitten", "To be left holding the bag / facing the consequences", "To sit with the baked pears", "idiom", "B1", "Zij namen de verkeerde beslissing en nu zitten wij met de gebakken peren.", "They made the wrong decision and now we are left facing the consequences.", "Used when someone else's mistake causes you trouble.", "", "trouble, consequences"],
+  ["Iets onder de knie krijgen", "To master something / get the hang of something", "To get something under the knee", "idiom", "A2", "Het kostte wat tijd, maar nu heeft zij de grammatica goed onder de knie gekregen.", "It took some time, but now she really got the hang of the grammar.", "Commonly used for learning skills, languages, and tools.", "", "learning, skills"],
+  ["De kat uit de boom kijken", "To adopt a wait-and-see attitude / hold back", "To look the cat out of the tree", "idiom", "B1", "In nieuwe sociale groepen kijkt hij liever eerst de kat uit de boom.", "In new social groups he prefers to wait and see first before participating.", "Describes a cautious, observant personality or strategy.", "", "character, strategy"],
+  ["Een open deur intrappen", "To state the obvious / preach to the converted", "To kick in an open door", "idiom", "B1", "Zeggen dat beweging gezond is, is een open deur intrappen.", "Saying that exercise is healthy is stating the obvious.", "Frequently used in debates, presentations, and journalism.", "", "communication, opinion"],
+  ["Water naar de zee dragen", "To carry coals to Newcastle / do something futile", "To carry water to the sea", "idiom", "B1", "Extra foldertjes drukken voor een digitaal publiek is water naar de zee dragen.", "Printing extra leaflets for a digital audience is carrying coals to Newcastle.", "Expresses pointless or redundant effort.", "", "futile, effort"],
+  ["Iets met een korreltje zout nemen", "To take something with a grain of salt", "To take something with a grain of salt", "idiom", "A2", "Zijn verhalen zijn altijd aangedikt, neem ze met een korreltje zout.", "His stories are always exaggerated; take them with a grain of salt.", "Direct equivalent of the English phrase.", "", "caution, skepticism"],
+  ["De knoop doorhakken", "To cut the knot / make a decisive choice", "To chop through the knot", "idiom", "B1", "Na urenlang vergaderen hakte de directeur eindelijk de knoop door.", "After hours of meetings, the director finally made the decision.", "Work and leadership context.", "", "decision, leadership"],
+  ["Op eieren lopen", "To walk on eggshells / act very delicately", "To walk on eggs", "idiom", "B1", "Bij die gevoelige klant loopt het team voortdurend op eieren.", "With that sensitive client the team is constantly walking on eggshells.", "Situations requiring extreme tact.", "", "caution, relations"],
+  ["Over koetjes en kalfjes praten", "To make small talk / talk about trivial matters", "To talk about little cows and little calves", "idiom", "A2", "Tijdens de receptie praatten we even over koetjes en kalfjes.", "During the reception we made some small talk for a moment.", "Everyday social pleasantries.", "", "social, conversation"],
+  ["Niet geschoten is altijd mis", "You miss 100% of the shots you don't take", "Not shot is always missed", "proverb", "A2", "Stuur die sollicitatiebrief toch maar op: niet geschoten is altijd mis!", "Send in that application letter anyway: nothing ventured, nothing gained!", "Encouragement to take a reasonable chance.", "", "courage, motivation"],
+  ["Wie het kleine niet eert, is het grote niet weerd", "Look after the pennies and the pounds will look after themselves", "He who does not honour the small is not worth the big", "proverb", "B1", "Wees dankbaar voor elke kleine donatie; wie het kleine niet eert, is het grote niet weerd.", "Be grateful for every small donation; every little bit truly counts.", "Traditional Dutch proverb emphasizing modest thrift.", "", "modesty, gratitude"],
   ["De kogel is door de kerk", "The decision is finally made / the die is cast", "The bullet is through the church", "idiom", "B1", "Eindelijk is de kogel door de kerk: we gaan verhuizen naar Utrecht.", "Finally the decision is made: we are moving to Utrecht.", "Used after protracted debate or negotiations.", "", "decision, news"],
   ["Een appeltje met iemand te schillen hebben", "To have a bone to pick with someone", "To have an apple to peel with someone", "idiom", "B1", "Ik moet even met hem praten, want ik heb nog een appeltje met hem te schillen.", "I need to speak with him, because I have a bone to pick with him.", "Used when addressing an unresolved grievance.", "", "conflict, relations"],
   ["Door de mand vallen", "To be exposed / revealed as a fraud or failure", "To fall through the basket", "idiom", "B1", "Toen hij de cijfers niet kon verklaren, viel hij door de mand.", "When he couldn't explain the numbers, he was completely exposed.", "Common in politics, journalism, and daily news.", "", "truth, failure"],
@@ -40,126 +47,190 @@ const RAW_EXPRESSIONS = [
   ["Beter laat dan nooit", "Better late than never", "Better late than never", "proverb", "A1", "Fijn dat je er bent, beter laat dan nooit!", "Glad you are here, better late than never!", "Universal saying in Dutch.", "", "daily, social"]
 ];
 
-const idiomList = [];
-let counter = 1;
+const idRegistryPath = join(ROOT, "data", "idiom_ids.json");
+if (!existsSync(idRegistryPath)) {
+  throw new Error("FATAL: tracked historical ID registry data/idiom_ids.json is missing.");
+}
 
-for (const expr of RAW_EXPRESSIONS) {
-  const [dutch, meaning, literal, register, level, example, exampleEn, contextNote, usageWarning, tagsStr] = expr;
-  idiomList.push({
-    id: "idm-" + String(counter).padStart(4, "0"),
-    dutch,
-    meaning,
-    literal,
-    register,
-    level,
-    example,
-    exampleEn,
-    contextNote,
-    usageWarning,
-    tags: tagsStr.split(", ").filter(Boolean),
-    related: []
+let idRegistry;
+try {
+  idRegistry = JSON.parse(readFileSync(idRegistryPath, "utf8"));
+} catch (err) {
+  throw new Error(`FATAL: data/idiom_ids.json cannot be parsed: ${err.message}`);
+}
+
+let validatedRegistry;
+try {
+  validatedRegistry = validateRegistry(idRegistry, {
+    prefix: "idm-",
+    idPattern: /^idm-(\d{4,})$/,
+    normalize: normalizeExpression,
+    digits: 4
   });
-  counter++;
+} catch (err) {
+  if (err instanceof RegistryError) throw new Error(`FATAL: data/idiom_ids.json is invalid: ${err.message}`);
+  throw err;
+}
+
+const allocator = createIdAllocator(validatedRegistry, {
+  prefix: "idm-",
+  idPattern: /^idm-(\d{4,})$/,
+  normalize: normalizeExpression,
+  formatId: (num) => `idm-${String(num).padStart(4, "0")}`
+});
+
+const idiomList = [];
+const sourceExpressions = new Map();
+
+function addSourceRow(row) {
+  const normalized = normalizeExpression(row.dutch);
+  if (!normalized) throw new Error("FATAL: curated idiom source contains an empty Dutch expression.");
+  const previous = sourceExpressions.get(normalized);
+  if (previous) {
+    throw new Error(`FATAL: duplicate normalized idiom source '${normalized}' (${previous} and ${row.source}).`);
+  }
+  sourceExpressions.set(normalized, row.source || "unknown source");
+
+  const output = {
+    id: allocator.assignId(normalized),
+    dutch: row.dutch,
+    meaning: row.meaning,
+    literal: row.literal ?? null,
+    register: row.register,
+    level: row.level,
+    example: row.example,
+    exampleEn: row.exampleEn ?? null,
+    contextNote: row.contextNote ?? null,
+    usageWarning: row.usageWarning ?? null,
+    tags: Array.isArray(row.tags) ? row.tags : [],
+    related: Array.isArray(row.related) ? row.related : []
+  };
+  const errors = validateIdiomRow(output);
+  if (errors.length) throw new Error(`FATAL: invalid idiom source '${normalized}': ${errors.join(", ")}`);
+  const exampleReason = exampleDemonstratesExpression(output.dutch, output.example);
+  if (!exampleReason) {
+    throw new Error(`FATAL: Dutch example does not demonstrate '${output.dutch}' (${output.id}).`);
+  }
+  idiomList.push(output);
+}
+
+for (const [index, expr] of RAW_EXPRESSIONS.entries()) {
+  const [dutch, meaning, literal, register, level, example, exampleEn, contextNote, usageWarning, tagsStr] = expr;
+  addSourceRow({
+    source: `RAW_EXPRESSIONS[${index}]`, dutch, meaning, literal, register, level, example, exampleEn,
+    contextNote, usageWarning, tags: tagsStr.split(", "), related: []
+  });
 }
 
 // Conversational formulas, polite Dutch phrases, meeting & daily templates
 const THEMES = [
   {
-    category: "greetings_polite",
+    theme: "Groeten & Afscheid",
     level: "A1",
+    register: "polite",
     items: [
-      ["Goedemorgen, hoe gaat het met u?", "Good morning, how are you? (formal)", "formal greeting for morning", "Goedemorgen, hoe gaat het met u mevrouw Jansen?"],
-      ["Goedemiddag, alles goed?", "Good afternoon, everything good? (informal/neutral)", "standard midday greeting", "Hoi Jan, goedemiddag, alles goed?"],
-      ["Goedenavond allemaal", "Good evening everyone", "greeting for groups in the evening", "Goedenavond allemaal, welkom bij de presentatie."],
-      ["Prettig weekend gewenst!", "Have a pleasant weekend!", "weekend farewell formula", "Tot maandag en een prettig weekend gewenst!"],
-      ["Fijne dag verder!", "Have a nice day further!", "everyday parting phrase in shops & offices", "Dank u wel voor uw hulp en een fijne dag verder!"],
-      ["Tot ziens en tot de volgende keer", "Goodbye and until next time", "friendly parting formula", "Bedankt voor het gezellige bezoek, tot ziens!"],
-      ["Eet smakelijk!", "Enjoy your meal! / Bon appétit!", "universal mealtime phrase in Dutch culture", "Het eten staat op tafel, eet smakelijk allemaal!"],
-      ["Gezondheid! / Proost!", "Bless you! (after sneezing) / Cheers! (drinks)", "polite health or drinking formula", "Proost op het nieuwe jaar!"],
-      ["Hartelijk gefeliciteerd met je verjaardag!", "Warm congratulations on your birthday!", "standard birthday formula", "Hartelijk gefeliciteerd met je 30e verjaardag!"],
-      ["Veel succes met het examen!", "Best of luck with the exam!", "wishing success formula", "Zet hem op morgen en veel succes met het examen!"]
+      ["Goedemorgen, hoe gaat het met u?", "Good morning, how are you? (formal)", "Goedemorgen meneer Jansen, hoe gaat het met u vandaag?"],
+      ["Goedemiddag, alles goed?", "Good afternoon, all well? (informal/neutral)", "Hoi Peter, goedemiddag, alles goed met de studie?"],
+      ["Goedenavond allemaal", "Good evening everyone", "Goedenavond allemaal, welkom bij deze presentatie."],
+      ["Prettig weekend gewenst!", "Have a nice weekend!", "Het werk zit erop; prettig weekend gewenst iedereen!"],
+      ["Fijne dag verder!", "Have a nice rest of your day!", "Dank u wel voor uw hulp en een fijne dag verder!"],
+      ["Tot ziens en tot de volgende keer", "Goodbye and see you next time", "Bedankt voor de gezellige les en tot ziens en tot de volgende keer!"]
     ]
   },
   {
-    category: "workplace_business",
+    theme: "Sociale Gelegenheden & Wensen",
+    level: "A1",
+    register: "neutral",
+    items: [
+      ["Eet smakelijk!", "Enjoy your meal! / Bon appétit!", "Het eten staat op tafel: eet smakelijk allemaal!"],
+      ["Proost!", "Cheers! (toast)", "Zij hieven het glas: proost op het goede nieuws!"],
+      ["Gezondheid!", "Bless you! (after sneezing) / Good health!", "Toen hij niesde, zei iedereen direct: gezondheid!"],
+      ["Hartelijk gefeliciteerd met je verjaardag!", "Warm congratulations on your birthday!", "Hartelijk gefeliciteerd met je verjaardag en een fijne dag toegewenst!"],
+      ["Veel succes met het examen!", "Good luck with the exam!", "Je hebt goed geoefend, dus veel succes met het examen morgen!"]
+    ]
+  },
+  {
+    theme: "Zakelijk Overleg & Werk",
     level: "B1",
+    register: "neutral",
     items: [
-      ["Zullen we even kort overleggen?", "Shall we have a quick check-in / brief consultation?", "standard Dutch office phrase for alignment", "Heb je vijf minuten? Zullen we even kort overleggen?"],
-      ["Ik kom hier later op terug", "I will get back to you on this later", "standard commitment phrase in business", "Ik heb die cijfers nu niet paraat, maar ik kom hier later op terug."],
-      ["Kun je dat even op de mail zetten?", "Could you put that in an email?", "polite request for written confirmation", "Klinkt als een goed voorstel, kun je dat even op de mail zetten?"],
-      ["Laten we de koppen bij elkaar steken", "Let's put our heads together / brainstorm a solution", "collaborative problem-solving idiom", "Dit is een lastig probleem; laten we de koppen bij elkaar steken."],
-      ["Ik zit vol tot het einde van de week", "My schedule is fully booked until the end of the week", "expressing full schedule politely", "Helaas kan ik die afspraak niet aannemen; ik zit vol."],
-      ["Laten we even een streep trekken onder deze discussie", "Let's draw a line under this discussion / wrap it up", "consensus conclusion formula", "We hebben alle standpunten gehoord, laten we nu een streep trekken."],
-      ["Dat staat buiten kijf", "That is beyond dispute / indisputable", "firm affirmation formula", "Dat we meer personeel nodig hebben, staat buiten kijf."],
-      ["Iemand op de hoogte houden", "To keep someone informed / in the loop", "essential office communication phrase", "Ik zal je direct op de hoogte houden van nieuwe ontwikkelingen."],
-      ["Een vinger aan de pols houden", "To keep a finger on the pulse / closely monitor progress", "management monitoring idiom", "We moeten een vinger aan de pols houden bij dit project."],
-      ["Met betrekking tot uw schrijven", "With reference to your letter/email (formal)", "formal correspondence opening", "Met betrekking tot uw schrijven van 12 mei delen wij u mede..."]
+      ["Zullen we even kort overleggen?", "Shall we have a quick discussion / chat?", "Heb je vijf minuutjes? Zullen we even kort overleggen over het project?"],
+      ["Ik kom hier later op terug", "I will get back to this later", "Dat moet ik even navragen bij de manager; ik kom hier later op terug."],
+      ["Kun je dat even op de mail zetten?", "Could you put that in an email?", "Dat is een goed voorstel, kun je dat even op de mail zetten?"],
+      ["Laten we de koppen bij elkaar steken", "Let's put our heads together / brainstorm", "Het probleem is ingewikkeld, dus laten we de koppen bij elkaar steken."],
+      ["Ik zit vol tot het einde van de week", "I am fully booked until the end of the week", "Helaas kan ik geen nieuwe afspraken plannen; ik zit vol tot het einde van de week."],
+      ["Laten we even een streep trekken onder deze discussie", "Let's draw a line under this discussion", "We hebben alle standpunten gehoord, laten we nu een streep trekken onder deze discussie."],
+      ["Dat staat buiten kijf", "That is beyond question / unquestionable", "Dat zij hard heeft gewerkt voor dit resultaat staat buiten kijf."],
+      ["Iemand op de hoogte houden", "To keep someone informed / in the loop", "Zodra ik meer nieuws heb, zal ik je direct op de hoogte houden."],
+      ["Een vinger aan de pols houden", "To keep one's finger on the pulse / monitor closely", "De projectleider houdt voortdurend een vinger aan de pols bij de voortgang."],
+      ["Met betrekking tot uw schrijven", "With reference to your letter/message (formal)", "Met betrekking tot uw schrijven van 12 maart delen wij u het volgende mede:"]
     ]
   },
   {
-    category: "reactions_emotions",
+    theme: "Meningen & Gevoelens",
     level: "A2",
+    register: "colloquial",
     items: [
-      ["Dat meen je niet!", "You don't say! / You must be kidding!", "reaction of shock or surprise", "Is de trein weer uitgevallen? Dat meen je niet!"],
-      ["Geen probleem, graag gedaan!", "No problem, you are very welcome!", "warm response to thanks", "Bedankt voor de lift! — Geen probleem, graag gedaan!"],
-      ["Maak je geen zorgen", "Don't worry", "reassurance phrase", "Alles komt goed, maak je geen zorgen."],
-      ["Dat hangt ervan af", "That depends", "standard conditional reaction", "Ga je mee naar het strand? — Dat hangt van het weer af."],
-      ["Nou en of!", "You bet! / And how! / Absolutely!", "strong enthusiastic agreement", "Was het concert geweldig? — Nou en of!"],
-      ["Wat een toeval!", "What a coincidence!", "expressing surprise at chance", "Dat we elkaar hier in Amsterdam tegenkomen, wat een toeval!"],
-      ["Het zit me tot hier", "I have had it up to here / I am fed up", "expressing frustration with gesture", "Die constante herrie; het zit me nu echt tot hier!"],
-      ["Daar ben ik het helemaal mee eens", "I completely agree with that", "clear agreement formula", "Je hebt gelijk, daar ben ik het helemaal mee eens."],
-      ["Ik heb er gemengde gevoelens over", "I have mixed feelings about it", "expressing nuanced hesitation", "Over die nieuwe maatregel heb ik gemengde gevoelens."],
-      ["Geen sprake van!", "Out of the question! / No way!", "firm refusal formula", "Mag ik jouw auto lenen? — Geen sprake van!"]
+      ["Dat meen je niet!", "You don't mean it! / No way! / You're kidding!", "Heeft zij de hoofdprijs gewonnen? Dat meen je niet!"],
+      ["Geen probleem, graag gedaan!", "No problem, you're welcome!", "Dank voor de lift naar het station. — Geen probleem, graag gedaan!"],
+      ["Maak je geen zorgen", "Don't worry", "Alles komt goed met de verhuizing, maak je geen zorgen."],
+      ["Dat hangt ervan af", "That depends", "Gaan we buiten zitten? Dat hangt ervan af of het gaat regenen."],
+      ["Nou en of!", "You bet! / And how! / Absolutely!", "Heb je genoten van de vakantie op Texel? — Nou en of!"],
+      ["Wat een toeval!", "What a coincidence!", "Komen we elkaar hier weer tegen in Rotterdam, wat een toeval!"],
+      ["Het zit me tot hier", "I've had it up to here / I'm fed up", "Die constante herrie van de buren zit me werkelijk tot hier."],
+      ["Daar ben ik het helemaal mee eens", "I completely agree with that", "Dat openbaar vervoer betaalbaar moet blijven, daar ben ik het helemaal mee eens."],
+      ["Ik heb er gemengde gevoelens over", "I have mixed feelings about it", "Over het nieuwe beleid van de gemeente heb ik eerlijk gezegd gemengde gevoelens."],
+      ["Geen sprake van!", "Out of the question! / No way!", "Gaan we in deze storm fietsen? Geen sprake van!"]
     ]
   },
   {
-    category: "shopping_travel_dining",
+    theme: "Dagelijkse Dienstverlening & Winkels",
     level: "A1",
+    register: "polite",
     items: [
-      ["Mag ik de rekening, alstublieft?", "May I have the bill, please?", "standard restaurant payment request", "We hebben heerlijk gegeten; mag ik de rekening alstublieft?"],
-      ["Pinnen of contant?", "Pay by card (debit pin) or cash?", "everyday Dutch cashier question", "Dat is dan twaalf euro vijftig. Pinnen of contant?"],
-      ["Wilt u er een bonnetje bij?", "Would you like a receipt with that?", "standard supermarket checkout question", "Alstublieft uw wisselgeld. Wilt u er een bonnetje bij?"],
-      ["Mag ik even passen?", "May I try this on?", "clothing store request", "Deze jas is mooi, mag ik hem even passen in de paskamer?"],
-      ["Waar kan ik het station vinden?", "Where can I find the train station?", "asking directions politely", "Pardon meneer, waar kan ik het centrale station vinden?"],
-      ["Is deze stoel nog vrij?", "Is this seat still free/unoccupied?", "asking for free seat in train/terrace", "Mag ik hier zitten, of is deze stoel nog vrij?"],
-      ["Wilt u hier iets bij drinken?", "Would you like something to drink with this?", "restaurant server inquiry", "Een dagschotel voor twee. Wilt u hier iets bij drinken?"],
-      ["Heeft u dit in een andere maat?", "Do you have this in another size?", "clothing shopping question", "Deze trui is te klein; heeft u dit in maat L?"],
-      ["Tot hoe laat bent u open?", "Until what time are you open?", "store opening hours inquiry", "Tot hoe laat bent u vanavond open voor klanten?"],
-      ["Kan ik hier gratis parkeren?", "Can I park here for free?", "parking inquiry", "Is dit een blauwe zone of kan ik hier gratis parkeren?"]
+      ["Mag ik de rekening, alstublieft?", "May I have the bill, please?", "Pardon ober, mag ik de rekening, alstublieft?"],
+      ["Pinnen of contant?", "Card (debit) or cash?", "Dat is dan vijftien euro vijftig. Pinnen of contant?"],
+      ["Wilt u er een bonnetje bij?", "Would you like a receipt with that?", "Alstublieft uw wisselgeld. Wilt u er een bonnetje bij?"],
+      ["Mag ik even passen?", "May I try this on for a moment?", "Deze jas is erg mooi, mag ik hem even passen in het pashokje?"],
+      ["Waar kan ik het station vinden?", "Where can I find the station?", "Pardon meneer, weet u waar ik het centrale treinstation kan vinden?"],
+      ["Is deze stoel nog vrij?", "Is this seat still available?", "Pardon mevrouw, is deze stoel naast u in de trein nog vrij?"],
+      ["Wilt u hier iets bij drinken?", "Would you like something to drink with this?", "Welkom in ons café. Wilt u hier alvast iets bij drinken?"],
+      ["Heeft u dit in een andere maat?", "Do you have this in a different size?", "Deze trui is iets te klein, heeft u deze trui in een grotere maat?"],
+      ["Tot hoe laat bent u open?", "Until what time are you open?", "Goedemiddag, tot hoe laat bent u vanavond eigenlijk open?"],
+      ["Kan ik hier gratis parkeren?", "Can I park here for free?", "Is dit een blauwe zone of kan ik hier overdag gratis parkeren?"]
     ]
   }
 ];
 
-for (const t of THEMES) {
-  for (const item of t.items) {
-    const [dutch, meaning, note, example] = item;
-    idiomList.push({
-      id: "idm-" + String(counter).padStart(4, "0"),
+for (const theme of THEMES) {
+  for (const [index, item] of theme.items.entries()) {
+    const [dutch, meaning, example] = item;
+    addSourceRow({
+      source: `${theme.theme}[${index}]`,
       dutch,
       meaning,
-      literal: "",
-      register: t.level === "A1" ? "neutral" : "colloquial",
-      level: t.level,
+      literal: null,
+      register: theme.register,
+      level: theme.level,
       example,
-      exampleEn: meaning,
-      contextNote: note,
-      usageWarning: "",
-      tags: [t.category, "spoken"],
+      exampleEn: null,
+      contextNote: theme.theme,
+      usageWarning: null,
+      tags: [theme.theme.toLowerCase(), theme.register],
       related: []
     });
-    counter++;
   }
 }
 
-// Extra 40 authentic expressions
+// Additional high-frequency authentic expressions
 const EXTRA_SAYINGS = [
-  ["Iets voor lief nemen", "To take something for granted / accept unavoidable drawbacks", "B1", "Het slechte weer moet je in Nederland maar voor lief nemen."],
-  ["Een zucht van verlichting slaken", "To breathe a sigh of relief", "A2", "Toen het examen voorbij was, slaakte iedereen een zucht van verlichting."],
-  ["Op rozen zitten", "To be in an enviable, comfortable position", "B1", "Met die nieuwe baan en mooi salaris zit hij op rozen."],
-  ["Aan de bel trekken", "To sound the alarm / raise the alarm about an issue", "B1", "Als er veiligheidsproblemen zijn, moet je direct aan de bel trekken."],
-  ["Met kop en schouders boven de rest uitsteken", "To stand head and shoulders above the rest", "B1", "Deze atleet stak met kop en schouders boven de rest uit."],
-  ["Een oogje in het zeil houden", "To keep an eye on things / watch out", "A2", "Wil jij even een oogje in het zeil houden terwijl ik weg ben?"],
-  ["Iets uit de eerste hand vernemen", "To hear something firsthand", "B1", "Ik heb het nieuws uit de eerste hand vernomen van de directeur."],
+  ["Iets voor lief nemen", "To accept the drawbacks of something / accept something as inevitable", "B2", "De vertragingen bij slecht weer moet je helaas voor lief nemen."],
+  ["Een zucht van verlichting slaken", "To breathe a sigh of relief", "B1", "Toen het verlossende telefoontje kwam, slaakte iedereen een zucht van verlichting."],
+  ["Op rozen zitten", "To be in clover / be in an advantageous position", "B2", "Met die vaste baan en dat mooie huis zit hij werkelijk op rozen."],
+  ["Aan de bel trekken", "To sound the alarm / raise the alarm", "B1", "Toen de veiligheid in het geding kwam, trok de werknemer direct aan de bel."],
+  ["Met kop en schouders boven de rest uitsteken", "To stand head and shoulders above the rest", "B2", "Haar presentatie stak met kop en schouders boven de rest uit."],
+  ["Een oogje in het zeil houden", "To keep an eye on things / watch over", "B1", "Zou jij even een oogje in het zeil willen houden terwijl ik weg ben?"],
+  ["Iets uit de eerste hand vernemen", "To hear something firsthand", "B2", "Ik heb het nieuws over de overname uit de eerste hand vernomen van de directeur."],
   ["De spijker op de kop slaan", "To hit the nail on the head", "A2", "Jouw analyse sloeg precies de spijker op de kop."],
   ["In kannen en kruiken zijn", "To be all signed, sealed and delivered / completed", "B1", "Het koopcontract voor het nieuwe huis is nu in kannen en kruiken."],
   ["Het achterste van zijn tong niet laten zien", "To not reveal everything / keep one's cards close to chest", "B2", "Tijdens de onderhandelingen liet de advocaat het achterste van zijn tong niet zien."],
@@ -195,39 +266,25 @@ const EXTRA_SAYINGS = [
   ["Het zonnetje in huis zijn", "To be a ray of sunshine / cheerful person", "A2", "Zij is altijd vrolijk en echt het zonnetje in huis."]
 ];
 
-for (const ex of EXTRA_SAYINGS) {
+for (const [index, ex] of EXTRA_SAYINGS.entries()) {
   const [dutch, meaning, level, example] = ex;
-  idiomList.push({
-    id: "idm-" + String(counter).padStart(4, "0"),
+  addSourceRow({
+    source: `EXTRA_SAYINGS[${index}]`,
     dutch,
     meaning,
-    literal: "",
+    literal: null,
     register: "idiom",
     level,
     example,
-    exampleEn: meaning,
-    contextNote: "Authentic Dutch idiomatic phrase",
-    usageWarning: "",
+    exampleEn: null,
+    contextNote: null,
+    usageWarning: null,
     tags: ["idiom", "communication"],
     related: []
   });
-  counter++;
 }
 
-// Generate the remaining authentic formulas across daily situations up to 510+
-const SITUATIONS = [
-  { name: "bij de huisarts", en: "at the doctor", context: "medisch consult" },
-  { name: "op het werk", en: "at work", context: "kantooroverleg" },
-  { name: "in het openbaar vervoer", en: "on public transit", context: "reizen met trein en bus" },
-  { name: "in het restaurant", en: "at the restaurant", context: "horeca en dineren" },
-  { name: "op de markt", en: "at the open-air market", context: "boodschappen doen" },
-  { name: "met de buren", en: "with the neighbours", context: "buurtcontact" },
-  { name: "aan de telefoon", en: "on the phone", context: "telefonisch gesprek" },
-  { name: "in een vergadering", en: "in a meeting", context: "zakelijk overleg" },
-  { name: "tijdens een borrel", en: "during drinks", context: "sociale bijeenkomst" },
-  { name: "bij de gemeente", en: "at city hall", context: "burgerzaken" }
-];
-
+// Conversational formulas
 const FORMULA_TEMPLATES = [
   ["Mag ik u even iets vragen?", "May I ask you something for a moment?", "A1", "Pardon mevrouw, mag ik u even iets vragen over de bushalte?"],
   ["Kunt u dat alstublieft herhalen?", "Could you please repeat that?", "A1", "Het ging iets te snel, kunt u dat alstublieft herhalen?"],
@@ -241,35 +298,37 @@ const FORMULA_TEMPLATES = [
   ["Alvast heel erg bedankt voor uw medewerking", "Thank you very much in advance for your cooperation", "A2", "Ik zie uw reactie tegemoet, alvast heel erg bedankt voor uw medewerking!"]
 ];
 
-while (idiomList.length < 510) {
-  for (const sit of SITUATIONS) {
-    for (const [dutch, meaning, level, example] of FORMULA_TEMPLATES) {
-      if (idiomList.length >= 510) break;
-      const id = "idm-" + String(counter).padStart(4, "0");
-      counter++;
-      idiomList.push({
-        id,
-        dutch,
-        meaning: `${meaning} (${sit.en})`,
-        literal: "",
-        register: "polite",
-        level,
-        example,
-        exampleEn: `${meaning} (${sit.en})`,
-        contextNote: `Spoken formula used in context: ${sit.name} (${sit.context})`,
-        usageWarning: "",
-        tags: ["conversational", sit.name.split(" ")[0]],
-        related: []
-      });
-    }
-  }
+for (const [index, template] of FORMULA_TEMPLATES.entries()) {
+  const [dutch, meaning, level, example] = template;
+  addSourceRow({
+    source: `FORMULA_TEMPLATES[${index}]`,
+    dutch,
+    meaning,
+    literal: null,
+    register: "polite",
+    level,
+    example,
+    exampleEn: null,
+    contextNote: null,
+    usageWarning: null,
+    tags: ["conversational", "spoken"],
+    related: []
+  });
 }
 
-console.log(`Generated ${idiomList.length} authentic Dutch idioms & expressions.`);
+if (idiomList.length === 0) throw new Error("FATAL: no curated idiom source rows were generated.");
+const outputIds = new Set();
+for (const row of idiomList) {
+  if (outputIds.has(row.id)) throw new Error(`FATAL: duplicate generated idiom ID '${row.id}'.`);
+  outputIds.add(row.id);
+}
+
+console.log(`Generated ${idiomList.length} curated Dutch idioms & everyday expressions.`);
 
 const header = `// AUTO-GENERATED by scripts/generate_idioms.mjs - do not edit by hand.
-// ${idiomList.length} authentic Dutch idioms, everyday expressions, proverbs, and polite formulas.
+// ${idiomList.length} curated Dutch idioms, everyday expressions, proverbs, and polite formulas.
 globalThis.NP_IDIOMS = `;
 
 writeFileSync(join(ROOT, "data", "idioms.js"), header + JSON.stringify(idiomList, null, 2) + ";\n");
+writeFileSync(idRegistryPath, JSON.stringify(allocator.toRegistry()) + "\n");
 console.log("data/idioms.js successfully written!");
