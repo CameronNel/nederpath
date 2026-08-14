@@ -3,11 +3,16 @@
   "use strict";
 
   const SAFE_CARD_ID_REGEX = /^[A-Za-z0-9_-]{1,80}$/;
+  const DANGEROUS_CARD_IDS = new Set(["__proto__", "constructor", "prototype"]);
   const ALLOWED_CARD_TYPES = new Set(["vocab", "grammar", "comprehension", "article"]);
   const MAX_INTERVAL_DAYS = 36500;
 
   function isSafeCardId(cardId) {
-    return typeof cardId === "string" && SAFE_CARD_ID_REGEX.test(cardId);
+    return (
+      typeof cardId === "string" &&
+      SAFE_CARD_ID_REGEX.test(cardId) &&
+      !DANGEROUS_CARD_IDS.has(cardId)
+    );
   }
 
   function toTimestamp(value) {
