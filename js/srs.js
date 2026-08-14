@@ -2,17 +2,54 @@
 (function (global) {
   "use strict";
 
+  const SAFE_CARD_ID_REGEX = /^[A-Za-z0-9_-]{1,80}$/;
+  const ALLOWED_CARD_TYPES = new Set(["vocab", "grammar", "comprehension", "article"]);
+  const MAX_INTERVAL_DAYS = 36500;
+
+  function isSafeCardId(cardId) {
+    return typeof cardId === "string" && SAFE_CARD_ID_REGEX.test(cardId);
+  }
+
+  function toTimestamp(value) {
+    if (typeof value !== "string") return null;
+    const timestamp = Date.parse(value);
+    return Number.isFinite(timestamp) ? timestamp : null;
+  }
+
+  function clampInteger(value, min, max, fallback) {
+    if (!Number.isFinite(value)) return fallback;
+    return Math.max(min, Math.min(max, Math.round(value)));
+  }
+
+  function clampEase(value) {
+    if (!Number.isFinite(value)) return 2.5;
+    return Math.max(1.3, Math.min(3.5, value));
+  }
+
   class SRSEngine {
     constructor(store) {
       this.store = store;
     }
 
     getCard(cardId, type = "vocab", createIfMissing = true) {
+      if (!isSafeCardId(cardId)) {
+        throw new TypeError("Invalid SRS card id.");
+      }
+
+      if (!this.store || !this.store.state || !this.store.state.srs) {
+        throw new Error("SRS store is unavailable.");
+      }
+
+      if (!this.store.state.srs.cards || typeof this.store.state.srs.cards !== "object" || Array.isArray(this.store.state.srs.cards)) {
+        this.store.state.srs.cards = {};
+      }
+
       const cards = this.store.state.srs.cards;
-      if (!cards[cardId] && createIfMissing) {
+      const hasCard = Object.prototype.hasOwnProperty.call(cards, cardId);
+      if (!hasCard && createIfMissing) {
         cards[cardId] = {
           id: cardId,
-          type,
+          type: ALLOWED_CARD_TYPES.has(type) ? type : "vocab",
           interval: 0, // days
           easeFactor: 2.5, // default SM-2 ease factor
           repetitions: 0,
@@ -22,26 +59,39 @@
           lastReview: null
         };
       }
-      return cards[cardId] || null;
+      return Object.prototype.hasOwnProperty.call(cards, cardId) ? cards[cardId] : null;
     }
 
     /**
-     * Process review rating according to SM-2:
+     * Process review rating according to the app's SM-2-inspired scheduler.
      * rating:
-     * 1: Again (Total blackout / failed)
-     * 2: Hard (Recalled with intense difficulty)
-     * 3: Good (Recalled with hesitation / correct)
-     * 4: Easy (Perfect instant recall)
+     * 1: Again (failed)
+     * 2: Hard
+     * 3: Good
+     * 4: Easy
      */
     review(cardId, rating, type = "vocab") {
-      let card = this.getCard(cardId, type, true);
+      // Validate before card creation so malformed calls cannot mutate state.
+      if (!Number.isInteger(rating) || rating < 1 || rating > 4) {
+        throw new RangeError("SRS rating must be an integer from 1 through 4.");
+      }
+
+      const card = this.getCard(cardId, type, true);
       const now = new Date();
 
-      if (rating < 2) {
+      // Repair any pre-existing malformed numeric state before doing arithmetic.
+      card.interval = clampInteger(card.interval, 0, MAX_INTERVAL_DAYS, 0);
+      card.easeFactor = clampEase(card.easeFactor);
+      card.repetitions = clampInteger(card.repetitions, 0, 100000, 0);
+      card.lapses = clampInteger(card.lapses, 0, 100000, 0);
+      card.id = cardId; // Object key is the authoritative card identity.
+      card.type = ALLOWED_CARD_TYPES.has(card.type) ? card.type : (ALLOWED_CARD_TYPES.has(type) ? type : "vocab");
+
+      if (rating === 1) {
         // Failed / Again
-        card.lapses += 1;
+        card.lapses = Math.min(100000, card.lapses + 1);
         card.repetitions = 0;
-        card.interval = 1; // repeat tomorrow (or same day)
+        card.interval = 1;
         card.state = "learning";
         card.easeFactor = Math.max(1.3, card.easeFactor - 0.2);
       } else {
@@ -54,52 +104,65 @@
           card.interval = Math.round(card.interval * card.easeFactor);
         }
 
-        // Adjust ease factor
-        // EF' = EF + (0.1 - (5 - grade) * (0.08 + (5 - grade) * 0.02))
-        const grade = rating + 1; // scale 2..4 to 3..5
-        card.easeFactor = Math.max(1.3, card.easeFactor + (0.1 - (5 - grade) * (0.08 + (5 - grade) * 0.02)));
+        // Adjust ease factor using the SM-2 quality formula on a 3..5 grade scale.
+        const grade = rating + 1;
+        card.easeFactor = clampEase(
+          card.easeFactor + (0.1 - (5 - grade) * (0.08 + (5 - grade) * 0.02))
+        );
 
         if (rating === 4) {
-          card.interval = Math.round(card.interval * 1.3); // Bonus for Easy
+          card.interval = Math.round(card.interval * 1.3);
         } else if (rating === 2) {
-          card.interval = Math.max(1, Math.round(card.interval * 0.8)); // Penalty for Hard
+          card.interval = Math.max(1, Math.round(card.interval * 0.8));
         }
 
-        card.repetitions += 1;
+        card.interval = clampInteger(card.interval, 1, MAX_INTERVAL_DAYS, 1);
+        card.repetitions = Math.min(100000, card.repetitions + 1);
         card.state = "review";
       }
 
-      // Schedule next due date
+      // Schedule next due date from a finite, bounded interval.
+      card.interval = clampInteger(card.interval, 1, MAX_INTERVAL_DAYS, 1);
       const nextDue = new Date(now.getTime() + card.interval * 24 * 60 * 60 * 1000);
       card.dueDate = nextDue.toISOString();
       card.lastReview = now.toISOString();
 
-      // Record activity and save state atomically
+      if (!this.store || typeof this.store.recordActivity !== "function") {
+        throw new Error("SRS store cannot record review activity.");
+      }
       this.store.recordActivity(rating >= 2 ? 10 : 3);
       return card;
     }
 
     getDueCards(type = null) {
-      const nowIso = new Date().toISOString();
-      const all = Object.values(this.store.state.srs.cards || {});
-      return all.filter((c) => {
-        if (type && c.type !== type) return false;
-        return c.dueDate <= nowIso;
-      });
+      const now = Date.now();
+      const all = Object.values((this.store && this.store.state && this.store.state.srs && this.store.state.srs.cards) || {});
+      return all
+        .filter((card) => {
+          if (!card || typeof card !== "object") return false;
+          if (type && card.type !== type) return false;
+          const due = toTimestamp(card.dueDate);
+          return due !== null && due <= now;
+        })
+        .sort((a, b) => toTimestamp(a.dueDate) - toTimestamp(b.dueDate));
     }
 
     getDeckStats() {
-      const all = Object.values(this.store.state.srs.cards || {});
-      const nowIso = new Date().toISOString();
+      const all = Object.values((this.store && this.store.state && this.store.state.srs && this.store.state.srs.cards) || {});
+      const now = Date.now();
       let due = 0;
       let learning = 0;
       let mastered = 0;
-      let total = all.length;
+      const total = all.length;
 
-      for (const c of all) {
-        if (c.dueDate <= nowIso) due++;
-        if (c.state === "learning") learning++;
-        if (c.repetitions >= 4 && c.interval >= 21) mastered++;
+      for (const card of all) {
+        if (!card || typeof card !== "object") continue;
+        const dueTimestamp = toTimestamp(card.dueDate);
+        if (dueTimestamp !== null && dueTimestamp <= now) due++;
+        if (card.state === "learning") learning++;
+        if (Number.isFinite(card.repetitions) && Number.isFinite(card.interval) && card.repetitions >= 4 && card.interval >= 21) {
+          mastered++;
+        }
       }
 
       return { total, due, learning, mastered };
