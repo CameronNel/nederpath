@@ -3,9 +3,9 @@
   "rawSourceRows": 6428,
   "uniqueSourceForms": 4261,
   "canonicalForms": 4261,
-  "generatedRows": 10832,
+  "generatedRows": 10811,
   "learnableRows": 4245,
-  "derivedRows": 6587,
+  "derivedRows": 6566,
   "sourcePos": {
     "adjective": 167,
     "adverb": 111,
@@ -32,19 +32,19 @@
     "conjunction": 25,
     "determiner": 21,
     "interjection": 22,
-    "noun": 4887,
+    "noun": 4864,
     "numeral": 1995,
     "particle": 5,
     "phrase": 39,
     "preposition": 34,
     "pronoun": 20,
-    "verb": 3542
+    "verb": 3544
   },
   "generatedLevels": {
-    "A1": 2238,
-    "A2": 2480,
-    "B1": 5072,
-    "B2": 1015,
+    "A1": 2226,
+    "A2": 2476,
+    "B1": 5068,
+    "B2": 1014,
     "C1": 27
   },
   "duplicateSourceGroups": 1463,
@@ -58,8 +58,8 @@
   "phraseRows": 39,
   "baselineRows": 10731,
   "baselineIdDrift": 0,
-  "registryHighWaterMark": 20073,
-  "registryEntries": 20073,
+  "registryHighWaterMark": 20083,
+  "registryEntries": 20083,
   "sourceIssues": [],
   "failures": []
 }

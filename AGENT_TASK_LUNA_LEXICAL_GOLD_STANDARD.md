@@ -138,7 +138,7 @@ If a row cannot be confidently verified:
 
 **Full-row audit evidence:**
 
-`Exhaustive source audit: 25 core files / 6,428 final raw rows parsed by scripts/lexical_audit.mjs --strict and tests/lexical.mjs; sourceIssues=[], unmodeled duplicate groups=0; changed-row and 500-row human rereads are recorded in reports/manual-review-notes.md; no padding or fabricated examples/frequencies remain.`
+`Exhaustive source audit: 25 core files / 6,428 final raw rows have one deterministic entry each in reports/lexical-review-ledger.json (sourceFile:sourceIndex identity); 6,174 PASS, 254 FIXED, 0 NEEDS-EVIDENCE. The ledger is an all-row semantic/editorial review, not a sample or representative subset, and reports sampling_substitute=false. scripts/lexical_audit.mjs --strict and tests/lexical.mjs report sourceIssues=[], unmodeled duplicate groups=0, and no padding or fabricated examples/frequencies.`
 
 ---
 
@@ -357,7 +357,7 @@ After the implementation pass:
 
 **Manual-review evidence:**
 
-`Manual evidence: reports/manual-review-notes.md records rereading all changed/replaced/retired and morphology/article/gloss rows plus a deterministic 500-row sample across all 25 files, 11 POS values, and all five levels; reports/manual-sample-500.json and reports/manual-learner-sample-200.json are the final queues.`
+`Manual evidence: reports/lexical-review-ledger.json records a row-by-row semantic/editorial disposition for all 6,428 final source rows; reports/manual-review-notes.md and reports/manual-sample-500.json remain supplementary hostile/manual QA records, while reports/manual-learner-sample-200.json records the separate learner-facing QA queue. The exhaustive source-row contract is evidenced by the ledger, not by sampling.`
 
 ---
 
@@ -406,7 +406,7 @@ This pass is mandatory.
 
 **Pass 1 evidence:**
 
-`Pass 1 evidence: contract reread, DONE matrix, strict lexical audit, lexical tests, two generator runs, full npm test, build, artifact audit, direct generated-artifact review, stable-ID comparison, no target-count padding, null example/frequency checks, and diff review all completed; results are in reports/lexical-current.json, reports/generator-determinism.md, and reports/manual-review-notes.md.`
+`Pass 1 evidence: contract reread, exhaustive 6,428-row ledger (6,174 PASS / 254 FIXED / 0 NEEDS-EVIDENCE), 1,463 duplicate-group merge review, 4,806-row noun morphology sweep, strict lexical audit, lexical tests, deterministic generation, full npm test, build, artifact audit, direct generated-artifact review, stable-ID comparison, no target-count padding, null example/frequency checks, and diff review are recorded in reports/lexical-final-summary.json, reports/verification-pass-1-final.json, reports/lexical-current.json, reports/merge-policy-review.json, reports/noun-morphology-sweep.json, and reports/lexical-review-ledger.json.`
 
 DONE/NOT DONE matrix after Pass 1: sections 0–15 DONE; section 16 Delivery NOT DONE pending commit/push/PR; Final Completion Gate NOT DONE pending delivery. The remaining boxes are intentionally open and work continued immediately.
 
@@ -436,18 +436,18 @@ Assume your own work is wrong.
 
 **Pass 2 evidence:**
 
-`Pass 2 evidence: scripts/verify_lexical_independent.mjs independently reports 6,428 raw rows, 4,261 canonical forms, 10,832 generated rows, 4,245 learner rows, 6,219 explicit forms, zero source issues, zero duplicate forms/IDs, zero article failures, zero legacy ID drift, and no failures; the final 200-card manual review was restarted after fixing the hostile sample findings and covers all five levels, 11 POS values, and 53 categories.`
+`Pass 2 evidence: scripts/verify_lexical_independent.mjs independently reports 6,428 raw rows, 4,261 canonical forms, 10,811 generated rows, 4,245 learner rows, 6,219 explicit forms, 1,463 duplicate groups, 36 mixed-POS groups, zero source issues, zero duplicate forms/IDs, zero article failures, zero legacy ID drift, and no failures in reports/verification-pass-2.json; the separate 200-card learner-facing manual QA record covers all five levels, 11 POS values, and 53 categories. The source-row requirement remains covered exhaustively by the independent ledger.`
 
 ---
 
 ## 16. Delivery
 
-- [x] All intended changes are committed logically.
-- [x] Branch is pushed.
+- [ ] All intended changes are committed logically.
+- [ ] Branch is pushed.
 - [x] Open a PR against latest `master`.
 - [x] Do NOT merge it.
 - [x] PR description records exact starting base SHA.
-- [x] PR description records exact final head SHA.
+- [ ] PR description records exact final head SHA.
 - [x] PR description includes before/after lexical metrics.
 - [x] PR description lists number of curated rows reviewed.
 - [x] PR description lists number of rows corrected/retired/added by category.
@@ -460,7 +460,7 @@ Assume your own work is wrong.
 - [x] PR description includes manual-review methodology.
 - [x] PR description states genuine remaining limitations without disguising assigned unfinished work as a limitation.
 
-**Delivery evidence:** implementation commit `130a56c61850a6c803ac2c6f53c606de365b76e9` is pushed at `origin/task/007-lexical-gold-standard`; draft PR #19 is open at https://github.com/CameronNel/nederpath/pull/19, targets `master` at base `e8bc6d6b6f3ddb336a5ef848eafecffa80a58b96`, its final pushed head is recorded in the PR body and verified against `git rev-parse HEAD`, and it is confirmed unmerged.
+**Delivery evidence:** pending the final commit, push, PR-body refresh, and GitHub Actions result. The target remains draft PR #19 against `master` at base `e8bc6d6b6f3ddb336a5ef848eafecffa80a58b96`; it must remain unmerged.
 
 ---
 
@@ -468,15 +468,15 @@ Assume your own work is wrong.
 
 Do not check these until everything above is genuinely true.
 
-- [x] Every required item in this file is checked and evidenced.
-- [x] Verification Pass 1 is completely clean.
-- [x] Verification Pass 2 is completely clean after any fixes it uncovered.
-- [x] No assigned requirement was deferred as future work.
-- [x] No invented metrics or unrun checks are reported.
-- [x] No fake content quantity was used as a substitute for lexical quality.
-- [x] Stable learner progress/IDs are preserved.
-- [x] Concurrent Grok/Gemini work is not overwritten.
-- [x] PR is open and ready for independent review.
-- [x] **LUNA TASK IS 100% COMPLETE ACCORDING TO THIS CONTRACT.**
+- [ ] Every required item in this file is checked and evidenced.
+- [ ] Verification Pass 1 is completely clean.
+- [ ] Verification Pass 2 is completely clean after any fixes it uncovered.
+- [ ] No assigned requirement was deferred as future work.
+- [ ] No invented metrics or unrun checks are reported.
+- [ ] No fake content quantity was used as a substitute for lexical quality.
+- [ ] Stable learner progress/IDs are preserved.
+- [ ] Concurrent Grok/Gemini work is not overwritten.
+- [ ] PR is open and ready for independent review.
+- [ ] **LUNA TASK IS 100% COMPLETE ACCORDING TO THIS CONTRACT.**
 
-**Final gate evidence:** all 269 contract checkboxes are checked; sections 0–16, both independent verification passes, and the final completion gate are backed by the recorded reports, commands, commit, and PR #19. No work was deferred, no fabricated lexical content or metrics were used, the concurrent agents' owned content was preserved, and the PR remains intentionally unmerged for independent review.
+**Final gate evidence:** pending final delivery. When complete, this section will record the final commit SHA, pushed branch, successful GitHub Actions run, exact report counts, and confirmation that draft PR #19 remains open and unmerged. No work may be declared complete before that evidence is present.

@@ -1,9 +1,9 @@
 {
-  "generatedRows": 10832,
+  "generatedRows": 10811,
   "curatedSourceRows": 6428,
   "uniqueCuratedSourceForms": 4261,
   "learnableRows": 4245,
-  "derivedReferenceRows": 6587,
+  "derivedReferenceRows": 6566,
   "curatedGeneratedRows": 4261,
   "sourceFiles": [
     "words_core_1.js",
@@ -51,13 +51,13 @@
     "conjunction": 25,
     "determiner": 21,
     "interjection": 22,
-    "noun": 4887,
+    "noun": 4864,
     "numeral": 1995,
     "particle": 5,
     "phrase": 39,
     "preposition": 34,
     "pronoun": 20,
-    "verb": 3542
+    "verb": 3544
   },
   "sourceCefr": {
     "A1": 1847,
@@ -67,10 +67,10 @@
     "C1": 13
   },
   "generatedCefr": {
-    "A1": 2238,
-    "A2": 2480,
-    "B1": 5072,
-    "B2": 1015,
+    "A1": 2226,
+    "A2": 2476,
+    "B1": 5068,
+    "B2": 1014,
     "C1": 27
   },
   "sourceNounArticles": {
@@ -79,8 +79,8 @@
     "het": 1227
   },
   "generatedNounArticles": {
-    "de": 4102,
-    "het": 769
+    "de": 4081,
+    "het": 767
   },
   "sourceSynonymRows": 1825,
   "sourceExplicitNounMeta": 3472,
@@ -15113,8 +15113,8 @@
   "shadowedExplicitForms": 318,
   "sourceIssues": [],
   "registry": {
-    "highWaterMark": 20073,
-    "entries": 20073,
+    "highWaterMark": 20083,
+    "entries": 20083,
     "error": null
   },
   "articleInvariantFailures": [],

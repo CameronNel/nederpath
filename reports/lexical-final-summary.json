@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "reviewType": "final exhaustive lexical truth review",
+  "generatedAt": "2026-08-14",
+  "commitAtGeneration": "d31555698d85ad30d966f9b03ef9e1018a868f2f",
+  "exactRawCuratedRows": 6428,
+  "exactExhaustiveLedgerRows": 6428,
+  "ledgerRowsPASS": 6174,
+  "ledgerRowsFIXED": 254,
+  "ledgerRowsNEEDSEvidence": 0,
+  "canonicalRows": 4261,
+  "learnerRows": 4245,
+  "generatedRows": 10811,
+  "duplicateGroupsReviewed": 1463,
+  "mixedPOSGroupsReviewed": 36,
+  "nominalizedInfinitiveGroupsReviewed": 18,
+  "nounRowsReviewed": 4806,
+  "sourceIssues": 0,
+  "duplicateGeneratedForms": 0,
+  "duplicateGeneratedIDs": 0,
+  "articleFailures": 0,
+  "stableIDDrift": 0,
+  "registryHighWaterMark": 20083,
+  "registryEntries": 20083,
+  "finalChecks": {
+    "ledger": "PASS",
+    "mergeReview": "PASS",
+    "nounSweep": "PASS",
+    "independentVerificationPass2": "PASS"
+  }
+}
