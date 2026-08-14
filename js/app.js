@@ -2117,16 +2117,20 @@
       const words = global.NP_WORDS || [];
 
       const q = (this.searchQuery || "").toLowerCase().trim();
+      const accentFold = (v) =>
+        typeof v === "string" ? v.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "") : "";
+      const qFolded = accentFold(q);
       const totalLearnableCount = words.filter((w) => w.learnable).length;
 
       let filtered = words;
       if (q) {
-        filtered = filtered.filter(
-          (w) =>
-            w.word.toLowerCase().includes(q) ||
-            (w.meaning && w.meaning.toLowerCase().includes(q)) ||
-            (w.lemma && w.lemma.toLowerCase().includes(q))
-        );
+        filtered = filtered.filter((w) => {
+          if (accentFold(w.word).includes(qFolded)) return true;
+          if (w.displayWord && accentFold(w.displayWord).includes(qFolded)) return true;
+          if (w.meaning && accentFold(w.meaning).includes(qFolded)) return true;
+          if (w.lemma && accentFold(w.lemma).includes(qFolded)) return true;
+          return false;
+        });
       }
       if (this.selectedPos !== "all") {
         filtered = filtered.filter((w) => w.pos === this.selectedPos);
