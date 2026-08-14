@@ -199,5 +199,40 @@ test("Data: Sentence bank contains curated entries with stable IDs and verified 
   if (levels.size < 5) throw new Error(`Sentence bank must cover all 5 CEFR levels (covered: ${[...levels].join(", ")})`);
 });
 
+// 3. Dev Server Path Confinement (scripts/serve.mjs)
+import { resolveRequestPath } from "../scripts/serve.mjs";
+
+test("Serve: normal requests resolve inside the server root", () => {
+  const root = join(ROOT, "data");
+  const indexPath = resolveRequestPath("/index.html", root);
+  if (indexPath === null || indexPath !== join(root, "index.html")) throw new Error(`Unexpected path: ${indexPath}`);
+  const nested = resolveRequestPath("/words.js?x=1", root);
+  if (nested === null || nested !== join(root, "words.js")) throw new Error(`Unexpected path: ${nested}`);
+});
+
+test("Serve: directory traversal and encoded '..' attempts are rejected", () => {
+  const root = join(ROOT, "data");
+  const attempts = [
+    "/../package.json",
+    "/..%2fpackage.json",
+    "/%2e%2e/package.json",
+    "/data/../../../package.json"
+  ];
+  if (process.platform === "win32") {
+    attempts.push("/..\\package.json");
+  }
+  for (const attempt of attempts) {
+    const resolved = resolveRequestPath(attempt, root);
+    if (resolved !== null) throw new Error(`Traversal '${attempt}' escaped root: ${resolved}`);
+  }
+});
+
+test("Serve: malformed percent-encoding is rejected instead of throwing", () => {
+  const root = join(ROOT, "data");
+  if (resolveRequestPath("/%zz/index.html", root) !== null) {
+    throw new Error("Malformed percent-encoding was not rejected");
+  }
+});
+
 console.log(`\nSmoke Tests Complete: ${passed} passed, ${failed} failed.\n`);
 if (failed > 0) process.exit(1);

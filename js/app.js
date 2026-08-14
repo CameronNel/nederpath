@@ -184,6 +184,10 @@
       });
     }
 
+    getStreakNoun(streak) {
+      return Number(streak) === 1 ? "dag" : "dagen";
+    }
+
     updateHeaderStats() {
       const streakEl = document.getElementById("header-streak");
       const xpEl = document.getElementById("header-xp");
@@ -367,7 +371,7 @@
             <div class="today-hero-left">
               <span class="greeting-badge">Welkom terug, ${Learning.escapeHTML(user.name)}!</span>
               <h1 class="today-title">Klaar voor je dagelijkse portie Nederlands?</h1>
-              <p class="today-subtitle">Je streak staat op <strong>${user.streak} dagen</strong>. Blijf consistent om vloeiend te worden!</p>
+              <p class="today-subtitle">Je streak staat op <strong>${user.streak} ${this.getStreakNoun(user.streak)}</strong>. Blijf consistent om vloeiend te worden!</p>
               
               <div class="daily-progress-box">
                 <div class="progress-info">
@@ -568,7 +572,7 @@
           <!-- Practice Mode Selector Bar -->
           <div class="practice-nav-bar">
             ${modes.map((m) => `
-              <button class="btn btn-sm ${this.practiceMode === m.id ? 'btn-primary' : 'btn-outline'}" data-mode="${m.id}">
+              <button class="btn btn-sm ${this.practiceMode === m.id ? 'btn-primary' : 'btn-outline'}" data-mode="${m.id}" aria-pressed="${this.practiceMode === m.id ? 'true' : 'false'}">
                 ${m.icon} ${m.name}
               </button>
             `).join("")}
@@ -806,7 +810,7 @@
             </div>
             <div class="session-stat-box">
               <span class="stat-num">${(this.store && this.store.state && this.store.state.user && this.store.state.user.streak) || 0}</span>
-              <span class="stat-label">Dagen Streak</span>
+              <span class="stat-label">${this.getStreakNoun((this.store && this.store.state && this.store.state.user && this.store.state.user.streak) || 0) === "dag" ? "Dag Streak" : "Dagen Streak"}</span>
             </div>
           </div>
           <div class="complete-actions">
@@ -1598,26 +1602,42 @@
               </div>
             </div>
           `;
-        case "fill_in_the_blank":
+        case "fill_in_the_blank": {
+          // Option-style exercises offer the blankWord among hint chips; tip-style
+          // exercises carry hints as study tips only, so a typed input is required.
+          const isOptionStyle =
+            Array.isArray(ex.hints) &&
+            ex.hints.some((h) => Learning.normalizeAnswer(h) === Learning.normalizeAnswer(ex.blankWord));
+          const hintTips = Array.isArray(ex.hints) ? ex.hints : [];
           return `
             <div class="exercise-fill animate-fade">
               <p class="exercise-question">${ex.prompt || "Vul het juiste woord in:"}</p>
               <div class="exercise-sentence" style="font-size: 1.2rem; font-weight: 700; margin: 1rem 0;">${ex.sentenceWithBlank}</div>
-              <div class="hint-chips-pool" role="group" aria-label="Woordopties">
-                ${(ex.hints || []).map((h) => {
-                  const isSelected = Boolean(answeredState && answeredState.userAttempt === h);
-                  return `
-                    <button type="button" class="chip-token btn-hint-opt ${isSelected ? (answeredState.isCorrect ? 'btn-success' : 'btn-wrong') : ''}" data-hint="${h}" ${answeredState ? 'disabled' : ''} aria-pressed="${isSelected ? 'true' : 'false'}">
-                      ${h}
-                    </button>
-                  `;
-                }).join("")}
-              </div>
+              ${isOptionStyle ? `
+                <div class="hint-chips-pool" role="group" aria-label="Woordopties">
+                  ${hintTips.map((h) => {
+                    const isSelected = Boolean(answeredState && answeredState.userAttempt === h);
+                    return `
+                      <button type="button" class="chip-token btn-hint-opt ${isSelected ? (answeredState.isCorrect ? 'btn-success' : 'btn-wrong') : ''}" data-hint="${h}" ${answeredState ? 'disabled' : ''} aria-pressed="${isSelected ? 'true' : 'false'}">
+                        ${h}
+                      </button>
+                    `;
+                  }).join("")}
+                </div>
+              ` : `
+                <form id="form-grammar-fill" style="margin-top: 1rem;">
+                  <label for="input-grammar-fill" class="sr-only">In te vullen woord</label>
+                  <input type="text" id="input-grammar-fill" class="form-input" placeholder="Typ het juiste woord..." autocomplete="off" ${answeredState ? 'disabled' : ''} />
+                  ${hintTips.length > 0 ? `<div class="hint-tips" style="margin-top: 0.5rem; font-size: 0.85rem; color: var(--text-secondary);">Tip: ${hintTips.join(" ")}</div>` : ""}
+                  <button type="submit" class="btn btn-primary" style="margin-top: 0.75rem;" ${answeredState ? 'disabled' : ''}>Controleer Antwoord</button>
+                </form>
+              `}
               <div id="grammar-ex-feedback" class="exercise-feedback ${answeredState ? (answeredState.isCorrect ? 'feedback-correct' : 'feedback-wrong') : ''}" style="${answeredState ? 'display: block;' : 'display: none;'}" role="alert">
                 ${answeredState ? (answeredState.isCorrect ? `✓ Helemaal juist ingevuld!` : `✗ Niet juist. Het juiste woord was: <strong>${ex.blankWord}</strong>`) : ''}
               </div>
             </div>
           `;
+        }
         case "typed_conjugation":
           return `
             <div class="exercise-typed-conj animate-fade">
@@ -1852,6 +1872,19 @@
           this.recordGrammarExerciseAnswer(isCorrect, hint);
         });
       });
+
+      const formFill = document.getElementById("form-grammar-fill");
+      if (formFill) {
+        formFill.addEventListener("submit", (e) => {
+          e.preventDefault();
+          const inp = document.getElementById("input-grammar-fill");
+          const val = (inp ? inp.value : "").trim();
+          const exercises = this.activeGrammarRule.exercises || [];
+          const currentEx = exercises[this.activeGrammarExIndex];
+          const isCorrect = Learning.normalizeAnswer(val) === Learning.normalizeAnswer(currentEx.blankWord);
+          this.recordGrammarExerciseAnswer(isCorrect, val);
+        });
+      }
 
       const completeSimpleBtn = document.getElementById("btn-complete-simple-ex");
       if (completeSimpleBtn) {
@@ -2117,16 +2150,20 @@
       const words = global.NP_WORDS || [];
 
       const q = (this.searchQuery || "").toLowerCase().trim();
+      const accentFold = (v) =>
+        typeof v === "string" ? v.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "") : "";
+      const qFolded = accentFold(q);
       const totalLearnableCount = words.filter((w) => w.learnable).length;
 
       let filtered = words;
       if (q) {
-        filtered = filtered.filter(
-          (w) =>
-            w.word.toLowerCase().includes(q) ||
-            (w.meaning && w.meaning.toLowerCase().includes(q)) ||
-            (w.lemma && w.lemma.toLowerCase().includes(q))
-        );
+        filtered = filtered.filter((w) => {
+          if (accentFold(w.word).includes(qFolded)) return true;
+          if (w.displayWord && accentFold(w.displayWord).includes(qFolded)) return true;
+          if (w.meaning && accentFold(w.meaning).includes(qFolded)) return true;
+          if (w.lemma && accentFold(w.lemma).includes(qFolded)) return true;
+          return false;
+        });
       }
       if (this.selectedPos !== "all") {
         filtered = filtered.filter((w) => w.pos === this.selectedPos);
@@ -2220,7 +2257,7 @@
                       <span class="word-level-badge badge-${Learning.escapeHTML(w.level.toLowerCase())}">${Learning.escapeHTML(w.level)}</span>
                       ${badgeType}
                     </div>
-                    <button class="btn-star ${isStarred ? 'starred' : ''}" data-star-id="${Learning.escapeHTML(w.id)}" title="Favoriet opslaan">
+                    <button class="btn-star ${isStarred ? 'starred' : ''}" data-star-id="${Learning.escapeHTML(w.id)}" title="${isStarred ? 'Favoriet verwijderen' : 'Favoriet opslaan'}" aria-pressed="${isStarred ? 'true' : 'false'}" aria-label="Favoriet">
                       ${isStarred ? '★' : '☆'}
                     </button>
                   </div>
@@ -2341,7 +2378,7 @@
             <div class="card stat-big-card">
               <span class="stat-big-icon">🔥</span>
               <div class="stat-big-num">${user.streak}</div>
-              <div class="stat-big-lbl">Dagen Streak</div>
+              <div class="stat-big-lbl">${this.getStreakNoun(user.streak) === "dag" ? "Dag Streak" : "Dagen Streak"}</div>
             </div>
             <div class="card stat-big-card">
               <span class="stat-big-icon">🏆</span>

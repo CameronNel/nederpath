@@ -1,0 +1,80 @@
+{
+  "schemaVersion": 1,
+  "grammar": {
+    "count": 120,
+    "uniqueSummaries": 120,
+    "uniqueBreakdowns": 120,
+    "uniqueMistakes": 120,
+    "uniqueCorrections": 120,
+    "levels": {
+      "A1": 15,
+      "A2": 30,
+      "B1": 30,
+      "B2": 30,
+      "C1": 15
+    },
+    "sections": {
+      "1": 15,
+      "2": 15,
+      "3": 15,
+      "4": 15,
+      "5": 15,
+      "6": 15,
+      "7": 15,
+      "8": 15
+    },
+    "exerciseTypes": {
+      "multiple_choice": 149,
+      "fill_in_the_blank": 110,
+      "error_correction": 117,
+      "typed_conjugation": 19,
+      "word_order": 35,
+      "article_selection": 4,
+      "sentence_transformation": 46
+    }
+  },
+  "comprehension": {
+    "count": 120,
+    "levels": {
+      "A1": 24,
+      "A2": 24,
+      "B1": 24,
+      "B2": 24,
+      "C1": 24
+    },
+    "uniqueBodies": 120,
+    "answerPositions": {
+      "0": 156,
+      "1": 96,
+      "2": 120,
+      "3": 108
+    },
+    "wordCounts": {
+      "A1": {
+        "min": 83,
+        "max": 124,
+        "mean": 94
+      },
+      "A2": {
+        "min": 120,
+        "max": 140,
+        "mean": 130
+      },
+      "B1": {
+        "min": 181,
+        "max": 245,
+        "mean": 208
+      },
+      "B2": {
+        "min": 251,
+        "max": 309,
+        "mean": 267
+      },
+      "C1": {
+        "min": 321,
+        "max": 456,
+        "mean": 339
+      }
+    }
+  }
+}

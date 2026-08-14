@@ -1322,8 +1322,11 @@ summary:focus-visible {
     overflow-x: auto;
     padding-top: 0.5rem;
   }
-  .today-hero, .options-grid, .examples-grid, .progress-grid, .progress-stats-overview {
+  .today-hero, .today-grid, .options-grid, .examples-grid, .progress-grid, .progress-stats-overview {
     grid-template-columns: 1fr;
+  }
+  .srs-controls {
+    flex-wrap: wrap;
   }
 }
 
