@@ -263,6 +263,16 @@ async function runBrowserTests() {
     const firstWordResult = await page.$eval(".word-title", (el) => el.textContent);
     assert(firstWordResult.toLowerCase().includes("fiets"), "Dictionary search filters and finds 'fiets'");
 
+    // Search matches display phrases (article + word), e.g. 'het huis'
+    await page.click("#btn-clear-search");
+    await page.type("#words-search-input", "het huis");
+    await new Promise((r) => setTimeout(r, 200));
+    const displayPhraseResults = await page.$$eval(".word-title", (els) => els.map((el) => el.textContent.trim()));
+    assert(
+      displayPhraseResults.length > 0 && displayPhraseResults.some((t) => t.toLowerCase().includes("het huis")),
+      `Search finds display phrase 'het huis' (found: ${displayPhraseResults.slice(0, 3).join(", ")})`
+    );
+
     // Test Search Dynamic Sink XSS resistance
     await page.click("#btn-clear-search");
     await page.type("#words-search-input", '"><span id="injected-span-test">xss</span>');

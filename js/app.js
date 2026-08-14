@@ -2062,6 +2062,7 @@
         filtered = filtered.filter(
           (w) =>
             w.word.toLowerCase().includes(q) ||
+            (w.displayWord && w.displayWord.toLowerCase().includes(q)) ||
             (w.meaning && w.meaning.toLowerCase().includes(q)) ||
             (w.lemma && w.lemma.toLowerCase().includes(q))
         );
