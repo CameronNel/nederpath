@@ -4,15 +4,29 @@
 
   const STORAGE_KEY = "nederpath-v1";
   const CURRENT_VERSION = 1;
+  const SAFE_ID_REGEX = /^[A-Za-z0-9_-]{1,80}$/;
+  const DANGEROUS_OBJECT_KEYS = new Set(["__proto__", "constructor", "prototype"]);
+  const MAX_XP = 10000000;
+  const MAX_ACTIVITY_COUNT = 100000;
+
+  function isSafeId(value) {
+    return typeof value === "string" && SAFE_ID_REGEX.test(value) && !DANGEROUS_OBJECT_KEYS.has(value);
+  }
+
+  function boundedInteger(value, min, max, fallback) {
+    if (!Number.isFinite(value)) return fallback;
+    return Math.max(min, Math.min(max, Math.round(value)));
+  }
 
   function getDateStr(d = new Date()) {
     if (global.NederLearning && typeof global.NederLearning.getLocalISODate === "function") {
       return global.NederLearning.getLocalISODate(d);
     }
     const date = d instanceof Date ? d : new Date(d);
-    const year = date.getFullYear();
-    const month = String(date.getMonth() + 1).padStart(2, "0");
-    const day = String(date.getDate()).padStart(2, "0");
+    const safeDate = Number.isNaN(date.getTime()) ? new Date() : date;
+    const year = safeDate.getFullYear();
+    const month = String(safeDate.getMonth() + 1).padStart(2, "0");
+    const day = String(safeDate.getDate()).padStart(2, "0");
     return `${year}-${month}-${day}`;
   }
 
@@ -21,8 +35,8 @@
     user: {
       name: "Learner",
       level: "A1",
-      dailyGoal: 15, // target review/study items per day
-      sessionSize: 10, // cards per practice session
+      dailyGoal: 15,
+      sessionSize: 10,
       onboardingCompleted: true,
       streak: 0,
       lastActiveDate: null,
@@ -30,25 +44,24 @@
       createdAt: new Date().toISOString()
     },
     settings: {
-      theme: "dark", // 'dark' | 'light'
+      theme: "dark",
       sessionSize: 10,
       dailyGoal: 15,
       autoAdvance: true,
       hapticFeedback: true
     },
     srs: {
-      // cardId -> { id, type: 'vocab'|'grammar'|'comprehension'|'article', interval, easeFactor, repetitions, dueDate, lapses, state: 'new'|'learning'|'review' }
       cards: {}
     },
     progress: {
-      grammarCompleted: {}, // ruleId -> { completedAt, score, attempts }
-      comprehensionCompleted: {}, // passageId -> { completedAt, score, totalQuestions }
-      wordsBookmarked: {}, // wordId -> true
-      studyDays: {}, // 'YYYY-MM-DD' -> count of items reviewed/learned
+      grammarCompleted: {},
+      comprehensionCompleted: {},
+      wordsBookmarked: {},
+      studyDays: {},
       articleStats: {
         totalDrilled: 0,
         correct: 0,
-        mistakes: {} // word -> count
+        mistakes: {}
       },
       dailyStats: {
         date: getDateStr(),
@@ -56,6 +69,14 @@
       }
     }
   };
+
+  function freshDefaultState() {
+    const state = JSON.parse(JSON.stringify(DEFAULT_STATE));
+    state.user.createdAt = new Date().toISOString();
+    state.progress.dailyStats.date = getDateStr();
+    state.progress.dailyStats.learnedToday = 0;
+    return state;
+  }
 
   class Store {
     constructor() {
@@ -67,22 +88,16 @@
     load() {
       try {
         const raw = localStorage.getItem(STORAGE_KEY);
-        if (!raw) return JSON.parse(JSON.stringify(DEFAULT_STATE));
+        if (!raw) return freshDefaultState();
         const parsed = JSON.parse(raw);
         if (global.NederLearning && typeof global.NederLearning.validateAndMergeBackup === "function") {
           return global.NederLearning.validateAndMergeBackup(parsed, DEFAULT_STATE);
         }
-        return Object.assign({}, DEFAULT_STATE, parsed, {
-          user: Object.assign({}, DEFAULT_STATE.user, parsed.user),
-          settings: Object.assign({}, DEFAULT_STATE.settings, parsed.settings),
-          progress: Object.assign({}, DEFAULT_STATE.progress, parsed.progress, {
-            articleStats: Object.assign({}, DEFAULT_STATE.progress.articleStats, parsed.progress ? parsed.progress.articleStats : {})
-          }),
-          srs: Object.assign({}, DEFAULT_STATE.srs, parsed.srs)
-        });
+        console.error("NederPath learning validator unavailable; ignoring persisted state.");
+        return freshDefaultState();
       } catch (e) {
         console.error("Failed to load NederPath storage:", e);
-        return JSON.parse(JSON.stringify(DEFAULT_STATE));
+        return freshDefaultState();
       }
     }
 
@@ -96,6 +111,7 @@
     }
 
     subscribe(fn) {
+      if (typeof fn !== "function") return () => undefined;
       this.listeners.add(fn);
       return () => this.listeners.delete(fn);
     }
@@ -115,7 +131,6 @@
       let changed = false;
 
       if (!this.state.progress.dailyStats || this.state.progress.dailyStats.date !== todayStr) {
-        // Calculate streak
         if (this.state.user.lastActiveDate) {
           const lastParts = this.state.user.lastActiveDate.split("-").map(Number);
           const currParts = todayStr.split("-").map(Number);
@@ -124,7 +139,6 @@
           const diffDays = Math.round((currDate - lastDate) / (1000 * 60 * 60 * 24));
 
           if (diffDays > 1) {
-            // Streak broken
             this.state.user.streak = 0;
             changed = true;
           }
@@ -136,22 +150,34 @@
         changed = true;
       }
 
-      if (changed && !skipSave) {
-        this.save();
-      }
+      if (changed && !skipSave) this.save();
     }
 
     recordActivity(xpGained = 5) {
       const todayStr = getDateStr();
       this.checkDailyReset(true);
 
-      this.state.progress.dailyStats.learnedToday = (this.state.progress.dailyStats.learnedToday || 0) + 1;
-      this.state.user.totalXp = (this.state.user.totalXp || 0) + xpGained;
+      const xp = boundedInteger(xpGained, 0, 1000, 0);
+      this.state.progress.dailyStats.learnedToday = boundedInteger(
+        (this.state.progress.dailyStats.learnedToday || 0) + 1,
+        0,
+        MAX_ACTIVITY_COUNT,
+        1
+      );
+      this.state.user.totalXp = boundedInteger(
+        (this.state.user.totalXp || 0) + xp,
+        0,
+        MAX_XP,
+        xp
+      );
 
-      // Update studyDays heatmap
-      this.state.progress.studyDays[todayStr] = (this.state.progress.studyDays[todayStr] || 0) + 1;
+      this.state.progress.studyDays[todayStr] = boundedInteger(
+        (this.state.progress.studyDays[todayStr] || 0) + 1,
+        0,
+        MAX_ACTIVITY_COUNT,
+        1
+      );
 
-      // Update streak using calendar-day difference
       if (this.state.user.lastActiveDate !== todayStr) {
         if (this.state.user.lastActiveDate) {
           const lastParts = this.state.user.lastActiveDate.split("-").map(Number);
@@ -161,7 +187,7 @@
           const diffDays = Math.round((currDate - lastDate) / (1000 * 60 * 60 * 24));
 
           if (diffDays === 1) {
-            this.state.user.streak = (this.state.user.streak || 0) + 1;
+            this.state.user.streak = boundedInteger((this.state.user.streak || 0) + 1, 0, 100000, 1);
           } else {
             this.state.user.streak = 1;
           }
@@ -176,51 +202,65 @@
 
     recordArticleDrill(noun, chosen, correct) {
       const stats = this.state.progress.articleStats;
-      stats.totalDrilled += 1;
+      stats.totalDrilled = boundedInteger((stats.totalDrilled || 0) + 1, 0, MAX_XP, 1);
       if (chosen === correct) {
-        stats.correct += 1;
+        stats.correct = boundedInteger((stats.correct || 0) + 1, 0, stats.totalDrilled, 1);
         this.recordActivity(5);
       } else {
-        stats.mistakes[noun] = (stats.mistakes[noun] || 0) + 1;
+        const rawNoun = typeof noun === "string" ? noun.trim().slice(0, 80) : "";
+        const nounKey = rawNoun && !DANGEROUS_OBJECT_KEYS.has(rawNoun) ? rawNoun : "onbekend";
+        const previousCount = Object.prototype.hasOwnProperty.call(stats.mistakes, nounKey)
+          ? stats.mistakes[nounKey]
+          : 0;
+        stats.mistakes[nounKey] = boundedInteger((previousCount || 0) + 1, 0, MAX_ACTIVITY_COUNT, 1);
         this.recordActivity(1);
       }
     }
 
     toggleBookmark(wordId) {
-      if (this.state.progress.wordsBookmarked[wordId]) {
+      if (!isSafeId(wordId)) return false;
+      if (Object.prototype.hasOwnProperty.call(this.state.progress.wordsBookmarked, wordId)) {
         delete this.state.progress.wordsBookmarked[wordId];
       } else {
         this.state.progress.wordsBookmarked[wordId] = true;
       }
       this.save();
-      return !!this.state.progress.wordsBookmarked[wordId];
+      return this.state.progress.wordsBookmarked[wordId] === true;
     }
 
     isBookmarked(wordId) {
-      return !!this.state.progress.wordsBookmarked[wordId];
+      return isSafeId(wordId) && this.state.progress.wordsBookmarked[wordId] === true;
     }
 
     completeGrammarRule(ruleId, score = 100) {
-      const prev = this.state.progress.grammarCompleted[ruleId] || { attempts: 0, score: 0 };
-      const isFirstTime = !this.state.progress.grammarCompleted[ruleId];
+      if (!isSafeId(ruleId)) return false;
+      const existing = Object.prototype.hasOwnProperty.call(this.state.progress.grammarCompleted, ruleId)
+        ? this.state.progress.grammarCompleted[ruleId]
+        : null;
+      const prev = existing && typeof existing === "object" ? existing : { attempts: 0, score: 0 };
+      const boundedScore = boundedInteger(score, 0, 100, 0);
+      const previousScore = boundedInteger(prev.score, 0, 100, 0);
+      const previousAttempts = boundedInteger(prev.attempts, 0, 10000, 0);
+
       this.state.progress.grammarCompleted[ruleId] = {
         completedAt: new Date().toISOString(),
-        score: Math.max(score, prev.score || 0),
-        attempts: (prev.attempts || 0) + 1
+        score: Math.max(boundedScore, previousScore),
+        attempts: Math.min(10000, previousAttempts + 1)
       };
-      // Award XP for completion (higher XP for first completion, review XP otherwise)
-      this.recordActivity(isFirstTime ? 25 : 10);
+      this.recordActivity(existing ? 10 : 25);
+      return true;
     }
 
     completeComprehension(passageId, score, totalQuestions) {
-      const isFirstTime = !this.state.progress.comprehensionCompleted[passageId];
+      if (!isSafeId(passageId)) return false;
+      const isFirstTime = !Object.prototype.hasOwnProperty.call(this.state.progress.comprehensionCompleted, passageId);
       this.state.progress.comprehensionCompleted[passageId] = {
         completedAt: new Date().toISOString(),
-        score,
-        totalQuestions
+        score: boundedInteger(score, 0, 100, 0),
+        totalQuestions: boundedInteger(totalQuestions, 1, 100, 1)
       };
-      // Award XP for quiz completion
       this.recordActivity(isFirstTime ? 30 : 15);
+      return true;
     }
 
     exportJSON() {
@@ -230,12 +270,10 @@
     importJSON(jsonString) {
       try {
         const parsed = JSON.parse(jsonString);
-        if (global.NederLearning && typeof global.NederLearning.validateAndMergeBackup === "function") {
-          this.state = global.NederLearning.validateAndMergeBackup(parsed, DEFAULT_STATE);
-        } else {
-          if (!parsed || typeof parsed !== "object" || Array.isArray(parsed)) throw new Error("Invalid format");
-          this.state = Object.assign({}, DEFAULT_STATE, parsed);
+        if (!global.NederLearning || typeof global.NederLearning.validateAndMergeBackup !== "function") {
+          throw new Error("Learning validator unavailable");
         }
+        this.state = global.NederLearning.validateAndMergeBackup(parsed, DEFAULT_STATE);
         this.save();
         return true;
       } catch (err) {
@@ -245,22 +283,14 @@
     }
 
     resetItem(itemId) {
-      if (this.state.srs.cards[itemId]) {
-        delete this.state.srs.cards[itemId];
-      }
-      if (this.state.progress.grammarCompleted[itemId]) {
-        delete this.state.progress.grammarCompleted[itemId];
-      }
-      if (this.state.progress.comprehensionCompleted[itemId]) {
-        delete this.state.progress.comprehensionCompleted[itemId];
-      }
+      if (!isSafeId(itemId)) return false;
+      if (Object.prototype.hasOwnProperty.call(this.state.srs.cards, itemId)) delete this.state.srs.cards[itemId];
+      if (Object.prototype.hasOwnProperty.call(this.state.progress.grammarCompleted, itemId)) delete this.state.progress.grammarCompleted[itemId];
+      if (Object.prototype.hasOwnProperty.call(this.state.progress.comprehensionCompleted, itemId)) delete this.state.progress.comprehensionCompleted[itemId];
       this.save();
+      return true;
     }
 
-    /**
-     * Safely prunes stale or retired word IDs from bookmarks and SRS cards.
-     * Prevents retired invalid IDs from colliding with newly assigned words.
-     */
     sanitizeStaleWordReferences(validWordIds) {
       if (!validWordIds) return false;
       const validSet = validWordIds instanceof Set ? validWordIds : new Set(validWordIds);
@@ -285,14 +315,12 @@
         }
       }
 
-      if (modified) {
-        this.save();
-      }
+      if (modified) this.save();
       return modified;
     }
 
     resetAllData() {
-      this.state = JSON.parse(JSON.stringify(DEFAULT_STATE));
+      this.state = freshDefaultState();
       this.save();
     }
   }
