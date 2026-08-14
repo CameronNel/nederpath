@@ -397,6 +397,43 @@ async function runBrowserTests() {
       assert(true, "Navigated to next grammar exercise in rule");
     }
 
+    // Fill-in-the-blank supports both option-style hints and tip-style hints (typed input)
+    await page.evaluate(() => {
+      const app = globalThis.NederApp;
+      app.activeGrammarRule = {
+        id: "g-fillblank-probe",
+        title: "Fill Blank Schema Probe",
+        titleNl: "Probe",
+        level: "A1",
+        exercises: [
+          { type: "fill_in_the_blank", prompt: "Option style", blankWord: "mannen", sentenceWithBlank: "Er staan drie ___ op straat.", hints: ["mannen", "manen", "mans"] },
+          { type: "fill_in_the_blank", prompt: "Tip style", blankWord: "mannen", sentenceWithBlank: "Er staan drie ___ op straat.", hints: ["double n after short a"] }
+        ]
+      };
+      app.activeGrammarExIndex = 0;
+      app.activeGrammarAnswers = {};
+      app.tokenReconstructionPlaced = [];
+      app.render();
+    });
+    await page.waitForSelector(".btn-hint-opt");
+    const optionStyleHintCount = await page.$$eval(".btn-hint-opt", (els) => els.length);
+    assert(optionStyleHintCount === 3, `Option-style fill-blank renders answer chips (found ${optionStyleHintCount})`);
+    await page.evaluate(() => {
+      globalThis.NederApp.activeGrammarExIndex = 1;
+      globalThis.NederApp.render();
+    });
+    await page.waitForSelector("#form-grammar-fill");
+    const tipStyleHasChips = await page.$(".btn-hint-opt") !== null;
+    assert(!tipStyleHasChips, "Tip-style fill-blank does not render answer chips for study tips");
+    await page.type("#input-grammar-fill", "mannen");
+    await page.click("#form-grammar-fill button[type='submit']");
+    await page.waitForFunction(() => {
+      const el = document.querySelector("#grammar-ex-feedback");
+      return el && el.style.display === "block";
+    });
+    const tipStyleFb = await page.$eval("#grammar-ex-feedback", (el) => el.className);
+    assert(tipStyleFb.includes("feedback-correct"), "Tip-style fill-blank typed answer is graded correctly");
+
     // Deterministic Word-Order Keyboard Test with Duplicate Tokens
     await page.evaluate(async () => {
       const app = globalThis.NederApp;

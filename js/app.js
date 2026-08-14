@@ -1598,26 +1598,42 @@
               </div>
             </div>
           `;
-        case "fill_in_the_blank":
+        case "fill_in_the_blank": {
+          // Option-style exercises offer the blankWord among hint chips; tip-style
+          // exercises carry hints as study tips only, so a typed input is required.
+          const isOptionStyle =
+            Array.isArray(ex.hints) &&
+            ex.hints.some((h) => Learning.normalizeAnswer(h) === Learning.normalizeAnswer(ex.blankWord));
+          const hintTips = Array.isArray(ex.hints) ? ex.hints : [];
           return `
             <div class="exercise-fill animate-fade">
               <p class="exercise-question">${ex.prompt || "Vul het juiste woord in:"}</p>
               <div class="exercise-sentence" style="font-size: 1.2rem; font-weight: 700; margin: 1rem 0;">${ex.sentenceWithBlank}</div>
-              <div class="hint-chips-pool" role="group" aria-label="Woordopties">
-                ${(ex.hints || []).map((h) => {
-                  const isSelected = Boolean(answeredState && answeredState.userAttempt === h);
-                  return `
-                    <button type="button" class="chip-token btn-hint-opt ${isSelected ? (answeredState.isCorrect ? 'btn-success' : 'btn-wrong') : ''}" data-hint="${h}" ${answeredState ? 'disabled' : ''} aria-pressed="${isSelected ? 'true' : 'false'}">
-                      ${h}
-                    </button>
-                  `;
-                }).join("")}
-              </div>
+              ${isOptionStyle ? `
+                <div class="hint-chips-pool" role="group" aria-label="Woordopties">
+                  ${hintTips.map((h) => {
+                    const isSelected = Boolean(answeredState && answeredState.userAttempt === h);
+                    return `
+                      <button type="button" class="chip-token btn-hint-opt ${isSelected ? (answeredState.isCorrect ? 'btn-success' : 'btn-wrong') : ''}" data-hint="${h}" ${answeredState ? 'disabled' : ''} aria-pressed="${isSelected ? 'true' : 'false'}">
+                        ${h}
+                      </button>
+                    `;
+                  }).join("")}
+                </div>
+              ` : `
+                <form id="form-grammar-fill" style="margin-top: 1rem;">
+                  <label for="input-grammar-fill" class="sr-only">In te vullen woord</label>
+                  <input type="text" id="input-grammar-fill" class="form-input" placeholder="Typ het juiste woord..." autocomplete="off" ${answeredState ? 'disabled' : ''} />
+                  ${hintTips.length > 0 ? `<div class="hint-tips" style="margin-top: 0.5rem; font-size: 0.85rem; color: var(--text-secondary);">Tip: ${hintTips.join(" ")}</div>` : ""}
+                  <button type="submit" class="btn btn-primary" style="margin-top: 0.75rem;" ${answeredState ? 'disabled' : ''}>Controleer Antwoord</button>
+                </form>
+              `}
               <div id="grammar-ex-feedback" class="exercise-feedback ${answeredState ? (answeredState.isCorrect ? 'feedback-correct' : 'feedback-wrong') : ''}" style="${answeredState ? 'display: block;' : 'display: none;'}" role="alert">
                 ${answeredState ? (answeredState.isCorrect ? `✓ Helemaal juist ingevuld!` : `✗ Niet juist. Het juiste woord was: <strong>${ex.blankWord}</strong>`) : ''}
               </div>
             </div>
           `;
+        }
         case "typed_conjugation":
           return `
             <div class="exercise-typed-conj animate-fade">
@@ -1852,6 +1868,19 @@
           this.recordGrammarExerciseAnswer(isCorrect, hint);
         });
       });
+
+      const formFill = document.getElementById("form-grammar-fill");
+      if (formFill) {
+        formFill.addEventListener("submit", (e) => {
+          e.preventDefault();
+          const inp = document.getElementById("input-grammar-fill");
+          const val = (inp ? inp.value : "").trim();
+          const exercises = this.activeGrammarRule.exercises || [];
+          const currentEx = exercises[this.activeGrammarExIndex];
+          const isCorrect = Learning.normalizeAnswer(val) === Learning.normalizeAnswer(currentEx.blankWord);
+          this.recordGrammarExerciseAnswer(isCorrect, val);
+        });
+      }
 
       const completeSimpleBtn = document.getElementById("btn-complete-simple-ex");
       if (completeSimpleBtn) {
