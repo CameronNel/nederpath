@@ -193,6 +193,15 @@ async function runBrowserTests() {
     const zeroDaySubtitle = await page.$eval(".today-subtitle", (el) => el.textContent);
     assert(zeroDaySubtitle.includes("0 dagen"), `Today subtitle uses plural 'dagen' for a 0-day streak: '${zeroDaySubtitle.trim()}'`);
 
+    // Corrupted fractional streak values must never be rounded into the singular noun
+    await page.evaluate(() => {
+      globalThis.NederStore.state.user.streak = 0.6;
+      globalThis.NederApp.render();
+    });
+    await page.waitForSelector(".today-subtitle");
+    const fractionalSubtitle = await page.$eval(".today-subtitle", (el) => el.textContent);
+    assert(fractionalSubtitle.includes("0.6 dagen") && !fractionalSubtitle.includes("0.6 dag"), `Fractional streak stays plural and unrounded: '${fractionalSubtitle.trim()}'`);
+
     // 2. Lazy Data Loading & Asset Budget Verification
     const requestedWords = requestedUrls.some((u) => u.includes("data/words.js"));
     const requestedSentences = requestedUrls.some((u) => u.includes("data/sentences.js"));
