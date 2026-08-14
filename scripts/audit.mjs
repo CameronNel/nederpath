@@ -396,33 +396,100 @@ const readmeDocPath = join(ROOT, "README.md");
 
 if (existsSync(taskDocPath)) {
   const taskDoc = readFileSync(taskDocPath, "utf8");
+
+  // Scoped parsing: Sentence registry HWM
+  const sentHwmMatch = taskDoc.match(/Registry `data\/sentence_ids\.json` with `highWaterMark:\s*(\d+)`/);
   assert(
-    taskDoc.includes(`highWaterMark: ${idiomIdsRegistry.highWaterMark}`),
-    `Task contract documents current idiom registry highWaterMark (${idiomIdsRegistry.highWaterMark})`
+    sentHwmMatch && parseInt(sentHwmMatch[1], 10) === sentIdsRegistry.highWaterMark,
+    `Task contract sentence evidence HWM matches registry (${sentIdsRegistry.highWaterMark})`,
+    `got ${sentHwmMatch ? sentHwmMatch[1] : "null"}`
   );
+
+  const sentChecklistHwmMatch = taskDoc.match(/Never recycle retired sentence IDs \(`highWaterMark:\s*(\d+)`/);
   assert(
-    taskDoc.includes(`highWaterMark: ${sentIdsRegistry.highWaterMark}`),
-    `Task contract documents current sentence registry highWaterMark (${sentIdsRegistry.highWaterMark})`
+    sentChecklistHwmMatch && parseInt(sentChecklistHwmMatch[1], 10) === sentIdsRegistry.highWaterMark,
+    `Task contract sentence checklist HWM matches registry (${sentIdsRegistry.highWaterMark})`,
+    `got ${sentChecklistHwmMatch ? sentChecklistHwmMatch[1] : "null"}`
   );
+
+  // Scoped parsing: Idiom registry HWM
+  const idiomEvidenceHwmMatch = taskDoc.match(/in `data\/idiom_ids\.json` with `highWaterMark:\s*(\d+)`/);
   assert(
-    taskDoc.includes(`${idioms.length} curated, authentic Dutch idioms`) || taskDoc.includes(`(${idioms.length})`),
-    `Task contract documents current active idiom count (${idioms.length})`
+    idiomEvidenceHwmMatch && parseInt(idiomEvidenceHwmMatch[1], 10) === idiomIdsRegistry.highWaterMark,
+    `Task contract idiom evidence HWM matches registry (${idiomIdsRegistry.highWaterMark})`,
+    `got ${idiomEvidenceHwmMatch ? idiomEvidenceHwmMatch[1] : "null"}`
   );
+
+  const idiomChecklistHwmMatch = taskDoc.match(/Prevent retired duplicate IDs from ever being reassigned \(`highWaterMark:\s*(\d+)`/);
   assert(
-    taskDoc.includes(`(Actual: ${sentences.length})`) || taskDoc.includes(`${sentences.length} authored sentences`),
-    `Task contract documents current active sentence count (${sentences.length})`
+    idiomChecklistHwmMatch && parseInt(idiomChecklistHwmMatch[1], 10) === idiomIdsRegistry.highWaterMark,
+    `Task contract idiom checklist HWM matches registry (${idiomIdsRegistry.highWaterMark})`,
+    `got ${idiomChecklistHwmMatch ? idiomChecklistHwmMatch[1] : "null"}`
+  );
+
+  // Scoped parsing: Active content counts
+  const sentCountEvidenceMatch = taskDoc.match(/(\d+) curated sentences modularized across/);
+  assert(
+    sentCountEvidenceMatch && parseInt(sentCountEvidenceMatch[1], 10) === sentences.length,
+    `Task contract sentence evidence count matches authored bank (${sentences.length})`,
+    `got ${sentCountEvidenceMatch ? sentCountEvidenceMatch[1] : "null"}`
+  );
+
+  const sentTotalTargetMatch = taskDoc.match(/Total authored inventory is at least 600 \(Actual:\s*(\d+)\)/);
+  assert(
+    sentTotalTargetMatch && parseInt(sentTotalTargetMatch[1], 10) === sentences.length,
+    `Task contract total authored sentence target matches authored bank (${sentences.length})`,
+    `got ${sentTotalTargetMatch ? sentTotalTargetMatch[1] : "null"}`
+  );
+
+  const idiomCountEvidenceMatch = taskDoc.match(/(\d+) curated, authentic Dutch idioms and expressions authored in/);
+  assert(
+    idiomCountEvidenceMatch && parseInt(idiomCountEvidenceMatch[1], 10) === idioms.length,
+    `Task contract idiom evidence count matches idiom bank (${idioms.length})`,
+    `got ${idiomCountEvidenceMatch ? idiomCountEvidenceMatch[1] : "null"}`
+  );
+
+  const idiomDistributionMatch = taskDoc.match(/Distribution:.*=\s*(\d+)\s*total active rows/);
+  assert(
+    idiomDistributionMatch && parseInt(idiomDistributionMatch[1], 10) === idioms.length,
+    `Task contract idiom distribution sum matches idiom bank (${idioms.length})`,
+    `got ${idiomDistributionMatch ? idiomDistributionMatch[1] : "null"}`
+  );
+
+  // Absence of obsolete contradictory metrics
+  const prohibitedStaleHwms = [5683, 5689, 5690, 510];
+  const foundStaleHwms = prohibitedStaleHwms.filter(hwm => {
+    const pattern = new RegExp(`highWaterMark:\\s*${hwm}\\b`);
+    return pattern.test(taskDoc);
+  });
+  assert(
+    foundStaleHwms.length === 0,
+    `Task contract contains zero stale highWaterMark references (checked ${prohibitedStaleHwms.join(", ")})`,
+    `found stale HWMs: ${foundStaleHwms.join(", ")}`
+  );
+
+  const foundStaleAuditCounts = taskDoc.match(/\b71\s+(?:checks|quality checks)\b/);
+  assert(
+    !foundStaleAuditCounts,
+    `Task contract contains zero stale '71 checks' vanity claims`,
+    `found: ${foundStaleAuditCounts ? foundStaleAuditCounts[0] : ""}`
   );
 }
 
 if (existsSync(readmeDocPath)) {
   const readmeDoc = readFileSync(readmeDocPath, "utf8");
+  const readmeIdiomMatch = readmeDoc.match(/\*\*(\d+)\*\*\s+curated idioms/);
   assert(
-    readmeDoc.includes(`**${idioms.length}** curated idioms`) || readmeDoc.includes(`(${idioms.length})`),
-    `README documents truthful active idiom count (${idioms.length})`
+    readmeIdiomMatch && parseInt(readmeIdiomMatch[1], 10) === idioms.length,
+    `README documents truthful active idiom count (${idioms.length})`,
+    `got ${readmeIdiomMatch ? readmeIdiomMatch[1] : "null"}`
   );
+
+  const readmeSentMatch = readmeDoc.match(/\*\*(\d+)\*\*\s+genuinely authored/);
   assert(
-    readmeDoc.includes(`**${sentences.length}** genuinely authored`) || readmeDoc.includes(`${sentences.length} authored sentences`),
-    `README documents truthful active sentence count (${sentences.length})`
+    readmeSentMatch && parseInt(readmeSentMatch[1], 10) === sentences.length,
+    `README documents truthful active sentence count (${sentences.length})`,
+    `got ${readmeSentMatch ? readmeSentMatch[1] : "null"}`
   );
 }
 

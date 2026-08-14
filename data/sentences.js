@@ -838,13 +838,13 @@ globalThis.NP_SENTENCES = [
     "curated": true
   },
   {
-    "id": "snt-05094",
-    "nl": "Jan belt de garage voor een afspraak over zijn auto.",
-    "en": "Jan calls the garage for an appointment for his car.",
+    "id": "snt-05691",
+    "nl": "Jan belt de garage om een afspraak voor zijn auto te maken.",
+    "en": "Jan calls the garage to make an appointment for his car.",
     "level": "A1",
     "tags": [
       "maintenance",
-      "calls"
+      "om_te_infinitive"
     ],
     "category": "driving_cycling",
     "targetWord": "garage",
@@ -1123,18 +1123,18 @@ globalThis.NP_SENTENCES = [
     "curated": true
   },
   {
-    "id": "snt-05109",
-    "nl": "Pardon ober, mag ik de menukaart zien?",
-    "en": "Excuse me, waiter, may I see the menu?",
+    "id": "snt-05692",
+    "nl": "Pardon, mag ik de menukaart zien?",
+    "en": "Excuse me, may I see the menu?",
     "level": "A1",
     "tags": [
       "restaurants",
       "polite_u"
     ],
     "category": "food_dining",
-    "targetWord": "ober",
+    "targetWord": "Pardon",
     "targetWords": [
-      "ober",
+      "Pardon",
       "menukaart"
     ],
     "clozeEligible": true,

@@ -53,7 +53,7 @@ export const AUTHORED_SENTENCES_A1 = [
   { nl: "Er is een breed fietspad langs de rivier.", en: "There is a wide bicycle path along the river.", level: "A1", category: "driving_cycling", tags: ["er_is", "geography"], targetWords: ["fietspad", "rivier"] },
   { nl: "Waar kan ik mijn auto hier parkeren?", en: "Where can I park my car here?", level: "A1", category: "driving_cycling", tags: ["questions", "parking"], targetWords: ["parkeren", "auto"] },
   { nl: "Ik zet mijn fiets altijd goed op slot.", en: "I always lock my bicycle properly.", level: "A1", category: "driving_cycling", tags: ["safety", "cycling"], targetWords: ["slot", "fiets"] },
-  { nl: "Jan belt de garage voor een afspraak over zijn auto.", en: "Jan calls the garage for an appointment for his car.", level: "A1", category: "driving_cycling", tags: ["maintenance", "calls"], targetWords: ["garage", "afspraak"] },
+  { nl: "Jan belt de garage om een afspraak voor zijn auto te maken.", en: "Jan calls the garage to make an appointment for his car.", level: "A1", category: "driving_cycling", tags: ["maintenance", "om_te_infinitive"], targetWords: ["garage", "afspraak"] },
   { nl: "Zij fietst rustig door het historische stadscentrum.", en: "She cycles leisurely through the historic city centre.", level: "A1", category: "driving_cycling", tags: ["cycling", "city"], targetWords: ["fietst", "stadscentrum"] },
   { nl: "Jan wast zijn auto op zaterdagmiddag in de straat.", en: "Jan washes his car on Saturday afternoon in the street.", level: "A1", category: "driving_cycling", tags: ["cars", "chores"], targetWords: ["wast", "auto"] },
 
@@ -72,7 +72,7 @@ export const AUTHORED_SENTENCES_A1 = [
   { nl: "Ik wil graag een kopje koffie bestellen.", en: "I would like to order a cup of coffee.", level: "A1", category: "food_dining", tags: ["ordering", "polite_modal"], targetWords: ["graag", "bestellen"] },
   { nl: "De warme soep smaakt erg lekker.", en: "The hot soup tastes delicious.", level: "A1", category: "food_dining", tags: ["taste", "adjectives"], targetWords: ["warme", "smaakt"] },
   { nl: "Wij eten vanavond pannenkoeken met stroop.", en: "We are eating pancakes with syrup tonight.", level: "A1", category: "food_dining", tags: ["dutch_food", "prepositions"], targetWords: ["pannenkoeken", "stroop"] },
-  { nl: "Pardon ober, mag ik de menukaart zien?", en: "Excuse me, waiter, may I see the menu?", level: "A1", category: "food_dining", tags: ["restaurants", "polite_u"], targetWords: ["ober", "menukaart"] },
+  { nl: "Pardon, mag ik de menukaart zien?", en: "Excuse me, may I see the menu?", level: "A1", category: "food_dining", tags: ["restaurants", "polite_u"], targetWords: ["Pardon", "menukaart"] },
   { nl: "Zij drinkt altijd water met ijs bij het diner.", en: "She always drinks water with ice at dinner.", level: "A1", category: "food_dining", tags: ["beverages", "routine"], targetWords: ["water", "diner"] },
   { nl: "Ik drink graag een glas koude melk bij de lunch.", en: "I like drinking a glass of cold milk at lunch.", level: "A1", category: "food_dining", tags: ["drinks", "meals"], targetWords: ["glas", "melk"] },
   { nl: "De ober brengt ons twee glazen vers sinaasappelsap.", en: "The waiter brings us two glasses of fresh orange juice.", level: "A1", category: "food_dining", tags: ["service", "drinks"], targetWords: ["brengt", "sinaasappelsap"] },

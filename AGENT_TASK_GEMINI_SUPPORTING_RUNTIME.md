@@ -102,7 +102,7 @@ The current corpus is not allowed to call thousands of Cartesian combinations â€
 - [x] Add an explicit authored/curated provenance flag (`provenance: 'curated'`, `curated: true`).
 - [x] Add explicit generated/reference flags as appropriate.
 - [x] Add stable sentence ID ownership, preferably an append-only registry analogous to vocabulary/idiom IDs (`data/sentence_ids.json`).
-- [x] Never recycle retired sentence IDs (`highWaterMark: 5690`, legacy Cartesian IDs retired).
+- [x] Never recycle retired sentence IDs (`highWaterMark: 5692`, legacy Cartesian IDs retired).
 - [x] Generated rows have deterministic IDs and ordering.
 
 ### Real authored corpus target
@@ -177,7 +177,7 @@ Ensure substantial authored coverage of:
 **Sentence-bank evidence:**
 
 - 641 curated sentences modularized across `scripts/authored_sentences_a1.mjs` through `_c1.mjs`.
-- Registry `data/sentence_ids.json` with `highWaterMark: 5689`.
+- Registry `data/sentence_ids.json` with `highWaterMark: 5692`.
 - 100% of rows pass strict Unicode boundary token presence matching for both `targetWord` and `targetWords`.
 - Zero mixed English-Dutch templates (`Met grote zorgvuldigheid the...` or `elke ochtend the...`).
 
@@ -218,7 +218,7 @@ For content owned by this task, quality tests must prove truthfulness rather tha
 
 **Audit evidence:**
 
-- `node scripts/audit.mjs` passes 71 checks with 0 failures.
+- `node scripts/audit.mjs` passes all quality and evidence-consistency checks with 0 failures.
 - `node tests/smoke.mjs` passes 8 invariant tests with 0 failures.
 
 ---
@@ -383,7 +383,7 @@ Because this task touches `app.js`, perform a fresh audit of affected runtime pa
 - 5 review follow-up tests pass in `tests/review_followup.mjs`.
 - 1 sentence surface audit passes in `tests/sentence_surface_audit.mjs` (641/641 sentences verified).
 - 8 smoke tests pass in `tests/smoke.mjs`.
-- 71 quality checks pass in `scripts/audit.mjs`.
+- All quality and evidence-consistency checks pass in `scripts/audit.mjs`.
 - 64 artifact checks pass in `scripts/audit-artifact.mjs`.
 - 26 service worker tests pass in `tests/offline.mjs`.
 - 113 browser assertions pass in `tests/browser.mjs`.
