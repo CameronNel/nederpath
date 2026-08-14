@@ -62,7 +62,7 @@
     const year = parseInt(yStr, 10);
     const month = parseInt(mStr, 10);
     const day = parseInt(dStr, 10);
-    if (year < 2000 || year > 2100 || month < 1 || month > 12 || day < 1 || day > 31) return false;
+    if (year < 2000 || year > 2200 || month < 1 || month > 12 || day < 1 || day > 31) return false;
 
     const isLeap = (year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0);
     const daysInMonth = [31, isLeap ? 29 : 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
@@ -136,8 +136,8 @@
 
   /**
    * Extracts a best-effort Dutch verb stem. This helper is retained for
-   * non-authoritative utility use; conjugation practice never relies on it
-   * unless an authoritative paradigm is unavailable and no word bank is supplied.
+   * compatibility and utility use. Learner-facing verb practice is gated by
+   * getVerifiedVerbHijConjugation instead of trusting this heuristic.
    */
   function getDutchVerbStem(infinitive) {
     if (!infinitive || typeof infinitive !== "string") return "";
@@ -152,7 +152,6 @@
 
     let base = inf.slice(0, -2);
 
-    // Double consonant at end -> single (e.g. bakken -> bak, pakken -> pak, zetten -> zet)
     if (
       base.length >= 2 &&
       base[base.length - 1] === base[base.length - 2] &&
@@ -160,7 +159,6 @@
     ) {
       base = base.slice(0, -1);
     } else {
-      // Best-effort vowel lengthening for simple weak verbs.
       const match = base.match(/^(.*?)([aeou])([bcdfghjklmnpqrstvwxz])$/);
       if (match) {
         const [, prefix, vowel, consonant] = match;
@@ -170,7 +168,6 @@
       }
     }
 
-    // Convert trailing v -> f, z -> s (e.g. leven -> leef, reizen -> reis, geloven -> geloof)
     if (base.endsWith("v")) {
       base = base.slice(0, -1) + "f";
     } else if (base.endsWith("z")) {
@@ -220,17 +217,11 @@
           const wordStr = (w.word || "").toLowerCase().trim();
           const isStandardInfinitive =
             wordStr.endsWith("en") || ["zijn", "gaan", "staan", "doen", "zien", "slaan"].includes(wordStr);
-          if (isStandardInfinitive) {
-            eligibleVerbs.push(w);
-          }
+          if (isStandardInfinitive) eligibleVerbs.push(w);
         }
       } else if (w.pos === "noun" && w.lemma) {
         const lKey = w.lemma.toLowerCase().trim();
         const meaning = (w.meaning || "").toLowerCase();
-        // The explicit subtype is authoritative. Meaning text can legitimately
-        // contain "diminutive" (for example, liedje), so it must not override
-        // a direct plural classification. The text fallback is only for legacy
-        // rows that predate inflectionType.
         const isDirectPlural =
           w.inflectionType === "plural" ||
           (!w.inflectionType &&
@@ -258,7 +249,7 @@
         enumerable: false
       });
     } catch {
-      wordsBank._np_indexes = indexes;
+      // Caching is optional. Frozen arrays must remain valid read-only inputs.
     }
 
     return indexes;
@@ -295,24 +286,21 @@
   }
 
   /**
-   * Resolves a hij/zij present tense form. With a word bank present, the bank
-   * is authoritative and unsupported forms return null instead of being guessed.
-   * The best-effort weak-verb fallback exists only for callers without a bank.
+   * General compatibility helper for hij/zij present tense forms. Explicit
+   * bank data wins, followed by the historical best-effort weak-verb fallback.
+   * Learner-facing practice does NOT use this fallback for eligibility.
    */
   function getVerbHijConjugation(infinitive, wordsBank = null) {
     if (!infinitive || typeof infinitive !== "string") return null;
     const inf = infinitive.toLowerCase().trim();
 
-    if (IRREGULAR_HIJ_VERBS[inf]) {
-      return IRREGULAR_HIJ_VERBS[inf];
-    }
+    if (IRREGULAR_HIJ_VERBS[inf]) return IRREGULAR_HIJ_VERBS[inf];
 
     if (Array.isArray(wordsBank)) {
       const indexes = getWordBankIndexes(wordsBank);
       if (indexes && indexes.lemmaToHij.has(inf)) {
         return indexes.lemmaToHij.get(inf);
       }
-      return null;
     }
 
     const stem = getDutchVerbStem(inf);
@@ -349,9 +337,7 @@
 
     if (Array.isArray(wordsBank)) {
       const indexes = getWordBankIndexes(wordsBank);
-      if (indexes && indexes.lemmaToPlural.has(lemma)) {
-        return indexes.lemmaToPlural.get(lemma);
-      }
+      if (indexes && indexes.lemmaToPlural.has(lemma)) return indexes.lemmaToPlural.get(lemma);
     }
     return null;
   }
@@ -368,7 +354,6 @@
 
     const sessionCards = [];
     const sessionIds = new Set();
-
     const allTrackedIds = new Set(
       Array.isArray(srsCards)
         ? srsCards.map((c) => c && c.id).filter(Boolean)
@@ -401,9 +386,7 @@
 
     if (sessionCards.length < size) {
       const remainingNeeded = size - sessionCards.length;
-      const fallbackEligible = words.filter(
-        (w) => w && w.learnable !== false && !sessionIds.has(w.id)
-      );
+      const fallbackEligible = words.filter((w) => w && w.learnable !== false && !sessionIds.has(w.id));
       const sampledFallback = sampleArray(fallbackEligible, remainingNeeded);
       for (const w of sampledFallback) {
         sessionCards.push(w);
@@ -434,9 +417,7 @@
   }
 
   /**
-   * Creates a stable Fill-in-the-Blank card using literal, regex-safe target
-   * matching. Punctuation-bearing Dutch forms such as e-mail cannot turn into
-   * accidental regular expressions.
+   * Creates a stable Fill-in-the-Blank card using literal, regex-safe target matching.
    */
   function createFillBlankCard(sentenceItem, wordsBank = []) {
     if (!sentenceItem || typeof sentenceItem.nl !== "string" || !sentenceItem.nl.trim()) return null;
@@ -463,7 +444,6 @@
       target = cleanTokens[Math.floor(cleanTokens.length / 2)];
       targetRegex = literalTokenRegex(target);
     }
-
     if (!target) return null;
 
     const match = targetRegex.exec(sentence);
@@ -499,7 +479,6 @@
     }
 
     const options = shuffleArray([matchedActual, ...candidateDistractors.slice(0, 3)]);
-
     return {
       id: typeof sentenceItem.id === "string" && SAFE_ID_REGEX.test(sentenceItem.id)
         ? sentenceItem.id
@@ -526,9 +505,7 @@
       return false;
     }
     for (const key of Object.getOwnPropertyNames(value)) {
-      if (key === "__proto__" || key === "constructor" || key === "prototype") {
-        return true;
-      }
+      if (key === "__proto__" || key === "constructor" || key === "prototype") return true;
       if (containsDangerousKeys(value[key])) return true;
     }
     return false;
@@ -539,13 +516,8 @@
    * enforces numeric and collection bounds, sanitizes strings, and performs safe deep merge.
    */
   function validateAndMergeBackup(parsed, defaultState) {
-    if (!isRecord(parsed)) {
-      throw new Error("Import payload must be a non-empty JSON object.");
-    }
-
-    if (containsDangerousKeys(parsed)) {
-      throw new Error("Forbidden prototype-pollution keys detected in import payload.");
-    }
+    if (!isRecord(parsed)) throw new Error("Import payload must be a non-empty JSON object.");
+    if (containsDangerousKeys(parsed)) throw new Error("Forbidden prototype-pollution keys detected in import payload.");
 
     const merged = JSON.parse(JSON.stringify(defaultState));
 
@@ -650,10 +622,7 @@
         if (typeof stats.correct === "number" && Number.isFinite(stats.correct)) {
           merged.progress.articleStats.correct = Math.max(0, Math.min(10000000, Math.round(stats.correct)));
         }
-        merged.progress.articleStats.correct = Math.min(
-          merged.progress.articleStats.correct,
-          merged.progress.articleStats.totalDrilled
-        );
+        merged.progress.articleStats.correct = Math.min(merged.progress.articleStats.correct, merged.progress.articleStats.totalDrilled);
 
         if (isRecord(stats.mistakes)) {
           let accepted = 0;
@@ -684,8 +653,6 @@
         if (SAFE_ID_REGEX.test(cardId) && isRecord(card)) {
           const nowIso = new Date().toISOString();
           merged.srs.cards[cardId] = {
-            // The map key is authoritative. A nested, conflicting id must never
-            // redirect SRS state to a different learning item.
             id: cardId,
             type: typeof card.type === "string" && ["vocab", "grammar", "comprehension", "article"].includes(card.type) ? card.type : "vocab",
             interval: typeof card.interval === "number" && Number.isFinite(card.interval) ? Math.max(0, Math.min(36500, Math.round(card.interval))) : 0,
