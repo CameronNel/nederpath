@@ -1,44 +1,155 @@
 {
   "version": 1,
-  "description": "Explicit source-row merge policy. Repeated normalized forms remain auditable as source senses but have one generated lexical owner. Primary overrides use stable source-file selectors and must resolve to exactly one matching form in that file. Article overrides are limited to reviewed noun conflicts.",
+  "description": "Explicit source-row merge policy. Repeated normalized forms remain auditable as source senses but have one generated lexical owner. Primary overrides use semantic source selectors that must resolve to exactly one row; article overrides are limited to reviewed noun conflicts.",
   "primary": {
-    "haar": "words_core_1.js",
-    "zijn": "words_core_1.js",
-    "meer": "words_core_14.js",
-    "bij": "words_core_1.js",
-    "want": "words_core_1.js",
-    "dag": "words_core_1.js",
-    "succes": "words_core_6a.js",
-    "weer": "words_core_1.js",
-    "thuis": "words_core_1.js",
-    "waar": "words_core_8.js",
-    "juist": "words_core_8.js",
-    "eten": "words_core_5.js",
-    "zwemmen": "words_core_1.js",
-    "wandelen": "words_core_1.js",
-    "hardlopen": "words_core_1.js",
-    "kosten": "words_core_1.js",
-    "kussen": "words_core_3b.js",
-    "zout": "words_core_1.js",
-    "arm": "words_core_1.js",
-    "vertrouwen": "words_core_2.js",
-    "schaatsen": "words_core_2.js",
-    "roeien": "words_core_2.js",
-    "zeilen": "words_core_2.js",
-    "surfen": "words_core_2.js",
-    "klimmen": "words_core_2.js",
-    "basilicum": "words_core_11.js",
-    "inchecken": "words_core_12.js",
-    "uitchecken": "words_core_12.js",
-    "inloggen": "words_core_12.js",
-    "trots": "words_core_8.js",
-    "varen": "words_core_2.js",
-    "klussen": "words_core_2.js",
-    "kamperen": "words_core_2.js",
-    "licht": "words_core_8.js",
-    "zuur": "words_core_8.js",
-    "zeker": "words_core_8.js",
-    "mogelijk": "words_core_8.js"
+    "haar": {
+      "file": "words_core_1.js",
+      "pos": "noun"
+    },
+    "zijn": {
+      "file": "words_core_1.js",
+      "pos": "verb"
+    },
+    "meer": {
+      "file": "words_core_14.js",
+      "pos": "noun"
+    },
+    "bij": {
+      "file": "words_core_1.js",
+      "pos": "preposition"
+    },
+    "want": {
+      "file": "words_core_1.js",
+      "pos": "conjunction"
+    },
+    "dag": {
+      "file": "words_core_1.js",
+      "pos": "noun"
+    },
+    "succes": {
+      "file": "words_core_6a.js",
+      "pos": "noun"
+    },
+    "weer": {
+      "file": "words_core_1.js",
+      "pos": "noun"
+    },
+    "thuis": {
+      "file": "words_core_1.js",
+      "pos": "adverb"
+    },
+    "waar": {
+      "file": "words_core_8.js",
+      "pos": "adjective"
+    },
+    "juist": {
+      "file": "words_core_8.js",
+      "pos": "adjective"
+    },
+    "eten": {
+      "file": "words_core_5.js",
+      "pos": "noun"
+    },
+    "zwemmen": {
+      "file": "words_core_1.js",
+      "pos": "verb"
+    },
+    "wandelen": {
+      "file": "words_core_1.js",
+      "pos": "verb"
+    },
+    "hardlopen": {
+      "file": "words_core_1.js",
+      "pos": "verb"
+    },
+    "kosten": {
+      "file": "words_core_1.js",
+      "pos": "verb"
+    },
+    "kussen": {
+      "file": "words_core_3b.js",
+      "pos": "noun"
+    },
+    "zout": {
+      "file": "words_core_1.js",
+      "pos": "noun"
+    },
+    "arm": {
+      "file": "words_core_1.js",
+      "pos": "noun"
+    },
+    "vertrouwen": {
+      "file": "words_core_2.js",
+      "pos": "verb"
+    },
+    "schaatsen": {
+      "file": "words_core_2.js",
+      "pos": "verb"
+    },
+    "roeien": {
+      "file": "words_core_2.js",
+      "pos": "verb"
+    },
+    "zeilen": {
+      "file": "words_core_2.js",
+      "pos": "verb"
+    },
+    "surfen": {
+      "file": "words_core_2.js",
+      "pos": "verb"
+    },
+    "klimmen": {
+      "file": "words_core_2.js",
+      "pos": "verb"
+    },
+    "basilicum": {
+      "file": "words_core_11.js",
+      "pos": "noun"
+    },
+    "inchecken": {
+      "file": "words_core_12.js",
+      "pos": "verb"
+    },
+    "uitchecken": {
+      "file": "words_core_12.js",
+      "pos": "verb"
+    },
+    "inloggen": {
+      "file": "words_core_12.js",
+      "pos": "noun"
+    },
+    "trots": {
+      "file": "words_core_8.js",
+      "pos": "adjective"
+    },
+    "varen": {
+      "file": "words_core_2.js",
+      "pos": "verb"
+    },
+    "klussen": {
+      "file": "words_core_2.js",
+      "pos": "verb"
+    },
+    "kamperen": {
+      "file": "words_core_2.js",
+      "pos": "verb"
+    },
+    "licht": {
+      "file": "words_core_8.js",
+      "pos": "adjective"
+    },
+    "zuur": {
+      "file": "words_core_8.js",
+      "pos": "adjective"
+    },
+    "zeker": {
+      "file": "words_core_8.js",
+      "pos": "adjective"
+    },
+    "mogelijk": {
+      "file": "words_core_8.js",
+      "pos": "adjective"
+    }
   },
   "article": {
     "medicijn": "het",
