@@ -417,34 +417,36 @@
   }
 
   /**
-   * Creates a stable Fill-in-the-Blank card using literal, regex-safe target matching.
+   * Creates a stable Fill-in-the-Blank card using only explicit, literal,
+   * regex-safe target metadata. Invalid/missing targets fail closed instead of
+   * silently substituting an arbitrary sentence word.
    */
   function createFillBlankCard(sentenceItem, wordsBank = []) {
     if (!sentenceItem || typeof sentenceItem.nl !== "string" || !sentenceItem.nl.trim()) return null;
+    if (sentenceItem.clozeEligible === false) return null;
 
     const sentence = sentenceItem.nl;
-    const cleanTokens = sentence.match(/[\p{L}\p{M}\p{N}'’-]{3,}/gu) || [];
-
-    let target = null;
-    let targetRegex = null;
+    const candidates = [];
+    if (typeof sentenceItem.targetWord === "string" && sentenceItem.targetWord.trim()) {
+      candidates.push(sentenceItem.targetWord.trim());
+    }
     if (Array.isArray(sentenceItem.targetWords)) {
       for (const rawTarget of sentenceItem.targetWords) {
         if (typeof rawTarget !== "string" || !rawTarget.trim()) continue;
         const candidate = rawTarget.trim();
-        const regex = literalTokenRegex(candidate);
-        if (regex.test(sentence)) {
-          target = candidate;
-          targetRegex = literalTokenRegex(candidate);
-          break;
-        }
+        if (!candidates.includes(candidate)) candidates.push(candidate);
       }
     }
 
-    if (!target && cleanTokens.length > 0) {
-      target = cleanTokens[Math.floor(cleanTokens.length / 2)];
-      targetRegex = literalTokenRegex(target);
+    let targetRegex = null;
+    for (const candidate of candidates) {
+      const regex = literalTokenRegex(candidate);
+      if (regex.test(sentence)) {
+        targetRegex = literalTokenRegex(candidate);
+        break;
+      }
     }
-    if (!target) return null;
+    if (!targetRegex) return null;
 
     const match = targetRegex.exec(sentence);
     if (!match) return null;
