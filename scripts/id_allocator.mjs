@@ -8,7 +8,7 @@
 //    are never recycled.
 //
 // The registry schema is: { version: 1, highWaterMark: <int>, entries: { norm: "nl-00001" } }
-// where `norm` is the lowercase-trimmed Dutch word form.
+// where `norm` is the canonical NFKC/case/whitespace-normalized Dutch word form.
 
 import { normalizeLexicalForm } from "./lexical_data.mjs";
 
@@ -19,7 +19,7 @@ export class RegistryError extends Error {}
 
 /**
  * Validates a parsed registry object and indexes it.
- * Throws RegistryError on any schema, format, or ownership violation.
+ * Throws RegistryError on any schema, format, normalization, or ownership violation.
  * @param {unknown} registry - parsed JSON content of data/word_ids.json
  * @returns {{ entries: Map<string, string>, owners: Map<string, string>, highWaterMark: number }}
  */
@@ -42,9 +42,13 @@ export function validateRegistry(registry) {
   const owners = new Map();
   let maxIdNum = 0;
 
-  for (const [norm, id] of Object.entries(registry.entries)) {
-    if (!norm || norm !== norm.toLowerCase().trim() || typeof id !== "string" || !ID_PATTERN.test(id)) {
-      throw new RegistryError(`invalid registry entry '${norm}' -> '${id}'`);
+  for (const [rawNorm, id] of Object.entries(registry.entries)) {
+    const norm = normalizeLexicalForm(rawNorm);
+    if (!rawNorm || rawNorm !== norm || typeof id !== "string" || !ID_PATTERN.test(id)) {
+      throw new RegistryError(`invalid or non-canonical registry entry '${rawNorm}' -> '${id}'`);
+    }
+    if (entries.has(norm)) {
+      throw new RegistryError(`normalized lexical form '${norm}' appears more than once in the registry`);
     }
     if (owners.has(id)) {
       throw new RegistryError(`historical ID '${id}' is owned by both '${owners.get(id)}' and '${norm}'`);
