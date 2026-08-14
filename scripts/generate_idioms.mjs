@@ -154,7 +154,7 @@ const THEMES = [
     level: "B1",
     register: "neutral",
     items: [
-      ["Zullen we even kort overleggen?", "Shall we have a brief consultation / chat?", "Heb je vijf minuutjes? Zullen we even kort overleggen over het project?"],
+      ["Zullen we even kort overleggen?", "Shall we have a quick discussion / chat?", "Heb je vijf minuutjes? Zullen we even kort overleggen over het project?"],
       ["Ik kom hier later op terug", "I will get back to this later", "Dat moet ik even navragen bij de manager; ik kom hier later op terug."],
       ["Kun je dat even op de mail zetten?", "Could you put that in an email?", "Dat is een goed voorstel, kun je dat even op de mail zetten?"],
       ["Laten we de koppen bij elkaar steken", "Let's put our heads together / brainstorm", "Het probleem is ingewikkeld, dus laten we de koppen bij elkaar steken."],

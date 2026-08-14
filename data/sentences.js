@@ -764,7 +764,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-05090",
     "nl": "Stop voor het rode stoplicht bij het kruispunt.",
-    "en": "Stop in front of the red traffic light at the intersection.",
+    "en": "Stop at the red light at the intersection.",
     "level": "A1",
     "tags": [
       "imperative",
@@ -840,7 +840,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-05094",
     "nl": "Jan belt de garage voor een afspraak over zijn auto.",
-    "en": "Jan calls the garage for an appointment about his car.",
+    "en": "Jan calls the garage for an appointment for his car.",
     "level": "A1",
     "tags": [
       "maintenance",
@@ -859,7 +859,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-05095",
     "nl": "Zij fietst rustig door het historische stadscentrum.",
-    "en": "She cycles quietly through the historic city centre.",
+    "en": "She cycles leisurely through the historic city centre.",
     "level": "A1",
     "tags": [
       "cycling",
@@ -914,9 +914,9 @@ globalThis.NP_SENTENCES = [
     "curated": true
   },
   {
-    "id": "snt-05098",
-    "nl": "Wij vieren zaterdag het verjaardagsfeest van Lisa.",
-    "en": "We are celebrating Lisa's birthday party on Saturday.",
+    "id": "snt-05690",
+    "nl": "Zaterdag vieren we Lisa's verjaardag.",
+    "en": "We're celebrating Lisa's birthday on Saturday.",
     "level": "A1",
     "tags": [
       "social",
@@ -926,7 +926,7 @@ globalThis.NP_SENTENCES = [
     "targetWord": "vieren",
     "targetWords": [
       "vieren",
-      "verjaardagsfeest"
+      "verjaardag"
     ],
     "clozeEligible": true,
     "provenance": "curated",
@@ -973,7 +973,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-05101",
     "nl": "Bedankt voor de gezellige middag!",
-    "en": "Thank you for the pleasant afternoon!",
+    "en": "Thank you for the lovely afternoon!",
     "level": "A1",
     "tags": [
       "polite_expressions",
@@ -1125,7 +1125,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-05109",
     "nl": "Pardon ober, mag ik de menukaart zien?",
-    "en": "Excuse me waiter, may I see the menu?",
+    "en": "Excuse me, waiter, may I see the menu?",
     "level": "A1",
     "tags": [
       "restaurants",
@@ -1315,7 +1315,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-05119",
     "nl": "Wij bestellen twee koppen koffie en een stuk appelgebak.",
-    "en": "We order two cups of coffee and a slice of apple pastry.",
+    "en": "We order two cups of coffee and a slice of apple pie.",
     "level": "A1",
     "tags": [
       "cafe",
@@ -1657,7 +1657,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-05137",
     "nl": "De apotheek bevindt zich naast het ziekenhuis.",
-    "en": "The pharmacy is situated next to the hospital.",
+    "en": "The pharmacy is located next to the hospital.",
     "level": "A1",
     "tags": [
       "directions",
@@ -1733,7 +1733,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-05141",
     "nl": "Ik heb een afspraak bij de gemeente om elf uur.",
-    "en": "I have an appointment at the municipality at eleven o'clock.",
+    "en": "I have an appointment at the municipal office at eleven o'clock.",
     "level": "A1",
     "tags": [
       "civic",
@@ -2151,7 +2151,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-05163",
     "nl": "De kinderen spelen met de bal op het grasveld.",
-    "en": "The children play with the ball on the grass field.",
+    "en": "The children play with the ball on the lawn.",
     "level": "A1",
     "tags": [
       "games",
@@ -4128,7 +4128,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-05263",
     "nl": "Ik heb mijn adreswijziging doorgegeven aan de gemeente en de bank.",
-    "en": "I passed on my change of address to the municipality and the bank.",
+    "en": "I passed on my change of address to the municipal office and the bank.",
     "level": "A2",
     "tags": [
       "separable_perfect",
@@ -4261,7 +4261,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-05270",
     "nl": "De gemeente organiseerde een informatieavond over duurzame energie in de wijk.",
-    "en": "The municipality organised an information evening about sustainable energy in the district.",
+    "en": "The local council organised an information evening about sustainable energy in the neighborhood.",
     "level": "A2",
     "tags": [
       "sustainability",
@@ -4280,7 +4280,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-05271",
     "nl": "Wij hebben gisteren een heerlijk driegangenmenu gegeten in een eetcafé.",
-    "en": "We ate a delicious three-course meal in an eatery yesterday.",
+    "en": "We had a delicious three-course dinner at a local bistro yesterday.",
     "level": "A2",
     "tags": [
       "perfect_tense",
@@ -4394,7 +4394,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-05277",
     "nl": "Zij kookte een traditionele Nederlandse stamppot met boerenkool en rookworst.",
-    "en": "She cooked a traditional Dutch mash with kale and smoked sausage.",
+    "en": "She cooked a traditional Dutch stamppot with kale and smoked sausage.",
     "level": "A2",
     "tags": [
       "cooking",
@@ -4546,7 +4546,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-05285",
     "nl": "Zij bedankte haar collega voor de fijne samenwerking aan het project.",
-    "en": "She thanked her colleague for the pleasant cooperation on the project.",
+    "en": "She thanked her colleague for the great collaboration on the project.",
     "level": "A2",
     "tags": [
       "workplace_relations",
@@ -4717,7 +4717,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-05294",
     "nl": "Wij hebben gisteren een gezellige borrel gehad met al onze collega's.",
-    "en": "We had a pleasant drinks party with all our colleagues yesterday.",
+    "en": "We had a lovely drinks get-together with all our colleagues yesterday.",
     "level": "A2",
     "tags": [
       "dutch_borrel",
@@ -5630,7 +5630,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-05341",
     "nl": "De gemeente stimuleert inwoners om hun tuinen te vergroenen en regenwater op te vangen.",
-    "en": "The municipality encourages residents to make their gardens greener and catch rainwater.",
+    "en": "The local council encourages residents to make their gardens greener and catch rainwater.",
     "level": "B1",
     "tags": [
       "urban_greening",
@@ -7188,7 +7188,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-05422",
     "nl": "De gemeente organiseerde een inspraakavond over de herinrichting van het dorpsplein.",
-    "en": "The municipality organized a consultation evening about redesigning the village square.",
+    "en": "The local council organized a public consultation evening about redesigning the village square.",
     "level": "B1",
     "tags": [
       "civic_participation",

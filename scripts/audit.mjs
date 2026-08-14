@@ -389,6 +389,43 @@ assert(missingSurfaceTargets === 0, "All sentence rows have targetWord/targetWor
 assert(rejectedSubstring1 && rejectedSubstring2 && acceptedExactToken, "Audit target presence strictly enforces Unicode token boundaries against substring false positives");
 assert(Object.keys(sentLevelCounts).length === 5, `Sentences cover all 5 CEFR levels: ${JSON.stringify(sentLevelCounts)}`);
 
+// 7. Contract & Documentation Evidence Consistency
+console.log("\n--- 7. Documentation & Contract Evidence Consistency ---");
+const taskDocPath = join(ROOT, "AGENT_TASK_GEMINI_SUPPORTING_RUNTIME.md");
+const readmeDocPath = join(ROOT, "README.md");
+
+if (existsSync(taskDocPath)) {
+  const taskDoc = readFileSync(taskDocPath, "utf8");
+  assert(
+    taskDoc.includes(`highWaterMark: ${idiomIdsRegistry.highWaterMark}`),
+    `Task contract documents current idiom registry highWaterMark (${idiomIdsRegistry.highWaterMark})`
+  );
+  assert(
+    taskDoc.includes(`highWaterMark: ${sentIdsRegistry.highWaterMark}`),
+    `Task contract documents current sentence registry highWaterMark (${sentIdsRegistry.highWaterMark})`
+  );
+  assert(
+    taskDoc.includes(`${idioms.length} curated, authentic Dutch idioms`) || taskDoc.includes(`(${idioms.length})`),
+    `Task contract documents current active idiom count (${idioms.length})`
+  );
+  assert(
+    taskDoc.includes(`(Actual: ${sentences.length})`) || taskDoc.includes(`${sentences.length} authored sentences`),
+    `Task contract documents current active sentence count (${sentences.length})`
+  );
+}
+
+if (existsSync(readmeDocPath)) {
+  const readmeDoc = readFileSync(readmeDocPath, "utf8");
+  assert(
+    readmeDoc.includes(`**${idioms.length}** curated idioms`) || readmeDoc.includes(`(${idioms.length})`),
+    `README documents truthful active idiom count (${idioms.length})`
+  );
+  assert(
+    readmeDoc.includes(`**${sentences.length}** genuinely authored`) || readmeDoc.includes(`${sentences.length} authored sentences`),
+    `README documents truthful active sentence count (${sentences.length})`
+  );
+}
+
 // Summary
 console.log("\n=======================================================");
 console.log(`Audit Completed: ${passed} Passed, ${failed} Failed`);

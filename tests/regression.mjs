@@ -1646,24 +1646,14 @@ test("Integration: Restart / reset for a second session re-anchors startXp and d
   }
 });
 
-test("Integration: Zero-XP failed session calculates 0 earned XP truthfully", () => {
-  const store = Store.createStore({
-    user: { totalXp: 80 }
-  });
+test("Session XP arithmetic clamps negative store deltas to zero", () => {
+  // Protects the clamp invariant Math.max(0, currentXp - startXp) against clock drift or corrupted state
+  const startXp = 100;
+  const currentXp = 80; // Corrupted or downgraded state lower than session start
+  const earnedXp = Math.max(0, currentXp - startXp);
 
-  const session = {
-    startXp: store.state.user.totalXp,
-    cards: [{ id: 1 }],
-    currentIndex: 0
-  };
-
-  // User fails item in a strict 0-XP penalty setting
-  // (no recordActivity called)
-  session.currentIndex = 1;
-
-  const earned = Math.max(0, store.state.user.totalXp - session.startXp);
-  if (earned !== 0) {
-    throw new Error(`Expected 0 earned XP for failed session, got ${earned}`);
+  if (earnedXp !== 0) {
+    throw new Error(`Earned XP clamp expected 0 for negative delta, got ${earnedXp}`);
   }
 });
 

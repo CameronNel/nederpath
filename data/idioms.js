@@ -701,7 +701,7 @@ globalThis.NP_IDIOMS = [
   {
     "id": "idm-0041",
     "dutch": "Zullen we even kort overleggen?",
-    "meaning": "Shall we have a brief consultation / chat?",
+    "meaning": "Shall we have a quick discussion / chat?",
     "literal": null,
     "register": "neutral",
     "level": "B1",

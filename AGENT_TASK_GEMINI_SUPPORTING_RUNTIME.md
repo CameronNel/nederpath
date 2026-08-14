@@ -72,7 +72,7 @@ Existing draft PR #7 (`fix(idioms): make expression bank truthful and append-onl
 - [x] Replace padded/context-cloned duplicate rows with the real normalized expression inventory.
 - [x] Preserve the first historical ID for each surviving expression.
 - [x] Maintain an append-only historical idiom ID registry (`data/idiom_ids.json`).
-- [x] Prevent retired duplicate IDs from ever being reassigned (`highWaterMark: 510`).
+- [x] Prevent retired duplicate IDs from ever being reassigned (`highWaterMark: 512`).
 - [x] Remove context-cloned duplicates.
 - [x] Remove copied/fabricated English/context claims that cannot be justified.
 - [x] Null/omit uncertain unsupported fields instead of inventing replacements.
@@ -102,7 +102,7 @@ The current corpus is not allowed to call thousands of Cartesian combinations â€
 - [x] Add an explicit authored/curated provenance flag (`provenance: 'curated'`, `curated: true`).
 - [x] Add explicit generated/reference flags as appropriate.
 - [x] Add stable sentence ID ownership, preferably an append-only registry analogous to vocabulary/idiom IDs (`data/sentence_ids.json`).
-- [x] Never recycle retired sentence IDs (`highWaterMark: 5683`, legacy Cartesian IDs retired).
+- [x] Never recycle retired sentence IDs (`highWaterMark: 5690`, legacy Cartesian IDs retired).
 - [x] Generated rows have deterministic IDs and ordering.
 
 ### Real authored corpus target
@@ -309,7 +309,7 @@ Because this task touches `app.js`, perform a fresh audit of affected runtime pa
 
 **Runtime review evidence:**
 
-- 106 browser test assertions pass with 0 console errors across desktop and mobile viewports (`tests/browser.mjs`).
+- 113 browser test assertions pass with 0 console errors across desktop and mobile viewports (`tests/browser.mjs`).
 - Service worker offline recovery verified (`tests/offline.mjs`).
 
 ---
@@ -386,7 +386,7 @@ Because this task touches `app.js`, perform a fresh audit of affected runtime pa
 - 71 quality checks pass in `scripts/audit.mjs`.
 - 64 artifact checks pass in `scripts/audit-artifact.mjs`.
 - 26 service worker tests pass in `tests/offline.mjs`.
-- 106 browser tests pass in `tests/browser.mjs`.
+- 113 browser assertions pass in `tests/browser.mjs`.
 
 ---
 
@@ -446,7 +446,7 @@ This pass is mandatory.
 - Zero concurrent file boundary violations: did not edit grammar/comprehension files.
 - Verified 641 distinct authentic sentence records across 22 domains.
 - Verified exact matching between previewReview calculations and actual SM-2 review transitions.
-- Verified all 106 browser assertions in automated headless environment.
+- Verified all 113 browser assertions in automated headless environment.
 
 ---
 
