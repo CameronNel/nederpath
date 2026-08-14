@@ -107,12 +107,36 @@ test("Data: Grammar curriculum contains exactly 8 sections and >= 120 rules", ()
   if (sections.size !== 8) throw new Error(`Section count is ${sections.size}, expected 8`);
 });
 
-test("Data: Idioms bank contains >= 500 entries", () => {
+test("Data: Idioms bank contains curated entries with stable IDs and strict schema", () => {
   const idiomsSrc = readFileSync(join(ROOT, "data", "idioms.js"), "utf8");
   new Function(idiomsSrc)();
   const idioms = globalThis.NP_IDIOMS;
 
-  if (!Array.isArray(idioms) || idioms.length < 500) throw new Error(`Idioms count is ${idioms.length}, expected >= 500`);
+  if (!Array.isArray(idioms) || idioms.length === 0) throw new Error("Idioms bank is missing or empty");
+  const ids = new Set();
+  const dutchPhrases = new Set();
+  const levels = new Set();
+  const validLevels = new Set(["A1", "A2", "B1", "B2", "C1"]);
+  const validRegisters = new Set(["idiom", "proverb", "colloquial", "neutral", "polite"]);
+
+  for (const idm of idioms) {
+    if (!/^idm-\d{3,}$/.test(idm.id)) throw new Error(`Invalid idiom ID format: ${idm.id}`);
+    if (ids.has(idm.id)) throw new Error(`Duplicate idiom ID: ${idm.id}`);
+    ids.add(idm.id);
+
+    const normDutch = idm.dutch.toLowerCase().trim();
+    if (dutchPhrases.has(normDutch)) throw new Error(`Duplicate Dutch idiom phrase: ${idm.dutch}`);
+    dutchPhrases.add(normDutch);
+
+    if (!idm.dutch || !idm.meaning || !idm.example || (idm.exampleEn !== null && typeof idm.exampleEn !== "string")) {
+      throw new Error(`Incomplete idiom fields on ${idm.id}`);
+    }
+    if (!validLevels.has(idm.level)) throw new Error(`Invalid CEFR level ${idm.level} on idiom ${idm.id}`);
+    if (!validRegisters.has(idm.register)) throw new Error(`Invalid register ${idm.register} on idiom ${idm.id}`);
+    levels.add(idm.level);
+  }
+
+  if (levels.size < 4) throw new Error(`Idioms bank must cover >= 4 CEFR levels (covered: ${[...levels].join(", ")})`);
 });
 
 test("Data: Comprehension bank contains authored passages with stable IDs", () => {
@@ -129,12 +153,50 @@ test("Data: Comprehension bank contains authored passages with stable IDs", () =
   }
 });
 
-test("Data: Sentence bank contains >= 5,000 entries", () => {
+test("Data: Sentence bank contains curated entries with stable IDs and verified surface targets", () => {
   const sentSrc = readFileSync(join(ROOT, "data", "sentences.js"), "utf8");
   new Function(sentSrc)();
   const sents = globalThis.NP_SENTENCES;
 
-  if (!Array.isArray(sents) || sents.length < 5000) throw new Error(`Sentences count is ${sents.length}, expected >= 5000`);
+  if (!Array.isArray(sents) || sents.length === 0) throw new Error("Sentence bank is missing or empty");
+  const ids = new Set();
+  const dutchSentences = new Set();
+  const levels = new Set();
+  const validLevels = new Set(["A1", "A2", "B1", "B2", "C1"]);
+
+  function surfaceTargetOccurs(target, sentenceNl) {
+    if (typeof target !== "string" || !target.trim() || typeof sentenceNl !== "string" || !sentenceNl.trim()) {
+      return false;
+    }
+    const normS = sentenceNl.normalize("NFKC").toLocaleLowerCase("nl-NL");
+    const normT = target.normalize("NFKC").trim().toLocaleLowerCase("nl-NL");
+    if (normS.includes(normT)) return true;
+    const escaped = normT.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    const regex = new RegExp(`(^|[^\\p{L}\\p{M}\\p{N}_])(${escaped})(?=$|[^\\p{L}\\p{M}\\p{N}_])`, "iu");
+    return regex.test(normS);
+  }
+
+  for (const s of sents) {
+    if (!/^snt-\d{5}$/.test(s.id)) throw new Error(`Invalid sentence ID format: ${s.id}`);
+    if (ids.has(s.id)) throw new Error(`Duplicate sentence ID: ${s.id}`);
+    ids.add(s.id);
+
+    const normDutch = s.nl.toLowerCase().trim();
+    if (dutchSentences.has(normDutch)) throw new Error(`Duplicate Dutch sentence: ${s.nl}`);
+    dutchSentences.add(normDutch);
+
+    if (!s.nl || !s.en || !s.targetWord || !s.category) {
+      throw new Error(`Incomplete sentence row on ${s.id}`);
+    }
+    if (!validLevels.has(s.level)) throw new Error(`Invalid CEFR level ${s.level} on sentence ${s.id}`);
+    levels.add(s.level);
+
+    if (!surfaceTargetOccurs(s.targetWord, s.nl)) {
+      throw new Error(`Surface targetWord '${s.targetWord}' not found in sentence '${s.nl}' (${s.id})`);
+    }
+  }
+
+  if (levels.size < 5) throw new Error(`Sentence bank must cover all 5 CEFR levels (covered: ${[...levels].join(", ")})`);
 });
 
 console.log(`\nSmoke Tests Complete: ${passed} passed, ${failed} failed.\n`);

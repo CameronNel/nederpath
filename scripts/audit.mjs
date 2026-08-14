@@ -209,20 +209,61 @@ const fnIdioms = new Function("globalThis", idiomsSrc + "\nreturn globalThis.NP_
 const idioms = fnIdioms(dummyGlobal);
 
 assert(Array.isArray(idioms), "NP_IDIOMS is an array");
-assert(idioms.length >= 500, `NP_IDIOMS count >= 500 (actual: ${idioms.length})`);
+assert(idioms.length > 0, `NP_IDIOMS contains curated bank (actual: ${idioms.length})`);
+
+const idiomIdsRegistryPath = join(ROOT, "data", "idiom_ids.json");
+assert(existsSync(idiomIdsRegistryPath), "data/idiom_ids.json exists for stable ID allocation");
+const idiomIdsRegistry = JSON.parse(readFileSync(idiomIdsRegistryPath, "utf8"));
 
 let invalidIdioms = 0;
+let duplicateIdiomIds = 0;
+let duplicateIdiomPhrases = 0;
 let suspiciousIdiomStrings = 0;
+let unregisteredIdiomIds = 0;
+const idiomIds = new Set();
+const idiomPhrases = new Set();
+const idiomLevelCounts = {};
+function normIdiom(value) {
+  return String(value ?? "").normalize("NFKC").trim().replace(/\s+/gu, " ").toLocaleLowerCase("nl-NL");
+}
+
+const validIdiomRegisters = new Set(["idiom", "proverb", "colloquial", "neutral", "polite"]);
+
 for (const idm of idioms) {
-  if (!idm.dutch || !idm.meaning || !idm.example) {
+  if (idiomIds.has(idm.id)) duplicateIdiomIds++;
+  idiomIds.add(idm.id);
+
+  const normDutch = normIdiom(idm.dutch);
+  if (idiomPhrases.has(normDutch)) duplicateIdiomPhrases++;
+  idiomPhrases.add(normDutch);
+
+  if (!idiomIdsRegistry.entries || idiomIdsRegistry.entries[normDutch] !== idm.id) {
+    unregisteredIdiomIds++;
+  }
+
+  if (
+    !/^idm-\d{3,}$/.test(idm.id || "") ||
+    !idm.dutch || !idm.meaning || !idm.example ||
+    (idm.exampleEn !== null && typeof idm.exampleEn !== "string") ||
+    !["A1", "A2", "B1", "B2", "C1"].includes(idm.level) ||
+    !validIdiomRegisters.has(idm.register)
+  ) {
     invalidIdioms++;
   }
+
+  idiomLevelCounts[idm.level] = (idiomLevelCounts[idm.level] || 0) + 1;
+
   if (idm.example.includes("rjestig") || idm.example.includes("jew") || idm.example.includes("mevrojew")) {
     suspiciousIdiomStrings++;
   }
 }
-assert(invalidIdioms === 0, "All idioms carry Dutch, meaning, and example sentences");
+
+assert(invalidIdioms === 0, "All idioms satisfy strict schema, valid registers, and CEFR levels");
+assert(duplicateIdiomIds === 0, "All idiom IDs are unique");
+assert(duplicateIdiomPhrases === 0, "All Dutch idiom expressions are unique");
+assert(unregisteredIdiomIds === 0, "All idiom IDs match data/idiom_ids.json stable registry");
 assert(suspiciousIdiomStrings === 0, "Zero suspicious substrings in idioms (rjestig/jew/mevrojew)");
+assert(Object.keys(idiomLevelCounts).length >= 4, `Idioms cover CEFR levels: ${JSON.stringify(idiomLevelCounts)}`);
 
 // 5. Comprehension Bank (data/comprehension.js)
 console.log("\n--- 5. Comprehension Passages Validation (data/comprehension.js) ---");
@@ -286,15 +327,74 @@ const fnSent = new Function("globalThis", sentSrc + "\nreturn globalThis.NP_SENT
 const sentences = fnSent(dummyGlobal);
 
 assert(Array.isArray(sentences), "NP_SENTENCES is an array");
-assert(sentences.length >= 5000, `NP_SENTENCES count >= 5,000 (actual: ${sentences.length})`);
+assert(sentences.length > 0, `NP_SENTENCES contains curated bank (actual: ${sentences.length})`);
+
+const sentIdsRegistryPath = join(ROOT, "data", "sentence_ids.json");
+assert(existsSync(sentIdsRegistryPath), "data/sentence_ids.json exists for stable ID allocation");
+const sentIdsRegistry = JSON.parse(readFileSync(sentIdsRegistryPath, "utf8"));
 
 let malformedSentences = 0;
+let duplicateSentenceIds = 0;
+let duplicateSentenceTexts = 0;
+let unregisteredSentenceIds = 0;
+let missingSurfaceTargets = 0;
+const sentIds = new Set();
+const sentTexts = new Set();
+const sentLevelCounts = {};
+
+function normSentence(value) {
+  return String(value ?? "").normalize("NFKC").trim().replace(/\s+/gu, " ").toLocaleLowerCase("nl-NL");
+}
+
+function surfaceTargetOccurs(target, sentenceNl) {
+  if (typeof target !== "string" || !target.trim() || typeof sentenceNl !== "string" || !sentenceNl.trim()) {
+    return false;
+  }
+  const normS = sentenceNl.normalize("NFKC").toLocaleLowerCase("nl-NL");
+  const normT = target.normalize("NFKC").trim().toLocaleLowerCase("nl-NL");
+  if (normS.includes(normT)) return true;
+  const escaped = normT.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const regex = new RegExp(`(^|[^\\p{L}\\p{M}\\p{N}_])(${escaped})(?=$|[^\\p{L}\\p{M}\\p{N}_])`, "iu");
+  return regex.test(normS);
+}
+
 for (const s of sentences) {
-  if (!s.nl || !s.en || s.en.includes("Met grote zorgvuldigheid the") || s.en.includes("elke ochtend the") || s.en.includes("analyseed")) {
+  if (sentIds.has(s.id)) duplicateSentenceIds++;
+  sentIds.add(s.id);
+
+  const normNl = normSentence(s.nl);
+  if (sentTexts.has(normNl)) duplicateSentenceTexts++;
+  sentTexts.add(normNl);
+
+  if (!sentIdsRegistry.entries || sentIdsRegistry.entries[normNl] !== s.id) {
+    unregisteredSentenceIds++;
+  }
+
+  if (
+    !/^snt-\d{5}$/.test(s.id || "") ||
+    !s.nl || !s.en || !s.targetWord || !s.category ||
+    !["A1", "A2", "B1", "B2", "C1"].includes(s.level) ||
+    s.en.includes("Met grote zorgvuldigheid the") ||
+    s.en.includes("elke ochtend the") ||
+    s.en.includes("analyseed")
+  ) {
     malformedSentences++;
   }
+
+  // Verify surface target word exists in Dutch sentence
+  if (!surfaceTargetOccurs(s.targetWord, s.nl)) {
+    missingSurfaceTargets++;
+  }
+
+  sentLevelCounts[s.level] = (sentLevelCounts[s.level] || 0) + 1;
 }
-assert(malformedSentences === 0, "Zero malformed translations or mixed time fronting in sentences");
+
+assert(malformedSentences === 0, "Zero malformed translations, schema errors, or mixed time fronting in sentences");
+assert(duplicateSentenceIds === 0, "All sentence IDs are unique");
+assert(duplicateSentenceTexts === 0, "All Dutch sentence texts are unique");
+assert(unregisteredSentenceIds === 0, "All sentence IDs match data/sentence_ids.json stable registry");
+assert(missingSurfaceTargets === 0, "All sentence rows have targetWord present as a surface token in the Dutch sentence");
+assert(Object.keys(sentLevelCounts).length === 5, `Sentences cover all 5 CEFR levels: ${JSON.stringify(sentLevelCounts)}`);
 
 // Summary
 console.log("\n=======================================================");

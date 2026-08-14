@@ -31,6 +31,20 @@
     return Math.max(1.3, Math.min(3.5, value));
   }
 
+  function formatSRSInterval(days) {
+    if (!Number.isFinite(days) || days <= 1) return "1d";
+    if (days < 30) return `${days}d`;
+    if (days < 365) return `${Math.round(days / 30)}m`;
+    return `${(days / 365).toFixed(1)}y`;
+  }
+
+  function formatSRSDutch(days) {
+    if (!Number.isFinite(days) || days <= 1) return "1 dag";
+    if (days < 30) return `${days} dagen`;
+    if (days < 365) return `${Math.round(days / 30)} mnd`;
+    return `${(days / 365).toFixed(1)} jr`;
+  }
+
   class SRSEngine {
     constructor(store) {
       this.store = store;
@@ -129,6 +143,83 @@
 
       this.store.recordActivity(rating >= 2 ? 10 : 3);
       return card;
+    }
+
+    /**
+     * Pure, non-mutating preview of the SM-2 review scheduler arithmetic.
+     * Returns the predicted resulting interval and state without modifying the store.
+     */
+    previewReview(cardId, rating, type = "vocab") {
+      if (!isSafeCardId(cardId)) {
+        throw new TypeError("Invalid SRS card id.");
+      }
+      if (!Number.isInteger(rating) || rating < 1 || rating > 4) {
+        throw new RangeError("SRS rating must be an integer from 1 through 4.");
+      }
+
+      const cards = (this.store && this.store.state && this.store.state.srs && this.store.state.srs.cards) || {};
+      const existing = Object.prototype.hasOwnProperty.call(cards, cardId) ? cards[cardId] : null;
+
+      let interval = existing ? clampInteger(existing.interval, 0, MAX_INTERVAL_DAYS, 0) : 0;
+      let easeFactor = existing ? clampEase(existing.easeFactor) : 2.5;
+      let repetitions = existing ? clampInteger(existing.repetitions, 0, 100000, 0) : 0;
+      let lapses = existing ? clampInteger(existing.lapses, 0, 100000, 0) : 0;
+      let state = existing && typeof existing.state === "string" ? existing.state : "new";
+
+      if (rating === 1) {
+        lapses = Math.min(100000, lapses + 1);
+        repetitions = 0;
+        interval = 1;
+        state = "learning";
+        easeFactor = Math.max(1.3, easeFactor - 0.2);
+      } else {
+        if (repetitions === 0) {
+          interval = 1;
+        } else if (repetitions === 1) {
+          interval = rating === 4 ? 6 : 3;
+        } else {
+          interval = Math.round(interval * easeFactor);
+        }
+
+        const grade = rating + 1;
+        easeFactor = clampEase(
+          easeFactor + (0.1 - (5 - grade) * (0.08 + (5 - grade) * 0.02))
+        );
+
+        if (rating === 4) {
+          interval = Math.round(interval * 1.3);
+        } else if (rating === 2) {
+          interval = Math.max(1, Math.round(interval * 0.8));
+        }
+
+        interval = clampInteger(interval, 1, MAX_INTERVAL_DAYS, 1);
+        repetitions = Math.min(100000, repetitions + 1);
+        state = "review";
+      }
+
+      interval = clampInteger(interval, 1, MAX_INTERVAL_DAYS, 1);
+
+      return {
+        interval,
+        formattedInterval: formatSRSInterval(interval),
+        formattedDutch: formatSRSDutch(interval),
+        easeFactor,
+        repetitions,
+        lapses,
+        state
+      };
+    }
+
+    /**
+     * Preview all 4 ratings (1: Again, 2: Hard, 3: Good, 4: Easy) for a card.
+     */
+    previewRatings(cardId, type = "vocab") {
+      return {
+        1: this.previewReview(cardId, 1, type),
+        2: this.previewReview(cardId, 2, type),
+        3: this.previewReview(cardId, 3, type),
+        4: this.previewReview(cardId, 4, type)
+      };
     }
 
     getDueCards(type = null) {

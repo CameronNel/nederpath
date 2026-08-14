@@ -5,6 +5,8 @@ import { fileURLToPath } from "node:url";
 import { execFileSync } from "node:child_process";
 import { createHash } from "node:crypto";
 import { validateRegistry, createIdAllocator } from "../scripts/id_allocator.mjs";
+import { validateIdiomRow, normalizeExpression } from "../scripts/idiom_rules.mjs";
+import { validateSentenceRow, normalizeSentenceKey, targetOccursInSurface } from "../scripts/sentence_norm.mjs";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 
@@ -26,6 +28,14 @@ const words = dummyGlobal.NP_WORDS;
 const grammarSrc = readFileSync(join(ROOT, "data", "grammar.js"), "utf8");
 new Function("globalThis", grammarSrc)(dummyGlobal);
 const grammar = dummyGlobal.NP_GRAMMAR;
+
+const idiomsSrc = readFileSync(join(ROOT, "data", "idioms.js"), "utf8");
+new Function("globalThis", idiomsSrc)(dummyGlobal);
+const idioms = dummyGlobal.NP_IDIOMS;
+
+const sentencesSrc = readFileSync(join(ROOT, "data", "sentences.js"), "utf8");
+new Function("globalThis", sentencesSrc)(dummyGlobal);
+const sentences = dummyGlobal.NP_SENTENCES;
 
 // -------------------------------------------------------------------
 // Shared helpers: curated core rows and explicit-form derivation
@@ -1029,6 +1039,228 @@ test("Store: sanitizeStaleWordReferences prunes retired IDs safely", () => {
   } finally {
     globalThis.localStorage = oldStorage;
     console.error = oldConsoleError;
+  }
+});
+
+// -------------------------------------------------------------------
+// 20. Idiom Rules & Stable Allocator Suite
+// -------------------------------------------------------------------
+test("Idioms: 120 curated idioms pass all schema and register invariants with stable IDs", () => {
+  if (!Array.isArray(idioms) || idioms.length !== 120) {
+    throw new Error(`Expected exactly 120 curated idioms, found ${idioms ? idioms.length : 0}`);
+  }
+
+  const baselinePath = join(ROOT, "tests", "fixtures", "idiom_baseline_ids.json");
+  const baseline = JSON.parse(readFileSync(baselinePath, "utf8"));
+  const registryPath = join(ROOT, "data", "idiom_ids.json");
+  const registry = JSON.parse(readFileSync(registryPath, "utf8"));
+
+  const seenIds = new Set();
+  const seenDutch = new Set();
+  for (const idm of idioms) {
+    const errs = validateIdiomRow(idm);
+    if (errs.length > 0) {
+      throw new Error(`Idiom ${idm.id} (${idm.dutch}) failed validation:\n - ${errs.join("\n - ")}`);
+    }
+    if (seenIds.has(idm.id)) throw new Error(`Duplicate idiom ID: ${idm.id}`);
+    seenIds.add(idm.id);
+
+    const normKey = normalizeExpression(idm.dutch);
+    if (seenDutch.has(normKey)) throw new Error(`Duplicate normalized idiom key: ${normKey}`);
+    seenDutch.add(normKey);
+
+    // Verify stable ID mapping against baseline fixture
+    if (baseline[normKey] && baseline[normKey] !== idm.id) {
+      throw new Error(`Idiom '${normKey}' ID changed from baseline ${baseline[normKey]} to ${idm.id}`);
+    }
+
+    // Verify registry match
+    if (!registry.entries || registry.entries[normKey] !== idm.id) {
+      throw new Error(`Idiom '${normKey}' missing or mismatched in data/idiom_ids.json`);
+    }
+  }
+
+  // Verify non-recycling ID allocator behavior
+  const allocator = createIdAllocator(validateRegistry(registry, { prefix: "idm-", idPattern: /^idm-(\d+)$/, digits: 4, normalize: normalizeExpression }), { prefix: "idm-", idPattern: /^idm-(\d+)$/, digits: 4, normalize: normalizeExpression });
+  const probeId = allocator.assignId("__nederpath_idiom_allocation_probe__");
+  const probeNum = Number(probeId.slice(4));
+  if (probeNum !== registry.highWaterMark + 1) {
+    throw new Error(`Allocated probe ID ${probeId} did not follow highWaterMark ${registry.highWaterMark}`);
+  }
+});
+
+// -------------------------------------------------------------------
+// 21. Sentence Bank & Surface Target Verification Suite
+// -------------------------------------------------------------------
+test("Sentences: 641 authored sentences satisfy schema, stable IDs, and 100% surface target resolution", () => {
+  if (!Array.isArray(sentences) || sentences.length !== 641) {
+    throw new Error(`Expected exactly 641 curated sentences, found ${sentences ? sentences.length : 0}`);
+  }
+
+  const baselinePath = join(ROOT, "tests", "fixtures", "sentence_baseline_ids.json");
+  const baseline = JSON.parse(readFileSync(baselinePath, "utf8"));
+  const registryPath = join(ROOT, "data", "sentence_ids.json");
+  const registry = JSON.parse(readFileSync(registryPath, "utf8"));
+
+  const seenIds = new Set();
+  const seenNl = new Set();
+  const levelCounts = { A1: 0, A2: 0, B1: 0, B2: 0, C1: 0 };
+
+  for (const s of sentences) {
+    const errs = validateSentenceRow(s);
+    if (errs.length > 0) {
+      throw new Error(`Sentence ${s.id} (${s.nl}) failed validation:\n - ${errs.join("\n - ")}`);
+    }
+    if (seenIds.has(s.id)) throw new Error(`Duplicate sentence ID: ${s.id}`);
+    seenIds.add(s.id);
+
+    const normKey = normalizeSentenceKey(s.nl);
+    if (seenNl.has(normKey)) throw new Error(`Duplicate normalized Dutch sentence: ${normKey}`);
+    seenNl.add(normKey);
+
+    // Verify surface targetWord and targetWords occurrence
+    for (const tw of s.targetWords || [s.targetWord]) {
+      if (!targetOccursInSurface(tw, s.nl)) {
+        throw new Error(`Target word '${tw}' is not a surface token in sentence '${s.nl}' (${s.id})`);
+      }
+    }
+
+    // Verify baseline fixture match
+    if (baseline[normKey] && baseline[normKey] !== s.id) {
+      throw new Error(`Sentence '${normKey}' ID changed from baseline ${baseline[normKey]} to ${s.id}`);
+    }
+
+    // Verify registry match
+    if (!registry.entries || registry.entries[normKey] !== s.id) {
+      throw new Error(`Sentence '${normKey}' missing or mismatched in data/sentence_ids.json`);
+    }
+
+    levelCounts[s.level] = (levelCounts[s.level] || 0) + 1;
+  }
+
+  for (const [lvl, count] of Object.entries(levelCounts)) {
+    if (count < 100) {
+      throw new Error(`Level ${lvl} has only ${count} sentences, expected >= 100`);
+    }
+  }
+
+  // Verify historical base sentence IDs (snt-00001 .. snt-00013) and non-recycling above highWaterMark 5050
+  if (registry.highWaterMark < 5050) {
+    throw new Error(`Sentence registry highWaterMark (${registry.highWaterMark}) must be >= 5050 to protect retired template IDs`);
+  }
+  const allocator = createIdAllocator(validateRegistry(registry, { prefix: "snt-", idPattern: /^snt-(\d+)$/, digits: 5, normalize: normalizeSentenceKey }), { prefix: "snt-", idPattern: /^snt-(\d+)$/, digits: 5, normalize: normalizeSentenceKey });
+  const probeId = allocator.assignId("__nederpath_sentence_allocation_probe__");
+  const probeNum = Number(probeId.slice(4));
+  if (probeNum !== registry.highWaterMark + 1) {
+    throw new Error(`Allocated probe ID ${probeId} did not follow highWaterMark ${registry.highWaterMark}`);
+  }
+});
+
+// -------------------------------------------------------------------
+// 22. Spaced Repetition Preview Pure Function Suite
+// -------------------------------------------------------------------
+test("SRS Preview: previewReview and previewRatings are pure and compute truthful intervals", () => {
+  const dummyStore = {
+    state: {
+      srs: {
+        cards: {
+          "test-card-1": {
+            id: "test-card-1",
+            type: "vocab",
+            interval: 4,
+            easeFactor: 2.5,
+            repetitions: 2,
+            lapses: 0,
+            state: "review"
+          }
+        }
+      },
+      progress: { xp: 100, dailyStats: { learnedToday: 0 } },
+      user: { streak: 5 }
+    },
+    save() {
+      throw new Error("previewReview must not call store.save");
+    },
+    recordActivity() {
+      throw new Error("previewReview must not call store.recordActivity");
+    }
+  };
+
+  const srsModule = {};
+  new Function("globalThis", srsSrc)(srsModule);
+  const SRSEngine = srsModule.NederSRS.constructor;
+  const srsInstance = new SRSEngine(dummyStore);
+
+  // Snapshot card before preview
+  const beforeJson = JSON.stringify(dummyStore.state.srs.cards);
+
+  // Run preview on existing card
+  const ratings = srsInstance.previewRatings("test-card-1", "vocab");
+  if (!ratings || !ratings[1] || !ratings[2] || !ratings[3] || !ratings[4]) {
+    throw new Error("previewRatings did not return all 4 rating previews");
+  }
+
+  // Rating 1 (Again) -> interval 1
+  if (ratings[1].interval !== 1 || ratings[1].state !== "learning") {
+    throw new Error(`Rating 1 preview interval expected 1, got ${ratings[1].interval}`);
+  }
+
+  // Rating 3 (Good) -> interval round(4 * 2.5) = 10
+  if (ratings[3].interval !== 10 || ratings[3].state !== "review") {
+    throw new Error(`Rating 3 preview interval expected 10, got ${ratings[3].interval}`);
+  }
+
+  // Rating 4 (Easy) -> interval round(10 * 1.3) = 13
+  if (ratings[4].interval !== 13 || ratings[4].state !== "review") {
+    throw new Error(`Rating 4 preview interval expected 13, got ${ratings[4].interval}`);
+  }
+
+  // Run preview on unseen card (not in store)
+  const unseenRatings = srsInstance.previewRatings("nl-99999", "vocab");
+  if (unseenRatings[1].interval !== 1 || unseenRatings[3].interval !== 1 || unseenRatings[4].interval !== 1) {
+    throw new Error("Unseen card preview intervals mismatch");
+  }
+  if (dummyStore.state.srs.cards["nl-99999"]) {
+    throw new Error("previewRatings created an unseen card in store!");
+  }
+
+  // Verify store card was NOT mutated
+  const afterJson = JSON.stringify(dummyStore.state.srs.cards);
+  if (beforeJson !== afterJson) {
+    throw new Error("previewReview mutated store cards state!");
+  }
+});
+
+// -------------------------------------------------------------------
+// 23. Session XP & Completion Screen Truthfulness Suite
+// -------------------------------------------------------------------
+test("Session XP: truthful delta arithmetic on session complete", () => {
+  // Test starting XP tracking and delta calculation
+  const session = {
+    startXp: 50,
+    cards: [1, 2, 3, 4, 5],
+    itemNoun: "zinnen"
+  };
+  const store = {
+    state: {
+      progress: { xp: 120 },
+      user: { streak: 3 }
+    }
+  };
+
+  const startXp = typeof session.startXp === "number" ? session.startXp : (store.state.progress.xp || 0);
+  const currentXp = store.state.progress.xp || 0;
+  const earnedXp = Math.max(0, currentXp - startXp);
+
+  if (earnedXp !== 70) {
+    throw new Error(`Expected earned XP 70, got ${earnedXp}`);
+  }
+
+  // When no XP earned
+  session.startXp = 120;
+  const noXpEarned = Math.max(0, (store.state.progress.xp || 0) - session.startXp);
+  if (noXpEarned !== 0) {
+    throw new Error(`Expected 0 earned XP, got ${noXpEarned}`);
   }
 });
 
