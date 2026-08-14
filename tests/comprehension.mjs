@@ -58,6 +58,11 @@ function wordCount(paragraphs) {
   return paragraphs.join(" ").split(/\s+/).filter(Boolean).length;
 }
 
+function sentenceCount(text) {
+  const matches = String(text || "").match(/[.!?](?:["'’”])?(?=\s|$)/g);
+  return matches ? matches.length : 0;
+}
+
 console.log("\n=======================================================");
 console.log("       NederPath Comprehension Truthfulness Tests      ");
 console.log("=======================================================\n");
@@ -113,15 +118,16 @@ test("Passage bodies, openings, closings, and question sets are unique", () => {
   }
 });
 
-test("Recurring template fingerprints are absent", () => {
+test("Recurring template fingerprints and known editorial defects are absent", () => {
   const corpus = `${readFileSync(GENERATOR_PATH, "utf8")}\n${readFileSync(DATA_PATH, "utf8")}`.toLocaleLowerCase("nl-NL");
   for (const fingerprint of [
     "fascinerend facet van de maatschappelijke werkelijkheid",
     "diep geworteld pragmatisme en overleg",
     "deskundigen en waarnemers zijn het erover eens",
-    "experts agree that this topic"
+    "experts agree that this topic",
+    "officiëel"
   ]) {
-    if (corpus.includes(fingerprint)) throw new Error(`Found prohibited template: ${fingerprint}`);
+    if (corpus.includes(fingerprint)) throw new Error(`Found prohibited template/editorial defect: ${fingerprint}`);
   }
 });
 
@@ -153,7 +159,7 @@ test("Every advertised key word occurs in its passage", () => {
   }
 });
 
-test("Fields, translations, grammar targets, and lengths are valid", () => {
+test("Fields, complete translations, grammar targets, and lengths are valid", () => {
   for (const passage of passages) {
     if (!passage.title || !passage.titleEn || !passage.theme) throw new Error(`${passage.id} missing titles/theme`);
     if (!passage.translation || passage.translation.length < 40) throw new Error(`${passage.id} empty translation`);
@@ -161,8 +167,21 @@ test("Fields, translations, grammar targets, and lengths are valid", () => {
     if (!passage.readingTimeMin) throw new Error(`${passage.id} missing reading time`);
     if (!passage.grammarTargets || passage.grammarTargets.length < 2) throw new Error(`${passage.id} fake/empty grammar targets`);
     if (passage.grammarTargets.some((t) => String(t).trim().length < 4)) throw new Error(`${passage.id} stub grammar target`);
+
     const wc = wordCount(passage.paragraphs);
     if (wc < MIN_WORDS[passage.level]) throw new Error(`${passage.id} ${passage.level} too short: ${wc}`);
+
+    const sourceSentences = sentenceCount(passage.paragraphs.join(" "));
+    const translatedSentences = sentenceCount(passage.translation);
+    if (sourceSentences !== translatedSentences) {
+      throw new Error(`${passage.id} translation coverage mismatch: ${sourceSentences} Dutch sentences vs ${translatedSentences} English sentences`);
+    }
+
+    const translationWords = passage.translation.split(/\s+/).filter(Boolean).length;
+    const coverageRatio = translationWords / wc;
+    if (coverageRatio < 0.78) {
+      throw new Error(`${passage.id} translation is suspiciously abbreviated: ratio ${coverageRatio.toFixed(2)}`);
+    }
   }
 });
 
