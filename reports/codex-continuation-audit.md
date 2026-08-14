@@ -84,3 +84,10 @@ No push, PR edit, merge, reset, or revert was performed by Codex. Qwen's
 original batch commit and authored reports remain distinguishable from this
 continuation; independent semantic acceptance remains pending and was not
 modified.
+
+### Codex commit
+
+The continuation was committed locally as `1b49a66` (`codex continuation:
+persist lexical corrections`) on `task/007-lexical-gold-standard`. The branch
+is one commit ahead of `origin/task/007-lexical-gold-standard`; it was not
+pushed.
