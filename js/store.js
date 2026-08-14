@@ -5,11 +5,12 @@
   const STORAGE_KEY = "nederpath-v1";
   const CURRENT_VERSION = 1;
   const SAFE_ID_REGEX = /^[A-Za-z0-9_-]{1,80}$/;
+  const DANGEROUS_OBJECT_KEYS = new Set(["__proto__", "constructor", "prototype"]);
   const MAX_XP = 10000000;
   const MAX_ACTIVITY_COUNT = 100000;
 
   function isSafeId(value) {
-    return typeof value === "string" && SAFE_ID_REGEX.test(value);
+    return typeof value === "string" && SAFE_ID_REGEX.test(value) && !DANGEROUS_OBJECT_KEYS.has(value);
   }
 
   function boundedInteger(value, min, max, fallback) {
@@ -34,8 +35,8 @@
     user: {
       name: "Learner",
       level: "A1",
-      dailyGoal: 15, // target review/study items per day
-      sessionSize: 10, // cards per practice session
+      dailyGoal: 15,
+      sessionSize: 10,
       onboardingCompleted: true,
       streak: 0,
       lastActiveDate: null,
@@ -43,25 +44,24 @@
       createdAt: new Date().toISOString()
     },
     settings: {
-      theme: "dark", // 'dark' | 'light'
+      theme: "dark",
       sessionSize: 10,
       dailyGoal: 15,
       autoAdvance: true,
       hapticFeedback: true
     },
     srs: {
-      // cardId -> { id, type: 'vocab'|'grammar'|'comprehension'|'article', interval, easeFactor, repetitions, dueDate, lapses, state: 'new'|'learning'|'review' }
       cards: {}
     },
     progress: {
-      grammarCompleted: {}, // ruleId -> { completedAt, score, attempts }
-      comprehensionCompleted: {}, // passageId -> { completedAt, score, totalQuestions }
-      wordsBookmarked: {}, // wordId -> true
-      studyDays: {}, // 'YYYY-MM-DD' -> count of items reviewed/learned
+      grammarCompleted: {},
+      comprehensionCompleted: {},
+      wordsBookmarked: {},
+      studyDays: {},
       articleStats: {
         totalDrilled: 0,
         correct: 0,
-        mistakes: {} // word -> count
+        mistakes: {}
       },
       dailyStats: {
         date: getDateStr(),
@@ -93,8 +93,6 @@
         if (global.NederLearning && typeof global.NederLearning.validateAndMergeBackup === "function") {
           return global.NederLearning.validateAndMergeBackup(parsed, DEFAULT_STATE);
         }
-        // Loading partially trusted persisted state without the validator would
-        // bypass the import/runtime integrity boundary. Fail closed instead.
         console.error("NederPath learning validator unavailable; ignoring persisted state.");
         return freshDefaultState();
       } catch (e) {
@@ -133,7 +131,6 @@
       let changed = false;
 
       if (!this.state.progress.dailyStats || this.state.progress.dailyStats.date !== todayStr) {
-        // Calculate streak
         if (this.state.user.lastActiveDate) {
           const lastParts = this.state.user.lastActiveDate.split("-").map(Number);
           const currParts = todayStr.split("-").map(Number);
@@ -153,9 +150,7 @@
         changed = true;
       }
 
-      if (changed && !skipSave) {
-        this.save();
-      }
+      if (changed && !skipSave) this.save();
     }
 
     recordActivity(xpGained = 5) {
@@ -176,7 +171,6 @@
         xp
       );
 
-      // Update studyDays heatmap
       this.state.progress.studyDays[todayStr] = boundedInteger(
         (this.state.progress.studyDays[todayStr] || 0) + 1,
         0,
@@ -184,7 +178,6 @@
         1
       );
 
-      // Update streak using calendar-day difference
       if (this.state.user.lastActiveDate !== todayStr) {
         if (this.state.user.lastActiveDate) {
           const lastParts = this.state.user.lastActiveDate.split("-").map(Number);
@@ -214,8 +207,12 @@
         stats.correct = boundedInteger((stats.correct || 0) + 1, 0, stats.totalDrilled, 1);
         this.recordActivity(5);
       } else {
-        const nounKey = typeof noun === "string" ? noun.slice(0, 80) : "onbekend";
-        stats.mistakes[nounKey] = boundedInteger((stats.mistakes[nounKey] || 0) + 1, 0, MAX_ACTIVITY_COUNT, 1);
+        const rawNoun = typeof noun === "string" ? noun.trim().slice(0, 80) : "";
+        const nounKey = rawNoun && !DANGEROUS_OBJECT_KEYS.has(rawNoun) ? rawNoun : "onbekend";
+        const previousCount = Object.prototype.hasOwnProperty.call(stats.mistakes, nounKey)
+          ? stats.mistakes[nounKey]
+          : 0;
+        stats.mistakes[nounKey] = boundedInteger((previousCount || 0) + 1, 0, MAX_ACTIVITY_COUNT, 1);
         this.recordActivity(1);
       }
     }
@@ -287,23 +284,13 @@
 
     resetItem(itemId) {
       if (!isSafeId(itemId)) return false;
-      if (Object.prototype.hasOwnProperty.call(this.state.srs.cards, itemId)) {
-        delete this.state.srs.cards[itemId];
-      }
-      if (Object.prototype.hasOwnProperty.call(this.state.progress.grammarCompleted, itemId)) {
-        delete this.state.progress.grammarCompleted[itemId];
-      }
-      if (Object.prototype.hasOwnProperty.call(this.state.progress.comprehensionCompleted, itemId)) {
-        delete this.state.progress.comprehensionCompleted[itemId];
-      }
+      if (Object.prototype.hasOwnProperty.call(this.state.srs.cards, itemId)) delete this.state.srs.cards[itemId];
+      if (Object.prototype.hasOwnProperty.call(this.state.progress.grammarCompleted, itemId)) delete this.state.progress.grammarCompleted[itemId];
+      if (Object.prototype.hasOwnProperty.call(this.state.progress.comprehensionCompleted, itemId)) delete this.state.progress.comprehensionCompleted[itemId];
       this.save();
       return true;
     }
 
-    /**
-     * Safely prunes stale or retired word IDs from bookmarks and SRS cards.
-     * Prevents retired invalid IDs from colliding with newly assigned words.
-     */
     sanitizeStaleWordReferences(validWordIds) {
       if (!validWordIds) return false;
       const validSet = validWordIds instanceof Set ? validWordIds : new Set(validWordIds);
@@ -328,9 +315,7 @@
         }
       }
 
-      if (modified) {
-        this.save();
-      }
+      if (modified) this.save();
       return modified;
     }
 
