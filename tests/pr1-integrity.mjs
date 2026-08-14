@@ -135,7 +135,7 @@ test("Verb practice: guessed and likely separable one-token paradigms are exclud
   assert(eligible.has("werken"), "Explicit simple paradigm was excluded");
   assert(!eligible.has("openen"), "Unsupported guessed paradigm 'openen' entered practice");
   assert(!eligible.has("hardlopen"), "Likely separable verb 'hardlopen' entered one-token hij/zij practice");
-  assert(Learning.getVerbHijConjugation("openen", synthetic) === null, "Bank-backed conjugation guessed an unsupported answer");
+  assert(Learning.getVerifiedVerbHijConjugation("openen", synthetic) === null, "Unsupported paradigm was incorrectly marked verified");
 });
 
 test("Flashcards: correct API call proves derived reference rows cannot enter learner sessions", () => {
@@ -201,9 +201,7 @@ test("Backup: SRS map key is authoritative and timestamps canonicalize to UTC", 
 
 test("Backup: invalid entries do not consume bounded collection capacity", () => {
   const grammarCompleted = {};
-  for (let i = 0; i < 500; i++) {
-    grammarCompleted[`invalid.${i}`] = { score: 100, attempts: 1 };
-  }
+  for (let i = 0; i < 500; i++) grammarCompleted[`invalid.${i}`] = { score: 100, attempts: 1 };
   grammarCompleted["g-001"] = { score: 91, attempts: 2, completedAt: "2026-08-14T08:00:00Z" };
 
   const merged = Learning.validateAndMergeBackup({ progress: { grammarCompleted } }, defaultState());
@@ -285,11 +283,8 @@ test("Store: runtime IDs and completion values are bounded at the mutation bound
     store.recordActivity(Number.NaN);
     assert(Number.isFinite(store.state.user.totalXp), "NaN activity corrupted total XP");
   } finally {
-    if (previousLocalStorage === undefined) {
-      delete globalThis.localStorage;
-    } else {
-      globalThis.localStorage = previousLocalStorage;
-    }
+    if (previousLocalStorage === undefined) delete globalThis.localStorage;
+    else globalThis.localStorage = previousLocalStorage;
   }
 });
 
