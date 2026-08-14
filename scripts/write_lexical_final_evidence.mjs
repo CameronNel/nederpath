@@ -15,6 +15,12 @@ const canonicalRows = loadCanonicalRows(ROOT).rows;
 const generatedRows = loadGeneratedWords(ROOT);
 const head = execFileSync("git", ["rev-parse", "HEAD"], { cwd: ROOT, encoding: "utf8" }).trim();
 
+if (ledger.semanticReviewComplete !== true || ledger.allRowsReviewed !== true || ledger.counts?.["NEEDS-EVIDENCE"] !== 0) {
+  throw new Error(
+    "Refusing to write final lexical completion evidence: the automated consistency ledger is not proof of an exhaustive semantic/linguistic review. Supply separate row-specific semantic evidence and reconcile it into the ledger first."
+  );
+}
+
 const finalSummary = {
   schemaVersion: 1,
   reviewType: "final exhaustive lexical truth review",
@@ -40,7 +46,7 @@ const finalSummary = {
   registryHighWaterMark: metrics.registry.highWaterMark,
   registryEntries: metrics.registry.entries,
   finalChecks: {
-    ledger: "PASS",
+    semanticLedger: "PASS",
     mergeReview: "PASS",
     nounSweep: "PASS",
     independentVerificationPass2: pass2.failures.length === 0 ? "PASS" : "FAIL"
@@ -82,25 +88,7 @@ const pass1 = {
   status: "PASS"
 };
 
-const exhaustiveSummary = `# Exhaustive lexical truth review
-
-This is the final row-by-row semantic/editorial review artifact for Task 007. It is not a sample, representative subset, or inference from generated counts.
-
-- Final source files: ${metrics.sourceFiles.length}
-- Final curated source rows: ${sourceRows.length}
-- Ledger rows: ${ledger.ledgerRowCount}
-- PASS: ${ledger.counts.PASS}
-- FIXED: ${ledger.counts.FIXED}
-- NEEDS-EVIDENCE: ${ledger.counts["NEEDS-EVIDENCE"]}
-- Duplicate groups reviewed: ${merge.reviewedGroupCount}
-- Mixed-POS groups reviewed and isolated: ${merge.mixedPOSGroupCount}
-- Nominalized infinitive groups reviewed: ${merge.nominalizedInfinitiveGroupsReviewed}
-- Noun rows reviewed: ${noun.nounRowsReviewed}
-
-Every ledger row carries a deterministic sourceFile:sourceIndex identity and explicit dispositions for headword, POS, CEFR, article, meaning, category/register, synonyms, morphology, plural/diminutive, verb paradigm/separability, adjective comparison, phrase/proper-name status, orthography, duplicate/homograph treatment, and generated ownership. The ledger is reconciled to the final source snapshot and fail-closed on any missing row or NEEDS-EVIDENCE disposition.
-
-Authoritative references used for non-obvious judgments are recorded in the ledger: Woordenlijst Nederlandse Taal, Taaladvies, e-ANS, GTB/WNT, and the Council of Europe CEFR descriptions. No unsupported morphology, usage claim, frequency, or example was invented.
-`;
+const exhaustiveSummary = `# Exhaustive lexical truth review\n\nThis is the final row-by-row semantic/editorial review artifact for Task 007. It is not a sample, representative subset, or inference from generated counts.\n\n- Final source files: ${metrics.sourceFiles.length}\n- Final curated source rows: ${sourceRows.length}\n- Ledger rows: ${ledger.ledgerRowCount}\n- PASS: ${ledger.counts.PASS}\n- FIXED: ${ledger.counts.FIXED}\n- NEEDS-EVIDENCE: ${ledger.counts["NEEDS-EVIDENCE"]}\n- Duplicate groups reviewed: ${merge.reviewedGroupCount}\n- Mixed-POS groups reviewed and isolated: ${merge.mixedPOSGroupCount}\n- Nominalized infinitive groups reviewed: ${merge.nominalizedInfinitiveGroupsReviewed}\n- Noun rows reviewed: ${noun.nounRowsReviewed}\n\nEvery ledger row carries a deterministic sourceFile:sourceIndex identity and separately evidenced semantic dispositions. The final-evidence writer refuses to run while any row lacks semantic evidence.\n`;
 
 mkdirSync(reportsDir, { recursive: true });
 writeFileSync(join(reportsDir, "lexical-final-summary.json"), `${JSON.stringify(finalSummary, null, 2)}\n`);
