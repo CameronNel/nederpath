@@ -1087,7 +1087,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-05687",
     "nl": "De warme soep smaakt erg lekker.",
-    "en": "The hot soup tastes very delicious.",
+    "en": "The hot soup tastes delicious.",
     "level": "A1",
     "tags": [
       "taste",
@@ -1201,7 +1201,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-05113",
     "nl": "Het kind drinkt warme chocolademelk met slagroom.",
-    "en": "The child drinks hot chocolate milk with whipped cream.",
+    "en": "The child drinks hot chocolate with whipped cream.",
     "level": "A1",
     "tags": [
       "drinks",
@@ -1429,7 +1429,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-05125",
     "nl": "Mijn collega stuurt de agenda voor het overleg door.",
-    "en": "My colleague forwards the agenda for the consultation.",
+    "en": "My colleague forwards the agenda for the meeting.",
     "level": "A1",
     "tags": [
       "office",
@@ -1866,7 +1866,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-05148",
     "nl": "Kan ik hier contactloos betalen met mijn telefoon?",
-    "en": "Can I pay using contactless with my phone here?",
+    "en": "Can I make a contactless payment with my phone here?",
     "level": "A1",
     "tags": [
       "questions",
@@ -4166,7 +4166,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-05265",
     "nl": "Omdat zij geen contant geld bij zich had, betaalde zij contactloos met haar telefoon.",
-    "en": "Because she had no cash with her, she paid using contactless with her phone.",
+    "en": "Because she had no cash with her, she made a contactless payment with her phone.",
     "level": "A2",
     "tags": [
       "digital_payment",

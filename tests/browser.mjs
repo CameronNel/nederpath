@@ -686,13 +686,51 @@ async function runBrowserTests() {
       );
     }
 
-    // --- Sub-suite 7f: Zero-XP / Failed Session Truthfulness ---
-    const zeroXpResult = await page.evaluate(() => {
-      const startXp = 500;
-      const currentXp = 500; // 0 XP gained
-      return Math.max(0, currentXp - startXp);
+    // --- Sub-suite 7f: Genuine Lowest-XP Failure Session Flow ---
+    // In production, every attempted question awards participation XP (1 XP per incorrect article attempt).
+    // Answering all 3 items incorrectly in a 3-question drill produces the exact lowest reachable session reward: +3 XP.
+    await page.evaluate(() => {
+      window.NederStore.state.settings.sessionSize = 3;
+      window.NederApp.practiceMode = "article_drill";
+      window.NederApp.session = {
+        cards: [],
+        currentIndex: 0,
+        revealed: false,
+        feedback: null,
+        startXp: window.NederStore.state.user.totalXp || 0,
+        itemNoun: "vragen"
+      };
+      window.NederApp.render();
     });
-    assert(zeroXpResult === 0, "Zero-XP session calculates exactly 0 XP without NaN or negative values");
+    await page.waitForSelector(".drill-card");
+    const lowestStartXp = await page.evaluate(() => window.NederApp.session.startXp);
+    const lowestStoreXpBefore = await page.evaluate(() => window.NederStore.state.user.totalXp);
+
+    // Intentionally answer all 3 items incorrectly
+    let lowestStep = 0;
+    while (await page.$(".drill-card") && !(await page.$(".session-complete-card"))) {
+      lowestStep++;
+      const correctArticle = await page.evaluate(() => window.NederApp.session.cards[window.NederApp.session.currentIndex].article);
+      const wrongBtnSelector = correctArticle === "de" ? ".btn-het" : ".btn-de";
+      await page.click(wrongBtnSelector);
+      await page.waitForSelector("#btn-next-drill");
+      await page.click("#btn-next-drill");
+      await new Promise((r) => setTimeout(r, 50));
+    }
+
+    await page.waitForSelector(".session-complete-card");
+    const lowestCompletionXpText = await page.$eval(".session-stat-box .stat-num", (el) => el.textContent.trim());
+    const lowestFinalStoreXp = await page.evaluate(() => window.NederStore.state.user.totalXp);
+    const lowestEarnedXpUI = parseInt(lowestCompletionXpText.replace("+", ""), 10);
+
+    assert(
+      lowestCompletionXpText === "+3" && lowestEarnedXpUI === 3,
+      `Lowest-XP failure session completion UI displays strictly '+3' for 3 failed items (got '${lowestCompletionXpText}')`
+    );
+    assert(
+      lowestFinalStoreXp === lowestStoreXpBefore + 3 && (lowestFinalStoreXp - lowestStartXp) === 3,
+      `Lowest-XP failure session truthfully awards exact store XP delta of 3 (1 XP per incorrect article answer)`
+    );
 
     // Mode 3: Spelling
     const spellNavBtn = await page.$("button[data-mode='spelling']");
@@ -769,45 +807,72 @@ async function runBrowserTests() {
       assert(true, "Context practice sentence reviewed and advanced");
     }
 
-    // --- Sub-suite 7g: Hostile DOM Sink Injection into Active Drill Renderers ---
-    const sinkTestPassed = await page.evaluate(() => {
-      const hostileData = {
-        nl: "Ik zie een <script>window.__hostile_script=true;</script><img src=x onerror=window.__hostile_img=true> in het park.",
-        en: "I see an injection in the park.",
-        targetWord: "park",
-        category: "daily_life"
+    // --- Sub-suite 7g: Hostile Payload Injection in Real NederApp Renderer ---
+    await page.evaluate(() => {
+      window.NederApp.practiceMode = "fill_blank";
+      window.NederApp.session = {
+        cards: [
+          {
+            id: "hostile-render-card-1",
+            originalSentence: "Ik zie een <script>window.__hostile_script=true;</script><img src=x onerror=\"window.__hostile_img=true;\"> in het park.",
+            maskedSentence: "Ik zie een <script>window.__hostile_script=true;</script><img src=x onerror=\"window.__hostile_img=true;\"> in het _______.",
+            translation: "I see an injection in the <script>window.__hostile_trans=true;</script> park.",
+            targetWord: "park",
+            options: [
+              "<script>window.__hostile_opt=true;</script>",
+              "<img src=x onerror=\"window.__hostile_opt_img=true;\">",
+              "park",
+              "stad"
+            ],
+            category: "daily_life",
+            level: "A1"
+          }
+        ],
+        currentIndex: 0,
+        revealed: false,
+        feedback: null,
+        itemNoun: "zinnen",
+        startXp: window.NederStore.state.user.totalXp || 0
       };
-      const dummyBank = [{ word: "boom" }, { word: "huis" }, { word: "straat" }, { word: "park" }];
-      const ex = window.NederLearning.createFillBlankCard(hostileData, dummyBank);
-      const container = document.createElement("div");
-      container.id = "hostile-sink-test-container";
-      container.innerHTML = `
-        <div class="drill-sentence">${window.NederLearning.escapeHTML(ex.maskedSentence)}</div>
-        <div class="options-grid">
-          ${ex.options.map((o) => `<button class="btn btn-outline btn-option">${window.NederLearning.escapeHTML(o)}</button>`).join("")}
-        </div>
-      `;
-      document.body.appendChild(container);
-
-      const scriptTags = container.getElementsByTagName("script");
-      const imgTags = container.getElementsByTagName("img");
-      const hasExecutableScript = scriptTags.length > 0;
-      const hasHostileImg = imgTags.length > 0;
-      const sentenceText = container.querySelector(".drill-sentence").textContent;
-      const clozeBlankRendered = sentenceText.includes("_______");
-
-      document.body.removeChild(container);
-
-      return (
-        !hasExecutableScript &&
-        !hasHostileImg &&
-        clozeBlankRendered &&
-        sentenceText.includes("<script>") &&
-        window.__hostile_script === undefined &&
-        window.__hostile_img === undefined
-      );
+      window.NederApp.render();
     });
-    assert(sinkTestPassed, "Hostile HTML injection in sentence/drill renderer is fully sanitized; no executable scripts/images and cloze blank preserved");
+
+    await page.waitForSelector(".fill-blank-wrapper");
+    const hostileRenderChecks = await page.evaluate(() => {
+      const mainContainer = document.getElementById("app-main");
+      const wrapper = mainContainer.querySelector(".fill-blank-wrapper");
+      const scriptTags = mainContainer.getElementsByTagName("script");
+      const imgTags = mainContainer.getElementsByTagName("img");
+      const sentenceText = mainContainer.querySelector(".drill-noun")?.textContent || "";
+      const translationText = mainContainer.querySelector(".drill-meaning")?.textContent || "";
+
+      return {
+        hasWrapper: !!wrapper,
+        scriptTagCount: scriptTags.length,
+        imgTagCount: imgTags.length,
+        hasClozeBlank: sentenceText.includes("_______"),
+        sentenceHasEscapedLiteral: sentenceText.includes("<script>"),
+        translationHasEscapedLiteral: translationText.includes("<script>"),
+        scriptExecuted: window.__hostile_script !== undefined,
+        imgExecuted: window.__hostile_img !== undefined,
+        transExecuted: window.__hostile_trans !== undefined,
+        optExecuted: window.__hostile_opt !== undefined,
+        optImgExecuted: window.__hostile_opt_img !== undefined
+      };
+    });
+
+    assert(hostileRenderChecks.hasWrapper, ".fill-blank-wrapper is produced directly by NederApp.render()");
+    assert(hostileRenderChecks.scriptTagCount === 0, "No executable <script> elements injected into DOM");
+    assert(hostileRenderChecks.imgTagCount === 0, "No hostile <img> elements injected into DOM");
+    assert(!hostileRenderChecks.scriptExecuted && !hostileRenderChecks.imgExecuted, "Zero hostile script or onerror payload execution in window context");
+    assert(hostileRenderChecks.hasClozeBlank, "Sentence cloze blank '_______' is truthfully preserved");
+    assert(hostileRenderChecks.sentenceHasEscapedLiteral, "Hostile markup safely rendered as literal escaped text in sentence");
+
+    // Verify option buttons are interactive and function in live NederApp
+    await page.click(".btn-option[data-option='park']");
+    await page.waitForSelector(".exercise-feedback");
+    const feedbackText = await page.$eval(".exercise-feedback", (el) => el.textContent);
+    assert(feedbackText.includes("Juist"), "Option buttons in hostile-injected card remain fully interactive and evaluate correctly");
 
     // 8. Navigation: Pad (8-Section Curriculum Path)
     await page.click("#nav-path");

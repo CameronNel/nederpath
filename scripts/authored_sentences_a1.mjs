@@ -70,13 +70,13 @@ export const AUTHORED_SENTENCES_A1 = [
 
   // --- Food & Dining (A1) ---
   { nl: "Ik wil graag een kopje koffie bestellen.", en: "I would like to order a cup of coffee.", level: "A1", category: "food_dining", tags: ["ordering", "polite_modal"], targetWords: ["graag", "bestellen"] },
-  { nl: "De warme soep smaakt erg lekker.", en: "The hot soup tastes very delicious.", level: "A1", category: "food_dining", tags: ["taste", "adjectives"], targetWords: ["warme", "smaakt"] },
+  { nl: "De warme soep smaakt erg lekker.", en: "The hot soup tastes delicious.", level: "A1", category: "food_dining", tags: ["taste", "adjectives"], targetWords: ["warme", "smaakt"] },
   { nl: "Wij eten vanavond pannenkoeken met stroop.", en: "We are eating pancakes with syrup tonight.", level: "A1", category: "food_dining", tags: ["dutch_food", "prepositions"], targetWords: ["pannenkoeken", "stroop"] },
   { nl: "Pardon ober, mag ik de menukaart zien?", en: "Excuse me waiter, may I see the menu?", level: "A1", category: "food_dining", tags: ["restaurants", "polite_u"], targetWords: ["ober", "menukaart"] },
   { nl: "Zij drinkt altijd water met ijs bij het diner.", en: "She always drinks water with ice at dinner.", level: "A1", category: "food_dining", tags: ["beverages", "routine"], targetWords: ["water", "diner"] },
   { nl: "Ik drink graag een glas koude melk bij de lunch.", en: "I like drinking a glass of cold milk at lunch.", level: "A1", category: "food_dining", tags: ["drinks", "meals"], targetWords: ["glas", "melk"] },
   { nl: "De ober brengt ons twee glazen vers sinaasappelsap.", en: "The waiter brings us two glasses of fresh orange juice.", level: "A1", category: "food_dining", tags: ["service", "drinks"], targetWords: ["brengt", "sinaasappelsap"] },
-  { nl: "Het kind drinkt warme chocolademelk met slagroom.", en: "The child drinks hot chocolate milk with whipped cream.", level: "A1", category: "food_dining", tags: ["drinks", "treats"], targetWords: ["chocolademelk", "slagroom"] },
+  { nl: "Het kind drinkt warme chocolademelk met slagroom.", en: "The child drinks hot chocolate with whipped cream.", level: "A1", category: "food_dining", tags: ["drinks", "treats"], targetWords: ["chocolademelk", "slagroom"] },
   { nl: "Mijn buurvrouw bakt vandaag heerlijke appeltaart.", en: "My neighbor is baking delicious apple pie today.", level: "A1", category: "food_dining", tags: ["baking", "neighbors"], targetWords: ["buurvrouw", "appeltaart"] },
   { nl: "Wij eten vandaag rijst met kip en sperziebonen.", en: "We are eating rice with chicken and green beans today.", level: "A1", category: "food_dining", tags: ["dinner", "vegetables"], targetWords: ["rijst", "sperziebonen"] },
   { nl: "De ober brengt twee glazen kraanwater naar onze tafel.", en: "The waiter brings two glasses of tap water to our table.", level: "A1", category: "food_dining", tags: ["drinks", "restaurant"], targetWords: ["kraanwater", "tafel"] },
@@ -90,7 +90,7 @@ export const AUTHORED_SENTENCES_A1 = [
   { nl: "Onze vergadering begint om precies negen uur.", en: "Our meeting starts at exactly nine o'clock.", level: "A1", category: "work_meetings", tags: ["office", "time"], targetWords: ["vergadering", "begint"] },
   { nl: "Ik schrijf vandaag een kort verslag voor mijn baas.", en: "I am writing a short report for my boss today.", level: "A1", category: "work_meetings", tags: ["writing", "office"], targetWords: ["schrijf", "verslag"] },
   { nl: "Het kantoor is gesloten in het weekend.", en: "The office is closed on the weekend.", level: "A1", category: "work_meetings", tags: ["workplace", "adjectives"], targetWords: ["kantoor", "gesloten"] },
-  { nl: "Mijn collega stuurt de agenda voor het overleg door.", en: "My colleague forwards the agenda for the consultation.", level: "A1", category: "work_meetings", tags: ["office", "agenda"], targetWords: ["collega", "agenda"] },
+  { nl: "Mijn collega stuurt de agenda voor het overleg door.", en: "My colleague forwards the agenda for the meeting.", level: "A1", category: "work_meetings", tags: ["office", "agenda"], targetWords: ["collega", "agenda"] },
 
   // --- Education & Learning (A1) ---
   { nl: "De studenten leren elke week nieuwe Nederlandse woorden.", en: "The students learn new Dutch words every week.", level: "A1", category: "education", tags: ["language_learning", "plural_nouns"], targetWords: ["leren", "woorden"] },
@@ -121,7 +121,7 @@ export const AUTHORED_SENTENCES_A1 = [
 
   // --- Banking & Finance (A1) ---
   { nl: "Ik betaal deze rekening met mijn pinpas.", en: "I pay this bill with my debit card.", level: "A1", category: "banking_finance", tags: ["payment", "present_tense"], targetWords: ["betaal", "pinpas"] },
-  { nl: "Kan ik hier contactloos betalen met mijn telefoon?", en: "Can I pay using contactless with my phone here?", level: "A1", category: "banking_finance", tags: ["questions", "contactless"], targetWords: ["contactloos", "betalen"] },
+  { nl: "Kan ik hier contactloos betalen met mijn telefoon?", en: "Can I make a contactless payment with my phone here?", level: "A1", category: "banking_finance", tags: ["questions", "contactless"], targetWords: ["contactloos", "betalen"] },
   { nl: "De geldautomaat bevindt zich in de muur van de bank.", en: "The cash machine is in the wall of the bank.", level: "A1", category: "banking_finance", tags: ["atms", "directions"], targetWords: ["geldautomaat", "muur"] },
 
   // --- Housing & Neighborhood (A1) ---

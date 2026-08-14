@@ -1374,13 +1374,13 @@ test("Session XP: truthful delta arithmetic on session complete", () => {
   };
   const store = {
     state: {
-      progress: { xp: 120 },
-      user: { streak: 3 }
+      user: { totalXp: 120, streak: 3 },
+      progress: { studyDays: {} }
     }
   };
 
-  const startXp = typeof session.startXp === "number" ? session.startXp : (store.state.progress.xp || 0);
-  const currentXp = store.state.progress.xp || 0;
+  const startXp = typeof session.startXp === "number" ? session.startXp : ((store.state.user && store.state.user.totalXp) || 0);
+  const currentXp = (store.state.user && store.state.user.totalXp) || 0;
   const earnedXp = Math.max(0, currentXp - startXp);
 
   if (earnedXp !== 70) {
@@ -1389,7 +1389,7 @@ test("Session XP: truthful delta arithmetic on session complete", () => {
 
   // When no XP earned
   session.startXp = 120;
-  const noXpEarned = Math.max(0, (store.state.progress.xp || 0) - session.startXp);
+  const noXpEarned = Math.max(0, ((store.state.user && store.state.user.totalXp) || 0) - session.startXp);
   if (noXpEarned !== 0) {
     throw new Error(`Expected 0 earned XP, got ${noXpEarned}`);
   }

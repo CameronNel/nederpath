@@ -2583,7 +2583,6 @@
     }
     if (!global.NederApp) {
       global.NederApp = new NederPathApp();
-      global.NederPathApp = global.NederApp;
     }
   }
 

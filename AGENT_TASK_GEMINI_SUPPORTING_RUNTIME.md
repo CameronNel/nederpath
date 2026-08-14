@@ -84,10 +84,10 @@ Existing draft PR #7 (`fix(idioms): make expression bank truthful and append-onl
 
 **PR #7 / idiom evidence:**
 
-- 120 curated, authentic Dutch idioms and expressions authored in `scripts/generate_idioms.mjs` and validated against `scripts/idiom_rules.mjs`.
-- Stable historical IDs preserved from PR #7 (`idm-0001` through `idm-0120`) in `data/idiom_ids.json` with `highWaterMark: 510`.
+- 121 curated, authentic Dutch idioms and expressions authored in `scripts/generate_idioms.mjs` and validated against `scripts/idiom_rules.mjs`.
+- Stable historical IDs preserved from PR #7 (`idm-0001` through `idm-0120`) in `data/idiom_ids.json` with `highWaterMark: 512`. Retired composite key `gezondheid! / proost!` preserved permanently as `idm-0038`, with individual splits `Proost!` (`idm-0511`) and `Gezondheid!` (`idm-0512`).
 - Two-run byte-identical sha256 check verified identical output for `data/idioms.js` and `data/idiom_ids.json`.
-- Distribution: A1 (26), A2 (35), B1 (48), B2 (11).
+- Distribution: A1 (27), A2 (35), B1 (48), B2 (11) = 121 total active rows.
 
 ---
 
