@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
   pages: write
   id-token: write
 
@@ -21,11 +21,10 @@ jobs:
     name: Validate Quality & Artifact Integrity
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository branch
+      - name: Checkout repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          ref: ${{ github.head_ref || github.ref }}
 
       - name: Setup Node.js 24
         uses: actions/setup-node@v4
@@ -35,25 +34,11 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Correct reviewed apostrophe plurals
-        run: node scripts/fix_apostrophe_plurals.mjs
-
-      - name: Migrate lexical merge policy
-        run: node scripts/migrate_lexical_merge_policy.mjs
-
       - name: Regenerate lexical artifact
         run: npm run words
 
-      - name: Persist corrected lexical sources and generated data
-        if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/words_core_*.js data/lexical_merge_policy.json data/words.js data/word_ids.json
-          if ! git diff --cached --quiet; then
-            git commit -m "fix: correct apostrophe plurals and regenerate lexical data"
-            git push origin HEAD:${{ github.head_ref }}
-          fi
+      - name: Verify generated lexical artifact is committed
+        run: git diff --exit-code -- data/words.js data/word_ids.json
 
       - name: Run Lexical Gold-Standard Checks
         run: |
