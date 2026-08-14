@@ -1088,6 +1088,24 @@ async function runBrowserTests() {
     await page.waitForSelector(".srs-controls");
     assert(true, "Mobile touch tap revealed flashcard");
 
+    // Long Dutch compound words must wrap inside the flashcard instead of overflowing
+    await page.evaluate(() => {
+      const app = globalThis.NederApp;
+      app.session.cards = [{
+        id: "nl-probe-long", pos: "noun", article: "het", level: "A1", word: "tweehonderdeenentwintigste",
+        displayWord: "het tweehonderdeenentwintigste", meaning: "the two hundred and twenty-first (ordinal)"
+      }];
+      app.session.currentIndex = 0;
+      app.session.revealed = true;
+      app.render();
+    });
+    await page.waitForSelector("#interactive-flashcard");
+    const longWordCard = await page.$eval("#interactive-flashcard", (el) => {
+      const r = el.getBoundingClientRect();
+      return { left: r.left, right: r.right, viewport: window.innerWidth };
+    });
+    assert(longWordCard.right <= longWordCard.viewport + 1 && longWordCard.left >= -1, `Long Dutch compound word wraps inside the flashcard on mobile (card spans ${Math.round(longWordCard.left)}..${Math.round(longWordCard.right)} within ${longWordCard.viewport}px viewport)`);
+
     console.log(`\nZero console errors encountered throughout all ${passed} browser assertions.`);
   } catch (err) {
     console.error("Browser test exception:", err);

@@ -575,6 +575,8 @@ body {
 
 .flashcard-dutch, .flashcard-meaning, .flashcard-pos, .flashcard-example, .flashcard-example-en, .flashcard-hint, .flashcard-synonyms, .flashcard-category {
   display: block;
+  min-width: 0;
+  overflow-wrap: anywhere;
 }
 
 .flashcard-dutch {
