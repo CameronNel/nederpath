@@ -1,6 +1,6 @@
 import { createHash } from "node:crypto";
 import { execFileSync } from "node:child_process";
-import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { mkdirSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import {
   ROOT,
@@ -66,16 +66,16 @@ function nearestBaseline(record, baseRows) {
   return candidates[0] || null;
 }
 
-function disposition(changes, field) {
-  return changes.includes(field) ? "FIXED" : "PASS";
+function checked(valid, passNote, failNote) {
+  return { disposition: valid ? "PASS" : "FAIL", note: valid ? passNote : failNote };
+}
+
+function present(value, label) {
+  return checked(Boolean(value), `${label} is present and structurally parseable.`, `${label} is missing.`);
 }
 
 function notApplicable(note = "Not applicable to this part of speech or lexical type.") {
   return { disposition: "NOT_APPLICABLE", note };
-}
-
-function reviewed(changes, field, note) {
-  return { disposition: disposition(changes, field), note };
 }
 
 function hasProperNameCategory(fields) {
@@ -115,9 +115,6 @@ const ledgerRows = sourceRows.map((record) => {
   const canonical = canonicalByNorm.get(normalizeLexicalForm(fields.word));
   const duplicate = duplicateGroups.get(normalizeLexicalForm(fields.word)) || [];
   const mixedPos = new Set(duplicate.map((item) => sourceFields(item).pos)).size > 1;
-  const commonNote = changes.length
-    ? `Current source differs from origin/master in: ${changes.join(", ")}. The corrected row was re-read semantically and its generated owner/morphology were checked.`
-    : "Row was explicitly re-read for headword, POS, CEFR, gloss, category/register, synonyms, morphology, phrase/proper-name status, and duplicate/homograph treatment; no correction was required.";
 
   let nounMeta = null;
   let verbMeta = null;
@@ -136,35 +133,49 @@ const ledgerRows = sourceRows.map((record) => {
       : fields.pos === "adjective"
         ? Boolean(adjectiveMeta && adjectiveMeta.forms.every((form) => generatedInflection(generatedWords, fields.word, form.kind, form.word)))
         : true;
+  const morphologyMarkerInSynonyms = fields.synonyms.some((synonym) => /^(?:s|inv|n|'s|pl|es|=.+)$/u.test(synonym));
 
-  const fieldsReview = {
-    headword: reviewed(changes, "headword", commonNote),
-    pos: reviewed(changes, "pos", `${fields.pos} is an allowed and semantically defensible source POS.`),
-    cefr: reviewed(changes, "cefr", `${fields.level} was checked for learner plausibility and retained conservatively.`),
-    article: articleApplicable ? reviewed(changes, "article", articleValid ? "Noun article disposition is valid for the source type." : "Noun article requires correction.") : notApplicable(),
-    meaning: reviewed(changes, "meaning", fields.meaning ? "English gloss was checked against the Dutch item and its senses." : "Missing meaning requires correction."),
-    category: reviewed(changes, "category", fields.category ? "Category was checked for semantic fit and register implications." : "Missing category requires correction."),
-    register: reviewed(changes, "meaning", "Register and usage cues in the gloss were checked; no unsupported neutrality claim was retained."),
-    synonyms: reviewed(changes, "synonyms", "Synonyms were checked as useful Dutch alternatives and not as morphology metadata."),
-    morphology: reviewed(changes, "morphology", morphologyValid ? "Explicit morphology was parsed and reconciled with generated output." : "Morphology requires correction."),
-    plural: fields.pos === "noun" && nounMeta?.plural ? reviewed(changes, "morphology", "Explicit plural was checked for Dutch spelling and generated article." ) : notApplicable("No ordinary explicit plural is asserted for this source row."),
-    diminutive: fields.pos === "noun" && nounMeta?.diminutive ? reviewed(changes, "morphology", "Diminutive and diminutive plural were checked for valid generated forms and articles.") : notApplicable("No diminutive metadata is asserted."),
-    verbParadigm: fields.pos === "verb" && verbMeta?.forms.length ? reviewed(changes, "morphology", "Every supplied present, OVT, and participle slot was checked against generated output.") : notApplicable("No explicit verb paradigm is asserted."),
-    separability: fields.pos === "verb" ? reviewed(changes, "morphology", verbMeta?.kind === "separable-participle" ? "Separable participle metadata was checked explicitly." : "No separable participle claim is asserted.") : notApplicable(),
-    adjectiveComparison: fields.pos === "adjective" && adjectiveMeta?.forms.length ? reviewed(changes, "morphology", "Comparative and superlative forms were checked against generated output.") : notApplicable("No adjective comparison metadata is asserted."),
-    phraseClassification: fields.pos === "phrase" ? reviewed(changes, "pos", "Phrase spelling/meaning was checked and the row is not sent through single-word morphology.") : notApplicable(),
-    properName: hasProperNameCategory(fields) ? reviewed(changes, "category", "Proper-name treatment was checked; the row remains searchable but non-learnable without a general article.") : notApplicable(),
-    orthography: reviewed(changes, "headword", "Dutch spelling, spacing, capitalization, and apostrophe behavior were checked against the lexical source policy."),
-    morphologyInSynonyms: reviewed(changes, "synonyms", fields.synonyms.some((synonym) => /^(?:s|inv|n|'s|pl|es|=.+)$/u.test(synonym)) ? "Morphology marker found in synonym slot." : "No accidental morphology marker appears in the synonym slot."),
+  const fieldReview = {
+    headword: present(fields.word, "Headword"),
+    pos: present(fields.pos, "POS"),
+    cefr: present(fields.level, "CEFR label"),
+    article: articleApplicable
+      ? checked(articleValid, "Article has an allowed structural value for this noun type.", "Article has an invalid structural value for this noun type.")
+      : notApplicable(),
+    meaning: present(fields.meaning, "English gloss"),
+    category: present(fields.category, "Category"),
+    register: { disposition: "UNVERIFIED_SEMANTICALLY", note: "Automation cannot establish whether register/usage labeling is linguistically accurate." },
+    synonyms: checked(!morphologyMarkerInSynonyms, "No morphology marker appears in the synonym slot.", "A morphology marker appears in the synonym slot."),
+    morphology: checked(morphologyValid, "Explicit morphology reconciles structurally with generated output.", "Explicit morphology does not reconcile with generated output."),
+    plural: fields.pos === "noun" && nounMeta?.plural
+      ? checked(Boolean(generatedInflection(generatedWords, fields.word, "plural", nounMeta.plural)), "Explicit plural is retained in generated output.", "Explicit plural is missing from generated output.")
+      : notApplicable("No ordinary explicit plural is asserted for this source row."),
+    diminutive: fields.pos === "noun" && nounMeta?.diminutive
+      ? { disposition: "UNVERIFIED_SEMANTICALLY", note: "Generated-form consistency is checked elsewhere; linguistic correctness still requires lexical evidence." }
+      : notApplicable("No diminutive metadata is asserted."),
+    verbParadigm: fields.pos === "verb" && verbMeta?.forms.length
+      ? { disposition: morphologyValid ? "PASS" : "FAIL", note: morphologyValid ? "Supplied verb forms reconcile structurally with generated output." : "One or more supplied verb forms fail generated-output reconciliation." }
+      : notApplicable("No explicit verb paradigm is asserted."),
+    separability: fields.pos === "verb"
+      ? { disposition: "UNVERIFIED_SEMANTICALLY", note: "Metadata shape can be parsed, but correct Dutch separability requires semantic/lexical review." }
+      : notApplicable(),
+    adjectiveComparison: fields.pos === "adjective" && adjectiveMeta?.forms.length
+      ? { disposition: morphologyValid ? "PASS" : "FAIL", note: morphologyValid ? "Comparison forms reconcile structurally with generated output." : "Comparison forms fail generated-output reconciliation." }
+      : notApplicable("No adjective comparison metadata is asserted."),
+    phraseClassification: fields.pos === "phrase"
+      ? { disposition: "UNVERIFIED_SEMANTICALLY", note: "The row is typed as a phrase; naturalness and lexical value require semantic review." }
+      : notApplicable(),
+    properName: hasProperNameCategory(fields)
+      ? { disposition: "UNVERIFIED_SEMANTICALLY", note: "The structural proper-name treatment is visible; appropriateness requires semantic review." }
+      : notApplicable(),
+    orthography: { disposition: "UNVERIFIED_SEMANTICALLY", note: "Normalization and generated-form checks cannot prove Dutch orthographic correctness." },
     duplicateHomograph: duplicate.length > 1
-      ? reviewed(changes, "meaning", mixedPos ? "Duplicate group and mixed-POS sense isolation were reviewed against the explicit merge policy." : "Duplicate same-POS senses were reviewed for merged meaning, level, article, and synonym behavior.")
+      ? { disposition: "UNVERIFIED_SEMANTICALLY", note: mixedPos ? "Mixed-POS isolation is structurally checked; primary-sense choice still requires semantic review." : "Same-POS merge determinism is checked; sense quality still requires semantic review." }
       : notApplicable("No duplicate normalized source spelling."),
-    generatedOwnership: { disposition: ownerValid ? "PASS" : "NEEDS-EVIDENCE", note: ownerValid ? "Generated canonical owner and source provenance reconcile." : "Generated owner could not be reconciled." }
+    generatedOwnership: checked(ownerValid, "Generated canonical owner and source provenance reconcile.", "Generated owner could not be reconciled.")
   };
 
-  const overall = Object.values(fieldsReview).some((item) => item.disposition === "NEEDS-EVIDENCE")
-    ? "NEEDS-EVIDENCE"
-    : changes.length ? "FIXED" : "PASS";
+  const structuralFailure = Object.values(fieldReview).some((item) => item.disposition === "FAIL");
   return {
     sourceRowId: rowKey(record),
     sourceFile: record.file,
@@ -181,41 +192,63 @@ const ledgerRows = sourceRows.map((record) => {
     duplicateGroupSize: duplicate.length || 1,
     mixedPosDuplicate: mixedPos,
     canonicalPrimaryPos: canonical?.row[1] || null,
-    baselineComparison: changes.length ? { disposition: "FIXED", changedFields: changes } : { disposition: "UNCHANGED", changedFields: [] },
-    fieldReview: fieldsReview,
-    overall,
-    note: commonNote
+    baselineComparison: changes.length
+      ? { disposition: "CHANGED_FROM_BASE", changedFields: changes }
+      : { disposition: "UNCHANGED", changedFields: [] },
+    fieldReview,
+    structuralStatus: structuralFailure ? "FAIL" : "PASS",
+    semanticReview: {
+      disposition: "NEEDS-EVIDENCE",
+      note: "No row-specific independent semantic/linguistic review evidence is encoded for this row. Automated consistency checks are not a substitute."
+    },
+    overall: "NEEDS-EVIDENCE"
   };
 });
 
-const counts = Object.fromEntries(["PASS", "FIXED", "NEEDS-EVIDENCE"].map((status) => [status, ledgerRows.filter((row) => row.overall === status).length]));
+const structuralFailures = ledgerRows.filter((row) => row.structuralStatus === "FAIL");
 if (ledgerRows.length !== sourceRows.length) throw new Error(`Ledger/source row mismatch: ${ledgerRows.length} != ${sourceRows.length}`);
-if (counts["NEEDS-EVIDENCE"] !== 0) throw new Error(`Ledger contains ${counts["NEEDS-EVIDENCE"]} NEEDS-EVIDENCE rows`);
+if (structuralFailures.length) throw new Error(`Automated lexical consistency ledger contains ${structuralFailures.length} structural failures`);
 if (new Set(ledgerRows.map((row) => row.sourceRowId)).size !== ledgerRows.length) throw new Error("Ledger source identities are not unique");
 
+const counts = {
+  PASS: 0,
+  FIXED: 0,
+  "NEEDS-EVIDENCE": ledgerRows.length
+};
+
 const ledger = {
-  schemaVersion: 1,
-  reviewType: "exhaustive lexical truth review",
-  reviewer: "Luna",
-  reviewedAt: "2026-08-14",
-  allRowsReviewed: true,
+  schemaVersion: 2,
+  reviewType: "automated lexical consistency coverage",
+  reviewer: "automation",
+  generatedAt: "2026-08-14",
+  allRowsStructurallyChecked: true,
+  allRowsReviewed: false,
+  semanticReviewComplete: false,
   samplingSubstitute: false,
   identityRule: "sourceFile:sourceIndex over final data/words_core_*.js rows",
   sourceFiles: files,
   sourceRowCount: sourceRows.length,
   ledgerRowCount: ledgerRows.length,
+  structuralFailureCount: structuralFailures.length,
   counts,
   sourceSnapshotSha256: sourceSnapshot(sourceRows),
   authoritativeReferenceSet: SOURCE_REFERENCES,
-  reviewProtocol: [
-    "Every final source row received an explicit field-by-field semantic/editorial disposition.",
-    "Every noun, verb, adjective, phrase, proper-name, synonym, and duplicate/homograph field was checked even when no correction was needed.",
-    "Current rows that differ from origin/master are marked FIXED and include changed-field notes.",
-    "NEEDS-EVIDENCE is fail-closed and must remain zero for delivery."
+  evidenceBoundary: [
+    "This artifact proves exhaustive row coverage for automated structural and generation-consistency checks.",
+    "It does not prove Dutch spelling, article choice, meaning, CEFR placement, register, synonymy, separability, or morphology truthfulness.",
+    "Rows that differ from origin/master are recorded as CHANGED_FROM_BASE; that must not be interpreted as a correction made by this review pass.",
+    "A separate row-specific semantic review artifact is required before Task 007 can claim exhaustive lexical truth review."
   ],
   rows: ledgerRows
 };
 
 mkdirSync(OUT_DIR, { recursive: true });
 writeFileSync(join(OUT_DIR, "lexical-review-ledger.json"), `${JSON.stringify(ledger, null, 2)}\n`);
-console.log(JSON.stringify({ sourceRowCount: sourceRows.length, ledgerRowCount: ledgerRows.length, counts, mixedPosRows: ledgerRows.filter((row) => row.mixedPosDuplicate).length, snapshot: ledger.sourceSnapshotSha256 }, null, 2));
+console.log(JSON.stringify({
+  sourceRowCount: sourceRows.length,
+  ledgerRowCount: ledgerRows.length,
+  structuralFailures: structuralFailures.length,
+  semanticNeedsEvidence: ledgerRows.length,
+  mixedPosRows: ledgerRows.filter((row) => row.mixedPosDuplicate).length,
+  snapshot: ledger.sourceSnapshotSha256
+}, null, 2));
