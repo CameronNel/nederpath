@@ -51,7 +51,8 @@ function escapeRegExp(value) {
 }
 
 /**
- * Checks if a candidate target word/phrase occurs literally in the Dutch surface sentence.
+ * Checks if a candidate target word/phrase occurs as a complete literal surface
+ * token/span in the Dutch sentence. Substrings inside larger words are rejected.
  */
 export function targetOccursInSurface(target, sentenceNl) {
   if (typeof target !== "string" || !target.trim() || typeof sentenceNl !== "string" || !sentenceNl.trim()) {
@@ -59,11 +60,6 @@ export function targetOccursInSurface(target, sentenceNl) {
   }
   const normSentence = sentenceNl.normalize("NFKC").toLocaleLowerCase("nl-NL");
   const normTarget = target.normalize("NFKC").trim().toLocaleLowerCase("nl-NL");
-  
-  // Exact substring check
-  if (normSentence.includes(normTarget)) return true;
-
-  // Boundary token regex check
   const escaped = escapeRegExp(normTarget);
   const regex = new RegExp(`(^|[^\\p{L}\\p{M}\\p{N}_])(${escaped})(?=$|[^\\p{L}\\p{M}\\p{N}_])`, "iu");
   return regex.test(normSentence);
@@ -108,9 +104,13 @@ export function validateSentenceRow(row) {
       if (typeof target !== "string" || !target.trim()) {
         errors.push(`invalid target word in targetWords: '${target}'`);
       } else if (!targetOccursInSurface(target, row.nl)) {
-        errors.push(`targetWord '${target}' does not occur in Dutch surface text: "${row.nl}"`);
+        errors.push(`targetWord '${target}' does not occur as a complete Dutch surface token/span: "${row.nl}"`);
       }
     }
+  }
+
+  if (typeof row.targetWord === "string" && row.targetWord.trim() && !targetOccursInSurface(row.targetWord, row.nl)) {
+    errors.push(`targetWord '${row.targetWord}' does not occur as a complete Dutch surface token/span: "${row.nl}"`);
   }
 
   return errors;
