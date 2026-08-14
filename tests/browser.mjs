@@ -1077,6 +1077,9 @@ async function runBrowserTests() {
     const mobileNav = await page.$(".app-header");
     assert(mobileNav !== null, "Mobile layout header rendered");
 
+    const mobileTodayOverflow = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
+    assert(mobileTodayOverflow <= 1, `Mobile Today view has no horizontal page overflow (overflow: ${mobileTodayOverflow}px)`);
+
     // Test tab navigation on mobile
     await page.click("#nav-practice");
     await page.waitForSelector(".practice-container");
@@ -1087,6 +1090,16 @@ async function runBrowserTests() {
     await page.tap("#interactive-flashcard");
     await page.waitForSelector(".srs-controls");
     assert(true, "Mobile touch tap revealed flashcard");
+
+    const mobileFlashcardOverflow = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
+    assert(mobileFlashcardOverflow <= 1, `Revealed flashcard SRS controls fit mobile viewport (overflow: ${mobileFlashcardOverflow}px)`);
+
+    await page.click("#nav-today");
+    await page.waitForSelector(".today-hero");
+    const mobileTodayBackOverflow = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
+    assert(mobileTodayBackOverflow <= 1, `Returning to Today on mobile keeps layout within viewport (overflow: ${mobileTodayBackOverflow}px)`);
+    await page.click("#nav-practice");
+    await page.waitForSelector("#interactive-flashcard");
 
     console.log(`\nZero console errors encountered throughout all ${passed} browser assertions.`);
   } catch (err) {
