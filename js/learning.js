@@ -25,8 +25,8 @@
    * HTML entity escaper for safe interpolation into innerHTML sinks.
    */
   function escapeHTML(str) {
-    if (typeof str !== "string") return "";
-    return str.replace(/[&<>"']/g, (m) => {
+    if (str === null || str === undefined) return "";
+    return String(str).replace(/[&<>"']/g, (m) => {
       switch (m) {
         case "&": return "&amp;";
         case "<": return "&lt;";

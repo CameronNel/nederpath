@@ -6,7 +6,7 @@ import { join, extname, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
-const PORT = 3458;
+let PORT = 0;
 const HOST = "127.0.0.1";
 
 let isSimulatedOffline = false;
@@ -116,7 +116,8 @@ async function runBrowserTests() {
   console.log("       NederPath Comprehensive Browser Test Suite      ");
   console.log("=======================================================");
 
-  await new Promise((resolve) => server.listen(PORT, HOST, resolve));
+  await new Promise((resolve) => server.listen(process.env.PORT ? parseInt(process.env.PORT, 10) : 0, HOST, resolve));
+  PORT = server.address().port;
   console.log(`Test server running at http://${HOST}:${PORT}`);
 
   const browser = await puppeteer.launch({
@@ -531,6 +532,13 @@ async function runBrowserTests() {
 
     const flashcardAnnounce = await page.$eval("#live-announcer", (el) => el.textContent);
     assert(flashcardAnnounce.includes("onthuld"), `Flashcard reveal announced to live region: '${flashcardAnnounce}'`);
+
+    // Verify that SRS preview rating buttons display truthful interval labels
+    const btnTexts = await page.$$eval(".btn-srs", (btns) => btns.map((b) => b.textContent));
+    assert(btnTexts.length === 4, `Found 4 SRS rating buttons (Again, Hard, Good, Easy)`);
+    for (const txt of btnTexts) {
+      assert(/\d+\s*(d|dag|dagen|m|jr|y)/i.test(txt), `SRS rating button label '${txt}' contains explicit scheduled interval`);
+    }
 
     // Focus SRS rating button and activate via keyboard Enter
     await page.focus("#btn-srs-good");

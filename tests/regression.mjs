@@ -10,6 +10,17 @@ import { validateSentenceRow, normalizeSentenceKey, targetOccursInSurface } from
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 
+// Mock localStorage if in Node environment
+if (typeof globalThis.localStorage === "undefined") {
+  const mem = {};
+  globalThis.localStorage = {
+    getItem(k) { return mem[k] ?? null; },
+    setItem(k, v) { mem[k] = String(v); },
+    removeItem(k) { delete mem[k]; },
+    clear() { Object.keys(mem).forEach((k) => delete mem[k]); }
+  };
+}
+
 // Load Learning engine
 const learningSrc = readFileSync(join(ROOT, "js", "learning.js"), "utf8");
 const dummyGlobal = {};
@@ -18,7 +29,24 @@ const Learning = dummyGlobal.NederLearning;
 
 // Load Store and SRS
 const storeSrc = readFileSync(join(ROOT, "js", "store.js"), "utf8");
+new Function("globalThis", storeSrc)(dummyGlobal);
+const Store = {
+  createStore(initialState = {}) {
+    const s = new dummyGlobal.NederStore.constructor();
+    if (initialState && Object.keys(initialState).length > 0) {
+      s.state = Learning.validateAndMergeBackup(initialState, s.state);
+    }
+    return s;
+  }
+};
+
 const srsSrc = readFileSync(join(ROOT, "js", "srs.js"), "utf8");
+new Function("globalThis", srsSrc)(dummyGlobal);
+const SRS = {
+  createSRSEngine(storeInstance) {
+    return new dummyGlobal.NederSRS.constructor(storeInstance);
+  }
+};
 
 // Load data banks
 const wordsSrc = readFileSync(join(ROOT, "data", "words.js"), "utf8");
@@ -1261,6 +1289,322 @@ test("Session XP: truthful delta arithmetic on session complete", () => {
   const noXpEarned = Math.max(0, (store.state.progress.xp || 0) - session.startXp);
   if (noXpEarned !== 0) {
     throw new Error(`Expected 0 earned XP, got ${noXpEarned}`);
+  }
+});
+
+// -------------------------------------------------------------------
+// 24. HTML Sink & Adversarial Template Injection Suite
+// -------------------------------------------------------------------
+test("HTML Sink: Fill-in-the-blank maskedSentence and drill interpolations sanitize HTML injection", () => {
+  const hostileSentence = {
+    id: "snt-99999",
+    nl: "<script>alert('xss')</script> Ik koop verse <img src=x onerror=alert(1)> op de markt.",
+    en: "I buy fresh <b>vegetables</b> at the market.",
+    level: "A1",
+    targetWord: "koop",
+    targetWords: ["koop"],
+    clozeEligible: true
+  };
+
+  const card = Learning.createFillBlankCard(hostileSentence, [{ word: "groenten" }, { word: "appels" }]);
+  if (!card) throw new Error("createFillBlankCard returned null for hostile sentence");
+
+  // Verify that maskedSentence contains the blank
+  if (!card.maskedSentence.includes("_______")) {
+    throw new Error("maskedSentence did not create cloze blank '_______'");
+  }
+
+  // Verify that escaping the masked sentence neutralizes script tags
+  const escaped = Learning.escapeHTML(card.maskedSentence);
+  if (escaped.includes("<script>") || escaped.includes("<img")) {
+    throw new Error(`Unsanitized HTML tag characters found in escaped maskedSentence: '${escaped}'`);
+  }
+  if (!escaped.includes("&lt;script&gt;") || !escaped.includes("&lt;img")) {
+    throw new Error(`Expected HTML entity escaping in maskedSentence: '${escaped}'`);
+  }
+  // Verify that cloze placeholder is preserved cleanly
+  if (!escaped.includes("_______")) {
+    throw new Error(`Placeholder '_______' was mangled: '${escaped}'`);
+  }
+});
+
+test("HTML Sink: escapeHTML handles nulls, numbers, and does not double-escape safe strings", () => {
+  if (Learning.escapeHTML(null) !== "") throw new Error("escapeHTML(null) should return empty string");
+  if (Learning.escapeHTML(undefined) !== "") throw new Error("escapeHTML(undefined) should return empty string");
+  if (Learning.escapeHTML(42) !== "42") throw new Error("escapeHTML(42) should return '42'");
+  if (Learning.escapeHTML("Normaal Nederlands!") !== "Normaal Nederlands!") {
+    throw new Error("escapeHTML mangled plain Dutch text");
+  }
+});
+
+// -------------------------------------------------------------------
+// 25. Historical Sentence ID Integrity & Anti-Recycling Guarantees
+// -------------------------------------------------------------------
+test("Historical Sentence IDs: Exactly 13 pre-Cartesian base sentences retain IDs snt-00001..snt-00013 and highWaterMark prevents recycling", () => {
+  const sentenceIds = JSON.parse(readFileSync(join(ROOT, "data", "sentence_ids.json"), "utf8"));
+  if (sentenceIds.highWaterMark < 5050) {
+    throw new Error(`highWaterMark (${sentenceIds.highWaterMark}) must be >= 5050 to reserve retired legacy template IDs`);
+  }
+
+  const expected13 = [
+    { key: "ik woon al drie jaar met veel plezier in utrecht.", id: "snt-00001" },
+    { key: "morgenochtend om negen uur neem ik de trein naar amsterdam centraal.", id: "snt-00002" },
+    { key: "de bakker om de hoek verkoopt elke dag vers volkorenbrood.", id: "snt-00003" },
+    { key: "zij heeft gisteren een prachtige nieuwe fiets gekocht.", id: "snt-00004" },
+    { key: "omdat het vanochtend hard regende, ben ik met de bus naar kantoor gegaan.", id: "snt-00005" },
+    { key: "jan staat elke werkdag om kwart over zes op om de files te vermijden.", id: "snt-00006" },
+    { key: "kun je mij alstublieft even helpen met het tillen van deze zware koffer?", id: "snt-00007" },
+    { key: "in het weekend gaan wij graag wandelen in de duinen bij bloemendaal.", id: "snt-00008" },
+    { key: "als je regelmatig oefent, zul je merken dat je nederlands snel vooruitgaat.", id: "snt-00009" },
+    { key: "het nieuwe museumgebouw werd vorig jaar feestelijk geopend door de burgemeester.", id: "snt-00010" },
+    { key: "hoewel het kabinet nieuwe maatregelen heeft aangekondigd, blijft de woningmarkt gespannen.", id: "snt-00011" },
+    { key: "de commissie heeft besloten het voorstel nader te laten onderzoeken door onafhankelijke experts.", id: "snt-00012" },
+    { key: "mocht de situatie onverhoopt escaleren, dan treedt het nationale noodplan onmiddellijk in werking.", id: "snt-00013" }
+  ];
+
+  for (const exp of expected13) {
+    if (sentenceIds.entries[exp.key] !== exp.id) {
+      throw new Error(`Historical sentence '${exp.key}' expected ID '${exp.id}', found '${sentenceIds.entries[exp.key]}'`);
+    }
+  }
+
+  // Verify that retired template range snt-00014..snt-05050 is not used for newly authored sentences
+  for (const [key, id] of Object.entries(sentenceIds.entries)) {
+    const num = parseInt(id.replace("snt-", ""), 10);
+    if (num > 13 && num <= 5050) {
+      throw new Error(`Forbidden allocation of retired template ID '${id}' for key '${key}'`);
+    }
+  }
+});
+
+// -------------------------------------------------------------------
+// 26. Multi-Mode Session & XP Lifecycle Integration Suite
+// -------------------------------------------------------------------
+test("Integration: Flashcard session rating lifecycle with Again, Hard, Good, Easy and exact XP delta", () => {
+  const store = Store.createStore({
+    settings: { sessionSize: 4 },
+    srs: { cards: {} },
+    user: { totalXp: 100 }
+  });
+  const srs = SRS.createSRSEngine(store);
+
+  // Initial session setup
+  const cards = [
+    { id: "w-001", word: "tafel", meaning: "table", pos: "noun", level: "A1" },
+    { id: "w-002", word: "stoel", meaning: "chair", pos: "noun", level: "A1" },
+    { id: "w-003", word: "boek", meaning: "book", pos: "noun", level: "A1" },
+    { id: "w-004", word: "huis", meaning: "house", pos: "noun", level: "A1" }
+  ];
+
+  const session = {
+    cards,
+    currentIndex: 0,
+    revealed: false,
+    itemNoun: "kaarten",
+    startXp: store.state.user.totalXp
+  };
+
+  // 1. Rate card 1 as Again (rating 1 -> 3 XP)
+  const prev1 = srs.previewRatings(cards[0].id, "vocab");
+  srs.review(cards[0].id, 1, "vocab");
+  const card1State = store.state.srs.cards[cards[0].id];
+  if (card1State.interval !== prev1[1].interval) {
+    throw new Error(`Card 1 persisted interval (${card1State.interval}) != preview interval (${prev1[1].interval})`);
+  }
+  session.currentIndex++;
+
+  // 2. Rate card 2 as Hard (rating 2 -> 10 XP)
+  const prev2 = srs.previewRatings(cards[1].id, "vocab");
+  srs.review(cards[1].id, 2, "vocab");
+  const card2State = store.state.srs.cards[cards[1].id];
+  if (card2State.interval !== prev2[2].interval) {
+    throw new Error(`Card 2 persisted interval (${card2State.interval}) != preview interval (${prev2[2].interval})`);
+  }
+  session.currentIndex++;
+
+  // 3. Rate card 3 as Good (rating 3 -> 10 XP)
+  const prev3 = srs.previewRatings(cards[2].id, "vocab");
+  srs.review(cards[2].id, 3, "vocab");
+  const card3State = store.state.srs.cards[cards[2].id];
+  if (card3State.interval !== prev3[3].interval) {
+    throw new Error(`Card 3 persisted interval (${card3State.interval}) != preview interval (${prev3[3].interval})`);
+  }
+  session.currentIndex++;
+
+  // 4. Rate card 4 as Easy (rating 4 -> 10 XP)
+  const prev4 = srs.previewRatings(cards[3].id, "vocab");
+  srs.review(cards[3].id, 4, "vocab");
+  const card4State = store.state.srs.cards[cards[3].id];
+  if (card4State.interval !== prev4[4].interval) {
+    throw new Error(`Card 4 persisted interval (${card4State.interval}) != preview interval (${prev4[4].interval})`);
+  }
+  session.currentIndex++;
+
+  // Verify total XP earned (3 + 10 + 10 + 10 = 33)
+  const totalEarnedXp = store.state.user.totalXp - session.startXp;
+  if (totalEarnedXp !== 33) {
+    throw new Error(`Expected earned XP 33, got ${totalEarnedXp}`);
+  }
+  if (session.currentIndex !== session.cards.length) {
+    throw new Error("Session did not complete all cards");
+  }
+});
+
+test("Integration: Article drill session with mixed scores updates articleStats, mistakes, and XP", () => {
+  const store = Store.createStore({
+    settings: { sessionSize: 3 },
+    user: { totalXp: 50 },
+    progress: {
+      articleStats: { totalDrilled: 0, correct: 0, mistakes: {} }
+    }
+  });
+
+  const session = {
+    cards: [
+      { id: "w-010", word: "tafel", article: "de" },
+      { id: "w-011", word: "huis", article: "het" },
+      { id: "w-012", word: "auto", article: "de" }
+    ],
+    currentIndex: 0,
+    score: 0,
+    feedback: null,
+    startXp: store.state.user.totalXp
+  };
+
+  // Card 1: Correct (de tafel)
+  store.recordArticleDrill("tafel", "de", "de");
+  session.score++;
+  session.currentIndex++;
+
+  // Card 2: Incorrect (guessed de instead of het voor huis)
+  store.recordArticleDrill("huis", "de", "het");
+  session.currentIndex++;
+
+  // Card 3: Correct (de auto)
+  store.recordArticleDrill("auto", "de", "de");
+  session.score++;
+  session.currentIndex++;
+
+  // Verify articleStats
+  const stats = store.state.progress.articleStats;
+  if (stats.totalDrilled !== 3 || stats.correct !== 2) {
+    throw new Error(`Expected 2/3 correct article stats, got ${stats.correct}/${stats.totalDrilled}`);
+  }
+  if (stats.mistakes["huis"] !== 1) {
+    throw new Error(`Expected 1 mistake recorded for 'huis', got ${stats.mistakes["huis"]}`);
+  }
+
+  // Verify total earned XP in session (5 + 1 + 5 = 11)
+  const earnedXp = store.state.user.totalXp - session.startXp;
+  if (earnedXp !== 11) {
+    throw new Error(`Expected 11 earned XP, got ${earnedXp}`);
+  }
+});
+
+test("Integration: Restart / reset for a second session re-anchors startXp and does not pollute state", () => {
+  const store = Store.createStore({
+    user: { totalXp: 0 }
+  });
+
+  // Session 1: Earns 20 XP
+  const session1 = {
+    startXp: store.state.user.totalXp,
+    cards: [{ id: 1 }, { id: 2 }],
+    currentIndex: 0
+  };
+  store.recordActivity(10);
+  store.recordActivity(10);
+  session1.currentIndex = 2;
+  const earned1 = store.state.user.totalXp - session1.startXp;
+  if (earned1 !== 20) throw new Error(`Session 1 expected 20 XP, got ${earned1}`);
+
+  // Reset for Session 2
+  const session2 = {
+    startXp: store.state.user.totalXp, // re-anchored to 20
+    cards: [{ id: 3 }, { id: 4 }],
+    currentIndex: 0,
+    feedback: null,
+    score: 0
+  };
+
+  if (session2.startXp !== 20) {
+    throw new Error(`Session 2 startXp should be 20, got ${session2.startXp}`);
+  }
+
+  // Session 2: Earns 10 XP
+  store.recordActivity(10);
+  session2.currentIndex = 1;
+  const earned2 = store.state.user.totalXp - session2.startXp;
+  if (earned2 !== 10) {
+    throw new Error(`Session 2 expected 10 XP delta, got ${earned2}`);
+  }
+  if (store.state.user.totalXp !== 30) {
+    throw new Error(`Cumulative XP expected 30, got ${store.state.user.totalXp}`);
+  }
+});
+
+test("Integration: Zero-XP failed session calculates 0 earned XP truthfully", () => {
+  const store = Store.createStore({
+    user: { totalXp: 80 }
+  });
+
+  const session = {
+    startXp: store.state.user.totalXp,
+    cards: [{ id: 1 }],
+    currentIndex: 0
+  };
+
+  // User fails item in a strict 0-XP penalty setting
+  // (no recordActivity called)
+  session.currentIndex = 1;
+
+  const earned = Math.max(0, store.state.user.totalXp - session.startXp);
+  if (earned !== 0) {
+    throw new Error(`Expected 0 earned XP for failed session, got ${earned}`);
+  }
+});
+
+// -------------------------------------------------------------------
+// 27. SRS Display & Format Truthfulness Suite
+// -------------------------------------------------------------------
+test("SRS Display Truthfulness: Interval labels explicitly include exact day count", () => {
+  const store = Store.createStore({
+    srs: { cards: {} }
+  });
+  const srs = SRS.createSRSEngine(store);
+
+  // Test various day intervals
+  const testCases = [
+    { days: 1, expectedInterval: "1d", expectedDutch: "1 dag" },
+    { days: 6, expectedInterval: "6d", expectedDutch: "6 dagen" },
+    { days: 15, expectedInterval: "15d", expectedDutch: "15 dagen" },
+    { days: 30, expectedInterval: "1m (30d)", expectedDutch: "1 mnd (30 dgn)" },
+    { days: 45, expectedInterval: "2m (45d)", expectedDutch: "2 mnd (45 dgn)" },
+    { days: 400, expectedInterval: "1.1y (400d)", expectedDutch: "1.1 jr (400 dgn)" }
+  ];
+
+  for (const tc of testCases) {
+    // Inject card with specific interval
+    store.state.srs.cards["test-card"] = {
+      id: "test-card",
+      type: "vocab",
+      interval: tc.days,
+      ease: 2.5,
+      repetitions: 3,
+      dueDate: "2026-08-14"
+    };
+
+    const preview = srs.previewRatings("test-card", "vocab");
+    // Verify that every preview rating contains exact interval days in both formatted strings
+    for (let rating = 1; rating <= 4; rating++) {
+      const p = preview[rating];
+      if (!p.formattedInterval.includes(`${p.interval}d`)) {
+        throw new Error(`formattedInterval '${p.formattedInterval}' missing exact day count '${p.interval}d'`);
+      }
+      if (!p.formattedDutch.includes(String(p.interval))) {
+        throw new Error(`formattedDutch '${p.formattedDutch}' missing exact day count '${p.interval}'`);
+      }
+    }
   }
 });
 

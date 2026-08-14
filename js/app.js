@@ -415,10 +415,10 @@
             ${spotlightRule ? `
               <div class="card spotlight-card">
                 <div class="card-tag">Uitgelichte Grammaticaregel</div>
-                <h3 class="spotlight-title">${spotlightRule.title}</h3>
-                <div class="spotlight-nl">${spotlightRule.titleNl}</div>
-                <p class="spotlight-desc">${spotlightRule.summary}</p>
-                <button class="btn btn-secondary btn-sm" id="btn-open-spotlight-grammar" data-rule-id="${spotlightRule.id}">Bekijk Regel & Oefeningen →</button>
+                <h3 class="spotlight-title">${Learning.escapeHTML(spotlightRule.title)}</h3>
+                <div class="spotlight-nl">${Learning.escapeHTML(spotlightRule.titleNl)}</div>
+                <p class="spotlight-desc">${Learning.escapeHTML(spotlightRule.summary)}</p>
+                <button class="btn btn-secondary btn-sm" id="btn-open-spotlight-grammar" data-rule-id="${Learning.escapeHTML(spotlightRule.id)}">Bekijk Regel & Oefeningen →</button>
               </div>
             ` : ""}
 
@@ -434,7 +434,7 @@
                 <div class="idiom-meaning"><strong>Betekenis:</strong> ${Learning.escapeHTML(todayIdiom.meaning)}</div>
                 <div class="idiom-example-box">
                   <div class="idiom-example-nl">“${Learning.escapeHTML(todayIdiom.example)}”</div>
-                  <div class="idiom-example-en">${Learning.escapeHTML(todayIdiom.exampleEn)}</div>
+                  ${todayIdiom.exampleEn ? `<div class="idiom-example-en">${Learning.escapeHTML(todayIdiom.exampleEn)}</div>` : ""}
                 </div>
               </div>
             ` : ""}
@@ -849,8 +849,8 @@
 
           <div class="card drill-card">
             <span class="drill-sub">Kies het juiste lidwoord voor:</span>
-            <div class="drill-noun">${item.word}</div>
-            <div class="drill-meaning">${item.meaning || ""}</div>
+            <div class="drill-noun">${Learning.escapeHTML(item.word)}</div>
+            <div class="drill-meaning">${Learning.escapeHTML(item.meaning || "")}</div>
 
             <div class="drill-options">
               <button type="button" class="btn btn-drill btn-de" data-choice="de" ${this.session.feedback ? 'disabled' : ''}>de</button>
@@ -860,7 +860,7 @@
             ${this.session.feedback ? `
               <div class="drill-feedback ${this.session.feedback.isCorrect ? 'feedback-correct' : 'feedback-wrong'} animate-fade">
                 ${this.session.feedback.isCorrect ? '✓ Uitstekend!' : '✗ Helaas niet juist.'}
-                Het is <strong>${item.article} ${item.word}</strong>.
+                Het is <strong>${Learning.escapeHTML(item.article)} ${Learning.escapeHTML(item.word)}</strong>.
                 ${item.word.endsWith("je") ? "<br><small>Tip: Alle verkleinwoorden krijgen 'het'!</small>" : ""}
               </div>
               <button type="button" class="btn btn-primary btn-block" id="btn-next-drill" style="margin-top: 1rem;">Volgende Vraag →</button>
@@ -997,7 +997,7 @@
           <div class="card drill-card">
             <span class="card-tag">Vul het ontbrekende woord in</span>
             <div class="drill-noun" style="font-size: 1.4rem; line-height: 1.6; margin: 1.5rem 0;">
-              ${item.maskedSentence}
+              ${Learning.escapeHTML(item.maskedSentence)}
             </div>
             <div class="drill-meaning">“${Learning.escapeHTML(item.translation)}”</div>
 
@@ -2206,7 +2206,7 @@
             ${displayList.map((w) => {
               const isNoun = w.pos === "noun" && w.article;
               const isStarred = this.store.isBookmarked(w.id);
-              const displayTitle = isNoun ? `<span class="badge-${w.article}">${w.article}</span> ${Learning.escapeHTML(w.word)}` : Learning.escapeHTML(w.word);
+              const displayTitle = isNoun ? `<span class="badge-${Learning.escapeHTML(w.article)}">${Learning.escapeHTML(w.article)}</span> ${Learning.escapeHTML(w.word)}` : Learning.escapeHTML(w.word);
 
               const isPhrase = w.curated === true && w.pos === "phrase" && w.inflectionType === "phrase";
               const isLemma = w.isCuratedLemma === true;
@@ -2217,10 +2217,10 @@
                 <div class="card word-item-card">
                   <div class="word-card-top">
                     <div class="word-card-badges">
-                      <span class="word-level-badge badge-${w.level.toLowerCase()}">${w.level}</span>
+                      <span class="word-level-badge badge-${Learning.escapeHTML(w.level.toLowerCase())}">${Learning.escapeHTML(w.level)}</span>
                       ${badgeType}
                     </div>
-                    <button class="btn-star ${isStarred ? 'starred' : ''}" data-star-id="${w.id}" title="Favoriet opslaan">
+                    <button class="btn-star ${isStarred ? 'starred' : ''}" data-star-id="${Learning.escapeHTML(w.id)}" title="Favoriet opslaan">
                       ${isStarred ? '★' : '☆'}
                     </button>
                   </div>
@@ -2233,7 +2233,7 @@
                   ${w.example ? `<div class="word-example" style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 0.5rem;">“${Learning.escapeHTML(w.example)}”</div>` : ""}
                   <div class="word-footer">
                     <span>${Learning.escapeHTML(w.pos)}</span>
-                    <span>#${w.rank}</span>
+                    <span>#${Learning.escapeHTML(String(w.rank))}</span>
                   </div>
                 </div>
               `;

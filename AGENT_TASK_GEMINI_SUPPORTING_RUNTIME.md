@@ -177,7 +177,7 @@ Ensure substantial authored coverage of:
 **Sentence-bank evidence:**
 
 - 641 curated sentences modularized across `scripts/authored_sentences_a1.mjs` through `_c1.mjs`.
-- Registry `data/sentence_ids.json` with `highWaterMark: 5683`.
+- Registry `data/sentence_ids.json` with `highWaterMark: 5685`.
 - 100% of rows pass strict Unicode boundary token presence matching for both `targetWord` and `targetWords`.
 - Zero mixed English-Dutch templates (`Met grote zorgvuldigheid the...` or `elke ochtend the...`).
 
@@ -245,7 +245,8 @@ Current SRS controls display fixed human-readable delays that can disagree with 
 
 - Added `previewReview(cardId, rating, type)` and `previewRatings(cardId, type)` in `js/srs.js`.
 - Connected dynamically in `js/app.js` `updateSRSButtons()`.
-- Verified non-mutating pure execution via regression test section 22 in `tests/regression.mjs`.
+- Explicit scheduled day counts included in formatted intervals (e.g. `30d (1m)` / `1 dag`).
+- Verified non-mutating pure execution via regression test section 22 & 27 in `tests/regression.mjs`.
 
 ---
 
@@ -270,7 +271,7 @@ The current shared completion UI reports `cards.length × 10 XP`, which is false
 
 - Snapshotted `this.session.startXp` and `this.session.itemNoun` across all 9 practice modes in `js/app.js`.
 - Replaced calculation in `renderSessionCompleteScreen()` with `earnedXp = Math.max(0, currentXp - startXp)`.
-- Verified in regression test section 23 in `tests/regression.mjs`.
+- Verified in regression test section 23 & 26 in `tests/regression.mjs`.
 
 ---
 
@@ -308,7 +309,7 @@ Because this task touches `app.js`, perform a fresh audit of affected runtime pa
 
 **Runtime review evidence:**
 
-- 97 browser test assertions pass with 0 console errors across desktop and mobile viewports (`tests/browser.mjs`).
+- 102 browser test assertions pass with 0 console errors across desktop and mobile viewports (`tests/browser.mjs`).
 - Service worker offline recovery verified (`tests/offline.mjs`).
 
 ---
@@ -378,12 +379,14 @@ Because this task touches `app.js`, perform a fresh audit of affected runtime pa
 
 **Test evidence:**
 
-- 33 regression tests pass in `tests/regression.mjs`.
+- 41 regression tests pass in `tests/regression.mjs`.
+- 5 review follow-up tests pass in `tests/review_followup.mjs`.
+- 1 sentence surface audit passes in `tests/sentence_surface_audit.mjs` (641/641 sentences verified).
 - 8 smoke tests pass in `tests/smoke.mjs`.
 - 69 quality checks pass in `scripts/audit.mjs`.
 - 64 artifact checks pass in `scripts/audit-artifact.mjs`.
 - 26 service worker tests pass in `tests/offline.mjs`.
-- 97 browser tests pass in `tests/browser.mjs`.
+- 102 browser tests pass in `tests/browser.mjs`.
 
 ---
 

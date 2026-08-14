@@ -15,7 +15,7 @@ export const AUTHORED_SENTENCES_A1 = [
   { nl: "Ik neem een warme douche na het hardlopen.", en: "I take a warm shower after running.", level: "A1", category: "daily_life", tags: ["sports", "hygiene"], targetWords: ["douche", "hardlopen"] },
   { nl: "Zij zoekt haar sleutels in haar grote handtas.", en: "She is looking for her keys in her large handbag.", level: "A1", category: "daily_life", tags: ["search", "objects"], targetWords: ["sleutels", "handtas"] },
   { nl: "Mijn buurman maait het gras in zijn voortuin.", en: "My neighbour mows the grass in his front garden.", level: "A1", category: "daily_life", tags: ["gardening", "chores"], targetWords: ["maait", "voortuin"] },
-  { nl: "Ik doe de lampen uit voordat ik de deur verlaat.", en: "I turn off the lights before I leave the door.", level: "A1", category: "daily_life", tags: ["habits", "energy"], targetWords: ["lampen", "verlaat"] },
+  { nl: "Ik doe het licht uit voordat ik het huis verlaat.", en: "I turn off the light before I leave the house.", level: "A1", category: "daily_life", tags: ["habits", "energy"], targetWords: ["licht", "verlaat"] },
   { nl: "Ik geef de planten in de woonkamer twee keer per week water.", en: "I water the plants in the living room twice a week.", level: "A1", category: "daily_life", tags: ["plants", "care"], targetWords: ["planten", "water"] },
   { nl: "Zij trekt haar warme winterjas aan tegen de kou.", en: "She puts on her warm winter coat against the cold.", level: "A1", category: "daily_life", tags: ["clothing", "winter"], targetWords: ["winterjas", "kou"] },
   { nl: "Ik drink graag een kopje kamillethee voor het slapen.", en: "I like drinking a cup of chamomile tea before sleeping.", level: "A1", category: "daily_life", tags: ["tea", "bedtime"], targetWords: ["kamillethee", "slapen"] },
@@ -107,7 +107,7 @@ export const AUTHORED_SENTENCES_A1 = [
   { nl: "De dokter onderzoekt mijn zere keel.", en: "The doctor examines my sore throat.", level: "A1", category: "healthcare", tags: ["medical", "body_parts"], targetWords: ["dokter", "keel"] },
   { nl: "Neem deze pillen twee keer per dag met water.", en: "Take these pills twice a day with water.", level: "A1", category: "healthcare", tags: ["imperative", "medicine"], targetWords: ["pillen", "water"] },
   { nl: "De apotheek bevindt zich naast het ziekenhuis.", en: "The pharmacy is situated next to the hospital.", level: "A1", category: "healthcare", tags: ["directions", "prepositions"], targetWords: ["apotheek", "ziekenhuis"] },
-  { nl: "De dokter schrijft een recept voor oogdruppels voor.", en: "The doctor prescribes a prescription for eye drops.", level: "A1", category: "healthcare", tags: ["medical", "prescriptions"], targetWords: ["recept", "oogdruppels"] },
+  { nl: "De dokter schrijft een recept voor oogdruppels voor.", en: "The doctor prescribes eye drops.", level: "A1", category: "healthcare", tags: ["medical", "prescriptions"], targetWords: ["recept", "oogdruppels"] },
   { nl: "Het ziekenhuis heeft een grote parkeerplaats voor bezoekers.", en: "The hospital has a large car park for visitors.", level: "A1", category: "healthcare", tags: ["hospital", "parking"], targetWords: ["parkeerplaats", "bezoekers"] },
   { nl: "De tandarts controleert mijn gebit elk half jaar.", en: "The dentist checks my teeth every six months.", level: "A1", category: "healthcare", tags: ["dentistry", "routine"], targetWords: ["tandarts", "gebit"] },
 
@@ -160,7 +160,7 @@ export const AUTHORED_SENTENCES_A1 = [
   { nl: "Wij luisteren naar het weerbericht op de radio.", en: "We listen to the weather forecast on the radio.", level: "A1", category: "media", tags: ["weather", "radio"], targetWords: ["weerbericht", "radio"] },
 
   // --- Emergencies & Safety (A1) ---
-  { nl: "Bel direct het alarmnummer bij ernstig gevaar.", en: "Call the emergency number immediately in severe danger.", level: "A1", category: "emergencies", tags: ["imperative", "safety"], targetWords: ["alarmnummer", "gevaar"] },
+  { nl: "Bel direct het alarmnummer bij ernstig gevaar.", en: "Call the emergency number immediately in case of serious danger.", level: "A1", category: "emergencies", tags: ["imperative", "safety"], targetWords: ["alarmnummer", "gevaar"] },
   { nl: "Waar is de dichtstbijzijnde nooduitgang in dit gebouw?", en: "Where is the nearest emergency exit in this building?", level: "A1", category: "emergencies", tags: ["safety", "questions"], targetWords: ["nooduitgang", "gebouw"] },
   { nl: "Help, ik ben mijn fietssleutel kwijtgeraakt!", en: "Help, I lost my bicycle key!", level: "A1", category: "emergencies", tags: ["everyday_problems", "verbs"], targetWords: ["Help", "fietssleutel"] },
   { nl: "De politie helpt mensen op straat.", en: "The police help people in the street.", level: "A1", category: "emergencies", tags: ["safety", "civic"], targetWords: ["politie", "straat"] },
@@ -168,7 +168,7 @@ export const AUTHORED_SENTENCES_A1 = [
 
   // --- Science (A1) ---
   { nl: "Water kookt bij honderd graden Celsius.", en: "Water boils at one hundred degrees Celsius.", level: "A1", category: "science", tags: ["facts", "numbers"], targetWords: ["kookt", "graden"] },
-  { nl: "De aarde draait langzaam om de zon.", en: "The earth rotates slowly around the sun.", level: "A1", category: "science", tags: ["astronomy", "nature"], targetWords: ["aarde", "draait"] },
+  { nl: "De aarde draait langzaam om de zon.", en: "The Earth moves slowly around the sun.", level: "A1", category: "science", tags: ["astronomy", "nature"], targetWords: ["aarde", "draait"] },
   { nl: "Bomen verliezen hun groene bladeren in oktober.", en: "Trees lose their green leaves in October.", level: "A1", category: "science", tags: ["nature", "calendar"], targetWords: ["bomen", "bladeren"] },
 
   // --- Formal Correspondence (A1) ---

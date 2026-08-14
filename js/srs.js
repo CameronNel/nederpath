@@ -35,15 +35,15 @@
   function formatSRSInterval(days) {
     if (!Number.isFinite(days) || days <= 1) return "1d";
     if (days < 30) return `${days}d`;
-    if (days < 365) return `${Math.round(days / 30)}m`;
-    return `${(days / 365).toFixed(1)}y`;
+    if (days < 365) return `${Math.round(days / 30)}m (${days}d)`;
+    return `${(days / 365).toFixed(1)}y (${days}d)`;
   }
 
   function formatSRSDutch(days) {
     if (!Number.isFinite(days) || days <= 1) return "1 dag";
     if (days < 30) return `${days} dagen`;
-    if (days < 365) return `${Math.round(days / 30)} mnd`;
-    return `${(days / 365).toFixed(1)} jr`;
+    if (days < 365) return `${Math.round(days / 30)} mnd (${days} dgn)`;
+    return `${(days / 365).toFixed(1)} jr (${days} dgn)`;
   }
 
   /**

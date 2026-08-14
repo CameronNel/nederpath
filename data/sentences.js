@@ -230,18 +230,18 @@ globalThis.NP_SENTENCES = [
     "curated": true
   },
   {
-    "id": "snt-05062",
-    "nl": "Ik doe de lampen uit voordat ik de deur verlaat.",
-    "en": "I turn off the lights before I leave the door.",
+    "id": "snt-05684",
+    "nl": "Ik doe het licht uit voordat ik het huis verlaat.",
+    "en": "I turn off the light before I leave the house.",
     "level": "A1",
     "tags": [
       "habits",
       "energy"
     ],
     "category": "daily_life",
-    "targetWord": "lampen",
+    "targetWord": "licht",
     "targetWords": [
-      "lampen",
+      "licht",
       "verlaat"
     ],
     "clozeEligible": true,
@@ -1676,7 +1676,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-05138",
     "nl": "De dokter schrijft een recept voor oogdruppels voor.",
-    "en": "The doctor prescribes a prescription for eye drops.",
+    "en": "The doctor prescribes eye drops.",
     "level": "A1",
     "tags": [
       "medical",
@@ -2417,7 +2417,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-05177",
     "nl": "Bel direct het alarmnummer bij ernstig gevaar.",
-    "en": "Call the emergency number immediately in severe danger.",
+    "en": "Call the emergency number immediately in case of serious danger.",
     "level": "A1",
     "tags": [
       "imperative",
@@ -2531,7 +2531,7 @@ globalThis.NP_SENTENCES = [
   {
     "id": "snt-05183",
     "nl": "De aarde draait langzaam om de zon.",
-    "en": "The earth rotates slowly around the sun.",
+    "en": "The Earth moves slowly around the sun.",
     "level": "A1",
     "tags": [
       "astronomy",
@@ -3556,8 +3556,8 @@ globalThis.NP_SENTENCES = [
     "curated": true
   },
   {
-    "id": "snt-05233",
-    "nl": "De tandarts assistente legde uit hoe je goed moet flossen.",
+    "id": "snt-05685",
+    "nl": "De tandartsassistente legde uit hoe je goed moet flossen.",
     "en": "The dental assistant explained how you must floss properly.",
     "level": "A2",
     "tags": [
@@ -3565,9 +3565,9 @@ globalThis.NP_SENTENCES = [
       "subclause_hoe"
     ],
     "category": "healthcare",
-    "targetWord": "assistente",
+    "targetWord": "tandartsassistente",
     "targetWords": [
-      "assistente",
+      "tandartsassistente",
       "flossen"
     ],
     "clozeEligible": true,
@@ -5697,7 +5697,7 @@ globalThis.NP_SENTENCES = [
     "targetWord": "voedselverspilling",
     "targetWords": [
       "voedselverspilling",
-      "dringen"
+      "huishoudens"
     ],
     "clozeEligible": true,
     "provenance": "curated",
@@ -7008,7 +7008,7 @@ globalThis.NP_SENTENCES = [
     "targetWord": "bewoners",
     "targetWords": [
       "bewoners",
-      "sluiten"
+      "vakanties"
     ],
     "clozeEligible": true,
     "provenance": "curated",
