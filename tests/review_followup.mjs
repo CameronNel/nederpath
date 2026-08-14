@@ -10,6 +10,11 @@ const dummyGlobal = {};
 new Function("globalThis", "module", "exports", learningSrc)(dummyGlobal, {}, {});
 const Learning = dummyGlobal.NederLearning;
 
+const srsSrc = readFileSync(join(ROOT, "js", "srs.js"), "utf8");
+const srsGlobal = {};
+new Function("globalThis", srsSrc)(srsGlobal);
+const SRSEngine = srsGlobal.NederSRS.constructor;
+
 let passed = 0;
 function test(name, fn) {
   try {
@@ -97,6 +102,50 @@ test("Fill-blank uses explicit targetWord/targetWords and masks the exact surfac
   if (card.targetWord !== "groenten") throw new Error(`Expected 'groenten', got '${card.targetWord}'`);
   if (card.maskedSentence !== "Ik koop verse _______ op de markt.") {
     throw new Error(`Unexpected mask: '${card.maskedSentence}'`);
+  }
+});
+
+test("SRS preview is non-mutating and exactly matches real review across card states", () => {
+  const scenarios = [
+    null,
+    { id: "card", type: "vocab", interval: 0, easeFactor: 2.5, repetitions: 0, lapses: 0, state: "new" },
+    { id: "card", type: "vocab", interval: 3, easeFactor: 2.3, repetitions: 1, lapses: 1, state: "learning" },
+    { id: "card", type: "vocab", interval: 47, easeFactor: 2.65, repetitions: 6, lapses: 2, state: "review" },
+    { id: "card", type: "vocab", interval: -99, easeFactor: 99, repetitions: -4, lapses: -8, state: "corrupt" }
+  ];
+
+  function makeStore(card) {
+    return {
+      state: { srs: { cards: card ? { card: structuredClone(card) } : {} } },
+      awardedXp: 0,
+      recordActivity(xp) { this.awardedXp += xp; }
+    };
+  }
+
+  for (const scenario of scenarios) {
+    for (const rating of [1, 2, 3, 4]) {
+      const previewStore = makeStore(scenario);
+      const reviewStore = makeStore(scenario);
+      const previewEngine = new SRSEngine(previewStore);
+      const reviewEngine = new SRSEngine(reviewStore);
+      const beforePreview = JSON.stringify(previewStore.state.srs.cards);
+
+      const preview = previewEngine.previewReview("card", rating, "vocab");
+      const actual = reviewEngine.review("card", rating, "vocab");
+
+      if (JSON.stringify(previewStore.state.srs.cards) !== beforePreview) {
+        throw new Error(`Preview mutated state for rating ${rating}`);
+      }
+      if (previewStore.awardedXp !== 0) {
+        throw new Error(`Preview awarded XP for rating ${rating}`);
+      }
+
+      for (const field of ["id", "type", "interval", "easeFactor", "repetitions", "lapses", "state"]) {
+        if (preview[field] !== actual[field]) {
+          throw new Error(`Preview/review drift for ${field}, rating ${rating}: ${preview[field]} vs ${actual[field]}`);
+        }
+      }
+    }
   }
 });
 
