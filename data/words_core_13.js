@@ -37,7 +37,7 @@ N("hypotheek","de","B1","mortgage (home loan)","housing","woninglening","=hypoth
 N("vve","de","B1","owners association (VvE)","housing","vereniging van eigenaren","'s"),
 
 // work & professional office
-N("collega","de","A1","colleague, co-worker","work","medewerker","s"),
+N("collega","de","A1","colleague, co-worker","work","medewerker","'s"),
 N("werkgever","de","A2","employer, boss","work","baas","s"),
 N("werknemer","de","A2","employee, worker","work","medewerker","s"),
 N("medewerker","de","A2","employee, staff member, associate","work","werknemer","s"),
