@@ -151,6 +151,10 @@
       });
     }
 
+    getCurrentXp() {
+      return (this.store && this.store.state && this.store.state.user && this.store.state.user.totalXp) || 0;
+    }
+
     updateHeaderStats() {
       const streakEl = document.getElementById("header-streak");
       const xpEl = document.getElementById("header-xp");
@@ -652,6 +656,7 @@
         });
         this.session.currentIndex = 0;
         this.session.revealed = false;
+        this.session.startXp = this.getCurrentXp();
       }
 
       if (this.session.currentIndex >= this.session.cards.length) {
@@ -748,18 +753,24 @@
     }
 
     renderSessionCompleteScreen() {
+      const startXp = typeof this.session.startXp === "number" ? this.session.startXp : this.getCurrentXp();
+      const currentXp = this.getCurrentXp();
+      const earnedXp = Math.max(0, currentXp - startXp);
+      const noun = this.session.itemNoun || "kaarten";
+      const count = this.session.cards ? this.session.cards.length : 0;
+
       return `
         <div class="card session-complete-card animate-fade">
           <div class="complete-icon">🎉</div>
           <h2>Geweldig gedaan!</h2>
-          <p>Je hebt deze oefensessie van ${this.session.cards.length} kaarten succesvol afgerond.</p>
+          <p>Je hebt deze oefensessie van ${count} ${noun} succesvol afgerond.</p>
           <div class="session-stats-row">
             <div class="session-stat-box">
-              <span class="stat-num">+${this.session.cards.length * 10}</span>
+              <span class="stat-num">+${earnedXp}</span>
               <span class="stat-label">XP Verdiend</span>
             </div>
             <div class="session-stat-box">
-              <span class="stat-num">${this.store.state.user.streak}</span>
+              <span class="stat-num">${(this.store && this.store.state && this.store.state.user && this.store.state.user.streak) || 0}</span>
               <span class="stat-label">Dagen Streak</span>
             </div>
           </div>
@@ -782,6 +793,7 @@
         this.session.currentIndex = 0;
         this.session.score = 0;
         this.session.feedback = null;
+        this.session.startXp = this.getCurrentXp();
       }
 
       if (this.session.currentIndex >= this.session.cards.length) {
@@ -857,6 +869,7 @@
         this.session.cards = Learning.sampleArray(eligible, sessionSize);
         this.session.currentIndex = 0;
         this.session.feedback = null;
+        this.session.startXp = this.getCurrentXp();
       }
 
       if (this.session.currentIndex >= this.session.cards.length) {
@@ -932,6 +945,7 @@
           .filter(Boolean);
         this.session.currentIndex = 0;
         this.session.feedback = null;
+        this.session.startXp = this.getCurrentXp();
       }
 
       if (this.session.currentIndex >= this.session.cards.length) {
@@ -1013,6 +1027,7 @@
         });
         this.session.currentIndex = 0;
         this.session.feedback = null;
+        this.session.startXp = this.getCurrentXp();
       }
 
       if (this.session.currentIndex >= this.session.cards.length) {
@@ -1090,6 +1105,7 @@
         });
         this.session.currentIndex = 0;
         this.session.feedback = null;
+        this.session.startXp = this.getCurrentXp();
       }
 
       if (this.session.currentIndex >= this.session.cards.length) {
@@ -1167,6 +1183,7 @@
         });
         this.session.currentIndex = 0;
         this.session.feedback = null;
+        this.session.startXp = this.getCurrentXp();
       }
 
       if (this.session.currentIndex >= this.session.cards.length) {
@@ -1249,6 +1266,7 @@
         this.session.cards = Learning.sampleArray(validNouns, sessionSize);
         this.session.currentIndex = 0;
         this.session.feedback = null;
+        this.session.startXp = this.getCurrentXp();
       }
 
       if (this.session.currentIndex >= this.session.cards.length) {
@@ -1319,6 +1337,7 @@
         this.session.cards = Learning.sampleArray(sentences, sessionSize);
         this.session.currentIndex = 0;
         this.session.feedback = null;
+        this.session.startXp = this.getCurrentXp();
       }
 
       if (this.session.currentIndex >= this.session.cards.length) {

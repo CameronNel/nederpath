@@ -1032,6 +1032,86 @@ test("Store: sanitizeStaleWordReferences prunes retired IDs safely", () => {
   }
 });
 
+// -------------------------------------------------------------------
+// 20. Session XP & Completion Screen Truthfulness Suite
+// -------------------------------------------------------------------
+test("Session XP: truthful delta arithmetic reads user.totalXp (not progress.xp)", () => {
+  // The store keeps earned XP under user.totalXp; progress.xp does not exist.
+  const session = {
+    startXp: 50,
+    cards: [1, 2, 3, 4, 5],
+    itemNoun: "zinnen"
+  };
+  const store = {
+    state: {
+      progress: {},
+      user: { totalXp: 120, streak: 3 }
+    }
+  };
+
+  const startXp = typeof session.startXp === "number" ? session.startXp : (store.state.user.totalXp || 0);
+  const currentXp = store.state.user.totalXp || 0;
+  const earnedXp = Math.max(0, currentXp - startXp);
+
+  if (earnedXp !== 70) {
+    throw new Error(`Expected earned XP 70, got ${earnedXp}`);
+  }
+
+  // When no XP earned
+  session.startXp = 120;
+  const noXpEarned = Math.max(0, (store.state.user.totalXp || 0) - session.startXp);
+  if (noXpEarned !== 0) {
+    throw new Error(`Expected 0 earned XP, got ${noXpEarned}`);
+  }
+
+  // The legacy progress.xp field is not part of the schema and must not be read.
+  if (store.state.progress.xp !== undefined) {
+    throw new Error("progress.xp unexpectedly exists in store schema");
+  }
+});
+
+test("Session XP: real store records XP under user.totalXp so completion deltas are non-zero", () => {
+  const mockStorage = {};
+  const mockLocalStorage = {
+    getItem: (k) => mockStorage[k] || null,
+    setItem: (k, v) => { mockStorage[k] = String(v); },
+    removeItem: (k) => { delete mockStorage[k]; }
+  };
+
+  const oldStorage = globalThis.localStorage;
+  const oldConsoleError = console.error;
+  const errors = [];
+  globalThis.localStorage = mockLocalStorage;
+  console.error = (...args) => errors.push(args.map(String).join(" "));
+
+  try {
+    const storeModule = { localStorage: mockLocalStorage, NederLearning: Learning };
+    new Function("globalThis", storeSrc)(storeModule);
+    const StoreClass = storeModule.NederStore.constructor;
+
+    const s = new StoreClass();
+    const startXp = s.state.user.totalXp || 0;
+    if (s.state.progress.xp !== undefined) {
+      throw new Error("Fresh store leaked a progress.xp field into the schema");
+    }
+
+    s.recordActivity(10);
+    s.recordActivity(10);
+    s.recordActivity(10);
+
+    const currentXp = s.state.user.totalXp || 0;
+    const earnedXp = Math.max(0, currentXp - startXp);
+
+    if (earnedXp !== 30) {
+      throw new Error(`Expected earned XP 30 from three 10-XP activities, got ${earnedXp}`);
+    }
+    if (errors.length) throw new Error(`Store emitted unexpected storage diagnostics: ${errors.join(" | ")}`);
+  } finally {
+    globalThis.localStorage = oldStorage;
+    console.error = oldConsoleError;
+  }
+});
+
 async function runAllTests() {
   for (const { name, fn } of testQueue) {
     try {

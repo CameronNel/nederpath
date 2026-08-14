@@ -539,6 +539,28 @@ async function runBrowserTests() {
     const srsAnnounce = await page.$eval("#live-announcer", (el) => el.textContent);
     assert(srsAnnounce.includes("opgeslagen") || srsAnnounce.includes("Sessie"), `SRS rating advance announced: '${srsAnnounce}'`);
 
+    // Session completion screen reports the EXACT XP earned from store deltas
+    await page.evaluate(() => {
+      globalThis.NederApp.store.state.settings.sessionSize = 2;
+      globalThis.NederApp.session.cards = [];
+      globalThis.NederApp.session.currentIndex = 0;
+      globalThis.NederApp.session.revealed = false;
+      globalThis.NederApp.session.feedback = null;
+      globalThis.NederApp.render();
+    });
+    await page.waitForSelector("#interactive-flashcard");
+    for (let i = 0; i < 2; i++) {
+      await page.evaluate(() => {
+        if (!globalThis.NederApp.session.revealed) globalThis.NederApp.toggleCardReveal();
+      });
+      await page.waitForSelector("#btn-srs-good");
+      await page.click("#btn-srs-good");
+      if (i === 0) await page.waitForSelector("#interactive-flashcard");
+    }
+    await page.waitForSelector(".session-complete-card");
+    const earnedXpText = await page.$eval(".session-complete-card .stat-num", (el) => el.textContent.trim());
+    assert(earnedXpText === "+20", `Session completion screen shows exact earned XP '+20' (found '${earnedXpText}')`);
+
     // Mode 2: De of Het Drill
     const drillNavBtn = await page.$("button[data-mode='article_drill']");
     if (drillNavBtn) {
