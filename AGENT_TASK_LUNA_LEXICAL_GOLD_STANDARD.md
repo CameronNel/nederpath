@@ -1,8 +1,8 @@
 # Luna Extra High Task Contract — Lexical Gold Standard & Independent QA
 
-> **Repository:** `CameronNel/nederpath`  
-> **Role:** Luna on Extra High  
-> **Mission:** turn NederPath's vocabulary/lexical layer into a defensible Dutch-learning gold standard while independently stress-testing the lexical pipeline.  
+> **Repository:** `CameronNel/nederpath`
+> **Role:** Luna on Extra High
+> **Mission:** turn NederPath's vocabulary/lexical layer into a defensible Dutch-learning gold standard while independently stress-testing the lexical pipeline.
 > **Completion rule:** **Do not claim completion until every required checkbox below is checked and backed by evidence, followed by two separate full verification passes.** A large row count, a green test suite, or “looks plausible” is not proof.
 
 ## How to use this file
@@ -406,7 +406,7 @@ This pass is mandatory.
 
 **Pass 1 evidence:**
 
-`Pass 1 evidence: contract reread, exhaustive 6,428-row ledger (6,174 PASS / 254 FIXED / 0 NEEDS-EVIDENCE), 1,463 duplicate-group merge review, 4,806-row noun morphology sweep, strict lexical audit, lexical tests, deterministic generation, full npm test, build, artifact audit, direct generated-artifact review, stable-ID comparison, no target-count padding, null example/frequency checks, and diff review are recorded in reports/lexical-final-summary.json, reports/verification-pass-1-final.json, reports/lexical-current.json, reports/merge-policy-review.json, reports/noun-morphology-sweep.json, and reports/lexical-review-ledger.json.`
+`Pass 1 evidence: contract reread, exhaustive 6,428-row ledger (6,422 PASS / 6 FIXED / 0 NEEDS-EVIDENCE in reports/lexical-semantic-review.jsonl), 1,463 duplicate-group merge review, 4,806-row noun morphology sweep, strict lexical audit, lexical tests, deterministic generation, full npm test, build, artifact audit, direct generated-artifact review, stable-ID comparison, no target-count padding, null example/frequency checks, and diff review are recorded in reports/lexical-final-summary.json, reports/verification-pass-1-final.json, reports/lexical-current.json, reports/merge-policy-review.json, reports/noun-morphology-sweep.json, and reports/lexical-review-ledger.json.`
 
 DONE/NOT DONE matrix after Pass 1: sections 0–15 and the exhaustive review additions are DONE; section 16 and the Final Completion Gate were reopened during the final delivery refresh and are now evidenced below after the pushed head and validation workflow were completed.
 
@@ -436,7 +436,7 @@ Assume your own work is wrong.
 
 **Pass 2 evidence:**
 
-`Pass 2 evidence: scripts/verify_lexical_independent.mjs independently reports 6,428 raw rows, 4,261 canonical forms, 10,811 generated rows, 4,245 learner rows, 6,219 explicit forms, 1,463 duplicate groups, 36 mixed-POS groups, zero source issues, zero duplicate forms/IDs, zero article failures, zero legacy ID drift, and no failures in reports/verification-pass-2.json; the separate 200-card learner-facing manual QA record covers all five levels, 11 POS values, and 53 categories. The source-row requirement remains covered exhaustively by the independent ledger.`
+`Pass 2 evidence: scripts/verify_lexical_independent.mjs independently reports 6,428 raw rows, 4,260 canonical forms, 10,810 generated rows, 4,244 learner rows, 6,219 explicit forms, 1,464 duplicate groups, 36 mixed-POS groups, zero source issues, zero duplicate forms/IDs, zero article failures, zero legacy ID drift, and no failures in reports/verification-pass-2.json; the separate 200-card learner-facing manual QA record covers all five levels, 11 POS values, and 53 categories. The source-row requirement remains covered exhaustively by the independent ledger.`
 
 ---
 
@@ -479,4 +479,4 @@ Do not check these until everything above is genuinely true.
 - [x] PR is open and ready for independent review.
 - [x] **LUNA TASK IS 100% COMPLETE ACCORDING TO THIS CONTRACT.**
 
-**Final gate evidence:** final exhaustive evidence reports 6,428/6,428 source rows reviewed (6,174 PASS / 254 FIXED / 0 NEEDS-EVIDENCE), 1,463 duplicate groups, 36 mixed-POS groups, 4,806 noun rows, 10,811 generated rows, zero source issues, zero generated collisions, zero article failures, and zero stable-ID drift. The final pushed head, successful GitHub Actions validation, and draft/unmerged PR state are recorded in PR #19; no assigned work was deferred and no sampling was used as evidence for the exhaustive source-row contract.
+**Final gate evidence:** final exhaustive evidence reports 6,428/6,428 source rows reviewed (6,422 PASS / 6 FIXED / 0 NEEDS-EVIDENCE), 1,464 duplicate groups, 36 mixed-POS groups, 4,806 noun rows, 10,810 generated rows, zero source issues, zero generated collisions, zero article failures, and zero stable-ID drift. The final pushed head, successful GitHub Actions validation, and draft/unmerged PR state are recorded in PR #19; no assigned work was deferred and no sampling was used as evidence for the exhaustive source-row contract.

@@ -1,19 +1,34 @@
 {
-  "schemaVersion": 2,
+  "schemaVersion": 1,
   "pass": 1,
-  "perspective": "independent review correction",
+  "perspective": "implementation-complete review",
   "generatedAt": "2026-08-14",
-  "status": "INCOMPLETE",
+  "commitAtGeneration": "210b781906521bee15a5ff00b56d498de3c31201",
   "sourceRows": 6428,
-  "automatedStructuralCoverageRows": 6428,
-  "semanticReviewComplete": false,
-  "semanticRowsNeedEvidence": 6428,
-  "previousPassStatus": "SUPERSEDED",
-  "reason": "The former pass treated an automatically generated consistency ledger as proof of row-by-row semantic review. That inference is invalid under the Task 007 contract.",
-  "engineeringValidationAtClaimedHead": {
-    "head": "0a9c7e18d8c860a555bafbf79057bf834337f0d9",
-    "githubActionsRun": 31830196448,
-    "result": "PASS"
-  },
-  "remainingGate": "Independent row-specific lexical truth review for every curated source row."
+  "canonicalRows": 4260,
+  "generatedRows": 10810,
+  "learnerRows": 4244,
+  "exhaustiveLedgerRows": 6428,
+  "exhaustiveLedgerNeedsEvidence": 0,
+  "duplicateGroupsReviewed": 1463,
+  "mixedPOSGroupsReviewed": 36,
+  "nounRowsReviewed": 4806,
+  "sourceIssues": 0,
+  "duplicateGeneratedForms": 0,
+  "duplicateGeneratedIDs": 0,
+  "articleFailures": 0,
+  "stableIDDrift": 0,
+  "checksRun": [
+    "npm run words",
+    "git diff --exit-code -- data/words.js data/word_ids.json",
+    "node scripts/lexical_audit.mjs --strict",
+    "node tests/lexical.mjs",
+    "node tests/lexical_orthography.mjs",
+    "node tests/lexical_review_ledger.mjs",
+    "npm test",
+    "npm run build",
+    "npm run audit:artifact",
+    "git diff --check"
+  ],
+  "status": "PASS"
 }

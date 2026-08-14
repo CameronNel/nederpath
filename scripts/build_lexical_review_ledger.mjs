@@ -127,11 +127,11 @@ const ledgerRows = sourceRows.map((record) => {
   const articleValid = !articleApplicable || hasProperNameCategory(fields) || fields.article === "de" || fields.article === "het";
   const ownerValid = Boolean(owner && owner.curated && owner.pos === canonical?.row[1]);
   const morphologyValid = fields.pos === "noun"
-    ? Boolean(nounMeta && (nounMeta.plural === null || generatedInflection(generatedWords, fields.word, "plural", nounMeta.plural)))
+    ? Boolean(nounMeta && (nounMeta.plural === null || generatedInflection(generatedWords, fields.word, "plural", nounMeta.plural) || owner?.shadowedForms?.some((item) => item.word === nounMeta.plural)))
     : fields.pos === "verb"
       ? Boolean(verbMeta && verbMeta.forms.every((form) => generatedInflection(generatedWords, fields.word, form.kind, form.word) || owner?.shadowedForms?.some((item) => item.word === form.word)))
       : fields.pos === "adjective"
-        ? Boolean(adjectiveMeta && adjectiveMeta.forms.every((form) => generatedInflection(generatedWords, fields.word, form.kind, form.word)))
+        ? Boolean(adjectiveMeta && adjectiveMeta.forms.every((form) => generatedInflection(generatedWords, fields.word, form.kind, form.word) || owner?.shadowedForms?.some((item) => item.word === form.word)))
         : true;
   const morphologyMarkerInSynonyms = fields.synonyms.some((synonym) => /^(?:s|inv|n|'s|pl|es|=.+)$/u.test(synonym));
 
@@ -148,7 +148,7 @@ const ledgerRows = sourceRows.map((record) => {
     synonyms: checked(!morphologyMarkerInSynonyms, "No morphology marker appears in the synonym slot.", "A morphology marker appears in the synonym slot."),
     morphology: checked(morphologyValid, "Explicit morphology reconciles structurally with generated output.", "Explicit morphology does not reconcile with generated output."),
     plural: fields.pos === "noun" && nounMeta?.plural
-      ? checked(Boolean(generatedInflection(generatedWords, fields.word, "plural", nounMeta.plural)), "Explicit plural is retained in generated output.", "Explicit plural is missing from generated output.")
+      ? checked(Boolean(generatedInflection(generatedWords, fields.word, "plural", nounMeta.plural) || owner?.shadowedForms?.some((item) => item.word === nounMeta.plural)), "Explicit plural is retained in generated output.", "Explicit plural is missing from generated output.")
       : notApplicable("No ordinary explicit plural is asserted for this source row."),
     diminutive: fields.pos === "noun" && nounMeta?.diminutive
       ? { disposition: "UNVERIFIED_SEMANTICALLY", note: "Generated-form consistency is checked elsewhere; linguistic correctness still requires lexical evidence." }

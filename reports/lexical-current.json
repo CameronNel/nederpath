@@ -1,10 +1,10 @@
 {
-  "generatedRows": 10811,
+  "generatedRows": 10810,
   "curatedSourceRows": 6428,
-  "uniqueCuratedSourceForms": 4261,
-  "learnableRows": 4245,
+  "uniqueCuratedSourceForms": 4260,
+  "learnableRows": 4244,
   "derivedReferenceRows": 6566,
-  "curatedGeneratedRows": 4261,
+  "curatedGeneratedRows": 4260,
   "sourceFiles": [
     "words_core_1.js",
     "words_core_10.js",
@@ -57,7 +57,7 @@
     "phrase": 39,
     "preposition": 34,
     "pronoun": 20,
-    "verb": 3544
+    "verb": 3543
   },
   "sourceCefr": {
     "A1": 1847,
@@ -69,7 +69,7 @@
   "generatedCefr": {
     "A1": 2226,
     "A2": 2476,
-    "B1": 5068,
+    "B1": 5067,
     "B2": 1014,
     "C1": 27
   },
@@ -86,11 +86,11 @@
   "sourceExplicitNounMeta": 3472,
   "sourceExplicitVerbMeta": 898,
   "sourceExplicitAdjectiveMeta": 83,
-  "duplicateSourceGroups": 1463,
-  "duplicateSourceOccurrences": 2167,
+  "duplicateSourceGroups": 1464,
+  "duplicateSourceOccurrences": 2168,
   "mergeDecisionCoverage": {
-    "rawDuplicateGroups": 1463,
-    "canonicalForms": 4261,
+    "rawDuplicateGroups": 1464,
+    "canonicalForms": 4260,
     "unmodeledGroups": 0
   },
   "duplicateGeneratedForms": 0,
@@ -15110,11 +15110,11 @@
     "phrase": 39
   },
   "pluralLikeInvariantRows": 136,
-  "shadowedExplicitForms": 318,
+  "shadowedExplicitForms": 312,
   "sourceIssues": [],
   "registry": {
-    "highWaterMark": 20083,
-    "entries": 20083,
+    "highWaterMark": 20086,
+    "entries": 20086,
     "error": null
   },
   "articleInvariantFailures": [],

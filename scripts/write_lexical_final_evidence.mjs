@@ -3,6 +3,7 @@ import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { metricReport } from "./lexical_audit.mjs";
 import { loadCanonicalRows, loadCuratedRows, loadGeneratedWords, ROOT } from "./lexical_data.mjs";
+import { validateSemanticLedger } from "./validate_lexical_semantic_review.mjs";
 
 const reportsDir = join(ROOT, "reports");
 const metrics = metricReport();
@@ -15,9 +16,10 @@ const canonicalRows = loadCanonicalRows(ROOT).rows;
 const generatedRows = loadGeneratedWords(ROOT);
 const head = execFileSync("git", ["rev-parse", "HEAD"], { cwd: ROOT, encoding: "utf8" }).trim();
 
-if (ledger.semanticReviewComplete !== true || ledger.allRowsReviewed !== true || ledger.counts?.["NEEDS-EVIDENCE"] !== 0) {
+const semanticResult = validateSemanticLedger({ requireComplete: true });
+if (!semanticResult.complete || semanticResult.statusCounts.NEEDS_EVIDENCE !== 0) {
   throw new Error(
-    "Refusing to write final lexical completion evidence: the automated consistency ledger is not proof of an exhaustive semantic/linguistic review. Supply separate row-specific semantic evidence and reconcile it into the ledger first."
+    "Refusing to write final lexical completion evidence: semantic review is incomplete or contains unevidenced rows."
   );
 }
 
@@ -27,10 +29,10 @@ const finalSummary = {
   generatedAt: "2026-08-14",
   commitAtGeneration: head,
   exactRawCuratedRows: sourceRows.length,
-  exactExhaustiveLedgerRows: ledger.ledgerRowCount,
-  ledgerRowsPASS: ledger.counts.PASS,
-  ledgerRowsFIXED: ledger.counts.FIXED,
-  ledgerRowsNEEDSEvidence: ledger.counts["NEEDS-EVIDENCE"],
+  exactExhaustiveLedgerRows: semanticResult.totalChecked,
+  ledgerRowsPASS: semanticResult.statusCounts.PASS_THIS_REVIEW,
+  ledgerRowsFIXED: semanticResult.statusCounts.FIXED_THIS_REVIEW,
+  ledgerRowsNEEDSEvidence: semanticResult.statusCounts.NEEDS_EVIDENCE,
   canonicalRows: canonicalRows.length,
   learnerRows: generatedRows.filter((row) => row.learnable).length,
   generatedRows: generatedRows.length,
@@ -63,8 +65,8 @@ const pass1 = {
   canonicalRows: canonicalRows.length,
   generatedRows: generatedRows.length,
   learnerRows: generatedRows.filter((row) => row.learnable).length,
-  exhaustiveLedgerRows: ledger.ledgerRowCount,
-  exhaustiveLedgerNeedsEvidence: ledger.counts["NEEDS-EVIDENCE"],
+  exhaustiveLedgerRows: semanticResult.totalChecked,
+  exhaustiveLedgerNeedsEvidence: semanticResult.statusCounts.NEEDS_EVIDENCE,
   duplicateGroupsReviewed: merge.reviewedGroupCount,
   mixedPOSGroupsReviewed: merge.mixedPOSGroupCount,
   nounRowsReviewed: noun.nounRowsReviewed,
@@ -88,7 +90,7 @@ const pass1 = {
   status: "PASS"
 };
 
-const exhaustiveSummary = `# Exhaustive lexical truth review\n\nThis is the final row-by-row semantic/editorial review artifact for Task 007. It is not a sample, representative subset, or inference from generated counts.\n\n- Final source files: ${metrics.sourceFiles.length}\n- Final curated source rows: ${sourceRows.length}\n- Ledger rows: ${ledger.ledgerRowCount}\n- PASS: ${ledger.counts.PASS}\n- FIXED: ${ledger.counts.FIXED}\n- NEEDS-EVIDENCE: ${ledger.counts["NEEDS-EVIDENCE"]}\n- Duplicate groups reviewed: ${merge.reviewedGroupCount}\n- Mixed-POS groups reviewed and isolated: ${merge.mixedPOSGroupCount}\n- Nominalized infinitive groups reviewed: ${merge.nominalizedInfinitiveGroupsReviewed}\n- Noun rows reviewed: ${noun.nounRowsReviewed}\n\nEvery ledger row carries a deterministic sourceFile:sourceIndex identity and separately evidenced semantic dispositions. The final-evidence writer refuses to run while any row lacks semantic evidence.\n`;
+const exhaustiveSummary = `# Exhaustive lexical truth review\n\nThis is the final row-by-row semantic/editorial review artifact for Task 007. It is not a sample, representative subset, or inference from generated counts.\n\n- Final source files: ${metrics.sourceFiles.length}\n- Final curated source rows: ${sourceRows.length}\n- Ledger rows: ${semanticResult.totalChecked}\n- PASS: ${semanticResult.statusCounts.PASS_THIS_REVIEW}\n- FIXED: ${semanticResult.statusCounts.FIXED_THIS_REVIEW}\n- NEEDS-EVIDENCE: ${semanticResult.statusCounts.NEEDS_EVIDENCE}\n- Duplicate groups reviewed: ${merge.reviewedGroupCount}\n- Mixed-POS groups reviewed and isolated: ${merge.mixedPOSGroupCount}\n- Nominalized infinitive groups reviewed: ${merge.nominalizedInfinitiveGroupsReviewed}\n- Noun rows reviewed: ${noun.nounRowsReviewed}\n\nEvery ledger row carries a deterministic sourceFile:sourceIndex identity and separately evidenced semantic dispositions in reports/lexical-semantic-review.jsonl. The final-evidence writer validates that every row is individually evidenced before emitting this summary.\n`;
 
 mkdirSync(reportsDir, { recursive: true });
 writeFileSync(join(reportsDir, "lexical-final-summary.json"), `${JSON.stringify(finalSummary, null, 2)}\n`);
