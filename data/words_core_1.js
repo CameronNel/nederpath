@@ -246,7 +246,7 @@ V("liegen","A2","to lie (not tell truth)","actions","lieg|liegt|loog|logen|gelog
 V("gieten","B1","to pour","actions","giet|giet|goot|goten|gegoten"),
 V("genieten","A2","to enjoy","actions","geniet|geniet|genoot|genoten|genoten"),
 V("schieten","B1","to shoot","actions","schiet|schiet|schoot|schoten|geschoten"),
-V("verdwijnen","A2","to disappear","actions","verdwijnt|verdwijnt|verdween|verdwenen|verdwenen"),
+V("verdwijnen","A2","to disappear","actions","verdwijn|verdwijnt|verdween|verdwenen|verdwenen"),
 V("verschijnen","B1","to appear","actions","verschijn|verschijnt|verscheen|verschenen|verschenen"),
 V("groeien","A2","to grow","actions","groei|groeit|groeide|groeiden|gegroeid"),
 V("glijden","B1","to slide, to glide","actions","glijd|glijdt|gleed|gleden|gegleden"),
