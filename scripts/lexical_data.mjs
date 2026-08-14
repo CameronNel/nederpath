@@ -62,6 +62,14 @@ function sourceRecordKey(record) {
   return `${record.file}:${record.index}`;
 }
 
+function resolvePrimarySelector(records, selector) {
+  if (typeof selector !== "string" || !selector) return null;
+  const exact = records.find((record) => sourceRecordKey(record) === selector);
+  if (exact) return exact;
+  const sameFile = records.filter((record) => record.file === selector);
+  return sameFile.length === 1 ? sameFile[0] : null;
+}
+
 function metaQuality(pos, meta, word) {
   if (!meta) return 0;
   try {
@@ -90,16 +98,18 @@ export function loadCanonicalRows(root = ROOT) {
   }
   const policy = readMergePolicy(root);
 
-  // Policy entries are executable editorial decisions. A stale source index or
-  // typo must fail closed rather than silently falling back to an inferred row.
-  for (const [norm, recordKey] of Object.entries(policy.primary)) {
-    if (norm !== normalizeLexicalForm(norm) || typeof recordKey !== "string") {
-      throw new Error(`Invalid primary merge-policy entry '${norm}' -> '${recordKey}'`);
+  // Policy entries are executable editorial decisions. Prefer stable file
+  // selectors; legacy file:index selectors remain accepted when still exact.
+  // Any missing or ambiguous selector fails closed instead of silently falling
+  // back to an inferred owner.
+  for (const [norm, selector] of Object.entries(policy.primary)) {
+    if (norm !== normalizeLexicalForm(norm) || typeof selector !== "string") {
+      throw new Error(`Invalid primary merge-policy entry '${norm}' -> '${selector}'`);
     }
     const group = groups.get(norm);
     if (!group) throw new Error(`Primary merge-policy entry '${norm}' has no source group`);
-    if (!group.some((record) => sourceRecordKey(record) === recordKey)) {
-      throw new Error(`Primary merge-policy entry '${norm}' points to missing source row '${recordKey}'`);
+    if (!resolvePrimarySelector(group, selector)) {
+      throw new Error(`Primary merge-policy entry '${norm}' has missing or ambiguous selector '${selector}'`);
     }
   }
   for (const [norm, article] of Object.entries(policy.article)) {
@@ -115,7 +125,7 @@ export function loadCanonicalRows(root = ROOT) {
   const canonical = [];
   for (const [norm, records] of groups) {
     const override = policy.primary[norm];
-    let primary = override ? records.find((record) => sourceRecordKey(record) === override) : null;
+    let primary = override ? resolvePrimarySelector(records, override) : null;
     if (!primary) {
       const posSet = new Set(records.map((record) => record.row[1]));
       const preferredPos = posSet.has("noun") ? "noun" : posSet.has("verb") ? "verb" : records[0].row[1];
