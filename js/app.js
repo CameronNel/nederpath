@@ -184,6 +184,10 @@
       });
     }
 
+    getStreakNoun(streak) {
+      return Number(streak) === 1 ? "dag" : "dagen";
+    }
+
     updateHeaderStats() {
       const streakEl = document.getElementById("header-streak");
       const xpEl = document.getElementById("header-xp");
@@ -367,7 +371,7 @@
             <div class="today-hero-left">
               <span class="greeting-badge">Welkom terug, ${Learning.escapeHTML(user.name)}!</span>
               <h1 class="today-title">Klaar voor je dagelijkse portie Nederlands?</h1>
-              <p class="today-subtitle">Je streak staat op <strong>${user.streak} dagen</strong>. Blijf consistent om vloeiend te worden!</p>
+              <p class="today-subtitle">Je streak staat op <strong>${user.streak} ${this.getStreakNoun(user.streak)}</strong>. Blijf consistent om vloeiend te worden!</p>
               
               <div class="daily-progress-box">
                 <div class="progress-info">
@@ -806,7 +810,7 @@
             </div>
             <div class="session-stat-box">
               <span class="stat-num">${(this.store && this.store.state && this.store.state.user && this.store.state.user.streak) || 0}</span>
-              <span class="stat-label">Dagen Streak</span>
+              <span class="stat-label">${this.getStreakNoun((this.store && this.store.state && this.store.state.user && this.store.state.user.streak) || 0) === "dag" ? "Dag Streak" : "Dagen Streak"}</span>
             </div>
           </div>
           <div class="complete-actions">
@@ -2341,7 +2345,7 @@
             <div class="card stat-big-card">
               <span class="stat-big-icon">🔥</span>
               <div class="stat-big-num">${user.streak}</div>
-              <div class="stat-big-lbl">Dagen Streak</div>
+              <div class="stat-big-lbl">${this.getStreakNoun(user.streak) === "dag" ? "Dag Streak" : "Dagen Streak"}</div>
             </div>
             <div class="card stat-big-card">
               <span class="stat-big-icon">🏆</span>

@@ -177,6 +177,31 @@ async function runBrowserTests() {
     assert(title.includes("NederPath"), "Page title contains 'NederPath'");
     assert(unhandledErrors.length === 0 && jsConsoleErrors.length === 0, "Zero browser console errors or unhandled exceptions on initial load", jsConsoleErrors.join("; "));
 
+    // 1b. Dutch streak noun agrees with the streak count (1 dag, not 1 dagen)
+    await page.evaluate(() => {
+      globalThis.NederStore.state.user.streak = 1;
+      globalThis.NederApp.render();
+    });
+    await page.waitForSelector(".today-subtitle");
+    const singleDaySubtitle = await page.$eval(".today-subtitle", (el) => el.textContent);
+    assert(singleDaySubtitle.includes("1 dag") && !singleDaySubtitle.includes("1 dagen"), `Today subtitle uses singular 'dag' for a 1-day streak: '${singleDaySubtitle.trim()}'`);
+    await page.evaluate(() => {
+      globalThis.NederStore.state.user.streak = 0;
+      globalThis.NederApp.render();
+    });
+    await page.waitForSelector(".today-subtitle");
+    const zeroDaySubtitle = await page.$eval(".today-subtitle", (el) => el.textContent);
+    assert(zeroDaySubtitle.includes("0 dagen"), `Today subtitle uses plural 'dagen' for a 0-day streak: '${zeroDaySubtitle.trim()}'`);
+
+    // Corrupted fractional streak values must never be rounded into the singular noun
+    await page.evaluate(() => {
+      globalThis.NederStore.state.user.streak = 0.6;
+      globalThis.NederApp.render();
+    });
+    await page.waitForSelector(".today-subtitle");
+    const fractionalSubtitle = await page.$eval(".today-subtitle", (el) => el.textContent);
+    assert(fractionalSubtitle.includes("0.6 dagen") && !/0\.6 dag(?!en)/.test(fractionalSubtitle), `Fractional streak stays plural and unrounded: '${fractionalSubtitle.trim()}'`);
+
     // 2. Lazy Data Loading & Asset Budget Verification
     const requestedWords = requestedUrls.some((u) => u.includes("data/words.js"));
     const requestedSentences = requestedUrls.some((u) => u.includes("data/sentences.js"));
