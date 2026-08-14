@@ -270,12 +270,20 @@ async function runBrowserTests() {
     const injectedSpan = await page.$("#injected-span-test");
     assert(injectedSpan === null, "Search input dynamic interpolation escaped (no element injection)");
 
-    // Toggle star/bookmark on first word
+    // Toggle star/bookmark on first word (aria-pressed reflects state; accessible name is stable)
+    await page.click("#btn-clear-search");
+    await page.waitForSelector(".word-item-card");
     const starBtn = await page.$(".btn-star");
-    if (starBtn) {
-      await starBtn.click();
-      assert(true, "Toggled word bookmark/star");
-    }
+    assert(starBtn !== null, "Bookmark star button is present on dictionary results");
+    const pressedBefore = await page.$eval(".btn-star", (el) => el.getAttribute("aria-pressed"));
+    const nameBefore = await page.$eval(".btn-star", (el) => el.getAttribute("aria-label"));
+    assert(pressedBefore === "false" || pressedBefore === "true", `Star button announces aria-pressed state ('${pressedBefore}')`);
+    assert(nameBefore === "Favoriet", `Star button accessible name is stable and meaningful ('${nameBefore}')`);
+    await starBtn.click();
+    const pressedAfter = await page.$eval(".btn-star", (el) => el.getAttribute("aria-pressed"));
+    const nameAfter = await page.$eval(".btn-star", (el) => el.getAttribute("aria-label"));
+    assert(pressedAfter === (pressedBefore === "true" ? "false" : "true"), `Star button aria-pressed toggles on click (${pressedBefore} -> ${pressedAfter})`);
+    assert(nameAfter === nameBefore, `Star button accessible name does not change with state ('${nameBefore}' -> '${nameAfter}')`);
 
     // Audit accessible label associations on Words view
     const wordsUnlabeled = await page.evaluate(() => {
@@ -293,7 +301,8 @@ async function runBrowserTests() {
 
     // 4b. Lexical Truthfulness Browser Searches: Lemma, Plural, Diminutive Plural, Phrase, Ordinal
     // 1. Search Lemma: 'huis'
-    await page.click("#btn-clear-search");
+    const clearBtnForLemma = await page.$("#btn-clear-search");
+    if (clearBtnForLemma) await clearBtnForLemma.click();
     await page.type("#words-search-input", "huis");
     await new Promise((r) => setTimeout(r, 200));
     const lemmaCard = await page.evaluateHandle(() => {

@@ -2220,7 +2220,7 @@
                       <span class="word-level-badge badge-${Learning.escapeHTML(w.level.toLowerCase())}">${Learning.escapeHTML(w.level)}</span>
                       ${badgeType}
                     </div>
-                    <button class="btn-star ${isStarred ? 'starred' : ''}" data-star-id="${Learning.escapeHTML(w.id)}" title="Favoriet opslaan">
+                    <button class="btn-star ${isStarred ? 'starred' : ''}" data-star-id="${Learning.escapeHTML(w.id)}" title="${isStarred ? 'Favoriet verwijderen' : 'Favoriet opslaan'}" aria-pressed="${isStarred ? 'true' : 'false'}" aria-label="Favoriet">
                       ${isStarred ? '★' : '☆'}
                     </button>
                   </div>
