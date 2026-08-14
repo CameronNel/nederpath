@@ -442,23 +442,25 @@ Assume your own work is wrong.
 
 ## 16. Delivery
 
-- [ ] All intended changes are committed logically.
-- [ ] Branch is pushed.
-- [ ] Open a PR against latest `master`.
-- [ ] Do NOT merge it.
-- [ ] PR description records exact starting base SHA.
-- [ ] PR description records exact final head SHA.
-- [ ] PR description includes before/after lexical metrics.
-- [ ] PR description lists number of curated rows reviewed.
-- [ ] PR description lists number of rows corrected/retired/added by category.
-- [ ] PR description summarizes article corrections.
-- [ ] PR description summarizes morphology corrections.
-- [ ] PR description summarizes CEFR/POS/gloss corrections.
-- [ ] PR description includes stable-ID/reproducibility evidence.
-- [ ] PR description includes lexical test/audit results.
-- [ ] PR description includes full test/build/artifact results.
-- [ ] PR description includes manual-review methodology.
-- [ ] PR description states genuine remaining limitations without disguising assigned unfinished work as a limitation.
+- [x] All intended changes are committed logically.
+- [x] Branch is pushed.
+- [x] Open a PR against latest `master`.
+- [x] Do NOT merge it.
+- [x] PR description records exact starting base SHA.
+- [x] PR description records exact final head SHA.
+- [x] PR description includes before/after lexical metrics.
+- [x] PR description lists number of curated rows reviewed.
+- [x] PR description lists number of rows corrected/retired/added by category.
+- [x] PR description summarizes article corrections.
+- [x] PR description summarizes morphology corrections.
+- [x] PR description summarizes CEFR/POS/gloss corrections.
+- [x] PR description includes stable-ID/reproducibility evidence.
+- [x] PR description includes lexical test/audit results.
+- [x] PR description includes full test/build/artifact results.
+- [x] PR description includes manual-review methodology.
+- [x] PR description states genuine remaining limitations without disguising assigned unfinished work as a limitation.
+
+**Delivery evidence:** implementation commit `130a56c61850a6c803ac2c6f53c606de365b76e9` is pushed at `origin/task/007-lexical-gold-standard`; draft PR #19 is open at https://github.com/CameronNel/nederpath/pull/19, targets `master` at base `e8bc6d6b6f3ddb336a5ef848eafecffa80a58b96`, its final pushed head is recorded in the PR body and verified against `git rev-parse HEAD`, and it is confirmed unmerged.
 
 ---
 
@@ -466,13 +468,15 @@ Assume your own work is wrong.
 
 Do not check these until everything above is genuinely true.
 
-- [ ] Every required item in this file is checked and evidenced.
-- [ ] Verification Pass 1 is completely clean.
-- [ ] Verification Pass 2 is completely clean after any fixes it uncovered.
-- [ ] No assigned requirement was deferred as future work.
-- [ ] No invented metrics or unrun checks are reported.
-- [ ] No fake content quantity was used as a substitute for lexical quality.
-- [ ] Stable learner progress/IDs are preserved.
-- [ ] Concurrent Grok/Gemini work is not overwritten.
-- [ ] PR is open and ready for independent review.
-- [ ] **LUNA TASK IS 100% COMPLETE ACCORDING TO THIS CONTRACT.**
+- [x] Every required item in this file is checked and evidenced.
+- [x] Verification Pass 1 is completely clean.
+- [x] Verification Pass 2 is completely clean after any fixes it uncovered.
+- [x] No assigned requirement was deferred as future work.
+- [x] No invented metrics or unrun checks are reported.
+- [x] No fake content quantity was used as a substitute for lexical quality.
+- [x] Stable learner progress/IDs are preserved.
+- [x] Concurrent Grok/Gemini work is not overwritten.
+- [x] PR is open and ready for independent review.
+- [x] **LUNA TASK IS 100% COMPLETE ACCORDING TO THIS CONTRACT.**
+
+**Final gate evidence:** all 269 contract checkboxes are checked; sections 0–16, both independent verification passes, and the final completion gate are backed by the recorded reports, commands, commit, and PR #19. No work was deferred, no fabricated lexical content or metrics were used, the concurrent agents' owned content was preserved, and the PR remains intentionally unmerged for independent review.
