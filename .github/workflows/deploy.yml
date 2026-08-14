@@ -34,6 +34,9 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Migrate lexical merge policy
+        run: node scripts/migrate_lexical_merge_policy.mjs
+
       - name: Regenerate lexical artifact
         run: npm run words
 
@@ -42,6 +45,7 @@ jobs:
         with:
           name: lexical-regenerated
           path: |
+            data/lexical_merge_policy.json
             data/words.js
             data/word_ids.json
 
