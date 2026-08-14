@@ -3,14 +3,47 @@
   "use strict";
 
   const Learning = global.NederLearning || {
-    escapeHTML: (s) => (typeof s === "string" ? s.replace(/[&<>"']/g, "") : ""),
+    escapeHTML: (s) =>
+      (typeof s === "string"
+        ? s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#39;")
+        : ""),
     getLocalISODate: (d = new Date()) => {
       const date = d instanceof Date ? d : new Date(d);
       return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}-${String(date.getDate()).padStart(2, "0")}`;
     },
-    shuffleArray: (arr) => (Array.isArray(arr) ? arr.slice().sort(() => Math.random() - 0.5) : []),
-    sampleArray: (arr, count = 10) => (Array.isArray(arr) ? arr.slice().sort(() => Math.random() - 0.5).slice(0, count) : []),
-    normalizeAnswer: (str) => (typeof str === "string" ? str.trim().toLowerCase().replace(/[.,/#!$%^&*;:{}=\-_`~()?"']/g, "") : ""),
+    shuffleArray: (arr) => {
+      if (!Array.isArray(arr)) return [];
+      const res = arr.slice();
+      for (let i = res.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        const temp = res[i];
+        res[i] = res[j];
+        res[j] = temp;
+      }
+      return res;
+    },
+    sampleArray: (arr, count = 10) => {
+      if (!Array.isArray(arr)) return [];
+      const n = Math.max(0, Math.min(arr.length, Number.isFinite(count) ? Math.floor(count) : 10));
+      const res = arr.slice();
+      for (let i = res.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        const temp = res[i];
+        res[i] = res[j];
+        res[j] = temp;
+      }
+      return res.slice(0, n);
+    },
+    normalizeAnswer: (str) => {
+      if (typeof str !== "string") return "";
+      return str
+        .normalize("NFKC")
+        .trim()
+        .toLowerCase()
+        .replace(/^[¿¡"«»“”‘’]+/u, "")
+        .replace(/[.,!?;:…"«»“”‘’]+$/u, "")
+        .replace(/\s+/gu, " ");
+    },
     getDutchVerbStem: () => "",
     getVerbHijConjugation: () => null,
     getEligibleVerbs: () => [],
@@ -149,6 +182,10 @@
           }
         }
       });
+    }
+
+    getStreakNoun(streak) {
+      return Number(streak) === 1 ? "dag" : "dagen";
     }
 
     updateHeaderStats() {
@@ -334,7 +371,7 @@
             <div class="today-hero-left">
               <span class="greeting-badge">Welkom terug, ${Learning.escapeHTML(user.name)}!</span>
               <h1 class="today-title">Klaar voor je dagelijkse portie Nederlands?</h1>
-              <p class="today-subtitle">Je streak staat op <strong>${user.streak} dagen</strong>. Blijf consistent om vloeiend te worden!</p>
+              <p class="today-subtitle">Je streak staat op <strong>${user.streak} ${this.getStreakNoun(user.streak)}</strong>. Blijf consistent om vloeiend te worden!</p>
               
               <div class="daily-progress-box">
                 <div class="progress-info">
@@ -382,10 +419,10 @@
             ${spotlightRule ? `
               <div class="card spotlight-card">
                 <div class="card-tag">Uitgelichte Grammaticaregel</div>
-                <h3 class="spotlight-title">${spotlightRule.title}</h3>
-                <div class="spotlight-nl">${spotlightRule.titleNl}</div>
-                <p class="spotlight-desc">${spotlightRule.summary}</p>
-                <button class="btn btn-secondary btn-sm" id="btn-open-spotlight-grammar" data-rule-id="${spotlightRule.id}">Bekijk Regel & Oefeningen →</button>
+                <h3 class="spotlight-title">${Learning.escapeHTML(spotlightRule.title)}</h3>
+                <div class="spotlight-nl">${Learning.escapeHTML(spotlightRule.titleNl)}</div>
+                <p class="spotlight-desc">${Learning.escapeHTML(spotlightRule.summary)}</p>
+                <button class="btn btn-secondary btn-sm" id="btn-open-spotlight-grammar" data-rule-id="${Learning.escapeHTML(spotlightRule.id)}">Bekijk Regel & Oefeningen →</button>
               </div>
             ` : ""}
 
@@ -394,14 +431,14 @@
               <div class="card idiom-card">
                 <div class="idiom-header">
                   <span class="card-tag">Uitdrukking van de Dag</span>
-                  <span class="grammar-level badge-${todayIdiom.level.toLowerCase()}">${todayIdiom.level}</span>
+                  <span class="grammar-level badge-${Learning.escapeHTML(todayIdiom.level.toLowerCase())}">${Learning.escapeHTML(todayIdiom.level)}</span>
                 </div>
-                <h3 class="idiom-dutch">“${todayIdiom.dutch}”</h3>
-                ${todayIdiom.literal ? `<div class="idiom-literal"><strong>Letterlijk:</strong> <em>${todayIdiom.literal}</em></div>` : ""}
-                <div class="idiom-meaning"><strong>Betekenis:</strong> ${todayIdiom.meaning}</div>
+                <h3 class="idiom-dutch">“${Learning.escapeHTML(todayIdiom.dutch)}”</h3>
+                ${todayIdiom.literal ? `<div class="idiom-literal"><strong>Letterlijk:</strong> <em>${Learning.escapeHTML(todayIdiom.literal)}</em></div>` : ""}
+                <div class="idiom-meaning"><strong>Betekenis:</strong> ${Learning.escapeHTML(todayIdiom.meaning)}</div>
                 <div class="idiom-example-box">
-                  <div class="idiom-example-nl">“${todayIdiom.example}”</div>
-                  <div class="idiom-example-en">${todayIdiom.exampleEn}</div>
+                  <div class="idiom-example-nl">“${Learning.escapeHTML(todayIdiom.example)}”</div>
+                  ${todayIdiom.exampleEn ? `<div class="idiom-example-en">${Learning.escapeHTML(todayIdiom.exampleEn)}</div>` : ""}
                 </div>
               </div>
             ` : ""}
@@ -535,7 +572,7 @@
           <!-- Practice Mode Selector Bar -->
           <div class="practice-nav-bar">
             ${modes.map((m) => `
-              <button class="btn btn-sm ${this.practiceMode === m.id ? 'btn-primary' : 'btn-outline'}" data-mode="${m.id}">
+              <button class="btn btn-sm ${this.practiceMode === m.id ? 'btn-primary' : 'btn-outline'}" data-mode="${m.id}" aria-pressed="${this.practiceMode === m.id ? 'true' : 'false'}">
                 ${m.icon} ${m.name}
               </button>
             `).join("")}
@@ -582,6 +619,7 @@
           this.session.currentIndex = 0;
           this.session.revealed = false;
           this.session.feedback = null;
+          this.session.startXp = (this.store && this.store.state && this.store.state.user && this.store.state.user.totalXp) || 0;
           this.render();
         });
       });
@@ -593,6 +631,7 @@
           this.session.currentIndex = 0;
           this.session.revealed = false;
           this.session.feedback = null;
+          this.session.startXp = (this.store && this.store.state && this.store.state.user && this.store.state.user.totalXp) || 0;
           this.render();
         });
       }
@@ -652,6 +691,8 @@
         });
         this.session.currentIndex = 0;
         this.session.revealed = false;
+        this.session.itemNoun = "kaarten";
+        this.session.startXp = (this.store && this.store.state && this.store.state.user && this.store.state.user.totalXp) || 0;
       }
 
       if (this.session.currentIndex >= this.session.cards.length) {
@@ -659,30 +700,33 @@
       }
 
       const card = this.session.cards[this.session.currentIndex];
+      const preview = this.srs.previewRatings(card.id, "vocab");
       const isNoun = card.pos === "noun" && card.article;
-      const displayDutch = isNoun ? `<span class="word-article article-${card.article}">${card.article}</span> ${card.word}` : card.word;
+      const displayDutch = isNoun
+        ? `<span class="word-article article-${Learning.escapeHTML(card.article)}">${Learning.escapeHTML(card.article)}</span> ${Learning.escapeHTML(card.word)}`
+        : Learning.escapeHTML(card.word);
 
       return `
         <div class="flashcard-wrapper animate-fade">
           <div class="flashcard-header-bar">
             <span>Kaart ${this.session.currentIndex + 1} van ${this.session.cards.length}</span>
-            <span class="word-level-badge badge-${card.level.toLowerCase()}">${card.level}</span>
+            <span class="word-level-badge badge-${Learning.escapeHTML(card.level.toLowerCase())}">${Learning.escapeHTML(card.level)}</span>
           </div>
 
-          <button type="button" class="card flashcard flashcard-interactive ${this.session.revealed ? 'revealed' : ''}" id="interactive-flashcard" aria-expanded="${this.session.revealed ? 'true' : 'false'}" aria-label="Flitskaart voor ${card.word}. ${this.session.revealed ? 'Betekenis: ' + (card.meaning || card.word) : 'Druk op spatie of enter om de betekenis te onthullen'}">
+          <button type="button" class="card flashcard flashcard-interactive ${this.session.revealed ? 'revealed' : ''}" id="interactive-flashcard" aria-expanded="${this.session.revealed ? 'true' : 'false'}" aria-label="Flitskaart voor ${Learning.escapeHTML(card.word)}. ${this.session.revealed ? 'Betekenis: ' + Learning.escapeHTML(card.meaning || card.word) : 'Druk op spatie of enter om de betekenis te onthullen'}">
             <span class="flashcard-front">
-              <span class="flashcard-pos">${card.pos.toUpperCase()}</span>
+              <span class="flashcard-pos">${Learning.escapeHTML(card.pos.toUpperCase())}</span>
               <span class="flashcard-dutch">${displayDutch}</span>
-              ${card.example ? `<span class="flashcard-example">“${card.example}”</span>` : ""}
+              ${card.example ? `<span class="flashcard-example">“${Learning.escapeHTML(card.example)}”</span>` : ""}
               <span class="flashcard-hint">Tik op de kaart of druk op [Spatie/Enter] om het antwoord te zien</span>
             </span>
 
             ${this.session.revealed ? `
               <span class="flashcard-back animate-fade">
-                <span class="flashcard-meaning">${card.meaning || card.word}</span>
-                ${card.exampleEn ? `<span class="flashcard-example-en">${card.exampleEn}</span>` : ""}
-                ${card.synonyms && card.synonyms.length > 0 ? `<span class="flashcard-synonyms"><strong>Synoniemen:</strong> ${card.synonyms.join(", ")}</span>` : ""}
-                <span class="flashcard-category">Categorie: ${card.category}</span>
+                <span class="flashcard-meaning">${Learning.escapeHTML(card.meaning || card.word)}</span>
+                ${card.exampleEn ? `<span class="flashcard-example-en">${Learning.escapeHTML(card.exampleEn)}</span>` : ""}
+                ${card.synonyms && card.synonyms.length > 0 ? `<span class="flashcard-synonyms"><strong>Synoniemen:</strong> ${card.synonyms.map((s) => Learning.escapeHTML(s)).join(", ")}</span>` : ""}
+                <span class="flashcard-category">Categorie: ${Learning.escapeHTML(card.category)}</span>
               </span>
             ` : ""}
           </button>
@@ -690,16 +734,16 @@
           ${this.session.revealed ? `
             <div class="srs-controls animate-fade">
               <button type="button" class="btn btn-srs btn-again" id="btn-srs-again" data-rating="1">
-                <span>1</span> Opnieuw<small>(&lt; 1 dag)</small>
+                <span>1</span> Opnieuw<small>(${preview[1].formattedDutch || preview[1].formattedInterval})</small>
               </button>
               <button type="button" class="btn btn-srs btn-hard" id="btn-srs-hard" data-rating="2">
-                <span>2</span> Moeilijk<small>(2 dagen)</small>
+                <span>2</span> Moeilijk<small>(${preview[2].formattedDutch || preview[2].formattedInterval})</small>
               </button>
               <button type="button" class="btn btn-srs btn-good" id="btn-srs-good" data-rating="3">
-                <span>3</span> Goed<small>(4 dagen)</small>
+                <span>3</span> Goed<small>(${preview[3].formattedDutch || preview[3].formattedInterval})</small>
               </button>
               <button type="button" class="btn btn-srs btn-easy" id="btn-srs-easy" data-rating="4">
-                <span>4</span> Makkelijk<small>(7 dagen)</small>
+                <span>4</span> Makkelijk<small>(${preview[4].formattedDutch || preview[4].formattedInterval})</small>
               </button>
             </div>
           ` : ""}
@@ -748,19 +792,25 @@
     }
 
     renderSessionCompleteScreen() {
+      const startXp = typeof this.session.startXp === "number" ? this.session.startXp : ((this.store && this.store.state && this.store.state.user && this.store.state.user.totalXp) || 0);
+      const currentXp = (this.store && this.store.state && this.store.state.user && this.store.state.user.totalXp) || 0;
+      const earnedXp = Math.max(0, currentXp - startXp);
+      const noun = this.session.itemNoun || "kaarten";
+      const count = this.session.cards ? this.session.cards.length : 0;
+
       return `
         <div class="card session-complete-card animate-fade">
           <div class="complete-icon">🎉</div>
           <h2>Geweldig gedaan!</h2>
-          <p>Je hebt deze oefensessie van ${this.session.cards.length} kaarten succesvol afgerond.</p>
+          <p>Je hebt deze oefensessie van ${count} ${noun} succesvol afgerond.</p>
           <div class="session-stats-row">
             <div class="session-stat-box">
-              <span class="stat-num">+${this.session.cards.length * 10}</span>
+              <span class="stat-num">+${earnedXp}</span>
               <span class="stat-label">XP Verdiend</span>
             </div>
             <div class="session-stat-box">
-              <span class="stat-num">${this.store.state.user.streak}</span>
-              <span class="stat-label">Dagen Streak</span>
+              <span class="stat-num">${(this.store && this.store.state && this.store.state.user && this.store.state.user.streak) || 0}</span>
+              <span class="stat-label">${this.getStreakNoun((this.store && this.store.state && this.store.state.user && this.store.state.user.streak) || 0) === "dag" ? "Dag Streak" : "Dagen Streak"}</span>
             </div>
           </div>
           <div class="complete-actions">
@@ -782,6 +832,8 @@
         this.session.currentIndex = 0;
         this.session.score = 0;
         this.session.feedback = null;
+        this.session.itemNoun = "vragen";
+        this.session.startXp = (this.store && this.store.state && this.store.state.user && this.store.state.user.totalXp) || 0;
       }
 
       if (this.session.currentIndex >= this.session.cards.length) {
@@ -801,8 +853,8 @@
 
           <div class="card drill-card">
             <span class="drill-sub">Kies het juiste lidwoord voor:</span>
-            <div class="drill-noun">${item.word}</div>
-            <div class="drill-meaning">${item.meaning || ""}</div>
+            <div class="drill-noun">${Learning.escapeHTML(item.word)}</div>
+            <div class="drill-meaning">${Learning.escapeHTML(item.meaning || "")}</div>
 
             <div class="drill-options">
               <button type="button" class="btn btn-drill btn-de" data-choice="de" ${this.session.feedback ? 'disabled' : ''}>de</button>
@@ -812,7 +864,7 @@
             ${this.session.feedback ? `
               <div class="drill-feedback ${this.session.feedback.isCorrect ? 'feedback-correct' : 'feedback-wrong'} animate-fade">
                 ${this.session.feedback.isCorrect ? '✓ Uitstekend!' : '✗ Helaas niet juist.'}
-                Het is <strong>${item.article} ${item.word}</strong>.
+                Het is <strong>${Learning.escapeHTML(item.article)} ${Learning.escapeHTML(item.word)}</strong>.
                 ${item.word.endsWith("je") ? "<br><small>Tip: Alle verkleinwoorden krijgen 'het'!</small>" : ""}
               </div>
               <button type="button" class="btn btn-primary btn-block" id="btn-next-drill" style="margin-top: 1rem;">Volgende Vraag →</button>
@@ -857,6 +909,8 @@
         this.session.cards = Learning.sampleArray(eligible, sessionSize);
         this.session.currentIndex = 0;
         this.session.feedback = null;
+        this.session.itemNoun = "woorden";
+        this.session.startXp = (this.store && this.store.state && this.store.state.user && this.store.state.user.totalXp) || 0;
       }
 
       if (this.session.currentIndex >= this.session.cards.length) {
@@ -870,9 +924,9 @@
           <div class="card typing-card">
             <span class="card-tag">Typ het juiste Nederlandse woord</span>
             <div class="drill-meaning" style="font-size: 1.4rem; font-weight: 700; margin: 1.5rem 0;">
-              “${item.meaning || item.word}”
+              “${Learning.escapeHTML(item.meaning || item.word)}”
             </div>
-            ${item.exampleEn ? `<p class="context-hint">Context: ${item.exampleEn}</p>` : ""}
+            ${item.exampleEn ? `<p class="context-hint">Context: ${Learning.escapeHTML(item.exampleEn)}</p>` : ""}
 
             <form id="spelling-form" class="spelling-form">
               <label for="spelling-input" class="sr-only">Nederlandse spelling</label>
@@ -882,7 +936,7 @@
 
             ${this.session.feedback ? `
               <div class="exercise-feedback ${this.session.feedback.isCorrect ? 'feedback-correct' : 'feedback-wrong'} animate-fade">
-                ${this.session.feedback.isCorrect ? '✓ Helemaal goed gespeld!' : `✗ Niet helemaal juist. Het juiste antwoord is: <strong>${item.word}</strong>`}
+                ${this.session.feedback.isCorrect ? '✓ Helemaal goed gespeld!' : `✗ Niet helemaal juist. Het juiste antwoord is: <strong>${Learning.escapeHTML(item.word)}</strong>`}
               </div>
               <button type="button" class="btn btn-secondary btn-block" id="btn-next-spelling" style="margin-top: 1rem;">Volgend Woord →</button>
             ` : ""}
@@ -932,6 +986,8 @@
           .filter(Boolean);
         this.session.currentIndex = 0;
         this.session.feedback = null;
+        this.session.itemNoun = "zinnen";
+        this.session.startXp = (this.store && this.store.state && this.store.state.user && this.store.state.user.totalXp) || 0;
       }
 
       if (this.session.currentIndex >= this.session.cards.length) {
@@ -945,16 +1001,16 @@
           <div class="card drill-card">
             <span class="card-tag">Vul het ontbrekende woord in</span>
             <div class="drill-noun" style="font-size: 1.4rem; line-height: 1.6; margin: 1.5rem 0;">
-              ${item.maskedSentence}
+              ${Learning.escapeHTML(item.maskedSentence)}
             </div>
-            <div class="drill-meaning">“${item.translation}”</div>
+            <div class="drill-meaning">“${Learning.escapeHTML(item.translation)}”</div>
 
             <div class="options-grid">
               ${(item.options || []).map((opt) => {
                 const isSelected = this.session.feedback && this.session.feedback.chosen === opt;
                 return `
-                  <button type="button" class="btn btn-outline btn-option ${isSelected ? (this.session.feedback.isCorrect ? 'btn-success' : 'btn-wrong') : ''}" data-option="${opt}" ${this.session.feedback ? 'disabled' : ''}>
-                    ${opt}
+                  <button type="button" class="btn btn-outline btn-option ${isSelected ? (this.session.feedback.isCorrect ? 'btn-success' : 'btn-wrong') : ''}" data-option="${Learning.escapeHTML(opt)}" ${this.session.feedback ? 'disabled' : ''}>
+                    ${Learning.escapeHTML(opt)}
                   </button>
                 `;
               }).join("")}
@@ -962,7 +1018,7 @@
 
             ${this.session.feedback ? `
               <div class="exercise-feedback ${this.session.feedback.isCorrect ? 'feedback-correct' : 'feedback-wrong'} animate-fade">
-                ${this.session.feedback.isCorrect ? '✓ Juist gekozen!' : `✗ Helaas. Het juiste woord was: <strong>${item.targetWord}</strong>`}
+                ${this.session.feedback.isCorrect ? '✓ Juist gekozen!' : `✗ Helaas. Het juiste woord was: <strong>${Learning.escapeHTML(item.targetWord)}</strong>`}
               </div>
               <button type="button" class="btn btn-primary btn-block" id="btn-next-fill-blank" style="margin-top: 1rem;">Volgende Zin →</button>
             ` : ""}
@@ -1013,6 +1069,8 @@
         });
         this.session.currentIndex = 0;
         this.session.feedback = null;
+        this.session.itemNoun = "vragen";
+        this.session.startXp = (this.store && this.store.state && this.store.state.user && this.store.state.user.totalXp) || 0;
       }
 
       if (this.session.currentIndex >= this.session.cards.length) {
@@ -1026,15 +1084,15 @@
           <div class="card drill-card">
             <span class="card-tag">Kies het juiste Nederlandse woord voor:</span>
             <div class="drill-meaning" style="font-size: 1.6rem; font-weight: 800; margin: 1.5rem 0;">
-              “${item.meaning || item.word}”
+              “${Learning.escapeHTML(item.meaning || item.word)}”
             </div>
 
             <div class="options-grid">
               ${(item.options || []).map((opt) => {
                 const isSelected = this.session.feedback && this.session.feedback.chosenId === opt.id;
                 return `
-                  <button type="button" class="btn btn-outline btn-choice-word ${isSelected ? (this.session.feedback.isCorrect ? 'btn-success' : 'btn-wrong') : ''}" data-word-id="${opt.id}" ${this.session.feedback ? 'disabled' : ''}>
-                    ${opt.displayWord || opt.word}
+                  <button type="button" class="btn btn-outline btn-choice-word ${isSelected ? (this.session.feedback.isCorrect ? 'btn-success' : 'btn-wrong') : ''}" data-word-id="${Learning.escapeHTML(opt.id)}" ${this.session.feedback ? 'disabled' : ''}>
+                    ${Learning.escapeHTML(opt.displayWord || opt.word)}
                   </button>
                 `;
               }).join("")}
@@ -1042,7 +1100,7 @@
 
             ${this.session.feedback ? `
               <div class="exercise-feedback ${this.session.feedback.isCorrect ? 'feedback-correct' : 'feedback-wrong'} animate-fade">
-                ${this.session.feedback.isCorrect ? '✓ Uitstekend!' : `✗ Helaas. Het juiste woord is: <strong>${item.displayWord || item.word}</strong>`}
+                ${this.session.feedback.isCorrect ? '✓ Uitstekend!' : `✗ Helaas. Het juiste woord is: <strong>${Learning.escapeHTML(item.displayWord || item.word)}</strong>`}
               </div>
               <button type="button" class="btn btn-primary btn-block" id="btn-next-choose" style="margin-top: 1rem;">Volgend Woord →</button>
             ` : ""}
@@ -1090,6 +1148,8 @@
         });
         this.session.currentIndex = 0;
         this.session.feedback = null;
+        this.session.itemNoun = "werkwoorden";
+        this.session.startXp = (this.store && this.store.state && this.store.state.user && this.store.state.user.totalXp) || 0;
       }
 
       if (this.session.currentIndex >= this.session.cards.length) {
@@ -1102,8 +1162,8 @@
         <div class="verbs-wrapper animate-fade">
           <div class="card drill-card">
             <span class="card-tag">Werkwoord Vervoeging</span>
-            <div class="drill-noun" style="margin: 1rem 0;">${item.word}</div>
-            <div class="drill-meaning">“${item.meaning || ''}”</div>
+            <div class="drill-noun" style="margin: 1rem 0;">${Learning.escapeHTML(item.word)}</div>
+            <div class="drill-meaning">“${Learning.escapeHTML(item.meaning || '')}”</div>
 
             <p style="margin: 1.5rem 0 0.5rem; color: var(--text-secondary);">Typ de tegenwoordige tijd voor 'hij/zij':</p>
             <form id="verb-form" class="verb-form">
@@ -1114,7 +1174,7 @@
 
             ${this.session.feedback ? `
               <div class="exercise-feedback ${this.session.feedback.isCorrect ? 'feedback-correct' : 'feedback-wrong'} animate-fade">
-                ${this.session.feedback.isCorrect ? `✓ Juist vervoegd: '${item.expectedHij}'!` : `✗ Helaas. De juiste 'hij/zij' vorm is: <strong>${item.expectedHij}</strong>`}
+                ${this.session.feedback.isCorrect ? `✓ Juist vervoegd: '${Learning.escapeHTML(item.expectedHij)}'!` : `✗ Helaas. De juiste 'hij/zij' vorm is: <strong>${Learning.escapeHTML(item.expectedHij)}</strong>`}
               </div>
               <button type="button" class="btn btn-secondary btn-block" id="btn-next-verb" style="margin-top: 1rem;">Volgend Werkwoord →</button>
             ` : ""}
@@ -1167,6 +1227,8 @@
         });
         this.session.currentIndex = 0;
         this.session.feedback = null;
+        this.session.itemNoun = "woorden";
+        this.session.startXp = (this.store && this.store.state && this.store.state.user && this.store.state.user.totalXp) || 0;
       }
 
       if (this.session.currentIndex >= this.session.cards.length) {
@@ -1179,16 +1241,16 @@
         <div class="synonyms-wrapper animate-fade">
           <div class="card drill-card">
             <span class="card-tag">Synoniemen & Betekenisverwantschap</span>
-            <div class="drill-noun" style="font-size: 1.8rem; margin: 1.5rem 0;">${item.displayWord || item.word}</div>
-            <div class="drill-meaning">“${item.meaning || ''}”</div>
+            <div class="drill-noun" style="font-size: 1.8rem; margin: 1.5rem 0;">${Learning.escapeHTML(item.displayWord || item.word)}</div>
+            <div class="drill-meaning">“${Learning.escapeHTML(item.meaning || '')}”</div>
             <p style="color: var(--text-secondary); margin-top: 1rem;">Kies het juiste synoniem voor dit woord:</p>
 
             <div class="options-grid" style="margin-top: 1rem;">
               ${(item.options || []).map((opt) => {
                 const isSelected = this.session.feedback && this.session.feedback.chosen === opt;
                 return `
-                  <button type="button" class="btn btn-outline btn-syn-opt ${isSelected ? (this.session.feedback.isCorrect ? 'btn-success' : 'btn-wrong') : ''}" data-syn="${opt}" ${this.session.feedback ? 'disabled' : ''}>
-                    ${opt}
+                  <button type="button" class="btn btn-outline btn-syn-opt ${isSelected ? (this.session.feedback.isCorrect ? 'btn-success' : 'btn-wrong') : ''}" data-syn="${Learning.escapeHTML(opt)}" ${this.session.feedback ? 'disabled' : ''}>
+                    ${Learning.escapeHTML(opt)}
                   </button>
                 `;
               }).join("")}
@@ -1196,7 +1258,7 @@
 
             ${this.session.feedback ? `
               <div class="exercise-feedback ${this.session.feedback.isCorrect ? 'feedback-correct' : 'feedback-wrong'} animate-fade">
-                ${this.session.feedback.isCorrect ? '✓ Juist synoniem gekozen!' : `✗ Niet juist. Een synoniem van '${item.word}' is: <strong>${item.correctSyn}</strong>.`}
+                ${this.session.feedback.isCorrect ? '✓ Juist synoniem gekozen!' : `✗ Niet juist. Een synoniem van '${Learning.escapeHTML(item.word)}' is: <strong>${Learning.escapeHTML(item.correctSyn)}</strong>.`}
               </div>
               <button type="button" class="btn btn-primary btn-block" id="btn-next-syn" style="margin-top: 1rem;">Volgende Vraag →</button>
             ` : ""}
@@ -1249,6 +1311,8 @@
         this.session.cards = Learning.sampleArray(validNouns, sessionSize);
         this.session.currentIndex = 0;
         this.session.feedback = null;
+        this.session.itemNoun = "woorden";
+        this.session.startXp = (this.store && this.store.state && this.store.state.user && this.store.state.user.totalXp) || 0;
       }
 
       if (this.session.currentIndex >= this.session.cards.length) {
@@ -1261,8 +1325,8 @@
         <div class="morphology-wrapper animate-fade">
           <div class="card drill-card">
             <span class="card-tag">Meervoud & Verkleinwoorden</span>
-            <div class="drill-noun" style="margin: 1.5rem 0;">${item.displayWord || item.word}</div>
-            <div class="drill-meaning">“${item.meaning || ''}”</div>
+            <div class="drill-noun" style="margin: 1.5rem 0;">${Learning.escapeHTML(item.displayWord || item.word)}</div>
+            <div class="drill-meaning">“${Learning.escapeHTML(item.meaning || '')}”</div>
 
             <p style="color: var(--text-secondary); margin-top: 1rem;">Typ het meervoud (plural) van dit zelfstandig naamwoord:</p>
             <form id="morphology-form" style="margin-top: 1rem;">
@@ -1273,7 +1337,7 @@
 
             ${this.session.feedback ? `
               <div class="exercise-feedback ${this.session.feedback.isCorrect ? 'feedback-correct' : 'feedback-wrong'} animate-fade">
-                ${this.session.feedback.isCorrect ? `✓ Juiste meervoudsvorm: '${item.expectedPlural}'!` : `✗ Helaas. Het juiste meervoud is: <strong>${item.expectedPlural}</strong>`}
+                ${this.session.feedback.isCorrect ? `✓ Juiste meervoudsvorm: '${Learning.escapeHTML(item.expectedPlural)}'!` : `✗ Helaas. Het juiste meervoud is: <strong>${Learning.escapeHTML(item.expectedPlural)}</strong>`}
               </div>
               <button type="button" class="btn btn-secondary btn-block" id="btn-next-morph" style="margin-top: 1rem;">Volgend Zelfstandig Naamwoord →</button>
             ` : ""}
@@ -1319,6 +1383,8 @@
         this.session.cards = Learning.sampleArray(sentences, sessionSize);
         this.session.currentIndex = 0;
         this.session.feedback = null;
+        this.session.itemNoun = "zinnen";
+        this.session.startXp = (this.store && this.store.state && this.store.state.user && this.store.state.user.totalXp) || 0;
       }
 
       if (this.session.currentIndex >= this.session.cards.length) {
@@ -1331,10 +1397,10 @@
         <div class="context-wrapper animate-fade">
           <div class="card drill-card">
             <span class="card-tag">Context & Zinsgebruik</span>
-            <div class="drill-noun" style="font-size: 1.3rem; line-height: 1.6; margin: 1.5rem 0;">${item.nl}</div>
-            <div class="drill-meaning">“${item.en}”</div>
+            <div class="drill-noun" style="font-size: 1.3rem; line-height: 1.6; margin: 1.5rem 0;">${Learning.escapeHTML(item.nl)}</div>
+            <div class="drill-meaning">“${Learning.escapeHTML(item.en)}”</div>
             <div style="margin-top: 1rem; font-size: 0.88rem; color: var(--text-secondary);">
-              Grammaticaal niveau: <span class="badge-${item.level.toLowerCase()}">${item.level}</span>
+              Grammaticaal niveau: <span class="badge-${Learning.escapeHTML(item.level.toLowerCase())}">${Learning.escapeHTML(item.level)}</span>
             </div>
 
             <button type="button" class="btn btn-primary btn-block" id="btn-next-ctx" style="margin-top: 1.5rem;">Begrepen & Volgende Zin →</button>
@@ -1536,26 +1602,42 @@
               </div>
             </div>
           `;
-        case "fill_in_the_blank":
+        case "fill_in_the_blank": {
+          // Option-style exercises offer the blankWord among hint chips; tip-style
+          // exercises carry hints as study tips only, so a typed input is required.
+          const isOptionStyle =
+            Array.isArray(ex.hints) &&
+            ex.hints.some((h) => Learning.normalizeAnswer(h) === Learning.normalizeAnswer(ex.blankWord));
+          const hintTips = Array.isArray(ex.hints) ? ex.hints : [];
           return `
             <div class="exercise-fill animate-fade">
               <p class="exercise-question">${ex.prompt || "Vul het juiste woord in:"}</p>
               <div class="exercise-sentence" style="font-size: 1.2rem; font-weight: 700; margin: 1rem 0;">${ex.sentenceWithBlank}</div>
-              <div class="hint-chips-pool" role="group" aria-label="Woordopties">
-                ${(ex.hints || []).map((h) => {
-                  const isSelected = Boolean(answeredState && answeredState.userAttempt === h);
-                  return `
-                    <button type="button" class="chip-token btn-hint-opt ${isSelected ? (answeredState.isCorrect ? 'btn-success' : 'btn-wrong') : ''}" data-hint="${h}" ${answeredState ? 'disabled' : ''} aria-pressed="${isSelected ? 'true' : 'false'}">
-                      ${h}
-                    </button>
-                  `;
-                }).join("")}
-              </div>
+              ${isOptionStyle ? `
+                <div class="hint-chips-pool" role="group" aria-label="Woordopties">
+                  ${hintTips.map((h) => {
+                    const isSelected = Boolean(answeredState && answeredState.userAttempt === h);
+                    return `
+                      <button type="button" class="chip-token btn-hint-opt ${isSelected ? (answeredState.isCorrect ? 'btn-success' : 'btn-wrong') : ''}" data-hint="${h}" ${answeredState ? 'disabled' : ''} aria-pressed="${isSelected ? 'true' : 'false'}">
+                        ${h}
+                      </button>
+                    `;
+                  }).join("")}
+                </div>
+              ` : `
+                <form id="form-grammar-fill" style="margin-top: 1rem;">
+                  <label for="input-grammar-fill" class="sr-only">In te vullen woord</label>
+                  <input type="text" id="input-grammar-fill" class="form-input" placeholder="Typ het juiste woord..." autocomplete="off" ${answeredState ? 'disabled' : ''} />
+                  ${hintTips.length > 0 ? `<div class="hint-tips" style="margin-top: 0.5rem; font-size: 0.85rem; color: var(--text-secondary);">Tip: ${hintTips.join(" ")}</div>` : ""}
+                  <button type="submit" class="btn btn-primary" style="margin-top: 0.75rem;" ${answeredState ? 'disabled' : ''}>Controleer Antwoord</button>
+                </form>
+              `}
               <div id="grammar-ex-feedback" class="exercise-feedback ${answeredState ? (answeredState.isCorrect ? 'feedback-correct' : 'feedback-wrong') : ''}" style="${answeredState ? 'display: block;' : 'display: none;'}" role="alert">
                 ${answeredState ? (answeredState.isCorrect ? `✓ Helemaal juist ingevuld!` : `✗ Niet juist. Het juiste woord was: <strong>${ex.blankWord}</strong>`) : ''}
               </div>
             </div>
           `;
+        }
         case "typed_conjugation":
           return `
             <div class="exercise-typed-conj animate-fade">
@@ -1790,6 +1872,19 @@
           this.recordGrammarExerciseAnswer(isCorrect, hint);
         });
       });
+
+      const formFill = document.getElementById("form-grammar-fill");
+      if (formFill) {
+        formFill.addEventListener("submit", (e) => {
+          e.preventDefault();
+          const inp = document.getElementById("input-grammar-fill");
+          const val = (inp ? inp.value : "").trim();
+          const exercises = this.activeGrammarRule.exercises || [];
+          const currentEx = exercises[this.activeGrammarExIndex];
+          const isCorrect = Learning.normalizeAnswer(val) === Learning.normalizeAnswer(currentEx.blankWord);
+          this.recordGrammarExerciseAnswer(isCorrect, val);
+        });
+      }
 
       const completeSimpleBtn = document.getElementById("btn-complete-simple-ex");
       if (completeSimpleBtn) {
@@ -2055,16 +2150,20 @@
       const words = global.NP_WORDS || [];
 
       const q = (this.searchQuery || "").toLowerCase().trim();
+      const accentFold = (v) =>
+        typeof v === "string" ? v.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "") : "";
+      const qFolded = accentFold(q);
       const totalLearnableCount = words.filter((w) => w.learnable).length;
 
       let filtered = words;
       if (q) {
-        filtered = filtered.filter(
-          (w) =>
-            w.word.toLowerCase().includes(q) ||
-            (w.meaning && w.meaning.toLowerCase().includes(q)) ||
-            (w.lemma && w.lemma.toLowerCase().includes(q))
-        );
+        filtered = filtered.filter((w) => {
+          if (accentFold(w.word).includes(qFolded)) return true;
+          if (w.displayWord && accentFold(w.displayWord).includes(qFolded)) return true;
+          if (w.meaning && accentFold(w.meaning).includes(qFolded)) return true;
+          if (w.lemma && accentFold(w.lemma).includes(qFolded)) return true;
+          return false;
+        });
       }
       if (this.selectedPos !== "all") {
         filtered = filtered.filter((w) => w.pos === this.selectedPos);
@@ -2144,7 +2243,7 @@
             ${displayList.map((w) => {
               const isNoun = w.pos === "noun" && w.article;
               const isStarred = this.store.isBookmarked(w.id);
-              const displayTitle = isNoun ? `<span class="badge-${w.article}">${w.article}</span> ${Learning.escapeHTML(w.word)}` : Learning.escapeHTML(w.word);
+              const displayTitle = isNoun ? `<span class="badge-${Learning.escapeHTML(w.article)}">${Learning.escapeHTML(w.article)}</span> ${Learning.escapeHTML(w.word)}` : Learning.escapeHTML(w.word);
 
               const isPhrase = w.curated === true && w.pos === "phrase" && w.inflectionType === "phrase";
               const isLemma = w.isCuratedLemma === true;
@@ -2155,10 +2254,10 @@
                 <div class="card word-item-card">
                   <div class="word-card-top">
                     <div class="word-card-badges">
-                      <span class="word-level-badge badge-${w.level.toLowerCase()}">${w.level}</span>
+                      <span class="word-level-badge badge-${Learning.escapeHTML(w.level.toLowerCase())}">${Learning.escapeHTML(w.level)}</span>
                       ${badgeType}
                     </div>
-                    <button class="btn-star ${isStarred ? 'starred' : ''}" data-star-id="${w.id}" title="Favoriet opslaan">
+                    <button class="btn-star ${isStarred ? 'starred' : ''}" data-star-id="${Learning.escapeHTML(w.id)}" title="${isStarred ? 'Favoriet verwijderen' : 'Favoriet opslaan'}" aria-pressed="${isStarred ? 'true' : 'false'}" aria-label="Favoriet">
                       ${isStarred ? '★' : '☆'}
                     </button>
                   </div>
@@ -2171,7 +2270,7 @@
                   ${w.example ? `<div class="word-example" style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 0.5rem;">“${Learning.escapeHTML(w.example)}”</div>` : ""}
                   <div class="word-footer">
                     <span>${Learning.escapeHTML(w.pos)}</span>
-                    <span>#${w.rank}</span>
+                    <span>#${Learning.escapeHTML(String(w.rank))}</span>
                   </div>
                 </div>
               `;
@@ -2279,7 +2378,7 @@
             <div class="card stat-big-card">
               <span class="stat-big-icon">🔥</span>
               <div class="stat-big-num">${user.streak}</div>
-              <div class="stat-big-lbl">Dagen Streak</div>
+              <div class="stat-big-lbl">${this.getStreakNoun(user.streak) === "dag" ? "Dag Streak" : "Dagen Streak"}</div>
             </div>
             <div class="card stat-big-card">
               <span class="stat-big-icon">🏆</span>

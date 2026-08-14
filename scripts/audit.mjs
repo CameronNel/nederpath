@@ -2,6 +2,16 @@
 import { readFileSync, existsSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
+import {
+  normalizeExpression,
+  validateIdiomRow,
+  exampleDemonstratesExpression
+} from "./idiom_rules.mjs";
+import {
+  normalizeSentenceKey,
+  targetOccursInSurface,
+  validateSentenceRow
+} from "./sentence_norm.mjs";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 
@@ -209,20 +219,58 @@ const fnIdioms = new Function("globalThis", idiomsSrc + "\nreturn globalThis.NP_
 const idioms = fnIdioms(dummyGlobal);
 
 assert(Array.isArray(idioms), "NP_IDIOMS is an array");
-assert(idioms.length >= 500, `NP_IDIOMS count >= 500 (actual: ${idioms.length})`);
+assert(idioms.length > 0, `NP_IDIOMS contains curated bank (actual: ${idioms.length})`);
+
+const idiomIdsRegistryPath = join(ROOT, "data", "idiom_ids.json");
+assert(existsSync(idiomIdsRegistryPath), "data/idiom_ids.json exists for stable ID allocation");
+const idiomIdsRegistry = JSON.parse(readFileSync(idiomIdsRegistryPath, "utf8"));
 
 let invalidIdioms = 0;
+let duplicateIdiomIds = 0;
+let duplicateIdiomPhrases = 0;
 let suspiciousIdiomStrings = 0;
+let unregisteredIdiomIds = 0;
+let unprovenExamples = 0;
+const idiomIds = new Set();
+const idiomPhrases = new Set();
+const idiomLevelCounts = {};
+
 for (const idm of idioms) {
-  if (!idm.dutch || !idm.meaning || !idm.example) {
+  if (idiomIds.has(idm.id)) duplicateIdiomIds++;
+  idiomIds.add(idm.id);
+
+  const normDutch = normalizeExpression(idm.dutch);
+  if (idiomPhrases.has(normDutch)) duplicateIdiomPhrases++;
+  idiomPhrases.add(normDutch);
+
+  if (!idiomIdsRegistry.entries || idiomIdsRegistry.entries[normDutch] !== idm.id) {
+    unregisteredIdiomIds++;
+  }
+
+  const errs = validateIdiomRow(idm);
+  if (errs.length > 0) {
     invalidIdioms++;
   }
-  if (idm.example.includes("rjestig") || idm.example.includes("jew") || idm.example.includes("mevrojew")) {
+
+  const demonstrated = exampleDemonstratesExpression(idm.dutch, idm.example);
+  if (!demonstrated) {
+    unprovenExamples++;
+  }
+
+  idiomLevelCounts[idm.level] = (idiomLevelCounts[idm.level] || 0) + 1;
+
+  if (idm.example && (idm.example.includes("rjestig") || idm.example.includes("jew") || idm.example.includes("mevrojew"))) {
     suspiciousIdiomStrings++;
   }
 }
-assert(invalidIdioms === 0, "All idioms carry Dutch, meaning, and example sentences");
+
+assert(invalidIdioms === 0, "All idioms satisfy strict schema, valid registers, and CEFR levels");
+assert(unprovenExamples === 0, "All idiom examples demonstrably illustrate the target expression");
+assert(duplicateIdiomIds === 0, "All idiom IDs are unique");
+assert(duplicateIdiomPhrases === 0, "All Dutch idiom expressions are unique");
+assert(unregisteredIdiomIds === 0, "All idiom IDs match data/idiom_ids.json stable registry");
 assert(suspiciousIdiomStrings === 0, "Zero suspicious substrings in idioms (rjestig/jew/mevrojew)");
+assert(Object.keys(idiomLevelCounts).length >= 4, `Idioms cover CEFR levels: ${JSON.stringify(idiomLevelCounts)}`);
 
 // 5. Comprehension Bank (data/comprehension.js)
 console.log("\n--- 5. Comprehension Passages Validation (data/comprehension.js) ---");
@@ -286,15 +334,164 @@ const fnSent = new Function("globalThis", sentSrc + "\nreturn globalThis.NP_SENT
 const sentences = fnSent(dummyGlobal);
 
 assert(Array.isArray(sentences), "NP_SENTENCES is an array");
-assert(sentences.length >= 5000, `NP_SENTENCES count >= 5,000 (actual: ${sentences.length})`);
+assert(sentences.length > 0, `NP_SENTENCES contains curated bank (actual: ${sentences.length})`);
+
+const sentIdsRegistryPath = join(ROOT, "data", "sentence_ids.json");
+assert(existsSync(sentIdsRegistryPath), "data/sentence_ids.json exists for stable ID allocation");
+const sentIdsRegistry = JSON.parse(readFileSync(sentIdsRegistryPath, "utf8"));
 
 let malformedSentences = 0;
+let duplicateSentenceIds = 0;
+let duplicateSentenceTexts = 0;
+let unregisteredSentenceIds = 0;
+let missingSurfaceTargets = 0;
+const sentIds = new Set();
+const sentTexts = new Set();
+const sentLevelCounts = {};
+
 for (const s of sentences) {
-  if (!s.nl || !s.en || s.en.includes("Met grote zorgvuldigheid the") || s.en.includes("elke ochtend the") || s.en.includes("analyseed")) {
+  if (sentIds.has(s.id)) duplicateSentenceIds++;
+  sentIds.add(s.id);
+
+  const normNl = normalizeSentenceKey(s.nl);
+  if (sentTexts.has(normNl)) duplicateSentenceTexts++;
+  sentTexts.add(normNl);
+
+  if (!sentIdsRegistry.entries || sentIdsRegistry.entries[normNl] !== s.id) {
+    unregisteredSentenceIds++;
+  }
+
+  const errs = validateSentenceRow(s);
+  if (errs.length > 0) {
     malformedSentences++;
   }
+
+  // Verify surface target word exists in Dutch sentence as a full token/span
+  for (const tw of s.targetWords || [s.targetWord]) {
+    if (!targetOccursInSurface(tw, s.nl)) {
+      missingSurfaceTargets++;
+    }
+  }
+
+  sentLevelCounts[s.level] = (sentLevelCounts[s.level] || 0) + 1;
 }
-assert(malformedSentences === 0, "Zero malformed translations or mixed time fronting in sentences");
+
+// Adversarial substring tests proving strict boundary enforcement in audit
+const rejectedSubstring1 = !targetOccursInSurface("ver", "Ik vertrek morgen om acht uur.");
+const rejectedSubstring2 = !targetOccursInSurface("tand", "De tandarts controleert mijn gebit.");
+const acceptedExactToken = targetOccursInSurface("tandarts", "De tandarts controleert mijn gebit.");
+
+assert(malformedSentences === 0, "Zero malformed translations, schema errors, or mixed time fronting in sentences");
+assert(duplicateSentenceIds === 0, "All sentence IDs are unique");
+assert(duplicateSentenceTexts === 0, "All Dutch sentence texts are unique");
+assert(unregisteredSentenceIds === 0, "All sentence IDs match data/sentence_ids.json stable registry");
+assert(missingSurfaceTargets === 0, "All sentence rows have targetWord/targetWords present as strict surface tokens");
+assert(rejectedSubstring1 && rejectedSubstring2 && acceptedExactToken, "Audit target presence strictly enforces Unicode token boundaries against substring false positives");
+assert(Object.keys(sentLevelCounts).length === 5, `Sentences cover all 5 CEFR levels: ${JSON.stringify(sentLevelCounts)}`);
+
+// 7. Contract & Documentation Evidence Consistency
+console.log("\n--- 7. Documentation & Contract Evidence Consistency ---");
+const taskDocPath = join(ROOT, "AGENT_TASK_GEMINI_SUPPORTING_RUNTIME.md");
+const readmeDocPath = join(ROOT, "README.md");
+
+if (existsSync(taskDocPath)) {
+  const taskDoc = readFileSync(taskDocPath, "utf8");
+
+  // Scoped parsing: Sentence registry HWM
+  const sentHwmMatch = taskDoc.match(/Registry `data\/sentence_ids\.json` with `highWaterMark:\s*(\d+)`/);
+  assert(
+    sentHwmMatch && parseInt(sentHwmMatch[1], 10) === sentIdsRegistry.highWaterMark,
+    `Task contract sentence evidence HWM matches registry (${sentIdsRegistry.highWaterMark})`,
+    `got ${sentHwmMatch ? sentHwmMatch[1] : "null"}`
+  );
+
+  const sentChecklistHwmMatch = taskDoc.match(/Never recycle retired sentence IDs \(`highWaterMark:\s*(\d+)`/);
+  assert(
+    sentChecklistHwmMatch && parseInt(sentChecklistHwmMatch[1], 10) === sentIdsRegistry.highWaterMark,
+    `Task contract sentence checklist HWM matches registry (${sentIdsRegistry.highWaterMark})`,
+    `got ${sentChecklistHwmMatch ? sentChecklistHwmMatch[1] : "null"}`
+  );
+
+  // Scoped parsing: Idiom registry HWM
+  const idiomEvidenceHwmMatch = taskDoc.match(/in `data\/idiom_ids\.json` with `highWaterMark:\s*(\d+)`/);
+  assert(
+    idiomEvidenceHwmMatch && parseInt(idiomEvidenceHwmMatch[1], 10) === idiomIdsRegistry.highWaterMark,
+    `Task contract idiom evidence HWM matches registry (${idiomIdsRegistry.highWaterMark})`,
+    `got ${idiomEvidenceHwmMatch ? idiomEvidenceHwmMatch[1] : "null"}`
+  );
+
+  const idiomChecklistHwmMatch = taskDoc.match(/Prevent retired duplicate IDs from ever being reassigned \(`highWaterMark:\s*(\d+)`/);
+  assert(
+    idiomChecklistHwmMatch && parseInt(idiomChecklistHwmMatch[1], 10) === idiomIdsRegistry.highWaterMark,
+    `Task contract idiom checklist HWM matches registry (${idiomIdsRegistry.highWaterMark})`,
+    `got ${idiomChecklistHwmMatch ? idiomChecklistHwmMatch[1] : "null"}`
+  );
+
+  // Scoped parsing: Active content counts
+  const sentCountEvidenceMatch = taskDoc.match(/(\d+) curated sentences modularized across/);
+  assert(
+    sentCountEvidenceMatch && parseInt(sentCountEvidenceMatch[1], 10) === sentences.length,
+    `Task contract sentence evidence count matches authored bank (${sentences.length})`,
+    `got ${sentCountEvidenceMatch ? sentCountEvidenceMatch[1] : "null"}`
+  );
+
+  const sentTotalTargetMatch = taskDoc.match(/Total authored inventory is at least 600 \(Actual:\s*(\d+)\)/);
+  assert(
+    sentTotalTargetMatch && parseInt(sentTotalTargetMatch[1], 10) === sentences.length,
+    `Task contract total authored sentence target matches authored bank (${sentences.length})`,
+    `got ${sentTotalTargetMatch ? sentTotalTargetMatch[1] : "null"}`
+  );
+
+  const idiomCountEvidenceMatch = taskDoc.match(/(\d+) curated, authentic Dutch idioms and expressions authored in/);
+  assert(
+    idiomCountEvidenceMatch && parseInt(idiomCountEvidenceMatch[1], 10) === idioms.length,
+    `Task contract idiom evidence count matches idiom bank (${idioms.length})`,
+    `got ${idiomCountEvidenceMatch ? idiomCountEvidenceMatch[1] : "null"}`
+  );
+
+  const idiomDistributionMatch = taskDoc.match(/Distribution:.*=\s*(\d+)\s*total active rows/);
+  assert(
+    idiomDistributionMatch && parseInt(idiomDistributionMatch[1], 10) === idioms.length,
+    `Task contract idiom distribution sum matches idiom bank (${idioms.length})`,
+    `got ${idiomDistributionMatch ? idiomDistributionMatch[1] : "null"}`
+  );
+
+  // Absence of obsolete contradictory metrics
+  const prohibitedStaleHwms = [5683, 5689, 5690, 510];
+  const foundStaleHwms = prohibitedStaleHwms.filter(hwm => {
+    const pattern = new RegExp(`highWaterMark:\\s*${hwm}\\b`);
+    return pattern.test(taskDoc);
+  });
+  assert(
+    foundStaleHwms.length === 0,
+    `Task contract contains zero stale highWaterMark references (checked ${prohibitedStaleHwms.join(", ")})`,
+    `found stale HWMs: ${foundStaleHwms.join(", ")}`
+  );
+
+  const foundStaleAuditCounts = taskDoc.match(/\b71\s+(?:checks|quality checks)\b/);
+  assert(
+    !foundStaleAuditCounts,
+    `Task contract contains zero stale '71 checks' vanity claims`,
+    `found: ${foundStaleAuditCounts ? foundStaleAuditCounts[0] : ""}`
+  );
+}
+
+if (existsSync(readmeDocPath)) {
+  const readmeDoc = readFileSync(readmeDocPath, "utf8");
+  const readmeIdiomMatch = readmeDoc.match(/\*\*(\d+)\*\*\s+curated idioms/);
+  assert(
+    readmeIdiomMatch && parseInt(readmeIdiomMatch[1], 10) === idioms.length,
+    `README documents truthful active idiom count (${idioms.length})`,
+    `got ${readmeIdiomMatch ? readmeIdiomMatch[1] : "null"}`
+  );
+
+  const readmeSentMatch = readmeDoc.match(/\*\*(\d+)\*\*\s+genuinely authored/);
+  assert(
+    readmeSentMatch && parseInt(readmeSentMatch[1], 10) === sentences.length,
+    `README documents truthful active sentence count (${sentences.length})`,
+    `got ${readmeSentMatch ? readmeSentMatch[1] : "null"}`
+  );
+}
 
 // Summary
 console.log("\n=======================================================");

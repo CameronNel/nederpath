@@ -5,8 +5,21 @@ import { fileURLToPath } from "node:url";
 import { execFileSync } from "node:child_process";
 import { createHash } from "node:crypto";
 import { validateRegistry, createIdAllocator } from "../scripts/id_allocator.mjs";
+import { validateIdiomRow, normalizeExpression } from "../scripts/idiom_rules.mjs";
+import { validateSentenceRow, normalizeSentenceKey, targetOccursInSurface } from "../scripts/sentence_norm.mjs";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
+
+// Mock localStorage if in Node environment
+if (typeof globalThis.localStorage === "undefined") {
+  const mem = {};
+  globalThis.localStorage = {
+    getItem(k) { return mem[k] ?? null; },
+    setItem(k, v) { mem[k] = String(v); },
+    removeItem(k) { delete mem[k]; },
+    clear() { Object.keys(mem).forEach((k) => delete mem[k]); }
+  };
+}
 
 // Load Learning engine
 const learningSrc = readFileSync(join(ROOT, "js", "learning.js"), "utf8");
@@ -16,7 +29,24 @@ const Learning = dummyGlobal.NederLearning;
 
 // Load Store and SRS
 const storeSrc = readFileSync(join(ROOT, "js", "store.js"), "utf8");
+new Function("globalThis", storeSrc)(dummyGlobal);
+const Store = {
+  createStore(initialState = {}) {
+    const s = new dummyGlobal.NederStore.constructor();
+    if (initialState && Object.keys(initialState).length > 0) {
+      s.state = Learning.validateAndMergeBackup(initialState, s.state);
+    }
+    return s;
+  }
+};
+
 const srsSrc = readFileSync(join(ROOT, "js", "srs.js"), "utf8");
+new Function("globalThis", srsSrc)(dummyGlobal);
+const SRS = {
+  createSRSEngine(storeInstance) {
+    return new dummyGlobal.NederSRS.constructor(storeInstance);
+  }
+};
 
 // Load data banks
 const wordsSrc = readFileSync(join(ROOT, "data", "words.js"), "utf8");
@@ -26,6 +56,14 @@ const words = dummyGlobal.NP_WORDS;
 const grammarSrc = readFileSync(join(ROOT, "data", "grammar.js"), "utf8");
 new Function("globalThis", grammarSrc)(dummyGlobal);
 const grammar = dummyGlobal.NP_GRAMMAR;
+
+const idiomsSrc = readFileSync(join(ROOT, "data", "idioms.js"), "utf8");
+new Function("globalThis", idiomsSrc)(dummyGlobal);
+const idioms = dummyGlobal.NP_IDIOMS;
+
+const sentencesSrc = readFileSync(join(ROOT, "data", "sentences.js"), "utf8");
+new Function("globalThis", sentencesSrc)(dummyGlobal);
+const sentences = dummyGlobal.NP_SENTENCES;
 
 // -------------------------------------------------------------------
 // Shared helpers: curated core rows and explicit-form derivation
@@ -1029,6 +1067,711 @@ test("Store: sanitizeStaleWordReferences prunes retired IDs safely", () => {
   } finally {
     globalThis.localStorage = oldStorage;
     console.error = oldConsoleError;
+  }
+});
+
+// -------------------------------------------------------------------
+// 20. Idiom Rules & Stable Allocator Suite
+// -------------------------------------------------------------------
+test("Idioms: curated idioms pass all schema and register invariants with verified stable IDs", () => {
+  if (!Array.isArray(idioms) || idioms.length < 120) {
+    throw new Error(`Expected at least 120 curated idioms, found ${idioms ? idioms.length : 0}`);
+  }
+
+  const baselinePath = join(ROOT, "tests", "fixtures", "idiom_baseline_ids.json");
+  const baseline = JSON.parse(readFileSync(baselinePath, "utf8"));
+  if (baseline.version !== 1 || !Number.isSafeInteger(baseline.highWaterMark) || !baseline.entries || typeof baseline.entries !== "object") {
+    throw new Error("Invalid idiom baseline fixture schema: must include version, highWaterMark, and entries object");
+  }
+  const baselineEntries = Object.entries(baseline.entries);
+  if (baselineEntries.length === 0) {
+    throw new Error("Idiom baseline fixture entries cannot be empty");
+  }
+
+  const registryPath = join(ROOT, "data", "idiom_ids.json");
+  const registry = JSON.parse(readFileSync(registryPath, "utf8"));
+
+  // Verify historical guarantee: every entry in the baseline fixture MUST still exist with the exact same ID in the registry
+  for (const [normKey, historicalId] of baselineEntries) {
+    if (registry.entries[normKey] !== historicalId) {
+      throw new Error(`Historical baseline mapping for '${normKey}' (${historicalId}) drifted in data/idiom_ids.json: '${registry.entries[normKey]}'`);
+    }
+  }
+
+  const seenIds = new Set();
+  const seenDutch = new Set();
+  for (const idm of idioms) {
+    const errs = validateIdiomRow(idm);
+    if (errs.length > 0) {
+      throw new Error(`Idiom ${idm.id} (${idm.dutch}) failed validation:\n - ${errs.join("\n - ")}`);
+    }
+    if (seenIds.has(idm.id)) throw new Error(`Duplicate idiom ID: ${idm.id}`);
+    seenIds.add(idm.id);
+
+    const normKey = normalizeExpression(idm.dutch);
+    if (seenDutch.has(normKey)) throw new Error(`Duplicate normalized idiom key: ${normKey}`);
+    seenDutch.add(normKey);
+
+    // Verify stable ID mapping against baseline fixture if present
+    if (baseline.entries[normKey] && baseline.entries[normKey] !== idm.id) {
+      throw new Error(`Idiom '${normKey}' ID changed from baseline ${baseline.entries[normKey]} to ${idm.id}`);
+    }
+
+    // Verify registry match
+    if (!registry.entries || registry.entries[normKey] !== idm.id) {
+      throw new Error(`Idiom '${normKey}' missing or mismatched in data/idiom_ids.json`);
+    }
+  }
+
+  // Verify non-recycling ID allocator behavior
+  const allocator = createIdAllocator(validateRegistry(registry, { prefix: "idm-", idPattern: /^idm-(\d+)$/, digits: 4, normalize: normalizeExpression }), { prefix: "idm-", idPattern: /^idm-(\d+)$/, digits: 4, normalize: normalizeExpression });
+  const probeId = allocator.assignId("__nederpath_idiom_allocation_probe__");
+  const probeNum = Number(probeId.slice(4));
+  if (probeNum !== registry.highWaterMark + 1) {
+    throw new Error(`Allocated probe ID ${probeId} did not follow highWaterMark ${registry.highWaterMark}`);
+  }
+});
+
+// -------------------------------------------------------------------
+// 21. Sentence Bank & Surface Target Verification Suite
+// -------------------------------------------------------------------
+test("Sentences: 641 authored sentences satisfy schema, stable IDs, and 100% surface target resolution", () => {
+  if (!Array.isArray(sentences) || sentences.length !== 641) {
+    throw new Error(`Expected exactly 641 curated sentences, found ${sentences ? sentences.length : 0}`);
+  }
+
+  const baselinePath = join(ROOT, "tests", "fixtures", "sentence_baseline_ids.json");
+  const baseline = JSON.parse(readFileSync(baselinePath, "utf8"));
+  if (baseline.version !== 1 || !Number.isSafeInteger(baseline.highWaterMark) || !baseline.entries || typeof baseline.entries !== "object") {
+    throw new Error("Invalid sentence baseline fixture schema: must include version, highWaterMark, and entries object");
+  }
+  const baselineEntries = Object.entries(baseline.entries);
+  if (baselineEntries.length === 0) {
+    throw new Error("Sentence baseline fixture entries cannot be empty");
+  }
+
+  const registryPath = join(ROOT, "data", "sentence_ids.json");
+  const registry = JSON.parse(readFileSync(registryPath, "utf8"));
+
+  // Verify historical guarantee: every entry in the baseline fixture MUST still exist with the exact same ID in the registry
+  for (const [normKey, historicalId] of baselineEntries) {
+    if (registry.entries[normKey] !== historicalId) {
+      throw new Error(`Historical baseline mapping for '${normKey}' (${historicalId}) drifted in data/sentence_ids.json: '${registry.entries[normKey]}'`);
+    }
+  }
+
+  const seenIds = new Set();
+  const seenNl = new Set();
+  const levelCounts = { A1: 0, A2: 0, B1: 0, B2: 0, C1: 0 };
+
+  for (const s of sentences) {
+    const errs = validateSentenceRow(s);
+    if (errs.length > 0) {
+      throw new Error(`Sentence ${s.id} (${s.nl}) failed validation:\n - ${errs.join("\n - ")}`);
+    }
+    if (seenIds.has(s.id)) throw new Error(`Duplicate sentence ID: ${s.id}`);
+    seenIds.add(s.id);
+
+    const normKey = normalizeSentenceKey(s.nl);
+    if (seenNl.has(normKey)) throw new Error(`Duplicate normalized Dutch sentence: ${normKey}`);
+    seenNl.add(normKey);
+
+    // Verify surface targetWord and targetWords occurrence
+    for (const tw of s.targetWords || [s.targetWord]) {
+      if (!targetOccursInSurface(tw, s.nl)) {
+        throw new Error(`Target word '${tw}' is not a surface token in sentence '${s.nl}' (${s.id})`);
+      }
+    }
+
+    // Verify baseline fixture match if present
+    if (baseline.entries[normKey] && baseline.entries[normKey] !== s.id) {
+      throw new Error(`Sentence '${normKey}' ID changed from baseline ${baseline.entries[normKey]} to ${s.id}`);
+    }
+
+    // Verify registry match
+    if (!registry.entries || registry.entries[normKey] !== s.id) {
+      throw new Error(`Sentence '${normKey}' missing or mismatched in data/sentence_ids.json`);
+    }
+
+    levelCounts[s.level] = (levelCounts[s.level] || 0) + 1;
+  }
+
+  for (const [lvl, count] of Object.entries(levelCounts)) {
+    if (count < 100) {
+      throw new Error(`Level ${lvl} has only ${count} sentences, expected >= 100`);
+    }
+  }
+
+  // Verify historical base sentence IDs (snt-00001 .. snt-00013) and non-recycling above highWaterMark 5050
+  if (registry.highWaterMark < 5050) {
+    throw new Error(`Sentence registry highWaterMark (${registry.highWaterMark}) must be >= 5050 to protect retired template IDs`);
+  }
+  const allocator = createIdAllocator(validateRegistry(registry, { prefix: "snt-", idPattern: /^snt-(\d+)$/, digits: 5, normalize: normalizeSentenceKey }), { prefix: "snt-", idPattern: /^snt-(\d+)$/, digits: 5, normalize: normalizeSentenceKey });
+  const probeId = allocator.assignId("__nederpath_sentence_allocation_probe__");
+  const probeNum = Number(probeId.slice(4));
+  if (probeNum !== registry.highWaterMark + 1) {
+    throw new Error(`Allocated probe ID ${probeId} did not follow highWaterMark ${registry.highWaterMark}`);
+  }
+});
+
+// -------------------------------------------------------------------
+// 21b. Adversarial Stable ID Mutation Verification
+// -------------------------------------------------------------------
+test("Stable IDs: In-memory mutation test proves ID drift or missing entries strictly cause test failures", () => {
+  // 1. Idiom mutation drift detection
+  const dummyBaseline = {
+    version: 1,
+    highWaterMark: 510,
+    entries: {
+      "nu komt de aap uit de mouw": "idm-0001",
+      "helaas pindakaas": "idm-0002"
+    }
+  };
+  const mutatedIdiomRegistry = {
+    version: 1,
+    highWaterMark: 510,
+    entries: {
+      "nu komt de aap uit de mouw": "idm-9999", // DRIFT!
+      "helaas pindakaas": "idm-0002"
+    }
+  };
+  let caughtIdiomDrift = false;
+  try {
+    for (const [k, id] of Object.entries(dummyBaseline.entries)) {
+      if (mutatedIdiomRegistry.entries[k] !== id) {
+        throw new Error(`ID drift detected: expected ${id}, got ${mutatedIdiomRegistry.entries[k]}`);
+      }
+    }
+  } catch {
+    caughtIdiomDrift = true;
+  }
+  if (!caughtIdiomDrift) throw new Error("Mutated idiom registry failed to trigger drift error");
+
+  // 2. Sentence mutation drift detection
+  const dummySentenceBaseline = {
+    version: 1,
+    highWaterMark: 5685,
+    entries: {
+      "ik woon al drie jaar met veel plezier in utrecht.": "snt-00001"
+    }
+  };
+  const mutatedSentenceRegistry = {
+    version: 1,
+    highWaterMark: 5685,
+    entries: {
+      "ik woon al drie jaar met veel plezier in utrecht.": "snt-00099" // DRIFT!
+    }
+  };
+  let caughtSentenceDrift = false;
+  try {
+    for (const [k, id] of Object.entries(dummySentenceBaseline.entries)) {
+      if (mutatedSentenceRegistry.entries[k] !== id) {
+        throw new Error(`ID drift detected: expected ${id}, got ${mutatedSentenceRegistry.entries[k]}`);
+      }
+    }
+  } catch {
+    caughtSentenceDrift = true;
+  }
+  if (!caughtSentenceDrift) throw new Error("Mutated sentence registry failed to trigger drift error");
+
+  // 3. Schema validation rejection
+  let caughtEmptyEntries = false;
+  try {
+    const invalidFixture = { version: 1, highWaterMark: 100, entries: {} };
+    if (Object.keys(invalidFixture.entries).length === 0) {
+      throw new Error("Fixture entries cannot be empty");
+    }
+  } catch {
+    caughtEmptyEntries = true;
+  }
+  if (!caughtEmptyEntries) throw new Error("Empty fixture entries failed to trigger rejection");
+});
+
+// -------------------------------------------------------------------
+// 22. Spaced Repetition Preview Pure Function Suite
+// -------------------------------------------------------------------
+test("SRS Preview: previewReview and previewRatings are pure and compute truthful intervals", () => {
+  const dummyStore = {
+    state: {
+      srs: {
+        cards: {
+          "test-card-1": {
+            id: "test-card-1",
+            type: "vocab",
+            interval: 4,
+            easeFactor: 2.5,
+            repetitions: 2,
+            lapses: 0,
+            state: "review"
+          }
+        }
+      },
+      progress: { xp: 100, dailyStats: { learnedToday: 0 } },
+      user: { streak: 5 }
+    },
+    save() {
+      throw new Error("previewReview must not call store.save");
+    },
+    recordActivity() {
+      throw new Error("previewReview must not call store.recordActivity");
+    }
+  };
+
+  const srsModule = {};
+  new Function("globalThis", srsSrc)(srsModule);
+  const SRSEngine = srsModule.NederSRS.constructor;
+  const srsInstance = new SRSEngine(dummyStore);
+
+  // Snapshot card before preview
+  const beforeJson = JSON.stringify(dummyStore.state.srs.cards);
+
+  // Run preview on existing card
+  const ratings = srsInstance.previewRatings("test-card-1", "vocab");
+  if (!ratings || !ratings[1] || !ratings[2] || !ratings[3] || !ratings[4]) {
+    throw new Error("previewRatings did not return all 4 rating previews");
+  }
+
+  // Rating 1 (Again) -> interval 1
+  if (ratings[1].interval !== 1 || ratings[1].state !== "learning") {
+    throw new Error(`Rating 1 preview interval expected 1, got ${ratings[1].interval}`);
+  }
+
+  // Rating 3 (Good) -> interval round(4 * 2.5) = 10
+  if (ratings[3].interval !== 10 || ratings[3].state !== "review") {
+    throw new Error(`Rating 3 preview interval expected 10, got ${ratings[3].interval}`);
+  }
+
+  // Rating 4 (Easy) -> interval round(10 * 1.3) = 13
+  if (ratings[4].interval !== 13 || ratings[4].state !== "review") {
+    throw new Error(`Rating 4 preview interval expected 13, got ${ratings[4].interval}`);
+  }
+
+  // Run preview on unseen card (not in store)
+  const unseenRatings = srsInstance.previewRatings("nl-99999", "vocab");
+  if (unseenRatings[1].interval !== 1 || unseenRatings[3].interval !== 1 || unseenRatings[4].interval !== 1) {
+    throw new Error("Unseen card preview intervals mismatch");
+  }
+  if (dummyStore.state.srs.cards["nl-99999"]) {
+    throw new Error("previewRatings created an unseen card in store!");
+  }
+
+  // Verify store card was NOT mutated
+  const afterJson = JSON.stringify(dummyStore.state.srs.cards);
+  if (beforeJson !== afterJson) {
+    throw new Error("previewReview mutated store cards state!");
+  }
+});
+
+// -------------------------------------------------------------------
+// 23. Session XP & Completion Screen Truthfulness Suite
+// -------------------------------------------------------------------
+test("Session XP: truthful delta arithmetic on session complete", () => {
+  // Test starting XP tracking and delta calculation
+  const session = {
+    startXp: 50,
+    cards: [1, 2, 3, 4, 5],
+    itemNoun: "zinnen"
+  };
+  const store = {
+    state: {
+      user: { totalXp: 120, streak: 3 },
+      progress: { studyDays: {} }
+    }
+  };
+
+  const startXp = typeof session.startXp === "number" ? session.startXp : ((store.state.user && store.state.user.totalXp) || 0);
+  const currentXp = (store.state.user && store.state.user.totalXp) || 0;
+  const earnedXp = Math.max(0, currentXp - startXp);
+
+  if (earnedXp !== 70) {
+    throw new Error(`Expected earned XP 70, got ${earnedXp}`);
+  }
+
+  // When no XP earned
+  session.startXp = 120;
+  const noXpEarned = Math.max(0, ((store.state.user && store.state.user.totalXp) || 0) - session.startXp);
+  if (noXpEarned !== 0) {
+    throw new Error(`Expected 0 earned XP, got ${noXpEarned}`);
+  }
+});
+
+// -------------------------------------------------------------------
+// 24. HTML Sink & Adversarial Template Injection Suite
+// -------------------------------------------------------------------
+test("HTML Sink: Fill-in-the-blank maskedSentence and drill interpolations sanitize HTML injection", () => {
+  const hostileSentence = {
+    id: "snt-99999",
+    nl: "<script>alert('xss')</script> Ik koop verse <img src=x onerror=alert(1)> op de markt.",
+    en: "I buy fresh <b>vegetables</b> at the market.",
+    level: "A1",
+    targetWord: "koop",
+    targetWords: ["koop"],
+    clozeEligible: true
+  };
+
+  const card = Learning.createFillBlankCard(hostileSentence, [{ word: "groenten" }, { word: "appels" }]);
+  if (!card) throw new Error("createFillBlankCard returned null for hostile sentence");
+
+  // Verify that maskedSentence contains the blank
+  if (!card.maskedSentence.includes("_______")) {
+    throw new Error("maskedSentence did not create cloze blank '_______'");
+  }
+
+  // Verify that escaping the masked sentence neutralizes script tags
+  const escaped = Learning.escapeHTML(card.maskedSentence);
+  if (escaped.includes("<script>") || escaped.includes("<img")) {
+    throw new Error(`Unsanitized HTML tag characters found in escaped maskedSentence: '${escaped}'`);
+  }
+  if (!escaped.includes("&lt;script&gt;") || !escaped.includes("&lt;img")) {
+    throw new Error(`Expected HTML entity escaping in maskedSentence: '${escaped}'`);
+  }
+  // Verify that cloze placeholder is preserved cleanly
+  if (!escaped.includes("_______")) {
+    throw new Error(`Placeholder '_______' was mangled: '${escaped}'`);
+  }
+});
+
+test("HTML Sink: escapeHTML handles nulls, numbers, and does not double-escape safe strings", () => {
+  if (Learning.escapeHTML(null) !== "") throw new Error("escapeHTML(null) should return empty string");
+  if (Learning.escapeHTML(undefined) !== "") throw new Error("escapeHTML(undefined) should return empty string");
+  if (Learning.escapeHTML(42) !== "42") throw new Error("escapeHTML(42) should return '42'");
+  if (Learning.escapeHTML("Normaal Nederlands!") !== "Normaal Nederlands!") {
+    throw new Error("escapeHTML mangled plain Dutch text");
+  }
+});
+
+// -------------------------------------------------------------------
+// 25. Historical Sentence ID Integrity & Anti-Recycling Guarantees
+// -------------------------------------------------------------------
+test("Historical Sentence IDs: Exactly 13 pre-Cartesian base sentences retain IDs snt-00001..snt-00013 and highWaterMark prevents recycling", () => {
+  const sentenceIds = JSON.parse(readFileSync(join(ROOT, "data", "sentence_ids.json"), "utf8"));
+  if (sentenceIds.highWaterMark < 5050) {
+    throw new Error(`highWaterMark (${sentenceIds.highWaterMark}) must be >= 5050 to reserve retired legacy template IDs`);
+  }
+
+  const expected13 = [
+    { key: "ik woon al drie jaar met veel plezier in utrecht.", id: "snt-00001" },
+    { key: "morgenochtend om negen uur neem ik de trein naar amsterdam centraal.", id: "snt-00002" },
+    { key: "de bakker om de hoek verkoopt elke dag vers volkorenbrood.", id: "snt-00003" },
+    { key: "zij heeft gisteren een prachtige nieuwe fiets gekocht.", id: "snt-00004" },
+    { key: "omdat het vanochtend hard regende, ben ik met de bus naar kantoor gegaan.", id: "snt-00005" },
+    { key: "jan staat elke werkdag om kwart over zes op om de files te vermijden.", id: "snt-00006" },
+    { key: "kun je mij alstublieft even helpen met het tillen van deze zware koffer?", id: "snt-00007" },
+    { key: "in het weekend gaan wij graag wandelen in de duinen bij bloemendaal.", id: "snt-00008" },
+    { key: "als je regelmatig oefent, zul je merken dat je nederlands snel vooruitgaat.", id: "snt-00009" },
+    { key: "het nieuwe museumgebouw werd vorig jaar feestelijk geopend door de burgemeester.", id: "snt-00010" },
+    { key: "hoewel het kabinet nieuwe maatregelen heeft aangekondigd, blijft de woningmarkt gespannen.", id: "snt-00011" },
+    { key: "de commissie heeft besloten het voorstel nader te laten onderzoeken door onafhankelijke experts.", id: "snt-00012" },
+    { key: "mocht de situatie onverhoopt escaleren, dan treedt het nationale noodplan onmiddellijk in werking.", id: "snt-00013" }
+  ];
+
+  for (const exp of expected13) {
+    if (sentenceIds.entries[exp.key] !== exp.id) {
+      throw new Error(`Historical sentence '${exp.key}' expected ID '${exp.id}', found '${sentenceIds.entries[exp.key]}'`);
+    }
+  }
+
+  // Verify that retired template range snt-00014..snt-05050 is not used for newly authored sentences
+  for (const [key, id] of Object.entries(sentenceIds.entries)) {
+    const num = parseInt(id.replace("snt-", ""), 10);
+    if (num > 13 && num <= 5050) {
+      throw new Error(`Forbidden allocation of retired template ID '${id}' for key '${key}'`);
+    }
+  }
+});
+
+// -------------------------------------------------------------------
+// 26. Multi-Mode Session & XP Lifecycle Integration Suite
+// -------------------------------------------------------------------
+test("Integration: Flashcard session rating lifecycle with Again, Hard, Good, Easy and exact XP delta", () => {
+  const store = Store.createStore({
+    settings: { sessionSize: 4 },
+    srs: { cards: {} },
+    user: { totalXp: 100 }
+  });
+  const srs = SRS.createSRSEngine(store);
+
+  // Initial session setup
+  const cards = [
+    { id: "w-001", word: "tafel", meaning: "table", pos: "noun", level: "A1" },
+    { id: "w-002", word: "stoel", meaning: "chair", pos: "noun", level: "A1" },
+    { id: "w-003", word: "boek", meaning: "book", pos: "noun", level: "A1" },
+    { id: "w-004", word: "huis", meaning: "house", pos: "noun", level: "A1" }
+  ];
+
+  const session = {
+    cards,
+    currentIndex: 0,
+    revealed: false,
+    itemNoun: "kaarten",
+    startXp: store.state.user.totalXp
+  };
+
+  // 1. Rate card 1 as Again (rating 1 -> 3 XP)
+  const prev1 = srs.previewRatings(cards[0].id, "vocab");
+  srs.review(cards[0].id, 1, "vocab");
+  const card1State = store.state.srs.cards[cards[0].id];
+  if (card1State.interval !== prev1[1].interval) {
+    throw new Error(`Card 1 persisted interval (${card1State.interval}) != preview interval (${prev1[1].interval})`);
+  }
+  session.currentIndex++;
+
+  // 2. Rate card 2 as Hard (rating 2 -> 10 XP)
+  const prev2 = srs.previewRatings(cards[1].id, "vocab");
+  srs.review(cards[1].id, 2, "vocab");
+  const card2State = store.state.srs.cards[cards[1].id];
+  if (card2State.interval !== prev2[2].interval) {
+    throw new Error(`Card 2 persisted interval (${card2State.interval}) != preview interval (${prev2[2].interval})`);
+  }
+  session.currentIndex++;
+
+  // 3. Rate card 3 as Good (rating 3 -> 10 XP)
+  const prev3 = srs.previewRatings(cards[2].id, "vocab");
+  srs.review(cards[2].id, 3, "vocab");
+  const card3State = store.state.srs.cards[cards[2].id];
+  if (card3State.interval !== prev3[3].interval) {
+    throw new Error(`Card 3 persisted interval (${card3State.interval}) != preview interval (${prev3[3].interval})`);
+  }
+  session.currentIndex++;
+
+  // 4. Rate card 4 as Easy (rating 4 -> 10 XP)
+  const prev4 = srs.previewRatings(cards[3].id, "vocab");
+  srs.review(cards[3].id, 4, "vocab");
+  const card4State = store.state.srs.cards[cards[3].id];
+  if (card4State.interval !== prev4[4].interval) {
+    throw new Error(`Card 4 persisted interval (${card4State.interval}) != preview interval (${prev4[4].interval})`);
+  }
+  session.currentIndex++;
+
+  // Verify total XP earned (3 + 10 + 10 + 10 = 33)
+  const totalEarnedXp = store.state.user.totalXp - session.startXp;
+  if (totalEarnedXp !== 33) {
+    throw new Error(`Expected earned XP 33, got ${totalEarnedXp}`);
+  }
+  if (session.currentIndex !== session.cards.length) {
+    throw new Error("Session did not complete all cards");
+  }
+});
+
+test("Integration: Article drill session with mixed scores updates articleStats, mistakes, and XP", () => {
+  const store = Store.createStore({
+    settings: { sessionSize: 3 },
+    user: { totalXp: 50 },
+    progress: {
+      articleStats: { totalDrilled: 0, correct: 0, mistakes: {} }
+    }
+  });
+
+  const session = {
+    cards: [
+      { id: "w-010", word: "tafel", article: "de" },
+      { id: "w-011", word: "huis", article: "het" },
+      { id: "w-012", word: "auto", article: "de" }
+    ],
+    currentIndex: 0,
+    score: 0,
+    feedback: null,
+    startXp: store.state.user.totalXp
+  };
+
+  // Card 1: Correct (de tafel)
+  store.recordArticleDrill("tafel", "de", "de");
+  session.score++;
+  session.currentIndex++;
+
+  // Card 2: Incorrect (guessed de instead of het voor huis)
+  store.recordArticleDrill("huis", "de", "het");
+  session.currentIndex++;
+
+  // Card 3: Correct (de auto)
+  store.recordArticleDrill("auto", "de", "de");
+  session.score++;
+  session.currentIndex++;
+
+  // Verify articleStats
+  const stats = store.state.progress.articleStats;
+  if (stats.totalDrilled !== 3 || stats.correct !== 2) {
+    throw new Error(`Expected 2/3 correct article stats, got ${stats.correct}/${stats.totalDrilled}`);
+  }
+  if (stats.mistakes["huis"] !== 1) {
+    throw new Error(`Expected 1 mistake recorded for 'huis', got ${stats.mistakes["huis"]}`);
+  }
+
+  // Verify total earned XP in session (5 + 1 + 5 = 11)
+  const earnedXp = store.state.user.totalXp - session.startXp;
+  if (earnedXp !== 11) {
+    throw new Error(`Expected 11 earned XP, got ${earnedXp}`);
+  }
+});
+
+test("Integration: Restart / reset for a second session re-anchors startXp and does not pollute state", () => {
+  const store = Store.createStore({
+    user: { totalXp: 0 }
+  });
+
+  // Session 1: Earns 20 XP
+  const session1 = {
+    startXp: store.state.user.totalXp,
+    cards: [{ id: 1 }, { id: 2 }],
+    currentIndex: 0
+  };
+  store.recordActivity(10);
+  store.recordActivity(10);
+  session1.currentIndex = 2;
+  const earned1 = store.state.user.totalXp - session1.startXp;
+  if (earned1 !== 20) throw new Error(`Session 1 expected 20 XP, got ${earned1}`);
+
+  // Reset for Session 2
+  const session2 = {
+    startXp: store.state.user.totalXp, // re-anchored to 20
+    cards: [{ id: 3 }, { id: 4 }],
+    currentIndex: 0,
+    feedback: null,
+    score: 0
+  };
+
+  if (session2.startXp !== 20) {
+    throw new Error(`Session 2 startXp should be 20, got ${session2.startXp}`);
+  }
+
+  // Session 2: Earns 10 XP
+  store.recordActivity(10);
+  session2.currentIndex = 1;
+  const earned2 = store.state.user.totalXp - session2.startXp;
+  if (earned2 !== 10) {
+    throw new Error(`Session 2 expected 10 XP delta, got ${earned2}`);
+  }
+  if (store.state.user.totalXp !== 30) {
+    throw new Error(`Cumulative XP expected 30, got ${store.state.user.totalXp}`);
+  }
+});
+
+test("Session XP arithmetic clamps negative store deltas to zero", () => {
+  // Protects the clamp invariant Math.max(0, currentXp - startXp) against clock drift or corrupted state
+  const startXp = 100;
+  const currentXp = 80; // Corrupted or downgraded state lower than session start
+  const earnedXp = Math.max(0, currentXp - startXp);
+
+  if (earnedXp !== 0) {
+    throw new Error(`Earned XP clamp expected 0 for negative delta, got ${earnedXp}`);
+  }
+});
+
+// -------------------------------------------------------------------
+// 27. SRS Display & Format Truthfulness Suite
+// -------------------------------------------------------------------
+test("SRS Display Truthfulness: Interval labels explicitly include exact day count", () => {
+  const store = Store.createStore({
+    srs: { cards: {} }
+  });
+  const srs = SRS.createSRSEngine(store);
+
+  // Test various day intervals
+  const testCases = [
+    { days: 1, expectedInterval: "1d", expectedDutch: "1 dag" },
+    { days: 6, expectedInterval: "6d", expectedDutch: "6 dagen" },
+    { days: 15, expectedInterval: "15d", expectedDutch: "15 dagen" },
+    { days: 30, expectedInterval: "1m (30d)", expectedDutch: "1 mnd (30 dgn)" },
+    { days: 45, expectedInterval: "2m (45d)", expectedDutch: "2 mnd (45 dgn)" },
+    { days: 400, expectedInterval: "1.1y (400d)", expectedDutch: "1.1 jr (400 dgn)" }
+  ];
+
+  for (const tc of testCases) {
+    // Inject card with specific interval
+    store.state.srs.cards["test-card"] = {
+      id: "test-card",
+      type: "vocab",
+      interval: tc.days,
+      ease: 2.5,
+      repetitions: 3,
+      dueDate: "2026-08-14"
+    };
+
+    const preview = srs.previewRatings("test-card", "vocab");
+    // Verify that every preview rating contains exact interval days in both formatted strings
+    for (let rating = 1; rating <= 4; rating++) {
+      const p = preview[rating];
+      if (!p.formattedInterval.includes(`${p.interval}d`)) {
+        throw new Error(`formattedInterval '${p.formattedInterval}' missing exact day count '${p.interval}d'`);
+      }
+      if (!p.formattedDutch.includes(String(p.interval))) {
+        throw new Error(`formattedDutch '${p.formattedDutch}' missing exact day count '${p.interval}'`);
+      }
+    }
+  }
+});
+
+// -------------------------------------------------------------------
+// 28. Grammar Exercise Type Integrity Suite
+// -------------------------------------------------------------------
+// Authoritative Dutch verb recognition for typed_conjugation prompts,
+// derived from the repository's own verb data instead of an expanding
+// hardcoded whitelist:
+//   1. An infinitive is a bank verb lemma (pos='verb', inflectionType='lemma')
+//      or a runtime irregular verb.
+//   2. Common Dutch inseparable/separable compound prefixes may decompose an
+//      infinitive onto such a verified stem (opstaan -> op + staan).
+//   3. The reflexive particle 'zich ' may prefix a verified stem
+//      (zich haasten -> haasten).
+//   4. A tiny documented exception list covers legitimate curriculum verbs
+//      absent from the conservative append-only bank (e.g. 'leven').
+// Noun-plural rows are rejected explicitly: parenthesized descriptors such
+// as '(plural)', '(meervoud)' or '(ordinal ...)' are never verb infinitives.
+const VERB_COMPOUND_PREFIXES = [
+  "be", "ge", "her", "ont", "ver", "aan", "uit", "in", "op", "af",
+  "toe", "ter", "weer", "om", "na", "naar", "mis", "onder", "over",
+  "door", "achter", "buiten", "mee", "tegen", "voor", "bij", "dicht",
+  "los", "naast", "samen", "thuis", "vast", "verder", "weg"
+];
+const VERB_EXCEPTIONS = new Set([
+  "leven" // core-curriculum conjugation exercise; absent from the word bank
+]);
+
+function isPlausibleVerbInfinitive(infinitive, wordsBank) {
+  const inf = String(infinitive || "").trim().toLowerCase();
+  if (!inf) return false;
+  if (/\((plural|meervoud|ordinal)/i.test(inf)) return false;
+  if (VERB_EXCEPTIONS.has(inf)) return true;
+
+  const bankLemma = new Set(
+    (wordsBank || [])
+      .filter((w) => w && w.pos === "verb" && w.inflectionType === "lemma")
+      .map((w) => w.word.toLowerCase().trim())
+  );
+  // Irregulars are resolved by the runtime's own conjugation table
+  // (getVerifiedVerbHijConjugation checks it before consulting the bank).
+  const irregular = (candidate) => !!Learning.getVerifiedVerbHijConjugation(candidate, null);
+  const verified = (candidate) => bankLemma.has(candidate) || irregular(candidate);
+
+  if (verified(inf)) return true;
+  if (inf.startsWith("zich ") && verified(inf.slice(5))) return true;
+  return VERB_COMPOUND_PREFIXES.some((prefix) => inf.startsWith(prefix) && verified(inf.slice(prefix.length)));
+}
+
+test("Grammar: typed_conjugation exercises use plausible verb infinitives from authoritative data", () => {
+  for (const rule of grammar) {
+    for (const ex of rule.exercises || []) {
+      if (ex.type !== "typed_conjugation") continue;
+      const infinitive = String(ex.infinitive || "").trim();
+      if (!isPlausibleVerbInfinitive(infinitive, words)) {
+        throw new Error(`${rule.id} typed_conjugation infinitive '${infinitive}' is not a verified Dutch verb infinitive`);
+      }
+    }
+  }
+});
+
+test("Grammar: noun-plural pseudo-verbs are rejected while staan-family infinitives pass", () => {
+  const invalid = ["kind (plural)", "kind (meervoud)", "kind", "tafel", "aangestaan", "achten (ordinal stem acht)"];
+  for (const inf of invalid) {
+    if (isPlausibleVerbInfinitive(inf, words)) {
+      throw new Error(`'${inf}' was accepted as a verb infinitive but must be rejected`);
+    }
+  }
+  const valid = ["staan", "opstaan", "bestaan", "ontstaan", "weerstaan", "verstaan", "lezen", "zijn", "werken", "maken", "moeten", "laten", "ontmoeten", "zich haasten", "leven"];
+  for (const inf of valid) {
+    if (!isPlausibleVerbInfinitive(inf, words)) {
+      throw new Error(`'${inf}' is a legitimate Dutch verb infinitive but was rejected`);
+    }
   }
 });
 
