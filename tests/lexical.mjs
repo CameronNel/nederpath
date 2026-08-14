@@ -46,6 +46,28 @@ assert.equal(canonicalNorms.size, canonicalRows.length);
 assert.equal(canonicalRows.length, words.filter((word) => word.curated).length);
 assert.equal(sourceNorms.size, canonicalRows.length);
 
+// A unique surface owner may retain multiple typed senses, but its learner-facing
+// meaning/synonyms/level must come only from the selected primary POS. Otherwise
+// homographs such as noun/verb pairs become semantically misleading flashcards.
+const levelRank = { A1: 1, A2: 2, B1: 3, B2: 4, C1: 5 };
+let mixedPosCanonicalRows = 0;
+for (const canonical of canonicalRows) {
+  const fields = sourceFields(canonical);
+  const samePosSenses = canonical.senses.filter((sense) => sense.pos === fields.pos);
+  assert.ok(samePosSenses.length > 0, `${fields.word}: canonical row has no primary-POS sense`);
+  const expectedMeanings = [...new Set(samePosSenses
+    .flatMap((sense) => String(sense.meaning).split(/\s*;\s*/u))
+    .map((meaning) => meaning.trim())
+    .filter(Boolean))];
+  const expectedSynonyms = [...new Set(samePosSenses.flatMap((sense) => sense.synonyms || []))];
+  const expectedLevel = samePosSenses.slice().sort((a, b) => (levelRank[a.level] || 99) - (levelRank[b.level] || 99))[0].level;
+  assert.equal(fields.meaning, expectedMeanings.join("; "), `${fields.word}: unrelated POS meaning leaked into canonical gloss`);
+  assert.deepEqual(fields.synonyms, expectedSynonyms, `${fields.word}: unrelated POS synonym leaked into canonical row`);
+  assert.equal(fields.level, expectedLevel, `${fields.word}: unrelated POS sense changed canonical CEFR level`);
+  if (canonical.senses.some((sense) => sense.pos !== fields.pos)) mixedPosCanonicalRows++;
+}
+assert.ok(mixedPosCanonicalRows >= 20, `mixed-POS homograph coverage is unexpectedly vacuous: ${mixedPosCanonicalRows}`);
+
 const idRegistry = JSON.parse(readFileSync(new URL("../data/word_ids.json", import.meta.url), "utf8"));
 const validated = validateRegistry(idRegistry);
 const byWord = new Map(words.map((word) => [normalizeLexicalForm(word.word), word]));
@@ -63,6 +85,15 @@ for (const word of words) {
   for (const collision of word.shadowedForms || []) {
     assert.ok(collision.word && collision.lemma && collision.pos && collision.inflectionType && collision.representedBy, `malformed shadowed form on ${word.word}`);
   }
+}
+
+for (const canonical of canonicalRows) {
+  const norm = normalizeLexicalForm(canonical.row[0]);
+  const generated = byWord.get(norm);
+  assert.ok(generated?.curated, `${canonical.row[0]}: canonical source owner missing from generated artifact`);
+  assert.equal(generated.pos, canonical.row[1], `${canonical.row[0]}: generated canonical POS drift`);
+  assert.equal(generated.level, canonical.row[2], `${canonical.row[0]}: generated canonical level drift`);
+  assert.equal(generated.meaning, canonical.row[4], `${canonical.row[0]}: generated canonical meaning drift`);
 }
 
 for (const [word, expectedId] of Object.entries(fixture.stableIds)) assert.equal(byWord.get(word)?.id, expectedId, `historical ID changed for ${word}`);
@@ -149,6 +180,19 @@ assert.equal(allocator.assignId(" ALPHA "), "nl-00001");
 assert.equal(allocator.assignId("beta"), "nl-00004");
 assert.equal(allocator.ownerOf("nl-00003"), "retired");
 assert.equal(normalizeLexicalForm(" Ｂｅｔａ  "), "beta");
+assert.throws(
+  () => validateRegistry({ version: 1, highWaterMark: 1, entries: { "ａｌｐｈａ": "nl-00001" } }),
+  /non-canonical/,
+  "compatibility-form registry keys must be rejected before ownership lookup"
+);
+assert.throws(
+  () => validateRegistry({ version: 1, highWaterMark: 1, entries: { "two  spaces": "nl-00001" } }),
+  /non-canonical/,
+  "registry keys with non-canonical whitespace must be rejected"
+);
+assert.throws(() => parseNounMeta("tafel", "n"), /Unsupported noun metadata/, "legacy suffix guessing must fail closed");
+assert.throws(() => parseNounMeta("tafel", "s|tafeltje|ignored"), /too many fields/, "extra noun metadata fields must not be ignored");
+assert.throws(() => parseAdjectiveMeta("legacy-synonym-slot"), /Unsupported adjective metadata/, "unknown adjective metadata must fail closed");
 
 const duplicateGroups = duplicateSourceGroups(sourceRows);
 assert.ok(duplicateGroups.size >= 1000, "duplicate-source audit did not inspect the expected bank");
@@ -157,4 +201,4 @@ for (const [norm, records] of duplicateGroups) {
   assert.ok(canonical?.senses?.length === records.length, `merged sense model lost rows for ${norm}`);
 }
 
-console.log(`Lexical tests passed: ${sourceRows.length} raw source rows, ${canonicalRows.length} canonical forms, ${words.length} generated rows, ${duplicateGroups.size} modeled duplicate groups, ${explicitFormsChecked} explicit forms retained, ${nounChecks} noun fixtures, ${verbChecks} verb fixtures, ${adjectiveChecks} adjective fixtures, ${phraseChecks} phrase fixtures.`);
+console.log(`Lexical tests passed: ${sourceRows.length} raw source rows, ${canonicalRows.length} canonical forms, ${words.length} generated rows, ${duplicateGroups.size} modeled duplicate groups, ${mixedPosCanonicalRows} mixed-POS homographs isolated, ${explicitFormsChecked} explicit forms retained, ${nounChecks} noun fixtures, ${verbChecks} verb fixtures, ${adjectiveChecks} adjective fixtures, ${phraseChecks} phrase fixtures.`);
