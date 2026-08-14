@@ -338,6 +338,14 @@ This pass is mandatory and must be meaningfully separate from Pass 1.
 - [x] Re-check `git status`.
 - [x] If any issue is found, fix it and restart Pass 2.
 
+**Integration + residual-facts pass (after review head `6f3fc11`):**
+
+Merged `origin/master` `38f5028` (PR #9) with a normal merge. Combined `npm test` keeps PR #9 `review_followup` + `sentence_surface_audit` and PR #11 `grammar_quality` + `comprehension`. Restored a missing `)` in the 6-gram test so `6f3fc11` can parse; test logic unchanged.
+
+Fixed: 075 fictional supplementary-policy cutoff (not a national 12-week rule); 083 Woo 4 weeks + one 2-week extension + arrangement; 093 (review text called this 076) dropped absolute RIVM/contra-indication claim; 097 no longer teaches what the Omgevingswet requires; 098 Volksbank-dochter generalised. Also Woonstad/Woonnet, ACM/Onderzoeksraad on a fictional derailment, DNB on invented bank figures.
+
+Registry size: 7 current claims. NL/EN sentences: 1666/1666.
+
 **Factual-truthfulness pass (2026-08-14, after independent-review head `7b2a452`):**
 
 Confirmed defects fixed: 050 reflexive *aanmelden*; 051 *het patiëntenportaal*; 073 July social-rent 4,1% (not 5,5%) and WWS better-label → more points; 059 DigiD 5 werkdagen / 21 dagen; 072 study-cost deduction removed.

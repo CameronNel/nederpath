@@ -145,7 +145,7 @@ test("Excessive shared 6-grams are rejected", () => {
   const counts = new Map();
   for (const p of passages) {
     for (const g of new Set(ngrams(p.paragraphs.join(" "), 6))) {
-      counts.set(g, (counts.get(g) || 0) + 1;
+      counts.set(g, (counts.get(g) || 0) + 1);
     }
   }
   const bad = [...counts.entries()].filter(([, n]) => n >= 6);

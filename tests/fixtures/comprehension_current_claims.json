@@ -34,8 +34,8 @@
     },
     {
       "id": "comp-083",
-      "topic": "Woo four-week term",
-      "mustInclude": ["vier weken"]
+      "topic": "Woo four-week term plus one two-week extension",
+      "mustInclude": ["vier weken", "twee weken"]
     }
   ]
 }

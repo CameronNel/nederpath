@@ -12,6 +12,6 @@ Everyday fictional scenes without statutory claims are not listed.
 | comp-072 | Study costs are not a personal deduction; pre-filled employer data can be completed with another jaaropgaaf | Belastingdienst | Persoonsgebonden aftrek / studiekosten vanaf 1 januari 2022 | 2026-08 |
 | comp-073 | Ordinary social-rent increase from 1 July 2026 is 4.1% for independent homes with net rent ≥ €350 | Rijksoverheid | Welke regels gelden er voor een huurverhoging? | 2026-08 |
 | comp-073 | Better energy labels add WWS points and can raise the maximum rent | Rijksoverheid / Huurcommissie | Welke invloed heeft het energielabel op de huurpunten | 2026-08 |
-| comp-083 | Woo requests have a four-week statutory term that can be extended | Overheid.nl / Woo | Wet open overheid termijnen | 2026-08 |
+| comp-083 | Woo: decide within 4 weeks; one extension of at most 2 weeks for volume/complexity; further time only by arrangement with the requester | Rijksoverheid | Wat gebeurt er nadat ik een Woo-verzoek heb gedaan? / Hoofdlijnen Wet open overheid | 2026-08 |
 
 Fictional tenant evenings, invented street scenes, and unnamed corporations are narrative texture, not official history.
