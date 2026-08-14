@@ -6,7 +6,7 @@ import { join, extname, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
-const PORT = 3458;
+let PORT = 0;
 const HOST = "127.0.0.1";
 
 let isSimulatedOffline = false;
@@ -116,7 +116,8 @@ async function runBrowserTests() {
   console.log("       NederPath Comprehensive Browser Test Suite      ");
   console.log("=======================================================");
 
-  await new Promise((resolve) => server.listen(PORT, HOST, resolve));
+  await new Promise((resolve) => server.listen(process.env.PORT ? parseInt(process.env.PORT, 10) : 0, HOST, resolve));
+  PORT = server.address().port;
   console.log(`Test server running at http://${HOST}:${PORT}`);
 
   const browser = await puppeteer.launch({
@@ -532,22 +533,204 @@ async function runBrowserTests() {
     const flashcardAnnounce = await page.$eval("#live-announcer", (el) => el.textContent);
     assert(flashcardAnnounce.includes("onthuld"), `Flashcard reveal announced to live region: '${flashcardAnnounce}'`);
 
-    // Focus SRS rating button and activate via keyboard Enter
-    await page.focus("#btn-srs-good");
-    await page.keyboard.press("Enter");
+    // --- Sub-suite 7a: SRS E2E Rating Preview and Persisted Interval Truthfulness ---
+    // Test Good (rating 3) preview vs persisted card
+    const cardIdGood = await page.evaluate(() => window.NederApp.session.cards[window.NederApp.session.currentIndex].id);
+    const previewGood = await page.evaluate((id) => window.NederSRS.previewRatings(id, "vocab")[3], cardIdGood);
+    const goodBtnText = await page.$eval("#btn-srs-good", (el) => el.textContent);
+    assert(
+      goodBtnText.includes(previewGood.formattedDutch) || goodBtnText.includes(previewGood.formattedInterval),
+      `Good rating button displays advertised preview interval '${previewGood.formattedDutch}'`
+    );
+    await page.click("#btn-srs-good");
+    const persistedCardGood = await page.evaluate((id) => window.NederStore.state.srs.cards[id], cardIdGood);
+    assert(
+      persistedCardGood && persistedCardGood.interval === previewGood.interval,
+      `Persisted SRS card interval (${persistedCardGood?.interval}d) strictly equals advertised preview interval (${previewGood.interval}d)`
+    );
 
-    const srsAnnounce = await page.$eval("#live-announcer", (el) => el.textContent);
-    assert(srsAnnounce.includes("opgeslagen") || srsAnnounce.includes("Sessie"), `SRS rating advance announced: '${srsAnnounce}'`);
+    // Test Easy (rating 4) preview vs persisted card on next card
+    await page.waitForSelector("#interactive-flashcard");
+    await page.click("#interactive-flashcard");
+    await page.waitForSelector(".flashcard-back");
+    const cardIdEasy = await page.evaluate(() => window.NederApp.session.cards[window.NederApp.session.currentIndex].id);
+    const previewEasy = await page.evaluate((id) => window.NederSRS.previewRatings(id, "vocab")[4], cardIdEasy);
+    const easyBtnText = await page.$eval("#btn-srs-easy", (el) => el.textContent);
+    assert(
+      easyBtnText.includes(previewEasy.formattedDutch) || easyBtnText.includes(previewEasy.formattedInterval),
+      `Easy rating button displays advertised preview interval '${previewEasy.formattedDutch}'`
+    );
+    await page.click("#btn-srs-easy");
+    const persistedCardEasy = await page.evaluate((id) => window.NederStore.state.srs.cards[id], cardIdEasy);
+    assert(
+      persistedCardEasy && persistedCardEasy.interval === previewEasy.interval,
+      `Persisted Easy SRS card interval (${persistedCardEasy?.interval}d) strictly equals advertised preview interval (${previewEasy.interval}d)`
+    );
 
-    // Mode 2: De of Het Drill
+    // Test Mature Card (>30 days) formatted with explicit day count in parentheses
+    const matureCardPreview = await page.evaluate(() => {
+      window.NederStore.state.srs.cards["mature-preview-test-id"] = {
+        id: "mature-preview-test-id",
+        type: "vocab",
+        repetitions: 5,
+        interval: 45,
+        easeFactor: 2.5,
+        lastReview: "2026-08-01"
+      };
+      return window.NederSRS.previewRatings("mature-preview-test-id", "vocab")[3];
+    });
+    assert(
+      matureCardPreview.interval > 30 && /\(\d+\s*dgn\)/.test(matureCardPreview.formattedDutch),
+      `Mature card interval (${matureCardPreview.interval}d) formats with explicit day count: '${matureCardPreview.formattedDutch}'`
+    );
+
+    // --- Sub-suite 7b: Real Flashcards Session Completion & XP Delta Verification ---
+    // Complete remaining cards in the active session
+    const startSessionXp = await page.evaluate(() => window.NederApp.session.startXp);
+    while (await page.$("#interactive-flashcard")) {
+      const isRevealed = await page.evaluate(() => window.NederApp.session.revealed);
+      if (!isRevealed) {
+        await page.click("#interactive-flashcard");
+        await page.waitForSelector(".flashcard-back");
+      }
+      await page.click("#btn-srs-good");
+      await new Promise((r) => setTimeout(r, 50));
+    }
+    await page.waitForSelector(".session-complete-card");
+    const flashcardCompletionXpText = await page.$eval(".session-stat-box .stat-num", (el) => el.textContent.trim());
+    const flashcardEarnedXpUI = parseInt(flashcardCompletionXpText.replace("+", ""), 10);
+    const flashcardFinalStoreXp = await page.evaluate(() => window.NederStore.state.user.totalXp);
+    assert(
+      flashcardEarnedXpUI === (flashcardFinalStoreXp - startSessionXp) && flashcardEarnedXpUI > 0,
+      `Flashcard session completion UI (+${flashcardEarnedXpUI} XP) equals exact store XP delta (${flashcardFinalStoreXp} - ${startSessionXp})`
+    );
+
+    // --- Sub-suite 7c: Session Restart Re-anchoring ---
+    await page.click("#btn-restart-session");
+    await page.waitForSelector("#interactive-flashcard");
+    const reanchoredStartXp = await page.evaluate(() => window.NederApp.session.startXp);
+    assert(
+      reanchoredStartXp === flashcardFinalStoreXp,
+      `Restarting session re-anchors session.startXp (${reanchoredStartXp}) strictly to current store XP (${flashcardFinalStoreXp})`
+    );
+
+    // --- Sub-suite 7d: Real Article Drill Session Flow & Statistics Update ---
+    await page.evaluate(() => {
+      window.NederStore.state.settings.sessionSize = 3;
+    });
     const drillNavBtn = await page.$("button[data-mode='article_drill']");
     if (drillNavBtn) {
       await drillNavBtn.click();
       await page.waitForSelector(".drill-card");
-      await page.click(".btn-de");
-      await page.waitForSelector(".drill-feedback");
-      assert(true, "De of Het article drill evaluated and feedback shown");
+      const articleStartXp = await page.evaluate(() => window.NederApp.session.startXp);
+      const startArticleStats = await page.evaluate(() => ({ ...window.NederStore.state.progress.articleStats }));
+
+      // Complete a 3-question drill session with 1 correct and 1 intentionally incorrect answer
+      let step = 0;
+      while (await page.$(".drill-card") && !(await page.$(".session-complete-card"))) {
+        step++;
+        if (step === 1) {
+          // Intentionally click the opposite of the correct article
+          const correctArticle = await page.evaluate(() => window.NederApp.session.cards[window.NederApp.session.currentIndex].article);
+          const wrongBtnSelector = correctArticle === "de" ? ".btn-het" : ".btn-de";
+          await page.click(wrongBtnSelector);
+        } else {
+          // Click correct article
+          const correctArticle = await page.evaluate(() => window.NederApp.session.cards[window.NederApp.session.currentIndex].article);
+          const rightBtnSelector = correctArticle === "de" ? ".btn-de" : ".btn-het";
+          await page.click(rightBtnSelector);
+        }
+        await page.waitForSelector("#btn-next-drill");
+        await page.click("#btn-next-drill");
+        await new Promise((r) => setTimeout(r, 50));
+      }
+
+      await page.waitForSelector(".session-complete-card");
+      const articleCompletionXpText = await page.$eval(".session-stat-box .stat-num", (el) => el.textContent.trim());
+      const articleEarnedXpUI = parseInt(articleCompletionXpText.replace("+", ""), 10);
+      const articleFinalStoreXp = await page.evaluate(() => window.NederStore.state.user.totalXp);
+      const finalArticleStats = await page.evaluate(() => ({ ...window.NederStore.state.progress.articleStats }));
+
+      assert(
+        articleEarnedXpUI === (articleFinalStoreXp - articleStartXp),
+        `Article drill completion UI (+${articleEarnedXpUI} XP) equals exact store XP delta (${articleFinalStoreXp} - ${articleStartXp})`
+      );
+      assert(
+        finalArticleStats.totalDrilled === (startArticleStats.totalDrilled || 0) + 3,
+        `Article drill session truthfully incremented total attempts (+3)`
+      );
     }
+
+    // --- Sub-suite 7e: Fill in the Blank Complete Flow ---
+    const fillNavBtn = await page.$("button[data-mode='fill_blank']");
+    if (fillNavBtn) {
+      await fillNavBtn.click();
+      await page.waitForSelector(".options-grid");
+      const fillStartXp = await page.evaluate(() => window.NederApp.session.startXp);
+
+      while (await page.$(".options-grid") && !(await page.$(".session-complete-card"))) {
+        const opt = await page.$(".btn-option");
+        if (opt) await opt.click();
+        await page.waitForSelector("#btn-next-fill-blank");
+        await page.click("#btn-next-fill-blank");
+        await new Promise((r) => setTimeout(r, 50));
+      }
+
+      await page.waitForSelector(".session-complete-card");
+      const fillCompletionXpText = await page.$eval(".session-stat-box .stat-num", (el) => el.textContent.trim());
+      const fillEarnedXpUI = parseInt(fillCompletionXpText.replace("+", ""), 10);
+      const fillFinalStoreXp = await page.evaluate(() => window.NederStore.state.user.totalXp);
+      assert(
+        fillEarnedXpUI === (fillFinalStoreXp - fillStartXp),
+        `Fill-in-blank completion UI (+${fillEarnedXpUI} XP) equals exact store XP delta (${fillFinalStoreXp} - ${fillStartXp})`
+      );
+    }
+
+    // --- Sub-suite 7f: Genuine Lowest-XP Failure Session Flow ---
+    // In production, every attempted question awards participation XP (1 XP per incorrect article attempt).
+    // Answering all 3 items incorrectly in a 3-question drill produces the exact lowest reachable session reward: +3 XP.
+    await page.evaluate(() => {
+      window.NederStore.state.settings.sessionSize = 3;
+      window.NederApp.practiceMode = "article_drill";
+      window.NederApp.session = {
+        cards: [],
+        currentIndex: 0,
+        revealed: false,
+        feedback: null,
+        startXp: window.NederStore.state.user.totalXp || 0,
+        itemNoun: "vragen"
+      };
+      window.NederApp.render();
+    });
+    await page.waitForSelector(".drill-card");
+    const lowestStartXp = await page.evaluate(() => window.NederApp.session.startXp);
+    const lowestStoreXpBefore = await page.evaluate(() => window.NederStore.state.user.totalXp);
+
+    // Intentionally answer all 3 items incorrectly
+    let lowestStep = 0;
+    while (await page.$(".drill-card") && !(await page.$(".session-complete-card"))) {
+      lowestStep++;
+      const correctArticle = await page.evaluate(() => window.NederApp.session.cards[window.NederApp.session.currentIndex].article);
+      const wrongBtnSelector = correctArticle === "de" ? ".btn-het" : ".btn-de";
+      await page.click(wrongBtnSelector);
+      await page.waitForSelector("#btn-next-drill");
+      await page.click("#btn-next-drill");
+      await new Promise((r) => setTimeout(r, 50));
+    }
+
+    await page.waitForSelector(".session-complete-card");
+    const lowestCompletionXpText = await page.$eval(".session-stat-box .stat-num", (el) => el.textContent.trim());
+    const lowestFinalStoreXp = await page.evaluate(() => window.NederStore.state.user.totalXp);
+    const lowestEarnedXpUI = parseInt(lowestCompletionXpText.replace("+", ""), 10);
+
+    assert(
+      lowestCompletionXpText === "+3" && lowestEarnedXpUI === 3,
+      `Lowest-XP failure session completion UI displays strictly '+3' for 3 failed items (got '${lowestCompletionXpText}')`
+    );
+    assert(
+      lowestFinalStoreXp === lowestStoreXpBefore + 3 && (lowestFinalStoreXp - lowestStartXp) === 3,
+      `Lowest-XP failure session truthfully awards exact store XP delta of 3 (1 XP per incorrect article answer)`
+    );
 
     // Mode 3: Spelling
     const spellNavBtn = await page.$("button[data-mode='spelling']");
@@ -558,17 +741,6 @@ async function runBrowserTests() {
       await page.click("#spelling-form button[type='submit']");
       await page.waitForSelector(".exercise-feedback");
       assert(true, "Spelling exercise submitted and feedback shown");
-    }
-
-    // Mode 4: Fill in the Blank
-    const fillNavBtn = await page.$("button[data-mode='fill_blank']");
-    if (fillNavBtn) {
-      await fillNavBtn.click();
-      await page.waitForSelector(".options-grid");
-      const opt = await page.$(".btn-option");
-      if (opt) await opt.click();
-      await page.waitForSelector(".exercise-feedback");
-      assert(true, "Fill in the blank option clicked and evaluated");
     }
 
     // Mode 5: Choose Word
@@ -634,6 +806,73 @@ async function runBrowserTests() {
       await page.click("#btn-next-ctx");
       assert(true, "Context practice sentence reviewed and advanced");
     }
+
+    // --- Sub-suite 7g: Hostile Payload Injection in Real NederApp Renderer ---
+    await page.evaluate(() => {
+      window.NederApp.practiceMode = "fill_blank";
+      window.NederApp.session = {
+        cards: [
+          {
+            id: "hostile-render-card-1",
+            originalSentence: "Ik zie een <script>window.__hostile_script=true;</script><img src=x onerror=\"window.__hostile_img=true;\"> in het park.",
+            maskedSentence: "Ik zie een <script>window.__hostile_script=true;</script><img src=x onerror=\"window.__hostile_img=true;\"> in het _______.",
+            translation: "I see an injection in the <script>window.__hostile_trans=true;</script> park.",
+            targetWord: "park",
+            options: [
+              "<script>window.__hostile_opt=true;</script>",
+              "<img src=x onerror=\"window.__hostile_opt_img=true;\">",
+              "park",
+              "stad"
+            ],
+            category: "daily_life",
+            level: "A1"
+          }
+        ],
+        currentIndex: 0,
+        revealed: false,
+        feedback: null,
+        itemNoun: "zinnen",
+        startXp: window.NederStore.state.user.totalXp || 0
+      };
+      window.NederApp.render();
+    });
+
+    await page.waitForSelector(".fill-blank-wrapper");
+    const hostileRenderChecks = await page.evaluate(() => {
+      const mainContainer = document.getElementById("app-main");
+      const wrapper = mainContainer.querySelector(".fill-blank-wrapper");
+      const scriptTags = mainContainer.getElementsByTagName("script");
+      const imgTags = mainContainer.getElementsByTagName("img");
+      const sentenceText = mainContainer.querySelector(".drill-noun")?.textContent || "";
+      const translationText = mainContainer.querySelector(".drill-meaning")?.textContent || "";
+
+      return {
+        hasWrapper: !!wrapper,
+        scriptTagCount: scriptTags.length,
+        imgTagCount: imgTags.length,
+        hasClozeBlank: sentenceText.includes("_______"),
+        sentenceHasEscapedLiteral: sentenceText.includes("<script>"),
+        translationHasEscapedLiteral: translationText.includes("<script>"),
+        scriptExecuted: window.__hostile_script !== undefined,
+        imgExecuted: window.__hostile_img !== undefined,
+        transExecuted: window.__hostile_trans !== undefined,
+        optExecuted: window.__hostile_opt !== undefined,
+        optImgExecuted: window.__hostile_opt_img !== undefined
+      };
+    });
+
+    assert(hostileRenderChecks.hasWrapper, ".fill-blank-wrapper is produced directly by NederApp.render()");
+    assert(hostileRenderChecks.scriptTagCount === 0, "No executable <script> elements injected into DOM");
+    assert(hostileRenderChecks.imgTagCount === 0, "No hostile <img> elements injected into DOM");
+    assert(!hostileRenderChecks.scriptExecuted && !hostileRenderChecks.imgExecuted, "Zero hostile script or onerror payload execution in window context");
+    assert(hostileRenderChecks.hasClozeBlank, "Sentence cloze blank '_______' is truthfully preserved");
+    assert(hostileRenderChecks.sentenceHasEscapedLiteral, "Hostile markup safely rendered as literal escaped text in sentence");
+
+    // Verify option buttons are interactive and function in live NederApp
+    await page.click(".btn-option[data-option='park']");
+    await page.waitForSelector(".exercise-feedback");
+    const feedbackText = await page.$eval(".exercise-feedback", (el) => el.textContent);
+    assert(feedbackText.includes("Juist"), "Option buttons in hostile-injected card remain fully interactive and evaluate correctly");
 
     // 8. Navigation: Pad (8-Section Curriculum Path)
     await page.click("#nav-path");

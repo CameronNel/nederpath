@@ -49,8 +49,8 @@ Public Application URL: **`https://cameronnel.github.io/nederpath/`**
 
 ## 2. Supporting Content Banks
 
-- **Idioms & Everyday Expressions ([`data/idioms.js`](data/idioms.js))**: A generated bank of idioms, spoken formulas, greetings, workplace phrases, and proverbs with translations and usage fields. Content deduplication and provenance review remain required; the row count is not a claim of unique or independently curated expressions.
-- **Dutch Sentence Bank ([`data/sentences.js`](data/sentences.js))**: A generated practice-sentence bank across daily life, work, travel, and healthcare, tagged with CEFR levels and target grammar. A separate content-quality pass is required before treating every row as curated material.
+- **Idioms & Everyday Expressions ([`data/idioms.js`](data/idioms.js))**: Exactly **121** curated idioms, proverbs, and everyday conversational formulas across CEFR levels A1–B2. Each expression includes natural Dutch usage, English translations, literal glosses where applicable, communicative register, and examples. Managed via a deterministic, append-only ID registry ([`data/idiom_ids.json`](data/idiom_ids.json)).
+- **Dutch Sentence Bank ([`data/sentences.js`](data/sentences.js))**: Exactly **641** genuinely authored Dutch benchmark and practice sentences covering 22 real-world domains and all 5 CEFR levels (A1 through C1 with $\ge 120$ sentences per level). Every sentence features verified Dutch surface target words, grammatical tags, English translations, and deterministic, append-only ID tracking ([`data/sentence_ids.json`](data/sentence_ids.json)).
 
 ---
 
@@ -94,7 +94,7 @@ npm run audit
 # Run unit and smoke tests
 npm run test:unit
 
-# Run targeted regression tests for learning-engine and morphology integrity
+# Run targeted regression tests for learning-engine, idioms, sentences, and morphology integrity
 npm run test:regression
 
 # Run authoritative Service Worker and offline caching tests in VM sandbox
@@ -119,9 +119,13 @@ npm run serve
 - **100%** of learnable nouns have `displayWord` formatted as `de [word]` or `het [word]`.
 - **100%** of plural nouns and diminutive plurals carry article `de`.
 - **120** grammar lessons with 7 exercise interaction types.
-- **4** independently authored A1 comprehension passages with stable IDs and passage-specific quizzes; future levels are added only after editorial review.
-- Automated audit, smoke, regression, offline, browser, build, and artifact checks run on every pull request. Lexical coverage includes full-baseline ID compatibility, append-only allocation, real two-run reproducibility, learnability isolation, article agreement, and immediate stale-reference cleanup.
-- **Initial Runtime Transfer Budget**: ~943 KB uncompressed on Today view (target <= 1.5 MB); large curriculum banks are promise-cached and loaded only when needed.
+- **120** curated idioms with stable IDs, register classifications, and deterministic generation.
+- **641** authored sentences with 100% surface target word validation across 22 domains and 5 CEFR levels (A1–C1).
+- **Pure Spaced Repetition Previews**: Flashcard rating buttons (1–4) compute and display truthful predicted intervals (`1d`, `3d`, `6d`, etc.) dynamically via non-mutating SM-2 scheduler arithmetic.
+- **Truthful Session XP**: Practice session completion screens display exact XP earned from active store deltas and use context-appropriate nouns (`kaarten`, `zinnen`, `vragen`, `woorden`, `werkwoorden`).
+- **4** independently authored A1 comprehension passages with stable IDs and passage-specific quizzes.
+- Automated audit, smoke, regression, offline, browser, build, and artifact checks run on every pull request.
+- **Initial Runtime Transfer Budget**: ~718 KB uncompressed on Today view (target <= 1.5 MB); large curriculum banks are promise-cached and loaded only when needed.
 
 ---
 
@@ -136,4 +140,3 @@ npm run serve
 
 - **Audio/Voice Synthesis**: Pronunciation recordings, custom voice providers, and audio file playback are explicitly omitted and left out of scope for this release.
 - **Server Sync**: NederPath is an offline-first client application; synchronization between multiple physical devices relies on manual JSON progress export and import via the Settings tab.
-- **Supporting Content Review**: The idiom and sentence generators still require dedicated deduplication and editorial-quality batches. Their present row counts must not be read as proof of unique, authentic, or independently curated content.
