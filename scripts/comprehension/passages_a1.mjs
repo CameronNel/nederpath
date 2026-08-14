@@ -8,10 +8,10 @@ export const passages = [
     minutes: 3,
     paragraphs: [
       "Jan woont in een licht appartement in het centrum van Utrecht. Elke ochtend staat hij om zeven uur op en zet hij een verse pot koffie in de keuken. Zijn kat Poesje drinkt melk uit een blauw bakje naast de koelkast.",
-      "Daarna pakt hij zijn zwarte stadsfiets en fietst hij langs de eeuwenoude Oudegracht naar zijn werk bij een boekhandel. Onderweg ziet hij boten varen en zwaait hij naar de vriendelijke bakker bij de Neude. De bakker houdt een warm brood omhoog.",
-      "Utrecht is een gezellige stad met veel terrasjes, monumentale panden en overal bomen langs het water. Jan geniet elke dag van zijn fietstocht door de historische binnenstad. Bij de Domtoren stopt hij even en eet hij een appel uit zijn jas."
+      "Daarna pakt hij zijn zwarte stadsfiets en fietst hij langs de oude Oudegracht naar zijn werk bij een boekhandel. Onderweg ziet hij boten varen en zwaait hij naar de vriendelijke bakker bij de Neude. De bakker houdt een warm brood omhoog.",
+      "Utrecht is een gezellige stad met veel terrasjes, mooie oude gebouwen en overal bomen langs het water. Jan geniet elke dag van zijn fietstocht door de oude binnenstad. Bij de Domtoren stopt hij even en eet hij een appel uit zijn jas."
     ],
-    translation: "Jan lives in a bright apartment in the centre of Utrecht. Every morning he gets up at seven o'clock and brews a fresh pot of coffee in the kitchen. His cat Poesje drinks milk from a blue bowl next to the fridge. After that he grabs his black city bike and cycles along the centuries-old Oudegracht to his work at a bookshop. On the way he sees boats sailing and waves to the friendly baker at the Neude. The baker holds up a warm loaf. Utrecht is a cosy city with many outdoor terraces, monumental buildings, and trees along the water. Jan enjoys his bike ride through the historic city centre every day. At the Dom tower he stops briefly and eats an apple from his coat.",
+    translation: "Jan lives in a bright apartment in the centre of Utrecht. Every morning he gets up at seven o'clock and brews a fresh pot of coffee in the kitchen. His cat Poesje drinks milk from a blue bowl next to the fridge. After that he grabs his black city bike and cycles along the old Oudegracht to his work at a bookshop. On the way he sees boats sailing and waves to the friendly baker at the Neude. The baker holds up a warm loaf. Utrecht is a cosy city with many outdoor terraces, beautiful old buildings, and trees along the water. Jan enjoys his bike ride through the old city centre every day. At the Dom tower he stops briefly and eats an apple from his coat.",
     vocab: [
       { word: "de ochtend", en: "morning", pos: "noun" },
       { word: "de gracht", en: "city canal", pos: "noun" },
@@ -24,7 +24,7 @@ export const passages = [
     questions: [
       { question: "Hoe laat staat Jan elke ochtend op?", options: ["Om zeven uur", "Om acht uur", "Om zes uur", "Om negen uur"], correct: 0, explanation: "In de eerste alinea staat dat Jan om zeven uur opstaat." },
       { question: "Hoe reist Jan naar zijn werk?", options: ["Met de bus", "Op zijn zwarte stadsfiets", "Met de trein", "Lopend"], correct: 1, explanation: "Jan pakt zijn zwarte stadsfiets en fietst langs de Oudegracht." },
-      { question: "Waar fietst Jan langs?", options: ["Door het bos", "Over de snelweg", "Langs de Oudegracht", "Langs de haven van Rotterdam"], correct: 2, explanation: "Hij fietst langs de eeuwenoude Oudegracht." },
+      { question: "Waar fietst Jan langs?", options: ["Door het bos", "Over de snelweg", "Langs de Oudegracht", "Langs de haven van Rotterdam"], correct: 2, explanation: "Hij fietst langs de oude Oudegracht." },
       { question: "Wat vindt Jan van zijn dagelijkse fietstocht?", options: ["Hij vindt het saai", "Hij vindt het te vermoeiend", "Hij wil liever met de auto", "Hij geniet ervan"], correct: 3, explanation: "Jan geniet elke dag van zijn fietstocht door de stad." }
     ]
   },
@@ -36,11 +36,11 @@ export const passages = [
     theme: "food",
     minutes: 3,
     paragraphs: [
-      "Elke zaterdag bezoekt Lisa de grote markt op het centrale marktplein in Deventer. De kramen staan vol met verse groenten, seizoensfruit, bloemen en ambachtelijke kazen. Een vrouw verkoopt tulpen in een emmer bij de kerk.",
+      "Elke zaterdag bezoekt Lisa de grote markt op het centrale marktplein in Deventer. De kramen staan vol met verse groenten, fruit, bloemen en kazen van de boer. Een vrouw verkoopt tulpen in een emmer bij de kerk.",
       "Lisa koopt een kilo zoete appels, verse spinazie en een flink stuk oude Goudse kaas. De kaasboer laat haar eerst een klein stukje proeven om te zien of het lekker is. Ze lacht en knikt ja.",
       "Bij de bakkerskraam haalt ze nog een warm rozijnenbrood. Lisa betaalt met haar pinpas, stopt alle boodschappen in haar fietstassen en fietst tevreden naar huis langs de IJssel. Haar hond Bram wacht bij de voordeur."
     ],
-    translation: "Every Saturday Lisa visits the large market on the central market square in Deventer. The stalls are filled with fresh vegetables, seasonal fruits, flowers, and artisanal cheeses. A woman sells tulips in a bucket by the church. Lisa buys a kilo of sweet apples, fresh spinach, and a large piece of aged Gouda cheese. The cheesemonger first lets her sample a small piece to see if it is tasty. She smiles and nods yes. At the bakery stall she picks up a warm raisin bread. Lisa pays with her debit card, packs all groceries into her bike panniers, and cycles home contented along the IJssel. Her dog Bram waits at the front door.",
+    translation: "Every Saturday Lisa visits the large market on the central market square in Deventer. The stalls are filled with fresh vegetables, fruit, flowers, and cheeses from the farmer. A woman sells tulips in a bucket by the church. Lisa buys a kilo of sweet apples, fresh spinach, and a large piece of aged Gouda cheese. The cheesemonger first lets her sample a small piece to see if it is tasty. She smiles and nods yes. At the bakery stall she picks up a warm raisin bread. Lisa pays with her debit card, packs all groceries into her bike panniers, and cycles home contented along the IJssel. Her dog Bram waits at the front door.",
     vocab: [
       { word: "de kraam", en: "market stall", pos: "noun" },
       { word: "proeven", en: "to taste / sample", pos: "verb" },
@@ -66,14 +66,14 @@ export const passages = [
     minutes: 3,
     paragraphs: [
       "In Nederland is de fiets een alledaags vervoermiddel. Bij veel stations staan grote fietsenstallingen voor reizigers die fiets en trein combineren. In Zwolle ziet een kind een oranje fiets met een mand vol appels.",
-      "In veel steden liggen vrijliggende, vaak rode fietspaden met eigen verkeerslichten. Kinderen leren er op jonge leeftijd hoe ze veilig aan het verkeer deelnemen. Een juf in Houten oefent met een bel en een helm.",
-      "Ook bij regen blijven veel mensen fietsen. Ze trekken een winddichte regenjas aan en rijden voorzichtig door naar school, het station of hun werk. Een man in een gele jas stopt bij een brug voor een boot."
+      "In veel steden liggen aparte, vaak rode fietspaden. Die paden liggen niet op de weg. Kinderen leren er op jonge leeftijd hoe ze veilig meedoen in het verkeer. Een juf in Houten oefent met een bel en een helm.",
+      "Ook bij regen blijven veel mensen fietsen. Ze trekken een waterdichte regenjas aan en rijden voorzichtig door naar school, het station of hun werk. Een man in een gele jas stopt bij een brug voor een boot."
     ],
-    translation: "In the Netherlands, the bicycle is an everyday means of transport. At many stations there are large bicycle parking facilities for travellers who combine cycling and train travel. In Zwolle a child sees an orange bicycle with a basket full of apples. In many cities there are separated, often red cycle paths with their own traffic lights. Children learn at a young age how to participate safely in traffic. A teacher in Houten practises with a bell and a helmet. Even when it rains, many people continue cycling. They put on a windproof raincoat and ride carefully to school, the station, or work. A man in a yellow coat stops at a bridge for a boat.",
+    translation: "In the Netherlands, the bicycle is an everyday means of transport. At many stations there are large bicycle parking facilities for travellers who combine cycling and train travel. In Zwolle a child sees an orange bicycle with a basket full of apples. In many cities there are separate, often red cycle paths. Those paths are not on the road. Children learn at a young age how to take part safely in traffic. A teacher in Houten practises with a bell and a helmet. Even when it rains, many people continue cycling. They put on a waterproof raincoat and ride carefully to school, the station, or work. A man in a yellow coat stops at a bridge for a boat.",
     vocab: [
       { word: "het fietspad", en: "cycle path", pos: "noun" },
       { word: "de fietsenstalling", en: "bicycle parking facility", pos: "noun" },
-      { word: "vrijliggend", en: "separated / dedicated", pos: "adjective" },
+      { word: "waterdicht", en: "waterproof", pos: "adjective" },
       { word: "de regenjas", en: "raincoat", pos: "noun" },
       { word: "het station", en: "station", pos: "noun" },
       { word: "het verkeer", en: "traffic", pos: "noun" }
@@ -83,7 +83,7 @@ export const passages = [
       { question: "Welke kleur hebben veel fietspaden volgens de tekst?", options: ["Groen", "Blauw", "Rood", "Zwart"], correct: 2, explanation: "In de tweede alinea staat dat veel fietspaden vaak rood zijn." },
       { question: "Wat staat er bij veel stations?", options: ["Gratis taxistandplaatsen", "Autovrije campings", "Ondergrondse winkels", "Grote fietsenstallingen"], correct: 3, explanation: "Bij veel stations staan grote fietsenstallingen voor reizigers." },
       { question: "Wat doen veel mensen als het regent?", options: ["Ze trekken een regenjas aan en fietsen voorzichtig door", "Ze blijven altijd thuis", "Ze bellen een taxi", "Ze nemen zonder uitzondering de bus"], correct: 0, explanation: "Veel mensen trekken een regenjas aan en blijven voorzichtig fietsen." },
-      { question: "Wat leren kinderen op jonge leeftijd?", options: ["Een trein besturen", "Veilig deelnemen aan het verkeer", "Een auto repareren", "Verkeerslichten bouwen"], correct: 1, explanation: "De tekst zegt dat kinderen leren hoe ze veilig aan het verkeer deelnemen." }
+      { question: "Wat leren kinderen op jonge leeftijd?", options: ["Een trein besturen", "Veilig meedoen in het verkeer", "Een auto repareren", "Verkeerslichten bouwen"], correct: 1, explanation: "De tekst zegt dat kinderen leren hoe ze veilig meedoen in het verkeer." }
     ]
   },
   {
@@ -183,9 +183,9 @@ export const passages = [
     paragraphs: [
       "Noor begint vandaag bij een bakkerij in Haarlem aan de Grote Houtstraat. Ze komt om zes uur en krijgt een schort van haar collega Mark. De oven is al warm en ruikt naar krenten.",
       "Eerst leert ze brood in de oven schuiven. Daarna helpt ze klanten aan de toonbank. Een man koopt twee croissants en een broodje kaas. Een kind wijst naar een appelflap in de vitrine.",
-      "Om twee uur is haar dienst klaar. Mark zegt dat ze goed heeft gewerkt. Noor fietst blij naar huis langs de Grote Markt. In haar tas zit een klein zakje met twee stale krakelingen."
+      "Om twee uur is haar dienst klaar. Mark zegt dat ze goed heeft gewerkt. Noor fietst blij naar huis langs de Grote Markt. In haar tas zit een klein zakje met twee oude krakelingen."
     ],
-    translation: "Noor starts today at a bakery in Haarlem on Grote Houtstraat. She arrives at six o'clock and gets an apron from her colleague Mark. The oven is already warm and smells of currants. First she learns to slide bread into the oven. After that she helps customers at the counter. A man buys two croissants and a cheese roll. A child points to an apple turnover in the display. At two o'clock her shift is finished. Mark says that she has worked well. Noor cycles home happily along the Grote Markt. In her bag is a small bag with two stale pretzels.",
+    translation: "Noor starts today at a bakery in Haarlem on Grote Houtstraat. She arrives at six o'clock and gets an apron from her colleague Mark. The oven is already warm and smells of currants. First she learns to slide bread into the oven. After that she helps customers at the counter. A man buys two croissants and a cheese roll. A child points to an apple turnover in the display. At two o'clock her shift is finished. Mark says that she has worked well. Noor cycles home happily along the Grote Markt. In her bag is a small bag with two old pretzels.",
     vocab: [
       { word: "de bakkerij", en: "bakery", pos: "noun" },
       { word: "de collega", en: "colleague", pos: "noun" },
@@ -228,7 +228,7 @@ export const passages = [
       { question: "Van wie komt de brief?", options: ["Van een bank", "Van een school", "Van een winkel", "Van de gemeente Eindhoven"], correct: 3, explanation: "De brief komt van de gemeente Eindhoven." },
       { question: "Aan welke straat woont Koen?", options: ["Aan de Kerkstraat", "Aan de Marktstraat", "Aan de Stationsweg", "Aan de Parklaan"], correct: 0, explanation: "Koen woont aan de Kerkstraat, huisnummer 14." },
       { question: "Wanneer moet het formulier terug?", options: ["Voor 1 juni", "Voor 15 mei", "Voor 15 april", "Voor kerst"], correct: 1, explanation: "Hij moet het formulier voor 15 mei terugsturen." },
-      { question: "Wat vult Koen onder andere in?", options: ["Zijn salaris", "Zijn hobbies", "Zijn naam, geboortedatum en adres", "Zijn telefoonabonnement"], correct: 2, explanation: "Hij vult zijn naam, geboortedatum en adres in." }
+      { question: "Wat vult Koen onder andere in?", options: ["Zijn salaris", "Zijn hobby's", "Zijn naam, geboortedatum en adres", "Zijn telefoonabonnement"], correct: 2, explanation: "Hij vult zijn naam, geboortedatum en adres in." }
     ]
   },
   {

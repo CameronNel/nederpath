@@ -288,9 +288,11 @@ Automated tests do not get to certify prose quality by themselves.
 - [x] Verify CEFR appropriateness.
 - [x] Rewrite obvious repeated phrases or patterns even if similarity tests pass.
 
-**Manual review evidence:**
+**Manual review evidence (remediation pass, 2026-08-14):**
 
-Full corpus uniqueness + fingerprint scan on all 120 lessons and 120 passages. Second sample ≥10 lessons/section (including g-002 hen/hun/ze, g-012 een groot huis, g-016 prefix-final, g-031 leefde/reisde not *leefte, g-034 zijn vs hebben, g-046 SOV, g-051 die/dat, g-070 IPP, g-076 red/green, g-089 groter dan, g-106 genitive relics). Comprehension: inspected baseline 001–004 plus ≥8/level for naturalness, translation, answerability (A1 literal), and CEFR density. Missing vocab lemmas were inserted into Dutch bodies; short passages expanded with unique clauses. No remaining deskundigen/experts-agree scaffolds in artifacts.
+Previous claim of complete review was withdrawn after independent review found 92 incomplete translations and `officiëel`.
+
+This pass: sentence-count audit of all 120 generated passages (before: 92 mismatches, 1700 NL vs 1219 EN sentences; after: 0 mismatches, 1653 vs 1653). Hostile review of `data/comprehension.js` and `data/grammar.js` after regeneration. All 240 grammar example sentences listed and scanned; replaced the implausible `autowiel` example and a duplicated `g-091`/`g-105` sentence. g-109 rewritten against Onze Taal / Taaladvies `ervan uitgaan` and Taalportaal circumpositions. A1 001–003 CEFR simplifications verified in the artifact. A2 `officieel` confirmed present and `officiëel` absent from source and artifact. Sampled ≥8 passages per CEFR in the generated file for translation coverage and question answerability.
 
 ---
 
@@ -314,10 +316,9 @@ When you think the implementation is finished:
 - [x] Build a DONE/NOT DONE matrix for every section of this file.
 - [x] If anything is NOT DONE, continue working rather than writing a caveat.
 
-**Pass 1 evidence:**
+**Pass 1 evidence (remediation):**
 
-Double generate grammar+comprehension: identical. grammar_quality 10/10; comprehension 9/9. Audit 58/0; smoke 8/0; pr1 13/0 + 5/0; offline 26/0; browser 97/0. `node scripts/build.mjs` + `audit-artifact.mjs` 64/0. `git diff --check` clean. IDs g-001–120 and comp-001–004 preserved. `package.json` test script now includes grammar_quality.  
-Windows note: `npm` PowerShell execution policy blocked; tests invoked via `node`. `tests/regression.mjs` word-generator canonical check dirties `data/words.js` on this checkout (CRLF/generator) — files restored, not committed (not owned).
+Grammar ×2 and comprehension ×2 byte-identical to checkout. `measure_curriculum.mjs` ×2: second run identical to first (`fc` no differences). `tests/grammar_quality.mjs` 10/0 including new per-type schema. `tests/comprehension.mjs` 9/0 including translation sentence-count and `officiëel` fingerprint. Audit 58/0; smoke 8/0; pr1 13+5; offline 26/0; build OK; artifact audit 64/0; `git diff --check` clean. Independent-review test commits `319ecab`, `0099204`, `09eb71a` left intact.
 
 ---
 
@@ -337,9 +338,9 @@ This pass is mandatory and must be meaningfully separate from Pass 1.
 - [x] Re-check `git status`.
 - [x] If any issue is found, fix it and restart Pass 2.
 
-**Pass 2 evidence:**
+**Pass 2 evidence (remediation):**
 
-Re-read contract. Grep for deskundigen/title shells/experts-agree: only appear in this contract and as *forbidden* fingerprints in tests/audit. Fresh `measure_curriculum.mjs` + double generate + both hostile suites re-run. Artifacts `data/grammar.js` / `data/comprehension.js` re-inspected (120/120 IDs, unique bodies). `git status` limited to owned curriculum/test/docs + justified `package.json`. No title-substitution loop remains in `generate_grammar.mjs`.
+Artifact grep: no `officiëel`, no `boeken op het autowiel`, no deskundigen templates. g-109 in `data/grammar.js` distinguishes `op … na` / `tot … toe` / `van daaruit` / `ervan uitgaan`. Translation completeness re-measured on the generated file (1653=1653). Remaining limitation: Windows `npm.ps1` policy; `tests/regression.mjs` words-canonical check still dirties unowned word files (restored, not committed). Browser suite not re-run in this remediations pass (no app.js change).
 
 ---
 

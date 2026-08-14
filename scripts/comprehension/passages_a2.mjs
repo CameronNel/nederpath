@@ -36,7 +36,7 @@ export const passages = [
     theme: "bureaucracy",
     minutes: 4,
     paragraphs: [
-      "Tibor is vorige week verhuisd van Venlo naar een etage in Breda. Omdat hij langer dan vier maanden in Nederland blijft, moet hij zich inschrijven bij de gemeente. Hij moet officiëel verhuizen in de administratie, niet alleen met dozen.",
+      "Tibor is vorige week verhuisd van Venlo naar een etage in Breda. Omdat hij langer dan vier maanden in Nederland blijft, moet hij zich inschrijven bij de gemeente. Hij moet officieel verhuizen in de administratie, niet alleen met dozen.",
       "Hij maakt een afspraak via de website en neemt zijn huurcontract en paspoort mee. Als de medewerker vraagt naar de ingangsdatum, wijst Tibor naar 1 maart op het papier. In de hal hangt een poster over DigiD naast een groene plant.",
       "Na een kwartier krijgt hij een bevestiging per e-mail. Hij moet nog een DigiD activeren, zodat hij later toeslagen kan aanvragen. Buiten regent het op de Grote Markt, maar Tibor is opgelucht dat de administratie klaar is. Hij koopt een broodje bij bakkerij Pauw."
     ],
@@ -67,9 +67,9 @@ export const passages = [
     paragraphs: [
       "De familie Bos in Hoogeveen wil minder stroom betalen. Daarom laten ze acht zonnepanelen op het dak zetten. Elk zonnepaneel ligt gericht naar het zuiden boven de schuur. Een monteur komt 's ochtends en legt uit dat de omvormer in de schuur hangt.",
       "Als de zon schijnt, produceert het systeem stroom voor de wasmachine en de laptop. Op bewolkte dagen gebruiken ze nog stroom van het net. Dochter Fleur zet een wasrek in de tuin naast de rode kruiwagen.",
-      "Na twee weken bekijken ze de app. Ze zien dat de panelen al honderd kilowattuur hebben opgewekt. De kinderen willen extra stroom opwekken en zetten de wasdroger uit, omdat ze de opbrengst willen vergelijken met vorige maand. Op zaterdag kwam een monteur langs om de omvormer te controleren en noteerde hij het serienummer in een geel schrift."
+      "Na twee weken bekijken ze de app. Ze zien dat de panelen al honderd kilowattuur hebben opgewekt. De kinderen willen extra stroom opwekken en zetten de wasdroger uit, omdat ze de opbrengst willen vergelijken met vorige maand. De familie zet de app elke zondagavond naast de energierekening, zodat de kinderen het verschil in euro’s zien."
     ],
-    translation: "The Bos family in Hoogeveen wants to pay less for electricity. Therefore they have eight solar panels installed on the roof. Each solar panel faces south above the shed. A technician comes in the morning and explains that the inverter hangs in the shed. When the sun shines, the system produces electricity for the washing machine and the laptop. On cloudy days they still use electricity from the grid. Daughter Fleur puts a drying rack in the garden next to the red wheelbarrow. After two weeks they look at the app. They see that the panels have already generated one hundred kilowatt hours. The children want to generate extra electricity and switch the tumble dryer off, because they want to compare the yield with last month.",
+    translation: "The Bos family in Hoogeveen wants to pay less for electricity. Therefore they have eight solar panels installed on the roof. Each solar panel faces south above the shed. A technician comes in the morning and explains that the inverter hangs in the shed. When the sun shines, the system produces electricity for the washing machine and the laptop. On cloudy days they still use electricity from the grid. Daughter Fleur puts a drying rack in the garden next to the red wheelbarrow. After two weeks they look at the app. They see that the panels have already generated one hundred kilowatt hours. The children want to generate extra electricity and switch the tumble dryer off, because they want to compare the yield with last month. The family puts the app next to the energy bill every Sunday evening, so the children see the difference in euros.",
     vocab: [
       { word: "het zonnepaneel", en: "solar panel", pos: "noun" },
       { word: "de stroom", en: "electricity", pos: "noun" },
@@ -98,7 +98,7 @@ export const passages = [
       "Als een raadslid te snel praat, vraagt ze hem te herhalen. Ze legt uit hoe inwoners een inspraakavond kunnen bezoeken als ze iets over parkeren willen zeggen. Raadslid De Groot noemt de Langestraat en een volle fietsenstalling. Nienke noteert de namen in een schrift.",
       "Op vrijdag zet ze de aflevering online. Honderd mensen luisteren op de eerste dag. Een luisteraar stuurt een bericht: hij gaat volgende week zelf naar het stadhuis, omdat hij nu begrijpt hoe de agenda werkt. Nienke print het bericht en plakt het op de koelkast naast een ansicht van de Waag."
     ],
-    translation: "Nienke makes a short podcast about the municipal council in Alkmaar. She records in her kitchen, because the studio is too expensive. On the table lie a microphone, a tea towel, and a cup of chamomile tea. If a councillor speaks too quickly, she asks him to repeat. She explains how residents can attend a public-consultation evening if they want to say something about parking. Councillor De Groot mentions Langestraat and a full bicycle parking area. On Friday she puts the episode online. One hundred people listen on the first day. A listener sends a message: he will go to the town hall himself next week, because he now understands how the agenda works. Nienke prints the message and sticks it on the fridge.",
+    translation: "Nienke makes a short podcast about the municipal council in Alkmaar. She records in her kitchen, because the studio is too expensive. On the table lie a microphone, a tea towel, and a cup of chamomile tea. Her cat walks past the chair. If a councillor speaks too quickly, she asks him to repeat. She explains how residents can attend a public-consultation evening if they want to say something about parking. Councillor De Groot mentions Langestraat and a full bicycle parking area. Nienke writes the names down in a notebook. On Friday she puts the episode online. One hundred people listen on the first day. A listener sends a message: he will go to the town hall himself next week, because he now understands how the agenda works. Nienke prints the message and sticks it on the fridge next to a postcard of the Waag.",
     vocab: [
       { word: "de podcast", en: "podcast", pos: "noun" },
       { word: "de gemeenteraad", en: "municipal council", pos: "noun" },
@@ -125,9 +125,9 @@ export const passages = [
     paragraphs: [
       "Boaz reist van Deventer naar Amersfoort voor een sollicitatiegesprek om half elf. Op het perron hoort hij dat de sprinter kan uitvallen vanwege een seinstoring. Hij houdt zijn map met cv stevig vast.",
       "Hij stapt in een stoptrein via Apeldoorn, maar hij komt twintig minuten later aan. In de trein schrijft hij een kort bericht naar de recruiter, zodat zij weet dat hij onderweg is. Een conducteur deelt water uit bij de deuren.",
-      "Op het station rent hij naar het kantoor aan de Stationsstraat. De receptionist laat hem binnen en biedt water aan. Omdat hij eerlijk uitlegt wat er gebeurde, begint het gesprek toch rustig. Boaz hoopt op tijd aan te komen voor het tweede deel met een testdag. In de wachtkamer op station Amersfoort kocht hij een fles water en belde hij zijn moeder, zodat iemand wist waar hij was."
+      "Op het station rent hij naar het kantoor aan de Stationsstraat. De receptionist laat hem binnen en biedt water aan. Omdat hij eerlijk uitlegt wat er gebeurde, begint het gesprek toch rustig. Boaz hoopt op tijd aan te komen voor het tweede deel met een testdag. In de wachtkamer op station Amersfoort kocht hij water en belde hij zijn moeder, zodat iemand wist waar hij was."
     ],
-    translation: "Boaz travels from Deventer to Amersfoort for a job interview at half past ten. On the platform he hears that the sprinter can be cancelled because of a signal failure. He holds his folder with his CV firmly. He boards a stopping train via Apeldoorn, but he arrives twenty minutes later. On the train he writes a short message to the recruiter so that she knows he is on the way. A conductor hands out water at the doors. At the station he runs to the office on Stationsstraat. The receptionist lets him in and offers water. Because he honestly explains what happened, the conversation still starts calmly. Boaz hopes to arrive on time for the second part with a test day.",
+    translation: "Boaz travels from Deventer to Amersfoort for a job interview at half past ten. On the platform he hears that the sprinter can be cancelled because of a signal failure. He holds his folder with his CV firmly. He boards a stopping train via Apeldoorn, but he arrives twenty minutes later. On the train he writes a short message to the recruiter so that she knows he is on the way. A conductor hands out water at the doors. At the station he runs to the office on Stationsstraat. The receptionist lets him in and offers water. Because he honestly explains what happened, the conversation still starts calmly. Boaz hopes to arrive on time for the second part with a test day. In the waiting room at Amersfoort station he bought water and called his mother, so someone knew where he was.",
     vocab: [
       { word: "het sollicitatiegesprek", en: "job interview", pos: "noun" },
       { word: "uitvallen", en: "to be cancelled", pos: "verb" },
@@ -214,7 +214,7 @@ export const passages = [
       "Als een vakje onduidelijk is, belt ze de hulptelefoon. Een medewerker legt uit dat ze reiskosten mag aftrekken als ze meer dan tien kilometer fietste. Esra zoekt haar loonstrook in een groene map. Ze drinkt thee terwijl ze wacht.",
       "Esra controleert haar burgerservicenummer en verstuurt het formulier. Een week later ziet ze een teruggave van honderdtwintig euro. Ze zet het geld opzij voor een nieuwe winterjas. In de etalage van winkel De Wol hangt al een grijze jas met houten knopen."
     ],
-    translation: "In March Esra logs in to the Tax and Customs Administration site with her DigiD. She files a return for the first time, because last year she had a part-time job in a warehouse. The warehouse is by the canal in Alphen aan den Rijn. If a box is unclear, she calls the help line. An employee explains that she may deduct travel costs if she cycled more than ten kilometres. Esra looks for her payslip in a green folder. Esra checks her citizen service number and submits the form. A week later she sees a refund of one hundred and twenty euros. She puts the money aside for a new winter coat. In the window of shop De Wol a grey coat already hangs.",
+    translation: "In March Esra logs in to the Tax and Customs Administration site with her DigiD. She files a return for the first time, because last year she had a part-time job in a warehouse. The warehouse is by the canal in Alphen aan den Rijn. Her laptop stands on a desk by the window. If a box is unclear, she calls the help line. An employee explains that she may deduct travel costs if she cycled more than ten kilometres. Esra looks for her payslip in a green folder. She drinks tea while she waits. Esra checks her citizen service number and submits the form. A week later she sees a refund of one hundred and twenty euros. She puts the money aside for a new winter coat. In the window of shop De Wol a grey coat already hangs.",
     vocab: [
       { word: "de aangifte", en: "tax return", pos: "noun" },
       { word: "aftrekken", en: "to deduct", pos: "verb" },
@@ -241,9 +241,9 @@ export const passages = [
     paragraphs: [
       "Op een grijze zondag bezoeken Ilias en zijn nicht het Rijksmuseum. Ze kopen tickets online, zodat ze niet lang in de rij hoeven te staan. Ilias draagt een grijze sjaal en een tas van de bibliotheek.",
       "In de eregalerij blijft Ilias lang bij een groot schilderij van een schutterij staan. Zijn nicht leest de tekst op het bordje, omdat ze de namen van de personen wil onthouden. Ze fluistert de naam van een kapitein.",
-      "Later drinken ze koffie in het café onder de passage. Ilias koopt een kleine prent in de winkel. Buiten waait het hard, maar ze lopen toch nog langs de vijver, omdat de lichtval mooi is. Een eend zwemt naar een tak in het water. In de audiotour hoorde zij een anekdote over de nachtwacht die zij later aan haar nichtje in Almere navertelde."
+      "Later drinken ze koffie in het café onder de passage. Ilias koopt een kleine prent in de winkel. Buiten waait het hard, maar ze lopen toch nog langs de vijver, omdat het licht mooi is. Een eend zwemt naar een tak in het water. In de zaal hoorde zij een korte uitleg over het licht op de schilderijen, die zij later aan haar nichtje navertelde."
     ],
-    translation: "On a grey Sunday Ilias and his cousin visit the Rijksmuseum. They buy tickets online so that they do not have to stand in the queue for long. Ilias wears a grey scarf and a bag from the library. In the Gallery of Honour Ilias stays a long time at a large painting of a civic guard. His cousin reads the text on the label, because she wants to remember the names of the people. She whispers the name of a captain. Later they drink coffee in the café under the passageway. Ilias buys a small print in the shop. Outside it is very windy, but they still walk along the pond, because the light is beautiful. A duck swims towards a branch in the water.",
+    translation: "On a grey Sunday Ilias and his cousin visit the Rijksmuseum. They buy tickets online so that they do not have to stand in the queue for long. Ilias wears a grey scarf and a bag from the library. In the Gallery of Honour Ilias stays a long time at a large painting of a civic guard. His cousin reads the text on the label, because she wants to remember the names of the people. She whispers the name of a captain. Later they drink coffee in the café under the passageway. Ilias buys a small print in the shop. Outside it is very windy, but they still walk along the pond, because the light is beautiful. A duck swims towards a branch in the water. In the hall she heard a short explanation about the light on the paintings, which she later retold to her niece.",
     vocab: [
       { word: "het museum", en: "museum", pos: "noun" },
       { word: "het ticket", en: "ticket", pos: "noun" },
@@ -257,7 +257,7 @@ export const passages = [
       { question: "Waarom kopen ze tickets online?", options: ["Omdat het museum gratis is", "Zodat ze niet lang in de rij hoeven te staan", "Omdat de winkel sluit", "Omdat het regent"], correct: 1, explanation: "Ze kopen tickets online, zodat ze niet lang in de rij hoeven." },
       { question: "Waarbij blijft Ilias lang staan?", options: ["Bij de garderobe", "Bij een fiets", "Bij een groot schilderij van een schutterij", "Bij de uitgang"], correct: 2, explanation: "Hij blijft lang bij een groot schilderij van een schutterij staan." },
       { question: "Wat koopt Ilias in de winkel?", options: ["Een jas", "Een boek over koken", "Een kaart van Rotterdam", "Een kleine prent"], correct: 3, explanation: "Hij koopt een kleine prent in de winkel." },
-      { question: "Waarom lopen ze nog langs de vijver?", options: ["Omdat de lichtval mooi is", "Omdat ze een boot zoeken", "Omdat het museum dicht is", "Omdat ze verdwalen"], correct: 0, explanation: "Ze lopen langs de vijver, omdat de lichtval mooi is." }
+      { question: "Waarom lopen ze nog langs de vijver?", options: ["Omdat het licht mooi is", "Omdat ze een boot zoeken", "Omdat het museum dicht is", "Omdat ze verdwalen"], correct: 0, explanation: "Ze lopen langs de vijver, omdat het licht mooi is." }
     ]
   },
   {
@@ -270,9 +270,9 @@ export const passages = [
     paragraphs: [
       "Mevrouw Karimi wil de patiëntenapp van haar huisartsenpraktijk in Spijkenisse downloaden. Ze maakt een account aan, omdat ze herhaalrecepten niet meer telefonisch wil aanvragen. Haar bril ligt naast een kop munt thee.",
       "Als ze inlogt, ziet ze haar laatste bezoek en een knop voor een e-consult. Ze typt dat haar hoest al tien dagen aanhoudt, maar dat ze geen koorts heeft. Ze noemt ook een droge keel 's nachts.",
-      "De volgende ochtend krijgt ze een bericht: ze mag een kuur ophalen bij de apotheek om de hoek. Ze zet een herinnering in de app, zodat ze de tabletten op tijd inneemt. Op weg naar de apotheek koopt ze een sinaasappel bij groenteboer Hassan. De assistente stuurde nog een sms met het tijdstip, omdat sommige patiënten de app-melding over het hoofd zien."
+      "De volgende ochtend krijgt ze een bericht: ze mag een kuur ophalen bij de apotheek om de hoek. Ze zet een herinnering in de app, zodat ze de tabletten op tijd inneemt. Op weg naar de apotheek koopt ze een sinaasappel bij groenteboer Hassan. De assistente stuurde nog een sms met het tijdstip, omdat sommige patiënten de app-melding missen."
     ],
-    translation: "Mrs Karimi wants to download the patient app of her GP practice in Spijkenisse. She creates an account, because she no longer wants to request repeat prescriptions by phone. Her glasses lie next to a cup of mint tea. When she logs in, she sees her last visit and a button for an e-consult. She types that her cough has lasted for ten days already, but that she has no fever. She also mentions a dry throat at night. The next morning she receives a message: she may collect a course of medicine at the pharmacy around the corner. She sets a reminder in the app so that she takes the tablets on time. On the way to the pharmacy she buys an orange at greengrocer Hassan.",
+    translation: "Mrs Karimi wants to download the patient app of her GP practice in Spijkenisse. She creates an account, because she no longer wants to request repeat prescriptions by phone. Her glasses lie next to a cup of mint tea. When she logs in, she sees her last visit and a button for an e-consult. She types that her cough has lasted for ten days already, but that she has no fever. She also mentions a dry throat at night. The next morning she receives a message: she may collect a course of medicine at the pharmacy around the corner. She sets a reminder in the app so that she takes the tablets on time. On the way to the pharmacy she buys an orange at greengrocer Hassan. The assistant also sent a text with the time, because some patients miss the app notification.",
     vocab: [
       { word: "downloaden", en: "to download", pos: "verb" },
       { word: "het herhaalrecept", en: "repeat prescription", pos: "noun" },
@@ -299,9 +299,9 @@ export const passages = [
     paragraphs: [
       "Mila neemt de intercity naar Antwerpen en moet daar overstappen naar Gent. Ze bezoekt twee studievrienden die in een smal huis bij de Leie wonen. In haar tas zit een pot pindakaas uit Haarlem.",
       "Als het 's avonds droog blijft, lopen ze langs de Graslei. Mila fotografeert de gevels, omdat het licht geel is. Ze eten stoofvlees en praten over hun nieuwe banen. Vriend Jules werkt in een bibliotheek bij het Gravensteen.",
-      "Op zondag bezoeken ze een klein designmuseum. Mila koopt een ansichtkaart voor haar moeder. In de trein terug leest ze, zodat ze niet te moe aankomt op haar werk maandagochtend. Ze eet een wafel zonder suiker. Op de terugweg kochten ze in Roosendaal nog een doos speculaas voor de buurvrouw die hun kat had gevoerd."
+      "Op zondag bezoeken ze een klein designmuseum. Mila koopt een ansichtkaart voor haar moeder. In de trein terug leest ze, zodat ze niet te moe aankomt op haar werk maandagochtend. Ze eet een wafel zonder suiker. Op de terugweg kochten ze in Roosendaal speculaas voor de buurvrouw die hun kat had gevoerd."
     ],
-    translation: "Mila takes the intercity to Antwerp and has to change there for Ghent. She visits two student friends who live in a narrow house by the river Lys. In her bag is a jar of peanut butter from Haarlem. If it stays dry in the evening, they walk along the Graslei. Mila photographs the façades, because the light is yellow. They eat stew and talk about their new jobs. Friend Jules works in a library by the Gravensteen. On Sunday they visit a small design museum. Mila buys a postcard for her mother. On the train back she reads so that she does not arrive too tired at work on Monday morning. She eats a waffle without sugar.",
+    translation: "Mila takes the intercity to Antwerp and has to change there for Ghent. She visits two student friends who live in a narrow house by the river Lys. In her bag is a jar of peanut butter from Haarlem. If it stays dry in the evening, they walk along the Graslei. Mila photographs the façades, because the light is yellow. They eat stew and talk about their new jobs. Friend Jules works in a library by the Gravensteen. On Sunday they visit a small design museum. Mila buys a postcard for her mother. On the train back she reads so that she does not arrive too tired at work on Monday morning. She eats a waffle without sugar. On the way back they bought speculaas in Roosendaal for the neighbour who had fed their cat.",
     vocab: [
       { word: "de intercity", en: "intercity train", pos: "noun" },
       { word: "overstappen", en: "to change trains", pos: "verb" },
@@ -326,13 +326,13 @@ export const passages = [
     theme: "relationships",
     minutes: 4,
     paragraphs: [
-      "Na een drukke week ruzieën Sem en zijn huisgenoot over de afwas. Sem vindt dat de pannen te lang blijven staan, omdat er fruitvliegjes komen. Op het aanrecht staat een lege pot pesto. De keuken ligt aan de Voorstraat in Dordrecht.",
+      "Na een drukke week ruziën Sem en zijn huisgenoot over de afwas. Sem vindt dat de pannen te lang blijven staan, omdat er fruitvliegjes komen. Op het aanrecht staat een lege pot pesto. De keuken ligt aan de Voorstraat in Dordrecht.",
       "Als hij 's avonds thuiskomt, ziet hij een briefje op de tafel: laten we praten. Ze zetten thee en willen een schema afspreken: Sem poetst op maandag en zijn huisgenoot op donderdag. De radio speelt zacht een lied van Spinvis. Sem schenkt extra water in de theepot.",
       "Ze schrijven de afspraak op een whiteboard in de keuken, zodat niemand het vergeet. Sem merkt dat hij rustiger slaapt als de spoelbak leeg is. Op het bord hangt ook een magneet van Delft. 's Nachts hoort hij alleen de klok in de gang."
     ],
-    translation: "After a busy week Sem and his housemate argue about the washing-up. Sem thinks the pans stay too long, because fruit flies appear. On the counter stands an empty pesto jar. When he comes home in the evening, he sees a note on the table: let's talk. They make tea and want to agree a schedule: Sem cleans on Monday and his housemate on Thursday. The radio softly plays a Spinvis song. They write the agreement on a whiteboard in the kitchen so that nobody forgets it. Sem notices that he sleeps more calmly when the sink is empty. On the board also hangs a magnet from Delft.",
+    translation: "After a busy week Sem and his housemate argue about the washing-up. Sem thinks the pans stay too long, because fruit flies appear. On the counter stands an empty pesto jar. The kitchen is on the Voorstraat in Dordrecht. When he comes home in the evening, he sees a note on the table: let's talk. They make tea and want to agree a schedule: Sem cleans on Monday and his housemate on Thursday. The radio softly plays a Spinvis song. Sem pours extra water into the teapot. They write the agreement on a whiteboard in the kitchen so that nobody forgets it. Sem notices that he sleeps more calmly when the sink is empty. On the board also hangs a magnet from Delft. At night he hears only the clock in the hall.",
     vocab: [
-      { word: "ruzieën", en: "to argue", pos: "verb" },
+      { word: "ruziën", en: "to argue", pos: "verb" },
       { word: "de afwas", en: "washing-up", pos: "noun" },
       { word: "het briefje", en: "note", pos: "noun" },
       { word: "afspreken", en: "to agree", pos: "verb" },
@@ -341,7 +341,7 @@ export const passages = [
     ],
     grammarTargets: ["Separable verb 'thuiskomen'", "Conditional 'als'"],
     questions: [
-      { question: "Waarover ruzieën Sem en zijn huisgenoot?", options: ["Over muziek", "Over de afwas", "Over de huur", "Over een kat"], correct: 1, explanation: "Ze ruzieën over de afwas." },
+      { question: "Waarover ruziën Sem en zijn huisgenoot?", options: ["Over muziek", "Over de afwas", "Over de huur", "Over een kat"], correct: 1, explanation: "Ze ruziën over de afwas." },
       { question: "Op welke dag poetst Sem volgens de afspraak?", options: ["Op zondag", "Op donderdag", "Op maandag", "Op vrijdag"], correct: 2, explanation: "Sem poetst op maandag." },
       { question: "Waar schrijven ze de afspraak?", options: ["In een dagboek", "Op een deur", "Op een servet", "Op een whiteboard in de keuken"], correct: 3, explanation: "Ze schrijven de afspraak op een whiteboard in de keuken." },
       { question: "Wanneer slaapt Sem rustiger?", options: ["Als de spoelbak leeg is", "Als de radio aanstaat", "Als hij laat thuiskomt", "Als er fruitvliegjes zijn"], correct: 0, explanation: "Hij slaapt rustiger als de spoelbak leeg is." }
@@ -359,7 +359,7 @@ export const passages = [
       "Als het twee dagen droog is, geven ze beide bakken dezelfde hoeveelheid water. Ze meten de bladeren met een liniaal en schrijven de centimeters in een schrift. Een bij vliegt over de bak met zand.",
       "Na drie weken is de sla met compost duidelijk groter. De docent vraagt waarom dat zo is. Een leerling zegt dat compost voedingsstoffen geeft, zodat de plant beter groeit. Ze eten later een blad sla bij een boterham in het lokaal. Na de eerste oogst zette hij een foto van de courgette in de groepsapp van de volkstuin, met de datum erbij."
     ],
-    translation: "Pupils from a vocational class in Goes plant lettuce in two crates in the vegetable garden behind the schoolyard. In one crate they use compost, in the other only sand, because they want to measure the difference. Teacher Anke puts a watering can next to the fence. If it is dry for two days, they give both crates the same amount of water. They measure the leaves with a ruler and write the centimetres in a notebook. A bee flies over the crate of sand. After three weeks the lettuce with compost is clearly larger. The teacher asks why that is. A pupil says that compost provides nutrients so that the plant grows better. Later they eat a lettuce leaf with a sandwich in the classroom.",
+    translation: "Pupils from a vocational class in Goes plant lettuce in two crates in the vegetable garden behind the schoolyard. In one crate they use compost, in the other only sand, because they want to measure the difference. Teacher Anke puts a watering can next to the fence. If it is dry for two days, they give both crates the same amount of water. They measure the leaves with a ruler and write the centimetres in a notebook. A bee flies over the crate of sand. After three weeks the lettuce with compost is clearly larger. The teacher asks why that is. A pupil says that compost provides nutrients so that the plant grows better. Later they eat a lettuce leaf with a sandwich in the classroom. After the first harvest he put a photo of the courgette in the allotment group chat, with the date on it.",
     vocab: [
       { word: "de moestuin", en: "vegetable garden", pos: "noun" },
       { word: "de compost", en: "compost", pos: "noun" },
@@ -384,23 +384,23 @@ export const passages = [
     theme: "public_services",
     minutes: 4,
     paragraphs: [
-      "Op vrijdagavond kan de fiets van Hana bij het station in Hengelo verdwijnen: hij is weg. Ze gaat naar het politiebureau, omdat haar verzekering een proces-verbaal vraagt. Haar handen zijn koud van de wind.",
+      "Op vrijdagavond is de fiets van Hana bij het station in Hengelo verdwenen: hij is weg. Ze gaat naar het politiebureau, omdat haar verzekering een officieel rapport vraagt. Haar handen zijn koud van de wind.",
       "Als de agent haar gegevens noteert, beschrijft ze het slot en de groene tas op de bagagedrager. Ze laat een foto op haar telefoon zien. Op de foto hangt een geel lint aan het stuur.",
-      "Hana krijgt een nummer van de melding. Thuis vult ze het nummer in op de site van de verzekering, zodat de schade kan worden bekeken. Ze wil tijdelijk de oude omafiets van haar zus lenen. Die fiets staat in een schuur aan de Enschedesestraat. De wijkagent belde twee dagen later om te vragen of er nog beelden van de deurbelcamera beschikbaar waren."
+      "Hana krijgt een nummer van de melding. Thuis vult ze het nummer in op de site van de verzekering, zodat de schade kan worden bekeken. Ze wil tijdelijk de oude omafiets van haar zus lenen. Die fiets staat in een schuur aan de Enschedesestraat. De wijkagent belde twee dagen later om te vragen of er nog beelden van de deurbelcamera waren."
     ],
-    translation: "On Friday evening Hana's bicycle can disappear at the station in Hengelo: it is gone. She goes to the police station, because her insurance asks for an official report. Her hands are cold from the wind. When the officer notes her details, she describes the lock and the green bag on the luggage rack. She shows a photo on her phone. In the photo a yellow ribbon hangs on the handlebars. Hana receives a report number. At home she enters the number on the insurance website so that the claim can be reviewed. She wants to borrow her sister's old sit-up-and-beg bicycle temporarily. That bicycle is in a shed on Enschedesestraat.",
+    translation: "On Friday evening Hana's bicycle has disappeared at the station in Hengelo: it is gone. She goes to the police station, because her insurance asks for an official report. Her hands are cold from the wind. When the officer notes her details, she describes the lock and the green bag on the luggage rack. She shows a photo on her phone. In the photo a yellow ribbon hangs on the handlebars. Hana receives a report number. At home she enters the number on the insurance website so that the claim can be reviewed. She wants to borrow her sister's old sit-up-and-beg bicycle temporarily. That bicycle is in a shed on Enschedesestraat. The neighbourhood officer called two days later to ask whether there were still images from the doorbell camera.",
     vocab: [
-      { word: "verdwijnen", en: "to disappear", pos: "verb" },
+      { word: "verdwenen", en: "disappeared", pos: "verb" },
       { word: "het politiebureau", en: "police station", pos: "noun" },
-      { word: "het proces-verbaal", en: "official police report", pos: "noun" },
+      { word: "het rapport", en: "official report", pos: "noun" },
       { word: "de melding", en: "report", pos: "noun" },
       { word: "de bagagedrager", en: "luggage rack", pos: "noun" },
       { word: "lenen", en: "to borrow", pos: "verb" }
     ],
     grammarTargets: ["Subordinate clause with 'omdat'", "Purpose clause with 'zodat'"],
     questions: [
-      { question: "Waar verdwijnt de fiets?", options: ["Bij de school", "Bij het station in Hengelo", "In de tuin", "In een winkel"], correct: 1, explanation: "De fiets kan bij het station in Hengelo verdwijnen." },
-      { question: "Waarom gaat Hana naar het politiebureau?", options: ["Omdat ze een baan zoekt", "Omdat ze verdwaald is", "Omdat haar verzekering een proces-verbaal vraagt", "Omdat ze een paspoort wil"], correct: 2, explanation: "Haar verzekering vraagt een proces-verbaal." },
+      { question: "Waar verdwijnt de fiets?", options: ["Bij de school", "Bij het station in Hengelo", "In de tuin", "In een winkel"], correct: 1, explanation: "De fiets is bij het station in Hengelo verdwenen." },
+      { question: "Waarom gaat Hana naar het politiebureau?", options: ["Omdat ze een baan zoekt", "Omdat ze verdwaald is", "Omdat haar verzekering een officieel rapport vraagt", "Omdat ze een paspoort wil"], correct: 2, explanation: "Haar verzekering vraagt een officieel rapport." },
       { question: "Welke kleur heeft de tas op de bagagedrager?", options: ["Rood", "Zwart", "Blauw", "Groen"], correct: 3, explanation: "Ze beschrijft de groene tas op de bagagedrager." },
       { question: "Wat leent ze tijdelijk?", options: ["De oude omafiets van haar zus", "Een auto", "Een scooter", "Een boot"], correct: 0, explanation: "Ze wil de oude omafiets van haar zus lenen." }
     ]
@@ -417,7 +417,7 @@ export const passages = [
       "Als hij naar het stembureau in de sporthal gaat, neemt hij zijn identiteitskaart mee. Een vrijwilliger wijst hem naar een stemhokje. Binnen ruikt het naar koffie en schoonmaakmiddel. Op een tafel staan bekers en een thermoskan.",
       "Yusuf leest de namen rustig, maakt één vakje rood en stopt de stempas in de bus. Buiten legt hij aan een buurman uit hoe het hokje werkt, zodat die minder zenuwachtig is. De buurman heet Kees en draagt een groene pet. Samen lopen ze langs het veld."
     ],
-    translation: "On Wednesday Yusuf receives a pink polling card in the post. He has not yet lived in the Netherlands for five years, but he may vote in the municipal elections, because he is registered here. On the table there is also a leaflet about parties. When he goes to the polling station in the sports hall, he takes his identity card with him. A volunteer points him to a voting booth. Inside it smells of coffee and cleaning product. Yusuf reads the names calmly, marks one box in red, and puts the card in the ballot box. Outside he explains to a neighbour how the booth works so that the neighbour is less nervous. The neighbour is called Kees and wears a green cap.",
+    translation: "On Wednesday Yusuf receives a pink polling card in the post. He has not yet lived in the Netherlands for five years, but he may vote in the municipal elections, because he is registered here. On the table there is also a leaflet about parties. Yusuf lives on the Molenstraat in Tiel. When he goes to the polling station in the sports hall, he takes his identity card with him. A volunteer points him to a voting booth. Inside it smells of coffee and cleaning product. On a table stand cups and a thermos flask. Yusuf reads the names calmly, marks one box in red, and puts the card in the ballot box. Outside he explains to a neighbour how the booth works so that the neighbour is less nervous. The neighbour is called Kees and wears a green cap. Together they walk along the field.",
     vocab: [
       { word: "de stempas", en: "polling card", pos: "noun" },
       { word: "stemmen", en: "to vote", pos: "verb" },
@@ -446,7 +446,7 @@ export const passages = [
       "Als Bente de kool te grof snijdt, vraagt de docent haar de stukken kleiner te maken, omdat het zout dan beter werkt. Ze moet het mengsel in een pot stampen tot er vocht boven komt. Haar handen ruiken naar kool. Op tafel ligt een houten stamper uit Grave.",
       "Thuis zet ze de pot in een donkere kast naast een zak rijst. Na tien dagen proeft ze een klein lepeltje. Het smaakt zuur en knapperig. Ze eet het bij aardappelen, zodat het avondeten niet saai is. Haar broer vraagt om extra mosterd uit een gele pot."
     ],
-    translation: "In a community centre in Nijmegen Bente attends a fermentation workshop. The teacher shows how cabbage, salt, and time together make sauerkraut. On the board there is a drawing of a jar. If Bente cuts the cabbage too coarsely, the teacher asks her to make the pieces smaller, because the salt then works better. She has to pound the mixture into a jar until liquid comes to the top. Her hands smell of cabbage. At home she puts the jar in a dark cupboard next to a bag of rice. After ten days she tastes a small spoonful. It tastes sour and crunchy. She eats it with potatoes so that dinner is not boring. Her brother asks for extra mustard.",
+    translation: "In a community centre in Nijmegen Bente attends a fermentation workshop. The teacher shows how cabbage, salt, and time together make sauerkraut. On the board there is a drawing of a jar. Bente hangs her coat on a rack by the hall. If Bente cuts the cabbage too coarsely, the teacher asks her to make the pieces smaller, because the salt then works better. She has to pound the mixture into a jar until liquid comes to the top. Her hands smell of cabbage. On the table lies a wooden pounder from Grave. At home she puts the jar in a dark cupboard next to a bag of rice. After ten days she tastes a small spoonful. It tastes sour and crunchy. She eats it with potatoes so that dinner is not boring. Her brother asks for extra mustard from a yellow jar.",
     vocab: [
       { word: "fermenteren", en: "to ferment", pos: "verb" },
       { word: "de kool", en: "cabbage", pos: "noun" },
@@ -473,9 +473,9 @@ export const passages = [
     paragraphs: [
       "Sinds een nieuwe weg open is, slaapt Omar slecht. Hij belt de GGD in zijn regio, omdat hij hoofdpijn krijgt van het nachtelijk geluid. Zijn appartement ligt bij een rotonde in Helmond.",
       "Als een medewerker terugbelt, stelt ze vragen over ramen, oordoppen en werktijden. Omar legt uit dat hij om zes uur moet opstaan voor de bakkerij. Hij bak daar broden met zonnebloempitten.",
-      "De GGD stuurt een folder over slaap en geluid. Omar maakt ook een melding bij de gemeente. Hij zet een ventilator aan, zodat het suizen van de weg minder kan opvallen. Op de vensterbank staat een plant die 's nachts trilt. De GGD-medewerker raadde oordoppen aan voor de nacht en vroeg of de buren een slaapritme op papier hadden."
+      "De GGD stuurt een folder over slaap en geluid. Omar maakt ook een melding bij de gemeente. Hij zet een ventilator aan, zodat het suizen van de weg minder kan opvallen. Op de vensterbank staat een plant die 's nachts trilt. De GGD-medewerker raadde oordoppen aan voor de nacht en vroeg naar het slaapritme van de buren."
     ],
-    translation: "Since a new road opened, Omar has been sleeping badly. He calls the public health service in his region, because he gets headaches from the night-time noise. His apartment is by a roundabout in Helmond. When an employee calls back, she asks questions about windows, earplugs, and working hours. Omar explains that he has to get up at six for the bakery. He bakes breads with sunflower seeds there. The GGD sends a leaflet about sleep and noise. Omar also makes a report to the municipality. He turns on a fan so that the rush of the road can be less noticeable. On the windowsill stands a plant that trembles at night.",
+    translation: "Since a new road opened, Omar has been sleeping badly. He calls the public health service in his region, because he gets headaches from the night-time noise. His apartment is by a roundabout in Helmond. When an employee calls back, she asks questions about windows, earplugs, and working hours. Omar explains that he has to get up at six for the bakery. He bakes breads with sunflower seeds there. The GGD sends a leaflet about sleep and noise. Omar also makes a report to the municipality. He turns on a fan so that the rush of the road can be less noticeable. On the windowsill stands a plant that trembles at night. The municipal health worker recommended earplugs for the night and asked about the neighbours’ sleep rhythm.",
     vocab: [
       { word: "het geluid", en: "noise / sound", pos: "noun" },
       { word: "de hoofdpijn", en: "headache", pos: "noun" },
@@ -502,9 +502,9 @@ export const passages = [
     paragraphs: [
       "Lina moet twee dagen per week thuiswerken voor een administratiekantoor. Ze zet haar laptop op de eettafel, omdat haar slaapkamer te klein is voor een bureau. Naast de laptop staat een groene plant en een mok met de naam van kantoor Vliet.",
       "Als de buren boven boren, verzet ze een videogesprek naar later. Ze stuurt een bericht in de groepsapp van het trappenhuis, zodat iedereen weet wanneer er stilte nodig is. Buurman Karel antwoordt met een duim.",
-      "Om vier uur moet ze haar computer afsluiten en loopt ze een rondje om het blok langs de singel. Ze merkt dat ze beter slaapt als ze niet tot zes uur doorwerkt. In het park ziet ze een eend bij een bankje. Op donderdag zette hij de printer in de bijkeuken, zodat de buren de piep van het apparaat niet meer hoorden."
+      "Om vier uur moet ze haar computer afsluiten en loopt ze een rondje om het blok langs de singel. Ze merkt dat ze beter slaapt als ze niet tot zes uur doorwerkt. In het park ziet ze een eend bij een bankje. Op donderdag zette zij de printer in de bijkeuken, zodat de buren de piep niet meer hoorden."
     ],
-    translation: "Lina has to work from home two days a week for an administration office. She puts her laptop on the dining table, because her bedroom is too small for a desk. Next to the laptop stand a green plant and a mug with the name of office Vliet. If the neighbours upstairs drill, she postpones a video call until later. She sends a message in the stairwell group chat so that everyone knows when silence is needed. Neighbour Karel replies with a thumbs-up. At four o'clock she has to shut down her computer and walks a loop around the block along the canal. She notices that she sleeps better if she does not keep working until six. In the park she sees a duck by a bench.",
+    translation: "Lina has to work from home two days a week for an administration office. She puts her laptop on the dining table, because her bedroom is too small for a desk. Next to the laptop stand a green plant and a mug with the name of office Vliet. If the neighbours upstairs drill, she postpones a video call until later. She sends a message in the stairwell group chat so that everyone knows when silence is needed. Neighbour Karel replies with a thumbs-up. At four o'clock she has to shut down her computer and walks a loop around the block along the canal. She notices that she sleeps better if she does not keep working until six. In the park she sees a duck by a bench. On Thursday she put the printer in the scullery, so the neighbours no longer heard the beep.",
     vocab: [
       { word: "thuiswerken", en: "to work from home", pos: "verb" },
       { word: "het administratiekantoor", en: "administration office", pos: "noun" },
@@ -530,14 +530,14 @@ export const passages = [
     minutes: 4,
     paragraphs: [
       "Aan de automaat op station Weert wil Dilek haar ov-chipkaart opladen. Het scherm vraagt om een bedrag. Ze kiest twintig euro, omdat ze volgende week vaak naar Eindhoven reist. Haar tas hangt aan haar schouder. Buiten staat een gele taxi bij de taxistandplaats.",
-      "Als de automaat haar pas kan weigeren, probeert ze een andere pinpas. Daarna checkt ze het saldo op het schermpje. Het staat op tweeëntwintig euro. Een kind naast haar eet een appel. Dilek stopt de bon in haar portemonnee.",
+      "Als de automaat haar pas weigert, probeert ze een andere pinpas. Daarna checkt ze het saldo op het schermpje. Het staat op tweeëntwintig euro. Een kind naast haar eet een appel. Dilek stopt de bon in haar portemonnee.",
       "In de trein naar Eindhoven houdt ze haar kaart tegen de paal. Ze gaat zitten bij het raam, zodat ze de velden kan zien. Onderweg leest ze een bericht dat er extra controleurs zijn. Ze stopt haar jas in het net boven de stoel en opent een boek over Brabant."
     ],
-    translation: "At the machine at Weert station Dilek wants to top up her public-transport card. The screen asks for an amount. She chooses twenty euros, because next week she often travels to Eindhoven. Her bag hangs on her shoulder. When the machine can refuse her card, she tries another debit card. After that she checks the balance on the small screen. It shows twenty-two euros. A child next to her eats an apple. On the train to Eindhoven she holds her card against the pole. She sits by the window so that she can see the fields. On the way she reads a message that there are extra inspectors. She puts her coat in the rack above the seat.",
+    translation: "At the machine at Weert station Dilek wants to top up her public-transport card. The screen asks for an amount. She chooses twenty euros, because next week she often travels to Eindhoven. Her bag hangs on her shoulder. Outside a yellow taxi stands at the taxi rank. When the machine refuses her card, she tries another debit card. After that she checks the balance on the small screen. It shows twenty-two euros. A child next to her eats an apple. Dilek puts the receipt in her wallet. On the train to Eindhoven she holds her card against the pole. She sits by the window so that she can see the fields. On the way she reads a message that there are extra inspectors. She puts her coat in the rack above the seat and opens a book about Brabant.",
     vocab: [
       { word: "opladen", en: "to top up / charge", pos: "verb" },
       { word: "de automaat", en: "machine", pos: "noun" },
-      { word: "weigeren", en: "to refuse", pos: "verb" },
+      { word: "weigert", en: "refuses", pos: "verb" },
       { word: "het saldo", en: "balance", pos: "noun" },
       { word: "de controleur", en: "inspector", pos: "noun" },
       { word: "de paal", en: "pole", pos: "noun" }
@@ -559,22 +559,22 @@ export const passages = [
     minutes: 4,
     paragraphs: [
       "Pelin schrijft zich in bij een studentenwoningcoöperatie in Enschede. Ze moet een inkomensverklaring uploaden, omdat de organisatie wil zien dat ze de huur kan betalen. Haar laptop staat op een tafeltje bij het raam.",
-      "Als er een kamer kan vrijkomen in een hofje, krijgt ze een bericht. Ze bekijkt de kamer met twee toekomstige huisgenoten en stelt vragen over de wasmachine. In de keuken hangt een kalender van de Universiteit Twente.",
-      "Pelin moet de kamer binnen 24 uur accepteren, zodat ze haar plek niet verliest. Ze betaalt een borg van vierhonderd euro en plant de verhuizing op een zaterdag. Haar oom belooft een aanhanger met een blauw zeil. De woonconsulent beloofde dat een afgewezen document opnieuw kon worden geüpload binnen vijf werkdagen."
+      "Als er een kamer vrijkomt in een hofje, krijgt ze een bericht. Ze bekijkt de kamer met twee toekomstige huisgenoten en stelt vragen over de wasmachine. In de keuken hangt een kalender van de Universiteit Twente.",
+      "Pelin moet de kamer binnen 24 uur accepteren, zodat ze haar plek niet verliest. Ze betaalt een borg van vierhonderd euro en plant de verhuizing op een zaterdag. Haar oom belooft een aanhanger met een blauw zeil. De woonconsulent beloofde dat een afgewezen document binnen vijf werkdagen opnieuw kon worden geüpload."
     ],
-    translation: "Pelin registers with a student housing cooperative in Enschede. She has to upload an income statement, because the organisation wants to see that she can pay the rent. Her laptop stands on a small table by the window. When a room can become available in a courtyard, she receives a message. She views the room with two future housemates and asks questions about the washing machine. In the kitchen hangs a calendar of the University of Twente. Pelin has to accept the room within 24 hours so that she does not lose her place. She pays a deposit of four hundred euros and plans the move on a Saturday. Her uncle promises a trailer with a blue tarp.",
+    translation: "Pelin registers with a student housing cooperative in Enschede. She has to upload an income statement, because the organisation wants to see that she can pay the rent. Her laptop stands on a small table by the window. When a room becomes available in a courtyard, she receives a message. She views the room with two future housemates and asks questions about the washing machine. In the kitchen hangs a calendar of the University of Twente. Pelin has to accept the room within 24 hours so that she does not lose her place. She pays a deposit of four hundred euros and plans the move on a Saturday. Her uncle promises a trailer with a blue tarp. The housing adviser promised that a rejected document could be uploaded again within five working days.",
     vocab: [
       { word: "de woningcoöperatie", en: "housing cooperative", pos: "noun" },
       { word: "uploaden", en: "to upload", pos: "verb" },
       { word: "de inkomensverklaring", en: "income statement", pos: "noun" },
-      { word: "vrijkomen", en: "to become available", pos: "verb" },
+      { word: "vrijkomt", en: "becomes available", pos: "verb" },
       { word: "de borg", en: "deposit", pos: "noun" },
       { word: "accepteren", en: "to accept", pos: "verb" }
     ],
     grammarTargets: ["Separable verb 'vrijkomen'", "Purpose clause with 'zodat'"],
     questions: [
       { question: "Wat uploadt Pelin?", options: ["Vakantiefoto's", "Een inkomensverklaring", "Een recept", "Een film"], correct: 1, explanation: "Ze moet een inkomensverklaring uploaden." },
-      { question: "Waar komt de kamer vrij?", options: ["In een hotel", "In een kantoor", "In een hofje", "In een tent"], correct: 2, explanation: "Er kan een kamer vrijkomen in een hofje." },
+      { question: "Waar komt de kamer vrij?", options: ["In een hotel", "In een kantoor", "In een hofje", "In een tent"], correct: 2, explanation: "Er komt een kamer vrij in een hofje." },
       { question: "Hoe hoog is de borg?", options: ["Honderd euro", "Tweehonderd euro", "Duizend euro", "Vierhonderd euro"], correct: 3, explanation: "Ze betaalt een borg van vierhonderd euro." },
       { question: "Waarom accepteert ze binnen 24 uur?", options: ["Zodat ze haar plek niet verliest", "Omdat de bus vertrekt", "Omdat het regent", "Omdat ze geen geld heeft"], correct: 0, explanation: "Ze moet binnen 24 uur accepteren, zodat ze haar plek niet verliest." }
     ]
@@ -591,7 +591,7 @@ export const passages = [
       "Als Kees de mail opent, klikt hij op een enquête over speeltuinen. Hij schrijft dat de schommel kapot is, omdat een ketting ontbreekt. Zijn kleindochter Fien speelt liever op de wip. Kees typt langzaam met twee vingers.",
       "De week erna staat zijn opmerking anoniem in de volgende nieuwsbrief. De gemeente plant een reparatie. Kees print de pagina, zodat hij de datum van de ruilmarkt niet vergeet. Hij zoekt al een oude lamp om te ruilen bij de kerk."
     ],
-    translation: "Neighbourhood centre De Brug in Schiedam sends a newsletter every month. Residents read about a swap market and about work on the cycle path. Kees drinks coffee by the window of his flat on the Broersvest. When Kees opens the email, he clicks on a survey about playgrounds. He writes that the swing is broken, because a chain is missing. His granddaughter Fien prefers the seesaw. The following week his comment appears anonymously in the next newsletter. The municipality plans a repair. Kees prints the page so that he does not forget the date of the swap market. He is already looking for an old lamp to swap.",
+    translation: "Neighbourhood centre De Brug in Schiedam sends a newsletter every month. Residents read about a swap market and about work on the cycle path. Kees drinks coffee by the window of his flat on the Broersvest. On the screen he sees a photo of the playground. When Kees opens the email, he clicks on a survey about playgrounds. He writes that the swing is broken, because a chain is missing. His granddaughter Fien prefers the seesaw. Kees types slowly with two fingers. The following week his comment appears anonymously in the next newsletter. The municipality plans a repair. Kees prints the page so that he does not forget the date of the swap market. He is already looking for an old lamp to swap at the church.",
     vocab: [
       { word: "de nieuwsbrief", en: "newsletter", pos: "noun" },
       { word: "de ruilmarkt", en: "swap market", pos: "noun" },
@@ -611,16 +611,16 @@ export const passages = [
   {
     id: "comp-046",
     level: "A2",
-    title: "Energiearmoede en een Adviesgesprek",
-    titleEn: "Energy Poverty and an Advice Meeting",
+    title: "Hoge Energierekening en een Adviesgesprek",
+    titleEn: "A High Energy Bill and an Advice Meeting",
     theme: "environment",
     minutes: 4,
     paragraphs: [
       "Na een hoge energierekening maakt Rosa een afspraak bij het energieloket van de gemeente Sittard. Ze neemt haar rekeningen mee, omdat de adviseur de cijfers wil zien. In haar tas zit ook een wollen sjaal.",
       "Als ze binnenkomt, meet hij de tocht bij het raam. Hij adviseert tochtstrips en een douchekop die minder water gebruikt. Op het bureau ligt een rol tape en een folder over isolatie.",
-      "Rosa krijgt een kleine vergoeding voor de strips. Thuis plakt ze ze zelf, zodat de woonkamer sneller warm wordt. De volgende maand is haar voorschot iets lager. Haar kat ligt op de radiator bij het raam. De energiecoach liet een folder achter over isolatiefolie voor de brievenbus, een goedkoop begin dat ze die middag nog probeerde."
+      "Rosa krijgt een kleine vergoeding voor de strips. Thuis plakt ze ze zelf, zodat de woonkamer sneller warm wordt. De volgende maand is haar voorschot iets lager. Haar kat ligt op de radiator bij het raam. De energiecoach liet een folder achter over isolatiefolie voor de brievenbus, een goedkoop begin die middag. Ze plakte de folie diezelfde avond nog en zette een herinnering voor de volgende meterstand."
     ],
-    translation: "After a high energy bill Rosa makes an appointment at the energy desk of the municipality of Sittard. She takes her bills with her, because the adviser wants to see the figures. In her bag there is also a wool scarf. When she comes in, he measures the draught at the window. He advises draught excluders and a shower head that uses less water. On the desk lie a roll of tape and a leaflet about insulation. Rosa receives a small allowance for the strips. At home she sticks them on herself so that the living room warms up faster. The following month her advance payment is a little lower. Her cat lies on the radiator by the window.",
+    translation: "After a high energy bill Rosa makes an appointment at the energy desk of the municipality of Sittard. She takes her bills with her, because the adviser wants to see the figures. In her bag there is also a wool scarf. When she comes in, he measures the draught at the window. He advises draught excluders and a shower head that uses less water. On the desk lie a roll of tape and a leaflet about insulation. Rosa receives a small allowance for the strips. At home she sticks them on herself so that the living room warms up faster. The following month her advance payment is a little lower. Her cat lies on the radiator by the window. The energy coach left a leaflet about insulation foil for the letterbox, a cheap start that afternoon. She stuck the foil on that same evening and set a reminder for the next meter reading.",
     vocab: [
       { word: "de energierekening", en: "energy bill", pos: "noun" },
       { word: "het energieloket", en: "energy advice desk", pos: "noun" },
@@ -646,10 +646,10 @@ export const passages = [
     minutes: 4,
     paragraphs: [
       "Jesse loopt twee weken stage in een laboratorium in Leiden. Hij mag geen jas aanraken die op de grond ligt, omdat die dan niet meer steriel is. Op de deur hangt een lijst met namen van monsters. Jesse hangt zijn jas aan een haak bij de wasbak.",
-      "Als de analist een monster aanbiedt, pipeteert Jesse vloeistof in drie buisjes. Hij schrijft de codes op een lijst, zodat niemand de monsters verwisselt. Een koelkast zoemt zacht achter hem. Op het glas plakt hij een etiket met blauwe inkt.",
+      "Als de analist een monster aanbiedt, doet Jesse vloeistof in drie buisjes. Hij schrijft de codes op een lijst, zodat niemand de monsters verwisselt. Een koelkast zoemt zacht achter hem. Op het glas plakt hij een etiket met blauwe inkt.",
       "Op vrijdag presenteert hij kort wat hij heeft geleerd. Hij zegt dat hij nu begrijpt waarom handschoenen wisselen belangrijk is. De analist geeft hem een certificaat van deelname. Jesse stopt het in een map naast zijn ov-chipkaart en fietst langs het Rapenburg."
     ],
-    translation: "Jesse does a two-week internship in a laboratory in Leiden. He may not touch a coat that is lying on the floor, because it is then no longer sterile. On the door hangs a list of sample names. When the analyst offers a sample, Jesse pipettes liquid into three tubes. He writes the codes on a list so that nobody mixes up the samples. A fridge hums softly behind him. On Friday he briefly presents what he has learned. He says that he now understands why changing gloves is important. The analyst gives him a certificate of participation. Jesse puts it in a folder next to his public-transport card.",
+    translation: "Jesse does a two-week internship in a laboratory in Leiden. He may not touch a coat that is lying on the floor, because it is then no longer sterile. On the door hangs a list of sample names. Jesse hangs his coat on a hook by the sink. When the analyst offers a sample, Jesse puts liquid into three tubes. He writes the codes on a list so that nobody mixes up the samples. A fridge hums softly behind him. On the glass he sticks a label with blue ink. On Friday he briefly presents what he has learned. He says that he now understands why changing gloves is important. The analyst gives him a certificate of participation. Jesse puts it in a folder next to his public-transport card and cycles along the Rapenburg.",
     vocab: [
       { word: "de stage", en: "internship", pos: "noun" },
       { word: "het laboratorium", en: "laboratory", pos: "noun" },
@@ -661,7 +661,7 @@ export const passages = [
     grammarTargets: ["Modal verb 'mogen'", "Purpose clause with 'zodat'"],
     questions: [
       { question: "Hoe lang duurt de stage van Jesse?", options: ["Twee maanden", "Twee weken", "Twee dagen", "Een jaar"], correct: 1, explanation: "Jesse loopt twee weken stage." },
-      { question: "In hoeveel buisjes pipeteert hij vloeistof?", options: ["Vijf", "Tien", "Drie", "Eén"], correct: 2, explanation: "Hij pipeteert vloeistof in drie buisjes." },
+      { question: "In hoeveel buisjes doet hij vloeistof?", options: ["Vijf", "Tien", "Drie", "Eén"], correct: 2, explanation: "Hij doet vloeistof in drie buisjes." },
       { question: "Wat krijgt hij van de analist?", options: ["Een baan", "Een fiets", "Geld", "Een certificaat van deelname"], correct: 3, explanation: "De analist geeft hem een certificaat van deelname." },
       { question: "Waarom mag hij een jas op de grond niet aanraken?", options: ["Omdat die dan niet meer steriel is", "Omdat hij vies wordt", "Omdat de jas van de docent is", "Omdat het verboden speelgoed is"], correct: 0, explanation: "Die jas is dan niet meer steriel." }
     ]
@@ -678,7 +678,7 @@ export const passages = [
       "Als een inkomensbedrag niet klopt, corrigeren ze het met een loonstrook. Ze vullen ook het aantal uren opvang in bij het kinderdagverblijf om de hoek. Het kinderdagverblijf heet De Krekels. Vader Mark zoekt de uren in een groene agenda.",
       "Een week later komt een voorlopige berekening binnen. Ze zetten het geld apart op een rekening, zodat de opvangrekening op tijd betaald wordt. Oma past soms op als de opvang vol zit. Ze brengt dan een rammelaar mee uit haar tas in Barneveld."
     ],
-    translation: "After the birth of their daughter the Van Dijk couple apply for childcare allowance. They log in with DigiD, because the tax authority already knows their details. The baby sleeps in a white crib next to the sofa. If an income amount is wrong, they correct it with a payslip. They also fill in the number of childcare hours at the day-care centre around the corner. The day-care centre is called De Krekels. A week later a provisional calculation arrives. They put the money aside in an account so that the childcare invoice is paid on time. Grandma sometimes looks after the child if the day care is full. She then brings a rattle.",
+    translation: "After the birth of their daughter the Van Dijk couple apply for childcare allowance. They log in with DigiD, because the tax authority already knows their details. The baby sleeps in a white crib next to the sofa. On the table lie a bottle and a dummy. If an income amount is wrong, they correct it with a payslip. They also fill in the number of childcare hours at the day-care centre around the corner. The day-care centre is called De Krekels. Father Mark looks up the hours in a green diary. A week later a provisional calculation arrives. They put the money aside in an account so that the childcare invoice is paid on time. Grandma sometimes looks after the child if the day care is full. She then brings a rattle from her bag in Barneveld.",
     vocab: [
       { word: "de toeslag", en: "allowance", pos: "noun" },
       { word: "de kinderopvang", en: "childcare", pos: "noun" },

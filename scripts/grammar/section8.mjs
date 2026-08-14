@@ -220,69 +220,69 @@ export const lessons = [
     level: "C1",
     title: "Prepositional Syntagms with Double Prepositions",
     titleNl: "Voorzetselgroepen met dubbele voorzetsels",
-    summary: "Dutch has complex prepositions made of two parts ('van … uit', 'op … na', 'tot … toe') whose complement sits in the middle, plus adjacent PPs that only look double.",
+    summary: "Dutch packs three different two-part P constructions into similar letters: wrapping circumpositions (op … na, tot … toe, van NP uit), spatial van daaruit / van hieruit, and the pronominal-adverb + separable verb ervan/daarvan uitgaan. Mixing those three is the typical C1 error.",
     rules: [
-      "Circumpositions wrap the NP: 'van hieruit' / 'van het balkon af', 'tot de grens toe', 'op één na alle leden'. The second element is historically an adverb.",
-      "'Op … na' means 'except': 'Op één tegenstem na werd het aangenomen.' Do not read it as locative 'on … after'.",
-      "'Van … uit' gives a vantage point: 'Van de gemeente uit bezien is dit haalbaar.' Closely related: 'vanuit de gemeente' (one word, slightly more spatial).",
-      "True stacked PPs are different: 'met betrekking tot', 'in tegenstelling tot' — complex but left-headed, not wrapping.",
-      "Pronominal adverbs can split: 'daar … van uit', but 'vanuit daar' is now common. Both occur; house styles differ."
+      "A circumposition wraps a full noun phrase: op één tegenstem na, tot de grens toe, van het balkon af. Taalportaal treats these as directional or exceptive circumpositional phrases, not as two stacked prepositions.",
+      "Op … na means ‘except’: Op twee onthoudingen na stemde de raad voor. It is not locative ‘on … after’, and English after-one order (*na op één) is ungrammatical.",
+      "Spatial vantage uses van daaruit / van hieruit (‘from that/this place or point’). That is a fused deictic, not the verb uitgaan van.",
+      "Uitgaan van iets is a separable verb plus a van-complement. When the complement is pronominalised, Onze Taal and Taaladvies require ervan uitgaan / daarvan uitgaan / we gaan ervan uit: uit stays with the verb and is not glued to ervan (*ervanuit, *er vanuit).",
+      "Left-headed complex prepositions (met betrekking tot, in tegenstelling tot, tot aan) take their complement on the right only; they do not wrap an NP the way tot … toe does."
     ],
-    structuralBreakdown: "[P1 + NP + P2/partikel]  |  [complex P + NP]  |  [vanuit / tot aan] als één voorzetsel",
+    structuralBreakdown: "[op/tot/van + NP + na/toe/uit/af]  ≠  [van daaruit / van hieruit]  ≠  [ervan/daarvan + uitgaan]",
     examples: [
       {
         nl: "Op twee onthoudingen na stemde de raad voor het voorstel.",
-        en: "Except for two abstentions the council voted for the proposal.",
+        en: "Except for two abstentions, the council voted for the proposal.",
         highlight: "Op twee onthoudingen na"
       },
       {
-        nl: "Van de provincie uit is er geen bezwaar tot de grens toe.",
-        en: "From the province's point of view there is no objection right up to the border.",
-        highlight: "Van de provincie uit / tot de grens toe"
+        nl: "We gaan ervan uit dat de trein tot het einde toe rijdt; van daaruit lopen we naar de steiger.",
+        en: "We assume that the train runs all the way to the end; from there we walk to the jetty.",
+        highlight: "ervan uit / tot het einde toe / van daaruit"
       }
     ],
-    commonMistake: "Reading 'op één na' as a location, or writing *'na op één' in the English order 'after one'.",
-    correction: "Keep the wrap: 'op één na alle aanwezigen' = all but one of those present.",
-    prerequisites: ["g-028", "g-072"],
-    relatedRules: ["g-107", "g-110"],
-    tags: ["prepositions", "circumposition", "op-na", "c1"],
+    commonMistake: "Writing *we gaan ervanuit / *er vanuit that something is true, or reading van daaruit as if it were daarvan uitgaan.",
+    correction: "Assumption: we gaan ervan uit (uitgaan van + ervan). Place: van daaruit. Exception: op X na. Extent: tot X toe.",
+    prerequisites: ["g-028", "g-065"],
+    relatedRules: ["g-016", "g-107"],
+    tags: ["prepositions", "circumposition", "ervan-uitgaan", "c1"],
     exercises: [
       {
         type: "multiple_choice",
-        question: "'Op één tegenstem na' means…",
+        question: "Which spelling is required for ‘we assume that…’?",
         options: [
-          "after one vote against, then something else",
-          "except for one vote against",
-          "on top of one later vote",
-          "according to article one"
+          "We gaan ervanuit dat het lukt.",
+          "We gaan er vanuit dat het lukt.",
+          "We gaan ervan uit dat het lukt.",
+          "We gaan van daaruit dat het lukt."
         ],
-        correct: 1,
-        explanation: "'Op X na' = except X."
+        correct: 2,
+        explanation: "Onze Taal / Taaladvies: uitgaan van + ervan → we gaan ervan uit. Van daaruit is spatial, not assumptive."
       },
       {
         type: "fill_in_the_blank",
-        prompt: "Complete the circumposition 'except'.",
+        prompt: "Complete the exceptive circumposition.",
         blankWord: "na",
         sentenceWithBlank: "Op drie leden ___ was iedereen aanwezig.",
         hints: ["na", "toe", "uit"]
       },
       {
         type: "error_correction",
-        sentenceWithError: "Na op één tegenstem werd het voorstel aangenomen.",
-        correctedSentence: "Op één tegenstem na werd het voorstel aangenomen.",
-        explanation: "The NP is wrapped by 'op … na'."
+        sentenceWithError: "We gaan er vanuit dat de vergunning tot de grens geldig is.",
+        correctedSentence: "We gaan ervan uit dat de vergunning tot de grens toe geldig is.",
+        explanation: "Assumption takes ervan uit; extent can add toe after the NP (tot de grens toe)."
       },
       {
         type: "multiple_choice",
-        question: "Which is a wrapping circumposition, not a left-headed complex P?",
+        question: "Which pair is correctly distinguished?",
         options: [
-          "met betrekking tot het rapport",
-          "tot de grens toe",
-          "in tegenstelling tot het advies",
-          "krachtens artikel 6"
+          "van daaruit = we assume; ervan uitgaan = from that place",
+          "van daaruit = from that place; ervan uitgaan = assume on that basis",
+          "op … na = after that; tot … toe = except",
+          "met betrekking tot wraps the NP like tot … toe"
         ],
         correct: 1,
-        explanation: "'Tot … toe' wraps the NP; the others take a complement to the right only."
+        explanation: "Spatial deictic vs pronominal-adverb + separable verb; they are not stylistic variants of one construction."
       }
     ]
   },

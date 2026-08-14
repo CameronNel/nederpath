@@ -274,9 +274,9 @@ globalThis.NP_GRAMMAR = [
         "highlight": "De tafel / het huisje"
       },
       {
-        "nl": "Het kind leest de boeken op het autowiel van de auto.",
-        "en": "The child reads the books on the car wheel of the car.",
-        "highlight": "het kind, de boeken, het autowiel"
+        "nl": "Het kind leest de boeken in het huis van de buren.",
+        "en": "The child is reading the books in the neighbours' house.",
+        "highlight": "het kind, de boeken, het huis"
       }
     ],
     "commonMistake": "Keeping het on a plural because the singular was het (het huizen).",
@@ -5248,7 +5248,10 @@ globalThis.NP_GRAMMAR = [
         "prompt": "Turn the active sentence into a worden-passive. Keep the agent in a door-phrase.",
         "sourceSentence": "De redactie publiceert het rapport volgende week.",
         "targetSentence": "Het rapport wordt volgende week door de redactie gepubliceerd.",
-        "explanation": "Patient becomes subject; worden + gepubliceerd; agent in door de redactie."
+        "explanation": "Patient becomes subject; worden + gepubliceerd; agent in door de redactie.",
+        "original": "De redactie publiceert het rapport volgende week.",
+        "instruction": "Turn the active sentence into a worden-passive. Keep the agent in a door-phrase.",
+        "transformed": "Het rapport wordt volgende week door de redactie gepubliceerd."
       }
     ]
   },
@@ -5333,7 +5336,10 @@ globalThis.NP_GRAMMAR = [
         "prompt": "Rewrite so the sentence reports a completed event yesterday (perfect-of-passive), not a present state.",
         "sourceSentence": "De brug is nu dicht.",
         "targetSentence": "De brug is gisteren gesloten.",
-        "explanation": "Event time gisteren plus gesloten yields the perfect-of-passive reading."
+        "explanation": "Event time gisteren plus gesloten yields the perfect-of-passive reading.",
+        "original": "De brug is nu dicht.",
+        "instruction": "Rewrite so the sentence reports a completed event yesterday (perfect-of-passive), not a present state.",
+        "transformed": "De brug is gisteren gesloten."
       }
     ]
   },
@@ -5605,7 +5611,10 @@ globalThis.NP_GRAMMAR = [
         "prompt": "Replace the full prepositional phrase with an er-form.",
         "sourceSentence": "We beginnen met het project volgende week.",
         "targetSentence": "We beginnen er volgende week mee.",
-        "explanation": "met het project → er … mee, with the time adverb splitting the complex."
+        "explanation": "met het project → er … mee, with the time adverb splitting the complex.",
+        "original": "We beginnen met het project volgende week.",
+        "instruction": "Replace the full prepositional phrase with an er-form.",
+        "transformed": "We beginnen er volgende week mee."
       }
     ]
   },
@@ -5689,7 +5698,10 @@ globalThis.NP_GRAMMAR = [
         "prompt": "Turn the full NP into a partitive pronoun + adjective.",
         "sourceSentence": "Ze vertelde een grappig verhaal.",
         "targetSentence": "Ze vertelde iets grappigs.",
-        "explanation": "een grappig verhaal compresses to iets grappigs."
+        "explanation": "een grappig verhaal compresses to iets grappigs.",
+        "original": "Ze vertelde een grappig verhaal.",
+        "instruction": "Turn the full NP into a partitive pronoun + adjective.",
+        "transformed": "Ze vertelde iets grappigs."
       }
     ]
   },
@@ -5775,7 +5787,10 @@ globalThis.NP_GRAMMAR = [
         "prompt": "Nominalize the verb as an official act (-ing), not as an activity.",
         "sourceSentence": "Zij stemmen vanavond over de begroting.",
         "targetSentence": "De stemming over de begroting is vanavond.",
-        "explanation": "Instance/official act → de stemming over …"
+        "explanation": "Instance/official act → de stemming over …",
+        "original": "Zij stemmen vanavond over de begroting.",
+        "instruction": "Nominalize the verb as an official act (-ing), not as an activity.",
+        "transformed": "De stemming over de begroting is vanavond."
       }
     ]
   },
@@ -6130,7 +6145,10 @@ globalThis.NP_GRAMMAR = [
         "prompt": "Shift the reported future into the past timeline.",
         "sourceSentence": "Hij zegt: 'Ik zal later terugkomen.' (reported from yesterday)",
         "targetSentence": "Hij zei dat hij later zou terugkomen.",
-        "explanation": "zei + zou + infinitive is future-in-the-past."
+        "explanation": "zei + zou + infinitive is future-in-the-past.",
+        "original": "Hij zegt: 'Ik zal later terugkomen.' (reported from yesterday)",
+        "instruction": "Shift the reported future into the past timeline.",
+        "transformed": "Hij zei dat hij later zou terugkomen."
       }
     ]
   },
@@ -6277,7 +6295,10 @@ globalThis.NP_GRAMMAR = [
         "prompt": "Reduce the relative to a prenominal present participle.",
         "sourceSentence": "de storm die nadert",
         "targetSentence": "de naderende storm",
-        "explanation": "-end + adjective -e before a de-word."
+        "explanation": "-end + adjective -e before a de-word.",
+        "original": "de storm die nadert",
+        "instruction": "Reduce the relative to a prenominal present participle.",
+        "transformed": "de naderende storm"
       },
       {
         "type": "multiple_choice",
@@ -6390,7 +6411,10 @@ globalThis.NP_GRAMMAR = [
         "prompt": "Turn the finite clause into an adjectival te-infinitive.",
         "sourceSentence": "Je kunt die kade in de mist moeilijk zien.",
         "targetSentence": "Die kade is in de mist moeilijk te zien.",
-        "explanation": "Object becomes subject; adjective + te zien."
+        "explanation": "Object becomes subject; adjective + te zien.",
+        "original": "Je kunt die kade in de mist moeilijk zien.",
+        "instruction": "Turn the finite clause into an adjectival te-infinitive.",
+        "transformed": "Die kade is in de mist moeilijk te zien."
       }
     ]
   },
@@ -6474,7 +6498,10 @@ globalThis.NP_GRAMMAR = [
         "prompt": "Make the action reciprocal.",
         "sourceSentence": "Anna helpt Ben. Ben helpt Anna.",
         "targetSentence": "Anna en Ben helpen elkaar.",
-        "explanation": "Two-way help collapses to elkaar."
+        "explanation": "Two-way help collapses to elkaar.",
+        "original": "Anna helpt Ben. Ben helpt Anna.",
+        "instruction": "Make the action reciprocal.",
+        "transformed": "Anna en Ben helpen elkaar."
       }
     ]
   },
@@ -6554,7 +6581,10 @@ globalThis.NP_GRAMMAR = [
         "prompt": "Rewrite the red cluster as green order without changing meaning.",
         "sourceSentence": "… dat zij het rapport heeft gelezen.",
         "targetSentence": "… dat zij het rapport gelezen heeft.",
-        "explanation": "Participle before finite auxiliary is green 2-1."
+        "explanation": "Participle before finite auxiliary is green 2-1.",
+        "original": "… dat zij het rapport heeft gelezen.",
+        "instruction": "Rewrite the red cluster as green order without changing meaning.",
+        "transformed": "… dat zij het rapport gelezen heeft."
       },
       {
         "type": "error_correction",
@@ -6651,7 +6681,10 @@ globalThis.NP_GRAMMAR = [
         "prompt": "Extrapose the dat-clause from the middle field.",
         "sourceSentence": "Het is dat de veerdienst uitvalt al bekend.",
         "targetSentence": "Het is al bekend dat de veerdienst uitvalt.",
-        "explanation": "Light predicate al bekend; heavy clause after it."
+        "explanation": "Light predicate al bekend; heavy clause after it.",
+        "original": "Het is dat de veerdienst uitvalt al bekend.",
+        "instruction": "Extrapose the dat-clause from the middle field.",
+        "transformed": "Het is al bekend dat de veerdienst uitvalt."
       }
     ]
   },
@@ -6823,7 +6856,10 @@ globalThis.NP_GRAMMAR = [
         "prompt": "Add hoor so the clause reassures rather than merely asserts.",
         "sourceSentence": "Dat redden we.",
         "targetSentence": "Dat redden we hoor.",
-        "explanation": "Clause-final hoor is a reassuring stance marker."
+        "explanation": "Clause-final hoor is a reassuring stance marker.",
+        "original": "Dat redden we.",
+        "instruction": "Add hoor so the clause reassures rather than merely asserts.",
+        "transformed": "Dat redden we hoor."
       },
       {
         "type": "error_correction",
@@ -6909,7 +6945,10 @@ globalThis.NP_GRAMMAR = [
         "prompt": "Downplay the instruction with gewoon (obvious, no fuss).",
         "sourceSentence": "Zet de motor uit.",
         "targetSentence": "Zet de motor gewoon uit.",
-        "explanation": "gewoon presents the action as the straightforward thing to do."
+        "explanation": "gewoon presents the action as the straightforward thing to do.",
+        "original": "Zet de motor uit.",
+        "instruction": "Downplay the instruction with gewoon (obvious, no fuss).",
+        "transformed": "Zet de motor gewoon uit."
       },
       {
         "type": "error_correction",
@@ -7080,7 +7119,10 @@ globalThis.NP_GRAMMAR = [
         "prompt": "Weaken the assertion to cautious possibility.",
         "sourceSentence": "De veerdienst valt uit.",
         "targetSentence": "Het zou kunnen dat de veerdienst uitvalt.",
-        "explanation": "zou kunnen dat lowers commitment."
+        "explanation": "zou kunnen dat lowers commitment.",
+        "original": "De veerdienst valt uit.",
+        "instruction": "Weaken the assertion to cautious possibility.",
+        "transformed": "Het zou kunnen dat de veerdienst uitvalt."
       },
       {
         "type": "error_correction",
@@ -7255,7 +7297,10 @@ globalThis.NP_GRAMMAR = [
         "prompt": "Turn the explicit als-clause into an anders-sentence.",
         "sourceSentence": "Als het niet had gesneeuwd, waren we op tijd geweest.",
         "targetSentence": "Anders waren we op tijd geweest.",
-        "explanation": "anders absorbs the negated condition."
+        "explanation": "anders absorbs the negated condition.",
+        "original": "Als het niet had gesneeuwd, waren we op tijd geweest.",
+        "instruction": "Turn the explicit als-clause into an anders-sentence.",
+        "transformed": "Anders waren we op tijd geweest."
       },
       {
         "type": "error_correction",
@@ -7341,7 +7386,10 @@ globalThis.NP_GRAMMAR = [
         "prompt": "Report the command with zeggen + dat + moeten.",
         "sourceSentence": "Wacht bij de sluis.",
         "targetSentence": "Hij zei dat ik bij de sluis moest wachten.",
-        "explanation": "Imperative becomes moest + infinitive in a verb-final dat-clause."
+        "explanation": "Imperative becomes moest + infinitive in a verb-final dat-clause.",
+        "original": "Wacht bij de sluis.",
+        "instruction": "Report the command with zeggen + dat + moeten.",
+        "transformed": "Hij zei dat ik bij de sluis moest wachten."
       },
       {
         "type": "error_correction",
@@ -7425,7 +7473,10 @@ globalThis.NP_GRAMMAR = [
         "prompt": "Cleft the subject for contrast with de wind.",
         "sourceSentence": "De stroming duwt de boot weg, niet de wind.",
         "targetSentence": "Het is de stroming die de boot wegduwt, niet de wind.",
-        "explanation": "het is + focus + die + remnant."
+        "explanation": "het is + focus + die + remnant.",
+        "original": "De stroming duwt de boot weg, niet de wind.",
+        "instruction": "Cleft the subject for contrast with de wind.",
+        "transformed": "Het is de stroming die de boot wegduwt, niet de wind."
       },
       {
         "type": "error_correction",
@@ -7516,7 +7567,10 @@ globalThis.NP_GRAMMAR = [
         "prompt": "Make the indefinite introduction presentational.",
         "sourceSentence": "Uitzonderingen voor hulpdiensten bestaan.",
         "targetSentence": "Er bestaan uitzonderingen voor hulpdiensten.",
-        "explanation": "er + verb + indefinite NP is the existential frame."
+        "explanation": "er + verb + indefinite NP is the existential frame.",
+        "original": "Uitzonderingen voor hulpdiensten bestaan.",
+        "instruction": "Make the indefinite introduction presentational.",
+        "transformed": "Er bestaan uitzonderingen voor hulpdiensten."
       }
     ]
   },
@@ -7595,7 +7649,10 @@ globalThis.NP_GRAMMAR = [
         "prompt": "Turn ambiguous alle … niet into a clear zero statement.",
         "sourceSentence": "Alle seinen werkten niet.",
         "targetSentence": "Geen enkel sein werkte.",
-        "explanation": "geen enkel forces the zero reading."
+        "explanation": "geen enkel forces the zero reading.",
+        "original": "Alle seinen werkten niet.",
+        "instruction": "Turn ambiguous alle … niet into a clear zero statement.",
+        "transformed": "Geen enkel sein werkte."
       },
       {
         "type": "error_correction",
@@ -7685,7 +7742,10 @@ globalThis.NP_GRAMMAR = [
         "prompt": "Turn the equative into a comparative with dan.",
         "sourceSentence": "De nieuwe sluis is even lang als de oude.",
         "targetSentence": "De nieuwe sluis is langer dan de oude.",
-        "explanation": "Comparative morphology + dan."
+        "explanation": "Comparative morphology + dan.",
+        "original": "De nieuwe sluis is even lang als de oude.",
+        "instruction": "Turn the equative into a comparative with dan.",
+        "transformed": "De nieuwe sluis is langer dan de oude."
       }
     ]
   },
@@ -9075,9 +9135,9 @@ globalThis.NP_GRAMMAR = [
     "structuralBreakdown": "[hoofdzin V2] ; [hoofdzin V2]   |   [aanloop] : [toelichting | opsomming | citaat tot de volgende punt]",
     "examples": [
       {
-        "nl": "De wettelijke termijn is verstreken; derhalve wijzen wij het verzoek af.",
-        "en": "The statutory deadline has expired; we therefore reject the request.",
-        "highlight": "verstreken; derhalve"
+        "nl": "De zienswijzetermijn is voorbij; we publiceren het ontwerpbesluit volgende week.",
+        "en": "The period for views is over; we will publish the draft decision next week.",
+        "highlight": "voorbij; we publiceren"
       },
       {
         "nl": "Het college overweegt drie opties: uitstel, afwijzing of een nieuwe ronde.",
@@ -9428,61 +9488,61 @@ globalThis.NP_GRAMMAR = [
     "level": "C1",
     "title": "Prepositional Syntagms with Double Prepositions",
     "titleNl": "Voorzetselgroepen met dubbele voorzetsels",
-    "summary": "Dutch has complex prepositions made of two parts ('van … uit', 'op … na', 'tot … toe') whose complement sits in the middle, plus adjacent PPs that only look double.",
+    "summary": "Dutch packs three different two-part P constructions into similar letters: wrapping circumpositions (op … na, tot … toe, van NP uit), spatial van daaruit / van hieruit, and the pronominal-adverb + separable verb ervan/daarvan uitgaan. Mixing those three is the typical C1 error.",
     "rules": [
-      "Circumpositions wrap the NP: 'van hieruit' / 'van het balkon af', 'tot de grens toe', 'op één na alle leden'. The second element is historically an adverb.",
-      "'Op … na' means 'except': 'Op één tegenstem na werd het aangenomen.' Do not read it as locative 'on … after'.",
-      "'Van … uit' gives a vantage point: 'Van de gemeente uit bezien is dit haalbaar.' Closely related: 'vanuit de gemeente' (one word, slightly more spatial).",
-      "True stacked PPs are different: 'met betrekking tot', 'in tegenstelling tot' — complex but left-headed, not wrapping.",
-      "Pronominal adverbs can split: 'daar … van uit', but 'vanuit daar' is now common. Both occur; house styles differ."
+      "A circumposition wraps a full noun phrase: op één tegenstem na, tot de grens toe, van het balkon af. Taalportaal treats these as directional or exceptive circumpositional phrases, not as two stacked prepositions.",
+      "Op … na means ‘except’: Op twee onthoudingen na stemde de raad voor. It is not locative ‘on … after’, and English after-one order (*na op één) is ungrammatical.",
+      "Spatial vantage uses van daaruit / van hieruit (‘from that/this place or point’). That is a fused deictic, not the verb uitgaan van.",
+      "Uitgaan van iets is a separable verb plus a van-complement. When the complement is pronominalised, Onze Taal and Taaladvies require ervan uitgaan / daarvan uitgaan / we gaan ervan uit: uit stays with the verb and is not glued to ervan (*ervanuit, *er vanuit).",
+      "Left-headed complex prepositions (met betrekking tot, in tegenstelling tot, tot aan) take their complement on the right only; they do not wrap an NP the way tot … toe does."
     ],
-    "structuralBreakdown": "[P1 + NP + P2/partikel]  |  [complex P + NP]  |  [vanuit / tot aan] als één voorzetsel",
+    "structuralBreakdown": "[op/tot/van + NP + na/toe/uit/af]  ≠  [van daaruit / van hieruit]  ≠  [ervan/daarvan + uitgaan]",
     "examples": [
       {
         "nl": "Op twee onthoudingen na stemde de raad voor het voorstel.",
-        "en": "Except for two abstentions the council voted for the proposal.",
+        "en": "Except for two abstentions, the council voted for the proposal.",
         "highlight": "Op twee onthoudingen na"
       },
       {
-        "nl": "Van de provincie uit is er geen bezwaar tot de grens toe.",
-        "en": "From the province's point of view there is no objection right up to the border.",
-        "highlight": "Van de provincie uit / tot de grens toe"
+        "nl": "We gaan ervan uit dat de trein tot het einde toe rijdt; van daaruit lopen we naar de steiger.",
+        "en": "We assume that the train runs all the way to the end; from there we walk to the jetty.",
+        "highlight": "ervan uit / tot het einde toe / van daaruit"
       }
     ],
-    "commonMistake": "Reading 'op één na' as a location, or writing *'na op één' in the English order 'after one'.",
-    "correction": "Keep the wrap: 'op één na alle aanwezigen' = all but one of those present.",
+    "commonMistake": "Writing *we gaan ervanuit / *er vanuit that something is true, or reading van daaruit as if it were daarvan uitgaan.",
+    "correction": "Assumption: we gaan ervan uit (uitgaan van + ervan). Place: van daaruit. Exception: op X na. Extent: tot X toe.",
     "difficulty": "advanced",
     "estimatedTimeMin": 10,
     "tags": [
       "prepositions",
       "circumposition",
-      "op-na",
+      "ervan-uitgaan",
       "c1"
     ],
     "prerequisites": [
       "g-028",
-      "g-072"
+      "g-065"
     ],
     "relatedRules": [
-      "g-107",
-      "g-110"
+      "g-016",
+      "g-107"
     ],
     "exercises": [
       {
         "type": "multiple_choice",
-        "question": "'Op één tegenstem na' means…",
+        "question": "Which spelling is required for ‘we assume that…’?",
         "options": [
-          "after one vote against, then something else",
-          "except for one vote against",
-          "on top of one later vote",
-          "according to article one"
+          "We gaan ervanuit dat het lukt.",
+          "We gaan er vanuit dat het lukt.",
+          "We gaan ervan uit dat het lukt.",
+          "We gaan van daaruit dat het lukt."
         ],
-        "correct": 1,
-        "explanation": "'Op X na' = except X."
+        "correct": 2,
+        "explanation": "Onze Taal / Taaladvies: uitgaan van + ervan → we gaan ervan uit. Van daaruit is spatial, not assumptive."
       },
       {
         "type": "fill_in_the_blank",
-        "prompt": "Complete the circumposition 'except'.",
+        "prompt": "Complete the exceptive circumposition.",
         "blankWord": "na",
         "sentenceWithBlank": "Op drie leden ___ was iedereen aanwezig.",
         "hints": [
@@ -9493,21 +9553,21 @@ globalThis.NP_GRAMMAR = [
       },
       {
         "type": "error_correction",
-        "sentenceWithError": "Na op één tegenstem werd het voorstel aangenomen.",
-        "correctedSentence": "Op één tegenstem na werd het voorstel aangenomen.",
-        "explanation": "The NP is wrapped by 'op … na'."
+        "sentenceWithError": "We gaan er vanuit dat de vergunning tot de grens geldig is.",
+        "correctedSentence": "We gaan ervan uit dat de vergunning tot de grens toe geldig is.",
+        "explanation": "Assumption takes ervan uit; extent can add toe after the NP (tot de grens toe)."
       },
       {
         "type": "multiple_choice",
-        "question": "Which is a wrapping circumposition, not a left-headed complex P?",
+        "question": "Which pair is correctly distinguished?",
         "options": [
-          "met betrekking tot het rapport",
-          "tot de grens toe",
-          "in tegenstelling tot het advies",
-          "krachtens artikel 6"
+          "van daaruit = we assume; ervan uitgaan = from that place",
+          "van daaruit = from that place; ervan uitgaan = assume on that basis",
+          "op … na = after that; tot … toe = except",
+          "met betrekking tot wraps the NP like tot … toe"
         ],
         "correct": 1,
-        "explanation": "'Tot … toe' wraps the NP; the others take a complement to the right only."
+        "explanation": "Spatial deictic vs pronominal-adverb + separable verb; they are not stylistic variants of one construction."
       }
     ]
   },

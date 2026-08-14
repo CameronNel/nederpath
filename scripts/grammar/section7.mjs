@@ -1023,9 +1023,9 @@ export const lessons = [
     structuralBreakdown: "[hoofdzin V2] ; [hoofdzin V2]   |   [aanloop] : [toelichting | opsomming | citaat tot de volgende punt]",
     examples: [
       {
-        nl: "De wettelijke termijn is verstreken; derhalve wijzen wij het verzoek af.",
-        en: "The statutory deadline has expired; we therefore reject the request.",
-        highlight: "verstreken; derhalve"
+        nl: "De zienswijzetermijn is voorbij; we publiceren het ontwerpbesluit volgende week.",
+        en: "The period for views is over; we will publish the draft decision next week.",
+        highlight: "voorbij; we publiceren"
       },
       {
         nl: "Het college overweegt drie opties: uitstel, afwijzing of een nieuwe ronde.",

@@ -146,31 +146,60 @@ test("No title interpolation into generic rule shells", () => {
   }
 });
 
-test("Exercise sets and prompts are unique and valid", () => {
+function assertExerciseSchema(ruleId, ex, index) {
+  const where = `${ruleId} exercise ${index} (${ex.type || "missing-type"})`;
+  switch (ex.type) {
+    case "multiple_choice":
+      if (!ex.question || String(ex.question).trim().length < 8) throw new Error(`${where} missing question`);
+      if (!Array.isArray(ex.options) || ex.options.length !== 4) throw new Error(`${where} needs exactly 4 options`);
+      if (new Set(ex.options.map(String)).size !== 4) throw new Error(`${where} duplicate MC options`);
+      if (!Number.isInteger(ex.correct) || ex.correct < 0 || ex.correct > 3) throw new Error(`${where} invalid answer index`);
+      if (!ex.explanation || String(ex.explanation).trim().length < 8) throw new Error(`${where} missing explanation`);
+      return ex.question;
+    case "fill_in_the_blank":
+      if (!ex.prompt || !ex.sentenceWithBlank || !ex.blankWord) throw new Error(`${where} needs prompt, sentenceWithBlank, blankWord`);
+      if (!String(ex.sentenceWithBlank).includes("___")) throw new Error(`${where} sentenceWithBlank needs ___`);
+      return ex.prompt;
+    case "error_correction":
+      if (!ex.sentenceWithError || !ex.correctedSentence || !ex.explanation) {
+        throw new Error(`${where} needs sentenceWithError, correctedSentence, explanation`);
+      }
+      return ex.sentenceWithError;
+    case "sentence_transformation":
+      if (!ex.original || !ex.instruction || !ex.transformed) {
+        throw new Error(`${where} needs original, instruction, transformed`);
+      }
+      return ex.instruction;
+    case "word_order":
+      if (!Array.isArray(ex.tokens) || ex.tokens.length < 2) throw new Error(`${where} needs a nonempty token array`);
+      if (!ex.correctSentence || String(ex.correctSentence).trim().length < 3) throw new Error(`${where} missing correctSentence`);
+      return ex.correctSentence;
+    case "typed_conjugation":
+      if (!ex.infinitive || !ex.subject || !ex.correctForm) throw new Error(`${where} needs infinitive, subject, correctForm`);
+      if (!ex.targetTense) throw new Error(`${where} needs targetTense`);
+      return `${ex.infinitive} ${ex.subject} ${ex.correctForm}`;
+    case "article_selection":
+      if (!ex.noun) throw new Error(`${where} missing noun`);
+      if (!["de", "het"].includes(ex.correct)) throw new Error(`${where} correct must be de or het`);
+      return `${ex.noun} ${ex.correct}`;
+    default:
+      throw new Error(`${where} unknown or missing exercise type`);
+  }
+}
+
+test("Exercise sets and prompts are unique and schema-valid", () => {
   const sets = new Set();
   const prompts = new Set();
   for (const rule of rules) {
     const sig = JSON.stringify(rule.exercises.map((e) => e.type + ":" + (e.question || e.prompt || e.instruction || e.sentenceWithError || "")));
     if (sets.has(sig)) throw new Error(`identical exercise set: ${rule.id}`);
     sets.add(sig);
-    for (const ex of rule.exercises) {
-      const p = ex.question || ex.prompt || ex.instruction || ex.sentenceWithError || (ex.type === "typed_conjugation" ? `${ex.infinitive} ${ex.subject} ${ex.correctForm}` : "") || (ex.type === "word_order" ? ex.correctSentence : "") || (ex.type === "article_selection" ? `${ex.noun} ${ex.correct}` : "");
-      if (!p) throw new Error(`${rule.id} exercise missing prompt`);
+    rule.exercises.forEach((ex, index) => {
+      const p = assertExerciseSchema(rule.id, ex, index);
       const key = norm(p);
       if (prompts.has(key)) throw new Error(`repeated prompt: ${p}`);
       prompts.add(key);
-      if (ex.type === "multiple_choice") {
-        if (!ex.options || ex.options.length < 2 || new Set(ex.options).size !== ex.options.length) {
-          throw new Error(`${rule.id} bad MC options`);
-        }
-        if (!Number.isInteger(ex.correct) || ex.correct < 0 || ex.correct >= ex.options.length) {
-          throw new Error(`${rule.id} invalid MC index`);
-        }
-      }
-      if (ex.type === "article_selection" && !["de", "het"].includes(ex.correct)) {
-        throw new Error(`${rule.id} article_selection must be de/het`);
-      }
-    }
+    });
   }
 });
 

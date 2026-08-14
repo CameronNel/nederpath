@@ -110,7 +110,7 @@ export const lessons = [
     structuralBreakdown: "de + common sg | het + neuter sg | de + any plural | het + any diminutive | een + any indefinite sg.",
     examples: [
       { nl: "De tafel staat in het huisje achter de tuin.", en: "The table stands in the little house behind the garden.", highlight: "De tafel / het huisje" },
-      { nl: "Het kind leest de boeken op het autowiel van de auto.", en: "The child reads the books on the car wheel of the car.", highlight: "het kind, de boeken, het autowiel" }
+      { nl: "Het kind leest de boeken in het huis van de buren.", en: "The child is reading the books in the neighbours' house.", highlight: "het kind, de boeken, het huis" }
     ],
     commonMistake: "Keeping het on a plural because the singular was het (het huizen).",
     correction: "Switch to de for every plural: de huizen, de kinderen.",

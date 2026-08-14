@@ -15,6 +15,18 @@ import { lessons as section8 } from "./grammar/section8.mjs";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 
+function normalizeExercise(ex) {
+  if (ex.type === "sentence_transformation") {
+    return {
+      ...ex,
+      original: ex.original || ex.sourceSentence,
+      instruction: ex.instruction || ex.prompt,
+      transformed: ex.transformed || ex.targetSentence
+    };
+  }
+  return ex;
+}
+
 function createRule(data) {
   return {
     id: data.id,
@@ -34,7 +46,7 @@ function createRule(data) {
     tags: data.tags || [data.sectionTitle.toLowerCase().replace(/[^a-z0-9]+/g, "_"), data.level.toLowerCase()],
     prerequisites: data.prerequisites || [],
     relatedRules: data.relatedRules || [],
-    exercises: data.exercises
+    exercises: (data.exercises || []).map(normalizeExercise)
   };
 }
 
