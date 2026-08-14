@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
@@ -21,10 +21,11 @@ jobs:
     name: Validate Quality & Artifact Integrity
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
+      - name: Checkout repository branch
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          ref: ${{ github.head_ref || github.ref }}
 
       - name: Setup Node.js 24
         uses: actions/setup-node@v4
@@ -40,14 +41,16 @@ jobs:
       - name: Regenerate lexical artifact
         run: npm run words
 
-      - name: Upload regenerated lexical artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: lexical-regenerated
-          path: |
-            data/lexical_merge_policy.json
-            data/words.js
-            data/word_ids.json
+      - name: Persist regenerated lexical data
+        if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/lexical_merge_policy.json data/words.js data/word_ids.json
+          if ! git diff --cached --quiet; then
+            git commit -m "fix: synchronize lexical generated artifacts"
+            git push origin HEAD:${{ github.head_ref }}
+          fi
 
       - name: Run Lexical Gold-Standard Checks
         run: |
