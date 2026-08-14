@@ -1,31 +1,26 @@
 {
-  "schemaVersion": 1,
-  "reviewType": "final exhaustive lexical truth review",
+  "schemaVersion": 2,
+  "reviewType": "independent review status",
   "generatedAt": "2026-08-14",
-  "commitAtGeneration": "ffbd93748d7f874fb4714ae85e7c000e667bb5e2",
+  "semanticReviewComplete": false,
+  "taskComplete": false,
   "exactRawCuratedRows": 6428,
-  "exactExhaustiveLedgerRows": 6428,
-  "ledgerRowsPASS": 6174,
-  "ledgerRowsFIXED": 254,
-  "ledgerRowsNEEDSEvidence": 0,
-  "canonicalRows": 4261,
-  "learnerRows": 4245,
-  "generatedRows": 10811,
-  "duplicateGroupsReviewed": 1463,
-  "mixedPOSGroupsReviewed": 36,
-  "nominalizedInfinitiveGroupsReviewed": 18,
-  "nounRowsReviewed": 4806,
-  "sourceIssues": 0,
-  "duplicateGeneratedForms": 0,
-  "duplicateGeneratedIDs": 0,
-  "articleFailures": 0,
-  "stableIDDrift": 0,
-  "registryHighWaterMark": 20083,
-  "registryEntries": 20083,
-  "finalChecks": {
-    "ledger": "PASS",
-    "mergeReview": "PASS",
-    "nounSweep": "PASS",
-    "independentVerificationPass2": "PASS"
-  }
+  "automatedStructuralCoverageRows": 6428,
+  "semanticRowsIndependentlyEvidenced": 0,
+  "semanticRowsNeedEvidence": 6428,
+  "previousClaim": {
+    "pass": 6174,
+    "fixed": 254,
+    "needsEvidence": 0,
+    "status": "SUPERSEDED",
+    "reason": "The ledger was generated automatically. FIXED meant changed from origin/master, not corrected during the claimed exhaustive review, and automation cannot prove lexical truthfulness."
+  },
+  "engineeringChecks": {
+    "generatedArtifactConsistency": "PASS_AT_0a9c7e18d8c860a555bafbf79057bf834337f0d9",
+    "lexicalStructuralChecks": "PASS_AT_0a9c7e18d8c860a555bafbf79057bf834337f0d9",
+    "fullTests": "PASS_AT_0a9c7e18d8c860a555bafbf79057bf834337f0d9",
+    "build": "PASS_AT_0a9c7e18d8c860a555bafbf79057bf834337f0d9",
+    "artifactAudit": "PASS_AT_0a9c7e18d8c860a555bafbf79057bf834337f0d9"
+  },
+  "remainingBlocker": "Provide separate row-specific semantic/linguistic evidence for every curated source row before claiming the exhaustive lexical-truth contract complete."
 }
