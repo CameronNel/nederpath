@@ -1701,6 +1701,80 @@ test("SRS Display Truthfulness: Interval labels explicitly include exact day cou
   }
 });
 
+// -------------------------------------------------------------------
+// 28. Grammar Exercise Type Integrity Suite
+// -------------------------------------------------------------------
+// Authoritative Dutch verb recognition for typed_conjugation prompts,
+// derived from the repository's own verb data instead of an expanding
+// hardcoded whitelist:
+//   1. An infinitive is a bank verb lemma (pos='verb', inflectionType='lemma')
+//      or a runtime irregular verb.
+//   2. Common Dutch inseparable/separable compound prefixes may decompose an
+//      infinitive onto such a verified stem (opstaan -> op + staan).
+//   3. The reflexive particle 'zich ' may prefix a verified stem
+//      (zich haasten -> haasten).
+//   4. A tiny documented exception list covers legitimate curriculum verbs
+//      absent from the conservative append-only bank (e.g. 'leven').
+// Noun-plural rows are rejected explicitly: parenthesized descriptors such
+// as '(plural)', '(meervoud)' or '(ordinal ...)' are never verb infinitives.
+const VERB_COMPOUND_PREFIXES = [
+  "be", "ge", "her", "ont", "ver", "aan", "uit", "in", "op", "af",
+  "toe", "ter", "weer", "om", "na", "naar", "mis", "onder", "over",
+  "door", "achter", "buiten", "mee", "tegen", "voor", "bij", "dicht",
+  "los", "naast", "samen", "thuis", "vast", "verder", "weg"
+];
+const VERB_EXCEPTIONS = new Set([
+  "leven" // core-curriculum conjugation exercise; absent from the word bank
+]);
+
+function isPlausibleVerbInfinitive(infinitive, wordsBank) {
+  const inf = String(infinitive || "").trim().toLowerCase();
+  if (!inf) return false;
+  if (/\((plural|meervoud|ordinal)/i.test(inf)) return false;
+  if (VERB_EXCEPTIONS.has(inf)) return true;
+
+  const bankLemma = new Set(
+    (wordsBank || [])
+      .filter((w) => w && w.pos === "verb" && w.inflectionType === "lemma")
+      .map((w) => w.word.toLowerCase().trim())
+  );
+  // Irregulars are resolved by the runtime's own conjugation table
+  // (getVerifiedVerbHijConjugation checks it before consulting the bank).
+  const irregular = (candidate) => !!Learning.getVerifiedVerbHijConjugation(candidate, null);
+  const verified = (candidate) => bankLemma.has(candidate) || irregular(candidate);
+
+  if (verified(inf)) return true;
+  if (inf.startsWith("zich ") && verified(inf.slice(5))) return true;
+  return VERB_COMPOUND_PREFIXES.some((prefix) => inf.startsWith(prefix) && verified(inf.slice(prefix.length)));
+}
+
+test("Grammar: typed_conjugation exercises use plausible verb infinitives from authoritative data", () => {
+  for (const rule of grammar) {
+    for (const ex of rule.exercises || []) {
+      if (ex.type !== "typed_conjugation") continue;
+      const infinitive = String(ex.infinitive || "").trim();
+      if (!isPlausibleVerbInfinitive(infinitive, words)) {
+        throw new Error(`${rule.id} typed_conjugation infinitive '${infinitive}' is not a verified Dutch verb infinitive`);
+      }
+    }
+  }
+});
+
+test("Grammar: noun-plural pseudo-verbs are rejected while staan-family infinitives pass", () => {
+  const invalid = ["kind (plural)", "kind (meervoud)", "kind", "tafel", "aangestaan", "achten (ordinal stem acht)"];
+  for (const inf of invalid) {
+    if (isPlausibleVerbInfinitive(inf, words)) {
+      throw new Error(`'${inf}' was accepted as a verb infinitive but must be rejected`);
+    }
+  }
+  const valid = ["staan", "opstaan", "bestaan", "ontstaan", "weerstaan", "verstaan", "lezen", "zijn", "werken", "maken", "moeten", "laten", "ontmoeten", "zich haasten", "leven"];
+  for (const inf of valid) {
+    if (!isPlausibleVerbInfinitive(inf, words)) {
+      throw new Error(`'${inf}' is a legitimate Dutch verb infinitive but was rejected`);
+    }
+  }
+});
+
 async function runAllTests() {
   for (const { name, fn } of testQueue) {
     try {
