@@ -48,14 +48,17 @@ function makeStorage() {
   };
 }
 
-function loadStore() {
+function withStore(fn) {
   const oldStorage = globalThis.localStorage;
   globalThis.localStorage = makeStorage();
-  const testGlobal = { NederLearning: Learning };
-  new Function("globalThis", storeSrc)(testGlobal);
-  if (oldStorage === undefined) delete globalThis.localStorage;
-  else globalThis.localStorage = oldStorage;
-  return testGlobal.NederStore;
+  try {
+    const testGlobal = { NederLearning: Learning };
+    new Function("globalThis", storeSrc)(testGlobal);
+    return fn(testGlobal.NederStore);
+  } finally {
+    if (oldStorage === undefined) delete globalThis.localStorage;
+    else globalThis.localStorage = oldStorage;
+  }
 }
 
 function loadSrs(store) {
@@ -69,13 +72,14 @@ console.log("       NederPath PR #1 Boundary Regression Tests       ");
 console.log("=======================================================\n");
 
 test("Article drill: prototype-magic noun keys cannot mutate the mistakes object prototype", () => {
-  const store = loadStore();
-  const beforePrototype = Object.getPrototypeOf(store.state.progress.articleStats.mistakes);
-  store.recordArticleDrill("__proto__", "de", "het");
-  const mistakes = store.state.progress.articleStats.mistakes;
-  assert(Object.getPrototypeOf(mistakes) === beforePrototype, "articleStats.mistakes prototype changed");
-  assert(!Object.prototype.hasOwnProperty.call(mistakes, "__proto__"), "unsafe __proto__ mistake key was stored");
-  assert(mistakes.onbekend === 1, "unsafe noun was not redirected to a safe fallback key");
+  withStore((store) => {
+    const beforePrototype = Object.getPrototypeOf(store.state.progress.articleStats.mistakes);
+    store.recordArticleDrill("__proto__", "de", "het");
+    const mistakes = store.state.progress.articleStats.mistakes;
+    assert(Object.getPrototypeOf(mistakes) === beforePrototype, "articleStats.mistakes prototype changed");
+    assert(!Object.prototype.hasOwnProperty.call(mistakes, "__proto__"), "unsafe __proto__ mistake key was stored");
+    assert(mistakes.onbekend === 1, "unsafe noun was not redirected to a safe fallback key");
+  });
 });
 
 test("SRS: prototype-magic IDs are rejected before any object mutation", () => {
