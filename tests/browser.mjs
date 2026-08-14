@@ -277,13 +277,17 @@ async function runBrowserTests() {
     assert(starBtn !== null, "Bookmark star button is present on dictionary results");
     const pressedBefore = await page.$eval(".btn-star", (el) => el.getAttribute("aria-pressed"));
     const nameBefore = await page.$eval(".btn-star", (el) => el.getAttribute("aria-label"));
+    const titleBefore = await page.$eval(".btn-star", (el) => el.getAttribute("title"));
     assert(pressedBefore === "false" || pressedBefore === "true", `Star button announces aria-pressed state ('${pressedBefore}')`);
     assert(nameBefore === "Favoriet", `Star button accessible name is stable and meaningful ('${nameBefore}')`);
+    assert(titleBefore === "Favoriet opslaan", `Unbookmarked star button title invites adding a favorite ('${titleBefore}')`);
     await starBtn.click();
     const pressedAfter = await page.$eval(".btn-star", (el) => el.getAttribute("aria-pressed"));
     const nameAfter = await page.$eval(".btn-star", (el) => el.getAttribute("aria-label"));
+    const titleAfter = await page.$eval(".btn-star", (el) => el.getAttribute("title"));
     assert(pressedAfter === (pressedBefore === "true" ? "false" : "true"), `Star button aria-pressed toggles on click (${pressedBefore} -> ${pressedAfter})`);
     assert(nameAfter === nameBefore, `Star button accessible name does not change with state ('${nameBefore}' -> '${nameAfter}')`);
+    assert(titleAfter === (titleBefore === "Favoriet opslaan" ? "Favoriet verwijderen" : "Favoriet opslaan"), `Star button title follows state dynamically ('${titleBefore}' -> '${titleAfter}')`);
 
     // Audit accessible label associations on Words view
     const wordsUnlabeled = await page.evaluate(() => {
@@ -520,6 +524,39 @@ async function runBrowserTests() {
     // 7. Navigation: Oefenen (Interactive Practice Modes & Semantic Controls)
     await page.click("#nav-practice");
     await page.waitForSelector(".practice-container");
+    await page.waitForSelector("#interactive-flashcard");
+
+    // Practice-mode selector buttons expose the active mode via aria-pressed
+    const modeButtons = await page.$$("button[data-mode]");
+    assert(modeButtons.length >= 9, `Practice hub renders every mode selector button (found ${modeButtons.length})`);
+    const pressedStates = await page.evaluate(() =>
+      Array.from(document.querySelectorAll("button[data-mode]")).map((b) => ({
+        mode: b.dataset.mode,
+        pressed: b.getAttribute("aria-pressed")
+      }))
+    );
+    const activeModes = pressedStates.filter((m) => m.pressed === "true");
+    const inactiveModes = pressedStates.filter((m) => m.pressed === "false");
+    assert(activeModes.length === 1 && activeModes[0].mode === "flashcards", `Exactly one practice-mode button is aria-pressed='true' (active: ${JSON.stringify(activeModes)})`);
+    assert(inactiveModes.length === pressedStates.length - 1, `All inactive practice-mode buttons are aria-pressed='false' (inactive: ${inactiveModes.length})`);
+
+    // Switching mode moves aria-pressed to the newly active button
+    await page.click("button[data-mode='article_drill']");
+    await page.waitForSelector(".drill-card");
+    const afterSwitch = await page.evaluate(() =>
+      Array.from(document.querySelectorAll("button[data-mode]")).map((b) => ({
+        mode: b.dataset.mode,
+        pressed: b.getAttribute("aria-pressed")
+      }))
+    );
+    const activeAfter = afterSwitch.filter((m) => m.pressed === "true");
+    const drillAfter = afterSwitch.find((m) => m.mode === "article_drill");
+    const flashAfter = afterSwitch.find((m) => m.mode === "flashcards");
+    assert(activeAfter.length === 1 && activeAfter[0].mode === "article_drill", `Switched practice-mode button reports aria-pressed='true' (active: ${JSON.stringify(activeAfter)})`);
+    assert(drillAfter.pressed === "true" && flashAfter.pressed === "false", `Previous practice-mode button reports aria-pressed='false' (article_drill: ${drillAfter.pressed}, flashcards: ${flashAfter.pressed})`);
+
+    // Restore flashcards mode for subsequent flashcard assertions
+    await page.click("button[data-mode='flashcards']");
     await page.waitForSelector("#interactive-flashcard");
 
     // Mode 1: Flashcards Semantic Button & Keyboard Flip

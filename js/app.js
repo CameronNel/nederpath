@@ -568,7 +568,7 @@
           <!-- Practice Mode Selector Bar -->
           <div class="practice-nav-bar">
             ${modes.map((m) => `
-              <button class="btn btn-sm ${this.practiceMode === m.id ? 'btn-primary' : 'btn-outline'}" data-mode="${m.id}">
+              <button class="btn btn-sm ${this.practiceMode === m.id ? 'btn-primary' : 'btn-outline'}" data-mode="${m.id}" aria-pressed="${this.practiceMode === m.id ? 'true' : 'false'}">
                 ${m.icon} ${m.name}
               </button>
             `).join("")}
