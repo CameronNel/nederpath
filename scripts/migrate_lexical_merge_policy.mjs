@@ -15,37 +15,30 @@ const legacyPolicy = JSON.parse(execFileSync(
 const currentPolicy = JSON.parse(readFileSync(policyPath, "utf8"));
 const { rows: currentRows } = loadCuratedRows(ROOT);
 
-function parseHistoricalCore(file) {
-  const source = execFileSync("git", ["show", `${LEGACY_HEAD}:data/${file}`], {
-    cwd: ROOT,
-    encoding: "utf8",
-    maxBuffer: 20 * 1024 * 1024
-  });
-  const moduleValue = { exports: {} };
-  const exported = new Function("module", "exports", `${source}\nreturn module.exports;`)(moduleValue, moduleValue.exports);
-  if (!Array.isArray(exported?.WORDS)) throw new Error(`Historical ${file} did not expose WORDS`);
-  return exported.WORDS;
-}
-
-const historicalCache = new Map();
-const getHistoricalRows = (file) => {
-  if (!historicalCache.has(file)) historicalCache.set(file, parseHistoricalCore(file));
-  return historicalCache.get(file);
-};
+const legacyWordsSource = execFileSync(
+  "git",
+  ["show", `${LEGACY_HEAD}:data/words.js`],
+  { cwd: ROOT, encoding: "utf8", maxBuffer: 100 * 1024 * 1024 }
+);
+const legacyWords = new Function("globalThis", `${legacyWordsSource}\nreturn globalThis.NP_WORDS;`)({});
+if (!Array.isArray(legacyWords)) throw new Error(`Could not parse ${LEGACY_HEAD}:data/words.js`);
+const legacyByNorm = new Map(legacyWords.map((word) => [normalizeLexicalForm(word.word), word]));
 
 const migrated = {};
 for (const [norm, legacySelector] of Object.entries(legacyPolicy.primary)) {
   const split = legacySelector.lastIndexOf(":");
   if (split < 0) throw new Error(`Legacy selector has no row index: ${legacySelector}`);
   const file = legacySelector.slice(0, split);
-  const index = Number(legacySelector.slice(split + 1));
-  const oldRow = getHistoricalRows(file)[index];
-  if (!oldRow) throw new Error(`Historical selector no longer resolves in ${LEGACY_HEAD}: ${legacySelector}`);
-  if (normalizeLexicalForm(oldRow[0]) !== norm) {
-    throw new Error(`Historical selector mismatch: ${norm} -> ${legacySelector} resolved '${oldRow[0]}'`);
-  }
+  const generatedOwner = legacyByNorm.get(norm);
+  if (!generatedOwner?.curated) throw new Error(`No historical generated owner for policy form '${norm}'`);
 
   const currentGroup = currentRows.filter((record) => normalizeLexicalForm(record.row[0]) === norm);
+  if (!currentGroup.length) throw new Error(`No current source group for policy form '${norm}'`);
+  const sourceSenseCandidates = (generatedOwner.senses || []).filter((sense) =>
+    typeof sense.source === "string" && sense.source.startsWith(`${file}:`) && sense.pos === generatedOwner.pos
+  );
+  const historicalSense = sourceSenseCandidates.length === 1 ? sourceSenseCandidates[0] : null;
+
   const trySelector = (selector) => currentGroup.filter((record) =>
     record.file === selector.file &&
     (selector.pos === undefined || record.row[1] === selector.pos) &&
@@ -53,19 +46,19 @@ for (const [norm, legacySelector] of Object.entries(legacyPolicy.primary)) {
     (selector.meaning === undefined || record.row[4] === selector.meaning)
   );
 
-  const selector = { file, pos: oldRow[1] };
+  const selector = { file, pos: generatedOwner.pos };
   let matches = trySelector(selector);
   if (matches.length !== 1) {
-    selector.category = oldRow[5];
+    selector.category = historicalSense?.category ?? generatedOwner.category;
     matches = trySelector(selector);
   }
-  if (matches.length !== 1) {
-    selector.meaning = oldRow[4];
+  if (matches.length !== 1 && historicalSense?.meaning) {
+    selector.meaning = historicalSense.meaning;
     matches = trySelector(selector);
   }
   if (matches.length !== 1) {
     const detail = currentGroup.map((record) => `${record.file}:${record.index} ${record.row[1]} ${record.row[5]} ${record.row[4]}`).join(" | ");
-    throw new Error(`Could not migrate '${norm}' from ${legacySelector}; candidates: ${detail}`);
+    throw new Error(`Could not migrate '${norm}' from ${legacySelector}; historical generated owner=${generatedOwner.pos}/${generatedOwner.category}; candidates: ${detail}`);
   }
   migrated[norm] = selector;
 }
