@@ -17,7 +17,7 @@ const grammar = load("grammar.js", "NP_GRAMMAR");
 const comps = load("comprehension.js", "NP_COMPREHENSION");
 
 const report = {
-  generatedAt: new Date().toISOString(),
+  schemaVersion: 1,
   grammar: {
     count: grammar.length,
     uniqueSummaries: new Set(grammar.map((g) => norm(g.summary))).size,
