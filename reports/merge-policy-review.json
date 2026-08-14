@@ -3,8 +3,8 @@
   "reviewType": "exhaustive duplicate and homograph merge review",
   "reviewer": "Luna",
   "reviewedAt": "2026-08-14",
-  "sourceDuplicateGroupCount": 1463,
-  "reviewedGroupCount": 1463,
+  "sourceDuplicateGroupCount": 1464,
+  "reviewedGroupCount": 1464,
   "mixedPOSGroupCount": 36,
   "mixedPOSGroupsReviewed": 36,
   "explicitPrimarySelectorCount": 37,
@@ -14,7 +14,7 @@
   "nominalizedInfinitiveGroupsReviewed": 18,
   "needsEvidence": 0,
   "counts": {
-    "PASS": 1463,
+    "PASS": 1464,
     "FIXED": 0,
     "NEEDS-EVIDENCE": 0
   },
@@ -23821,6 +23821,28 @@
       "selectedMeaning": "to care for; to care for, tend, groom",
       "selectedCategory": "health",
       "selectedCEFR": "A1",
+      "selectedArticle": null,
+      "secondarySenses": [],
+      "unrelatedPOSMeaningLeakage": false,
+      "articleOverride": null,
+      "selectorStable": true,
+      "overall": "PASS",
+      "note": "Repeated same-POS group reviewed: primary meaning, category, CEFR, article, synonyms, and explicit morphology remain deterministic."
+    },
+    {
+      "normalizedWord": "verklaren",
+      "sourceGroupSize": 2,
+      "mixedPos": false,
+      "nominalizedInfinitive": false,
+      "sourcePOS": [
+        "verb"
+      ],
+      "explicitPrimarySelector": null,
+      "selectorMatches": [],
+      "selectedLearnerPOS": "verb",
+      "selectedMeaning": "to declare; to explain",
+      "selectedCategory": "abstract",
+      "selectedCEFR": "B1",
       "selectedArticle": null,
       "secondarySenses": [],
       "unrelatedPOSMeaningLeakage": false,

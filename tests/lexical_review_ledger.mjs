@@ -33,7 +33,7 @@ for (const row of ledger.rows) {
   assert.ok(["UNCHANGED", "CHANGED_FROM_BASE"].includes(row.baselineComparison.disposition), `${row.sourceRowId}: invalid baseline comparison`);
 }
 
-assert.equal(mergeReview.sourceDuplicateGroupCount, 1463);
+assert.equal(mergeReview.sourceDuplicateGroupCount, 1464);
 assert.equal(mergeReview.reviewedGroupCount, mergeReview.sourceDuplicateGroupCount);
 assert.equal(mergeReview.mixedPOSGroupCount, 36);
 assert.equal(mergeReview.mixedPOSGroupsReviewed, 36);

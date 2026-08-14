@@ -8,7 +8,7 @@ This is the final row-by-row semantic/editorial review artifact for Task 007. It
 - PASS: 6422
 - FIXED: 6
 - NEEDS-EVIDENCE: 0
-- Duplicate groups reviewed: 1463
+- Duplicate groups reviewed: 1464
 - Mixed-POS groups reviewed and isolated: 36
 - Nominalized infinitive groups reviewed: 18
 - Noun rows reviewed: 4806
