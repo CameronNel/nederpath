@@ -62,12 +62,26 @@ function sourceRecordKey(record) {
   return `${record.file}:${record.index}`;
 }
 
+function selectorLabel(selector) {
+  return typeof selector === "string" ? selector : JSON.stringify(selector);
+}
+
 function resolvePrimarySelector(records, selector) {
-  if (typeof selector !== "string" || !selector) return null;
-  const exact = records.find((record) => sourceRecordKey(record) === selector);
-  if (exact) return exact;
-  const sameFile = records.filter((record) => record.file === selector);
-  return sameFile.length === 1 ? sameFile[0] : null;
+  if (typeof selector === "string" && selector) {
+    const exact = records.find((record) => sourceRecordKey(record) === selector);
+    if (exact) return exact;
+    const sameFile = records.filter((record) => record.file === selector);
+    return sameFile.length === 1 ? sameFile[0] : null;
+  }
+  if (!selector || typeof selector !== "object" || Array.isArray(selector)) return null;
+  const allowed = new Set(["file", "pos", "category", "meaning"]);
+  if (Object.keys(selector).some((key) => !allowed.has(key))) return null;
+  if (typeof selector.file !== "string" || !selector.file) return null;
+  let matches = records.filter((record) => record.file === selector.file);
+  if (selector.pos !== undefined) matches = matches.filter((record) => record.row[1] === selector.pos);
+  if (selector.category !== undefined) matches = matches.filter((record) => record.row[5] === selector.category);
+  if (selector.meaning !== undefined) matches = matches.filter((record) => record.row[4] === selector.meaning);
+  return matches.length === 1 ? matches[0] : null;
 }
 
 function metaQuality(pos, meta, word) {
@@ -98,18 +112,18 @@ export function loadCanonicalRows(root = ROOT) {
   }
   const policy = readMergePolicy(root);
 
-  // Policy entries are executable editorial decisions. Prefer stable file
-  // selectors; legacy file:index selectors remain accepted when still exact.
-  // Any missing or ambiguous selector fails closed instead of silently falling
-  // back to an inferred owner.
+  // Policy entries are executable editorial decisions. Semantic selectors
+  // (file + POS/category/meaning only as needed) survive harmless row shifts.
+  // Legacy file:index selectors remain accepted when exact. Missing or
+  // ambiguous selectors fail closed instead of silently changing ownership.
   for (const [norm, selector] of Object.entries(policy.primary)) {
-    if (norm !== normalizeLexicalForm(norm) || typeof selector !== "string") {
-      throw new Error(`Invalid primary merge-policy entry '${norm}' -> '${selector}'`);
+    if (norm !== normalizeLexicalForm(norm)) {
+      throw new Error(`Invalid primary merge-policy key '${norm}'`);
     }
     const group = groups.get(norm);
     if (!group) throw new Error(`Primary merge-policy entry '${norm}' has no source group`);
     if (!resolvePrimarySelector(group, selector)) {
-      throw new Error(`Primary merge-policy entry '${norm}' has missing or ambiguous selector '${selector}'`);
+      throw new Error(`Primary merge-policy entry '${norm}' has missing or ambiguous selector '${selectorLabel(selector)}'`);
     }
   }
   for (const [norm, article] of Object.entries(policy.article)) {
