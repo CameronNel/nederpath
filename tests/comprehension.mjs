@@ -131,7 +131,11 @@ test("Recurring template fingerprints and known reviewed defects are absent", ()
     "5,5 procent, binnen de maximering van het ministerie voor 2026",
     "dat label was beter, wat de huur juist zou kunnen drukken",
     "de code vijf dagen geldig",
-    "aftrek voor studiekosten ontbrak"
+    "aftrek voor studiekosten ontbrak",
+    "richtlijn na twaalf weken geen standaardvergoeding meer ondersteunt",
+    "wettelijke termijn van vier weken werd twee keer verdaagd",
+    "een volksbank-dochter",
+    "wijkt alleen af bij contra-indicatie"
   ]) {
     if (corpus.includes(fingerprint)) throw new Error(`Found prohibited template/editorial/factual defect: ${fingerprint}`);
   }
@@ -141,7 +145,7 @@ test("Excessive shared 6-grams are rejected", () => {
   const counts = new Map();
   for (const p of passages) {
     for (const g of new Set(ngrams(p.paragraphs.join(" "), 6))) {
-      counts.set(g, (counts.get(g) || 0) + 1);
+      counts.set(g, (counts.get(g) || 0) + 1;
     }
   }
   const bad = [...counts.entries()].filter(([, n]) => n >= 6);
@@ -226,6 +230,35 @@ test("Declared current-fact claims have matching source passages", () => {
       if (!body.includes(String(token).toLocaleLowerCase("nl-NL"))) {
         throw new Error(`${claim.id} missing declared current-fact token: ${token}`);
       }
+    }
+  }
+});
+
+test("High-risk named public-system claims cannot bypass the current-claims registry", () => {
+  const registry = JSON.parse(readFileSync(join(ROOT, "tests", "fixtures", "comprehension_current_claims.json"), "utf8"));
+  const registered = new Set(registry.claims.map((c) => c.id));
+  const markers = [
+    /\bRIVM\b/i,
+    /\bOmgevingswet\b/i,
+    /\bRijksoverheid\b/i,
+    /\bHuurcommissie\b/i,
+    /\bBelastingdienst\b/i,
+    /\bWoo(?:-verzoek)?\b/i
+  ];
+  for (const passage of passages) {
+    const body = passage.paragraphs.join(" ");
+    if (markers.some((rx) => rx.test(body)) && !registered.has(passage.id)) {
+      throw new Error(`${passage.id} contains a high-risk named public-system claim but has no current-claims registry entry`);
+    }
+  }
+});
+
+test("Every current-claims registry ID is documented in comprehension provenance", () => {
+  const registry = JSON.parse(readFileSync(join(ROOT, "tests", "fixtures", "comprehension_current_claims.json"), "utf8"));
+  const provenance = readFileSync(join(ROOT, "docs", "comprehension_provenance.md"), "utf8");
+  for (const claim of registry.claims) {
+    if (!provenance.includes(`| ${claim.id} |`)) {
+      throw new Error(`${claim.id} is registered as a current claim but missing from docs/comprehension_provenance.md`);
     }
   }
 });
