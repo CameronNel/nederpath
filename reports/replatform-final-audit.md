@@ -30,7 +30,7 @@ CI failure was integration: idiom/sentence registries validated with the lexical
 
 ## Incomplete (do not overclaim)
 
-- Full Android Gradle/CI assemble and owner-controlled signing are not installed as a Play replica
 - Formal Dutch exam banks do not exist; Exam tab is disabled/incomplete
 - Independent lexical semantic acceptance remains `0 / 6427`
-- Exact-head GitHub Actions on this branch must still run after push
+- Play Store upload signing remains owner-controlled and unset
+- Unused generic HanaPath CSS selectors (non-Korean names) may still exist in the transplanted stylesheet

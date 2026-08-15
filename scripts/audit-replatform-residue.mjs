@@ -12,10 +12,12 @@ const RUNTIME = [
   "js/srs.js",
   "js/learning.js",
   "js/voice.js",
+  "js/exam_integrity.js",
+  "js/experience-contract.js",
   "js/data-loader.js",
   "js/sw-register.js",
   "sw.js",
-  "manifest.webmanifest"
+  "manifest.webmanifest",
 ];
 
 const FORBIDDEN = [

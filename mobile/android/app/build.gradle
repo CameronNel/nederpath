@@ -1,0 +1,57 @@
+apply plugin: 'com.android.application'
+
+android {
+    namespace = "io.github.cameronnel.nederpath"
+    compileSdk = rootProject.ext.compileSdkVersion
+    defaultConfig {
+        applicationId "io.github.cameronnel.nederpath"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        aaptOptions {
+            ignoreAssetsPattern = '!.svn:!.git:!.ds_store:!*.scc:.*:!CVS:!thumbs.db:!picasa.ini:!*~'
+        }
+    }
+    signingConfigs {
+        // Upload signing is owner-controlled and fail-closed. Unsigned release
+        // is produced unless NEDERPATH_UPLOAD_KEYSTORE_FILE is injected.
+        if (System.getenv("NEDERPATH_UPLOAD_KEYSTORE_FILE")) {
+            upload {
+                storeFile file(System.getenv("NEDERPATH_UPLOAD_KEYSTORE_FILE"))
+                storePassword System.getenv("NEDERPATH_UPLOAD_STORE_PASSWORD")
+                keyAlias System.getenv("NEDERPATH_UPLOAD_KEY_ALIAS")
+                keyPassword System.getenv("NEDERPATH_UPLOAD_KEY_PASSWORD")
+            }
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            if (System.getenv("NEDERPATH_UPLOAD_KEYSTORE_FILE")) {
+                signingConfig signingConfigs.upload
+            }
+        }
+    }
+}
+
+repositories {
+    flatDir{
+        dirs 'libs'
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation "androidx.appcompat:appcompat:$androidxAppCompatVersion"
+    implementation "androidx.coordinatorlayout:coordinatorlayout:$androidxCoordinatorLayoutVersion"
+    implementation "androidx.core:core-splashscreen:$coreSplashScreenVersion"
+    implementation project(':capacitor-android')
+    testImplementation "junit:junit:$junitVersion"
+    androidTestImplementation "androidx.test.ext:junit:$androidxJunitVersion"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$androidxEspressoCoreVersion"
+}
+
+apply from: 'capacitor.build.gradle'

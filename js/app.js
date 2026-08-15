@@ -97,7 +97,53 @@
       this.bindHistory();
       this.applyTheme();
       this.store.subscribe(() => this.applyTheme());
+      if (this.shouldShowOnboarding()) {
+        this.renderOnboarding();
+        return;
+      }
       this.render();
+    }
+
+    shouldShowOnboarding() {
+      const user = this.store.state.user || {};
+      if (user.onboardingCompleted === true) return false;
+      if ((user.totalXp || 0) > 0 || (user.streak || 0) > 0) return false;
+      const srs = this.store.state.srs && this.store.state.srs.cards;
+      if (srs && Object.keys(srs).length > 0) return false;
+      return true;
+    }
+
+    renderOnboarding() {
+      const host = document.getElementById("onboarding");
+      const app = document.getElementById("app");
+      if (app) app.hidden = true;
+      if (!host) {
+        this.render();
+        return;
+      }
+      host.hidden = false;
+      host.innerHTML = `
+        <div class="ob-card">
+          <div class="ob-logo">NederPath</div>
+          <p class="ob-tagline">Nederlands leren, zonder Koreaanse ballast</p>
+          <h1 class="ob-question">Klaar om te beginnen?</h1>
+          <p class="ob-note">Voortgang blijft lokaal op dit apparaat onder nederpath-v1. Er is geen formeel examen en geen certificering.</p>
+          <div class="ob-actions">
+            <button type="button" class="btn btn-primary" id="ob-finish">Start met leren</button>
+          </div>
+        </div>
+      `;
+      const finish = document.getElementById("ob-finish");
+      if (finish) {
+        finish.addEventListener("click", () => {
+          this.store.state.user.onboardingCompleted = true;
+          this.store.save();
+          host.hidden = true;
+          host.innerHTML = "";
+          if (app) app.hidden = false;
+          this.render();
+        });
+      }
     }
 
     announce(message, priority = "polite") {
@@ -270,7 +316,7 @@
           (e.target && e.target.isContentEditable);
 
         // 1, 2, 3, 4 shortcuts for SRS ratings when cards are revealed and not in a text field
-        if (this.currentTab === "practice" && this.practiceMode === "flashcards" && this.session.revealed) {
+        if ((this.currentTab === "practice" || this.currentTab === "review") && this.practiceMode === "flashcards" && this.session.revealed) {
           if (!isFormField && ["1", "2", "3", "4"].includes(e.key)) {
             e.preventDefault();
             this.handleSRSRating(parseInt(e.key, 10));
@@ -336,6 +382,12 @@
     }
 
     async render() {
+      const app = document.getElementById("app");
+      if (app) app.hidden = false;
+      const onboard = document.getElementById("onboarding");
+      if (onboard && !this.shouldShowOnboarding()) {
+        onboard.hidden = true;
+      }
       const main = document.getElementById("app-main");
       if (!main) return;
       this.setNavActive(this.hub === "exam" || this.hub === "progress" ? this.hub : "learn");
@@ -797,7 +849,7 @@
           <button type="button" class="card flashcard flashcard-interactive ${this.session.revealed ? 'revealed' : ''}" id="interactive-flashcard" aria-expanded="${this.session.revealed ? 'true' : 'false'}" aria-label="Flitskaart voor ${Learning.escapeHTML(card.word)}. ${this.session.revealed ? 'Betekenis: ' + Learning.escapeHTML(card.meaning || card.word) : 'Druk op spatie of enter om de betekenis te onthullen'}">
             <span class="flashcard-front">
               <span class="flashcard-pos">${Learning.escapeHTML(card.pos.toUpperCase())}</span>
-              <span class="flashcard-dutch">${displayDutch}</span>
+              <span class="flashcard-dutch long-compound">${displayDutch}</span>
               ${card.example ? `<span class="flashcard-example">“${Learning.escapeHTML(card.example)}”</span>` : ""}
               <span class="flashcard-hint">Tik op de kaart of druk op [Spatie/Enter] om het antwoord te zien</span>
             </span>
@@ -1523,20 +1575,20 @@
               <p class="page-subtitle">120 diepgaande regels, structurele formules, voorbeelden en interactieve oefeningen.</p>
             </div>
             
-            <div class="filter-pills">
+            <div class="level-rail filter-pills" role="tablist" aria-label="CEFR-niveaus">
               ${["all", "A1", "A2", "B1", "B2", "C1"].map((lvl) => `
-                <button class="btn btn-sm ${this.selectedLevel === lvl ? 'btn-primary' : 'btn-outline'}" data-filter-lvl="${lvl}">
+                <button type="button" class="level-chip btn btn-sm ${this.selectedLevel === lvl ? 'btn-primary active' : 'btn-outline'}" data-filter-lvl="${lvl}">
                   ${lvl === 'all' ? 'Alle Niveaus' : lvl}
                 </button>
               `).join("")}
             </div>
           </div>
 
-          <div class="grammar-rules-grid">
+          <div class="grammar-rules-grid study-list">
             ${filtered.map((rule) => {
               const isCompleted = !!this.store.state.progress.grammarCompleted[rule.id];
               return `
-                <button type="button" class="card catalog-card-button grammar-item-card" data-rule-id="${rule.id}" aria-label="Open grammaticales: ${rule.title}">
+                <button type="button" class="study-row catalog-card-button grammar-item-card" data-rule-id="${rule.id}" aria-label="Open grammaticales: ${rule.title}">
                   <div class="grammar-card-top">
                     <span class="grammar-level badge-${rule.level.toLowerCase()}">${rule.level}</span>
                     <span class="grammar-section">Sectie ${rule.section}</span>
@@ -2034,20 +2086,20 @@
               <p class="page-subtitle">Gecureerde Nederlandse leesteksten met woordenschat en begripsvragen.</p>
             </div>
 
-            <div class="filter-pills">
+            <div class="level-rail filter-pills" role="tablist" aria-label="CEFR-niveaus">
               ${["all", ...availableLevels].map((lvl) => `
-                <button class="btn btn-sm ${selectedLevel === lvl ? 'btn-primary' : 'btn-outline'}" data-filter-comp-lvl="${lvl}">
+                <button type="button" class="level-chip btn btn-sm ${selectedLevel === lvl ? 'btn-primary active' : 'btn-outline'}" data-filter-comp-lvl="${lvl}">
                   ${lvl === 'all' ? 'Alle Niveaus' : lvl}
                 </button>
               `).join("")}
             </div>
           </div>
 
-          <div class="passages-grid">
+          <div class="passages-grid study-list">
             ${filtered.map((passage) => {
               const isCompleted = !!this.store.state.progress.comprehensionCompleted[passage.id];
               return `
-                <button type="button" class="card catalog-card-button passage-item-card" data-passage-id="${passage.id}" aria-label="Open leestekst: ${passage.title}">
+                <button type="button" class="study-row catalog-card-button passage-item-card" data-passage-id="${passage.id}" aria-label="Open leestekst: ${passage.title}">
                   <div class="passage-card-top">
                     <span class="grammar-level badge-${passage.level.toLowerCase()}">${passage.level}</span>
                     <span class="reading-time">⏱️ ${passage.readingTimeMin || 4} min</span>
@@ -2275,6 +2327,11 @@
               ${this.searchQuery ? `<button type="button" class="btn-clear" id="btn-clear-search" aria-label="Wis zoekopdracht">✕</button>` : ""}
             </div>
 
+            <div class="level-rail" role="tablist" aria-label="CEFR-niveaus">
+              ${["all", "A1", "A2", "B1", "B2", "C1"].map((lvl) => `
+                <button type="button" class="level-chip ${this.selectedLevel === lvl ? "active" : ""}" data-rail-level="${lvl}">${lvl === "all" ? "Alle" : lvl}</button>
+              `).join("")}
+            </div>
             <div class="filter-row">
               <div class="filter-group">
                 <label for="select-filter-level">Niveau:</label>
@@ -2321,7 +2378,7 @@
             <span>Gevonden: <strong>${filtered.length}</strong> woordvormen (${filteredLearnableCount} leerwoorden) ${filtered.length > 60 ? '(toont eerste 60)' : ''}</span>
           </div>
 
-          <div class="words-results-grid">
+          <div class="study-list words-results-grid">
             ${displayList.map((w) => {
               const isNoun = w.pos === "noun" && w.article;
               const isStarred = this.store.isBookmarked(w.id);
@@ -2333,28 +2390,28 @@
               const hasLemmaLink = w.lemma && w.lemma.toLowerCase().trim() !== w.word.toLowerCase().trim();
 
               return `
-                <div class="card word-item-card">
-                  <div class="word-card-top">
-                    <div class="word-card-badges">
-                      <span class="word-level-badge badge-${Learning.escapeHTML(w.level.toLowerCase())}">${Learning.escapeHTML(w.level)}</span>
-                      ${badgeType}
+                <article class="study-row word-item-card">
+                  <div>
+                    <div class="word-card-top">
+                      <div class="word-card-badges">
+                        <span class="word-level-badge badge-${Learning.escapeHTML(w.level.toLowerCase())}">${Learning.escapeHTML(w.level)}</span>
+                        ${badgeType}
+                      </div>
+                      <button class="btn-star ${isStarred ? 'starred' : ''}" data-star-id="${Learning.escapeHTML(w.id)}" title="${isStarred ? 'Favoriet verwijderen' : 'Favoriet opslaan'}" aria-pressed="${isStarred ? 'true' : 'false'}" aria-label="Favoriet">
+                        ${isStarred ? '★' : '☆'}
+                      </button>
                     </div>
-                    <button class="btn-star ${isStarred ? 'starred' : ''}" data-star-id="${Learning.escapeHTML(w.id)}" title="${isStarred ? 'Favoriet verwijderen' : 'Favoriet opslaan'}" aria-pressed="${isStarred ? 'true' : 'false'}" aria-label="Favoriet">
-                      ${isStarred ? '★' : '☆'}
-                    </button>
+                    <h3 class="word-title study-row-title long-compound">${displayTitle}</h3>
+                    ${w.grammaticalForm ? `<span class="word-gram-form">${Learning.escapeHTML(w.grammaticalForm)}</span>` : ""}
+                    ${hasLemmaLink ? `<div class="word-lemma-link">Basislemma: <strong>${Learning.escapeHTML(w.lemma)}</strong></div>` : ""}
+                    <div class="word-meaning study-row-sub">${Learning.escapeHTML(w.meaning || w.word)}</div>
+                    ${w.example ? `<div class="word-example">“${Learning.escapeHTML(w.example)}”</div>` : ""}
+                    <div class="word-footer">
+                      <span>${Learning.escapeHTML(w.pos)}</span>
+                      <span>#${Learning.escapeHTML(String(w.rank))}</span>
+                    </div>
                   </div>
-                  <div class="word-card-main">
-                    <h3 class="word-title">${displayTitle}</h3>
-                  </div>
-                  ${w.grammaticalForm ? `<span class="word-gram-form">${Learning.escapeHTML(w.grammaticalForm)}</span>` : ""}
-                  ${hasLemmaLink ? `<div class="word-lemma-link">Basislemma: <strong>${Learning.escapeHTML(w.lemma)}</strong></div>` : ""}
-                  <div class="word-meaning">${Learning.escapeHTML(w.meaning || w.word)}</div>
-                  ${w.example ? `<div class="word-example" style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 0.5rem;">“${Learning.escapeHTML(w.example)}”</div>` : ""}
-                  <div class="word-footer">
-                    <span>${Learning.escapeHTML(w.pos)}</span>
-                    <span>#${Learning.escapeHTML(String(w.rank))}</span>
-                  </div>
-                </div>
+                </article>
               `;
             }).join("")}
           </div>
@@ -2391,6 +2448,12 @@
           this.render();
         });
       }
+      document.querySelectorAll("[data-rail-level]").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          this.selectedLevel = btn.dataset.railLevel;
+          this.render();
+        });
+      });
 
       const posSelect = document.getElementById("select-filter-pos");
       if (posSelect) {
@@ -2427,14 +2490,18 @@
     }
 
     renderExamView() {
+      const availability = global.NederExamIntegrity && typeof global.NederExamIntegrity.examAvailability === "function"
+        ? global.NederExamIntegrity.examAvailability()
+        : { enabled: false, reason: "Exam integrity module unavailable.", certificationClaims: false };
       return `
         <div class="exam-hub">
           <p class="eyebrow">Examen</p>
           <h1 class="page-title">Formele toetsen</h1>
           <div class="card exam-incomplete">
-            <p>De examenarchitectuur is aanwezig, maar er is nog geen onafhankelijk beoordeelde Nederlandse examenset.</p>
-            <p>NederPath maakt geen certificeringsclaims en verzint geen examenvragen om dit tabblad vol te laten lijken.</p>
-            <p>Gebruik <strong>Herhalen</strong> voor oefening. Formele examens blijven uitgeschakeld tot er broncontracten zijn.</p>
+            <p>${Learning.escapeHTML(availability.reason)}</p>
+            <p>Practice-taint kan nooit als formele uitslag tellen. Resultaten zijn onveranderlijk zodra een bank bestaat.</p>
+            <p>NederPath maakt ${availability.certificationClaims ? "" : "geen "}certificeringsclaims en verzint geen examenvragen.</p>
+            <p>Gebruik <strong>Herhalen</strong> voor oefening.</p>
           </div>
         </div>
       `;
@@ -2470,7 +2537,7 @@
             <button class="btn btn-outline btn-sm" id="btn-open-settings">⚙️ Instellingen & Gegevens</button>
           </div>
 
-          <div class="progress-stats-overview">
+          <div class="progress-stats-overview stats-grid">
             <div class="card stat-big-card">
               <span class="stat-big-icon">🔥</span>
               <div class="stat-big-num">${user.streak}</div>

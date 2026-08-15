@@ -111,6 +111,13 @@ function assert(condition, name, details = "") {
   }
 }
 
+async function waitForAppHome(page) {
+  await page.waitForSelector("body");
+  const finish = await page.$("#ob-finish");
+  if (finish) await finish.click();
+  await page.waitForSelector(".today-home");
+}
+
 async function runBrowserTests() {
   console.log("\n=======================================================");
   console.log("       NederPath Comprehensive Browser Test Suite      ");
@@ -170,7 +177,7 @@ async function runBrowserTests() {
 
     // 1. Initial Page Load & Request Tracking Verification
     await page.goto(`http://${HOST}:${PORT}/index.html`, { waitUntil: "domcontentloaded" });
-    await page.waitForSelector(".today-home");
+    await waitForAppHome(page);
     trackInitial = false;
 
     const title = await page.title();
@@ -1141,7 +1148,7 @@ async function runBrowserTests() {
 
     await offlinePage.setViewport({ width: 1280, height: 800 });
     await offlinePage.goto(`http://${HOST}:${PORT}/index.html`, { waitUntil: "domcontentloaded" });
-    await offlinePage.waitForSelector(".today-home");
+    await waitForAppHome(offlinePage);
     const swControlled = await offlinePage.evaluate(async () => {
       if (!("serviceWorker" in navigator)) return false;
       await navigator.serviceWorker.ready;
@@ -1208,7 +1215,7 @@ async function runBrowserTests() {
     console.log("\n--- [Mobile Viewport: 375x667] ---");
     await page.setViewport({ width: 375, height: 667, isMobile: true, hasTouch: true });
     await page.goto(`http://${HOST}:${PORT}/index.html`, { waitUntil: "domcontentloaded" });
-    await page.waitForSelector(".today-home");
+    await waitForAppHome(page);
 
     const mobileNav = await page.$(".bottom-nav");
     assert(mobileNav !== null, "Mobile layout bottom navigation rendered");

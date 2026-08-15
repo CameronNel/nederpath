@@ -24,4 +24,4 @@ Runtime files scanned: `index.html`, `js/*`, `sw.js`, `manifest.webmanifest`, `c
 ## Remaining limitations
 
 - Transplanted HanaPath CSS still contains unused generic lesson-player selectors that are not Korean-named.
-- Android Gradle tree is not a full Play-store replica; only the web payload generator is present.
+- Android debug assemble is wired in CI; upload signing is fail-closed and owner-controlled.

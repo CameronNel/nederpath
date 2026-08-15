@@ -7691,6 +7691,9 @@ li { margin-bottom: 4px; }
 .words-results-meta, .filter-row { display: flex; flex-wrap: wrap; gap: 10px; margin: 12px 0; }
 .filter-group { display: flex; flex-direction: column; gap: 4px; min-width: 140px; }
 .study-row { width: 100%; text-align: left; }
+article.study-row { display: block; cursor: default; }
+.word-card-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; }
+.word-title.long-compound, .flashcard-dutch.long-compound { overflow-wrap: anywhere; word-break: break-word; }
 .study-row-title { font-weight: 700; }
 .catalog-header { display: flex; flex-direction: column; gap: 12px; margin-bottom: 16px; }
 .section-progress-row, .setting-row { display: flex; flex-direction: column; gap: 8px; margin-top: 12px; }

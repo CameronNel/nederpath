@@ -549,6 +549,11 @@
       if (typeof parsed.user.lastActiveDate === "string" && isValidISODateString(parsed.user.lastActiveDate)) {
         merged.user.lastActiveDate = parsed.user.lastActiveDate.slice(0, 10);
       }
+      if (typeof parsed.user.onboardingCompleted === "boolean") {
+        merged.user.onboardingCompleted = parsed.user.onboardingCompleted;
+      } else if ((merged.user.totalXp || 0) > 0 || (merged.user.streak || 0) > 0) {
+        merged.user.onboardingCompleted = true;
+      }
     }
 
     if (isRecord(parsed.settings)) {
@@ -570,6 +575,13 @@
       }
       if (typeof parsed.settings.autoAdvance === "boolean") merged.settings.autoAdvance = parsed.settings.autoAdvance;
       if (typeof parsed.settings.hapticFeedback === "boolean") merged.settings.hapticFeedback = parsed.settings.hapticFeedback;
+    }
+
+    if (isRecord(parsed.examIntegrity)) {
+      const examApi = globalThis.NederExamIntegrity;
+      if (examApi && typeof examApi.normalizeExamIntegrityContainer === "function") {
+        merged.examIntegrity = examApi.normalizeExamIntegrityContainer(parsed.examIntegrity);
+      }
     }
 
     if (isRecord(parsed.progress)) {
