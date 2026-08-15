@@ -111,6 +111,13 @@ function assert(condition, name, details = "") {
   }
 }
 
+async function waitForAppHome(page) {
+  await page.waitForSelector("body");
+  const finish = await page.$("#ob-finish");
+  if (finish) await finish.click();
+  await page.waitForSelector(".today-home");
+}
+
 async function runBrowserTests() {
   console.log("\n=======================================================");
   console.log("       NederPath Comprehensive Browser Test Suite      ");
@@ -170,7 +177,7 @@ async function runBrowserTests() {
 
     // 1. Initial Page Load & Request Tracking Verification
     await page.goto(`http://${HOST}:${PORT}/index.html`, { waitUntil: "domcontentloaded" });
-    await page.waitForSelector(".today-hero");
+    await waitForAppHome(page);
     trackInitial = false;
 
     const title = await page.title();
@@ -238,8 +245,8 @@ async function runBrowserTests() {
     const liveAnnouncerRole = await page.$eval("#live-announcer", (el) => el.getAttribute("aria-live"));
     assert(liveAnnouncer !== null && liveAnnouncerRole === "polite", "Persistent ARIA live announcer region exists in DOM with aria-live='polite'");
 
-    const todayNavCurrent = await page.$eval("#nav-today", (el) => el.getAttribute("aria-current"));
-    assert(todayNavCurrent === "page", "Active navigation tab carries aria-current='page' and inactive does not");
+    const learnNavCurrent = await page.$eval("#nav-learn", (el) => el.getAttribute("aria-current"));
+    assert(learnNavCurrent === "page", "Active bottom-nav destination carries aria-current='page' and inactive does not");
 
     // 4. Navigation: Woorden (On-Demand Loading & In-Memory Promise Cache & Focus)
     // Seed retired vocabulary references before the words bank has ever loaded.
@@ -271,13 +278,13 @@ async function runBrowserTests() {
     const activeHeadingTag = await page.evaluate(() => (document.activeElement ? document.activeElement.tagName.toLowerCase() : ""));
     assert(activeHeadingTag === "h1" || activeHeadingTag === "h2", "Primary view navigation sets focus to main heading");
 
-    const wordsNavCurrent = await page.$eval("#nav-words", (el) => el.getAttribute("aria-current"));
-    const todayNavAfter = await page.$eval("#nav-today", (el) => el.getAttribute("aria-current"));
-    assert(wordsNavCurrent === "page" && todayNavAfter === null, "Woorden button updated to aria-current='page' and Today cleared");
+    const learnStillCurrent = await page.$eval("#nav-learn", (el) => el.getAttribute("aria-current"));
+    const examCurrent = await page.$eval("#nav-exam", (el) => el.getAttribute("aria-current"));
+    assert(learnStillCurrent === "page" && examCurrent === null, "Leren keeps aria-current='page' while an internal Learn screen is open");
 
     // Test In-Memory Cache (navigating back to Today and to Words must not re-request words.js)
-    await page.click("#nav-today");
-    await page.waitForSelector(".today-hero");
+    await page.click("#nav-learn");
+    await page.waitForSelector(".today-home");
     await page.click("#nav-words");
     await page.waitForSelector(".words-search-card");
     const countWordsCached = requestedUrls.filter((u) => u.includes("data/words.js")).length;
@@ -415,6 +422,8 @@ async function runBrowserTests() {
     assert(ordEx === null, "Ordinal omits an example because no curated source example exists");
 
     // 5. Navigation: Grammatica (Grammar Curriculum & Word Order Duplicate Tokens Keyboard Flow)
+    await page.click("#nav-learn");
+    await page.waitForSelector(".today-home");
     await page.click("#nav-grammar");
     await page.waitForSelector(".grammar-catalog-container");
     const grammarCards = await page.$$(".grammar-item-card");
@@ -571,6 +580,8 @@ async function runBrowserTests() {
     assert(placedState4.length === 0, "Keyboard [Enter] removed placed token from position 0, resetting pool state");
 
     // 6. Navigation: Lezen (Comprehension Passages & Quizzes & Translation Accordion)
+    await page.click("#nav-learn");
+    await page.waitForSelector(".today-home");
     await page.click("#nav-comprehension");
     await page.waitForSelector(".comprehension-catalog-container");
     const passageCards = await page.$$(".passage-item-card");
@@ -604,11 +615,12 @@ async function runBrowserTests() {
     }
 
     // 7. Navigation: Oefenen (Interactive Practice Modes & Semantic Controls)
-    await page.click("#nav-practice");
-    await page.waitForSelector(".practice-container");
-    await page.waitForSelector("#interactive-flashcard");
+    await page.click("#nav-learn");
+    await page.waitForSelector(".today-home");
+    await page.click("#nav-review");
+    await page.waitForSelector(".review-hub");
 
-    // Practice-mode selector buttons expose the active mode via aria-pressed
+    // Practice-mode selector buttons live in the review hub, not a permanent strip
     const modeButtons = await page.$$("button[data-mode]");
     assert(modeButtons.length >= 9, `Practice hub renders every mode selector button (found ${modeButtons.length})`);
     const pressedStates = await page.evaluate(() =>
@@ -617,27 +629,24 @@ async function runBrowserTests() {
         pressed: b.getAttribute("aria-pressed")
       }))
     );
-    const activeModes = pressedStates.filter((m) => m.pressed === "true");
     const inactiveModes = pressedStates.filter((m) => m.pressed === "false");
-    assert(activeModes.length === 1 && activeModes[0].mode === "flashcards", `Exactly one practice-mode button is aria-pressed='true' (active: ${JSON.stringify(activeModes)})`);
-    assert(inactiveModes.length === pressedStates.length - 1, `All inactive practice-mode buttons are aria-pressed='false' (inactive: ${inactiveModes.length})`);
+    assert(inactiveModes.length === pressedStates.length, `Review hub mode rows start unpressed (inactive: ${inactiveModes.length})`);
 
-    // Switching mode moves aria-pressed to the newly active button
+    await page.click('[data-mode="flashcards"]');
+    await page.waitForSelector(".practice-container");
+    await page.waitForSelector("#interactive-flashcard");
+
+    await page.click("#nav-learn");
+    await page.waitForSelector(".today-home");
+    await page.click("#nav-review");
+    await page.waitForSelector(".review-hub");
     await page.click("button[data-mode='article_drill']");
     await page.waitForSelector(".drill-card");
-    const afterSwitch = await page.evaluate(() =>
-      Array.from(document.querySelectorAll("button[data-mode]")).map((b) => ({
-        mode: b.dataset.mode,
-        pressed: b.getAttribute("aria-pressed")
-      }))
-    );
-    const activeAfter = afterSwitch.filter((m) => m.pressed === "true");
-    const drillAfter = afterSwitch.find((m) => m.mode === "article_drill");
-    const flashAfter = afterSwitch.find((m) => m.mode === "flashcards");
-    assert(activeAfter.length === 1 && activeAfter[0].mode === "article_drill", `Switched practice-mode button reports aria-pressed='true' (active: ${JSON.stringify(activeAfter)})`);
-    assert(drillAfter.pressed === "true" && flashAfter.pressed === "false", `Previous practice-mode button reports aria-pressed='false' (article_drill: ${drillAfter.pressed}, flashcards: ${flashAfter.pressed})`);
 
-    // Restore flashcards mode for subsequent flashcard assertions
+    await page.click("#nav-learn");
+    await page.waitForSelector(".today-home");
+    await page.click("#nav-review");
+    await page.waitForSelector(".review-hub");
     await page.click("button[data-mode='flashcards']");
     await page.waitForSelector("#interactive-flashcard");
 
@@ -1002,7 +1011,40 @@ async function runBrowserTests() {
     const feedbackText = await page.$eval(".exercise-feedback", (el) => el.textContent);
     assert(feedbackText.includes("Juist"), "Option buttons in hostile-injected card remain fully interactive and evaluate correctly");
 
+    // 7b. Browser Back restores detail routes
+    await page.click("#nav-learn");
+    await page.waitForSelector(".today-home");
+    await page.click("#nav-grammar");
+    await page.waitForSelector(".grammar-catalog-container");
+    await page.click(".grammar-item-card");
+    await page.waitForSelector(".grammar-lesson-card");
+    await page.goBack();
+    await page.waitForSelector(".grammar-catalog-container");
+    assert((await page.$(".grammar-lesson-card")) === null, "Browser Back from a grammar lesson returns to the grammar list");
+
+    await page.click("#nav-learn");
+    await page.waitForSelector(".today-home");
+    await page.click("#nav-comprehension");
+    await page.waitForSelector(".comprehension-catalog-container");
+    await page.click(".passage-item-card");
+    await page.waitForSelector(".passage-reader-card");
+    await page.goBack();
+    await page.waitForSelector(".comprehension-catalog-container");
+    assert((await page.$(".passage-reader-card")) === null, "Browser Back from a reading passage returns to the reading list");
+
+    await page.click("#nav-learn");
+    await page.waitForSelector(".today-home");
+    await page.click("#nav-review");
+    await page.waitForSelector(".review-hub");
+    await page.click('[data-mode="flashcards"]');
+    await page.waitForSelector("#interactive-flashcard");
+    await page.goBack();
+    await page.waitForSelector(".review-hub");
+    assert((await page.$("#interactive-flashcard")) === null, "Browser Back from a review mode returns to the review hub");
+
     // 8. Navigation: Pad (8-Section Curriculum Path)
+    await page.click("#nav-learn");
+    await page.waitForSelector(".today-home");
     await page.click("#nav-path");
     await page.waitForSelector(".sections-list");
     const sectionCards = await page.$$(".section-card");
@@ -1034,15 +1076,15 @@ async function runBrowserTests() {
 
     // Theme switching check
     await page.click("#btn-theme-light");
-    const lightTheme = await page.evaluate(() => document.documentElement.getAttribute("data-theme"));
-    assert(lightTheme === "light", "Theme switched to 'light'");
+    const lightTheme = await page.evaluate(() => document.documentElement.getAttribute("data-color-mode"));
+    assert(lightTheme === "light", "Appearance switched to light");
 
     const themeAnnounce = await page.$eval("#live-announcer", (el) => el.textContent);
     assert(themeAnnounce.includes("Licht"), `Theme change announced to live region: '${themeAnnounce}'`);
 
     await page.click("#btn-theme-dark");
-    const darkTheme = await page.evaluate(() => document.documentElement.getAttribute("data-theme"));
-    assert(darkTheme === "dark", "Theme switched back to 'dark'");
+    const darkTheme = await page.evaluate(() => document.documentElement.getAttribute("data-color-mode"));
+    assert(darkTheme === "dark", "Appearance switched back to dark");
 
     // 11. Reduced-Motion: CSS Durations & JavaScript scrollTo Suppression
     await page.emulateMediaFeatures([{ name: "prefers-reduced-motion", value: "reduce" }]);
@@ -1072,7 +1114,7 @@ async function runBrowserTests() {
     assert(hasReducedMotionCSS, "prefers-reduced-motion suppresses CSS animation durations");
 
     // Trigger tab navigation and assert JS scrollTo used behavior: 'auto' (not 'smooth')
-    await page.click("#nav-today");
+    await page.click("#nav-learn");
     const lastScrollCall = await page.evaluate(() => window.__scrollToCalls[window.__scrollToCalls.length - 1]);
     assert(
       lastScrollCall && lastScrollCall.behavior === "auto",
@@ -1137,7 +1179,7 @@ async function runBrowserTests() {
 
     await offlinePage.setViewport({ width: 1280, height: 800 });
     await offlinePage.goto(`http://${HOST}:${PORT}/index.html`, { waitUntil: "domcontentloaded" });
-    await offlinePage.waitForSelector(".today-hero");
+    await waitForAppHome(offlinePage);
     const swControlled = await offlinePage.evaluate(async () => {
       if (!("serviceWorker" in navigator)) return false;
       await navigator.serviceWorker.ready;
@@ -1146,8 +1188,8 @@ async function runBrowserTests() {
     assert(swControlled, "Service Worker is active and controlling the fresh browser client");
 
     // Load the successful sibling bank while online; sentences remains a first-use load.
-    await offlinePage.click("#nav-practice");
-    await offlinePage.waitForSelector(".practice-container");
+    await offlinePage.click("#nav-words");
+    await offlinePage.waitForSelector(".words-search-card");
     const wordsLoadedBeforeFailure = await offlinePage.evaluate(() => globalThis.NederDataLoader.isBankLoaded("words"));
     assert(wordsLoadedBeforeFailure, "Words sibling bank is loaded before sentences fails");
 
@@ -1155,7 +1197,11 @@ async function runBrowserTests() {
     isSimulatedOffline = true;
     await offlinePage.setOfflineMode(true);
 
-    // Click practice context mode (which requires unvisited sentences bank)
+    // Return to the review hub, then open context mode (unvisited sentences bank)
+    await offlinePage.click("#nav-learn");
+    await offlinePage.waitForSelector(".today-home");
+    await offlinePage.click("#nav-review");
+    await offlinePage.waitForSelector(".review-hub");
     const contextModeBtn = await offlinePage.$("button[data-mode='context']");
     assert(contextModeBtn !== null, "Found context mode button on practice tab");
     await contextModeBtn.click();
@@ -1200,16 +1246,20 @@ async function runBrowserTests() {
     console.log("\n--- [Mobile Viewport: 375x667] ---");
     await page.setViewport({ width: 375, height: 667, isMobile: true, hasTouch: true });
     await page.goto(`http://${HOST}:${PORT}/index.html`, { waitUntil: "domcontentloaded" });
-    await page.waitForSelector(".today-hero");
+    await waitForAppHome(page);
 
-    const mobileNav = await page.$(".app-header");
-    assert(mobileNav !== null, "Mobile layout header rendered");
+    const mobileNav = await page.$(".bottom-nav");
+    assert(mobileNav !== null, "Mobile layout bottom navigation rendered");
 
     const mobileTodayOverflow = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
     assert(mobileTodayOverflow <= 1, `Mobile Today view has no horizontal page overflow (overflow: ${mobileTodayOverflow}px)`);
 
     // Test tab navigation on mobile
-    await page.click("#nav-practice");
+    await page.click("#nav-learn");
+    await page.waitForSelector(".today-home");
+    await page.click("#nav-review");
+    await page.waitForSelector(".review-hub");
+    await page.click('[data-mode="flashcards"]');
     await page.waitForSelector(".practice-container");
     assert(true, "Mobile navigation to Practice hub succeeded");
 
@@ -1222,11 +1272,15 @@ async function runBrowserTests() {
     const mobileFlashcardOverflow = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
     assert(mobileFlashcardOverflow <= 1, `Revealed flashcard SRS controls fit mobile viewport (overflow: ${mobileFlashcardOverflow}px)`);
 
-    await page.click("#nav-today");
-    await page.waitForSelector(".today-hero");
+    await page.click("#nav-learn");
+    await page.waitForSelector(".today-home");
     const mobileTodayBackOverflow = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
     assert(mobileTodayBackOverflow <= 1, `Returning to Today on mobile keeps layout within viewport (overflow: ${mobileTodayBackOverflow}px)`);
-    await page.click("#nav-practice");
+    await page.click("#nav-learn");
+    await page.waitForSelector(".today-home");
+    await page.click("#nav-review");
+    await page.waitForSelector(".review-hub");
+    await page.click('[data-mode="flashcards"]');
     await page.waitForSelector("#interactive-flashcard");
 
     console.log(`\nZero console errors encountered throughout all ${passed} browser assertions.`);

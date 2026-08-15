@@ -8,12 +8,14 @@
 //    are never recycled.
 //
 // The registry schema is: { version: 1, highWaterMark: <int>, entries: { norm: "<prefix>00001" } }
-// where `norm` is the normalized owner string.
+// where `norm` is the canonical owner string for that namespace.
 //
 // Namespaces:
-//  - Word bank: default "nl-" ID prefix (data/word_ids.json, 5 digits)
-//  - Idiom bank: "idm-" ID prefix (data/idiom_ids.json, 4 digits)
-//  - Sentence bank: "snt-" ID prefix (data/sentence_ids.json, 5 digits)
+//  - Word bank (default): "nl-" prefix, lexical NFKC/case/whitespace normalizer, 5 digits
+//  - Idiom bank: "idm-" prefix, expression normalizer, 4 digits
+//  - Sentence bank: "snt-" prefix, sentence-key normalizer, 5 digits
+
+import { normalizeLexicalForm } from "./lexical_data.mjs";
 
 export const ID_PATTERN = /^nl-(\d+)$/;
 export const DEFAULT_ID_PREFIX = "nl-";
@@ -22,19 +24,38 @@ export const REGISTRY_VERSION = 1;
 export class RegistryError extends Error {}
 
 function escapeRegExp(text) {
-  return text.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  return String(text).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 }
 
-function defaultNormalizer(value) {
-  return String(value ?? "").toLowerCase().trim();
+function resolveOptions(options = {}, fallback = {}) {
+  const prefix = typeof options.prefix === "string" && options.prefix.length > 0
+    ? options.prefix
+    : (fallback.prefix || DEFAULT_ID_PREFIX);
+  const idPattern = options.idPattern instanceof RegExp
+    ? options.idPattern
+    : (fallback.idPattern instanceof RegExp
+      ? fallback.idPattern
+      : (prefix === DEFAULT_ID_PREFIX ? ID_PATTERN : new RegExp("^" + escapeRegExp(prefix) + "(\\d+)$")));
+  const normalize = typeof options.normalize === "function"
+    ? options.normalize
+    : (typeof fallback.normalize === "function" ? fallback.normalize : normalizeLexicalForm);
+  const digits = typeof options.digits === "number"
+    ? options.digits
+    : (typeof fallback.digits === "number" ? fallback.digits : (prefix === "idm-" ? 4 : 5));
+  const formatId = typeof options.formatId === "function"
+    ? options.formatId
+    : (typeof fallback.formatId === "function"
+      ? fallback.formatId
+      : (num) => prefix + String(num).padStart(digits, "0"));
+  return { prefix, idPattern, normalize, digits, formatId };
 }
 
 /**
  * Validates a parsed registry object and indexes it.
- * Throws RegistryError on any schema, format, or ownership violation.
- * @param {unknown} registry - parsed JSON content of ID registry
+ * Throws RegistryError on any schema, format, normalization, or ownership violation.
+ * @param {unknown} registry - parsed JSON content of an ID registry
  * @param {{ prefix?: string, idPattern?: RegExp, normalize?: (k: string) => string, digits?: number, formatId?: (n: number) => string }} [options]
- * @returns {{ entries: Map<string, string>, owners: Map<string, string>, highWaterMark: number, prefix: string, idPattern: RegExp, normalize: (k: string) => string, formatId: (n: number) => string }}
+ * @returns {{ entries: Map<string, string>, owners: Map<string, string>, highWaterMark: number, prefix: string, idPattern: RegExp, normalize: (k: string) => string, digits: number, formatId: (n: number) => string }}
  */
 export function validateRegistry(registry, options = {}) {
   if (
@@ -51,27 +72,19 @@ export function validateRegistry(registry, options = {}) {
     throw new RegistryError("registry has an invalid schema (expected { version: 1, highWaterMark: int >= 0, entries: object })");
   }
 
-  const prefix = typeof options.prefix === "string" && options.prefix.length > 0 ? options.prefix : DEFAULT_ID_PREFIX;
-  const idPattern = options.idPattern instanceof RegExp
-    ? options.idPattern
-    : new RegExp("^" + escapeRegExp(prefix) + "(\\d+)$");
-  const normalize = typeof options.normalize === "function" ? options.normalize : defaultNormalizer;
-  const digits = typeof options.digits === "number" ? options.digits : (prefix === "idm-" ? 4 : 5);
-  const formatId = typeof options.formatId === "function"
-    ? options.formatId
-    : (num) => prefix + String(num).padStart(digits, "0");
+  const { prefix, idPattern, normalize, digits, formatId } = resolveOptions(options);
 
   const entries = new Map();
   const owners = new Map();
   let maxIdNum = 0;
 
-  for (const [norm, id] of Object.entries(registry.entries)) {
-    if (!norm || typeof id !== "string" || !idPattern.test(id)) {
-      throw new RegistryError(`invalid registry entry '${norm}' -> '${id}'`);
+  for (const [rawNorm, id] of Object.entries(registry.entries)) {
+    const norm = normalize(rawNorm);
+    if (!rawNorm || rawNorm !== norm || typeof id !== "string" || !idPattern.test(id)) {
+      throw new RegistryError(`invalid or non-canonical registry entry '${rawNorm}' -> '${id}'`);
     }
-    const normalizedKey = normalize(norm);
-    if (normalizedKey !== norm) {
-      throw new RegistryError(`registry key '${norm}' is not canonical under normalizer (expected '${normalizedKey}')`);
+    if (entries.has(norm)) {
+      throw new RegistryError(`normalized lexical form '${norm}' appears more than once in the registry`);
     }
     if (owners.has(id)) {
       throw new RegistryError(`historical ID '${id}' is owned by both '${owners.get(id)}' and '${norm}'`);
@@ -87,7 +100,7 @@ export function validateRegistry(registry, options = {}) {
     throw new RegistryError(`registry high-water mark ${registry.highWaterMark} is below historical maximum ${maxIdNum}`);
   }
 
-  return { entries, owners, highWaterMark: registry.highWaterMark, prefix, idPattern, normalize, formatId };
+  return { entries, owners, highWaterMark: registry.highWaterMark, prefix, idPattern, normalize, digits, formatId };
 }
 
 /**
@@ -95,8 +108,8 @@ export function validateRegistry(registry, options = {}) {
  * The allocator never mutates the input; call toRegistry() to obtain the
  * updated plain registry object including any newly appended entries.
  *
- * @param {{ entries: Map<string, string>, owners: Map<string, string>, highWaterMark: number, prefix?: string, idPattern?: RegExp, normalize?: (k: string) => string, formatId?: (n: number) => string }} validated
- * @param {{ prefix?: string, idPattern?: RegExp, normalize?: (k: string) => string, formatId?: (n: number) => string, digits?: number }} [options]
+ * @param {{ entries: Map<string, string>, owners: Map<string, string>, highWaterMark: number, prefix?: string, idPattern?: RegExp, normalize?: (k: string) => string, digits?: number, formatId?: (n: number) => string }} validated
+ * @param {{ prefix?: string, idPattern?: RegExp, normalize?: (k: string) => string, digits?: number, formatId?: (n: number) => string }} [options]
  */
 export function createIdAllocator(validated, options = {}) {
   if (!validated || !(validated.entries instanceof Map) || !(validated.owners instanceof Map) ||
@@ -104,12 +117,7 @@ export function createIdAllocator(validated, options = {}) {
     throw new RegistryError("createIdAllocator requires the output of validateRegistry()");
   }
 
-  const prefix = typeof options.prefix === "string" ? options.prefix : (validated.prefix || DEFAULT_ID_PREFIX);
-  const normalize = typeof options.normalize === "function" ? options.normalize : (validated.normalize || defaultNormalizer);
-  const digits = typeof options.digits === "number" ? options.digits : (prefix === "idm-" ? 4 : 5);
-  const formatId = typeof options.formatId === "function"
-    ? options.formatId
-    : (validated.formatId || ((num) => prefix + String(num).padStart(digits, "0")));
+  const { prefix, idPattern, normalize, digits, formatId } = resolveOptions(options, validated);
 
   // Copy so the caller's validated structure is never mutated.
   const entries = new Map(validated.entries);
@@ -130,6 +138,9 @@ export function createIdAllocator(validated, options = {}) {
     if (existing !== undefined) return existing;
     nextNum++;
     const id = formatId(nextNum);
+    if (!idPattern.test(id)) {
+      throw new RegistryError(`allocator produced an invalid ID '${id}'`);
+    }
     // Monotonic growth above the high-water mark guarantees this ID has no owner.
     if (owners.has(id)) {
       throw new RegistryError(`allocator attempted to recycle owned ID '${id}'`);

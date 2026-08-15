@@ -1,5 +1,8 @@
 // NederPath curated word core 9 - Nature, animals, plants, geography, food, house, and everyday objects (A1-C1).
-const N = (w, a, l, m, c, s, p) => [w, "noun", l, a, m, c, s || "", p || ""];
+const N = (w, a, l, m, c, s, p) => {
+  const legacyMeta = !p && typeof s === "string" && /^(?:s|inv|n|'s|=.+)$/u.test(s) ? s : "";
+  return [w, "noun", l, a, m, c, legacyMeta ? "" : (s || ""), legacyMeta || (p || "")];
+};
 const V = (w, l, m, c, p) => [w, "verb", l, "", m, c, "", p || ""];
 const A = (w, l, m, c, p) => [w, "adjective", l, "", m, c, "", p || ""];
 const D = (w, l, m, c, p) => [w, "adverb", l, "", m, c, "", p || ""];
@@ -7,7 +10,7 @@ const O = (w, p, l, m, c, s) => [w, p, l, "", m, c, s || "", ""];
 
 module.exports = { WORDS: [
 // animals (dieren)
-N("hond","de","A1","dog","animals","hondje",""),
+N("hond","de","A1","dog","animals","",""),
 N("kat","de","A1","cat","animals","poes","=katten"),
 N("poes","de","A1","cat, kitty","animals","kat","=poezen"),
 N("vogel","de","A1","bird","animals","","s"),
@@ -162,7 +165,7 @@ N("eb","de","A2","ebb, low tide","nature","laagwater","inv"),
 N("vloed","de","A2","flood, high tide, flow","nature","hoogwater","=vloeden"),
 N("stroom","de","A1","river, current, electricity, stream","nature","rivier","=stromen"),
 N("rivier","de","A1","river","nature","stroom","=rivieren"),
-N("beek","de","A2","brook, stream, creek","nature","stroompje","=beken"),
+N("beek","de","A2","brook, stream, creek","nature","","=beken"),
 N("meer","het","A1","lake","nature","plas","=meren"),
 N("plas","de","A1","puddle; lake, pond","nature","vijver","=plassen"),
 N("vijver","de","A2","pond","nature","plas","s"),

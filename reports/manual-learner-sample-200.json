@@ -1,0 +1,5330 @@
+{
+  "selection": "sha256(id + normalized surface), seeded by level/POS/category, then filled by rank",
+  "generatedLearnerRows": 4245,
+  "selected": 200,
+  "levels": {
+    "A1": 62,
+    "A2": 53,
+    "B1": 62,
+    "B2": 22,
+    "C1": 1
+  },
+  "pos": {
+    "adjective": 7,
+    "adverb": 6,
+    "conjunction": 1,
+    "determiner": 1,
+    "interjection": 2,
+    "noun": 151,
+    "particle": 1,
+    "phrase": 1,
+    "preposition": 1,
+    "pronoun": 1,
+    "verb": 28
+  },
+  "categories": {
+    "abstract": 8,
+    "academic": 1,
+    "action": 1,
+    "actions": 11,
+    "animals": 4,
+    "arts": 1,
+    "body": 4,
+    "business": 1,
+    "city": 1,
+    "clothing": 6,
+    "communication": 1,
+    "connectors": 8,
+    "crafts": 3,
+    "culture": 6,
+    "daily-life": 2,
+    "degree": 1,
+    "descriptors": 1,
+    "drink": 1,
+    "economy": 1,
+    "education": 2,
+    "emotion": 2,
+    "environment": 1,
+    "feelings": 3,
+    "food": 16,
+    "geography": 1,
+    "health": 2,
+    "hobbies": 1,
+    "home": 21,
+    "housing": 3,
+    "law": 5,
+    "leisure": 1,
+    "materials": 1,
+    "media": 1,
+    "modal": 1,
+    "nature": 9,
+    "office": 1,
+    "people": 2,
+    "politics": 2,
+    "professions": 1,
+    "psychology": 1,
+    "qualities": 6,
+    "school": 4,
+    "science": 1,
+    "shopping": 1,
+    "society": 5,
+    "sports": 1,
+    "tech": 4,
+    "technology": 1,
+    "time": 4,
+    "transport": 13,
+    "travel": 2,
+    "weather": 3,
+    "work": 16
+  },
+  "cards": [
+    {
+      "id": "nl-00007",
+      "word": "ze",
+      "displayWord": "ze",
+      "lemma": "ze",
+      "article": null,
+      "level": "A1",
+      "pos": "pronoun",
+      "meaning": "she; they (unstressed)",
+      "category": "people",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_1.js:6"
+      ],
+      "senses": [
+        {
+          "source": "words_core_1.js:6",
+          "pos": "pronoun",
+          "meaning": "she; they (unstressed)"
+        }
+      ]
+    },
+    {
+      "id": "nl-00028",
+      "word": "een",
+      "displayWord": "een",
+      "lemma": "een",
+      "article": null,
+      "level": "A1",
+      "pos": "determiner",
+      "meaning": "a, an; one",
+      "category": "connectors",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_1.js:27"
+      ],
+      "senses": [
+        {
+          "source": "words_core_1.js:27",
+          "pos": "determiner",
+          "meaning": "a, an; one"
+        }
+      ]
+    },
+    {
+      "id": "nl-00073",
+      "word": "rondom",
+      "displayWord": "rondom",
+      "lemma": "rondom",
+      "article": null,
+      "level": "A2",
+      "pos": "preposition",
+      "meaning": "around",
+      "category": "connectors",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_1.js:72"
+      ],
+      "senses": [
+        {
+          "source": "words_core_1.js:72",
+          "pos": "preposition",
+          "meaning": "around"
+        }
+      ]
+    },
+    {
+      "id": "nl-00097",
+      "word": "waardoor",
+      "displayWord": "waardoor",
+      "lemma": "waardoor",
+      "article": null,
+      "level": "B1",
+      "pos": "conjunction",
+      "meaning": "whereby, as a result of which",
+      "category": "connectors",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_1.js:96"
+      ],
+      "senses": [
+        {
+          "source": "words_core_1.js:96",
+          "pos": "conjunction",
+          "meaning": "whereby, as a result of which"
+        }
+      ]
+    },
+    {
+      "id": "nl-00113",
+      "word": "hé",
+      "displayWord": "hé",
+      "lemma": "hé",
+      "article": null,
+      "level": "A1",
+      "pos": "interjection",
+      "meaning": "hey!",
+      "category": "connectors",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_1.js:112"
+      ],
+      "senses": [
+        {
+          "source": "words_core_1.js:112",
+          "pos": "interjection",
+          "meaning": "hey!"
+        }
+      ]
+    },
+    {
+      "id": "nl-00116",
+      "word": "nou",
+      "displayWord": "nou",
+      "lemma": "nou",
+      "article": null,
+      "level": "A1",
+      "pos": "particle",
+      "meaning": "well, now",
+      "category": "connectors",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_1.js:115"
+      ],
+      "senses": [
+        {
+          "source": "words_core_1.js:115",
+          "pos": "particle",
+          "meaning": "well, now"
+        }
+      ]
+    },
+    {
+      "id": "nl-00119",
+      "word": "hallo",
+      "displayWord": "hallo",
+      "lemma": "hallo",
+      "article": null,
+      "level": "A1",
+      "pos": "interjection",
+      "meaning": "hello",
+      "category": "connectors",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_1.js:118"
+      ],
+      "senses": [
+        {
+          "source": "words_core_1.js:118",
+          "pos": "interjection",
+          "meaning": "hello"
+        }
+      ]
+    },
+    {
+      "id": "nl-00169",
+      "word": "kennelijk",
+      "displayWord": "kennelijk",
+      "lemma": "kennelijk",
+      "article": null,
+      "level": "B2",
+      "pos": "adverb",
+      "meaning": "apparently, evidently",
+      "category": "connectors",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_1.js:168"
+      ],
+      "senses": [
+        {
+          "source": "words_core_1.js:168",
+          "pos": "adverb",
+          "meaning": "apparently, evidently"
+        }
+      ]
+    },
+    {
+      "id": "nl-00270",
+      "word": "lopen",
+      "displayWord": "lopen",
+      "lemma": "lopen",
+      "article": null,
+      "level": "A1",
+      "pos": "verb",
+      "meaning": "to walk; to walk, run",
+      "category": "actions",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_1.js:185",
+        "words_core_7.js:0"
+      ],
+      "senses": [
+        {
+          "source": "words_core_1.js:185",
+          "pos": "verb",
+          "meaning": "to walk"
+        },
+        {
+          "source": "words_core_7.js:0",
+          "pos": "verb",
+          "meaning": "to walk, run"
+        }
+      ]
+    },
+    {
+      "id": "nl-00438",
+      "word": "vlieg",
+      "displayWord": "de vlieg",
+      "lemma": "vlieg",
+      "article": "de",
+      "level": "A1",
+      "pos": "noun",
+      "meaning": "fly (insect)",
+      "category": "animals",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_1.js:498",
+        "words_core_9.js:76"
+      ],
+      "senses": [
+        {
+          "source": "words_core_1.js:498",
+          "pos": "noun",
+          "meaning": "fly (insect)"
+        },
+        {
+          "source": "words_core_9.js:76",
+          "pos": "noun",
+          "meaning": "fly (insect)"
+        }
+      ]
+    },
+    {
+      "id": "nl-00518",
+      "word": "breken",
+      "displayWord": "breken",
+      "lemma": "breken",
+      "article": null,
+      "level": "A2",
+      "pos": "verb",
+      "meaning": "to break",
+      "category": "actions",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_1.js:216",
+        "words_core_7.js:103"
+      ],
+      "senses": [
+        {
+          "source": "words_core_1.js:216",
+          "pos": "verb",
+          "meaning": "to break"
+        },
+        {
+          "source": "words_core_7.js:103",
+          "pos": "verb",
+          "meaning": "to break"
+        }
+      ]
+    },
+    {
+      "id": "nl-01113",
+      "word": "halen",
+      "displayWord": "halen",
+      "lemma": "halen",
+      "article": null,
+      "level": "A1",
+      "pos": "verb",
+      "meaning": "to fetch, to get; to fetch, get, achieve",
+      "category": "actions",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_1.js:290",
+        "words_core_7.js:62"
+      ],
+      "senses": [
+        {
+          "source": "words_core_1.js:290",
+          "pos": "verb",
+          "meaning": "to fetch, to get"
+        },
+        {
+          "source": "words_core_7.js:62",
+          "pos": "verb",
+          "meaning": "to fetch, get, achieve"
+        }
+      ]
+    },
+    {
+      "id": "nl-01147",
+      "word": "gooien",
+      "displayWord": "gooien",
+      "lemma": "gooien",
+      "article": null,
+      "level": "A1",
+      "pos": "verb",
+      "meaning": "to throw (informal)",
+      "category": "actions",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_1.js:294"
+      ],
+      "senses": [
+        {
+          "source": "words_core_1.js:294",
+          "pos": "verb",
+          "meaning": "to throw (informal)"
+        }
+      ]
+    },
+    {
+      "id": "nl-01402",
+      "word": "plaats",
+      "displayWord": "de plaats",
+      "lemma": "plaats",
+      "article": "de",
+      "level": "A1",
+      "pos": "noun",
+      "meaning": "place",
+      "category": "abstract",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_1.js:338"
+      ],
+      "senses": [
+        {
+          "source": "words_core_1.js:338",
+          "pos": "noun",
+          "meaning": "place"
+        }
+      ]
+    },
+    {
+      "id": "nl-01472",
+      "word": "keuken",
+      "displayWord": "de keuken",
+      "lemma": "keuken",
+      "article": "de",
+      "level": "A1",
+      "pos": "noun",
+      "meaning": "kitchen; cuisine",
+      "category": "home",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_1.js:357",
+        "words_core_13.js:3",
+        "words_core_3b.js:62",
+        "words_core_4.js:408"
+      ],
+      "senses": [
+        {
+          "source": "words_core_1.js:357",
+          "pos": "noun",
+          "meaning": "kitchen"
+        },
+        {
+          "source": "words_core_13.js:3",
+          "pos": "noun",
+          "meaning": "kitchen; cuisine"
+        },
+        {
+          "source": "words_core_3b.js:62",
+          "pos": "noun",
+          "meaning": "kitchen"
+        },
+        {
+          "source": "words_core_4.js:408",
+          "pos": "noun",
+          "meaning": "kitchen"
+        }
+      ]
+    },
+    {
+      "id": "nl-01496",
+      "word": "brood",
+      "displayWord": "het brood",
+      "lemma": "brood",
+      "article": "het",
+      "level": "A1",
+      "pos": "noun",
+      "meaning": "bread",
+      "category": "food",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_1.js:363",
+        "words_core_5.js:15"
+      ],
+      "senses": [
+        {
+          "source": "words_core_1.js:363",
+          "pos": "noun",
+          "meaning": "bread"
+        },
+        {
+          "source": "words_core_5.js:15",
+          "pos": "noun",
+          "meaning": "bread"
+        }
+      ]
+    },
+    {
+      "id": "nl-01552",
+      "word": "ontbijt",
+      "displayWord": "het ontbijt",
+      "lemma": "ontbijt",
+      "article": "het",
+      "level": "A1",
+      "pos": "noun",
+      "meaning": "breakfast",
+      "category": "food",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_1.js:381",
+        "words_core_15.js:33",
+        "words_core_5.js:3"
+      ],
+      "senses": [
+        {
+          "source": "words_core_1.js:381",
+          "pos": "noun",
+          "meaning": "breakfast"
+        },
+        {
+          "source": "words_core_15.js:33",
+          "pos": "noun",
+          "meaning": "breakfast"
+        },
+        {
+          "source": "words_core_5.js:3",
+          "pos": "noun",
+          "meaning": "breakfast"
+        }
+      ]
+    },
+    {
+      "id": "nl-01595",
+      "word": "beker",
+      "displayWord": "de beker",
+      "lemma": "beker",
+      "article": "de",
+      "level": "A1",
+      "pos": "noun",
+      "meaning": "mug, beaker; cup, trophy; mug",
+      "category": "home",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_1.js:394",
+        "words_core_11.js:34"
+      ],
+      "senses": [
+        {
+          "source": "words_core_1.js:394",
+          "pos": "noun",
+          "meaning": "mug, beaker"
+        },
+        {
+          "source": "words_core_11.js:34",
+          "pos": "noun",
+          "meaning": "cup, trophy; mug"
+        }
+      ]
+    },
+    {
+      "id": "nl-01775",
+      "word": "lerares",
+      "displayWord": "de lerares",
+      "lemma": "lerares",
+      "article": "de",
+      "level": "A1",
+      "pos": "noun",
+      "meaning": "teacher (female); female teacher, schoolmistress",
+      "category": "education",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_1.js:448",
+        "words_core_13.js:80",
+        "words_core_3.js:12"
+      ],
+      "senses": [
+        {
+          "source": "words_core_1.js:448",
+          "pos": "noun",
+          "meaning": "teacher (female)"
+        },
+        {
+          "source": "words_core_13.js:80",
+          "pos": "noun",
+          "meaning": "female teacher, schoolmistress"
+        },
+        {
+          "source": "words_core_3.js:12",
+          "pos": "noun",
+          "meaning": "teacher (female)"
+        }
+      ]
+    },
+    {
+      "id": "nl-01783",
+      "word": "meester",
+      "displayWord": "de meester",
+      "lemma": "meester",
+      "article": "de",
+      "level": "A1",
+      "pos": "noun",
+      "meaning": "teacher (primary, male); master; schoolmaster",
+      "category": "school",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_1.js:450",
+        "words_core_7.js:261"
+      ],
+      "senses": [
+        {
+          "source": "words_core_1.js:450",
+          "pos": "noun",
+          "meaning": "teacher (primary, male); master"
+        },
+        {
+          "source": "words_core_7.js:261",
+          "pos": "noun",
+          "meaning": "schoolmaster; master"
+        }
+      ]
+    },
+    {
+      "id": "nl-01817",
+      "word": "ziekte",
+      "displayWord": "de ziekte",
+      "lemma": "ziekte",
+      "article": "de",
+      "level": "A1",
+      "pos": "noun",
+      "meaning": "illness; disease, illness, sickness; illness, disease",
+      "category": "health",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_1.js:460",
+        "words_core_10.js:0",
+        "words_core_4.js:73"
+      ],
+      "senses": [
+        {
+          "source": "words_core_1.js:460",
+          "pos": "noun",
+          "meaning": "illness"
+        },
+        {
+          "source": "words_core_10.js:0",
+          "pos": "noun",
+          "meaning": "disease, illness, sickness"
+        },
+        {
+          "source": "words_core_4.js:73",
+          "pos": "noun",
+          "meaning": "illness, disease"
+        }
+      ]
+    },
+    {
+      "id": "nl-01842",
+      "word": "maan",
+      "displayWord": "de maan",
+      "lemma": "maan",
+      "article": "de",
+      "level": "A1",
+      "pos": "noun",
+      "meaning": "moon",
+      "category": "nature",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_1.js:468",
+        "words_core_4.js:494",
+        "words_core_9.js:171"
+      ],
+      "senses": [
+        {
+          "source": "words_core_1.js:468",
+          "pos": "noun",
+          "meaning": "moon"
+        },
+        {
+          "source": "words_core_4.js:494",
+          "pos": "noun",
+          "meaning": "moon"
+        },
+        {
+          "source": "words_core_9.js:171",
+          "pos": "noun",
+          "meaning": "moon"
+        }
+      ]
+    },
+    {
+      "id": "nl-01846",
+      "word": "ster",
+      "displayWord": "de ster",
+      "lemma": "ster",
+      "article": "de",
+      "level": "A1",
+      "pos": "noun",
+      "meaning": "star; star (astronomy/celebrity)",
+      "category": "nature",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_1.js:469",
+        "words_core_4.js:495",
+        "words_core_9.js:172"
+      ],
+      "senses": [
+        {
+          "source": "words_core_1.js:469",
+          "pos": "noun",
+          "meaning": "star"
+        },
+        {
+          "source": "words_core_4.js:495",
+          "pos": "noun",
+          "meaning": "star"
+        },
+        {
+          "source": "words_core_9.js:172",
+          "pos": "noun",
+          "meaning": "star (astronomy/celebrity)"
+        }
+      ]
+    },
+    {
+      "id": "nl-01874",
+      "word": "boom",
+      "displayWord": "de boom",
+      "lemma": "boom",
+      "article": "de",
+      "level": "A1",
+      "pos": "noun",
+      "meaning": "tree; barrier, boom; bar, barrier",
+      "category": "nature",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_1.js:476",
+        "words_core_20.js:41",
+        "words_core_4.js:572",
+        "words_core_9.js:85"
+      ],
+      "senses": [
+        {
+          "source": "words_core_1.js:476",
+          "pos": "noun",
+          "meaning": "tree"
+        },
+        {
+          "source": "words_core_20.js:41",
+          "pos": "noun",
+          "meaning": "tree; barrier, boom"
+        },
+        {
+          "source": "words_core_4.js:572",
+          "pos": "noun",
+          "meaning": "tree"
+        },
+        {
+          "source": "words_core_9.js:85",
+          "pos": "noun",
+          "meaning": "tree; bar, barrier"
+        }
+      ]
+    },
+    {
+      "id": "nl-01915",
+      "word": "varken",
+      "displayWord": "het varken",
+      "lemma": "varken",
+      "article": "het",
+      "level": "A1",
+      "pos": "noun",
+      "meaning": "pig; pig, swine, hog; pig, swine",
+      "category": "animals",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_1.js:487",
+        "words_core_20.js:17",
+        "words_core_9.js:8"
+      ],
+      "senses": [
+        {
+          "source": "words_core_1.js:487",
+          "pos": "noun",
+          "meaning": "pig"
+        },
+        {
+          "source": "words_core_20.js:17",
+          "pos": "noun",
+          "meaning": "pig, swine, hog"
+        },
+        {
+          "source": "words_core_9.js:8",
+          "pos": "noun",
+          "meaning": "pig, swine"
+        }
+      ]
+    },
+    {
+      "id": "nl-01935",
+      "word": "eend",
+      "displayWord": "de eend",
+      "lemma": "eend",
+      "article": "de",
+      "level": "A1",
+      "pos": "noun",
+      "meaning": "duck",
+      "category": "nature",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_1.js:492",
+        "words_core_20.js:4",
+        "words_core_9.js:12"
+      ],
+      "senses": [
+        {
+          "source": "words_core_1.js:492",
+          "pos": "noun",
+          "meaning": "duck"
+        },
+        {
+          "source": "words_core_20.js:4",
+          "pos": "noun",
+          "meaning": "duck"
+        },
+        {
+          "source": "words_core_9.js:12",
+          "pos": "noun",
+          "meaning": "duck"
+        }
+      ]
+    },
+    {
+      "id": "nl-01960",
+      "word": "slang",
+      "displayWord": "de slang",
+      "lemma": "slang",
+      "article": "de",
+      "level": "A1",
+      "pos": "noun",
+      "meaning": "snake; snake, serpent; hose",
+      "category": "animals",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_1.js:499",
+        "words_core_9.js:55"
+      ],
+      "senses": [
+        {
+          "source": "words_core_1.js:499",
+          "pos": "noun",
+          "meaning": "snake"
+        },
+        {
+          "source": "words_core_9.js:55",
+          "pos": "noun",
+          "meaning": "snake, serpent; hose"
+        }
+      ]
+    },
+    {
+      "id": "nl-02042",
+      "word": "lip",
+      "displayWord": "de lip",
+      "lemma": "lip",
+      "article": "de",
+      "level": "A1",
+      "pos": "noun",
+      "meaning": "lip",
+      "category": "body",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_1.js:520",
+        "words_core_4.js:10"
+      ],
+      "senses": [
+        {
+          "source": "words_core_1.js:520",
+          "pos": "noun",
+          "meaning": "lip"
+        },
+        {
+          "source": "words_core_4.js:10",
+          "pos": "noun",
+          "meaning": "lip"
+        }
+      ]
+    },
+    {
+      "id": "nl-02168",
+      "word": "jas",
+      "displayWord": "de jas",
+      "lemma": "jas",
+      "article": "de",
+      "level": "A1",
+      "pos": "noun",
+      "meaning": "coat, jacket",
+      "category": "clothing",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_1.js:554",
+        "words_core_3b.js:2",
+        "words_core_4.js:151"
+      ],
+      "senses": [
+        {
+          "source": "words_core_1.js:554",
+          "pos": "noun",
+          "meaning": "coat, jacket"
+        },
+        {
+          "source": "words_core_3b.js:2",
+          "pos": "noun",
+          "meaning": "coat, jacket"
+        },
+        {
+          "source": "words_core_4.js:151",
+          "pos": "noun",
+          "meaning": "coat, jacket"
+        }
+      ]
+    },
+    {
+      "id": "nl-02170",
+      "word": "jasje",
+      "displayWord": "het jasje",
+      "lemma": "jasje",
+      "article": "het",
+      "level": "A2",
+      "pos": "noun",
+      "meaning": "jacket, blazer",
+      "category": "clothing",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_3b.js:3"
+      ],
+      "senses": [
+        {
+          "source": "words_core_3b.js:3",
+          "pos": "noun",
+          "meaning": "jacket, blazer"
+        }
+      ]
+    },
+    {
+      "id": "nl-02263",
+      "word": "computer",
+      "displayWord": "de computer",
+      "lemma": "computer",
+      "article": "de",
+      "level": "A1",
+      "pos": "noun",
+      "meaning": "computer",
+      "category": "tech",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_1.js:579",
+        "words_core_5.js:679",
+        "words_core_6.js:0"
+      ],
+      "senses": [
+        {
+          "source": "words_core_1.js:579",
+          "pos": "noun",
+          "meaning": "computer"
+        },
+        {
+          "source": "words_core_5.js:679",
+          "pos": "noun",
+          "meaning": "computer"
+        },
+        {
+          "source": "words_core_6.js:0",
+          "pos": "noun",
+          "meaning": "computer"
+        }
+      ]
+    },
+    {
+      "id": "nl-02335",
+      "word": "krant",
+      "displayWord": "de krant",
+      "lemma": "krant",
+      "article": "de",
+      "level": "A1",
+      "pos": "noun",
+      "meaning": "newspaper",
+      "category": "society",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_1.js:599",
+        "words_core_5.js:706",
+        "words_core_6.js:49"
+      ],
+      "senses": [
+        {
+          "source": "words_core_1.js:599",
+          "pos": "noun",
+          "meaning": "newspaper"
+        },
+        {
+          "source": "words_core_5.js:706",
+          "pos": "noun",
+          "meaning": "newspaper"
+        },
+        {
+          "source": "words_core_6.js:49",
+          "pos": "noun",
+          "meaning": "newspaper"
+        }
+      ]
+    },
+    {
+      "id": "nl-02344",
+      "word": "brief",
+      "displayWord": "de brief",
+      "lemma": "brief",
+      "article": "de",
+      "level": "A1",
+      "pos": "noun",
+      "meaning": "letter (mail); letter",
+      "category": "society",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_1.js:602",
+        "words_core_5.js:441"
+      ],
+      "senses": [
+        {
+          "source": "words_core_1.js:602",
+          "pos": "noun",
+          "meaning": "letter (mail)"
+        },
+        {
+          "source": "words_core_5.js:441",
+          "pos": "noun",
+          "meaning": "letter"
+        }
+      ]
+    },
+    {
+      "id": "nl-02404",
+      "word": "Nederlands",
+      "displayWord": "het Nederlands",
+      "lemma": "Nederlands",
+      "article": "het",
+      "level": "A1",
+      "pos": "noun",
+      "meaning": "Dutch (language)",
+      "category": "school",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_1.js:618"
+      ],
+      "senses": [
+        {
+          "source": "words_core_1.js:618",
+          "pos": "noun",
+          "meaning": "Dutch (language)"
+        }
+      ]
+    },
+    {
+      "id": "nl-02405",
+      "word": "Engels",
+      "displayWord": "het Engels",
+      "lemma": "Engels",
+      "article": "het",
+      "level": "A1",
+      "pos": "noun",
+      "meaning": "English (language)",
+      "category": "school",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_1.js:619"
+      ],
+      "senses": [
+        {
+          "source": "words_core_1.js:619",
+          "pos": "noun",
+          "meaning": "English (language)"
+        }
+      ]
+    },
+    {
+      "id": "nl-02413",
+      "word": "huiswerk",
+      "displayWord": "het huiswerk",
+      "lemma": "huiswerk",
+      "article": "het",
+      "level": "A1",
+      "pos": "noun",
+      "meaning": "homework",
+      "category": "school",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_1.js:624",
+        "words_core_7.js:237"
+      ],
+      "senses": [
+        {
+          "source": "words_core_1.js:624",
+          "pos": "noun",
+          "meaning": "homework"
+        },
+        {
+          "source": "words_core_7.js:237",
+          "pos": "noun",
+          "meaning": "homework"
+        }
+      ]
+    },
+    {
+      "id": "nl-02474",
+      "word": "stilte",
+      "displayWord": "de stilte",
+      "lemma": "stilte",
+      "article": "de",
+      "level": "A2",
+      "pos": "noun",
+      "meaning": "silence",
+      "category": "feelings",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_1.js:644"
+      ],
+      "senses": [
+        {
+          "source": "words_core_1.js:644",
+          "pos": "noun",
+          "meaning": "silence"
+        }
+      ]
+    },
+    {
+      "id": "nl-02481",
+      "word": "verdriet",
+      "displayWord": "het verdriet",
+      "lemma": "verdriet",
+      "article": "het",
+      "level": "A2",
+      "pos": "noun",
+      "meaning": "sadness, grief; grief, sadness, sorrow; sorrow",
+      "category": "feelings",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_1.js:648",
+        "words_core_14.js:32",
+        "words_core_6a.js:7"
+      ],
+      "senses": [
+        {
+          "source": "words_core_1.js:648",
+          "pos": "noun",
+          "meaning": "sadness, grief"
+        },
+        {
+          "source": "words_core_14.js:32",
+          "pos": "noun",
+          "meaning": "grief, sadness, sorrow"
+        },
+        {
+          "source": "words_core_6a.js:7",
+          "pos": "noun",
+          "meaning": "sorrow"
+        }
+      ]
+    },
+    {
+      "id": "nl-02492",
+      "word": "trein",
+      "displayWord": "de trein",
+      "lemma": "trein",
+      "article": "de",
+      "level": "A1",
+      "pos": "noun",
+      "meaning": "train",
+      "category": "transport",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_1.js:652",
+        "words_core_4.js:223"
+      ],
+      "senses": [
+        {
+          "source": "words_core_1.js:652",
+          "pos": "noun",
+          "meaning": "train"
+        },
+        {
+          "source": "words_core_4.js:223",
+          "pos": "noun",
+          "meaning": "train"
+        }
+      ]
+    },
+    {
+      "id": "nl-02549",
+      "word": "hotel",
+      "displayWord": "het hotel",
+      "lemma": "hotel",
+      "article": "het",
+      "level": "A1",
+      "pos": "noun",
+      "meaning": "hotel",
+      "category": "travel",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_1.js:667"
+      ],
+      "senses": [
+        {
+          "source": "words_core_1.js:667",
+          "pos": "noun",
+          "meaning": "hotel"
+        }
+      ]
+    },
+    {
+      "id": "nl-02573",
+      "word": "kerk",
+      "displayWord": "de kerk",
+      "lemma": "kerk",
+      "article": "de",
+      "level": "A1",
+      "pos": "noun",
+      "meaning": "church; church, temple; service",
+      "category": "culture",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_1.js:673",
+        "words_core_11.js:174",
+        "words_core_21.js:92",
+        "words_core_4.js:360"
+      ],
+      "senses": [
+        {
+          "source": "words_core_1.js:673",
+          "pos": "noun",
+          "meaning": "church"
+        },
+        {
+          "source": "words_core_11.js:174",
+          "pos": "noun",
+          "meaning": "church, temple"
+        },
+        {
+          "source": "words_core_21.js:92",
+          "pos": "noun",
+          "meaning": "church; service"
+        },
+        {
+          "source": "words_core_4.js:360",
+          "pos": "noun",
+          "meaning": "church"
+        }
+      ]
+    },
+    {
+      "id": "nl-02757",
+      "word": "verschillen",
+      "displayWord": "verschillen",
+      "lemma": "verschillen",
+      "article": null,
+      "level": "B1",
+      "pos": "verb",
+      "meaning": "to differ",
+      "category": "abstract",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_2.js:211"
+      ],
+      "senses": [
+        {
+          "source": "words_core_2.js:211",
+          "pos": "verb",
+          "meaning": "to differ"
+        }
+      ]
+    },
+    {
+      "id": "nl-02947",
+      "word": "file",
+      "displayWord": "de file",
+      "lemma": "file",
+      "article": "de",
+      "level": "A1",
+      "pos": "noun",
+      "meaning": "traffic jam; traffic jam, queue; nail file",
+      "category": "transport",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_1.js:775",
+        "words_core_4.js:272",
+        "words_core_4.js:303",
+        "words_core_6.js:127"
+      ],
+      "senses": [
+        {
+          "source": "words_core_1.js:775",
+          "pos": "noun",
+          "meaning": "traffic jam"
+        },
+        {
+          "source": "words_core_4.js:272",
+          "pos": "noun",
+          "meaning": "traffic jam"
+        },
+        {
+          "source": "words_core_4.js:303",
+          "pos": "noun",
+          "meaning": "traffic jam"
+        },
+        {
+          "source": "words_core_6.js:127",
+          "pos": "noun",
+          "meaning": "traffic jam, queue; nail file"
+        }
+      ]
+    },
+    {
+      "id": "nl-02992",
+      "word": "ongeluk",
+      "displayWord": "het ongeluk",
+      "lemma": "ongeluk",
+      "article": "het",
+      "level": "A2",
+      "pos": "noun",
+      "meaning": "accident",
+      "category": "transport",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_1.js:787",
+        "words_core_4.js:270"
+      ],
+      "senses": [
+        {
+          "source": "words_core_1.js:787",
+          "pos": "noun",
+          "meaning": "accident"
+        },
+        {
+          "source": "words_core_4.js:270",
+          "pos": "noun",
+          "meaning": "accident"
+        }
+      ]
+    },
+    {
+      "id": "nl-03036",
+      "word": "zebrapad",
+      "displayWord": "het zebrapad",
+      "lemma": "zebrapad",
+      "article": "het",
+      "level": "A1",
+      "pos": "noun",
+      "meaning": "zebra crossing; zebra crossing, pedestrian crossing",
+      "category": "transport",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_1.js:798",
+        "words_core_4.js:247",
+        "words_core_6.js:115"
+      ],
+      "senses": [
+        {
+          "source": "words_core_1.js:798",
+          "pos": "noun",
+          "meaning": "zebra crossing"
+        },
+        {
+          "source": "words_core_4.js:247",
+          "pos": "noun",
+          "meaning": "zebra crossing"
+        },
+        {
+          "source": "words_core_6.js:115",
+          "pos": "noun",
+          "meaning": "zebra crossing, pedestrian crossing"
+        }
+      ]
+    },
+    {
+      "id": "nl-03052",
+      "word": "vergunning",
+      "displayWord": "de vergunning",
+      "lemma": "vergunning",
+      "article": "de",
+      "level": "A2",
+      "pos": "noun",
+      "meaning": "permit; permit, license, authorization",
+      "category": "society",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_1.js:802",
+        "words_core_12.js:38",
+        "words_core_5.js:843"
+      ],
+      "senses": [
+        {
+          "source": "words_core_1.js:802",
+          "pos": "noun",
+          "meaning": "permit"
+        },
+        {
+          "source": "words_core_12.js:38",
+          "pos": "noun",
+          "meaning": "permit, license, authorization"
+        },
+        {
+          "source": "words_core_5.js:843",
+          "pos": "noun",
+          "meaning": "permit"
+        }
+      ]
+    },
+    {
+      "id": "nl-03084",
+      "word": "secretaresse",
+      "displayWord": "de secretaresse",
+      "lemma": "secretaresse",
+      "article": "de",
+      "level": "A2",
+      "pos": "noun",
+      "meaning": "secretary",
+      "category": "work",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_1.js:810"
+      ],
+      "senses": [
+        {
+          "source": "words_core_1.js:810",
+          "pos": "noun",
+          "meaning": "secretary"
+        }
+      ]
+    },
+    {
+      "id": "nl-03279",
+      "word": "tot morgen",
+      "displayWord": "tot morgen",
+      "lemma": "tot morgen",
+      "article": null,
+      "level": "A1",
+      "pos": "phrase",
+      "meaning": "see you tomorrow",
+      "category": "connectors",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_1.js:864"
+      ],
+      "senses": [
+        {
+          "source": "words_core_1.js:864",
+          "pos": "phrase",
+          "meaning": "see you tomorrow"
+        }
+      ]
+    },
+    {
+      "id": "nl-03382",
+      "word": "revalidatie",
+      "displayWord": "de revalidatie",
+      "lemma": "revalidatie",
+      "article": "de",
+      "level": "B1",
+      "pos": "noun",
+      "meaning": "rehabilitation, recovery; rehabilitation",
+      "category": "health",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_10.js:44",
+        "words_core_4.js:147"
+      ],
+      "senses": [
+        {
+          "source": "words_core_10.js:44",
+          "pos": "noun",
+          "meaning": "rehabilitation, recovery"
+        },
+        {
+          "source": "words_core_4.js:147",
+          "pos": "noun",
+          "meaning": "rehabilitation"
+        }
+      ]
+    },
+    {
+      "id": "nl-03438",
+      "word": "wanhoop",
+      "displayWord": "de wanhoop",
+      "lemma": "wanhoop",
+      "article": "de",
+      "level": "B1",
+      "pos": "noun",
+      "meaning": "despair, desperation",
+      "category": "psychology",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_10.js:71"
+      ],
+      "senses": [
+        {
+          "source": "words_core_10.js:71",
+          "pos": "noun",
+          "meaning": "despair, desperation"
+        }
+      ]
+    },
+    {
+      "id": "nl-03660",
+      "word": "registreren",
+      "displayWord": "registreren",
+      "lemma": "registreren",
+      "article": null,
+      "level": "A2",
+      "pos": "verb",
+      "meaning": "to register, record, log",
+      "category": "actions",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_10.js:121"
+      ],
+      "senses": [
+        {
+          "source": "words_core_10.js:121",
+          "pos": "verb",
+          "meaning": "to register, record, log"
+        }
+      ]
+    },
+    {
+      "id": "nl-04026",
+      "word": "vegen",
+      "displayWord": "vegen",
+      "lemma": "vegen",
+      "article": null,
+      "level": "A2",
+      "pos": "verb",
+      "meaning": "to sweep (floor); wipe",
+      "category": "actions",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_10.js:169"
+      ],
+      "senses": [
+        {
+          "source": "words_core_10.js:169",
+          "pos": "verb",
+          "meaning": "to sweep (floor); wipe"
+        }
+      ]
+    },
+    {
+      "id": "nl-04257",
+      "word": "frisdrank",
+      "displayWord": "de frisdrank",
+      "lemma": "frisdrank",
+      "article": "de",
+      "level": "A1",
+      "pos": "noun",
+      "meaning": "soft drink, soda; soft drink",
+      "category": "food",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_11.js:45",
+        "words_core_3a.js:336",
+        "words_core_5.js:205"
+      ],
+      "senses": [
+        {
+          "source": "words_core_11.js:45",
+          "pos": "noun",
+          "meaning": "soft drink, soda"
+        },
+        {
+          "source": "words_core_3a.js:336",
+          "pos": "noun",
+          "meaning": "soft drink"
+        },
+        {
+          "source": "words_core_5.js:205",
+          "pos": "noun",
+          "meaning": "soft drink"
+        }
+      ]
+    },
+    {
+      "id": "nl-04261",
+      "word": "sap",
+      "displayWord": "het sap",
+      "lemma": "sap",
+      "article": "het",
+      "level": "A1",
+      "pos": "noun",
+      "meaning": "juice, sap; juice",
+      "category": "food",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_11.js:46",
+        "words_core_5.js:187"
+      ],
+      "senses": [
+        {
+          "source": "words_core_11.js:46",
+          "pos": "noun",
+          "meaning": "juice, sap"
+        },
+        {
+          "source": "words_core_5.js:187",
+          "pos": "noun",
+          "meaning": "juice"
+        }
+      ]
+    },
+    {
+      "id": "nl-04276",
+      "word": "champagne",
+      "displayWord": "de champagne",
+      "lemma": "champagne",
+      "article": "de",
+      "level": "A2",
+      "pos": "noun",
+      "meaning": "champagne",
+      "category": "food",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_11.js:54",
+        "words_core_3a.js:347"
+      ],
+      "senses": [
+        {
+          "source": "words_core_11.js:54",
+          "pos": "noun",
+          "meaning": "champagne"
+        },
+        {
+          "source": "words_core_3a.js:347",
+          "pos": "noun",
+          "meaning": "champagne"
+        }
+      ]
+    },
+    {
+      "id": "nl-04304",
+      "word": "olijfolie",
+      "displayWord": "de olijfolie",
+      "lemma": "olijfolie",
+      "article": "de",
+      "level": "A1",
+      "pos": "noun",
+      "meaning": "olive oil",
+      "category": "food",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_11.js:67",
+        "words_core_5.js:80"
+      ],
+      "senses": [
+        {
+          "source": "words_core_11.js:67",
+          "pos": "noun",
+          "meaning": "olive oil"
+        },
+        {
+          "source": "words_core_5.js:80",
+          "pos": "noun",
+          "meaning": "olive oil"
+        }
+      ]
+    },
+    {
+      "id": "nl-04333",
+      "word": "gereedschap",
+      "displayWord": "het gereedschap",
+      "lemma": "gereedschap",
+      "article": "het",
+      "level": "A2",
+      "pos": "noun",
+      "meaning": "tools, implement; tools",
+      "category": "crafts",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_11.js:84",
+        "words_core_5.js:613",
+        "words_core_5.js:1015"
+      ],
+      "senses": [
+        {
+          "source": "words_core_11.js:84",
+          "pos": "noun",
+          "meaning": "tools, implement"
+        },
+        {
+          "source": "words_core_5.js:613",
+          "pos": "noun",
+          "meaning": "tools"
+        },
+        {
+          "source": "words_core_5.js:1015",
+          "pos": "noun",
+          "meaning": "tools"
+        }
+      ]
+    },
+    {
+      "id": "nl-04403",
+      "word": "steiger",
+      "displayWord": "de steiger",
+      "lemma": "steiger",
+      "article": "de",
+      "level": "A2",
+      "pos": "noun",
+      "meaning": "scaffolding; pier, jetty; pier, jetty, scaffolding",
+      "category": "crafts",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_11.js:105",
+        "words_core_6.js:90"
+      ],
+      "senses": [
+        {
+          "source": "words_core_11.js:105",
+          "pos": "noun",
+          "meaning": "scaffolding; pier, jetty"
+        },
+        {
+          "source": "words_core_6.js:90",
+          "pos": "noun",
+          "meaning": "pier, jetty, scaffolding"
+        }
+      ]
+    },
+    {
+      "id": "nl-04437",
+      "word": "zijde",
+      "displayWord": "de zijde",
+      "lemma": "zijde",
+      "article": "de",
+      "level": "A2",
+      "pos": "noun",
+      "meaning": "silk; side, page; side, flank, page",
+      "category": "materials",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_11.js:129",
+        "words_core_20.js:79",
+        "words_core_4.js:209"
+      ],
+      "senses": [
+        {
+          "source": "words_core_11.js:129",
+          "pos": "noun",
+          "meaning": "silk; side, page"
+        },
+        {
+          "source": "words_core_20.js:79",
+          "pos": "noun",
+          "meaning": "silk; side, flank, page"
+        },
+        {
+          "source": "words_core_4.js:209",
+          "pos": "noun",
+          "meaning": "silk"
+        }
+      ]
+    },
+    {
+      "id": "nl-04448",
+      "word": "steen",
+      "displayWord": "de steen",
+      "lemma": "steen",
+      "article": "de",
+      "level": "A1",
+      "pos": "noun",
+      "meaning": "stone, rock; brick; pit (fruit); brick, tile; stone",
+      "category": "crafts",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_11.js:140",
+        "words_core_20.js:63",
+        "words_core_4.js:548"
+      ],
+      "senses": [
+        {
+          "source": "words_core_11.js:140",
+          "pos": "noun",
+          "meaning": "stone, rock; brick; pit (fruit)"
+        },
+        {
+          "source": "words_core_20.js:63",
+          "pos": "noun",
+          "meaning": "stone, rock; brick, tile"
+        },
+        {
+          "source": "words_core_4.js:548",
+          "pos": "noun",
+          "meaning": "stone"
+        }
+      ]
+    },
+    {
+      "id": "nl-04645",
+      "word": "binnenband",
+      "displayWord": "de binnenband",
+      "lemma": "binnenband",
+      "article": "de",
+      "level": "A2",
+      "pos": "noun",
+      "meaning": "inner tube (bicycle); inner tube",
+      "category": "transport",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_12.js:18",
+        "words_core_4.js:316"
+      ],
+      "senses": [
+        {
+          "source": "words_core_12.js:18",
+          "pos": "noun",
+          "meaning": "inner tube (bicycle)"
+        },
+        {
+          "source": "words_core_4.js:316",
+          "pos": "noun",
+          "meaning": "inner tube"
+        }
+      ]
+    },
+    {
+      "id": "nl-04743",
+      "word": "beeldscherm",
+      "displayWord": "het beeldscherm",
+      "lemma": "beeldscherm",
+      "article": "het",
+      "level": "A2",
+      "pos": "noun",
+      "meaning": "display screen, monitor; monitor, display screen",
+      "category": "technology",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_12.js:51",
+        "words_core_6.js:3"
+      ],
+      "senses": [
+        {
+          "source": "words_core_12.js:51",
+          "pos": "noun",
+          "meaning": "display screen, monitor"
+        },
+        {
+          "source": "words_core_6.js:3",
+          "pos": "noun",
+          "meaning": "monitor, display screen"
+        }
+      ]
+    },
+    {
+      "id": "nl-04879",
+      "word": "sparen",
+      "displayWord": "sparen",
+      "lemma": "sparen",
+      "article": null,
+      "level": "A1",
+      "pos": "verb",
+      "meaning": "to save (money/energy)",
+      "category": "communication",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_12.js:94"
+      ],
+      "senses": [
+        {
+          "source": "words_core_12.js:94",
+          "pos": "verb",
+          "meaning": "to save (money/energy)"
+        }
+      ]
+    },
+    {
+      "id": "nl-04924",
+      "word": "berging",
+      "displayWord": "de berging",
+      "lemma": "berging",
+      "article": "de",
+      "level": "A2",
+      "pos": "noun",
+      "meaning": "storage space, shed, locker",
+      "category": "housing",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_13.js:12"
+      ],
+      "senses": [
+        {
+          "source": "words_core_13.js:12",
+          "pos": "noun",
+          "meaning": "storage space, shed, locker"
+        }
+      ]
+    },
+    {
+      "id": "nl-04948",
+      "word": "deurmat",
+      "displayWord": "de deurmat",
+      "lemma": "deurmat",
+      "article": "de",
+      "level": "A1",
+      "pos": "noun",
+      "meaning": "doormat",
+      "category": "housing",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_13.js:19",
+        "words_core_5.js:477"
+      ],
+      "senses": [
+        {
+          "source": "words_core_13.js:19",
+          "pos": "noun",
+          "meaning": "doormat"
+        },
+        {
+          "source": "words_core_5.js:477",
+          "pos": "noun",
+          "meaning": "doormat"
+        }
+      ]
+    },
+    {
+      "id": "nl-04965",
+      "word": "makelaar",
+      "displayWord": "de makelaar",
+      "lemma": "makelaar",
+      "article": "de",
+      "level": "A2",
+      "pos": "noun",
+      "meaning": "real estate agent, estate broker; estate agent",
+      "category": "housing",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_13.js:24",
+        "words_core_5.js:470"
+      ],
+      "senses": [
+        {
+          "source": "words_core_13.js:24",
+          "pos": "noun",
+          "meaning": "real estate agent, estate broker"
+        },
+        {
+          "source": "words_core_5.js:470",
+          "pos": "noun",
+          "meaning": "estate agent"
+        }
+      ]
+    },
+    {
+      "id": "nl-04997",
+      "word": "arbeidsovereenkomst",
+      "displayWord": "de arbeidsovereenkomst",
+      "lemma": "arbeidsovereenkomst",
+      "article": "de",
+      "level": "B1",
+      "pos": "noun",
+      "meaning": "employment contract",
+      "category": "work",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_13.js:36"
+      ],
+      "senses": [
+        {
+          "source": "words_core_13.js:36",
+          "pos": "noun",
+          "meaning": "employment contract"
+        }
+      ]
+    },
+    {
+      "id": "nl-05066",
+      "word": "hogeschool",
+      "displayWord": "de hogeschool",
+      "lemma": "hogeschool",
+      "article": "de",
+      "level": "A2",
+      "pos": "noun",
+      "meaning": "university of applied sciences (HBO); university of applied sciences",
+      "category": "education",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_13.js:62",
+        "words_core_4.js:376",
+        "words_core_7.js:253"
+      ],
+      "senses": [
+        {
+          "source": "words_core_13.js:62",
+          "pos": "noun",
+          "meaning": "university of applied sciences (HBO)"
+        },
+        {
+          "source": "words_core_4.js:376",
+          "pos": "noun",
+          "meaning": "university of applied sciences"
+        },
+        {
+          "source": "words_core_7.js:253",
+          "pos": "noun",
+          "meaning": "university of applied sciences"
+        }
+      ]
+    },
+    {
+      "id": "nl-05183",
+      "word": "getuige",
+      "displayWord": "de getuige",
+      "lemma": "getuige",
+      "article": "de",
+      "level": "B1",
+      "pos": "noun",
+      "meaning": "witness (legal/ceremonial); witness",
+      "category": "society",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_14.js:29",
+        "words_core_6b.js:62"
+      ],
+      "senses": [
+        {
+          "source": "words_core_14.js:29",
+          "pos": "noun",
+          "meaning": "witness (legal/ceremonial)"
+        },
+        {
+          "source": "words_core_6b.js:62",
+          "pos": "noun",
+          "meaning": "witness"
+        }
+      ]
+    },
+    {
+      "id": "nl-05207",
+      "word": "verwondering",
+      "displayWord": "de verwondering",
+      "lemma": "verwondering",
+      "article": "de",
+      "level": "B1",
+      "pos": "noun",
+      "meaning": "wonder, amazement, astonishment; wonder, amazement",
+      "category": "emotion",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_14.js:40",
+        "words_core_6a.js:16"
+      ],
+      "senses": [
+        {
+          "source": "words_core_14.js:40",
+          "pos": "noun",
+          "meaning": "wonder, amazement, astonishment"
+        },
+        {
+          "source": "words_core_6a.js:16",
+          "pos": "noun",
+          "meaning": "wonder, amazement"
+        }
+      ]
+    },
+    {
+      "id": "nl-05215",
+      "word": "moed",
+      "displayWord": "de moed",
+      "lemma": "moed",
+      "article": "de",
+      "level": "A2",
+      "pos": "noun",
+      "meaning": "courage, bravery, valor",
+      "category": "emotion",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_14.js:47"
+      ],
+      "senses": [
+        {
+          "source": "words_core_14.js:47",
+          "pos": "noun",
+          "meaning": "courage, bravery, valor"
+        }
+      ]
+    },
+    {
+      "id": "nl-05228",
+      "word": "duin",
+      "displayWord": "het duin",
+      "lemma": "duin",
+      "article": "het",
+      "level": "A1",
+      "pos": "noun",
+      "meaning": "sand dune; dune; dune, sand dune",
+      "category": "geography",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_14.js:54",
+        "words_core_4.js:540",
+        "words_core_9.js:142"
+      ],
+      "senses": [
+        {
+          "source": "words_core_14.js:54",
+          "pos": "noun",
+          "meaning": "sand dune"
+        },
+        {
+          "source": "words_core_4.js:540",
+          "pos": "noun",
+          "meaning": "dune"
+        },
+        {
+          "source": "words_core_9.js:142",
+          "pos": "noun",
+          "meaning": "dune, sand dune"
+        }
+      ]
+    },
+    {
+      "id": "nl-05378",
+      "word": "beslissen",
+      "displayWord": "beslissen",
+      "lemma": "beslissen",
+      "article": null,
+      "level": "A2",
+      "pos": "verb",
+      "meaning": "to decide, determine, resolve; to decide; to decide, determine",
+      "category": "society",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_14.js:99",
+        "words_core_2.js:176",
+        "words_core_7.js:80"
+      ],
+      "senses": [
+        {
+          "source": "words_core_14.js:99",
+          "pos": "verb",
+          "meaning": "to decide, determine, resolve"
+        },
+        {
+          "source": "words_core_2.js:176",
+          "pos": "verb",
+          "meaning": "to decide"
+        },
+        {
+          "source": "words_core_7.js:80",
+          "pos": "verb",
+          "meaning": "to decide, determine"
+        }
+      ]
+    },
+    {
+      "id": "nl-05417",
+      "word": "optreden",
+      "displayWord": "het optreden",
+      "lemma": "optreden",
+      "article": "het",
+      "level": "A2",
+      "pos": "noun",
+      "meaning": "performance, gig; demeanor, action",
+      "category": "arts",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_15.js:12"
+      ],
+      "senses": [
+        {
+          "source": "words_core_15.js:12",
+          "pos": "noun",
+          "meaning": "performance, gig; demeanor, action"
+        }
+      ]
+    },
+    {
+      "id": "nl-05838",
+      "word": "moeilijk",
+      "displayWord": "moeilijk",
+      "lemma": "moeilijk",
+      "article": null,
+      "level": "A1",
+      "pos": "adjective",
+      "meaning": "difficult, hard, tough, tricky; difficult, hard, tough",
+      "category": "descriptors",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_16.js:46",
+        "words_core_8.js:79"
+      ],
+      "senses": [
+        {
+          "source": "words_core_16.js:46",
+          "pos": "adjective",
+          "meaning": "difficult, hard, tough, tricky"
+        },
+        {
+          "source": "words_core_8.js:79",
+          "pos": "adjective",
+          "meaning": "difficult, hard, tough"
+        }
+      ]
+    },
+    {
+      "id": "nl-05988",
+      "word": "fysiotherapeut",
+      "displayWord": "de fysiotherapeut",
+      "lemma": "fysiotherapeut",
+      "article": "de",
+      "level": "A2",
+      "pos": "noun",
+      "meaning": "physiotherapist, physical therapist; physiotherapist",
+      "category": "professions",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_17.js:6",
+        "words_core_3.js:9"
+      ],
+      "senses": [
+        {
+          "source": "words_core_17.js:6",
+          "pos": "noun",
+          "meaning": "physiotherapist, physical therapist"
+        },
+        {
+          "source": "words_core_3.js:9",
+          "pos": "noun",
+          "meaning": "physiotherapist"
+        }
+      ]
+    },
+    {
+      "id": "nl-06048",
+      "word": "werkplaats",
+      "displayWord": "de werkplaats",
+      "lemma": "werkplaats",
+      "article": "de",
+      "level": "A2",
+      "pos": "noun",
+      "meaning": "workshop, garage, atelier",
+      "category": "business",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_17.js:54"
+      ],
+      "senses": [
+        {
+          "source": "words_core_17.js:54",
+          "pos": "noun",
+          "meaning": "workshop, garage, atelier"
+        }
+      ]
+    },
+    {
+      "id": "nl-06139",
+      "word": "opwarming",
+      "displayWord": "de opwarming",
+      "lemma": "opwarming",
+      "article": "de",
+      "level": "B1",
+      "pos": "noun",
+      "meaning": "warming (global warming); warming; warming, global warming",
+      "category": "environment",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_18.js:3",
+        "words_core_4.js:643",
+        "words_core_6b.js:42"
+      ],
+      "senses": [
+        {
+          "source": "words_core_18.js:3",
+          "pos": "noun",
+          "meaning": "warming (global warming)"
+        },
+        {
+          "source": "words_core_4.js:643",
+          "pos": "noun",
+          "meaning": "warming"
+        },
+        {
+          "source": "words_core_6b.js:42",
+          "pos": "noun",
+          "meaning": "warming, global warming"
+        }
+      ]
+    },
+    {
+      "id": "nl-06231",
+      "word": "ademen",
+      "displayWord": "ademen",
+      "lemma": "ademen",
+      "article": null,
+      "level": "A1",
+      "pos": "verb",
+      "meaning": "to breathe, respire; to breathe",
+      "category": "body",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_18.js:63",
+        "words_core_2.js:65"
+      ],
+      "senses": [
+        {
+          "source": "words_core_18.js:63",
+          "pos": "verb",
+          "meaning": "to breathe, respire"
+        },
+        {
+          "source": "words_core_2.js:65",
+          "pos": "verb",
+          "meaning": "to breathe"
+        }
+      ]
+    },
+    {
+      "id": "nl-06255",
+      "word": "haasten",
+      "displayWord": "haasten",
+      "lemma": "haasten",
+      "article": null,
+      "level": "A2",
+      "pos": "verb",
+      "meaning": "to hurry, rush, make haste",
+      "category": "action",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_18.js:67"
+      ],
+      "senses": [
+        {
+          "source": "words_core_18.js:67",
+          "pos": "verb",
+          "meaning": "to hurry, rush, make haste"
+        }
+      ]
+    },
+    {
+      "id": "nl-06454",
+      "word": "samenvatten",
+      "displayWord": "samenvatten",
+      "lemma": "samenvatten",
+      "article": null,
+      "level": "A2",
+      "pos": "verb",
+      "meaning": "to summarize, condense, outline; to summarise",
+      "category": "academic",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_19.js:53",
+        "words_core_2.js:240"
+      ],
+      "senses": [
+        {
+          "source": "words_core_19.js:53",
+          "pos": "verb",
+          "meaning": "to summarize, condense, outline"
+        },
+        {
+          "source": "words_core_2.js:240",
+          "pos": "verb",
+          "meaning": "to summarise"
+        }
+      ]
+    },
+    {
+      "id": "nl-06648",
+      "word": "slijpen",
+      "displayWord": "slijpen",
+      "lemma": "slijpen",
+      "article": null,
+      "level": "B1",
+      "pos": "verb",
+      "meaning": "to sharpen, to grind",
+      "category": "actions",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_2.js:7"
+      ],
+      "senses": [
+        {
+          "source": "words_core_2.js:7",
+          "pos": "verb",
+          "meaning": "to sharpen, to grind"
+        }
+      ]
+    },
+    {
+      "id": "nl-07158",
+      "word": "dek",
+      "displayWord": "het dek",
+      "lemma": "dek",
+      "article": "het",
+      "level": "B1",
+      "pos": "noun",
+      "meaning": "deck",
+      "category": "transport",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_4.js:323"
+      ],
+      "senses": [
+        {
+          "source": "words_core_4.js:323",
+          "pos": "noun",
+          "meaning": "deck"
+        }
+      ]
+    },
+    {
+      "id": "nl-07231",
+      "word": "afwassen",
+      "displayWord": "afwassen",
+      "lemma": "afwassen",
+      "article": null,
+      "level": "A2",
+      "pos": "verb",
+      "meaning": "to wash up (dishes)",
+      "category": "daily-life",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_2.js:98"
+      ],
+      "senses": [
+        {
+          "source": "words_core_2.js:98",
+          "pos": "verb",
+          "meaning": "to wash up (dishes)"
+        }
+      ]
+    },
+    {
+      "id": "nl-07327",
+      "word": "doorgaan",
+      "displayWord": "doorgaan",
+      "lemma": "doorgaan",
+      "article": null,
+      "level": "A2",
+      "pos": "verb",
+      "meaning": "to continue; to continue, proceed",
+      "category": "actions",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_2.js:141",
+        "words_core_7.js:49"
+      ],
+      "senses": [
+        {
+          "source": "words_core_2.js:141",
+          "pos": "verb",
+          "meaning": "to continue"
+        },
+        {
+          "source": "words_core_7.js:49",
+          "pos": "verb",
+          "meaning": "to continue, proceed"
+        }
+      ]
+    },
+    {
+      "id": "nl-07336",
+      "word": "doorbrengen",
+      "displayWord": "doorbrengen",
+      "lemma": "doorbrengen",
+      "article": null,
+      "level": "B1",
+      "pos": "verb",
+      "meaning": "to spend (time)",
+      "category": "time",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_2.js:145"
+      ],
+      "senses": [
+        {
+          "source": "words_core_2.js:145",
+          "pos": "verb",
+          "meaning": "to spend (time)"
+        }
+      ]
+    },
+    {
+      "id": "nl-07356",
+      "word": "terugsturen",
+      "displayWord": "terugsturen",
+      "lemma": "terugsturen",
+      "article": null,
+      "level": "B1",
+      "pos": "verb",
+      "meaning": "to send back",
+      "category": "tech",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_2.js:153"
+      ],
+      "senses": [
+        {
+          "source": "words_core_2.js:153",
+          "pos": "verb",
+          "meaning": "to send back"
+        }
+      ]
+    },
+    {
+      "id": "nl-07516",
+      "word": "beantwoorden",
+      "displayWord": "beantwoorden",
+      "lemma": "beantwoorden",
+      "article": null,
+      "level": "B1",
+      "pos": "verb",
+      "meaning": "to answer (letter/question)",
+      "category": "actions",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_2.js:192"
+      ],
+      "senses": [
+        {
+          "source": "words_core_2.js:192",
+          "pos": "verb",
+          "meaning": "to answer (letter/question)"
+        }
+      ]
+    },
+    {
+      "id": "nl-08514",
+      "word": "thuiskomen",
+      "displayWord": "thuiskomen",
+      "lemma": "thuiskomen",
+      "article": null,
+      "level": "A2",
+      "pos": "verb",
+      "meaning": "to come home",
+      "category": "daily-life",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_2.js:358"
+      ],
+      "senses": [
+        {
+          "source": "words_core_2.js:358",
+          "pos": "verb",
+          "meaning": "to come home"
+        }
+      ]
+    },
+    {
+      "id": "nl-08596",
+      "word": "snikken",
+      "displayWord": "snikken",
+      "lemma": "snikken",
+      "article": null,
+      "level": "B1",
+      "pos": "verb",
+      "meaning": "to sob",
+      "category": "feelings",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_2.js:385"
+      ],
+      "senses": [
+        {
+          "source": "words_core_2.js:385",
+          "pos": "verb",
+          "meaning": "to sob"
+        }
+      ]
+    },
+    {
+      "id": "nl-08930",
+      "word": "mediteren",
+      "displayWord": "mediteren",
+      "lemma": "mediteren",
+      "article": null,
+      "level": "B1",
+      "pos": "verb",
+      "meaning": "to meditate",
+      "category": "hobbies",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_2.js:423"
+      ],
+      "senses": [
+        {
+          "source": "words_core_2.js:423",
+          "pos": "verb",
+          "meaning": "to meditate"
+        }
+      ]
+    },
+    {
+      "id": "nl-09068",
+      "word": "inplannen",
+      "displayWord": "inplannen",
+      "lemma": "inplannen",
+      "article": null,
+      "level": "B1",
+      "pos": "verb",
+      "meaning": "to schedule",
+      "category": "work",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_2.js:445"
+      ],
+      "senses": [
+        {
+          "source": "words_core_2.js:445",
+          "pos": "verb",
+          "meaning": "to schedule"
+        }
+      ]
+    },
+    {
+      "id": "nl-09071",
+      "word": "verzetten",
+      "displayWord": "verzetten",
+      "lemma": "verzetten",
+      "article": null,
+      "level": "B1",
+      "pos": "verb",
+      "meaning": "to move (appointment)",
+      "category": "abstract",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_2.js:446"
+      ],
+      "senses": [
+        {
+          "source": "words_core_2.js:446",
+          "pos": "verb",
+          "meaning": "to move (appointment)"
+        }
+      ]
+    },
+    {
+      "id": "nl-09330",
+      "word": "onderstrepen",
+      "displayWord": "onderstrepen",
+      "lemma": "onderstrepen",
+      "article": null,
+      "level": "B1",
+      "pos": "verb",
+      "meaning": "to underline",
+      "category": "abstract",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_2.js:492"
+      ],
+      "senses": [
+        {
+          "source": "words_core_2.js:492",
+          "pos": "verb",
+          "meaning": "to underline"
+        }
+      ]
+    },
+    {
+      "id": "nl-09696",
+      "word": "verkorten",
+      "displayWord": "verkorten",
+      "lemma": "verkorten",
+      "article": null,
+      "level": "B1",
+      "pos": "verb",
+      "meaning": "to shorten",
+      "category": "abstract",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_2.js:543"
+      ],
+      "senses": [
+        {
+          "source": "words_core_2.js:543",
+          "pos": "verb",
+          "meaning": "to shorten"
+        }
+      ]
+    },
+    {
+      "id": "nl-09844",
+      "word": "onweer",
+      "displayWord": "het onweer",
+      "lemma": "onweer",
+      "article": "het",
+      "level": "A1",
+      "pos": "noun",
+      "meaning": "thunderstorm, storm; thunderstorm",
+      "category": "weather",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_21.js:61",
+        "words_core_4.js:486",
+        "words_core_9.js:182"
+      ],
+      "senses": [
+        {
+          "source": "words_core_21.js:61",
+          "pos": "noun",
+          "meaning": "thunderstorm, storm"
+        },
+        {
+          "source": "words_core_4.js:486",
+          "pos": "noun",
+          "meaning": "thunderstorm"
+        },
+        {
+          "source": "words_core_9.js:182",
+          "pos": "noun",
+          "meaning": "thunderstorm"
+        }
+      ]
+    },
+    {
+      "id": "nl-09871",
+      "word": "motregen",
+      "displayWord": "de motregen",
+      "lemma": "motregen",
+      "article": "de",
+      "level": "A2",
+      "pos": "noun",
+      "meaning": "drizzle, mizzle; drizzle",
+      "category": "nature",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_21.js:68",
+        "words_core_4.js:476",
+        "words_core_9.js:181"
+      ],
+      "senses": [
+        {
+          "source": "words_core_21.js:68",
+          "pos": "noun",
+          "meaning": "drizzle, mizzle"
+        },
+        {
+          "source": "words_core_4.js:476",
+          "pos": "noun",
+          "meaning": "drizzle"
+        },
+        {
+          "source": "words_core_9.js:181",
+          "pos": "noun",
+          "meaning": "drizzle"
+        }
+      ]
+    },
+    {
+      "id": "nl-09880",
+      "word": "dooi",
+      "displayWord": "de dooi",
+      "lemma": "dooi",
+      "article": "de",
+      "level": "A2",
+      "pos": "noun",
+      "meaning": "thaw, thawing weather; thaw",
+      "category": "weather",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_21.js:74",
+        "words_core_4.js:515"
+      ],
+      "senses": [
+        {
+          "source": "words_core_21.js:74",
+          "pos": "noun",
+          "meaning": "thaw, thawing weather"
+        },
+        {
+          "source": "words_core_4.js:515",
+          "pos": "noun",
+          "meaning": "thaw"
+        }
+      ]
+    },
+    {
+      "id": "nl-09898",
+      "word": "verdwalen",
+      "displayWord": "verdwalen",
+      "lemma": "verdwalen",
+      "article": null,
+      "level": "B1",
+      "pos": "verb",
+      "meaning": "to get lost",
+      "category": "travel",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_2.js:569"
+      ],
+      "senses": [
+        {
+          "source": "words_core_2.js:569",
+          "pos": "verb",
+          "meaning": "to get lost"
+        }
+      ]
+    },
+    {
+      "id": "nl-10397",
+      "word": "map",
+      "displayWord": "de map",
+      "lemma": "map",
+      "article": "de",
+      "level": "A1",
+      "pos": "noun",
+      "meaning": "folder, binder, map case; folder; folder, directory; map/folder",
+      "category": "office",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_21.js:23",
+        "words_core_3a.js:87",
+        "words_core_5.js:839",
+        "words_core_6.js:11"
+      ],
+      "senses": [
+        {
+          "source": "words_core_21.js:23",
+          "pos": "noun",
+          "meaning": "folder, binder, map case"
+        },
+        {
+          "source": "words_core_3a.js:87",
+          "pos": "noun",
+          "meaning": "folder"
+        },
+        {
+          "source": "words_core_5.js:839",
+          "pos": "noun",
+          "meaning": "folder"
+        },
+        {
+          "source": "words_core_6.js:11",
+          "pos": "noun",
+          "meaning": "folder, directory; map/folder"
+        }
+      ]
+    },
+    {
+      "id": "nl-10432",
+      "word": "kaartspel",
+      "displayWord": "het kaartspel",
+      "lemma": "kaartspel",
+      "article": "het",
+      "level": "A1",
+      "pos": "noun",
+      "meaning": "card game",
+      "category": "leisure",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_21.js:32"
+      ],
+      "senses": [
+        {
+          "source": "words_core_21.js:32",
+          "pos": "noun",
+          "meaning": "card game"
+        }
+      ]
+    },
+    {
+      "id": "nl-10529",
+      "word": "warmte",
+      "displayWord": "de warmte",
+      "lemma": "warmte",
+      "article": "de",
+      "level": "A1",
+      "pos": "noun",
+      "meaning": "warmth, heat, cordiality",
+      "category": "weather",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_21.js:82"
+      ],
+      "senses": [
+        {
+          "source": "words_core_21.js:82",
+          "pos": "noun",
+          "meaning": "warmth, heat, cordiality"
+        }
+      ]
+    },
+    {
+      "id": "nl-10560",
+      "word": "knoop",
+      "displayWord": "de knoop",
+      "lemma": "knoop",
+      "article": "de",
+      "level": "A1",
+      "pos": "noun",
+      "meaning": "button (clothes); knot; node; button",
+      "category": "home",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_21.js:98",
+        "words_core_3b.js:41"
+      ],
+      "senses": [
+        {
+          "source": "words_core_21.js:98",
+          "pos": "noun",
+          "meaning": "button (clothes); knot; node"
+        },
+        {
+          "source": "words_core_3b.js:41",
+          "pos": "noun",
+          "meaning": "button; knot"
+        }
+      ]
+    },
+    {
+      "id": "nl-10628",
+      "word": "spade",
+      "displayWord": "de spade",
+      "lemma": "spade",
+      "article": "de",
+      "level": "A2",
+      "pos": "noun",
+      "meaning": "spade, shovel; spade",
+      "category": "home",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_21.js:116",
+        "words_core_5.js:647"
+      ],
+      "senses": [
+        {
+          "source": "words_core_21.js:116",
+          "pos": "noun",
+          "meaning": "spade, shovel"
+        },
+        {
+          "source": "words_core_5.js:647",
+          "pos": "noun",
+          "meaning": "spade"
+        }
+      ]
+    },
+    {
+      "id": "nl-10632",
+      "word": "heggenschaar",
+      "displayWord": "de heggenschaar",
+      "lemma": "heggenschaar",
+      "article": "de",
+      "level": "A2",
+      "pos": "noun",
+      "meaning": "hedge shears, hedge clippers; hedge trimmer",
+      "category": "home",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_21.js:117",
+        "words_core_5.js:643"
+      ],
+      "senses": [
+        {
+          "source": "words_core_21.js:117",
+          "pos": "noun",
+          "meaning": "hedge shears, hedge clippers"
+        },
+        {
+          "source": "words_core_5.js:643",
+          "pos": "noun",
+          "meaning": "hedge trimmer"
+        }
+      ]
+    },
+    {
+      "id": "nl-10640",
+      "word": "sproeier",
+      "displayWord": "de sproeier",
+      "lemma": "sproeier",
+      "article": "de",
+      "level": "A2",
+      "pos": "noun",
+      "meaning": "sprinkler, spray nozzle",
+      "category": "home",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_21.js:119"
+      ],
+      "senses": [
+        {
+          "source": "words_core_21.js:119",
+          "pos": "noun",
+          "meaning": "sprinkler, spray nozzle"
+        }
+      ]
+    },
+    {
+      "id": "nl-10691",
+      "word": "kapitein",
+      "displayWord": "de kapitein",
+      "lemma": "kapitein",
+      "article": "de",
+      "level": "A2",
+      "pos": "noun",
+      "meaning": "captain, skipper",
+      "category": "work",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_3.js:49"
+      ],
+      "senses": [
+        {
+          "source": "words_core_3.js:49",
+          "pos": "noun",
+          "meaning": "captain, skipper"
+        }
+      ]
+    },
+    {
+      "id": "nl-10695",
+      "word": "matroos",
+      "displayWord": "de matroos",
+      "lemma": "matroos",
+      "article": "de",
+      "level": "B1",
+      "pos": "noun",
+      "meaning": "sailor, seaman",
+      "category": "work",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_3.js:50"
+      ],
+      "senses": [
+        {
+          "source": "words_core_3.js:50",
+          "pos": "noun",
+          "meaning": "sailor, seaman"
+        }
+      ]
+    },
+    {
+      "id": "nl-10711",
+      "word": "caissière",
+      "displayWord": "de caissière",
+      "lemma": "caissière",
+      "article": "de",
+      "level": "A1",
+      "pos": "noun",
+      "meaning": "cashier (female)",
+      "category": "work",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_3.js:67"
+      ],
+      "senses": [
+        {
+          "source": "words_core_3.js:67",
+          "pos": "noun",
+          "meaning": "cashier (female)"
+        }
+      ]
+    },
+    {
+      "id": "nl-10727",
+      "word": "gids",
+      "displayWord": "de gids",
+      "lemma": "gids",
+      "article": "de",
+      "level": "A1",
+      "pos": "noun",
+      "meaning": "guide, tour guide; directory",
+      "category": "work",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_3.js:82"
+      ],
+      "senses": [
+        {
+          "source": "words_core_3.js:82",
+          "pos": "noun",
+          "meaning": "guide, tour guide; directory"
+        }
+      ]
+    },
+    {
+      "id": "nl-11088",
+      "word": "aanvoerder",
+      "displayWord": "de aanvoerder",
+      "lemma": "aanvoerder",
+      "article": "de",
+      "level": "B1",
+      "pos": "noun",
+      "meaning": "captain (team)",
+      "category": "sports",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_3a.js:119"
+      ],
+      "senses": [
+        {
+          "source": "words_core_3a.js:119",
+          "pos": "noun",
+          "meaning": "captain (team)"
+        }
+      ]
+    },
+    {
+      "id": "nl-11126",
+      "word": "ballet",
+      "displayWord": "het ballet",
+      "lemma": "ballet",
+      "article": "het",
+      "level": "B1",
+      "pos": "noun",
+      "meaning": "ballet",
+      "category": "culture",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_3a.js:137"
+      ],
+      "senses": [
+        {
+          "source": "words_core_3a.js:137",
+          "pos": "noun",
+          "meaning": "ballet"
+        }
+      ]
+    },
+    {
+      "id": "nl-11138",
+      "word": "achtbaan",
+      "displayWord": "de achtbaan",
+      "lemma": "achtbaan",
+      "article": "de",
+      "level": "B1",
+      "pos": "noun",
+      "meaning": "roller coaster",
+      "category": "culture",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_3a.js:144"
+      ],
+      "senses": [
+        {
+          "source": "words_core_3a.js:144",
+          "pos": "noun",
+          "meaning": "roller coaster"
+        }
+      ]
+    },
+    {
+      "id": "nl-11156",
+      "word": "beeldhouwer",
+      "displayWord": "de beeldhouwer",
+      "lemma": "beeldhouwer",
+      "article": "de",
+      "level": "B1",
+      "pos": "noun",
+      "meaning": "sculptor",
+      "category": "culture",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_3a.js:152",
+        "words_core_6b.js:191"
+      ],
+      "senses": [
+        {
+          "source": "words_core_3a.js:152",
+          "pos": "noun",
+          "meaning": "sculptor"
+        },
+        {
+          "source": "words_core_6b.js:191",
+          "pos": "noun",
+          "meaning": "sculptor"
+        }
+      ]
+    },
+    {
+      "id": "nl-11183",
+      "word": "verjaardagsfeest",
+      "displayWord": "het verjaardagsfeest",
+      "lemma": "verjaardagsfeest",
+      "article": "het",
+      "level": "A2",
+      "pos": "noun",
+      "meaning": "birthday party",
+      "category": "culture",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_3a.js:161"
+      ],
+      "senses": [
+        {
+          "source": "words_core_3a.js:161",
+          "pos": "noun",
+          "meaning": "birthday party"
+        }
+      ]
+    },
+    {
+      "id": "nl-11337",
+      "word": "spaghetti",
+      "displayWord": "de spaghetti",
+      "lemma": "spaghetti",
+      "article": "de",
+      "level": "A2",
+      "pos": "noun",
+      "meaning": "spaghetti",
+      "category": "food",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_3a.js:224"
+      ],
+      "senses": [
+        {
+          "source": "words_core_3a.js:224",
+          "pos": "noun",
+          "meaning": "spaghetti"
+        }
+      ]
+    },
+    {
+      "id": "nl-11341",
+      "word": "patat",
+      "displayWord": "de patat",
+      "lemma": "patat",
+      "article": "de",
+      "level": "A1",
+      "pos": "noun",
+      "meaning": "fries, chips; chips, fries; fries",
+      "category": "food",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_3a.js:228",
+        "words_core_5.js:45",
+        "words_core_5.js:65"
+      ],
+      "senses": [
+        {
+          "source": "words_core_3a.js:228",
+          "pos": "noun",
+          "meaning": "fries, chips"
+        },
+        {
+          "source": "words_core_5.js:45",
+          "pos": "noun",
+          "meaning": "chips, fries"
+        },
+        {
+          "source": "words_core_5.js:65",
+          "pos": "noun",
+          "meaning": "fries"
+        }
+      ]
+    },
+    {
+      "id": "nl-11384",
+      "word": "wok",
+      "displayWord": "de wok",
+      "lemma": "wok",
+      "article": "de",
+      "level": "B1",
+      "pos": "noun",
+      "meaning": "wok",
+      "category": "home",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_3a.js:257",
+        "words_core_5.js:230"
+      ],
+      "senses": [
+        {
+          "source": "words_core_3a.js:257",
+          "pos": "noun",
+          "meaning": "wok"
+        },
+        {
+          "source": "words_core_5.js:230",
+          "pos": "noun",
+          "meaning": "wok"
+        }
+      ]
+    },
+    {
+      "id": "nl-11412",
+      "word": "toilet",
+      "displayWord": "het toilet",
+      "lemma": "toilet",
+      "article": "het",
+      "level": "A1",
+      "pos": "noun",
+      "meaning": "toilet; toilet, restroom",
+      "category": "home",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_3a.js:268",
+        "words_core_3b.js:64"
+      ],
+      "senses": [
+        {
+          "source": "words_core_3a.js:268",
+          "pos": "noun",
+          "meaning": "toilet"
+        },
+        {
+          "source": "words_core_3b.js:64",
+          "pos": "noun",
+          "meaning": "toilet, restroom"
+        }
+      ]
+    },
+    {
+      "id": "nl-11415",
+      "word": "kraan",
+      "displayWord": "de kraan",
+      "lemma": "kraan",
+      "article": "de",
+      "level": "A1",
+      "pos": "noun",
+      "meaning": "tap; tap, faucet; crane",
+      "category": "home",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_3a.js:272",
+        "words_core_3b.js:124"
+      ],
+      "senses": [
+        {
+          "source": "words_core_3a.js:272",
+          "pos": "noun",
+          "meaning": "tap"
+        },
+        {
+          "source": "words_core_3b.js:124",
+          "pos": "noun",
+          "meaning": "tap, faucet; crane"
+        }
+      ]
+    },
+    {
+      "id": "nl-11428",
+      "word": "deodorant",
+      "displayWord": "de deodorant",
+      "lemma": "deodorant",
+      "article": "de",
+      "level": "B1",
+      "pos": "noun",
+      "meaning": "deodorant",
+      "category": "home",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_3a.js:284"
+      ],
+      "senses": [
+        {
+          "source": "words_core_3a.js:284",
+          "pos": "noun",
+          "meaning": "deodorant"
+        }
+      ]
+    },
+    {
+      "id": "nl-11572",
+      "word": "kruidenthee",
+      "displayWord": "de kruidenthee",
+      "lemma": "kruidenthee",
+      "article": "de",
+      "level": "B1",
+      "pos": "noun",
+      "meaning": "herbal tea",
+      "category": "food",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_3a.js:343",
+        "words_core_5.js:193"
+      ],
+      "senses": [
+        {
+          "source": "words_core_3a.js:343",
+          "pos": "noun",
+          "meaning": "herbal tea"
+        },
+        {
+          "source": "words_core_5.js:193",
+          "pos": "noun",
+          "meaning": "herbal tea"
+        }
+      ]
+    },
+    {
+      "id": "nl-11586",
+      "word": "glühwein",
+      "displayWord": "de glühwein",
+      "lemma": "glühwein",
+      "article": "de",
+      "level": "B1",
+      "pos": "noun",
+      "meaning": "mulled wine",
+      "category": "drink",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_3a.js:351"
+      ],
+      "senses": [
+        {
+          "source": "words_core_3a.js:351",
+          "pos": "noun",
+          "meaning": "mulled wine"
+        }
+      ]
+    },
+    {
+      "id": "nl-11732",
+      "word": "rundvlees",
+      "displayWord": "het rundvlees",
+      "lemma": "rundvlees",
+      "article": "het",
+      "level": "A2",
+      "pos": "noun",
+      "meaning": "beef",
+      "category": "food",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_3a.js:400",
+        "words_core_5.js:37"
+      ],
+      "senses": [
+        {
+          "source": "words_core_3a.js:400",
+          "pos": "noun",
+          "meaning": "beef"
+        },
+        {
+          "source": "words_core_5.js:37",
+          "pos": "noun",
+          "meaning": "beef"
+        }
+      ]
+    },
+    {
+      "id": "nl-11757",
+      "word": "granola",
+      "displayWord": "de granola",
+      "lemma": "granola",
+      "article": "de",
+      "level": "B1",
+      "pos": "noun",
+      "meaning": "granola",
+      "category": "food",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_3a.js:417"
+      ],
+      "senses": [
+        {
+          "source": "words_core_3a.js:417",
+          "pos": "noun",
+          "meaning": "granola"
+        }
+      ]
+    },
+    {
+      "id": "nl-11808",
+      "word": "zwembroek",
+      "displayWord": "de zwembroek",
+      "lemma": "zwembroek",
+      "article": "de",
+      "level": "A2",
+      "pos": "noun",
+      "meaning": "swimming trunks",
+      "category": "clothing",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_3b.js:27",
+        "words_core_4.js:186"
+      ],
+      "senses": [
+        {
+          "source": "words_core_3b.js:27",
+          "pos": "noun",
+          "meaning": "swimming trunks"
+        },
+        {
+          "source": "words_core_4.js:186",
+          "pos": "noun",
+          "meaning": "swimming trunks"
+        }
+      ]
+    },
+    {
+      "id": "nl-11833",
+      "word": "parasol",
+      "displayWord": "de parasol",
+      "lemma": "parasol",
+      "article": "de",
+      "level": "A2",
+      "pos": "noun",
+      "meaning": "sunshade, parasol; parasol",
+      "category": "clothing",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_3b.js:46",
+        "words_core_5.js:656"
+      ],
+      "senses": [
+        {
+          "source": "words_core_3b.js:46",
+          "pos": "noun",
+          "meaning": "sunshade, parasol"
+        },
+        {
+          "source": "words_core_5.js:656",
+          "pos": "noun",
+          "meaning": "parasol"
+        }
+      ]
+    },
+    {
+      "id": "nl-11849",
+      "word": "armband",
+      "displayWord": "de armband",
+      "lemma": "armband",
+      "article": "de",
+      "level": "A2",
+      "pos": "noun",
+      "meaning": "bracelet",
+      "category": "clothing",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_3b.js:51"
+      ],
+      "senses": [
+        {
+          "source": "words_core_3b.js:51",
+          "pos": "noun",
+          "meaning": "bracelet"
+        }
+      ]
+    },
+    {
+      "id": "nl-12061",
+      "word": "airconditioning",
+      "displayWord": "de airconditioning",
+      "lemma": "airconditioning",
+      "article": "de",
+      "level": "A2",
+      "pos": "noun",
+      "meaning": "air conditioning",
+      "category": "home",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_3b.js:203",
+        "words_core_5.js:575"
+      ],
+      "senses": [
+        {
+          "source": "words_core_3b.js:203",
+          "pos": "noun",
+          "meaning": "air conditioning"
+        },
+        {
+          "source": "words_core_5.js:575",
+          "pos": "noun",
+          "meaning": "air conditioning"
+        }
+      ]
+    },
+    {
+      "id": "nl-12157",
+      "word": "kuit",
+      "displayWord": "de kuit",
+      "lemma": "kuit",
+      "article": "de",
+      "level": "B1",
+      "pos": "noun",
+      "meaning": "calf (leg)",
+      "category": "body",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_4.js:58"
+      ],
+      "senses": [
+        {
+          "source": "words_core_4.js:58",
+          "pos": "noun",
+          "meaning": "calf (leg)"
+        }
+      ]
+    },
+    {
+      "id": "nl-12177",
+      "word": "dijbeen",
+      "displayWord": "het dijbeen",
+      "lemma": "dijbeen",
+      "article": "het",
+      "level": "B2",
+      "pos": "noun",
+      "meaning": "thigh bone",
+      "category": "body",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_4.js:63"
+      ],
+      "senses": [
+        {
+          "source": "words_core_4.js:63",
+          "pos": "noun",
+          "meaning": "thigh bone"
+        }
+      ]
+    },
+    {
+      "id": "nl-12390",
+      "word": "spijkerstof",
+      "displayWord": "de spijkerstof",
+      "lemma": "spijkerstof",
+      "article": "de",
+      "level": "B2",
+      "pos": "noun",
+      "meaning": "denim",
+      "category": "clothing",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_4.js:212"
+      ],
+      "senses": [
+        {
+          "source": "words_core_4.js:212",
+          "pos": "noun",
+          "meaning": "denim"
+        }
+      ]
+    },
+    {
+      "id": "nl-12541",
+      "word": "opstap",
+      "displayWord": "de opstap",
+      "lemma": "opstap",
+      "article": "de",
+      "level": "B2",
+      "pos": "noun",
+      "meaning": "boarding step",
+      "category": "transport",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_4.js:296"
+      ],
+      "senses": [
+        {
+          "source": "words_core_4.js:296",
+          "pos": "noun",
+          "meaning": "boarding step"
+        }
+      ]
+    },
+    {
+      "id": "nl-12558",
+      "word": "rijstrook",
+      "displayWord": "de rijstrook",
+      "lemma": "rijstrook",
+      "article": "de",
+      "level": "B1",
+      "pos": "noun",
+      "meaning": "lane (traffic)",
+      "category": "transport",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_4.js:304"
+      ],
+      "senses": [
+        {
+          "source": "words_core_4.js:304",
+          "pos": "noun",
+          "meaning": "lane (traffic)"
+        }
+      ]
+    },
+    {
+      "id": "nl-12566",
+      "word": "pech",
+      "displayWord": "de pech",
+      "lemma": "pech",
+      "article": "de",
+      "level": "B1",
+      "pos": "noun",
+      "meaning": "breakdown; bad luck",
+      "category": "transport",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_4.js:306",
+        "words_core_6a.js:75"
+      ],
+      "senses": [
+        {
+          "source": "words_core_4.js:306",
+          "pos": "noun",
+          "meaning": "breakdown"
+        },
+        {
+          "source": "words_core_6a.js:75",
+          "pos": "noun",
+          "meaning": "bad luck"
+        }
+      ]
+    },
+    {
+      "id": "nl-12567",
+      "word": "wegenwacht",
+      "displayWord": "de wegenwacht",
+      "lemma": "wegenwacht",
+      "article": "de",
+      "level": "B1",
+      "pos": "noun",
+      "meaning": "roadside assistance",
+      "category": "transport",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_4.js:307"
+      ],
+      "senses": [
+        {
+          "source": "words_core_4.js:307",
+          "pos": "noun",
+          "meaning": "roadside assistance"
+        }
+      ]
+    },
+    {
+      "id": "nl-12603",
+      "word": "mast",
+      "displayWord": "de mast",
+      "lemma": "mast",
+      "article": "de",
+      "level": "B1",
+      "pos": "noun",
+      "meaning": "mast",
+      "category": "transport",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_4.js:322"
+      ],
+      "senses": [
+        {
+          "source": "words_core_4.js:322",
+          "pos": "noun",
+          "meaning": "mast"
+        }
+      ]
+    },
+    {
+      "id": "nl-12641",
+      "word": "container",
+      "displayWord": "de container",
+      "lemma": "container",
+      "article": "de",
+      "level": "B1",
+      "pos": "noun",
+      "meaning": "container",
+      "category": "transport",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_4.js:332",
+        "words_core_4.js:433"
+      ],
+      "senses": [
+        {
+          "source": "words_core_4.js:332",
+          "pos": "noun",
+          "meaning": "container"
+        },
+        {
+          "source": "words_core_4.js:433",
+          "pos": "noun",
+          "meaning": "container"
+        }
+      ]
+    },
+    {
+      "id": "nl-12654",
+      "word": "tol",
+      "displayWord": "de tol",
+      "lemma": "tol",
+      "article": "de",
+      "level": "B1",
+      "pos": "noun",
+      "meaning": "toll",
+      "category": "transport",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_4.js:336"
+      ],
+      "senses": [
+        {
+          "source": "words_core_4.js:336",
+          "pos": "noun",
+          "meaning": "toll"
+        }
+      ]
+    },
+    {
+      "id": "nl-12743",
+      "word": "uitgang",
+      "displayWord": "de uitgang",
+      "lemma": "uitgang",
+      "article": "de",
+      "level": "A2",
+      "pos": "noun",
+      "meaning": "exit",
+      "category": "city",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_4.js:423"
+      ],
+      "senses": [
+        {
+          "source": "words_core_4.js:423",
+          "pos": "noun",
+          "meaning": "exit"
+        }
+      ]
+    },
+    {
+      "id": "nl-13079",
+      "word": "erts",
+      "displayWord": "het erts",
+      "lemma": "erts",
+      "article": "het",
+      "level": "B2",
+      "pos": "noun",
+      "meaning": "ore",
+      "category": "nature",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_4.js:557"
+      ],
+      "senses": [
+        {
+          "source": "words_core_4.js:557",
+          "pos": "noun",
+          "meaning": "ore"
+        }
+      ]
+    },
+    {
+      "id": "nl-13384",
+      "word": "leefgebied",
+      "displayWord": "het leefgebied",
+      "lemma": "leefgebied",
+      "article": "het",
+      "level": "B2",
+      "pos": "noun",
+      "meaning": "habitat",
+      "category": "nature",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_4.js:690"
+      ],
+      "senses": [
+        {
+          "source": "words_core_4.js:690",
+          "pos": "noun",
+          "meaning": "habitat"
+        }
+      ]
+    },
+    {
+      "id": "nl-13513",
+      "word": "zuivel",
+      "displayWord": "de zuivel",
+      "lemma": "zuivel",
+      "article": "de",
+      "level": "B1",
+      "pos": "noun",
+      "meaning": "dairy products",
+      "category": "food",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_5.js:31"
+      ],
+      "senses": [
+        {
+          "source": "words_core_5.js:31",
+          "pos": "noun",
+          "meaning": "dairy products"
+        }
+      ]
+    },
+    {
+      "id": "nl-13588",
+      "word": "boerenkool",
+      "displayWord": "de boerenkool",
+      "lemma": "boerenkool",
+      "article": "de",
+      "level": "B1",
+      "pos": "noun",
+      "meaning": "kale",
+      "category": "food",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_5.js:120"
+      ],
+      "senses": [
+        {
+          "source": "words_core_5.js:120",
+          "pos": "noun",
+          "meaning": "kale"
+        }
+      ]
+    },
+    {
+      "id": "nl-13629",
+      "word": "pistache",
+      "displayWord": "de pistache",
+      "lemma": "pistache",
+      "article": "de",
+      "level": "B2",
+      "pos": "noun",
+      "meaning": "pistachio",
+      "category": "food",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_5.js:150"
+      ],
+      "senses": [
+        {
+          "source": "words_core_5.js:150",
+          "pos": "noun",
+          "meaning": "pistachio"
+        }
+      ]
+    },
+    {
+      "id": "nl-13809",
+      "word": "dönerzaak",
+      "displayWord": "de dönerzaak",
+      "lemma": "dönerzaak",
+      "article": "de",
+      "level": "B2",
+      "pos": "noun",
+      "meaning": "doner kebab shop",
+      "category": "food",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_5.js:279"
+      ],
+      "senses": [
+        {
+          "source": "words_core_5.js:279",
+          "pos": "noun",
+          "meaning": "doner kebab shop"
+        }
+      ]
+    },
+    {
+      "id": "nl-13825",
+      "word": "gastheer",
+      "displayWord": "de gastheer",
+      "lemma": "gastheer",
+      "article": "de",
+      "level": "B1",
+      "pos": "noun",
+      "meaning": "host",
+      "category": "people",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_5.js:289"
+      ],
+      "senses": [
+        {
+          "source": "words_core_5.js:289",
+          "pos": "noun",
+          "meaning": "host"
+        }
+      ]
+    },
+    {
+      "id": "nl-14127",
+      "word": "vestiging",
+      "displayWord": "de vestiging",
+      "lemma": "vestiging",
+      "article": "de",
+      "level": "B1",
+      "pos": "noun",
+      "meaning": "branch",
+      "category": "shopping",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_5.js:404"
+      ],
+      "senses": [
+        {
+          "source": "words_core_5.js:404",
+          "pos": "noun",
+          "meaning": "branch"
+        }
+      ]
+    },
+    {
+      "id": "nl-14266",
+      "word": "rijtjeshuis",
+      "displayWord": "het rijtjeshuis",
+      "lemma": "rijtjeshuis",
+      "article": "het",
+      "level": "B1",
+      "pos": "noun",
+      "meaning": "terraced house",
+      "category": "home",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_5.js:453"
+      ],
+      "senses": [
+        {
+          "source": "words_core_5.js:453",
+          "pos": "noun",
+          "meaning": "terraced house"
+        }
+      ]
+    },
+    {
+      "id": "nl-14319",
+      "word": "koopcontract",
+      "displayWord": "het koopcontract",
+      "lemma": "koopcontract",
+      "article": "het",
+      "level": "B2",
+      "pos": "noun",
+      "meaning": "purchase contract",
+      "category": "home",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_5.js:472"
+      ],
+      "senses": [
+        {
+          "source": "words_core_5.js:472",
+          "pos": "noun",
+          "meaning": "purchase contract"
+        }
+      ]
+    },
+    {
+      "id": "nl-14402",
+      "word": "staande lamp",
+      "displayWord": "de staande lamp",
+      "lemma": "staande lamp",
+      "article": "de",
+      "level": "B1",
+      "pos": "noun",
+      "meaning": "floor lamp",
+      "category": "home",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_5.js:523"
+      ],
+      "senses": [
+        {
+          "source": "words_core_5.js:523",
+          "pos": "noun",
+          "meaning": "floor lamp"
+        }
+      ]
+    },
+    {
+      "id": "nl-14459",
+      "word": "droogrek",
+      "displayWord": "het droogrek",
+      "lemma": "droogrek",
+      "article": "het",
+      "level": "B1",
+      "pos": "noun",
+      "meaning": "clothes horse",
+      "category": "home",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_5.js:550"
+      ],
+      "senses": [
+        {
+          "source": "words_core_5.js:550",
+          "pos": "noun",
+          "meaning": "clothes horse"
+        }
+      ]
+    },
+    {
+      "id": "nl-14565",
+      "word": "meterkast",
+      "displayWord": "de meterkast",
+      "lemma": "meterkast",
+      "article": "de",
+      "level": "B1",
+      "pos": "noun",
+      "meaning": "meter cupboard",
+      "category": "home",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_5.js:598"
+      ],
+      "senses": [
+        {
+          "source": "words_core_5.js:598",
+          "pos": "noun",
+          "meaning": "meter cupboard"
+        }
+      ]
+    },
+    {
+      "id": "nl-14597",
+      "word": "reparatie",
+      "displayWord": "de reparatie",
+      "lemma": "reparatie",
+      "article": "de",
+      "level": "B1",
+      "pos": "noun",
+      "meaning": "repair",
+      "category": "home",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_5.js:607"
+      ],
+      "senses": [
+        {
+          "source": "words_core_5.js:607",
+          "pos": "noun",
+          "meaning": "repair"
+        }
+      ]
+    },
+    {
+      "id": "nl-14601",
+      "word": "renovatie",
+      "displayWord": "de renovatie",
+      "lemma": "renovatie",
+      "article": "de",
+      "level": "B1",
+      "pos": "noun",
+      "meaning": "renovation",
+      "category": "home",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_5.js:608"
+      ],
+      "senses": [
+        {
+          "source": "words_core_5.js:608",
+          "pos": "noun",
+          "meaning": "renovation"
+        }
+      ]
+    },
+    {
+      "id": "nl-14632",
+      "word": "plamuurmes",
+      "displayWord": "het plamuurmes",
+      "lemma": "plamuurmes",
+      "article": "het",
+      "level": "B2",
+      "pos": "noun",
+      "meaning": "putty knife",
+      "category": "home",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_5.js:631"
+      ],
+      "senses": [
+        {
+          "source": "words_core_5.js:631",
+          "pos": "noun",
+          "meaning": "putty knife"
+        }
+      ]
+    },
+    {
+      "id": "nl-14722",
+      "word": "inrichting",
+      "displayWord": "de inrichting",
+      "lemma": "inrichting",
+      "article": "de",
+      "level": "B1",
+      "pos": "noun",
+      "meaning": "furnishing, interior",
+      "category": "home",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_5.js:668"
+      ],
+      "senses": [
+        {
+          "source": "words_core_5.js:668",
+          "pos": "noun",
+          "meaning": "furnishing, interior"
+        }
+      ]
+    },
+    {
+      "id": "nl-14739",
+      "word": "versiering",
+      "displayWord": "de versiering",
+      "lemma": "versiering",
+      "article": "de",
+      "level": "B1",
+      "pos": "noun",
+      "meaning": "decoration",
+      "category": "home",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_5.js:675"
+      ],
+      "senses": [
+        {
+          "source": "words_core_5.js:675",
+          "pos": "noun",
+          "meaning": "decoration"
+        }
+      ]
+    },
+    {
+      "id": "nl-14923",
+      "word": "loonsverhoging",
+      "displayWord": "de loonsverhoging",
+      "lemma": "loonsverhoging",
+      "article": "de",
+      "level": "B1",
+      "pos": "noun",
+      "meaning": "pay rise",
+      "category": "work",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_5.js:769"
+      ],
+      "senses": [
+        {
+          "source": "words_core_5.js:769",
+          "pos": "noun",
+          "meaning": "pay rise"
+        }
+      ]
+    },
+    {
+      "id": "nl-14931",
+      "word": "ontslag",
+      "displayWord": "het ontslag",
+      "lemma": "ontslag",
+      "article": "het",
+      "level": "A2",
+      "pos": "noun",
+      "meaning": "dismissal, resignation",
+      "category": "work",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_5.js:771"
+      ],
+      "senses": [
+        {
+          "source": "words_core_5.js:771",
+          "pos": "noun",
+          "meaning": "dismissal, resignation"
+        }
+      ]
+    },
+    {
+      "id": "nl-15103",
+      "word": "aanvraag",
+      "displayWord": "de aanvraag",
+      "lemma": "aanvraag",
+      "article": "de",
+      "level": "B1",
+      "pos": "noun",
+      "meaning": "application, request",
+      "category": "work",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_5.js:842"
+      ],
+      "senses": [
+        {
+          "source": "words_core_5.js:842",
+          "pos": "noun",
+          "meaning": "application, request"
+        }
+      ]
+    },
+    {
+      "id": "nl-15139",
+      "word": "compromis",
+      "displayWord": "het compromis",
+      "lemma": "compromis",
+      "article": "het",
+      "level": "B2",
+      "pos": "noun",
+      "meaning": "compromise",
+      "category": "work",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_5.js:857"
+      ],
+      "senses": [
+        {
+          "source": "words_core_5.js:857",
+          "pos": "noun",
+          "meaning": "compromise"
+        }
+      ]
+    },
+    {
+      "id": "nl-15327",
+      "word": "kamer van koophandel",
+      "displayWord": "de kamer van koophandel",
+      "lemma": "kamer van koophandel",
+      "article": "de",
+      "level": "B2",
+      "pos": "noun",
+      "meaning": "chamber of commerce",
+      "category": "work",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_5.js:921"
+      ],
+      "senses": [
+        {
+          "source": "words_core_5.js:921",
+          "pos": "noun",
+          "meaning": "chamber of commerce"
+        }
+      ]
+    },
+    {
+      "id": "nl-15458",
+      "word": "voorraad",
+      "displayWord": "de voorraad",
+      "lemma": "voorraad",
+      "article": "de",
+      "level": "B1",
+      "pos": "noun",
+      "meaning": "stock",
+      "category": "work",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_5.js:964"
+      ],
+      "senses": [
+        {
+          "source": "words_core_5.js:964",
+          "pos": "noun",
+          "meaning": "stock"
+        }
+      ]
+    },
+    {
+      "id": "nl-15508",
+      "word": "arbeidsmigrant",
+      "displayWord": "de arbeidsmigrant",
+      "lemma": "arbeidsmigrant",
+      "article": "de",
+      "level": "B2",
+      "pos": "noun",
+      "meaning": "labour migrant",
+      "category": "work",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_5.js:985"
+      ],
+      "senses": [
+        {
+          "source": "words_core_5.js:985",
+          "pos": "noun",
+          "meaning": "labour migrant"
+        }
+      ]
+    },
+    {
+      "id": "nl-15512",
+      "word": "uitzendkracht",
+      "displayWord": "de uitzendkracht",
+      "lemma": "uitzendkracht",
+      "article": "de",
+      "level": "B2",
+      "pos": "noun",
+      "meaning": "temp worker",
+      "category": "work",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_5.js:986"
+      ],
+      "senses": [
+        {
+          "source": "words_core_5.js:986",
+          "pos": "noun",
+          "meaning": "temp worker"
+        }
+      ]
+    },
+    {
+      "id": "nl-15607",
+      "word": "veiligheidsgordel",
+      "displayWord": "de veiligheidsgordel",
+      "lemma": "veiligheidsgordel",
+      "article": "de",
+      "level": "B2",
+      "pos": "noun",
+      "meaning": "seat belt, safety belt",
+      "category": "work",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_5.js:1021"
+      ],
+      "senses": [
+        {
+          "source": "words_core_5.js:1021",
+          "pos": "noun",
+          "meaning": "seat belt, safety belt"
+        }
+      ]
+    },
+    {
+      "id": "nl-15670",
+      "word": "profiel",
+      "displayWord": "het profiel",
+      "lemma": "profiel",
+      "article": "het",
+      "level": "A2",
+      "pos": "noun",
+      "meaning": "profile",
+      "category": "tech",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_6.js:27"
+      ],
+      "senses": [
+        {
+          "source": "words_core_6.js:27",
+          "pos": "noun",
+          "meaning": "profile"
+        }
+      ]
+    },
+    {
+      "id": "nl-15690",
+      "word": "videocamera",
+      "displayWord": "de videocamera",
+      "lemma": "videocamera",
+      "article": "de",
+      "level": "A2",
+      "pos": "noun",
+      "meaning": "camcorder, video camera",
+      "category": "tech",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_6.js:45"
+      ],
+      "senses": [
+        {
+          "source": "words_core_6.js:45",
+          "pos": "noun",
+          "meaning": "camcorder, video camera"
+        }
+      ]
+    },
+    {
+      "id": "nl-15714",
+      "word": "uitzending",
+      "displayWord": "de uitzending",
+      "lemma": "uitzending",
+      "article": "de",
+      "level": "A2",
+      "pos": "noun",
+      "meaning": "broadcast, transmission",
+      "category": "media",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_6.js:56"
+      ],
+      "senses": [
+        {
+          "source": "words_core_6.js:56",
+          "pos": "noun",
+          "meaning": "broadcast, transmission"
+        }
+      ]
+    },
+    {
+      "id": "nl-15824",
+      "word": "vrezen",
+      "displayWord": "vrezen",
+      "lemma": "vrezen",
+      "article": null,
+      "level": "B1",
+      "pos": "verb",
+      "meaning": "to fear, dread",
+      "category": "actions",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_7.js:146"
+      ],
+      "senses": [
+        {
+          "source": "words_core_7.js:146",
+          "pos": "verb",
+          "meaning": "to fear, dread"
+        }
+      ]
+    },
+    {
+      "id": "nl-15853",
+      "word": "enthousiasme",
+      "displayWord": "het enthousiasme",
+      "lemma": "enthousiasme",
+      "article": "het",
+      "level": "B1",
+      "pos": "noun",
+      "meaning": "enthusiasm",
+      "category": "abstract",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_6a.js:22"
+      ],
+      "senses": [
+        {
+          "source": "words_core_6a.js:22",
+          "pos": "noun",
+          "meaning": "enthusiasm"
+        }
+      ]
+    },
+    {
+      "id": "nl-16035",
+      "word": "ontwerpen",
+      "displayWord": "ontwerpen",
+      "lemma": "ontwerpen",
+      "article": null,
+      "level": "B1",
+      "pos": "verb",
+      "meaning": "to design, draft",
+      "category": "actions",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_7.js:183"
+      ],
+      "senses": [
+        {
+          "source": "words_core_7.js:183",
+          "pos": "verb",
+          "meaning": "to design, draft"
+        }
+      ]
+    },
+    {
+      "id": "nl-16096",
+      "word": "tip",
+      "displayWord": "de tip",
+      "lemma": "tip",
+      "article": "de",
+      "level": "A2",
+      "pos": "noun",
+      "meaning": "tip",
+      "category": "abstract",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_6a.js:121"
+      ],
+      "senses": [
+        {
+          "source": "words_core_6a.js:121",
+          "pos": "noun",
+          "meaning": "tip"
+        }
+      ]
+    },
+    {
+      "id": "nl-16142",
+      "word": "gevolgtrekking",
+      "displayWord": "de gevolgtrekking",
+      "lemma": "gevolgtrekking",
+      "article": "de",
+      "level": "B2",
+      "pos": "noun",
+      "meaning": "inference; conclusion, deduction",
+      "category": "abstract",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_6a.js:142",
+        "words_core_6b.js:23"
+      ],
+      "senses": [
+        {
+          "source": "words_core_6a.js:142",
+          "pos": "noun",
+          "meaning": "inference"
+        },
+        {
+          "source": "words_core_6b.js:23",
+          "pos": "noun",
+          "meaning": "conclusion, deduction"
+        }
+      ]
+    },
+    {
+      "id": "nl-16345",
+      "word": "genetica",
+      "displayWord": "de genetica",
+      "lemma": "genetica",
+      "article": "de",
+      "level": "B2",
+      "pos": "noun",
+      "meaning": "genetics",
+      "category": "science",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_6b.js:30"
+      ],
+      "senses": [
+        {
+          "source": "words_core_6b.js:30",
+          "pos": "noun",
+          "meaning": "genetics"
+        }
+      ]
+    },
+    {
+      "id": "nl-16370",
+      "word": "recht",
+      "displayWord": "het recht",
+      "lemma": "recht",
+      "article": "het",
+      "level": "B1",
+      "pos": "noun",
+      "meaning": "right; law, justice",
+      "category": "law",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_6b.js:52"
+      ],
+      "senses": [
+        {
+          "source": "words_core_6b.js:52",
+          "pos": "noun",
+          "meaning": "right; law, justice"
+        }
+      ]
+    },
+    {
+      "id": "nl-16396",
+      "word": "getuigenis",
+      "displayWord": "de getuigenis",
+      "lemma": "getuigenis",
+      "article": "de",
+      "level": "B2",
+      "pos": "noun",
+      "meaning": "testimony, witness statement",
+      "category": "law",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_6b.js:63"
+      ],
+      "senses": [
+        {
+          "source": "words_core_6b.js:63",
+          "pos": "noun",
+          "meaning": "testimony, witness statement"
+        }
+      ]
+    },
+    {
+      "id": "nl-16411",
+      "word": "sanctie",
+      "displayWord": "de sanctie",
+      "lemma": "sanctie",
+      "article": "de",
+      "level": "B2",
+      "pos": "noun",
+      "meaning": "sanction, penalty",
+      "category": "law",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_6b.js:69"
+      ],
+      "senses": [
+        {
+          "source": "words_core_6b.js:69",
+          "pos": "noun",
+          "meaning": "sanction, penalty"
+        }
+      ]
+    },
+    {
+      "id": "nl-16435",
+      "word": "diefstal",
+      "displayWord": "de diefstal",
+      "lemma": "diefstal",
+      "article": "de",
+      "level": "B1",
+      "pos": "noun",
+      "meaning": "theft, larceny",
+      "category": "law",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_6b.js:78"
+      ],
+      "senses": [
+        {
+          "source": "words_core_6b.js:78",
+          "pos": "noun",
+          "meaning": "theft, larceny"
+        }
+      ]
+    },
+    {
+      "id": "nl-16447",
+      "word": "oplichting",
+      "displayWord": "de oplichting",
+      "lemma": "oplichting",
+      "article": "de",
+      "level": "B2",
+      "pos": "noun",
+      "meaning": "swindle, confidence trick",
+      "category": "law",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_6b.js:81"
+      ],
+      "senses": [
+        {
+          "source": "words_core_6b.js:81",
+          "pos": "noun",
+          "meaning": "swindle, confidence trick"
+        }
+      ]
+    },
+    {
+      "id": "nl-16521",
+      "word": "soevereiniteit",
+      "displayWord": "de soevereiniteit",
+      "lemma": "soevereiniteit",
+      "article": "de",
+      "level": "C1",
+      "pos": "noun",
+      "meaning": "sovereignty",
+      "category": "politics",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_6b.js:118"
+      ],
+      "senses": [
+        {
+          "source": "words_core_6b.js:118",
+          "pos": "noun",
+          "meaning": "sovereignty"
+        }
+      ]
+    },
+    {
+      "id": "nl-16546",
+      "word": "demografie",
+      "displayWord": "de demografie",
+      "lemma": "demografie",
+      "article": "de",
+      "level": "B2",
+      "pos": "noun",
+      "meaning": "demography",
+      "category": "politics",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_6b.js:131"
+      ],
+      "senses": [
+        {
+          "source": "words_core_6b.js:131",
+          "pos": "noun",
+          "meaning": "demography"
+        }
+      ]
+    },
+    {
+      "id": "nl-16568",
+      "word": "obligatie",
+      "displayWord": "de obligatie",
+      "lemma": "obligatie",
+      "article": "de",
+      "level": "B2",
+      "pos": "noun",
+      "meaning": "bond, debenture",
+      "category": "economy",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_6b.js:151"
+      ],
+      "senses": [
+        {
+          "source": "words_core_6b.js:151",
+          "pos": "noun",
+          "meaning": "bond, debenture"
+        }
+      ]
+    },
+    {
+      "id": "nl-16597",
+      "word": "symfonie",
+      "displayWord": "de symfonie",
+      "lemma": "symfonie",
+      "article": "de",
+      "level": "B1",
+      "pos": "noun",
+      "meaning": "symphony",
+      "category": "culture",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_6b.js:195"
+      ],
+      "senses": [
+        {
+          "source": "words_core_6b.js:195",
+          "pos": "noun",
+          "meaning": "symphony"
+        }
+      ]
+    },
+    {
+      "id": "nl-17156",
+      "word": "hoog",
+      "displayWord": "hoog",
+      "lemma": "hoog",
+      "article": null,
+      "level": "A1",
+      "pos": "adjective",
+      "meaning": "high, tall",
+      "category": "qualities",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_8.js:2"
+      ],
+      "senses": [
+        {
+          "source": "words_core_8.js:2",
+          "pos": "adjective",
+          "meaning": "high, tall"
+        }
+      ]
+    },
+    {
+      "id": "nl-17204",
+      "word": "dik",
+      "displayWord": "dik",
+      "lemma": "dik",
+      "article": null,
+      "level": "A1",
+      "pos": "adjective",
+      "meaning": "thick; fat, corpulent",
+      "category": "qualities",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_8.js:10"
+      ],
+      "senses": [
+        {
+          "source": "words_core_8.js:10",
+          "pos": "adjective",
+          "meaning": "thick; fat, corpulent"
+        }
+      ]
+    },
+    {
+      "id": "nl-17227",
+      "word": "donker",
+      "displayWord": "donker",
+      "lemma": "donker",
+      "article": null,
+      "level": "A1",
+      "pos": "adjective",
+      "meaning": "dark, dim",
+      "category": "qualities",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_8.js:14"
+      ],
+      "senses": [
+        {
+          "source": "words_core_8.js:14",
+          "pos": "adjective",
+          "meaning": "dark, dim"
+        }
+      ]
+    },
+    {
+      "id": "nl-17360",
+      "word": "lief",
+      "displayWord": "lief",
+      "lemma": "lief",
+      "article": null,
+      "level": "A1",
+      "pos": "adjective",
+      "meaning": "sweet, dear, cute, lovely",
+      "category": "qualities",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_8.js:44"
+      ],
+      "senses": [
+        {
+          "source": "words_core_8.js:44",
+          "pos": "adjective",
+          "meaning": "sweet, dear, cute, lovely"
+        }
+      ]
+    },
+    {
+      "id": "nl-17422",
+      "word": "kalm",
+      "displayWord": "kalm",
+      "lemma": "kalm",
+      "article": null,
+      "level": "A2",
+      "pos": "adjective",
+      "meaning": "calm, tranquil, composed",
+      "category": "qualities",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_8.js:57"
+      ],
+      "senses": [
+        {
+          "source": "words_core_8.js:57",
+          "pos": "adjective",
+          "meaning": "calm, tranquil, composed"
+        }
+      ]
+    },
+    {
+      "id": "nl-17577",
+      "word": "onmogelijk",
+      "displayWord": "onmogelijk",
+      "lemma": "onmogelijk",
+      "article": null,
+      "level": "A1",
+      "pos": "adjective",
+      "meaning": "impossible",
+      "category": "qualities",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_8.js:99"
+      ],
+      "senses": [
+        {
+          "source": "words_core_8.js:99",
+          "pos": "adjective",
+          "meaning": "impossible"
+        }
+      ]
+    },
+    {
+      "id": "nl-17690",
+      "word": "meteen",
+      "displayWord": "meteen",
+      "lemma": "meteen",
+      "article": null,
+      "level": "A1",
+      "pos": "adverb",
+      "meaning": "right away, at once",
+      "category": "time",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_8.js:129"
+      ],
+      "senses": [
+        {
+          "source": "words_core_8.js:129",
+          "pos": "adverb",
+          "meaning": "right away, at once"
+        }
+      ]
+    },
+    {
+      "id": "nl-17693",
+      "word": "dikwijls",
+      "displayWord": "dikwijls",
+      "lemma": "dikwijls",
+      "article": null,
+      "level": "A2",
+      "pos": "adverb",
+      "meaning": "often, frequently (formal)",
+      "category": "time",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_8.js:137"
+      ],
+      "senses": [
+        {
+          "source": "words_core_8.js:137",
+          "pos": "adverb",
+          "meaning": "often, frequently (formal)"
+        }
+      ]
+    },
+    {
+      "id": "nl-17698",
+      "word": "nauwelijks",
+      "displayWord": "nauwelijks",
+      "lemma": "nauwelijks",
+      "article": null,
+      "level": "A2",
+      "pos": "adverb",
+      "meaning": "hardly, barely, scarcely",
+      "category": "degree",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_8.js:145"
+      ],
+      "senses": [
+        {
+          "source": "words_core_8.js:145",
+          "pos": "adverb",
+          "meaning": "hardly, barely, scarcely"
+        }
+      ]
+    },
+    {
+      "id": "nl-17713",
+      "word": "uiteraard",
+      "displayWord": "uiteraard",
+      "lemma": "uiteraard",
+      "article": null,
+      "level": "B1",
+      "pos": "adverb",
+      "meaning": "of course, naturally, evidently",
+      "category": "modal",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_8.js:166"
+      ],
+      "senses": [
+        {
+          "source": "words_core_8.js:166",
+          "pos": "adverb",
+          "meaning": "of course, naturally, evidently"
+        }
+      ]
+    },
+    {
+      "id": "nl-17727",
+      "word": "voortaan",
+      "displayWord": "voortaan",
+      "lemma": "voortaan",
+      "article": null,
+      "level": "B1",
+      "pos": "adverb",
+      "meaning": "from now on, henceforth",
+      "category": "time",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_8.js:187"
+      ],
+      "senses": [
+        {
+          "source": "words_core_8.js:187",
+          "pos": "adverb",
+          "meaning": "from now on, henceforth"
+        }
+      ]
+    },
+    {
+      "id": "nl-17818",
+      "word": "ree",
+      "displayWord": "de ree",
+      "lemma": "ree",
+      "article": "de",
+      "level": "A2",
+      "pos": "noun",
+      "meaning": "roe deer",
+      "category": "animals",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_9.js:47"
+      ],
+      "senses": [
+        {
+          "source": "words_core_9.js:47",
+          "pos": "noun",
+          "meaning": "roe deer"
+        }
+      ]
+    },
+    {
+      "id": "nl-17914",
+      "word": "kastanjeboom",
+      "displayWord": "de kastanjeboom",
+      "lemma": "kastanjeboom",
+      "article": "de",
+      "level": "A2",
+      "pos": "noun",
+      "meaning": "chestnut tree",
+      "category": "nature",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_9.js:96"
+      ],
+      "senses": [
+        {
+          "source": "words_core_9.js:96",
+          "pos": "noun",
+          "meaning": "chestnut tree"
+        }
+      ]
+    },
+    {
+      "id": "nl-18006",
+      "word": "tsunami",
+      "displayWord": "de tsunami",
+      "lemma": "tsunami",
+      "article": "de",
+      "level": "B1",
+      "pos": "noun",
+      "meaning": "tsunami, tidal wave",
+      "category": "nature",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_9.js:207"
+      ],
+      "senses": [
+        {
+          "source": "words_core_9.js:207",
+          "pos": "noun",
+          "meaning": "tsunami, tidal wave"
+        }
+      ]
+    },
+    {
+      "id": "nl-20069",
+      "word": "spruitje",
+      "displayWord": "het spruitje",
+      "lemma": "spruitje",
+      "article": "het",
+      "level": "B1",
+      "pos": "noun",
+      "meaning": "Brussels sprout",
+      "category": "food",
+      "curated": true,
+      "learnable": true,
+      "sources": [
+        "words_core_5.js:121"
+      ],
+      "senses": [
+        {
+          "source": "words_core_5.js:121",
+          "pos": "noun",
+          "meaning": "Brussels sprout"
+        }
+      ]
+    }
+  ]
+}

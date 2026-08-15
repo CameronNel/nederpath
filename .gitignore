@@ -5,3 +5,8 @@ Thumbs.db
 .tmp/
 artifacts/
 dist/
+mobile/www/
+mobile/node_modules/
+mobile/android/app/build/
+mobile/android/build/
+mobile/android/.gradle/

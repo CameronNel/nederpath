@@ -57,8 +57,9 @@
     constructor() {
       this.store = global.NederStore;
       this.srs = global.NederSRS;
+      this.hub = "learn";
       this.currentTab = "today";
-      this.practiceMode = "flashcards"; // 'flashcards' | 'article_drill' | 'fill_blank' | 'choose_word' | 'spelling' | 'synonyms' | 'morphology' | 'verbs' | 'context'
+      this.practiceMode = null;
       this.selectedLevel = "all";
       this.searchQuery = "";
       this.selectedPos = "all";
@@ -93,10 +94,56 @@
       this.focusIntention = "heading";
       this.bindNav();
       this.bindGlobalKeyboard();
-      this.applyTheme(this.store.state.settings.theme || "dark");
-      this.store.subscribe(() => this.updateHeaderStats());
-      this.updateHeaderStats();
+      this.bindHistory();
+      this.applyTheme();
+      this.store.subscribe(() => this.applyTheme());
+      if (this.shouldShowOnboarding()) {
+        this.renderOnboarding();
+        return;
+      }
       this.render();
+    }
+
+    shouldShowOnboarding() {
+      const user = this.store.state.user || {};
+      if (user.onboardingCompleted === true) return false;
+      if ((user.totalXp || 0) > 0 || (user.streak || 0) > 0) return false;
+      const srs = this.store.state.srs && this.store.state.srs.cards;
+      if (srs && Object.keys(srs).length > 0) return false;
+      return true;
+    }
+
+    renderOnboarding() {
+      const host = document.getElementById("onboarding");
+      const app = document.getElementById("app");
+      if (app) app.hidden = true;
+      if (!host) {
+        this.render();
+        return;
+      }
+      host.hidden = false;
+      host.innerHTML = `
+        <div class="ob-card">
+          <div class="ob-logo">NederPath</div>
+          <p class="ob-tagline">Leer Nederlands in je eigen tempo</p>
+          <h1 class="ob-question">Klaar om te beginnen?</h1>
+          <p class="ob-note">Je voortgang blijft op dit apparaat. Er zijn geen formele examens of certificaten.</p>
+          <div class="ob-actions">
+            <button type="button" class="btn btn-primary" id="ob-finish">Start met leren</button>
+          </div>
+        </div>
+      `;
+      const finish = document.getElementById("ob-finish");
+      if (finish) {
+        finish.addEventListener("click", () => {
+          this.store.state.user.onboardingCompleted = true;
+          this.store.save();
+          host.hidden = true;
+          host.innerHTML = "";
+          if (app) app.hidden = false;
+          this.render();
+        });
+      }
     }
 
     announce(message, priority = "polite") {
@@ -117,26 +164,189 @@
       this.announce(message, type === "error" ? "assertive" : "polite");
     }
 
-    applyTheme(theme) {
-      document.documentElement.setAttribute("data-theme", theme);
+    applyTheme() {
+      const settings = this.store.state.settings || {};
+      const appearance = ["system", "light", "dark"].includes(settings.appearance)
+        ? settings.appearance
+        : (settings.theme === "light" ? "light" : "dark");
+      const accent = ["violet", "graphite", "blue", "red", "yellow", "green", "orange", "gold"].includes(settings.accent)
+        ? settings.accent
+        : "violet";
+      const reduceMotion = settings.reduceMotion === true;
+      let colorMode = appearance;
+      if (appearance === "system") {
+        colorMode = window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+      }
+      document.documentElement.setAttribute("data-theme", accent);
+      document.documentElement.setAttribute("data-color-mode", colorMode);
+      document.documentElement.style.colorScheme = colorMode;
+      document.documentElement.classList.toggle("app-reduced-motion", reduceMotion);
+      const themeMeta = document.querySelector('meta[name="theme-color"]');
+      if (themeMeta) themeMeta.setAttribute("content", colorMode === "light" ? "#ffffff" : "#000000");
     }
 
     bindNav() {
-      const navBtns = document.querySelectorAll(".nav-btn");
-      navBtns.forEach((btn) => {
-        btn.addEventListener("click", () => {
-          const tab = btn.dataset.tab;
-          this.switchTab(tab);
-        });
+      document.querySelectorAll(".bottom-nav .nav-btn").forEach((btn) => {
+        btn.addEventListener("click", () => this.goHub(btn.dataset.nav));
       });
-
-      const brandLink = document.getElementById("brand-link");
-      if (brandLink) {
-        brandLink.addEventListener("click", (e) => {
-          e.preventDefault();
-          this.switchTab("today");
-        });
+      const settingsBtn = document.getElementById("app-settings-button");
+      if (settingsBtn) {
+        settingsBtn.addEventListener("click", () => this.openSettings());
       }
+    }
+
+    bindHistory() {
+      window.addEventListener("popstate", (event) => {
+        const route = event.state && event.state.route;
+        if (route) {
+          this.applyRoute(route);
+          this.focusIntention = "heading";
+          this.render();
+        } else {
+          this.goHub("learn", { replace: true });
+        }
+      });
+      this.replaceRoute();
+    }
+
+    currentRoute() {
+      return {
+        hub: this.hub,
+        tab: this.currentTab,
+        practiceMode: this.practiceMode || null,
+        grammarRuleId: this.activeGrammarRule && this.activeGrammarRule.id ? this.activeGrammarRule.id : null,
+        passageId: this.activePassage && this.activePassage.id ? this.activePassage.id : null
+      };
+    }
+
+    applyRoute(route) {
+      const next = route && typeof route === "object" ? route : {};
+      this.hub = next.hub === "exam" || next.hub === "progress" ? next.hub : "learn";
+      this.currentTab = next.tab || (this.hub === "exam" ? "exam" : this.hub === "progress" ? "progress" : "today");
+      this.practiceMode = next.practiceMode || null;
+      this.pendingGrammarRuleId = next.grammarRuleId || null;
+      this.pendingPassageId = next.passageId || null;
+      if (!this.pendingGrammarRuleId) {
+        this.activeGrammarRule = null;
+        this.activeGrammarExIndex = 0;
+        this.tokenReconstructionPlaced = [];
+        this.activeGrammarAnswers = {};
+      }
+      if (!this.pendingPassageId) {
+        this.activePassage = null;
+        this.activePassageAnswers = {};
+      }
+    }
+
+    resolveRoutedDetails() {
+      if (this.pendingGrammarRuleId && global.NP_GRAMMAR) {
+        const rule = global.NP_GRAMMAR.find((r) => r.id === this.pendingGrammarRuleId);
+        if (rule && (!this.activeGrammarRule || this.activeGrammarRule.id !== rule.id)) {
+          this.activeGrammarRule = rule;
+          this.activeGrammarExIndex = 0;
+          this.tokenReconstructionPlaced = [];
+          this.activeGrammarAnswers = {};
+        } else if (rule) {
+          this.activeGrammarRule = rule;
+        }
+        this.pendingGrammarRuleId = null;
+      }
+      if (this.pendingPassageId && global.NP_COMPREHENSION) {
+        const passage = global.NP_COMPREHENSION.find((p) => p.id === this.pendingPassageId);
+        if (passage && (!this.activePassage || this.activePassage.id !== passage.id)) {
+          this.activePassage = passage;
+          this.activePassageAnswers = {};
+        } else if (passage) {
+          this.activePassage = passage;
+        }
+        this.pendingPassageId = null;
+      }
+    }
+
+    pushRoute() {
+      const state = Object.assign({}, history.state || {}, { route: this.currentRoute() });
+      history.pushState(state, "", location.href);
+    }
+
+    replaceRoute() {
+      const state = Object.assign({}, history.state || {}, { route: this.currentRoute() });
+      history.replaceState(state, "", location.href);
+    }
+
+    goBack() {
+      if (window.history.length > 1) {
+        window.history.back();
+        return;
+      }
+      this.goHub(this.hub === "exam" || this.hub === "progress" ? this.hub : "learn", { replace: true });
+    }
+
+    setNavActive(hub) {
+      document.querySelectorAll(".bottom-nav .nav-btn").forEach((b) => {
+        const isActive = b.dataset.nav === hub;
+        b.classList.toggle("active", isActive);
+        if (isActive) b.setAttribute("aria-current", "page");
+        else b.removeAttribute("aria-current");
+      });
+    }
+
+    showDetailBar(label, onBack) {
+      const bar = document.getElementById("detail-bar");
+      if (!bar) return;
+      bar.hidden = false;
+      bar.innerHTML = `<button class="back-btn" type="button" id="btn-detail-back">‹ ${Learning.escapeHTML(label)}</button>`;
+      const back = document.getElementById("btn-detail-back");
+      if (back) back.addEventListener("click", onBack);
+      const settingsBtn = document.getElementById("app-settings-button");
+      if (settingsBtn) settingsBtn.hidden = true;
+    }
+
+    hideDetailBar() {
+      const bar = document.getElementById("detail-bar");
+      if (bar) {
+        bar.hidden = true;
+        bar.innerHTML = "";
+      }
+      const settingsBtn = document.getElementById("app-settings-button");
+      if (settingsBtn) settingsBtn.hidden = false;
+    }
+
+    goHub(hub, { replace = false } = {}) {
+      this.hub = hub === "exam" || hub === "progress" ? hub : "learn";
+      this.practiceMode = null;
+      this.activeGrammarRule = null;
+      this.activePassage = null;
+      this.currentTab = this.hub === "exam" ? "exam" : this.hub === "progress" ? "progress" : "today";
+      this.focusIntention = "heading";
+      if (!replace) this.pushRoute();
+      this.render();
+      this.scrollToTop();
+    }
+
+    openLearnItem(tab, { practiceMode = null } = {}) {
+      this.hub = "learn";
+      this.currentTab = tab;
+      this.practiceMode = practiceMode;
+      this.activeGrammarRule = null;
+      this.activePassage = null;
+      this.pendingGrammarRuleId = null;
+      this.pendingPassageId = null;
+      this.activeGrammarExIndex = 0;
+      this.tokenReconstructionPlaced = [];
+      this.activeGrammarAnswers = {};
+      this.activePassageAnswers = {};
+      this.focusIntention = "heading";
+      this.pushRoute();
+      this.render();
+      this.scrollToTop();
+    }
+
+    openSettings() {
+      this.currentTab = "settings";
+      this.focusIntention = "heading";
+      this.pushRoute();
+      this.render();
+      this.scrollToTop();
     }
 
     scrollToTop() {
@@ -150,19 +360,16 @@
     }
 
     switchTab(tab) {
-      this.currentTab = tab;
-      this.focusIntention = "heading";
-      document.querySelectorAll(".nav-btn").forEach((b) => {
-        const isActive = b.dataset.tab === tab;
-        b.classList.toggle("active", isActive);
-        if (isActive) {
-          b.setAttribute("aria-current", "page");
-        } else {
-          b.removeAttribute("aria-current");
-        }
-      });
-      this.render();
-      this.scrollToTop();
+      if (tab === "exam" || tab === "progress" || tab === "settings") {
+        if (tab === "settings") this.openSettings();
+        else this.goHub(tab);
+        return;
+      }
+      if (tab === "practice") {
+        this.openLearnItem("review");
+        return;
+      }
+      this.openLearnItem(tab);
     }
 
     bindGlobalKeyboard() {
@@ -175,7 +382,7 @@
           (e.target && e.target.isContentEditable);
 
         // 1, 2, 3, 4 shortcuts for SRS ratings when cards are revealed and not in a text field
-        if (this.currentTab === "practice" && this.practiceMode === "flashcards" && this.session.revealed) {
+        if ((this.currentTab === "practice" || this.currentTab === "review") && this.practiceMode === "flashcards" && this.session.revealed) {
           if (!isFormField && ["1", "2", "3", "4"].includes(e.key)) {
             e.preventDefault();
             this.handleSRSRating(parseInt(e.key, 10));
@@ -188,19 +395,7 @@
       return Number(streak) === 1 ? "dag" : "dagen";
     }
 
-    updateHeaderStats() {
-      const streakEl = document.getElementById("header-streak");
-      const xpEl = document.getElementById("header-xp");
-      const goalEl = document.getElementById("header-goal");
-
-      if (streakEl) streakEl.textContent = this.store.state.user.streak || 0;
-      if (xpEl) xpEl.textContent = (this.store.state.user.totalXp || 0) + " XP";
-      if (goalEl) {
-        const learned = this.store.state.progress.dailyStats ? this.store.state.progress.dailyStats.learnedToday || 0 : 0;
-        const target = this.store.state.settings.dailyGoal || 15;
-        goalEl.textContent = `${learned}/${target}`;
-      }
-    }
+    updateHeaderStats() {}
 
     getRequiredBanksForCurrentView() {
       switch (this.currentTab) {
@@ -213,6 +408,7 @@
           return ["grammar"];
         case "comprehension":
           return ["comprehension"];
+        case "review":
         case "practice": {
           switch (this.practiceMode) {
             case "fill_blank":
@@ -231,6 +427,7 @@
               return [];
           }
         }
+        case "exam":
         case "progress":
         case "settings":
         default:
@@ -238,19 +435,53 @@
       }
     }
 
+    visibleScreenId() {
+      if (this.currentTab === "settings") return "screen-settings";
+      if (this.currentTab === "exam") return "screen-exam";
+      if (this.currentTab === "progress") return "screen-progress";
+      if (this.currentTab === "review" || this.currentTab === "practice") return "screen-review";
+      if (this.currentTab === "comprehension") return "screen-comprehension";
+      if (this.currentTab === "grammar") return "screen-grammar";
+      if (this.currentTab === "words") return "screen-words";
+      if (this.currentTab === "path") return "screen-path";
+      return "screen-today";
+    }
+
     async render() {
+      const app = document.getElementById("app");
+      if (app) app.hidden = false;
+      const onboard = document.getElementById("onboarding");
+      if (onboard && !this.shouldShowOnboarding()) {
+        onboard.hidden = true;
+      }
       const main = document.getElementById("app-main");
       if (!main) return;
+      this.setNavActive(this.hub === "exam" || this.hub === "progress" ? this.hub : "learn");
+      const showBack = this.currentTab !== "today" && this.currentTab !== "exam" && this.currentTab !== "progress";
+      if (showBack) {
+        const backLabel = this.hub === "learn" ? "Leren" : this.hub === "exam" ? "Examen" : "Voortgang";
+        this.showDetailBar(backLabel, () => this.goBack());
+      } else {
+        this.hideDetailBar();
+      }
 
       const currentToken = ++this.navToken;
       const requiredBanks = this.getRequiredBanksForCurrentView();
+      const targetId = this.visibleScreenId();
+      const target = document.getElementById(targetId) || main;
+      document.querySelectorAll(".screen-pane").forEach((pane) => {
+        const active = pane.id === targetId;
+        pane.hidden = !active;
+        if (!active) pane.innerHTML = "";
+      });
+
       const isAlreadyLoaded = requiredBanks.every((b) =>
         global.NederDataLoader ? global.NederDataLoader.isBankLoaded(b) : true
       );
 
       if (!isAlreadyLoaded && global.NederDataLoader) {
-        main.innerHTML = `
-          <div class="card loading-state animate-fade" role="status" aria-live="polite">
+        target.innerHTML = `
+          <div class="card loading-state" role="status" aria-live="polite">
             <div class="spinner" aria-hidden="true"></div>
             <p>Gegevens worden geladen...</p>
           </div>
@@ -262,12 +493,11 @@
         } catch (err) {
           if (this.navToken !== currentToken) return;
           main.removeAttribute("aria-busy");
-          main.innerHTML = `
-            <div class="card error-state animate-fade" role="alert">
-              <div class="error-icon" aria-hidden="true" style="font-size: 2rem;">⚠️</div>
+          target.innerHTML = `
+            <div class="card error-state" role="alert">
               <h2>Gegevens konden niet worden geladen</h2>
               <p>${Learning.escapeHTML(err.message || "Er is een fout opgetreden bij het laden van de gegevens.")}</p>
-              <button class="btn btn-primary" id="btn-retry-load" type="button" style="margin-top: 1rem;">Opnieuw proberen</button>
+              <button class="btn btn-primary" id="btn-retry-load" type="button">Opnieuw proberen</button>
             </div>
           `;
           const retryBtn = document.getElementById("btn-retry-load");
@@ -285,46 +515,50 @@
         }
       }
 
-      // If another navigation occurred while awaiting, discard stale render
       if (this.navToken !== currentToken) return;
       main.removeAttribute("aria-busy");
+      this.resolveRoutedDetails();
       this.sanitizeLoadedWordReferences();
 
       switch (this.currentTab) {
         case "today":
-          main.innerHTML = this.renderTodayView();
+          target.innerHTML = this.renderTodayView();
           this.attachTodayListeners();
           break;
         case "path":
-          main.innerHTML = this.renderPathView();
+          target.innerHTML = this.renderPathView();
           this.attachPathListeners();
           break;
+        case "review":
         case "practice":
-          main.innerHTML = this.renderPracticeView();
+          target.innerHTML = this.renderPracticeView();
           this.attachPracticeListeners();
           break;
         case "grammar":
-          main.innerHTML = this.renderGrammarView();
+          target.innerHTML = this.renderGrammarView();
           this.attachGrammarListeners();
           break;
         case "comprehension":
-          main.innerHTML = this.renderComprehensionView();
+          target.innerHTML = this.renderComprehensionView();
           this.attachComprehensionListeners();
           break;
         case "words":
-          main.innerHTML = this.renderWordsView();
+          target.innerHTML = this.renderWordsView();
           this.attachWordsListeners();
           break;
         case "progress":
-          main.innerHTML = this.renderProgressView();
+          target.innerHTML = this.renderProgressView();
           this.attachProgressListeners();
           break;
         case "settings":
-          main.innerHTML = this.renderSettingsView();
+          target.innerHTML = this.renderSettingsView();
           this.attachSettingsListeners();
           break;
+        case "exam":
+          target.innerHTML = this.renderExamView();
+          break;
         default:
-          main.innerHTML = this.renderTodayView();
+          target.innerHTML = this.renderTodayView();
           this.attachTodayListeners();
       }
 
@@ -353,120 +587,76 @@
       const dailyStats = this.store.state.progress.dailyStats || { learnedToday: 0 };
       const targetGoal = this.store.state.settings.dailyGoal || 15;
       const pct = Math.min(100, Math.round((dailyStats.learnedToday / targetGoal) * 100));
-
       const deckStats = this.srs.getDeckStats();
       const grammarRules = global.NP_GRAMMAR || [];
       const idioms = global.NP_IDIOMS || [];
-
-      // Spotlight rule & idiom of the day based on local day of year
       const now = new Date();
       const startOfYear = new Date(now.getFullYear(), 0, 0);
       const dayOfYear = Math.floor((now - startOfYear) / 1000 / 60 / 60 / 24);
       const spotlightRule = grammarRules[dayOfYear % (grammarRules.length || 1)] || grammarRules[0];
       const todayIdiom = idioms[dayOfYear % (idioms.length || 1)] || idioms[0];
 
+      const learnItems = [
+        { id: "today", tab: "today", title: "Vandaag", sub: "Volgende actie en dagelijkse voortgang", current: true },
+        { id: "path", tab: "path", title: "Leerpad", sub: "8 grammaticasecties in volgorde" },
+        { id: "words", tab: "words", title: "Woorden", sub: "Woordenboek, lidwoorden en zoeken" },
+        { id: "grammar", tab: "grammar", title: "Grammatica", sub: "120 lessen met oefeningen" },
+        { id: "comprehension", tab: "comprehension", title: "Lezen", sub: "120 gecureerde teksten" },
+        { id: "review", tab: "review", title: "Herhalen", sub: `${deckStats.due} kaarten klaar voor herhaling` }
+      ];
+
       return `
-        <div class="today-container animate-fade">
-          <div class="card today-hero">
-            <div class="today-hero-left">
-              <span class="greeting-badge">Welkom terug, ${Learning.escapeHTML(user.name)}!</span>
-              <h1 class="today-title">Klaar voor je dagelijkse portie Nederlands?</h1>
-              <p class="today-subtitle">Je streak staat op <strong>${user.streak} ${this.getStreakNoun(user.streak)}</strong>. Blijf consistent om vloeiend te worden!</p>
-              
-              <div class="daily-progress-box">
-                <div class="progress-info">
-                  <span>Dagdoel Voortgang</span>
-                  <span><strong>${dailyStats.learnedToday}</strong> van de ${targetGoal} items (${pct}%)</span>
-                </div>
-                <div class="progress-bar-track">
-                  <div class="progress-bar-fill" style="width: ${pct}%"></div>
-                </div>
-              </div>
-
-              <div class="hero-actions">
-                <button class="btn btn-primary btn-lg" id="btn-start-daily-review">⚡ Start Dagelijkse Oefening</button>
-                <button class="btn btn-outline btn-lg" id="btn-explore-path">🗺️ Bekijk Leerpad</button>
-              </div>
+        <div class="today-home">
+          <p class="eyebrow">Leren</p>
+          <h1 class="page-title">Wat wil je nu doen?</h1>
+          <p class="today-subtitle page-subtitle">Je streak staat op <strong>${user.streak} ${this.getStreakNoun(user.streak)}</strong>.</p>
+          <div class="card" style="margin-bottom: 14px;">
+            <div class="progress-info" style="display:flex;justify-content:space-between;margin-bottom:8px;">
+              <span>Vandaag</span>
+              <span><strong>${dailyStats.learnedToday}</strong> / ${targetGoal}</span>
             </div>
-
-            <div class="today-hero-stats">
-              <div class="stat-pill">
-                <span class="stat-icon">📚</span>
+            <div class="progress-bar-track" aria-hidden="true"><div class="progress-bar-fill" style="width:${pct}%"></div></div>
+          </div>
+          <div class="hub-list">
+            ${learnItems.map((item) => `
+              <button type="button" class="study-row ${item.current ? "active" : ""}" id="nav-${item.id}" data-learn-tab="${item.tab}">
                 <div>
-                  <div class="stat-val">${deckStats.due} ${deckStats.due === 1 ? 'Kaart' : 'Kaarten'}</div>
-                  <div class="stat-lbl">Klaar voor herhaling</div>
+                  <div class="study-row-title">${item.title}</div>
+                  <div class="study-row-sub">${item.sub}</div>
                 </div>
-              </div>
-              <div class="stat-pill">
-                <span class="stat-icon">🏆</span>
-                <div>
-                  <div class="stat-val">${user.totalXp || 0} XP</div>
-                  <div class="stat-lbl">Totaal verdiend</div>
-                </div>
-              </div>
-              <div class="stat-pill">
-                <span class="stat-icon">🎯</span>
-                <div>
-                  <div class="stat-val">${deckStats.mastered || 0} Woorden</div>
-                  <div class="stat-lbl">Volledig beheerst</div>
-                </div>
-              </div>
+              </button>
+            `).join("")}
+          </div>
+          ${spotlightRule ? `
+            <div class="card" style="margin-top:16px;">
+              <p class="eyebrow">Volgende grammatica</p>
+              <h2 class="spotlight-title">${Learning.escapeHTML(spotlightRule.title)}</h2>
+              <p>${Learning.escapeHTML(spotlightRule.summary)}</p>
+              <button class="btn btn-secondary" id="btn-open-spotlight-grammar" data-rule-id="${Learning.escapeHTML(spotlightRule.id)}" type="button">Open les</button>
             </div>
-          </div>
-
-          <div class="today-grid">
-            <!-- Grammar Spotlight Card -->
-            ${spotlightRule ? `
-              <div class="card spotlight-card">
-                <div class="card-tag">Uitgelichte Grammaticaregel</div>
-                <h3 class="spotlight-title">${Learning.escapeHTML(spotlightRule.title)}</h3>
-                <div class="spotlight-nl">${Learning.escapeHTML(spotlightRule.titleNl)}</div>
-                <p class="spotlight-desc">${Learning.escapeHTML(spotlightRule.summary)}</p>
-                <button class="btn btn-secondary btn-sm" id="btn-open-spotlight-grammar" data-rule-id="${Learning.escapeHTML(spotlightRule.id)}">Bekijk Regel & Oefeningen →</button>
-              </div>
-            ` : ""}
-
-            <!-- Idiom of the Day -->
-            ${todayIdiom ? `
-              <div class="card idiom-card">
-                <div class="idiom-header">
-                  <span class="card-tag">Uitdrukking van de Dag</span>
-                  <span class="grammar-level badge-${Learning.escapeHTML(todayIdiom.level.toLowerCase())}">${Learning.escapeHTML(todayIdiom.level)}</span>
-                </div>
-                <h3 class="idiom-dutch">“${Learning.escapeHTML(todayIdiom.dutch)}”</h3>
-                ${todayIdiom.literal ? `<div class="idiom-literal"><strong>Letterlijk:</strong> <em>${Learning.escapeHTML(todayIdiom.literal)}</em></div>` : ""}
-                <div class="idiom-meaning"><strong>Betekenis:</strong> ${Learning.escapeHTML(todayIdiom.meaning)}</div>
-                <div class="idiom-example-box">
-                  <div class="idiom-example-nl">“${Learning.escapeHTML(todayIdiom.example)}”</div>
-                  ${todayIdiom.exampleEn ? `<div class="idiom-example-en">${Learning.escapeHTML(todayIdiom.exampleEn)}</div>` : ""}
-                </div>
-              </div>
-            ` : ""}
-          </div>
+          ` : ""}
+          ${todayIdiom ? `
+            <div class="card" style="margin-top:12px;">
+              <p class="eyebrow">Uitdrukking van de dag</p>
+              <h2 class="idiom-dutch">“${Learning.escapeHTML(todayIdiom.dutch)}”</h2>
+              <p>${Learning.escapeHTML(todayIdiom.meaning)}</p>
+            </div>
+          ` : ""}
         </div>
       `;
     }
 
     attachTodayListeners() {
-      const startBtn = document.getElementById("btn-start-daily-review");
-      if (startBtn) {
-        startBtn.addEventListener("click", () => {
-          this.switchTab("practice");
+      document.querySelectorAll("[data-learn-tab]").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const tab = btn.dataset.learnTab;
+          if (tab && tab !== "today") this.openLearnItem(tab);
         });
-      }
-
-      const pathBtn = document.getElementById("btn-explore-path");
-      if (pathBtn) {
-        pathBtn.addEventListener("click", () => {
-          this.switchTab("path");
-        });
-      }
-
+      });
       const spotGrammarBtn = document.getElementById("btn-open-spotlight-grammar");
       if (spotGrammarBtn) {
         spotGrammarBtn.addEventListener("click", () => {
-          const ruleId = spotGrammarBtn.dataset.ruleId;
-          this.openGrammarRule(ruleId);
+          this.openGrammarRule(spotGrammarBtn.dataset.ruleId);
         });
       }
     }
@@ -556,29 +746,39 @@
        ========================================================================== */
     renderPracticeView() {
       const modes = [
-        { id: "flashcards", name: "SRS Flitskaarten", icon: "🃏", desc: "Spaced repetition geheugentraining" },
-        { id: "article_drill", name: "De of Het Drill", icon: "🎯", desc: "Bliksemsnelle lidwoord training" },
-        { id: "spelling", name: "Spelling & Typen", icon: "✍️", desc: "Actieve woordproductie en spelling" },
-        { id: "fill_blank", name: "Zin Aanvullen", icon: "📝", desc: "Contextuele woordkeuze in voorbeeldzinnen" },
-        { id: "choose_word", name: "Woord Kiezen", icon: "🔤", desc: "Meerkeuze betekenisassociatie" },
-        { id: "verbs", name: "Werkwoorden", icon: "⚙️", desc: "Tegenwoordige tijd en stam+t vervoegingen" },
-        { id: "synonyms", name: "Synoniemen", icon: "🔄", desc: "Woordenschat uitbreiding & verwantschap" },
-        { id: "morphology", name: "Meervoud & Verklein", icon: "📐", desc: "Zelfstandige naamwoorden transformaties" },
-        { id: "context", name: "Zinscontext", icon: "💬", desc: "Authentieke zinnen en voorbeeldgebruik" }
+        { id: "flashcards", name: "SRS-flitskaarten", desc: "Due-first herhaling met Again/Hard/Good/Easy" },
+        { id: "article_drill", name: "De of het", desc: "Lidwoorddrill op gecureerde zelfstandige naamwoorden" },
+        { id: "spelling", name: "Spelling", desc: "Typ het Nederlandse woord" },
+        { id: "fill_blank", name: "Zin aanvullen", desc: "Kies het ontbrekende woord" },
+        { id: "choose_word", name: "Woord kiezen", desc: "Meerkeuze vanuit de betekenis" },
+        { id: "verbs", name: "Werkwoorden", desc: "Hij/zij-tegenwoordige tijd" },
+        { id: "synonyms", name: "Synoniemen", desc: "Alleen waar de bron synoniemen heeft" },
+        { id: "morphology", name: "Meervoud", desc: "Alleen geverifieerde meervouden" },
+        { id: "context", name: "Zinscontext", desc: "Geautoriseerde voorbeeldzinnen" }
       ];
 
-      return `
-        <div class="practice-container animate-fade">
-          <!-- Practice Mode Selector Bar -->
-          <div class="practice-nav-bar">
-            ${modes.map((m) => `
-              <button class="btn btn-sm ${this.practiceMode === m.id ? 'btn-primary' : 'btn-outline'}" data-mode="${m.id}" aria-pressed="${this.practiceMode === m.id ? 'true' : 'false'}">
-                ${m.icon} ${m.name}
-              </button>
-            `).join("")}
+      if (!this.practiceMode) {
+        return `
+          <div class="review-hub">
+            <p class="eyebrow">Herhalen</p>
+            <h1 class="page-title">Kies een oefening</h1>
+            <p class="page-subtitle">Oefenen leeft hier, niet als permanente knoppenbalk.</p>
+            <div class="hub-list">
+              ${modes.map((m) => `
+                <button type="button" class="study-row" data-mode="${m.id}" aria-pressed="false">
+                  <div>
+                    <div class="study-row-title">${m.name}</div>
+                    <div class="study-row-sub">${m.desc}</div>
+                  </div>
+                </button>
+              `).join("")}
+            </div>
           </div>
+        `;
+      }
 
-          <!-- Active Practice Mode Container -->
+      return `
+        <div class="practice-container">
           <div class="practice-active-zone" id="practice-zone">
             ${this.renderActivePracticeMode()}
           </div>
@@ -620,6 +820,7 @@
           this.session.revealed = false;
           this.session.feedback = null;
           this.session.startXp = (this.store && this.store.state && this.store.state.user && this.store.state.user.totalXp) || 0;
+          this.pushRoute();
           this.render();
         });
       });
@@ -716,7 +917,7 @@
           <button type="button" class="card flashcard flashcard-interactive ${this.session.revealed ? 'revealed' : ''}" id="interactive-flashcard" aria-expanded="${this.session.revealed ? 'true' : 'false'}" aria-label="Flitskaart voor ${Learning.escapeHTML(card.word)}. ${this.session.revealed ? 'Betekenis: ' + Learning.escapeHTML(card.meaning || card.word) : 'Druk op spatie of enter om de betekenis te onthullen'}">
             <span class="flashcard-front">
               <span class="flashcard-pos">${Learning.escapeHTML(card.pos.toUpperCase())}</span>
-              <span class="flashcard-dutch">${displayDutch}</span>
+              <span class="flashcard-dutch long-compound">${displayDutch}</span>
               ${card.example ? `<span class="flashcard-example">“${Learning.escapeHTML(card.example)}”</span>` : ""}
               <span class="flashcard-hint">Tik op de kaart of druk op [Spatie/Enter] om het antwoord te zien</span>
             </span>
@@ -1442,20 +1643,20 @@
               <p class="page-subtitle">120 diepgaande regels, structurele formules, voorbeelden en interactieve oefeningen.</p>
             </div>
             
-            <div class="filter-pills">
+            <div class="level-rail filter-pills" role="tablist" aria-label="CEFR-niveaus">
               ${["all", "A1", "A2", "B1", "B2", "C1"].map((lvl) => `
-                <button class="btn btn-sm ${this.selectedLevel === lvl ? 'btn-primary' : 'btn-outline'}" data-filter-lvl="${lvl}">
+                <button type="button" class="level-chip btn btn-sm ${this.selectedLevel === lvl ? 'btn-primary active' : 'btn-outline'}" data-filter-lvl="${lvl}">
                   ${lvl === 'all' ? 'Alle Niveaus' : lvl}
                 </button>
               `).join("")}
             </div>
           </div>
 
-          <div class="grammar-rules-grid">
+          <div class="grammar-rules-grid study-list">
             ${filtered.map((rule) => {
               const isCompleted = !!this.store.state.progress.grammarCompleted[rule.id];
               return `
-                <button type="button" class="card catalog-card-button grammar-item-card" data-rule-id="${rule.id}" aria-label="Open grammaticales: ${rule.title}">
+                <button type="button" class="study-row catalog-card-button grammar-item-card" data-rule-id="${rule.id}" aria-label="Open grammaticales: ${rule.title}">
                   <div class="grammar-card-top">
                     <span class="grammar-level badge-${rule.level.toLowerCase()}">${rule.level}</span>
                     <span class="grammar-section">Sectie ${rule.section}</span>
@@ -1895,12 +2096,7 @@
 
       const backBtn = document.getElementById("btn-back-grammar");
       if (backBtn) {
-        backBtn.addEventListener("click", () => {
-          this.activeGrammarRule = null;
-          this.activeGrammarAnswers = {};
-          this.tokenReconstructionPlaced = [];
-          this.render();
-        });
+        backBtn.addEventListener("click", () => this.goBack());
       }
 
       document.querySelectorAll(".grammar-item-card").forEach((card) => {
@@ -1924,8 +2120,11 @@
       this.activeGrammarExIndex = 0;
       this.tokenReconstructionPlaced = [];
       this.activeGrammarAnswers = {};
+      this.pendingGrammarRuleId = this.activeGrammarRule ? this.activeGrammarRule.id : null;
+      this.hub = "learn";
       this.currentTab = "grammar";
       this.focusIntention = "heading";
+      this.pushRoute();
       this.render();
       this.scrollToTop();
     }
@@ -1952,20 +2151,20 @@
               <p class="page-subtitle">Gecureerde Nederlandse leesteksten met woordenschat en begripsvragen.</p>
             </div>
 
-            <div class="filter-pills">
+            <div class="level-rail filter-pills" role="tablist" aria-label="CEFR-niveaus">
               ${["all", ...availableLevels].map((lvl) => `
-                <button class="btn btn-sm ${selectedLevel === lvl ? 'btn-primary' : 'btn-outline'}" data-filter-comp-lvl="${lvl}">
+                <button type="button" class="level-chip btn btn-sm ${selectedLevel === lvl ? 'btn-primary active' : 'btn-outline'}" data-filter-comp-lvl="${lvl}">
                   ${lvl === 'all' ? 'Alle Niveaus' : lvl}
                 </button>
               `).join("")}
             </div>
           </div>
 
-          <div class="passages-grid">
+          <div class="passages-grid study-list">
             ${filtered.map((passage) => {
               const isCompleted = !!this.store.state.progress.comprehensionCompleted[passage.id];
               return `
-                <button type="button" class="card catalog-card-button passage-item-card" data-passage-id="${passage.id}" aria-label="Open leestekst: ${passage.title}">
+                <button type="button" class="study-row catalog-card-button passage-item-card" data-passage-id="${passage.id}" aria-label="Open leestekst: ${passage.title}">
                   <div class="passage-card-top">
                     <span class="grammar-level badge-${passage.level.toLowerCase()}">${passage.level}</span>
                     <span class="reading-time">⏱️ ${passage.readingTimeMin || 4} min</span>
@@ -2080,11 +2279,7 @@
     attachComprehensionListeners() {
       const backBtn = document.getElementById("btn-back-comprehension");
       if (backBtn) {
-        backBtn.addEventListener("click", () => {
-          this.activePassage = null;
-          this.activePassageAnswers = {};
-          this.render();
-        });
+        backBtn.addEventListener("click", () => this.goBack());
       }
 
       document.querySelectorAll(".passage-item-card").forEach((card) => {
@@ -2093,7 +2288,9 @@
           const passages = global.NP_COMPREHENSION || [];
           this.activePassage = passages.find((p) => p.id === passageId) || passages[0];
           this.activePassageAnswers = {};
+          this.pendingPassageId = this.activePassage ? this.activePassage.id : null;
           this.focusIntention = "heading";
+          this.pushRoute();
           this.render();
           this.scrollToTop();
         });
@@ -2193,6 +2390,11 @@
               ${this.searchQuery ? `<button type="button" class="btn-clear" id="btn-clear-search" aria-label="Wis zoekopdracht">✕</button>` : ""}
             </div>
 
+            <div class="level-rail" role="tablist" aria-label="CEFR-niveaus">
+              ${["all", "A1", "A2", "B1", "B2", "C1"].map((lvl) => `
+                <button type="button" class="level-chip ${this.selectedLevel === lvl ? "active" : ""}" data-rail-level="${lvl}">${lvl === "all" ? "Alle" : lvl}</button>
+              `).join("")}
+            </div>
             <div class="filter-row">
               <div class="filter-group">
                 <label for="select-filter-level">Niveau:</label>
@@ -2239,7 +2441,7 @@
             <span>Gevonden: <strong>${filtered.length}</strong> woordvormen (${filteredLearnableCount} leerwoorden) ${filtered.length > 60 ? '(toont eerste 60)' : ''}</span>
           </div>
 
-          <div class="words-results-grid">
+          <div class="study-list words-results-grid">
             ${displayList.map((w) => {
               const isNoun = w.pos === "noun" && w.article;
               const isStarred = this.store.isBookmarked(w.id);
@@ -2251,28 +2453,28 @@
               const hasLemmaLink = w.lemma && w.lemma.toLowerCase().trim() !== w.word.toLowerCase().trim();
 
               return `
-                <div class="card word-item-card">
-                  <div class="word-card-top">
-                    <div class="word-card-badges">
-                      <span class="word-level-badge badge-${Learning.escapeHTML(w.level.toLowerCase())}">${Learning.escapeHTML(w.level)}</span>
-                      ${badgeType}
+                <article class="study-row word-item-card">
+                  <div>
+                    <div class="word-card-top">
+                      <div class="word-card-badges">
+                        <span class="word-level-badge badge-${Learning.escapeHTML(w.level.toLowerCase())}">${Learning.escapeHTML(w.level)}</span>
+                        ${badgeType}
+                      </div>
+                      <button class="btn-star ${isStarred ? 'starred' : ''}" data-star-id="${Learning.escapeHTML(w.id)}" title="${isStarred ? 'Favoriet verwijderen' : 'Favoriet opslaan'}" aria-pressed="${isStarred ? 'true' : 'false'}" aria-label="Favoriet">
+                        ${isStarred ? '★' : '☆'}
+                      </button>
                     </div>
-                    <button class="btn-star ${isStarred ? 'starred' : ''}" data-star-id="${Learning.escapeHTML(w.id)}" title="${isStarred ? 'Favoriet verwijderen' : 'Favoriet opslaan'}" aria-pressed="${isStarred ? 'true' : 'false'}" aria-label="Favoriet">
-                      ${isStarred ? '★' : '☆'}
-                    </button>
+                    <h3 class="word-title study-row-title long-compound">${displayTitle}</h3>
+                    ${w.grammaticalForm ? `<span class="word-gram-form">${Learning.escapeHTML(w.grammaticalForm)}</span>` : ""}
+                    ${hasLemmaLink ? `<div class="word-lemma-link">Basislemma: <strong>${Learning.escapeHTML(w.lemma)}</strong></div>` : ""}
+                    <div class="word-meaning study-row-sub">${Learning.escapeHTML(w.meaning || w.word)}</div>
+                    ${w.example ? `<div class="word-example">“${Learning.escapeHTML(w.example)}”</div>` : ""}
+                    <div class="word-footer">
+                      <span>${Learning.escapeHTML(w.pos)}</span>
+                      <span>#${Learning.escapeHTML(String(w.rank))}</span>
+                    </div>
                   </div>
-                  <div class="word-card-main">
-                    <h3 class="word-title">${displayTitle}</h3>
-                  </div>
-                  ${w.grammaticalForm ? `<span class="word-gram-form">${Learning.escapeHTML(w.grammaticalForm)}</span>` : ""}
-                  ${hasLemmaLink ? `<div class="word-lemma-link">Basislemma: <strong>${Learning.escapeHTML(w.lemma)}</strong></div>` : ""}
-                  <div class="word-meaning">${Learning.escapeHTML(w.meaning || w.word)}</div>
-                  ${w.example ? `<div class="word-example" style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 0.5rem;">“${Learning.escapeHTML(w.example)}”</div>` : ""}
-                  <div class="word-footer">
-                    <span>${Learning.escapeHTML(w.pos)}</span>
-                    <span>#${Learning.escapeHTML(String(w.rank))}</span>
-                  </div>
-                </div>
+                </article>
               `;
             }).join("")}
           </div>
@@ -2309,6 +2511,12 @@
           this.render();
         });
       }
+      document.querySelectorAll("[data-rail-level]").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          this.selectedLevel = btn.dataset.railLevel;
+          this.render();
+        });
+      });
 
       const posSelect = document.getElementById("select-filter-pos");
       if (posSelect) {
@@ -2344,6 +2552,24 @@
       });
     }
 
+    renderExamView() {
+      const availability = global.NederExamIntegrity && typeof global.NederExamIntegrity.examAvailability === "function"
+        ? global.NederExamIntegrity.examAvailability()
+        : { enabled: false, reason: "Exam integrity module unavailable.", certificationClaims: false };
+      return `
+        <div class="exam-hub">
+          <p class="eyebrow">Examen</p>
+          <h1 class="page-title">Formele toetsen</h1>
+          <div class="card exam-incomplete">
+            <p>${Learning.escapeHTML(availability.reason)}</p>
+            <p>Practice-taint kan nooit als formele uitslag tellen. Resultaten zijn onveranderlijk zodra een bank bestaat.</p>
+            <p>NederPath maakt ${availability.certificationClaims ? "" : "geen "}certificeringsclaims en verzint geen examenvragen.</p>
+            <p>Gebruik <strong>Herhalen</strong> voor oefening.</p>
+          </div>
+        </div>
+      `;
+    }
+
     /* ==========================================================================
        7. PROGRESS VIEW (Analytics, 30-Day Heatmap, SRS Stats)
        ========================================================================== */
@@ -2374,7 +2600,7 @@
             <button class="btn btn-outline btn-sm" id="btn-open-settings">⚙️ Instellingen & Gegevens</button>
           </div>
 
-          <div class="progress-stats-overview">
+          <div class="progress-stats-overview stats-grid">
             <div class="card stat-big-card">
               <span class="stat-big-icon">🔥</span>
               <div class="stat-big-num">${user.streak}</div>
@@ -2453,13 +2679,27 @@
           <div id="settings-status-banner" class="status-banner" style="display: none;" role="status" aria-live="polite"></div>
 
           <div class="card settings-card" style="margin-bottom: 1.5rem;">
-            <h3>Uiterlijk & Thema</h3>
+            <h3>Uiterlijk</h3>
             <div class="setting-row" style="margin-top: 1rem;">
-              <span id="label-theme">Thema:</span>
-              <div class="theme-select-pills" role="group" aria-labelledby="label-theme">
-                <button type="button" class="btn btn-sm ${settings.theme === 'dark' ? 'btn-primary' : 'btn-outline'}" id="btn-theme-dark">Donker (Dark)</button>
-                <button type="button" class="btn btn-sm ${settings.theme === 'light' ? 'btn-primary' : 'btn-outline'}" id="btn-theme-light">Licht (Light)</button>
+              <span id="label-appearance">Weergave:</span>
+              <div class="theme-select-pills" role="group" aria-labelledby="label-appearance">
+                <button type="button" class="btn btn-sm ${(settings.appearance || settings.theme) === 'dark' ? 'btn-primary' : 'btn-outline'}" id="btn-theme-dark">Donker</button>
+                <button type="button" class="btn btn-sm ${(settings.appearance || settings.theme) === 'light' ? 'btn-primary' : 'btn-outline'}" id="btn-theme-light">Licht</button>
+                <button type="button" class="btn btn-sm ${settings.appearance === 'system' ? 'btn-primary' : 'btn-outline'}" id="btn-theme-system">Systeem</button>
               </div>
+            </div>
+            <div class="setting-row" style="margin-top: 1rem;">
+              <span id="label-accent">Accent:</span>
+              <div class="accent-pills" role="group" aria-labelledby="label-accent">
+                ${["violet", "graphite", "blue", "red", "yellow", "green", "orange", "gold"].map((id) => `
+                  <button type="button" class="btn btn-sm ${(settings.accent || "violet") === id ? "btn-primary" : "btn-outline"}" data-accent="${id}">${id}</button>
+                `).join("")}
+              </div>
+            </div>
+            <div class="setting-row" style="margin-top: 1rem;">
+              <label for="check-reduce-motion">
+                <input type="checkbox" id="check-reduce-motion" ${settings.reduceMotion ? "checked" : ""} /> Minder beweging
+              </label>
             </div>
           </div>
 
@@ -2512,25 +2752,34 @@
     }
 
     attachSettingsListeners() {
+      const setAppearance = (appearance) => {
+        this.store.state.settings.appearance = appearance;
+        this.store.state.settings.theme = appearance === "light" ? "light" : "dark";
+        this.store.save();
+        this.applyTheme();
+        this.showInlineStatus(appearance === "light" ? "Thema ingesteld op Licht." : appearance === "dark" ? "Thema ingesteld op Donker." : "Weergave volgt het systeem.", "success");
+        this.render();
+      };
       const darkBtn = document.getElementById("btn-theme-dark");
-      if (darkBtn) {
-        darkBtn.addEventListener("click", () => {
-          this.store.state.settings.theme = "dark";
+      if (darkBtn) darkBtn.addEventListener("click", () => setAppearance("dark"));
+      const lightBtn = document.getElementById("btn-theme-light");
+      if (lightBtn) lightBtn.addEventListener("click", () => setAppearance("light"));
+      const systemBtn = document.getElementById("btn-theme-system");
+      if (systemBtn) systemBtn.addEventListener("click", () => setAppearance("system"));
+      document.querySelectorAll("[data-accent]").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          this.store.state.settings.accent = btn.dataset.accent;
           this.store.save();
-          this.applyTheme("dark");
-          this.showInlineStatus("Thema ingesteld op Donker.", "success");
+          this.applyTheme();
           this.render();
         });
-      }
-
-      const lightBtn = document.getElementById("btn-theme-light");
-      if (lightBtn) {
-        lightBtn.addEventListener("click", () => {
-          this.store.state.settings.theme = "light";
+      });
+      const reduceMotion = document.getElementById("check-reduce-motion");
+      if (reduceMotion) {
+        reduceMotion.addEventListener("change", () => {
+          this.store.state.settings.reduceMotion = reduceMotion.checked;
           this.store.save();
-          this.applyTheme("light");
-          this.showInlineStatus("Thema ingesteld op Licht.", "success");
-          this.render();
+          this.applyTheme();
         });
       }
 

@@ -1,18 +1,21 @@
-// NederPath Offline Service Worker (Cache version: v3 - Shell Precache & Fresh Runtime Caching)
-const CACHE_NAME = "nederpath-v3-cache";
+// NederPath Offline Service Worker (Cache version: v4 - Shell Precache & Fresh Runtime Caching)
+const CACHE_NAME = "nederpath-v4-cache";
 
 // Core App Shell assets only (data files are runtime-cached on first successful visit)
 const SHELL_ASSETS = [
   "./",
   "./index.html",
   "./css/styles.css",
+  "./fonts/fonts.css",
   "./js/learning.js",
   "./js/store.js",
   "./js/srs.js",
   "./js/voice.js",
+  "./js/exam_integrity.js",
   "./js/data-loader.js",
   "./js/sw-register.js",
   "./js/app.js",
+  "./js/experience-contract.js",
   "./manifest.webmanifest",
   "./icons/favicon-32.png",
   "./icons/apple-touch-icon.png",

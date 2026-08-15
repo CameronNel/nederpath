@@ -1,5 +1,8 @@
 // NederPath curated word core 7 - Comprehensive verbs (A1-C1) with principal parts, separable prefixes, and reflexive/modal verbs.
-const N = (w, a, l, m, c, s, p) => [w, "noun", l, a, m, c, s || "", p || ""];
+const N = (w, a, l, m, c, s, p) => {
+  const legacyMeta = !p && typeof s === "string" && /^(?:s|inv|n|'s|=.+)$/u.test(s) ? s : "";
+  return [w, "noun", l, a, m, c, legacyMeta ? "" : (s || ""), legacyMeta || (p || "")];
+};
 const V = (w, l, m, c, p) => [w, "verb", l, "", m, c, "", p || ""];
 const A = (w, l, m, c, p) => [w, "adjective", l, "", m, c, "", p || ""];
 const D = (w, l, m, c, p) => [w, "adverb", l, "", m, c, "", p || ""];
@@ -90,7 +93,7 @@ V("overwegen","B1","to consider, contemplate","actions","overweeg|overweegt|over
 V("beslissen","A2","to decide, determine","actions",""),
 V("besluiten","B1","to conclude, decide","actions","besluit|besluit|besloot|besloten|besloten"),
 V("kiezen","A1","to choose, select, vote","actions","kies|kiest|koos|kozen|gekozen"),
-V("voorkomen","B1","to prevent; occur, happen","actions","voorkom|voorkomt|voorkwam|voorkwamen|voorkomen"),
+V("voorkomen","B1","to prevent","actions","voorkom|voorkomt|voorkwam|voorkwamen|voorkomen"),
 V("gebeuren","A1","to happen, occur","actions",""),
 V("plaatsvinden","A2","to take place","actions","sep=plaatsgevonden"),
 V("ontmoeten","A1","to meet (someone)","actions",""),
@@ -159,7 +162,7 @@ V("wantrouwen","B2","to distrust, suspect","actions",""),
 V("geloven","A1","to believe","actions",""),
 V("twijfelen","A2","to doubt, hesitate","actions",""),
 V("overtuigen","B1","to convince, persuade","actions",""),
-V("overreden","C1","to persuade, talk into","actions","overreed|overreedt|overreedde|overreedden|overreed"),
+V("overreden","C1","to persuade, talk into","actions","overreed|overreedt|overreedde|overreedden|overreden"),
 V("beweren","B1","to claim, assert","actions",""),
 V("ontkennen","B1","to deny, negate","actions",""),
 V("bekennen","B2","to confess, admit","actions",""),
@@ -266,11 +269,11 @@ N("faculteit","de","B1","faculty, university department","education","=faculteit
 N("decaan","de","B2","dean (faculty); student counsellor","education","=decanen"),
 N("rector","de","B2","rector (university head)","education","","s"),
 N("hoogleraar","de","B1","full professor","education","professor","=hoogleraren"),
-N("docent","de","A1","lecturer, instructor, teacher","education","leerkracht","en"),
+N("docent","de","A1","lecturer, instructor, teacher","education","leerkracht","=docenten"),
 N("leerkracht","de","A2","teacher, educator","education","docent"),
 N("meester","de","A1","schoolmaster; master","education","","s"),
 N("juf","de","A1","schoolmistress, female teacher","education","juffrouw","=juffen"),
 N("leerling","de","A1","pupil, student (school)","education","scholier"),
 N("scholier","de","A2","school pupil, high schooler","education","leerling"),
-N("student","de","A1","student (higher education)","education","studente")
+N("student","de","A1","student (higher education)","education",""),
 ]};

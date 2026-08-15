@@ -41,6 +41,8 @@ const requiredFiles = [
   "js/store.js",
   "js/srs.js",
   "js/voice.js",
+  "js/exam_integrity.js",
+  "js/experience-contract.js",
   "js/app.js",
   "data/words.js",
   "data/grammar.js",

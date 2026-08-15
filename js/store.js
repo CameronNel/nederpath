@@ -37,7 +37,7 @@
       level: "A1",
       dailyGoal: 15,
       sessionSize: 10,
-      onboardingCompleted: true,
+      onboardingCompleted: false,
       streak: 0,
       lastActiveDate: null,
       totalXp: 0,
@@ -45,6 +45,9 @@
     },
     settings: {
       theme: "dark",
+      appearance: "dark",
+      accent: "violet",
+      reduceMotion: false,
       sessionSize: 10,
       dailyGoal: 15,
       autoAdvance: true,
@@ -67,6 +70,12 @@
         date: getDateStr(),
         learnedToday: 0
       }
+    },
+    examIntegrity: {
+      version: 1,
+      taintEvents: [],
+      byAttemptId: {},
+      migrationLog: []
     }
   };
 

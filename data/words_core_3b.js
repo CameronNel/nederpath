@@ -1,5 +1,8 @@
 // NederPath curated word core 3b - everyday nouns (A1-B1): body, health, clothing, appearance, house & garden.
-const N = (w, a, l, m, c, s, p) => [w, "noun", l, a, m, c, s || "", p || ""];
+const N = (w, a, l, m, c, s, p) => {
+  const legacyMeta = !p && typeof s === "string" && /^(?:s|inv|n|'s|=.+)$/u.test(s) ? s : "";
+  return [w, "noun", l, a, m, c, legacyMeta ? "" : (s || ""), legacyMeta || (p || "")];
+};
 const V = (w, l, m, c, p) => [w, "verb", l, "", m, c, "", p || ""];
 const A = (w, l, m, c, p) => [w, "adjective", l, "", m, c, "", p || ""];
 const D = (w, l, m, c, p) => [w, "adverb", l, "", m, c, "", p || ""];
@@ -165,10 +168,10 @@ N("vriezer","de","A2","freezer","home","diepvries","s"),
 N("diepvries","de","A2","freezer","home","vriezer","inv"),
 N("fornuis","het","A1","cooker, stove","home","=fornuizen"),
 N("oven","de","A1","oven","home","","s"),
-N("magnetron","de","A1","microwave","home","magnetrons","s"),
+N("magnetron","de","A1","microwave","home","","s"),
 N("waterkoker","de","A1","kettle, electric kettle","home","","s"),
 N("koffiezetapparaat","het","A2","coffee maker","home","=koffiezetapparaten"),
-N("broodrooster","de","A2","toaster","home","","s"),
+N("broodrooster","het","A2","toaster","home","","s"),
 N("blender","de","A2","blender","home","","s"),
 N("mixer","de","A2","mixer, hand mixer","home","","s"),
 N("pan","de","A1","pan, pot","home"),
