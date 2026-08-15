@@ -86,10 +86,11 @@ jobs:
           java-version: "21"
 
       - name: Prepare native web payload
+        working-directory: mobile
         run: |
-          npm ci --prefix mobile
-          node mobile/scripts/prepare-web.mjs
-          npx --prefix mobile cap sync android
+          npm ci
+          node scripts/prepare-web.mjs
+          npx cap sync android
 
       - name: Assemble unsigned debug APK
         working-directory: mobile/android
