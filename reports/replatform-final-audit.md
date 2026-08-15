@@ -1,36 +1,53 @@
 # Replatform final audit
 
-## Branch and source
+Regenerated from executable state at head `d7a9003869fa0c05c2d2b878286c31dfe96b7512` plus the history/generation/residue follow-up on this working tree.
 
-- Branch: `gemini/hanapath-replatform`
-- Base: PR #19 head `72a91f6587cd4dcf5ea55a5f8d195f2ddd4657f5` after `git pull`
-- HanaPath main: `a219283be39a6d48fadd3495d1ec0fcba8f666cd`
-- NederPath master: `aa0865121abe5bf331d08d050e02a5cdc21c1fe5`
+## Source
+
+| Item | Value |
+|---|---|
+| Branch | `gemini/hanapath-replatform` |
+| HanaPath `main` | `a219283be39a6d48fadd3495d1ec0fcba8f666cd` |
+| NederPath `master` | `aa0865121abe5bf331d08d050e02a5cdc21c1fe5` |
+| PR #19 head used as base | `72a91f6587cd4dcf5ea55a5f8d195f2ddd4657f5` |
+| Draft PR | #23 |
 
 ## PR #19
 
-CI failure was integration: idiom/sentence registries validated with the lexical-only allocator after the master merge. The generic allocator API is restored; word-bank defaults remain `nl-` + `normalizeLexicalForm`. Semantic acceptance remains fail-closed.
+CI failure was integration: idiom/sentence registries were validated with the word-only allocator after the master merge. Generic namespace API restored. Semantic acceptance remains fail-closed: `acceptedRows: 0`, `totalRows: 6427`, `independentAcceptance: false`, `status: INCOMPLETE`.
 
-## Local verification (this machine)
+## Local verification
 
-- Audit: 83 passed
-- Smoke: 11 passed
-- Regression: 44 passed (including idioms + sentences)
-- Review follow-up: 5 passed
-- Sentence surface: 641 passed
-- PR1 integrity: 13 passed
-- PR1 boundaries: 5 passed
-- Grammar quality: 10 passed
-- Comprehension: 12 passed
-- Offline/SW: 26 passed (`nederpath-v4-cache`)
-- Browser: 122 passed, 0 failed (1280×800 and 375×667)
-- Production build + artifact audit: 65 passed
-- Residue audit: passed
-- `mobile/scripts/prepare-web.mjs`: wrote 23 files, no SW, no Korean assets
+| Suite | Result |
+|---|---|
+| Audit | 85 passed |
+| Smoke | 11 passed |
+| Regression | 44 passed |
+| Review follow-up | 5 passed |
+| Sentence surface | 641 passed |
+| PR1 integrity | 13 passed |
+| PR1 boundaries | 5 passed |
+| Grammar quality | 10 passed |
+| Comprehension | 12 passed |
+| Exam integrity | 7 passed |
+| Offline / SW | 26 passed (`nederpath-v4-cache`) |
+| Browser | 125 passed, including Grammar/Lezen/Herhalen `history.back()` E2Es |
+| Viewport | 49 passed (360×800 through 1440×900, including `tweehonderdeenentwintigste`) |
+| Production build + artifact audit | 71 passed |
+| Residue audit | passed (Korean terms and old Neder shell selectors fail closed, including in CSS) |
+| Native payload | 25 allowlisted files; SW excluded |
 
-## Incomplete (do not overclaim)
+## Exact-head GitHub Actions (pre-follow-up head `d7a9003`)
 
-- Formal Dutch exam banks do not exist; Exam tab is disabled/incomplete
+- Validate Quality & Artifact Integrity: success
+- Android debug assemble: success
+- Pages deploy: skipped (not `master`)
+
+Follow-up on this tree must re-run exact-head Actions after push.
+
+## Incomplete (not defects)
+
 - Independent lexical semantic acceptance remains `0 / 6427`
+- Formal Dutch exam banks do not exist; Exam tab is disabled
 - Play Store upload signing remains owner-controlled and unset
-- Unused generic HanaPath CSS selectors (non-Korean names) may still exist in the transplanted stylesheet
+- Unused generic (non-Korean) HanaPath CSS selectors may remain in the transplanted stylesheet

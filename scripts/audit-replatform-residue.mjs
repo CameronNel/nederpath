@@ -30,7 +30,9 @@ const FORBIDDEN = [
   /\.main-nav\b/,
   /\.header-stats\b/,
   /\.stat-pill-sm\b/,
-  /Calm Nordic/i
+  /Calm Nordic/i,
+  /\.today-hero\b/,
+  /\.practice-nav-bar\b/
 ];
 
 const ALLOWED_CONTEXT = [
@@ -51,15 +53,13 @@ for (const file of RUNTIME) {
     const match = text.match(pattern);
     if (!match) continue;
     if (ALLOWED_CONTEXT.some((ok) => ok.test(match[0]))) continue;
-    // Unused HanaPath CSS class names remaining after the design-system transplant
-    // are reported but only fail on Korean domain words and old Neder shell classes.
-    if (file === "css/styles.css" && /hangul|jamo|korean|hanapath/i.test(match[0])) {
-      console.error(`  [FAIL] ${file} still contains Korean residue: ${match[0]}`);
-      failed += 1;
-    } else if (file !== "css/styles.css") {
-      console.error(`  [FAIL] ${file} contains forbidden residue: ${match[0]}`);
-      failed += 1;
+    const isKorean = /hangul|jamo|korean|hanapath/i.test(match[0]);
+    const isOldNederShell = /\.app-header|\.main-nav|\.header-stats|\.stat-pill-sm|Calm Nordic|\.today-hero|\.practice-nav-bar/.test(match[0]);
+    if (file === "css/styles.css" && !isKorean && !isOldNederShell) {
+      continue;
     }
+    console.error(`  [FAIL] ${file} contains forbidden residue: ${match[0]}`);
+    failed += 1;
   }
 }
 

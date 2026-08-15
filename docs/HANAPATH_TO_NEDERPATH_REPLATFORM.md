@@ -15,7 +15,7 @@ Voortgang
 
 Runtime remains a static vanilla PWA. No React/Vue/Svelte/Tailwind.
 
-Onboarding runs once for a fresh learner, then the three-tab shell. Browser Back is consumed by in-app detail/hub navigation until Learn root.
+Onboarding runs once for a fresh learner, then the three-tab shell. Route state includes `grammarRuleId`, `passageId`, and `practiceMode`. Browser Back restores those detail screens, then the list/hub, then Learn root.
 
 Words, grammar, and reading lists use HanaPath level rails and study rows. Lesson/exercise players remain the validated Dutch interaction code.
 

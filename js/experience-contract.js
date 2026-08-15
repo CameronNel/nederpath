@@ -83,6 +83,9 @@
         return;
       }
       if (!event.state || event.state.nederPath !== true) return;
+      if (event.state.route) {
+        return;
+      }
       if (handleBackAction()) {
         try { window.history.pushState(Object.assign({}, event.state, guardState), ""); } catch (_) {}
         return;

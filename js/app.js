@@ -125,9 +125,9 @@
       host.innerHTML = `
         <div class="ob-card">
           <div class="ob-logo">NederPath</div>
-          <p class="ob-tagline">Nederlands leren, zonder Koreaanse ballast</p>
+          <p class="ob-tagline">Leer Nederlands in je eigen tempo</p>
           <h1 class="ob-question">Klaar om te beginnen?</h1>
-          <p class="ob-note">Voortgang blijft lokaal op dit apparaat onder nederpath-v1. Er is geen formeel examen en geen certificering.</p>
+          <p class="ob-note">Je voortgang blijft op dit apparaat. Er zijn geen formele examens of certificaten.</p>
           <div class="ob-actions">
             <button type="button" class="btn btn-primary" id="ob-finish">Start met leren</button>
           </div>
@@ -199,26 +199,86 @@
       window.addEventListener("popstate", (event) => {
         const route = event.state && event.state.route;
         if (route) {
-          this.hub = route.hub || "learn";
-          this.currentTab = route.tab || "today";
-          this.practiceMode = route.practiceMode || null;
-          if (this.currentTab !== "grammar") this.activeGrammarRule = null;
-          if (this.currentTab !== "comprehension") this.activePassage = null;
+          this.applyRoute(route);
           this.focusIntention = "heading";
           this.render();
         } else {
           this.goHub("learn", { replace: true });
         }
       });
-      history.replaceState({ route: this.currentRoute() }, "", location.href);
+      this.replaceRoute();
     }
 
     currentRoute() {
-      return { hub: this.hub, tab: this.currentTab, practiceMode: this.practiceMode };
+      return {
+        hub: this.hub,
+        tab: this.currentTab,
+        practiceMode: this.practiceMode || null,
+        grammarRuleId: this.activeGrammarRule && this.activeGrammarRule.id ? this.activeGrammarRule.id : null,
+        passageId: this.activePassage && this.activePassage.id ? this.activePassage.id : null
+      };
+    }
+
+    applyRoute(route) {
+      const next = route && typeof route === "object" ? route : {};
+      this.hub = next.hub === "exam" || next.hub === "progress" ? next.hub : "learn";
+      this.currentTab = next.tab || (this.hub === "exam" ? "exam" : this.hub === "progress" ? "progress" : "today");
+      this.practiceMode = next.practiceMode || null;
+      this.pendingGrammarRuleId = next.grammarRuleId || null;
+      this.pendingPassageId = next.passageId || null;
+      if (!this.pendingGrammarRuleId) {
+        this.activeGrammarRule = null;
+        this.activeGrammarExIndex = 0;
+        this.tokenReconstructionPlaced = [];
+        this.activeGrammarAnswers = {};
+      }
+      if (!this.pendingPassageId) {
+        this.activePassage = null;
+        this.activePassageAnswers = {};
+      }
+    }
+
+    resolveRoutedDetails() {
+      if (this.pendingGrammarRuleId && global.NP_GRAMMAR) {
+        const rule = global.NP_GRAMMAR.find((r) => r.id === this.pendingGrammarRuleId);
+        if (rule && (!this.activeGrammarRule || this.activeGrammarRule.id !== rule.id)) {
+          this.activeGrammarRule = rule;
+          this.activeGrammarExIndex = 0;
+          this.tokenReconstructionPlaced = [];
+          this.activeGrammarAnswers = {};
+        } else if (rule) {
+          this.activeGrammarRule = rule;
+        }
+        this.pendingGrammarRuleId = null;
+      }
+      if (this.pendingPassageId && global.NP_COMPREHENSION) {
+        const passage = global.NP_COMPREHENSION.find((p) => p.id === this.pendingPassageId);
+        if (passage && (!this.activePassage || this.activePassage.id !== passage.id)) {
+          this.activePassage = passage;
+          this.activePassageAnswers = {};
+        } else if (passage) {
+          this.activePassage = passage;
+        }
+        this.pendingPassageId = null;
+      }
     }
 
     pushRoute() {
-      history.pushState({ route: this.currentRoute() }, "", location.href);
+      const state = Object.assign({}, history.state || {}, { route: this.currentRoute() });
+      history.pushState(state, "", location.href);
+    }
+
+    replaceRoute() {
+      const state = Object.assign({}, history.state || {}, { route: this.currentRoute() });
+      history.replaceState(state, "", location.href);
+    }
+
+    goBack() {
+      if (window.history.length > 1) {
+        window.history.back();
+        return;
+      }
+      this.goHub(this.hub === "exam" || this.hub === "progress" ? this.hub : "learn", { replace: true });
     }
 
     setNavActive(hub) {
@@ -267,8 +327,14 @@
       this.hub = "learn";
       this.currentTab = tab;
       this.practiceMode = practiceMode;
-      if (tab !== "grammar") this.activeGrammarRule = null;
-      if (tab !== "comprehension") this.activePassage = null;
+      this.activeGrammarRule = null;
+      this.activePassage = null;
+      this.pendingGrammarRuleId = null;
+      this.pendingPassageId = null;
+      this.activeGrammarExIndex = 0;
+      this.tokenReconstructionPlaced = [];
+      this.activeGrammarAnswers = {};
+      this.activePassageAnswers = {};
       this.focusIntention = "heading";
       this.pushRoute();
       this.render();
@@ -394,7 +460,7 @@
       const showBack = this.currentTab !== "today" && this.currentTab !== "exam" && this.currentTab !== "progress";
       if (showBack) {
         const backLabel = this.hub === "learn" ? "Leren" : this.hub === "exam" ? "Examen" : "Voortgang";
-        this.showDetailBar(backLabel, () => this.goHub(this.hub === "exam" || this.hub === "progress" ? this.hub : "learn"));
+        this.showDetailBar(backLabel, () => this.goBack());
       } else {
         this.hideDetailBar();
       }
@@ -451,6 +517,7 @@
 
       if (this.navToken !== currentToken) return;
       main.removeAttribute("aria-busy");
+      this.resolveRoutedDetails();
       this.sanitizeLoadedWordReferences();
 
       switch (this.currentTab) {
@@ -753,6 +820,7 @@
           this.session.revealed = false;
           this.session.feedback = null;
           this.session.startXp = (this.store && this.store.state && this.store.state.user && this.store.state.user.totalXp) || 0;
+          this.pushRoute();
           this.render();
         });
       });
@@ -2028,12 +2096,7 @@
 
       const backBtn = document.getElementById("btn-back-grammar");
       if (backBtn) {
-        backBtn.addEventListener("click", () => {
-          this.activeGrammarRule = null;
-          this.activeGrammarAnswers = {};
-          this.tokenReconstructionPlaced = [];
-          this.render();
-        });
+        backBtn.addEventListener("click", () => this.goBack());
       }
 
       document.querySelectorAll(".grammar-item-card").forEach((card) => {
@@ -2057,9 +2120,11 @@
       this.activeGrammarExIndex = 0;
       this.tokenReconstructionPlaced = [];
       this.activeGrammarAnswers = {};
+      this.pendingGrammarRuleId = this.activeGrammarRule ? this.activeGrammarRule.id : null;
       this.hub = "learn";
       this.currentTab = "grammar";
       this.focusIntention = "heading";
+      this.pushRoute();
       this.render();
       this.scrollToTop();
     }
@@ -2214,11 +2279,7 @@
     attachComprehensionListeners() {
       const backBtn = document.getElementById("btn-back-comprehension");
       if (backBtn) {
-        backBtn.addEventListener("click", () => {
-          this.activePassage = null;
-          this.activePassageAnswers = {};
-          this.render();
-        });
+        backBtn.addEventListener("click", () => this.goBack());
       }
 
       document.querySelectorAll(".passage-item-card").forEach((card) => {
@@ -2227,7 +2288,9 @@
           const passages = global.NP_COMPREHENSION || [];
           this.activePassage = passages.find((p) => p.id === passageId) || passages[0];
           this.activePassageAnswers = {};
+          this.pendingPassageId = this.activePassage ? this.activePassage.id : null;
           this.focusIntention = "heading";
+          this.pushRoute();
           this.render();
           this.scrollToTop();
         });

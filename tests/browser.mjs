@@ -1011,6 +1011,37 @@ async function runBrowserTests() {
     const feedbackText = await page.$eval(".exercise-feedback", (el) => el.textContent);
     assert(feedbackText.includes("Juist"), "Option buttons in hostile-injected card remain fully interactive and evaluate correctly");
 
+    // 7b. Browser Back restores detail routes
+    await page.click("#nav-learn");
+    await page.waitForSelector(".today-home");
+    await page.click("#nav-grammar");
+    await page.waitForSelector(".grammar-catalog-container");
+    await page.click(".grammar-item-card");
+    await page.waitForSelector(".grammar-lesson-card");
+    await page.goBack();
+    await page.waitForSelector(".grammar-catalog-container");
+    assert((await page.$(".grammar-lesson-card")) === null, "Browser Back from a grammar lesson returns to the grammar list");
+
+    await page.click("#nav-learn");
+    await page.waitForSelector(".today-home");
+    await page.click("#nav-comprehension");
+    await page.waitForSelector(".comprehension-catalog-container");
+    await page.click(".passage-item-card");
+    await page.waitForSelector(".passage-reader-card");
+    await page.goBack();
+    await page.waitForSelector(".comprehension-catalog-container");
+    assert((await page.$(".passage-reader-card")) === null, "Browser Back from a reading passage returns to the reading list");
+
+    await page.click("#nav-learn");
+    await page.waitForSelector(".today-home");
+    await page.click("#nav-review");
+    await page.waitForSelector(".review-hub");
+    await page.click('[data-mode="flashcards"]');
+    await page.waitForSelector("#interactive-flashcard");
+    await page.goBack();
+    await page.waitForSelector(".review-hub");
+    assert((await page.$("#interactive-flashcard")) === null, "Browser Back from a review mode returns to the review hub");
+
     // 8. Navigation: Pad (8-Section Curriculum Path)
     await page.click("#nav-learn");
     await page.waitForSelector(".today-home");

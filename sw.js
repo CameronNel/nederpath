@@ -1,4 +1,4 @@
-// NederPath Offline Service Worker (Cache version: v3 - Shell Precache & Fresh Runtime Caching)
+// NederPath Offline Service Worker (Cache version: v4 - Shell Precache & Fresh Runtime Caching)
 const CACHE_NAME = "nederpath-v4-cache";
 
 // Core App Shell assets only (data files are runtime-cached on first successful visit)
