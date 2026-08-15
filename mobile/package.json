@@ -1,0 +1,8 @@
+{
+  "name": "nederpath-mobile",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "prepare-web": "node scripts/prepare-web.mjs"
+  }
+}

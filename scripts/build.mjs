@@ -21,6 +21,10 @@ mkdirSync(DIST, { recursive: true });
 const RUNTIME_ASSETS = [
   "index.html",
   "css/styles.css",
+  "fonts/fonts.css",
+  "fonts/OFL-Outfit.txt",
+  "fonts/files/QGYvz_MVcBeNP4NJuktqQ4E.woff2",
+  "fonts/files/QGYvz_MVcBeNP4NJtEtq.woff2",
   "js/learning.js",
   "js/store.js",
   "js/srs.js",
