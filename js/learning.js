@@ -553,6 +553,15 @@
 
     if (isRecord(parsed.settings)) {
       if (["dark", "light"].includes(parsed.settings.theme)) merged.settings.theme = parsed.settings.theme;
+      if (["system", "light", "dark"].includes(parsed.settings.appearance)) {
+        merged.settings.appearance = parsed.settings.appearance;
+      } else if (["dark", "light"].includes(parsed.settings.theme)) {
+        merged.settings.appearance = parsed.settings.theme;
+      }
+      if (["violet", "graphite", "blue", "red", "yellow", "green", "orange", "gold"].includes(parsed.settings.accent)) {
+        merged.settings.accent = parsed.settings.accent;
+      }
+      if (typeof parsed.settings.reduceMotion === "boolean") merged.settings.reduceMotion = parsed.settings.reduceMotion;
       if (typeof parsed.settings.sessionSize === "number" && Number.isFinite(parsed.settings.sessionSize)) {
         merged.settings.sessionSize = Math.max(1, Math.min(100, Math.round(parsed.settings.sessionSize)));
       }

@@ -45,6 +45,9 @@
     },
     settings: {
       theme: "dark",
+      appearance: "dark",
+      accent: "violet",
+      reduceMotion: false,
       sessionSize: 10,
       dailyGoal: 15,
       autoAdvance: true,
