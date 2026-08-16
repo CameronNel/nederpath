@@ -40,6 +40,7 @@ const REQUIRED_FILES = [
   "js/sw-register.js",
   "js/app.js",
   "js/grammar-flow.js",
+  "js/hana-parity.js",
   "js/experience-contract.js",
   "data/words.js",
   "data/grammar.js",
