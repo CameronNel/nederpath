@@ -1,5 +1,5 @@
 // Generic exam-result provenance. UI-invisible. No Dutch exam banks are shipped.
-// Formal results cannot be created until an evidence-backed bank exists.
+// Formal results cannot be created or accepted until an evidence-backed bank exists.
 (function installExamIntegrity(root, factory) {
   "use strict";
   const api = factory();
@@ -11,6 +11,10 @@
   const RESULT_SCHEMA_VERSION = 1;
   const INTEGRITY_SCHEMA_VERSION = 1;
   const TAINT_SCHEMA_VERSION = 1;
+  const MAX_TAINT_EVENTS = 1000;
+  const MAX_RESULTS = 5000;
+  const MAX_MIGRATION_LOG = 500;
+  const DANGEROUS_MAP_KEYS = new Set(["__proto__", "constructor", "prototype"]);
   const VALID_RESULT_STATUSES = Object.freeze(["formal", "practice", "legacy-incomplete"]);
   const REQUIRED_RESULT_FIELDS = Object.freeze([
     "resultSchemaVersion", "attemptId", "examId", "attemptMode", "status",
@@ -23,6 +27,14 @@
 
   function isPlainObject(value) {
     return Object.prototype.toString.call(value) === "[object Object]";
+  }
+
+  function isBoundedIdentifier(value, maxLength = 120) {
+    return typeof value === "string" &&
+      value.trim().length > 0 &&
+      value.length <= maxLength &&
+      !/[\u0000-\u001F\u007F]/.test(value) &&
+      !DANGEROUS_MAP_KEYS.has(value);
   }
 
   function cloneJson(value) {
@@ -89,18 +101,55 @@
       if (!Object.prototype.hasOwnProperty.call(event, field)) errors.push(`missing ${field}`);
     }
     if (event.taintSchemaVersion !== TAINT_SCHEMA_VERSION) errors.push("invalid taint schema");
+    if (!isBoundedIdentifier(event.taintEventId)) errors.push("invalid taintEventId");
+    if (!isBoundedIdentifier(event.controlId)) errors.push("invalid controlId");
+    if (!Number.isFinite(event.activatedAt) || event.activatedAt <= 0) errors.push("invalid activatedAt");
+    if (typeof event.appVersion !== "string" || !event.appVersion.trim() || event.appVersion.length > 120) {
+      errors.push("invalid appVersion");
+    }
     if (event.queryGate !== "__wetest") errors.push("invalid queryGate");
-    if (typeof event.controlId !== "string" || !event.controlId) errors.push("missing controlId");
+    if (event.clearedAt !== null && (!Number.isFinite(event.clearedAt) || event.clearedAt < event.activatedAt)) {
+      errors.push("invalid clearedAt");
+    }
+    if (event.note !== undefined && (typeof event.note !== "string" || event.note.length > 1000)) {
+      errors.push("invalid note");
+    }
     return errors;
   }
 
   function normalizeExamIntegrityContainer(raw) {
     const safe = isPlainObject(raw) ? raw : {};
+    const taintEvents = [];
+    const taintIds = new Set();
+    if (Array.isArray(safe.taintEvents)) {
+      for (const event of safe.taintEvents) {
+        if (taintEvents.length >= MAX_TAINT_EVENTS) break;
+        if (validateTaintEvent(event).length !== 0 || taintIds.has(event.taintEventId)) continue;
+        taintIds.add(event.taintEventId);
+        taintEvents.push(cloneJson(event));
+      }
+    }
+
+    const byAttemptId = {};
+    let resultCount = 0;
+    if (isPlainObject(safe.byAttemptId)) {
+      for (const [attemptId, result] of Object.entries(safe.byAttemptId)) {
+        if (resultCount >= MAX_RESULTS) break;
+        if (!isBoundedIdentifier(attemptId) || !isPlainObject(result) || result.attemptId !== attemptId) continue;
+        if (validateResult(result).length !== 0) continue;
+        if (result.status === "practice" && !result.overrideEventIds.every((eventId) => taintIds.has(eventId))) continue;
+        byAttemptId[attemptId] = cloneJson(result);
+        resultCount += 1;
+      }
+    }
+
     return {
       version: INTEGRITY_SCHEMA_VERSION,
-      taintEvents: Array.isArray(safe.taintEvents) ? cloneJson(safe.taintEvents) : [],
-      byAttemptId: isPlainObject(safe.byAttemptId) ? cloneJson(safe.byAttemptId) : {},
-      migrationLog: Array.isArray(safe.migrationLog) ? cloneJson(safe.migrationLog) : []
+      taintEvents,
+      byAttemptId,
+      migrationLog: Array.isArray(safe.migrationLog)
+        ? cloneJson(safe.migrationLog.slice(0, MAX_MIGRATION_LOG))
+        : []
     };
   }
 
@@ -111,6 +160,9 @@
     const integrity = normalizeExamIntegrityContainer(stateValue.examIntegrity);
     if (integrity.taintEvents.some((item) => item && item.taintEventId === event.taintEventId)) {
       return { added: false, reason: "duplicate-id" };
+    }
+    if (integrity.taintEvents.length >= MAX_TAINT_EVENTS) {
+      return { added: false, reason: "limit-reached" };
     }
     integrity.taintEvents.push(cloneJson(event));
     stateValue.examIntegrity = integrity;
@@ -144,11 +196,43 @@
     for (const field of REQUIRED_RESULT_FIELDS) {
       if (!Object.prototype.hasOwnProperty.call(result, field)) errors.push(`missing ${field}`);
     }
+    if (result.resultSchemaVersion !== RESULT_SCHEMA_VERSION) errors.push("invalid result schema");
+    if (!isBoundedIdentifier(result.attemptId)) errors.push("missing or invalid attemptId");
+    if (!isBoundedIdentifier(result.examId)) errors.push("missing or invalid examId");
     if (!VALID_RESULT_STATUSES.includes(result.status)) errors.push("invalid status");
-    if (result.status === "formal" && Array.isArray(result.overrideEventIds) && result.overrideEventIds.length) {
+    if (!VALID_RESULT_STATUSES.includes(result.attemptMode)) errors.push("invalid attemptMode");
+    if (result.status !== "legacy-incomplete" && result.attemptMode !== result.status) {
+      errors.push("attemptMode/status mismatch");
+    }
+    if (!Number.isFinite(result.submittedAt) || result.submittedAt <= 0) errors.push("invalid submittedAt");
+    if (!Number.isInteger(result.itemCount) || result.itemCount < 0) errors.push("invalid itemCount");
+    if (!isPlainObject(result.scoreSummary)) errors.push("invalid scoreSummary");
+
+    const overrideEventIds = result.overrideEventIds;
+    if (overrideEventIds !== undefined) {
+      if (!Array.isArray(overrideEventIds)) {
+        errors.push("invalid overrideEventIds");
+      } else {
+        const validIds = overrideEventIds.every((id) => isBoundedIdentifier(id));
+        if (!validIds) errors.push("invalid overrideEventIds");
+        if (new Set(overrideEventIds).size !== overrideEventIds.length) errors.push("duplicate overrideEventIds");
+      }
+    }
+
+    if (result.status === "practice" && (!Array.isArray(overrideEventIds) || overrideEventIds.length === 0)) {
+      errors.push("practice result requires taint");
+    }
+    if (result.status === "formal" && Array.isArray(overrideEventIds) && overrideEventIds.length) {
       errors.push("formal result cannot carry practice taint");
     }
-    if (result.checksum !== checksumOf(result)) errors.push("checksum mismatch");
+    if (result.status === "formal" && dutchExamsEnabled() !== true) {
+      errors.push("formal results disabled");
+    }
+    try {
+      if (result.checksum !== checksumOf(result)) errors.push("checksum mismatch");
+    } catch {
+      errors.push("checksum validation failed");
+    }
     return errors;
   }
 
@@ -157,8 +241,17 @@
     const errors = validateResult(result);
     if (errors.length) return { added: false, reason: "invalid-result", errors };
     const integrity = normalizeExamIntegrityContainer(stateValue.examIntegrity);
-    if (integrity.byAttemptId[result.attemptId]) {
+    if (result.status === "practice") {
+      const taintIds = new Set(integrity.taintEvents.map((event) => event.taintEventId));
+      if (!result.overrideEventIds.every((eventId) => taintIds.has(eventId))) {
+        return { added: false, reason: "unknown-taint-event" };
+      }
+    }
+    if (Object.prototype.hasOwnProperty.call(integrity.byAttemptId, result.attemptId)) {
       return { added: false, reason: "immutable-duplicate" };
+    }
+    if (Object.keys(integrity.byAttemptId).length >= MAX_RESULTS) {
+      return { added: false, reason: "limit-reached" };
     }
     integrity.byAttemptId[result.attemptId] = cloneJson(result);
     stateValue.examIntegrity = integrity;
@@ -166,7 +259,10 @@
   }
 
   function isFormalPass(result) {
-    return isPlainObject(result) && result.status === "formal" && validateResult(result).length === 0;
+    return dutchExamsEnabled() === true &&
+      isPlainObject(result) &&
+      result.status === "formal" &&
+      validateResult(result).length === 0;
   }
 
   return {
