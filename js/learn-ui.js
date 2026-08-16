@@ -152,6 +152,7 @@
       const allButton = filterButtons.find((button) => button.dataset.filterLvl === "all");
       if (allButton) {
         allButton.className = "button secondary compact";
+        allButton.style.marginTop = "18px";
         allButton.textContent = "‹ Alle niveaus";
       }
 
@@ -264,6 +265,7 @@
       const allButton = filterButtons.find((button) => button.dataset.filterCompLvl === "all");
       if (allButton) {
         allButton.className = "button secondary compact";
+        allButton.style.marginTop = "18px";
         allButton.textContent = "‹ Alle niveaus";
       }
 
