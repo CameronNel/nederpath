@@ -42,7 +42,7 @@
     app.openLearnItem = function (tab, options) {
       // The core app historically shares one selectedLevel value across Words,
       // Grammar and Comprehension. Reset it when entering a different subject so
-      // choosing A1 in Grammar cannot silently pre-filter Reading or Vocabulary.
+      // choosing A1 in one area cannot silently pre-filter another area.
       if (SUBJECT_TABS.has(tab) && this.currentTab !== tab) {
         this.selectedLevel = "all";
       }
@@ -148,7 +148,7 @@
       stageCard.appendChild(list);
 
       catalog.replaceChildren(
-        makeHeader("Grammatica", "Kies een niveau", "Geen muur van 120 kaarten. Begin bij een niveau en open daarna één les."),
+        makeHeader("Grammatica", "Kies een niveau", "Kies eerst je niveau en daarna één les."),
         stageCard
       );
     } else {
@@ -192,7 +192,7 @@
       `;
       lessonsCard.append(meta, rulesGrid);
 
-      const cleanHeader = makeHeader("Grammatica", `${activeLevel} · Kies een les`, "Compacte lessen in plaats van een eindeloze tegelwand.");
+      const cleanHeader = makeHeader("Grammatica", `${activeLevel} · Kies een les`, "Werk de lessen in een duidelijke volgorde af.");
       if (allButton) cleanHeader.appendChild(allButton);
       catalog.replaceChildren(cleanHeader, lessonsCard);
     }
@@ -260,7 +260,7 @@
       stageCard.appendChild(list);
 
       catalog.replaceChildren(
-        makeHeader("Begrijpend lezen", "Kies een niveau", "Open één niveau tegelijk, zoals de staged Learn-secties in HanaPath."),
+        makeHeader("Begrijpend lezen", "Kies een niveau", "Kies eerst je niveau en daarna één tekst."),
         stageCard
       );
     } else {
@@ -303,7 +303,7 @@
       `;
       lessonsCard.append(meta, passagesGrid);
 
-      const cleanHeader = makeHeader("Begrijpend lezen", `${activeLevel} · Kies een tekst`, "Compacte rijen met dezelfde hiërarchie als HanaPath.");
+      const cleanHeader = makeHeader("Begrijpend lezen", `${activeLevel} · Kies een tekst`, "Werk de teksten per niveau af.");
       if (allButton) cleanHeader.appendChild(allButton);
       catalog.replaceChildren(cleanHeader, lessonsCard);
     }
@@ -336,6 +336,9 @@
   }
 
   function applyParity() {
+    // This runs on every observed app render. It also retries the state hook in
+    // case the core app booted after this script's DOMContentLoaded callback.
+    isolateSubjectLevelState();
     transformHome();
     transformGrammarCatalog();
     transformComprehensionCatalog();
@@ -354,7 +357,6 @@
   }
 
   const start = () => {
-    isolateSubjectLevelState();
     applyParity();
     const root = document.getElementById("app") || document.body;
     const observer = new MutationObserver(scheduleApply);
@@ -362,7 +364,9 @@
   };
 
   if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", start, { once: true });
+    // app.js also registers on window; because it is loaded first, its boot
+    // listener runs before this parity listener on the same event target.
+    window.addEventListener("DOMContentLoaded", start, { once: true });
   } else {
     start();
   }
