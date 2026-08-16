@@ -150,8 +150,11 @@ async function run() {
     await finishOnboarding(page);
     await exerciseLearnTiles(page);
 
+    await page.click("#nav-learn");
+    await waitForHome(page);
     await page.click("#app-settings-button");
     await page.waitForSelector(".settings-container", { timeout: 15000 });
+    await page.waitForFunction(() => !document.querySelector("#select-daily-goal"), { timeout: 15000 });
     assert((await page.$("#select-daily-goal")) === null, "Daily-goal selector is removed from Settings");
 
     console.log("\n--- NederPath production UI parity: mobile ---");
