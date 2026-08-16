@@ -137,6 +137,7 @@
         if (resultCount >= MAX_RESULTS) break;
         if (!isBoundedIdentifier(attemptId) || !isPlainObject(result) || result.attemptId !== attemptId) continue;
         if (validateResult(result).length !== 0) continue;
+        if (result.status === "practice" && !result.overrideEventIds.every((eventId) => taintIds.has(eventId))) continue;
         byAttemptId[attemptId] = cloneJson(result);
         resultCount += 1;
       }
@@ -218,6 +219,9 @@
       }
     }
 
+    if (result.status === "practice" && (!Array.isArray(overrideEventIds) || overrideEventIds.length === 0)) {
+      errors.push("practice result requires taint");
+    }
     if (result.status === "formal" && Array.isArray(overrideEventIds) && overrideEventIds.length) {
       errors.push("formal result cannot carry practice taint");
     }
@@ -237,6 +241,12 @@
     const errors = validateResult(result);
     if (errors.length) return { added: false, reason: "invalid-result", errors };
     const integrity = normalizeExamIntegrityContainer(stateValue.examIntegrity);
+    if (result.status === "practice") {
+      const taintIds = new Set(integrity.taintEvents.map((event) => event.taintEventId));
+      if (!result.overrideEventIds.every((eventId) => taintIds.has(eventId))) {
+        return { added: false, reason: "unknown-taint-event" };
+      }
+    }
     if (Object.prototype.hasOwnProperty.call(integrity.byAttemptId, result.attemptId)) {
       return { added: false, reason: "immutable-duplicate" };
     }
