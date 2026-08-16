@@ -6,6 +6,7 @@
 (function () {
   "use strict";
 
+  const SUBJECT_TABS = new Set(["grammar", "words", "comprehension"]);
   const ICONS = {
     grammar: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v14H4z"/><path d="m8 12 2.2 2.2L16 8.5"/></svg>',
     vocabulary: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4.5h6.5A2.5 2.5 0 0 1 14 7v13H7a2 2 0 0 1-2-2V4.5Zm14 0h-5M19 4.5V18a2 2 0 0 0-2-2h-3"/></svg>',
@@ -13,24 +14,9 @@
   };
 
   const HOME_ITEMS = [
-    {
-      tab: "grammar",
-      icon: ICONS.grammar,
-      title: "Grammatica",
-      sub: "Lessen, uitleg en oefeningen in een duidelijke volgorde."
-    },
-    {
-      tab: "words",
-      icon: ICONS.vocabulary,
-      title: "Woordenschat",
-      sub: "Woorden leren, terugvinden en gericht oefenen."
-    },
-    {
-      tab: "comprehension",
-      icon: ICONS.comprehension,
-      title: "Begrijpend lezen",
-      sub: "Gecureerde teksten met begripsoefeningen per niveau."
-    }
+    { tab: "grammar", icon: ICONS.grammar, title: "Grammatica", sub: "Lessen, uitleg en oefeningen in een duidelijke volgorde." },
+    { tab: "words", icon: ICONS.vocabulary, title: "Woordenschat", sub: "Woorden leren, terugvinden en gericht oefenen." },
+    { tab: "comprehension", icon: ICONS.comprehension, title: "Begrijpend lezen", sub: "Gecureerde teksten met begripsoefeningen per niveau." }
   ];
 
   function text(node) {
@@ -46,6 +32,23 @@
       <div class="screen-sub" style="margin-bottom:0;">${sub}</div>
     `;
     return header;
+  }
+
+  function isolateSubjectLevelState() {
+    const app = window.NederApp;
+    if (!app || app.__subjectLevelIsolationInstalled || typeof app.openLearnItem !== "function") return;
+
+    const originalOpenLearnItem = app.openLearnItem;
+    app.openLearnItem = function (tab, options) {
+      // The core app historically shares one selectedLevel value across Words,
+      // Grammar and Comprehension. Reset it when entering a different subject so
+      // choosing A1 in Grammar cannot silently pre-filter Reading or Vocabulary.
+      if (SUBJECT_TABS.has(tab) && this.currentTab !== tab) {
+        this.selectedLevel = "all";
+      }
+      return originalOpenLearnItem.call(this, tab, options);
+    };
+    app.__subjectLevelIsolationInstalled = true;
   }
 
   function transformHome() {
@@ -77,15 +80,8 @@
     tiles.className = "hub-tiles";
     keptButtons.forEach((button) => tiles.appendChild(button));
 
-    // Remove the Today tile, path duplication, standalone review tile, streak
-    // sentence, and daily-goal progress card. The three core learning subjects
-    // are the entire Learn home, matching HanaPath's current hub model.
     home.replaceChildren(
-      makeHeader(
-        "Studie & oefening",
-        "Waar wil je aan werken?",
-        "Kies één leerpad. Oefeningen zitten bij elk onderwerp."
-      ),
+      makeHeader("Studie & oefening", "Waar wil je aan werken?", "Kies één leerpad. Oefeningen zitten bij elk onderwerp."),
       tiles
     );
     home.className = "hana-learn-home";
@@ -152,11 +148,7 @@
       stageCard.appendChild(list);
 
       catalog.replaceChildren(
-        makeHeader(
-          "Grammatica",
-          "Kies een niveau",
-          "Geen muur van 120 kaarten. Begin bij een niveau en open daarna één les."
-        ),
+        makeHeader("Grammatica", "Kies een niveau", "Geen muur van 120 kaarten. Begin bij een niveau en open daarna één les."),
         stageCard
       );
     } else {
@@ -268,11 +260,7 @@
       stageCard.appendChild(list);
 
       catalog.replaceChildren(
-        makeHeader(
-          "Begrijpend lezen",
-          "Kies een niveau",
-          "Open één niveau tegelijk, zoals de staged Learn-secties in HanaPath."
-        ),
+        makeHeader("Begrijpend lezen", "Kies een niveau", "Open één niveau tegelijk, zoals de staged Learn-secties in HanaPath."),
         stageCard
       );
     } else {
@@ -333,19 +321,14 @@
       if (row) row.remove();
     }
 
-    const headings = [...settings.querySelectorAll("h1, h2, h3")];
-    headings.forEach((heading) => {
-      if (heading.textContent.includes("Leerdoelen & Sessies")) {
-        heading.textContent = "Sessies";
-      }
+    [...settings.querySelectorAll("h1, h2, h3")].forEach((heading) => {
+      if (heading.textContent.includes("Leerdoelen & Sessies")) heading.textContent = "Sessies";
     });
   }
 
   function cleanCompletionCopy() {
     document.querySelectorAll("#btn-go-today").forEach((button) => {
-      if (button.textContent.trim() !== "Terug naar Leren") {
-        button.textContent = "Terug naar Leren";
-      }
+      if (button.textContent.trim() !== "Terug naar Leren") button.textContent = "Terug naar Leren";
     });
     document.querySelectorAll(".session-complete-card .session-stat-box").forEach((box) => {
       if (/streak/i.test(box.textContent)) box.remove();
@@ -371,6 +354,7 @@
   }
 
   const start = () => {
+    isolateSubjectLevelState();
     applyParity();
     const root = document.getElementById("app") || document.body;
     const observer = new MutationObserver(scheduleApply);
