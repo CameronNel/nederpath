@@ -156,6 +156,12 @@ async function run() {
     await page.waitForFunction(() => !document.querySelector("#select-daily-goal"), { timeout: 15000 });
     assert((await page.$("#select-daily-goal")) === null, "Daily-goal selector is removed from Settings");
 
+    await page.click("#nav-progress");
+    await page.waitForSelector(".progress-container", { timeout: 15000 });
+    await page.waitForFunction(() => !/streak/i.test(document.querySelector("#screen-progress .progress-container")?.textContent || ""), { timeout: 15000 });
+    const progressText = await page.$eval("#screen-progress .progress-container", (el) => el.textContent);
+    assert(!/streak/i.test(progressText), "Streak gamification is removed from Progress");
+
     console.log("\n--- NederPath production staged UI: mobile ---");
     await page.setViewport({ width: 375, height: 667, isMobile: true, hasTouch: true });
     await page.goto(`http://${HOST}:${PORT}/index.html`, { waitUntil: "domcontentloaded" });
