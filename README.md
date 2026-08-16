@@ -6,7 +6,7 @@ Permanent navigation is **Leren / Examen / Voortgang**. Vocabulary, grammar, rea
 
 NederPath stores learner state in local storage under the `nederpath-v1` namespace (never `hanapath-v1`) and deploys automatically to GitHub Pages. Its Service Worker (`nederpath-v4-cache`) keeps the app shell and previously visited data banks available offline; a never-visited bank shows a recoverable retry state until connectivity returns.
 
-Independent lexical semantic acceptance remains fail-closed: 0 / 6427 rows. See `docs/HANAPATH_TO_NEDERPATH_REPLATFORM.md`.
+Independent lexical semantic acceptance remains fail-closed: 11 / 6432 source senses independently accepted; the remaining 6421 are still outside independent acceptance. See `docs/HANAPATH_TO_NEDERPATH_REPLATFORM.md`.
 
 Public Application URL: **`https://cameronnel.github.io/nederpath/`**
 
@@ -123,7 +123,7 @@ npm run serve
 - **100%** of learnable nouns have `displayWord` formatted as `de [word]` or `het [word]`.
 - **100%** of plural nouns and diminutive plurals carry article `de`.
 - **120** grammar lessons with 7 exercise interaction types.
-- **120** curated idioms with stable IDs, register classifications, and deterministic generation.
+- **121** curated idioms with stable IDs, register classifications, and deterministic generation.
 - **641** authored sentences with 100% surface target word validation across 22 domains and 5 CEFR levels (A1–C1).
 - **Pure Spaced Repetition Previews**: Flashcard rating buttons (1–4) compute and display truthful predicted intervals (`1d`, `3d`, `6d`, etc.) dynamically via non-mutating SM-2 scheduler arithmetic.
 - **Truthful Session XP**: Practice session completion screens display exact XP earned from active store deltas and use context-appropriate nouns (`kaarten`, `zinnen`, `vragen`, `woorden`, `werkwoorden`).

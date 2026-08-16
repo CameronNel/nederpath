@@ -33,10 +33,23 @@ for (const row of ledger.rows) {
   assert.ok(["UNCHANGED", "CHANGED_FROM_BASE"].includes(row.baselineComparison.disposition), `${row.sourceRowId}: invalid baseline comparison`);
 }
 
-assert.equal(mergeReview.sourceDuplicateGroupCount, 1464);
+// Derive duplicate/homograph topology from the curated source instead of
+// pinning historical counts. Intentional lexical splits change these totals;
+// the test should verify the generated review matches source reality rather
+// than force editors to update magic numbers after every legitimate split.
+const groupsByWord = new Map();
+for (const record of sourceRows) {
+  const normalized = normalizeLexicalForm(record.row[0]);
+  if (!groupsByWord.has(normalized)) groupsByWord.set(normalized, []);
+  groupsByWord.get(normalized).push(record);
+}
+const expectedDuplicateGroups = [...groupsByWord.values()].filter((records) => records.length > 1);
+const expectedMixedPOSGroups = expectedDuplicateGroups.filter((records) => new Set(records.map((record) => record.row[1])).size > 1);
+
+assert.equal(mergeReview.sourceDuplicateGroupCount, expectedDuplicateGroups.length);
 assert.equal(mergeReview.reviewedGroupCount, mergeReview.sourceDuplicateGroupCount);
-assert.equal(mergeReview.mixedPOSGroupCount, 36);
-assert.equal(mergeReview.mixedPOSGroupsReviewed, 36);
+assert.equal(mergeReview.mixedPOSGroupCount, expectedMixedPOSGroups.length);
+assert.equal(mergeReview.mixedPOSGroupsReviewed, mergeReview.mixedPOSGroupCount);
 assert.equal(mergeReview.needsEvidence, 0);
 assert.equal(mergeReview.allSelectorsUniqueAndStable, true);
 assert.equal(mergeReview.allMixedPOSGroupsIsolated, true);

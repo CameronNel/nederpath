@@ -3,30 +3,105 @@
   "reviewType": "exhaustive duplicate and homograph merge review",
   "reviewer": "Luna",
   "reviewedAt": "2026-08-14",
-  "sourceDuplicateGroupCount": 1464,
-  "reviewedGroupCount": 1464,
-  "mixedPOSGroupCount": 36,
-  "mixedPOSGroupsReviewed": 36,
-  "explicitPrimarySelectorCount": 37,
+  "sourceDuplicateGroupCount": 1468,
+  "reviewedGroupCount": 1468,
+  "mixedPOSGroupCount": 40,
+  "mixedPOSGroupsReviewed": 40,
+  "explicitPrimarySelectorCount": 41,
   "explicitArticleOverrideCount": 6,
   "allSelectorsUniqueAndStable": true,
   "allMixedPOSGroupsIsolated": true,
   "nominalizedInfinitiveGroupsReviewed": 18,
   "needsEvidence": 0,
   "counts": {
-    "PASS": 1464,
+    "PASS": 1468,
     "FIXED": 0,
     "NEEDS-EVIDENCE": 0
   },
   "policyPath": "data/lexical_merge_policy.json",
   "groups": [
     {
-      "normalizedWord": "haar",
-      "sourceGroupSize": 3,
+      "normalizedWord": "je",
+      "sourceGroupSize": 2,
       "mixedPos": true,
       "nominalizedInfinitive": false,
       "sourcePOS": [
         "pronoun",
+        "determiner"
+      ],
+      "explicitPrimarySelector": {
+        "file": "words_core_1.js",
+        "pos": "pronoun"
+      },
+      "selectorMatches": [
+        "words_core_1.js:1"
+      ],
+      "selectedLearnerPOS": "pronoun",
+      "selectedMeaning": "you (unstressed)",
+      "selectedCategory": "people",
+      "selectedCEFR": "A1",
+      "selectedArticle": null,
+      "secondarySenses": [
+        {
+          "sourceRowId": "words_core_1.js:2",
+          "word": "je",
+          "pos": "determiner",
+          "category": "people",
+          "meaning": "your (reduced form)",
+          "cefr": "A1"
+        }
+      ],
+      "unrelatedPOSMeaningLeakage": false,
+      "articleOverride": null,
+      "selectorStable": true,
+      "overall": "PASS",
+      "note": "Mixed-POS group reviewed: primary learner POS is unique and stable; unrelated POS meanings remain typed secondary senses and do not leak into learner-facing fields."
+    },
+    {
+      "normalizedWord": "het",
+      "sourceGroupSize": 2,
+      "mixedPos": true,
+      "nominalizedInfinitive": false,
+      "sourcePOS": [
+        "pronoun",
+        "determiner"
+      ],
+      "explicitPrimarySelector": {
+        "file": "words_core_1.js",
+        "pos": "determiner"
+      },
+      "selectorMatches": [
+        "words_core_1.js:9"
+      ],
+      "selectedLearnerPOS": "determiner",
+      "selectedMeaning": "the (singular neuter)",
+      "selectedCategory": "connectors",
+      "selectedCEFR": "A1",
+      "selectedArticle": null,
+      "secondarySenses": [
+        {
+          "sourceRowId": "words_core_1.js:8",
+          "word": "het",
+          "pos": "pronoun",
+          "category": "people",
+          "meaning": "it",
+          "cefr": "A1"
+        }
+      ],
+      "unrelatedPOSMeaningLeakage": false,
+      "articleOverride": null,
+      "selectorStable": true,
+      "overall": "PASS",
+      "note": "Mixed-POS group reviewed: primary learner POS is unique and stable; unrelated POS meanings remain typed secondary senses and do not leak into learner-facing fields."
+    },
+    {
+      "normalizedWord": "haar",
+      "sourceGroupSize": 4,
+      "mixedPos": true,
+      "nominalizedInfinitive": false,
+      "sourcePOS": [
+        "pronoun",
+        "determiner",
         "noun"
       ],
       "explicitPrimarySelector": {
@@ -34,7 +109,7 @@
         "pos": "noun"
       },
       "selectorMatches": [
-        "words_core_1.js:546"
+        "words_core_1.js:551"
       ],
       "selectedLearnerPOS": "noun",
       "selectedMeaning": "hair",
@@ -43,11 +118,93 @@
       "selectedArticle": "het",
       "secondarySenses": [
         {
-          "sourceRowId": "words_core_1.js:15",
+          "sourceRowId": "words_core_1.js:17",
           "word": "haar",
           "pos": "pronoun",
           "category": "people",
-          "meaning": "her; her (possessive)",
+          "meaning": "her (object)",
+          "cefr": "A1"
+        },
+        {
+          "sourceRowId": "words_core_1.js:18",
+          "word": "haar",
+          "pos": "determiner",
+          "category": "people",
+          "meaning": "her (possessive)",
+          "cefr": "A1"
+        }
+      ],
+      "unrelatedPOSMeaningLeakage": false,
+      "articleOverride": null,
+      "selectorStable": true,
+      "overall": "PASS",
+      "note": "Mixed-POS group reviewed: primary learner POS is unique and stable; unrelated POS meanings remain typed secondary senses and do not leak into learner-facing fields."
+    },
+    {
+      "normalizedWord": "ons",
+      "sourceGroupSize": 2,
+      "mixedPos": true,
+      "nominalizedInfinitive": false,
+      "sourcePOS": [
+        "pronoun",
+        "determiner"
+      ],
+      "explicitPrimarySelector": {
+        "file": "words_core_1.js",
+        "pos": "pronoun"
+      },
+      "selectorMatches": [
+        "words_core_1.js:19"
+      ],
+      "selectedLearnerPOS": "pronoun",
+      "selectedMeaning": "us",
+      "selectedCategory": "people",
+      "selectedCEFR": "A1",
+      "selectedArticle": null,
+      "secondarySenses": [
+        {
+          "sourceRowId": "words_core_1.js:20",
+          "word": "ons",
+          "pos": "determiner",
+          "category": "people",
+          "meaning": "our (singular het-nouns)",
+          "cefr": "A1"
+        }
+      ],
+      "unrelatedPOSMeaningLeakage": false,
+      "articleOverride": null,
+      "selectorStable": true,
+      "overall": "PASS",
+      "note": "Mixed-POS group reviewed: primary learner POS is unique and stable; unrelated POS meanings remain typed secondary senses and do not leak into learner-facing fields."
+    },
+    {
+      "normalizedWord": "hun",
+      "sourceGroupSize": 2,
+      "mixedPos": true,
+      "nominalizedInfinitive": false,
+      "sourcePOS": [
+        "pronoun",
+        "determiner"
+      ],
+      "explicitPrimarySelector": {
+        "file": "words_core_1.js",
+        "pos": "pronoun"
+      },
+      "selectorMatches": [
+        "words_core_1.js:22"
+      ],
+      "selectedLearnerPOS": "pronoun",
+      "selectedMeaning": "them (indirect object)",
+      "selectedCategory": "people",
+      "selectedCEFR": "A1",
+      "selectedArticle": null,
+      "secondarySenses": [
+        {
+          "sourceRowId": "words_core_1.js:23",
+          "word": "hun",
+          "pos": "determiner",
+          "category": "people",
+          "meaning": "their (possessive)",
           "cefr": "A1"
         }
       ],
@@ -71,7 +228,7 @@
         "pos": "verb"
       },
       "selectorMatches": [
-        "words_core_1.js:173"
+        "words_core_1.js:178"
       ],
       "selectedLearnerPOS": "verb",
       "selectedMeaning": "to be",
@@ -80,7 +237,7 @@
       "selectedArticle": null,
       "secondarySenses": [
         {
-          "sourceRowId": "words_core_1.js:24",
+          "sourceRowId": "words_core_1.js:29",
           "word": "zijn",
           "pos": "determiner",
           "category": "people",
@@ -117,7 +274,7 @@
       "selectedArticle": "het",
       "secondarySenses": [
         {
-          "sourceRowId": "words_core_1.js:34",
+          "sourceRowId": "words_core_1.js:39",
           "word": "meer",
           "pos": "determiner",
           "category": "connectors",
@@ -145,7 +302,7 @@
         "pos": "preposition"
       },
       "selectorMatches": [
-        "words_core_1.js:54"
+        "words_core_1.js:59"
       ],
       "selectedLearnerPOS": "preposition",
       "selectedMeaning": "at, near, with",
@@ -154,7 +311,7 @@
       "selectedArticle": null,
       "secondarySenses": [
         {
-          "sourceRowId": "words_core_1.js:494",
+          "sourceRowId": "words_core_1.js:499",
           "word": "bij",
           "pos": "noun",
           "category": "animals",
@@ -190,7 +347,7 @@
         "pos": "conjunction"
       },
       "selectorMatches": [
-        "words_core_1.js:81"
+        "words_core_1.js:86"
       ],
       "selectedLearnerPOS": "conjunction",
       "selectedMeaning": "because (coordinating)",
@@ -235,7 +392,7 @@
         "pos": "noun"
       },
       "selectorMatches": [
-        "words_core_1.js:318"
+        "words_core_1.js:323"
       ],
       "selectedLearnerPOS": "noun",
       "selectedMeaning": "day",
@@ -244,7 +401,7 @@
       "selectedArticle": "de",
       "secondarySenses": [
         {
-          "sourceRowId": "words_core_1.js:119",
+          "sourceRowId": "words_core_1.js:124",
           "word": "dag",
           "pos": "interjection",
           "category": "connectors",
@@ -281,7 +438,7 @@
       "selectedArticle": "het",
       "secondarySenses": [
         {
-          "sourceRowId": "words_core_1.js:130",
+          "sourceRowId": "words_core_1.js:135",
           "word": "succes",
           "pos": "interjection",
           "category": "connectors",
@@ -617,7 +774,7 @@
         "pos": "noun"
       },
       "selectorMatches": [
-        "words_core_1.js:462"
+        "words_core_1.js:467"
       ],
       "selectedLearnerPOS": "noun",
       "selectedMeaning": "weather",
@@ -626,7 +783,7 @@
       "selectedArticle": "het",
       "secondarySenses": [
         {
-          "sourceRowId": "words_core_1.js:152",
+          "sourceRowId": "words_core_1.js:157",
           "word": "weer",
           "pos": "adverb",
           "category": "time",
@@ -654,7 +811,7 @@
         "pos": "adverb"
       },
       "selectorMatches": [
-        "words_core_1.js:154"
+        "words_core_1.js:159"
       ],
       "selectedLearnerPOS": "adverb",
       "selectedMeaning": "at home",
@@ -700,7 +857,7 @@
       "selectedArticle": null,
       "secondarySenses": [
         {
-          "sourceRowId": "words_core_1.js:157",
+          "sourceRowId": "words_core_1.js:162",
           "word": "waar",
           "pos": "adverb",
           "category": "connectors",
@@ -737,7 +894,7 @@
       "selectedArticle": null,
       "secondarySenses": [
         {
-          "sourceRowId": "words_core_1.js:165",
+          "sourceRowId": "words_core_1.js:170",
           "word": "juist",
           "pos": "adverb",
           "category": "connectors",
@@ -1126,7 +1283,7 @@
       "selectedArticle": "het",
       "secondarySenses": [
         {
-          "sourceRowId": "words_core_1.js:199",
+          "sourceRowId": "words_core_1.js:204",
           "word": "eten",
           "pos": "verb",
           "category": "actions",
@@ -1264,7 +1421,7 @@
         "pos": "verb"
       },
       "selectorMatches": [
-        "words_core_1.js:205"
+        "words_core_1.js:210"
       ],
       "selectedLearnerPOS": "verb",
       "selectedMeaning": "to swim",
@@ -2321,7 +2478,7 @@
         "pos": "verb"
       },
       "selectorMatches": [
-        "words_core_1.js:282"
+        "words_core_1.js:287"
       ],
       "selectedLearnerPOS": "verb",
       "selectedMeaning": "to walk (leisure); to walk, stroll, hike",
@@ -2512,7 +2669,7 @@
         "pos": "verb"
       },
       "selectorMatches": [
-        "words_core_1.js:296"
+        "words_core_1.js:301"
       ],
       "selectedLearnerPOS": "verb",
       "selectedMeaning": "to run (sport)",
@@ -2623,7 +2780,7 @@
         "pos": "verb"
       },
       "selectorMatches": [
-        "words_core_1.js:301"
+        "words_core_1.js:306"
       ],
       "selectedLearnerPOS": "verb",
       "selectedMeaning": "to cost",
@@ -2823,7 +2980,7 @@
       "selectedArticle": "het",
       "secondarySenses": [
         {
-          "sourceRowId": "words_core_1.js:313",
+          "sourceRowId": "words_core_1.js:318",
           "word": "kussen",
           "pos": "verb",
           "category": "people",
@@ -3951,7 +4108,7 @@
         "pos": "noun"
       },
       "selectorMatches": [
-        "words_core_1.js:386"
+        "words_core_1.js:391"
       ],
       "selectedLearnerPOS": "noun",
       "selectedMeaning": "salt",
@@ -6100,7 +6257,7 @@
         "pos": "noun"
       },
       "selectorMatches": [
-        "words_core_1.js:526"
+        "words_core_1.js:531"
       ],
       "selectedLearnerPOS": "noun",
       "selectedMeaning": "arm; arm (body); arm of river",
