@@ -22,6 +22,7 @@ const STEPS = [
   ["integrity", ["node", "tests/pr1-integrity.mjs"]],
   ["boundaries", ["node", "tests/pr1-boundaries.mjs"]],
   ["grammar", ["node", "tests/grammar_quality.mjs"]],
+  ["grammar-lesson-flow", ["node", "tests/grammar_lesson_flow.mjs"]],
   ["comprehension", ["node", "tests/comprehension.mjs"]],
   ["exam-integrity", ["node", "tests/exam_integrity.mjs"]],
   ["offline-sw", ["node", "tests/offline.mjs"]],

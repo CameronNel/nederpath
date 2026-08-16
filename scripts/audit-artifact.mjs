@@ -30,6 +30,7 @@ check(existsSync(DIST) && statSync(DIST).isDirectory(), "dist/ directory exists 
 const REQUIRED_FILES = [
   "index.html",
   "css/styles.css",
+  "css/grammar-flow.css",
   "js/learning.js",
   "js/store.js",
   "js/srs.js",
@@ -38,6 +39,7 @@ const REQUIRED_FILES = [
   "js/data-loader.js",
   "js/sw-register.js",
   "js/app.js",
+  "js/grammar-flow.js",
   "js/experience-contract.js",
   "data/words.js",
   "data/grammar.js",

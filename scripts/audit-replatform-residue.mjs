@@ -7,7 +7,9 @@ const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const RUNTIME = [
   "index.html",
   "css/styles.css",
+  "css/grammar-flow.css",
   "js/app.js",
+  "js/grammar-flow.js",
   "js/store.js",
   "js/srs.js",
   "js/learning.js",
@@ -37,7 +39,8 @@ const FORBIDDEN = [
 
 const ALLOWED_CONTEXT = [
   /nederpath-v1/,
-  /nederpath-v4-cache/
+  /nederpath-v4-cache/,
+  /nederpath-v5-cache/
 ];
 
 let failed = 0;

@@ -21,6 +21,7 @@ mkdirSync(DIST, { recursive: true });
 const RUNTIME_ASSETS = [
   "index.html",
   "css/styles.css",
+  "css/grammar-flow.css",
   "fonts/fonts.css",
   "fonts/OFL-Outfit.txt",
   "fonts/files/QGYvz_MVcBeNP4NJuktqQ4E.woff2",
@@ -33,6 +34,7 @@ const RUNTIME_ASSETS = [
   "js/data-loader.js",
   "js/sw-register.js",
   "js/app.js",
+  "js/grammar-flow.js",
   "js/experience-contract.js",
   "data/words.js",
   "data/grammar.js",
