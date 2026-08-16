@@ -55,6 +55,35 @@ assert(forgedErrors.includes("formal results disabled"), "forged formal result i
 assert(api.appendResult({}, forgedFormal).added === false, "forged formal result cannot enter persisted integrity state");
 assert(api.isFormalPass(forgedFormal) === false, "forged formal result can never become a formal pass");
 
+const practiceResult = {
+  resultSchemaVersion: api.RESULT_SCHEMA_VERSION,
+  attemptId: "practice-attempt",
+  examId: "future-exam",
+  attemptMode: "practice",
+  status: "practice",
+  submittedAt: 1770000000000,
+  itemCount: 20,
+  scoreSummary: { correct: 18, total: 20 },
+  overrideEventIds: [taint.taintEventId],
+  checksum: null
+};
+practiceResult.checksum = api.checksumOf(practiceResult);
+assert(api.validateResult(practiceResult).length === 0, "well-formed practice result remains structurally valid");
+
+const normalized = api.normalizeExamIntegrityContainer({
+  taintEvents: [taint, badTaint, taint],
+  byAttemptId: {
+    [forgedFormal.attemptId]: forgedFormal,
+    [practiceResult.attemptId]: practiceResult,
+    mismatchedKey: { ...practiceResult, attemptId: "different-attempt" }
+  },
+  migrationLog: ["legacy"]
+});
+assert(normalized.taintEvents.length === 1 && normalized.taintEvents[0].taintEventId === taint.taintEventId, "normalization drops invalid and duplicate taint events");
+assert(!Object.prototype.hasOwnProperty.call(normalized.byAttemptId, forgedFormal.attemptId), "normalization drops forged formal results");
+assert(Object.prototype.hasOwnProperty.call(normalized.byAttemptId, practiceResult.attemptId), "normalization preserves valid practice results");
+assert(!Object.prototype.hasOwnProperty.call(normalized.byAttemptId, "mismatchedKey"), "normalization rejects map-key/result identity mismatch");
+
 const malformedPractice = {
   resultSchemaVersion: 999,
   attemptId: " ",
@@ -70,11 +99,33 @@ const malformedPractice = {
 malformedPractice.checksum = api.checksumOf(malformedPractice);
 const malformedErrors = api.validateResult(malformedPractice);
 assert(malformedErrors.includes("invalid result schema"), "result schema version is validated");
-assert(malformedErrors.includes("missing attemptId") && malformedErrors.includes("missing examId"), "result identity fields must be non-empty");
+assert(malformedErrors.includes("missing or invalid attemptId") && malformedErrors.includes("missing or invalid examId"), "result identity fields must be bounded and non-empty");
 assert(malformedErrors.includes("attemptMode/status mismatch"), "attempt mode must agree with result status");
 assert(malformedErrors.includes("invalid submittedAt") && malformedErrors.includes("invalid itemCount"), "result timing and item count are validated");
 assert(malformedErrors.includes("invalid scoreSummary"), "score summary must be an object");
 assert(malformedErrors.includes("invalid overrideEventIds") && malformedErrors.includes("duplicate overrideEventIds"), "override-event identifiers are validated");
+
+const cyclicResult = {
+  resultSchemaVersion: api.RESULT_SCHEMA_VERSION,
+  attemptId: "cyclic-attempt",
+  examId: "future-exam",
+  attemptMode: "practice",
+  status: "practice",
+  submittedAt: 1770000000000,
+  itemCount: 1,
+  scoreSummary: { correct: 1, total: 1 },
+  overrideEventIds: [taint.taintEventId],
+  checksum: "not-a-real-checksum"
+};
+cyclicResult.self = cyclicResult;
+let cyclicErrors = [];
+let cyclicThrew = false;
+try {
+  cyclicErrors = api.validateResult(cyclicResult);
+} catch {
+  cyclicThrew = true;
+}
+assert(cyclicThrew === false && cyclicErrors.includes("checksum validation failed"), "validator fails closed instead of throwing on non-JSON/cyclic input");
 
 if (process.exitCode) {
   console.error("\nExam integrity tests failed.");
