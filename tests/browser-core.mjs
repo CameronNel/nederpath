@@ -11,7 +11,7 @@ const original = readFileSync(INDEX, "utf8");
 const presentationRefs = [
   /\s*<link rel="stylesheet" href="\.\/css\/grammar-flow\.css" \/>/,
   /\s*<script src="\.\/js\/grammar-flow\.js"><\/script>/,
-  /\s*<script src="\.\/js\/hana-parity\.js"><\/script>/
+  /\s*<script src="\.\/js\/learn-ui\.js"><\/script>/
 ];
 
 for (const ref of presentationRefs) {
