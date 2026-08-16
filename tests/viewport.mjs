@@ -63,7 +63,12 @@ async function waitHome(page) {
   await page.waitForSelector("body");
   const finish = await page.$("#ob-finish");
   if (finish) await finish.click();
-  await page.waitForSelector(".today-home");
+  await page.waitForSelector(".hana-learn-home .hub-tiles");
+}
+
+async function openReview(page) {
+  await page.evaluate(() => globalThis.NederApp.openLearnItem("review"));
+  await page.waitForSelector(".review-hub");
 }
 
 let passed = 0;
@@ -88,8 +93,8 @@ try {
     await page.setViewport({ width: w, height: h });
     await page.goto(`http://${HOST}:${PORT}/index.html`, { waitUntil: "domcontentloaded" });
     await waitHome(page);
-    const overflowToday = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
-    assert(overflowToday <= 1, `${w}x${h} Today has no document overflow (${overflowToday}px)`);
+    const overflowLearn = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
+    assert(overflowLearn <= 1, `${w}x${h} Learn home has no document overflow (${overflowLearn}px)`);
 
     await page.click("#nav-words");
     await page.waitForSelector(".words-search-card");
@@ -97,9 +102,8 @@ try {
     assert(overflowWords <= 1, `${w}x${h} Words has no document overflow (${overflowWords}px)`);
 
     await page.click("#nav-learn");
-    await page.waitForSelector(".today-home");
-    await page.click("#nav-review");
-    await page.waitForSelector(".review-hub");
+    await waitHome(page);
+    await openReview(page);
     const overflowReview = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
     assert(overflowReview <= 1, `${w}x${h} Review has no document overflow (${overflowReview}px)`);
 
@@ -125,8 +129,7 @@ try {
   await page.setViewport({ width: 375, height: 812 });
   await page.goto(`http://${HOST}:${PORT}/index.html`, { waitUntil: "domcontentloaded" });
   await waitHome(page);
-  await page.click("#nav-review");
-  await page.waitForSelector(".review-hub");
+  await openReview(page);
   await page.click('[data-mode="flashcards"]');
   await page.waitForSelector("#interactive-flashcard");
   await page.evaluate(() => {
