@@ -23,10 +23,8 @@ function check(condition, label, details = "") {
   }
 }
 
-// 1. Dist Directory Existence
 check(existsSync(DIST) && statSync(DIST).isDirectory(), "dist/ directory exists and is a directory");
 
-// 2. Required Runtime Files
 const REQUIRED_FILES = [
   "index.html",
   "css/styles.css",
@@ -40,7 +38,7 @@ const REQUIRED_FILES = [
   "js/sw-register.js",
   "js/app.js",
   "js/grammar-flow.js",
-  "js/hana-parity.js",
+  "js/learn-ui.js",
   "js/experience-contract.js",
   "data/words.js",
   "data/grammar.js",
@@ -64,7 +62,6 @@ for (const rel of REQUIRED_FILES) {
   check(exists && size > 0, `Runtime file exists & non-empty: dist/${rel}`, `(size: ${size} B)`);
 }
 
-// 3. Prohibited Files Scan (Source-only, tooling, metadata)
 const PROHIBITED_ENTRIES = [
   ".git",
   "node_modules",
@@ -82,7 +79,6 @@ for (const entry of PROHIBITED_ENTRIES) {
   check(!existsSync(full), `Prohibited non-runtime entry absent: dist/${entry}`);
 }
 
-// 4. Validate Asset References in index.html and sw.js
 if (existsSync(join(DIST, "index.html"))) {
   const html = readFileSync(join(DIST, "index.html"), "utf8");
   const matches = [...html.matchAll(/(?:href|src)=["'](\.\/[^"']+)["']/g)];
@@ -95,7 +91,6 @@ if (existsSync(join(DIST, "index.html"))) {
 
 if (existsSync(join(DIST, "sw.js"))) {
   const sw = readFileSync(join(DIST, "sw.js"), "utf8");
-  // Extract SHELL_ASSETS array
   const shellMatch = sw.match(/SHELL_ASSETS\s*=\s*\[([\s\S]*?)\];/);
   if (shellMatch) {
     const assets = shellMatch[1]
@@ -111,7 +106,6 @@ if (existsSync(join(DIST, "sw.js"))) {
   }
 }
 
-// 5. Validate Manifest Production Metadata
 if (existsSync(join(DIST, "manifest.webmanifest"))) {
   const manifest = JSON.parse(readFileSync(join(DIST, "manifest.webmanifest"), "utf8"));
   check(manifest.id === "./", "manifest.webmanifest has project-relative id: './'");
