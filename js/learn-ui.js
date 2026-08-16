@@ -40,9 +40,6 @@
 
     const originalOpenLearnItem = app.openLearnItem;
     app.openLearnItem = function (tab, options) {
-      // The core app historically shares one selectedLevel value across Words,
-      // Grammar and Comprehension. Reset it when entering a different subject so
-      // choosing A1 in one area cannot silently pre-filter another area.
       if (SUBJECT_TABS.has(tab) && this.currentTab !== tab) {
         this.selectedLevel = "all";
       }
@@ -326,6 +323,20 @@
     });
   }
 
+  function removeDailyProgressStats() {
+    const progress = document.querySelector("#screen-progress .progress-container");
+    if (!progress) return;
+
+    const subtitle = progress.querySelector(".catalog-header .page-subtitle");
+    if (subtitle && /streak/i.test(subtitle.textContent)) {
+      subtitle.textContent = "Gedetailleerd overzicht van je leercurve en beheerste woorden.";
+    }
+
+    [...progress.querySelectorAll(".progress-stats-overview .stat-big-card")].forEach((card) => {
+      if (/streak/i.test(card.textContent)) card.remove();
+    });
+  }
+
   function cleanCompletionCopy() {
     document.querySelectorAll("#btn-go-today").forEach((button) => {
       if (button.textContent.trim() !== "Terug naar Leren") button.textContent = "Terug naar Leren";
@@ -336,13 +347,12 @@
   }
 
   function applyUi() {
-    // This runs on every observed app render. It also retries the state hook in
-    // case the core app booted after this script's DOMContentLoaded callback.
     isolateSubjectLevelState();
     transformHome();
     transformGrammarCatalog();
     transformComprehensionCatalog();
     removeDailySettings();
+    removeDailyProgressStats();
     cleanCompletionCopy();
   }
 
@@ -364,8 +374,6 @@
   };
 
   if (document.readyState === "loading") {
-    // app.js also registers on window; because it is loaded first, its boot
-    // listener runs before this UI listener on the same event target.
     window.addEventListener("DOMContentLoaded", start, { once: true });
   } else {
     start();
