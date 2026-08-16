@@ -72,20 +72,45 @@ async function finishOnboarding(page) {
   const finish = await page.$("#ob-finish");
   if (finish) await finish.click();
   await page.waitForSelector(".staged-learn-home .hub-tiles", { timeout: 15000 });
+  await page.waitForSelector(".staged-learn-home [data-tile-lab]", { timeout: 15000 });
 }
 
 async function waitForHome(page) {
   await page.waitForSelector(".staged-learn-home .hub-tiles", { timeout: 15000 });
+  await page.waitForSelector(".staged-learn-home [data-tile-lab]", { timeout: 15000 });
+}
+
+async function exerciseTileLab(page) {
+  await page.click("[data-tile-lab]");
+  await page.waitForSelector(".tile-lab-screen", { timeout: 15000 });
+  const conceptIds = await page.$$eval(".tile-lab-tab", (tabs) => tabs.map((tab) => tab.dataset.concept));
+  assert(conceptIds.length === 10, `Tile Test exposes ten numbered concepts (found ${conceptIds.length})`);
+  assert(conceptIds[0] === "01" && conceptIds[9] === "10", `Tile concepts run from 01 through 10 (${conceptIds.join(", ")})`);
+
+  await page.click('.tile-lab-tab[data-concept="10"]');
+  await page.waitForFunction(() => document.querySelector("#tile-lab-stage")?.classList.contains("tile-concept-10"), { timeout: 15000 });
+  assert((await page.$("#tile-lab-stage.tile-concept-10")) !== null, "Concept tabs switch the live preview");
+
+  await page.click("#tile-lab-choose");
+  const choice = await page.evaluate(() => localStorage.getItem("nederpath-tile-concept-choice"));
+  assert(choice === "10", `Tile concept choice is remembered without globally applying it (${choice})`);
+
+  await page.click("#tile-lab-back");
+  await waitForHome(page);
 }
 
 async function exerciseLearnTiles(page) {
-  const tabs = await page.$$eval(".staged-learn-home .hub-tile", (buttons) => buttons.map((button) => button.dataset.learnTab));
-  assert(tabs.length === 3, `Learn home exposes exactly three subject tiles (found ${tabs.length})`);
-  assert(JSON.stringify(tabs) === JSON.stringify(["grammar", "words", "comprehension"]), `Learn tiles are Grammar, Words, Comprehension in the intended order (${tabs.join(", ")})`);
+  const subjectTabs = await page.$$eval(".staged-learn-home [data-learn-tab]", (buttons) => buttons.map((button) => button.dataset.learnTab));
+  const homeTileCount = await page.$$eval(".staged-learn-home .hub-tile", (buttons) => buttons.length);
+  assert(homeTileCount === 4, `Learn home exposes three study tiles plus Tile Test (found ${homeTileCount})`);
+  assert(JSON.stringify(subjectTabs) === JSON.stringify(["grammar", "words", "comprehension"]), `Study tiles remain Grammar, Words, Comprehension in the intended order (${subjectTabs.join(", ")})`);
+  assert((await page.$(".staged-learn-home [data-tile-lab]")) !== null, "Tile Test is the fourth Learn-home tile");
 
   const homeText = await page.$eval(".staged-learn-home", (el) => el.textContent);
   assert(!/Vandaag|streak|dagelijkse voortgang|Uitdrukking van de dag/i.test(homeText), "Daily/streak/idiom-of-the-day clutter is absent from the Learn home");
   assert((await page.$("#nav-today")) === null && (await page.$("#nav-path")) === null && (await page.$("#nav-review")) === null, "Today, duplicate Path and standalone Review tiles are removed from the Learn home");
+
+  await exerciseTileLab(page);
 
   await page.click("#nav-grammar");
   await page.waitForSelector(".grammar-catalog-container[data-ui-stage='grammar'] [data-filter-lvl='A1']", { timeout: 15000 });
@@ -169,11 +194,29 @@ async function run() {
     const overflow = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
     assert(overflow <= 1, `Clean Learn home fits a 375px mobile viewport (overflow ${overflow}px)`);
     const mobileTiles = await page.$$(".staged-learn-home .hub-tile");
-    assert(mobileTiles.length === 3, "All three Learn tiles remain present on mobile");
+    assert(mobileTiles.length === 4, "Three study tiles plus Tile Test remain present on mobile");
+
     await page.tap("#nav-grammar");
     await page.waitForSelector(".grammar-catalog-container[data-ui-stage='grammar'] [data-filter-lvl='A1']", { timeout: 15000 });
     await page.tap(".grammar-catalog-container [data-filter-lvl='A1']");
     await page.waitForSelector(".grammar-catalog-container[data-ui-stage='grammar'] button[data-rule-id]", { timeout: 15000 });
+    const mobileRowLayout = await page.$eval(".grammar-catalog-container button[data-rule-id]", (row) => {
+      const style = getComputedStyle(row);
+      const pill = row.querySelector(".pill");
+      const rowRect = row.getBoundingClientRect();
+      const pillRect = pill?.getBoundingClientRect();
+      const copyRect = row.querySelector("div")?.getBoundingClientRect();
+      return {
+        display: style.display,
+        radius: parseFloat(style.borderRadius),
+        pillBelowCopy: Boolean(pillRect && copyRect && pillRect.top >= copyRect.bottom - 2),
+        fitsViewport: rowRect.right <= document.documentElement.clientWidth + 1
+      };
+    });
+    assert(mobileRowLayout.display === "grid", `Mobile staged lesson rows use the roomy grid layout (${mobileRowLayout.display})`);
+    assert(mobileRowLayout.radius >= 12, `Mobile lesson tiles are visibly rounder (${mobileRowLayout.radius}px radius)`);
+    assert(mobileRowLayout.pillBelowCopy, "Mobile lesson status pill drops below the copy instead of squeezing the title");
+    assert(mobileRowLayout.fitsViewport, "Roomier mobile lesson tile still fits the viewport");
     assert(true, "Staged grammar navigation is touch-operable on mobile");
 
     assert(errors.length === 0, "No uncaught browser errors in the production staged UI flow", errors.join("; "));

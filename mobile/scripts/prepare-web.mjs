@@ -25,6 +25,7 @@ const ROOT_FILES = [
   "js/app.js",
   "js/grammar-flow.js",
   "js/learn-ui.js",
+  "js/tile-lab.js",
   "js/experience-contract.js",
   "data/words.js",
   "data/grammar.js",

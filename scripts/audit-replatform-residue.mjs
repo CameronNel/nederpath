@@ -11,6 +11,7 @@ const RUNTIME = [
   "js/app.js",
   "js/grammar-flow.js",
   "js/learn-ui.js",
+  "js/tile-lab.js",
   "js/store.js",
   "js/srs.js",
   "js/learning.js",
