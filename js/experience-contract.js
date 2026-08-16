@@ -3,6 +3,13 @@
 (function (global) {
   "use strict";
 
+  const LESSON_FORWARD_CONTROLS = new Set([
+    "btn-start-grammar-lesson",
+    "btn-next-grammar-teach",
+    "btn-next-grammar-ex",
+    "btn-view-grammar-result"
+  ]);
+
   function isNative() {
     return Boolean(global.Capacitor && typeof global.Capacitor.isNativePlatform === "function" && global.Capacitor.isNativePlatform());
   }
@@ -24,6 +31,42 @@
       return true;
     }
     return false;
+  }
+
+  function scrollLessonToTopAfterPaint() {
+    const scroll = () => {
+      const app = global.NederApp;
+      if (app && typeof app.scrollToTop === "function") {
+        app.scrollToTop();
+        return;
+      }
+
+      const prefersReduced =
+        typeof global.matchMedia === "function" &&
+        global.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      global.scrollTo({ top: 0, behavior: prefersReduced ? "auto" : "smooth" });
+    };
+
+    // The lesson controller replaces the clicked button during render. Starting
+    // the smooth scroll in that same click cycle can be cancelled by mobile
+    // browsers. Wait until the replacement step has painted, then scroll.
+    if (typeof global.requestAnimationFrame === "function") {
+      global.requestAnimationFrame(() => global.requestAnimationFrame(scroll));
+    } else {
+      global.setTimeout(scroll, 0);
+    }
+  }
+
+  function registerLessonStepScroll() {
+    if (global.__nederpathLessonStepScrollRegistered) return;
+    global.__nederpathLessonStepScrollRegistered = true;
+
+    document.addEventListener("click", (event) => {
+      const target = event.target;
+      const button = target && typeof target.closest === "function" ? target.closest("button") : null;
+      if (!button || button.disabled || !LESSON_FORWARD_CONTROLS.has(button.id)) return;
+      scrollLessonToTopAfterPaint();
+    });
   }
 
   function registerBrowserBackButton() {
@@ -106,11 +149,20 @@
     });
   }
 
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", registerBrowserBackButton);
-  } else {
+  function registerExperienceContract() {
     registerBrowserBackButton();
+    registerLessonStepScroll();
   }
 
-  global.NederExperience = { handleBackAction, registerBrowserBackButton };
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", registerExperienceContract);
+  } else {
+    registerExperienceContract();
+  }
+
+  global.NederExperience = {
+    handleBackAction,
+    registerBrowserBackButton,
+    registerLessonStepScroll
+  };
 })(typeof window !== "undefined" ? window : globalThis);
