@@ -1,5 +1,5 @@
 // Generic exam-result provenance. UI-invisible. No Dutch exam banks are shipped.
-// Formal results cannot be created until an evidence-backed bank exists.
+// Formal results cannot be created or accepted until an evidence-backed bank exists.
 (function installExamIntegrity(root, factory) {
   "use strict";
   const api = factory();
@@ -144,9 +144,34 @@
     for (const field of REQUIRED_RESULT_FIELDS) {
       if (!Object.prototype.hasOwnProperty.call(result, field)) errors.push(`missing ${field}`);
     }
+    if (result.resultSchemaVersion !== RESULT_SCHEMA_VERSION) errors.push("invalid result schema");
+    if (typeof result.attemptId !== "string" || !result.attemptId.trim()) errors.push("missing attemptId");
+    if (typeof result.examId !== "string" || !result.examId.trim()) errors.push("missing examId");
     if (!VALID_RESULT_STATUSES.includes(result.status)) errors.push("invalid status");
-    if (result.status === "formal" && Array.isArray(result.overrideEventIds) && result.overrideEventIds.length) {
+    if (!VALID_RESULT_STATUSES.includes(result.attemptMode)) errors.push("invalid attemptMode");
+    if (result.status !== "legacy-incomplete" && result.attemptMode !== result.status) {
+      errors.push("attemptMode/status mismatch");
+    }
+    if (!Number.isFinite(result.submittedAt) || result.submittedAt <= 0) errors.push("invalid submittedAt");
+    if (!Number.isInteger(result.itemCount) || result.itemCount < 0) errors.push("invalid itemCount");
+    if (!isPlainObject(result.scoreSummary)) errors.push("invalid scoreSummary");
+
+    const overrideEventIds = result.overrideEventIds;
+    if (overrideEventIds !== undefined) {
+      if (!Array.isArray(overrideEventIds)) {
+        errors.push("invalid overrideEventIds");
+      } else {
+        const validIds = overrideEventIds.every((id) => typeof id === "string" && id.trim().length > 0);
+        if (!validIds) errors.push("invalid overrideEventIds");
+        if (new Set(overrideEventIds).size !== overrideEventIds.length) errors.push("duplicate overrideEventIds");
+      }
+    }
+
+    if (result.status === "formal" && Array.isArray(overrideEventIds) && overrideEventIds.length) {
       errors.push("formal result cannot carry practice taint");
+    }
+    if (result.status === "formal" && dutchExamsEnabled() !== true) {
+      errors.push("formal results disabled");
     }
     if (result.checksum !== checksumOf(result)) errors.push("checksum mismatch");
     return errors;
@@ -166,7 +191,10 @@
   }
 
   function isFormalPass(result) {
-    return isPlainObject(result) && result.status === "formal" && validateResult(result).length === 0;
+    return dutchExamsEnabled() === true &&
+      isPlainObject(result) &&
+      result.status === "formal" &&
+      validateResult(result).length === 0;
   }
 
   return {
