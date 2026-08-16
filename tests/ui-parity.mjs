@@ -22,7 +22,7 @@ function findBrowserExecutable() {
     "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe"
   ].filter(Boolean);
   const found = candidates.find((candidate) => existsSync(candidate));
-  if (!found) throw new Error("No compatible Chrome/Chromium/Edge executable found for UI parity tests.");
+  if (!found) throw new Error("No compatible Chrome/Chromium/Edge executable found for UI tests.");
   return found;
 }
 
@@ -71,31 +71,30 @@ function assert(condition, label, details = "") {
 async function finishOnboarding(page) {
   const finish = await page.$("#ob-finish");
   if (finish) await finish.click();
-  await page.waitForSelector(".hana-learn-home .hub-tiles", { timeout: 15000 });
+  await page.waitForSelector(".staged-learn-home .hub-tiles", { timeout: 15000 });
 }
 
 async function waitForHome(page) {
-  await page.waitForSelector(".hana-learn-home .hub-tiles", { timeout: 15000 });
+  await page.waitForSelector(".staged-learn-home .hub-tiles", { timeout: 15000 });
 }
 
 async function exerciseLearnTiles(page) {
-  const tabs = await page.$$eval(".hana-learn-home .hub-tile", (buttons) => buttons.map((button) => button.dataset.learnTab));
+  const tabs = await page.$$eval(".staged-learn-home .hub-tile", (buttons) => buttons.map((button) => button.dataset.learnTab));
   assert(tabs.length === 3, `Learn home exposes exactly three subject tiles (found ${tabs.length})`);
-  assert(JSON.stringify(tabs) === JSON.stringify(["grammar", "words", "comprehension"]), `Learn tiles are Grammar, Words, Comprehension in Hana-style order (${tabs.join(", ")})`);
+  assert(JSON.stringify(tabs) === JSON.stringify(["grammar", "words", "comprehension"]), `Learn tiles are Grammar, Words, Comprehension in the intended order (${tabs.join(", ")})`);
 
-  const homeText = await page.$eval(".hana-learn-home", (el) => el.textContent);
+  const homeText = await page.$eval(".staged-learn-home", (el) => el.textContent);
   assert(!/Vandaag|streak|dagelijkse voortgang|Uitdrukking van de dag/i.test(homeText), "Daily/streak/idiom-of-the-day clutter is absent from the Learn home");
   assert((await page.$("#nav-today")) === null && (await page.$("#nav-path")) === null && (await page.$("#nav-review")) === null, "Today, duplicate Path and standalone Review tiles are removed from the Learn home");
 
-  // Grammar tile -> CEFR stage -> lesson.
   await page.click("#nav-grammar");
-  await page.waitForSelector(".grammar-catalog-container[data-hana-parity='grammar'] [data-filter-lvl='A1']", { timeout: 15000 });
+  await page.waitForSelector(".grammar-catalog-container[data-ui-stage='grammar'] [data-filter-lvl='A1']", { timeout: 15000 });
   const grammarLevels = await page.$$eval(".grammar-catalog-container [data-filter-lvl]", (buttons) => buttons.map((button) => button.dataset.filterLvl));
   assert(grammarLevels.includes("A1") && grammarLevels.includes("C1"), `Grammar opens on staged CEFR choices (${grammarLevels.join(", ")})`);
   assert((await page.$(".grammar-catalog-container [data-rule-id]")) === null, "Grammar does not dump lesson cards before a level is chosen");
 
   await page.click(".grammar-catalog-container [data-filter-lvl='A1']");
-  await page.waitForSelector(".grammar-catalog-container[data-hana-parity='grammar'] button[data-rule-id]", { timeout: 15000 });
+  await page.waitForSelector(".grammar-catalog-container[data-ui-stage='grammar'] button[data-rule-id]", { timeout: 15000 });
   const grammarLessonCount = await page.$$eval(".grammar-catalog-container button[data-rule-id]", (buttons) => buttons.length);
   assert(grammarLessonCount > 0 && grammarLessonCount < 120, `Choosing A1 reveals only that level's grammar lessons (${grammarLessonCount})`);
   await page.click(".grammar-catalog-container button[data-rule-id]");
@@ -105,8 +104,6 @@ async function exerciseLearnTiles(page) {
   await page.click("#nav-learn");
   await waitForHome(page);
 
-  // Vocabulary tile -> real dictionary/search screen. It must not inherit the
-  // A1 filter chosen in Grammar.
   await page.click("#nav-words");
   await page.waitForSelector(".words-search-card", { timeout: 20000 });
   const wordSearch = await page.$("#words-search-input");
@@ -117,13 +114,11 @@ async function exerciseLearnTiles(page) {
   await page.click("#nav-learn");
   await waitForHome(page);
 
-  // Comprehension tile -> CEFR stage -> text. Wait for the parity marker so
-  // assertions cannot accidentally inspect the brief pre-transform catalog.
   await page.click("#nav-comprehension");
-  await page.waitForSelector(".comprehension-catalog-container[data-hana-parity='comprehension'] [data-filter-comp-lvl='A1']", { timeout: 15000 });
+  await page.waitForSelector(".comprehension-catalog-container[data-ui-stage='comprehension'] [data-filter-comp-lvl='A1']", { timeout: 15000 });
   assert((await page.$(".comprehension-catalog-container [data-passage-id]")) === null, "Reading does not dump passage cards before a level is chosen");
   await page.click(".comprehension-catalog-container [data-filter-comp-lvl='A1']");
-  await page.waitForSelector(".comprehension-catalog-container[data-hana-parity='comprehension'] button[data-passage-id]", { timeout: 15000 });
+  await page.waitForSelector(".comprehension-catalog-container[data-ui-stage='comprehension'] button[data-passage-id]", { timeout: 15000 });
   const passageCount = await page.$$eval(".comprehension-catalog-container button[data-passage-id]", (buttons) => buttons.length);
   assert(passageCount > 0, `Choosing A1 reveals curated reading texts (${passageCount})`);
   await page.click(".comprehension-catalog-container button[data-passage-id]");
@@ -148,7 +143,7 @@ async function run() {
   });
 
   try {
-    console.log("\n--- NederPath production UI parity: desktop ---");
+    console.log("\n--- NederPath production staged UI: desktop ---");
     await page.setViewport({ width: 1280, height: 800 });
     await page.goto(`http://${HOST}:${PORT}/index.html`, { waitUntil: "domcontentloaded" });
     await finishOnboarding(page);
@@ -161,30 +156,30 @@ async function run() {
     await page.waitForFunction(() => !document.querySelector("#select-daily-goal"), { timeout: 15000 });
     assert((await page.$("#select-daily-goal")) === null, "Daily-goal selector is removed from Settings");
 
-    console.log("\n--- NederPath production UI parity: mobile ---");
+    console.log("\n--- NederPath production staged UI: mobile ---");
     await page.setViewport({ width: 375, height: 667, isMobile: true, hasTouch: true });
     await page.goto(`http://${HOST}:${PORT}/index.html`, { waitUntil: "domcontentloaded" });
     await waitForHome(page);
     const overflow = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
     assert(overflow <= 1, `Clean Learn home fits a 375px mobile viewport (overflow ${overflow}px)`);
-    const mobileTiles = await page.$$(".hana-learn-home .hub-tile");
+    const mobileTiles = await page.$$(".staged-learn-home .hub-tile");
     assert(mobileTiles.length === 3, "All three Learn tiles remain present on mobile");
     await page.tap("#nav-grammar");
-    await page.waitForSelector(".grammar-catalog-container[data-hana-parity='grammar'] [data-filter-lvl='A1']", { timeout: 15000 });
+    await page.waitForSelector(".grammar-catalog-container[data-ui-stage='grammar'] [data-filter-lvl='A1']", { timeout: 15000 });
     await page.tap(".grammar-catalog-container [data-filter-lvl='A1']");
-    await page.waitForSelector(".grammar-catalog-container[data-hana-parity='grammar'] button[data-rule-id]", { timeout: 15000 });
+    await page.waitForSelector(".grammar-catalog-container[data-ui-stage='grammar'] button[data-rule-id]", { timeout: 15000 });
     assert(true, "Staged grammar navigation is touch-operable on mobile");
 
-    assert(errors.length === 0, "No uncaught browser errors in the production parity flow", errors.join("; "));
+    assert(errors.length === 0, "No uncaught browser errors in the production staged UI flow", errors.join("; "));
   } catch (error) {
     failed += 1;
-    console.error("UI parity test exception:", error);
+    console.error("Staged UI test exception:", error);
   } finally {
     await browser.close();
     server.close();
   }
 
-  console.log(`\nUI parity tests completed: ${passed} passed, ${failed} failed.\n`);
+  console.log(`\nStaged UI tests completed: ${passed} passed, ${failed} failed.\n`);
   if (failed > 0) process.exit(1);
 }
 
