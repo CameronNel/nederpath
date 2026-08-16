@@ -89,13 +89,13 @@ async function exerciseLearnTiles(page) {
 
   // Grammar tile -> CEFR stage -> lesson.
   await page.click("#nav-grammar");
-  await page.waitForSelector(".grammar-catalog-container [data-filter-lvl='A1']", { timeout: 15000 });
+  await page.waitForSelector(".grammar-catalog-container[data-hana-parity='grammar'] [data-filter-lvl='A1']", { timeout: 15000 });
   const grammarLevels = await page.$$eval(".grammar-catalog-container [data-filter-lvl]", (buttons) => buttons.map((button) => button.dataset.filterLvl));
   assert(grammarLevels.includes("A1") && grammarLevels.includes("C1"), `Grammar opens on staged CEFR choices (${grammarLevels.join(", ")})`);
   assert((await page.$(".grammar-catalog-container [data-rule-id]")) === null, "Grammar does not dump lesson cards before a level is chosen");
 
   await page.click(".grammar-catalog-container [data-filter-lvl='A1']");
-  await page.waitForSelector(".grammar-catalog-container button[data-rule-id]", { timeout: 15000 });
+  await page.waitForSelector(".grammar-catalog-container[data-hana-parity='grammar'] button[data-rule-id]", { timeout: 15000 });
   const grammarLessonCount = await page.$$eval(".grammar-catalog-container button[data-rule-id]", (buttons) => buttons.length);
   assert(grammarLessonCount > 0 && grammarLessonCount < 120, `Choosing A1 reveals only that level's grammar lessons (${grammarLessonCount})`);
   await page.click(".grammar-catalog-container button[data-rule-id]");
@@ -105,21 +105,25 @@ async function exerciseLearnTiles(page) {
   await page.click("#nav-learn");
   await waitForHome(page);
 
-  // Vocabulary tile -> real dictionary/search screen.
+  // Vocabulary tile -> real dictionary/search screen. It must not inherit the
+  // A1 filter chosen in Grammar.
   await page.click("#nav-words");
   await page.waitForSelector(".words-search-card", { timeout: 20000 });
   const wordSearch = await page.$("#words-search-input");
   assert(wordSearch !== null, "Vocabulary tile opens the functional dictionary/search screen");
+  const wordLevel = await page.$eval("#select-filter-level", (select) => select.value);
+  assert(wordLevel === "all", `Vocabulary opens unfiltered after leaving Grammar (level: ${wordLevel})`);
 
   await page.click("#nav-learn");
   await waitForHome(page);
 
-  // Comprehension tile -> CEFR stage -> text.
+  // Comprehension tile -> CEFR stage -> text. Wait for the parity marker so
+  // assertions cannot accidentally inspect the brief pre-transform catalog.
   await page.click("#nav-comprehension");
-  await page.waitForSelector(".comprehension-catalog-container [data-filter-comp-lvl='A1']", { timeout: 15000 });
+  await page.waitForSelector(".comprehension-catalog-container[data-hana-parity='comprehension'] [data-filter-comp-lvl='A1']", { timeout: 15000 });
   assert((await page.$(".comprehension-catalog-container [data-passage-id]")) === null, "Reading does not dump passage cards before a level is chosen");
   await page.click(".comprehension-catalog-container [data-filter-comp-lvl='A1']");
-  await page.waitForSelector(".comprehension-catalog-container button[data-passage-id]", { timeout: 15000 });
+  await page.waitForSelector(".comprehension-catalog-container[data-hana-parity='comprehension'] button[data-passage-id]", { timeout: 15000 });
   const passageCount = await page.$$eval(".comprehension-catalog-container button[data-passage-id]", (buttons) => buttons.length);
   assert(passageCount > 0, `Choosing A1 reveals curated reading texts (${passageCount})`);
   await page.click(".comprehension-catalog-container button[data-passage-id]");
@@ -166,9 +170,9 @@ async function run() {
     const mobileTiles = await page.$$(".hana-learn-home .hub-tile");
     assert(mobileTiles.length === 3, "All three Learn tiles remain present on mobile");
     await page.tap("#nav-grammar");
-    await page.waitForSelector(".grammar-catalog-container [data-filter-lvl='A1']", { timeout: 15000 });
+    await page.waitForSelector(".grammar-catalog-container[data-hana-parity='grammar'] [data-filter-lvl='A1']", { timeout: 15000 });
     await page.tap(".grammar-catalog-container [data-filter-lvl='A1']");
-    await page.waitForSelector(".grammar-catalog-container button[data-rule-id]", { timeout: 15000 });
+    await page.waitForSelector(".grammar-catalog-container[data-hana-parity='grammar'] button[data-rule-id]", { timeout: 15000 });
     assert(true, "Staged grammar navigation is touch-operable on mobile");
 
     assert(errors.length === 0, "No uncaught browser errors in the production parity flow", errors.join("; "));
