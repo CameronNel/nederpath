@@ -9,8 +9,6 @@
     "btn-view-grammar-result"
   ]);
 
-  // HanaPath's motion CSS already exists in NederPath. These are the runtime
-  // classes HanaPath uses to make that CSS actually participate in navigation.
   const SCREEN_MOTION_CLASSES = [
     "screen-motion-enter",
     "screen-motion-launch",
@@ -82,7 +80,7 @@
     const resolvedBehavior = behavior || (motionIsReduced() ? "auto" : "smooth");
 
     // #app-main owns the scroll in NederPath (`overflow-y:auto`). Scrolling the
-    // window, as the old helper did, cannot move lesson content on mobile.
+    // window cannot move lesson content on mobile.
     if (typeof scroller.scrollTo === "function") {
       scroller.scrollTo({ top: 0, left: 0, behavior: resolvedBehavior });
     } else {
@@ -112,9 +110,6 @@
 
   function scrollLessonToTopAfterPaint() {
     const scroll = () => scrollAppToTop();
-
-    // The lesson controller replaces the clicked button during render. Wait for
-    // two paint opportunities, then animate the *actual* scroll container.
     if (typeof global.requestAnimationFrame === "function") {
       global.requestAnimationFrame(() => global.requestAnimationFrame(scroll));
     } else {
@@ -202,6 +197,9 @@
         (next.grammarPhase === "teach" && previous.grammarPhase === "teach" && next.grammarTeachIndex < previous.grammarTeachIndex) ||
         (next.grammarPhase === "test" && previous.grammarPhase === "test" && next.grammarExIndex < previous.grammarExIndex);
       if (movedBack) return { kind: "back", direction: -1, variant: "lesson-back", stepMs: 26 };
+      if (next.grammarPhase === previous.grammarPhase && next.grammarTeachIndex === previous.grammarTeachIndex && next.grammarExIndex === previous.grammarExIndex) {
+        return { kind: "forward", direction: 1, variant: "answer", stepMs: 22 };
+      }
       return { kind: "forward", direction: 1, variant: "lesson-forward", stepMs: 26 };
     }
 
@@ -215,6 +213,10 @@
     const app = global.NederApp;
     if (!app || app.__hanaMotionRuntimeInstalled || typeof app.render !== "function") return false;
     app.__hanaMotionRuntimeInstalled = true;
+
+    // Correct every existing app navigation call, not only the lesson button.
+    // This turns the old window-based helper into the real overflow-container helper.
+    app.scrollToTop = scrollAppToTop;
 
     let previous = snapshotRoute(app);
     const baseRender = app.render.bind(app);
@@ -323,8 +325,6 @@
     registerBrowserBackButton();
     registerLessonStepScroll();
     if (!installHanaMotionRuntime()) {
-      // app.js normally creates NederApp before this script executes, but keep a
-      // one-frame retry for slow/embedded runtimes rather than silently losing motion.
       global.setTimeout(installHanaMotionRuntime, 0);
     }
   }
