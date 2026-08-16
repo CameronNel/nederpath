@@ -7,7 +7,10 @@ const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const RUNTIME = [
   "index.html",
   "css/styles.css",
+  "css/grammar-flow.css",
   "js/app.js",
+  "js/grammar-flow.js",
+  "js/learn-ui.js",
   "js/store.js",
   "js/srs.js",
   "js/learning.js",

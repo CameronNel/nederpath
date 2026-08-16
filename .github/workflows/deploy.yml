@@ -52,7 +52,17 @@ jobs:
           node scripts/verify_lexical_independent.mjs
 
       - name: Run Quality Audit, Smoke, Regression, and Browser Tests
-        run: npm test
+        shell: bash
+        run: |
+          set +e
+          npm test > /tmp/nederpath-test.log 2>&1
+          status=$?
+          cat /tmp/nederpath-test.log
+          if [ "$status" -ne 0 ]; then
+            summary="$(tail -n 24 /tmp/nederpath-test.log | tr '\n' ' ' | sed 's/%/%25/g; s/\r/%0D/g')"
+            echo "::error title=NederPath quality test failure::$summary"
+            exit "$status"
+          fi
 
       - name: Build Production Artifact
         run: npm run build
