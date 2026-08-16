@@ -24,7 +24,7 @@ const ROOT_FILES = [
   "js/data-loader.js",
   "js/app.js",
   "js/grammar-flow.js",
-  "js/hana-parity.js",
+  "js/learn-ui.js",
   "js/experience-contract.js",
   "data/words.js",
   "data/grammar.js",
