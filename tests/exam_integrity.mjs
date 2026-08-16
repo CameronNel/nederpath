@@ -69,13 +69,24 @@ const practiceResult = {
 };
 practiceResult.checksum = api.checksumOf(practiceResult);
 assert(api.validateResult(practiceResult).length === 0, "well-formed practice result remains structurally valid");
+assert(api.appendResult({}, practiceResult).reason === "unknown-taint-event", "practice result cannot reference an unrecorded taint event");
+const practiceState = {};
+assert(api.appendTaintEvent(practiceState, taint).added === true, "practice state records taint before result");
+assert(api.appendResult(practiceState, practiceResult).added === true, "practice result appends when its taint provenance exists");
+assert(api.appendResult(practiceState, practiceResult).reason === "immutable-duplicate", "persisted results stay immutable by attempt id");
 
 const normalized = api.normalizeExamIntegrityContainer({
   taintEvents: [taint, badTaint, taint],
   byAttemptId: {
     [forgedFormal.attemptId]: forgedFormal,
     [practiceResult.attemptId]: practiceResult,
-    mismatchedKey: { ...practiceResult, attemptId: "different-attempt" }
+    mismatchedKey: { ...practiceResult, attemptId: "different-attempt" },
+    unknownTaint: {
+      ...practiceResult,
+      attemptId: "unknownTaint",
+      overrideEventIds: ["taint-not-recorded"],
+      checksum: null
+    }
   },
   migrationLog: ["legacy"]
 });
@@ -83,6 +94,7 @@ assert(normalized.taintEvents.length === 1 && normalized.taintEvents[0].taintEve
 assert(!Object.prototype.hasOwnProperty.call(normalized.byAttemptId, forgedFormal.attemptId), "normalization drops forged formal results");
 assert(Object.prototype.hasOwnProperty.call(normalized.byAttemptId, practiceResult.attemptId), "normalization preserves valid practice results");
 assert(!Object.prototype.hasOwnProperty.call(normalized.byAttemptId, "mismatchedKey"), "normalization rejects map-key/result identity mismatch");
+assert(!Object.prototype.hasOwnProperty.call(normalized.byAttemptId, "unknownTaint"), "normalization rejects practice results with unknown taint provenance");
 
 const malformedPractice = {
   resultSchemaVersion: 999,
@@ -126,6 +138,74 @@ try {
   cyclicThrew = true;
 }
 assert(cyclicThrew === false && cyclicErrors.includes("checksum validation failed"), "validator fails closed instead of throwing on non-JSON/cyclic input");
+
+// The store is instantiated as soon as store.js executes, so the integrity module must
+// load before both learning.js (which owns backup validation) and store.js.
+const indexSource = readFileSync(join(ROOT, "index.html"), "utf8");
+const examScriptPos = indexSource.indexOf("./js/exam_integrity.js");
+const learningScriptPos = indexSource.indexOf("./js/learning.js");
+const storeScriptPos = indexSource.indexOf("./js/store.js");
+assert(examScriptPos >= 0 && examScriptPos < learningScriptPos && learningScriptPos < storeScriptPos, "browser load order installs exam integrity before persisted-state validation");
+
+const learningSource = readFileSync(join(ROOT, "js", "learning.js"), "utf8");
+const storeSource = readFileSync(join(ROOT, "js", "store.js"), "utf8");
+let persistedJson = null;
+const startupSandbox = {
+  console,
+  localStorage: {
+    getItem(key) {
+      return key === "nederpath-v1" ? persistedJson : null;
+    },
+    setItem(key, value) {
+      if (key === "nederpath-v1") persistedJson = value;
+    }
+  }
+};
+vm.createContext(startupSandbox);
+vm.runInContext(source, startupSandbox);
+vm.runInContext(learningSource, startupSandbox);
+const startupApi = startupSandbox.NederExamIntegrity;
+const startupTaint = startupApi.createTaintEvent(
+  { controlId: "startup-practice", queryGate: "__wetest", appVersion: "test" },
+  { now: 1770000000000 }
+);
+const startupPractice = {
+  resultSchemaVersion: startupApi.RESULT_SCHEMA_VERSION,
+  attemptId: "startup-practice-attempt",
+  examId: "future-exam",
+  attemptMode: "practice",
+  status: "practice",
+  submittedAt: 1770000000000,
+  itemCount: 1,
+  scoreSummary: { correct: 1, total: 1 },
+  overrideEventIds: [startupTaint.taintEventId],
+  checksum: null
+};
+startupPractice.checksum = startupApi.checksumOf(startupPractice);
+const startupForged = {
+  ...startupPractice,
+  attemptId: "startup-forged-formal",
+  attemptMode: "formal",
+  status: "formal",
+  overrideEventIds: [],
+  checksum: null
+};
+startupForged.checksum = startupApi.checksumOf(startupForged);
+persistedJson = JSON.stringify({
+  examIntegrity: {
+    version: 1,
+    taintEvents: [startupTaint],
+    byAttemptId: {
+      [startupPractice.attemptId]: startupPractice,
+      [startupForged.attemptId]: startupForged
+    },
+    migrationLog: []
+  }
+});
+vm.runInContext(storeSource, startupSandbox);
+const startupIntegrity = startupSandbox.NederStore.state.examIntegrity;
+assert(Object.prototype.hasOwnProperty.call(startupIntegrity.byAttemptId, startupPractice.attemptId), "valid practice integrity survives store startup/reload");
+assert(!Object.prototype.hasOwnProperty.call(startupIntegrity.byAttemptId, startupForged.attemptId), "forged formal integrity is stripped during store startup/reload");
 
 if (process.exitCode) {
   console.error("\nExam integrity tests failed.");
