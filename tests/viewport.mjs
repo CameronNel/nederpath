@@ -63,7 +63,7 @@ async function waitHome(page) {
   await page.waitForSelector("body");
   const finish = await page.$("#ob-finish");
   if (finish) await finish.click();
-  await page.waitForSelector(".hana-learn-home .hub-tiles");
+  await page.waitForSelector(".staged-learn-home .hub-tiles");
 }
 
 async function openReview(page) {
