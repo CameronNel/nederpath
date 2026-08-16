@@ -10,14 +10,12 @@ console.log("\n=======================================================");
 console.log("             NederPath Production Build                ");
 console.log("=======================================================\n");
 
-// 1. Clean dist directory
 if (existsSync(DIST)) {
   console.log("Cleaning previous dist/ directory...");
   rmSync(DIST, { recursive: true, force: true });
 }
 mkdirSync(DIST, { recursive: true });
 
-// 2. Define explicit runtime asset manifest to copy
 const RUNTIME_ASSETS = [
   "index.html",
   "css/styles.css",
@@ -35,7 +33,7 @@ const RUNTIME_ASSETS = [
   "js/sw-register.js",
   "js/app.js",
   "js/grammar-flow.js",
-  "js/hana-parity.js",
+  "js/learn-ui.js",
   "js/experience-contract.js",
   "data/words.js",
   "data/grammar.js",
