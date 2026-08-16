@@ -1,6 +1,6 @@
 {
   "files": 25,
-  "rawSourceRows": 6427,
+  "rawSourceRows": 6432,
   "uniqueSourceForms": 4259,
   "canonicalForms": 4259,
   "generatedRows": 10818,
@@ -10,7 +10,7 @@
     "adjective": 167,
     "adverb": 111,
     "conjunction": 25,
-    "determiner": 23,
+    "determiner": 28,
     "interjection": 24,
     "noun": 4805,
     "particle": 5,
@@ -20,7 +20,7 @@
     "verb": 1173
   },
   "sourceLevels": {
-    "A1": 1847,
+    "A1": 1852,
     "A2": 1899,
     "B1": 2068,
     "B2": 600,
@@ -30,14 +30,14 @@
     "adjective": 155,
     "adverb": 87,
     "conjunction": 25,
-    "determiner": 21,
+    "determiner": 22,
     "interjection": 22,
     "noun": 4863,
     "numeral": 1995,
     "particle": 5,
     "phrase": 39,
     "preposition": 34,
-    "pronoun": 20,
+    "pronoun": 19,
     "verb": 3552
   },
   "generatedLevels": {
@@ -47,8 +47,8 @@
     "B2": 1015,
     "C1": 27
   },
-  "duplicateSourceGroups": 1464,
-  "mixedPosDuplicateGroups": 36,
+  "duplicateSourceGroups": 1468,
+  "mixedPosDuplicateGroups": 40,
   "generatedDuplicateForms": 0,
   "generatedDuplicateIds": 0,
   "explicitFormsChecked": 6228,
@@ -56,7 +56,7 @@
   "properNameRows": 16,
   "multiwordNounRows": 34,
   "phraseRows": 39,
-  "baselineRows": 10731,
+  "baselineRows": 10818,
   "baselineIdDrift": 0,
   "registryHighWaterMark": 20093,
   "registryEntries": 20093,

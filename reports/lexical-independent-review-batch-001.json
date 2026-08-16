@@ -1,0 +1,190 @@
+{
+  "schemaVersion": 1,
+  "batchId": "2026-08-16-mixed-pos-001",
+  "reviewType": "independent lexical semantic acceptance batch",
+  "reviewer": "GPT-5.6 Sol",
+  "reviewedAt": "2026-08-16",
+  "issue": 25,
+  "baseHead": "5df8c8d0a8cf90899c43e733decf73c2937903a6",
+  "method": "Small-batch row-by-row review against Taaladvies.net and E-ANS/Instituut voor de Nederlandse Taal. Only enumerated rows are accepted; no inference is made about the remaining bank.",
+  "acceptedRows": 11,
+  "rejectedRows": 0,
+  "rows": [
+    {
+      "sourceFile": "words_core_1.js",
+      "sourceIndex": 1,
+      "word": "je",
+      "pos": "pronoun",
+      "cefr": "A1",
+      "meaning": "you (unstressed)",
+      "category": "people",
+      "synonyms": [
+        "jij"
+      ],
+      "status": "ACCEPTED",
+      "evidence": [
+        "https://taaladvies.net/jouw-of-je-gegevens/",
+        "https://e-ans.ivdnt.org/topics/pid/ans05020401lingtopic"
+      ]
+    },
+    {
+      "sourceFile": "words_core_1.js",
+      "sourceIndex": 2,
+      "word": "je",
+      "pos": "determiner",
+      "cefr": "A1",
+      "meaning": "your (reduced form)",
+      "category": "people",
+      "synonyms": [
+        "jouw"
+      ],
+      "status": "ACCEPTED",
+      "evidence": [
+        "https://taaladvies.net/jouw-of-je-gegevens/",
+        "https://e-ans.ivdnt.org/topics/pid/ans05020401lingtopic"
+      ]
+    },
+    {
+      "sourceFile": "words_core_1.js",
+      "sourceIndex": 8,
+      "word": "het",
+      "pos": "pronoun",
+      "cefr": "A1",
+      "meaning": "it",
+      "category": "people",
+      "synonyms": [],
+      "status": "ACCEPTED",
+      "evidence": [
+        "https://e-ans.ivdnt.org/topics/pid/ans05020501lingtopic",
+        "https://e-ans.ivdnt.org/topics/pid/ans0402lingtopic"
+      ]
+    },
+    {
+      "sourceFile": "words_core_1.js",
+      "sourceIndex": 9,
+      "word": "het",
+      "pos": "determiner",
+      "cefr": "A1",
+      "meaning": "the (singular neuter)",
+      "category": "connectors",
+      "synonyms": [],
+      "status": "ACCEPTED",
+      "evidence": [
+        "https://e-ans.ivdnt.org/topics/pid/ans05020501lingtopic",
+        "https://e-ans.ivdnt.org/topics/pid/ans0402lingtopic"
+      ]
+    },
+    {
+      "sourceFile": "words_core_1.js",
+      "sourceIndex": 17,
+      "word": "haar",
+      "pos": "pronoun",
+      "cefr": "A1",
+      "meaning": "her (object)",
+      "category": "people",
+      "synonyms": [],
+      "status": "ACCEPTED",
+      "evidence": [
+        "https://e-ans.ivdnt.org/topics/pid/ans05020501lingtopic",
+        "https://taaladvies.net/wie-heeft-haar-of-zijn-huiswerk-niet-gemaakt/"
+      ]
+    },
+    {
+      "sourceFile": "words_core_1.js",
+      "sourceIndex": 18,
+      "word": "haar",
+      "pos": "determiner",
+      "cefr": "A1",
+      "meaning": "her (possessive)",
+      "category": "people",
+      "synonyms": [],
+      "status": "ACCEPTED",
+      "evidence": [
+        "https://e-ans.ivdnt.org/topics/pid/ans05020501lingtopic",
+        "https://taaladvies.net/wie-heeft-haar-of-zijn-huiswerk-niet-gemaakt/"
+      ]
+    },
+    {
+      "sourceFile": "words_core_1.js",
+      "sourceIndex": 19,
+      "word": "ons",
+      "pos": "pronoun",
+      "cefr": "A1",
+      "meaning": "us",
+      "category": "people",
+      "synonyms": [],
+      "status": "ACCEPTED",
+      "evidence": [
+        "https://e-ans.ivdnt.org/topics/pid/ans05020301lingtopic",
+        "https://e-ans.ivdnt.org/topics/pid/ans05050501lingtopic",
+        "https://taaladvies.net/onze-uiterste-best-of-ons-uiterste-best/"
+      ]
+    },
+    {
+      "sourceFile": "words_core_1.js",
+      "sourceIndex": 20,
+      "word": "ons",
+      "pos": "determiner",
+      "cefr": "A1",
+      "meaning": "our (singular het-nouns)",
+      "category": "people",
+      "synonyms": [
+        "onze"
+      ],
+      "status": "ACCEPTED",
+      "evidence": [
+        "https://e-ans.ivdnt.org/topics/pid/ans05020301lingtopic",
+        "https://e-ans.ivdnt.org/topics/pid/ans05050501lingtopic",
+        "https://taaladvies.net/onze-uiterste-best-of-ons-uiterste-best/"
+      ]
+    },
+    {
+      "sourceFile": "words_core_1.js",
+      "sourceIndex": 21,
+      "word": "hen",
+      "pos": "pronoun",
+      "cefr": "A1",
+      "meaning": "them (direct object; after preposition)",
+      "category": "people",
+      "synonyms": [],
+      "status": "ACCEPTED",
+      "evidence": [
+        "https://taaladvies.net/hen-of-hun-algemeen/",
+        "https://e-ans.ivdnt.org/topics/pid/ans05020501lingtopic"
+      ]
+    },
+    {
+      "sourceFile": "words_core_1.js",
+      "sourceIndex": 22,
+      "word": "hun",
+      "pos": "pronoun",
+      "cefr": "A1",
+      "meaning": "them (indirect object)",
+      "category": "people",
+      "synonyms": [],
+      "status": "ACCEPTED",
+      "evidence": [
+        "https://taaladvies.net/hen-of-hun-algemeen/",
+        "https://taaladvies.net/hun-of-zij-hebben-het-gedaan/",
+        "https://e-ans.ivdnt.org/topics/pid/ans05020501lingtopic"
+      ]
+    },
+    {
+      "sourceFile": "words_core_1.js",
+      "sourceIndex": 23,
+      "word": "hun",
+      "pos": "determiner",
+      "cefr": "A1",
+      "meaning": "their (possessive)",
+      "category": "people",
+      "synonyms": [],
+      "status": "ACCEPTED",
+      "evidence": [
+        "https://taaladvies.net/hen-of-hun-algemeen/",
+        "https://taaladvies.net/hun-of-zij-hebben-het-gedaan/",
+        "https://e-ans.ivdnt.org/topics/pid/ans05020501lingtopic"
+      ]
+    }
+  ],
+  "limitations": "This batch accepts 11 explicitly enumerated source senses only. It does not validate the legacy bulk semantic-review claim or any unlisted row."
+}

@@ -149,6 +149,22 @@
     "mogelijk": {
       "file": "words_core_8.js",
       "pos": "adjective"
+    },
+    "je": {
+      "file": "words_core_1.js",
+      "pos": "pronoun"
+    },
+    "het": {
+      "file": "words_core_1.js",
+      "pos": "determiner"
+    },
+    "hun": {
+      "file": "words_core_1.js",
+      "pos": "pronoun"
+    },
+    "ons": {
+      "file": "words_core_1.js",
+      "pos": "pronoun"
     }
   },
   "article": {
