@@ -1,4 +1,4 @@
-// NederPath Offline Service Worker (Cache version: v6 - HanaPath parity shell)
+// NederPath Offline Service Worker (Cache version: v6 - staged Learn shell)
 const CACHE_NAME = "nederpath-v6-cache";
 
 // Core App Shell assets only (data files are runtime-cached on first successful visit)
@@ -18,7 +18,7 @@ const SHELL_ASSETS = [
   "./js/app.js",
   "./js/grammar-flow.js",
   "./js/experience-contract.js",
-  "./js/hana-parity.js",
+  "./js/learn-ui.js",
   "./manifest.webmanifest",
   "./icons/favicon-32.png",
   "./icons/apple-touch-icon.png",
