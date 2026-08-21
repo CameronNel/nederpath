@@ -7755,8 +7755,10 @@ article.study-row { display: block; cursor: default; }
 }
 :root[data-color-mode="light"] .bg-orb { opacity: .07; filter: blur(110px); }
 
-/* Keep every real surface above the ambient field. */
-.app-shell > *:not(#app-main),
+/* Keep every real surface above the ambient field. The settings button is
+   excluded: it is position:fixed with its own z-index (72) and must never be
+   demoted to an in-flow relative item by this layer. */
+.app-shell > *:not(#app-main):not(.app-settings-button),
 #app-main .screen-pane { position: relative; z-index: 1; }
 
 /* ── FLOATING DOCK NAVIGATION ──────────────────────────────────────

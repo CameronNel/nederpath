@@ -160,10 +160,18 @@
        noisy, and must degrade to silence on unsupported platforms. */
 
     prefersReducedMotion() {
-      return typeof global.matchMedia === "function" && global.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      // The OS preference and the in-app "Minder beweging" setting are OR-ed:
+      // either one alone must silence every motion effect this app owns.
+      if (typeof global.matchMedia === "function" && global.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        return true;
+      }
+      const settings = this.store && this.store.state && this.store.state.settings;
+      return !!(settings && settings.reduceMotion === true);
     }
 
     haptic(pattern) {
+      const settings = this.store && this.store.state && this.store.state.settings;
+      if (settings && settings.hapticFeedback === false) return;
       try {
         if (global.navigator && typeof global.navigator.vibrate === "function") {
           global.navigator.vibrate(pattern);
@@ -174,7 +182,18 @@
     afterPaint() {
       const feedback = document.querySelector(".exercise-feedback.feedback-correct, .exercise-feedback.feedback-wrong, .drill-feedback.feedback-correct, .drill-feedback.feedback-wrong");
       if (feedback) {
-        const signature = `${this.currentTab}|${this.practiceMode || ""}|${this.activeGrammarRule && this.activeGrammarRule.id}|${this.session.currentIndex}|${feedback.className}`;
+        // The signature must advance on every NEW graded answer, including
+        // repeated verdicts within grammar lessons and reading quizzes, or
+        // consecutive identical outcomes would lose their haptic tick.
+        const signature = [
+          this.currentTab,
+          this.practiceMode || "",
+          this.activeGrammarRule && this.activeGrammarRule.id,
+          this.activeGrammarExIndex,
+          Object.keys(this.activePassageAnswers || {}).length,
+          this.session.currentIndex,
+          feedback.className
+        ].join("|");
         if (this._lastFeedbackSignature !== signature) {
           this._lastFeedbackSignature = signature;
           this.haptic(feedback.classList.contains("feedback-correct") ? 14 : [12, 50, 22]);
@@ -193,7 +212,7 @@
     }
 
     launchConfetti(anchor) {
-      if (this.prefersReducedMotion() || typeof document.createElement("canvas").getContext !== "function") return;
+      if (!anchor || this.prefersReducedMotion() || typeof document.createElement("canvas").getContext !== "function") return;
       const host = anchor.closest(".screen-pane") || anchor.parentElement || document.body;
       const rect = anchor.getBoundingClientRect();
       const canvas = document.createElement("canvas");
@@ -230,9 +249,18 @@
         };
       });
 
+      // Single idempotent teardown: whichever fires first (natural finish,
+      // lifetime cap, or pagehide) cancels the frame loop, clears the cap,
+      // detaches the listener, and removes the canvas. Nothing survives it.
+      let settled = false;
       let raf = 0;
+      let expiry = 0;
       const settle = () => {
+        if (settled) return;
+        settled = true;
         cancelAnimationFrame(raf);
+        clearTimeout(expiry);
+        window.removeEventListener("pagehide", settle);
         canvas.remove();
       };
       const tick = () => {
@@ -259,13 +287,8 @@
           settle();
         }
       };
-      // Hard lifetime cap so a hidden tab can never leak the loop or the node.
-      const expiry = setTimeout(settle, 4200);
-      const stopWatching = () => {
-        clearTimeout(expiry);
-        window.removeEventListener("pagehide", stopWatching);
-      };
-      window.addEventListener("pagehide", stopWatching, { once: true });
+      expiry = setTimeout(settle, 4200);
+      window.addEventListener("pagehide", settle);
       raf = requestAnimationFrame(tick);
     }
 
