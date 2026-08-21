@@ -1,5 +1,5 @@
-// NederPath Offline Service Worker (Cache version: v8 - vocabulary bank cleanup)
-const CACHE_NAME = "nederpath-v8-cache";
+// NederPath Offline Service Worker (Cache version: v9 - aurora experience)
+const CACHE_NAME = "nederpath-v9-cache";
 
 // Core App Shell assets only (data files are runtime-cached on first successful visit)
 const SHELL_ASSETS = [
@@ -19,7 +19,6 @@ const SHELL_ASSETS = [
   "./js/grammar-flow.js",
   "./js/experience-contract.js",
   "./js/learn-ui.js",
-  "./js/word-bank-ui.js",
   "./js/tile-lab.js",
   "./manifest.webmanifest",
   "./icons/favicon-32.png",

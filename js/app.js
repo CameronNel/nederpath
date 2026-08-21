@@ -154,6 +154,121 @@
       }
     }
 
+    /* ── SENSORY LAYER ────────────────────────────────────────────────
+       Haptics + celebration effects. Every path is capability-guarded and
+       reduced-motion aware: the app must feel alive without ever being
+       noisy, and must degrade to silence on unsupported platforms. */
+
+    prefersReducedMotion() {
+      return typeof global.matchMedia === "function" && global.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    }
+
+    haptic(pattern) {
+      try {
+        if (global.navigator && typeof global.navigator.vibrate === "function") {
+          global.navigator.vibrate(pattern);
+        }
+      } catch (_) { /* haptics are never worth an exception */ }
+    }
+
+    afterPaint() {
+      const feedback = document.querySelector(".exercise-feedback.feedback-correct, .exercise-feedback.feedback-wrong, .drill-feedback.feedback-correct, .drill-feedback.feedback-wrong");
+      if (feedback) {
+        const signature = `${this.currentTab}|${this.practiceMode || ""}|${this.activeGrammarRule && this.activeGrammarRule.id}|${this.session.currentIndex}|${feedback.className}`;
+        if (this._lastFeedbackSignature !== signature) {
+          this._lastFeedbackSignature = signature;
+          this.haptic(feedback.classList.contains("feedback-correct") ? 14 : [12, 50, 22]);
+        }
+      } else {
+        this._lastFeedbackSignature = null;
+      }
+
+      const completed = document.querySelector(".session-complete-card");
+      if (completed && !this._celebrationShown) {
+        this._celebrationShown = true;
+        this.launchConfetti(completed);
+      } else if (!completed) {
+        this._celebrationShown = false;
+      }
+    }
+
+    launchConfetti(anchor) {
+      if (this.prefersReducedMotion() || typeof document.createElement("canvas").getContext !== "function") return;
+      const host = anchor.closest(".screen-pane") || anchor.parentElement || document.body;
+      const rect = anchor.getBoundingClientRect();
+      const canvas = document.createElement("canvas");
+      canvas.className = "np-confetti-canvas";
+      canvas.width = Math.max(1, Math.round(rect.width));
+      canvas.height = 220;
+      canvas.setAttribute("aria-hidden", "true");
+      host.appendChild(canvas);
+      const ctx = canvas.getContext("2d");
+      if (!ctx) { canvas.remove(); return; }
+
+      const styles = getComputedStyle(document.documentElement);
+      const palette = ["--accent", "--accent-3", "--good", "--warn", "--accent-4"]
+        .map((v) => styles.getPropertyValue(v).trim())
+        .filter(Boolean);
+      const originX = canvas.width / 2;
+      const gravity = 0.16;
+      const drag = 0.985;
+
+      const particles = Array.from({ length: 90 }, (_, i) => {
+        const angle = (Math.PI * (0.08 + 0.84 * (i / 90))) + (Math.random() - 0.5) * 0.34;
+        const speed = 5.2 + Math.random() * 5.6;
+        return {
+          x: originX,
+          y: 24,
+          vx: Math.cos(angle) * speed * (Math.random() < 0.5 ? -1 : 1) * 0.72,
+          vy: -Math.abs(Math.sin(angle)) * speed,
+          w: 5 + Math.random() * 5,
+          h: 8 + Math.random() * 7,
+          color: palette[i % Math.max(1, palette.length)] || "#a78bfa",
+          rotation: Math.random() * Math.PI * 2,
+          spin: (Math.random() - 0.5) * 0.28,
+          wobble: Math.random() * Math.PI * 2
+        };
+      });
+
+      let raf = 0;
+      const settle = () => {
+        cancelAnimationFrame(raf);
+        canvas.remove();
+      };
+      const tick = () => {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        let alive = false;
+        for (const p of particles) {
+          p.vy = p.vy * drag + gravity;
+          p.vx *= drag;
+          p.x += p.vx + Math.sin(p.wobble += 0.09) * 0.5;
+          p.y += p.vy;
+          p.rotation += p.spin;
+          if (p.y < canvas.height + 24) alive = true;
+          ctx.save();
+          ctx.translate(p.x, p.y);
+          ctx.rotate(p.rotation);
+          ctx.scale(1, Math.cos(p.wobble * 1.4));
+          ctx.fillStyle = p.color;
+          ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
+          ctx.restore();
+        }
+        if (alive) {
+          raf = requestAnimationFrame(tick);
+        } else {
+          settle();
+        }
+      };
+      // Hard lifetime cap so a hidden tab can never leak the loop or the node.
+      const expiry = setTimeout(settle, 4200);
+      const stopWatching = () => {
+        clearTimeout(expiry);
+        window.removeEventListener("pagehide", stopWatching);
+      };
+      window.addEventListener("pagehide", stopWatching, { once: true });
+      raf = requestAnimationFrame(tick);
+    }
+
     showInlineStatus(message, type = "info") {
       const banner = document.getElementById("settings-status-banner") || document.querySelector(".status-banner");
       if (banner) {
@@ -561,6 +676,8 @@
           target.innerHTML = this.renderTodayView();
           this.attachTodayListeners();
       }
+
+      this.afterPaint();
 
       // Manage focus only on explicit primary view transitions or intended control, never steal focus to heading during internal updates
       if (this.focusIntention === "heading") {
@@ -978,6 +1095,7 @@
 
     handleSRSRating(rating) {
       const card = this.session.cards[this.session.currentIndex];
+      this.haptic(rating >= 3 ? 14 : [12, 50, 22]);
       this.srs.review(card.id, rating, "vocab");
       this.session.currentIndex += 1;
       this.session.revealed = false;
