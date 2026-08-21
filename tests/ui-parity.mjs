@@ -228,6 +228,89 @@ async function run() {
     assert(mobileRail.fitsViewport, "Wider Number Rail lesson copy still fits the viewport");
     assert(true, "Staged grammar navigation is touch-operable on mobile");
 
+    console.log("\n--- Aurora layer: shell integrity & user-preference contracts ---");
+    await page.setViewport({ width: 1280, height: 800 });
+
+    // Settings control must remain a fixed overlay, never demoted to an
+    // in-flow flex item by the ambient-surface layering rule.
+    await page.goto(`http://${HOST}:${PORT}/index.html`, { waitUntil: "domcontentloaded" });
+    await waitForHome(page);
+    const settingsBtn = await page.evaluate(() => {
+      const el = document.getElementById("app-settings-button");
+      if (!el) return null;
+      const cs = getComputedStyle(el);
+      const rect = el.getBoundingClientRect();
+      return {
+        position: cs.position,
+        zIndex: parseInt(cs.zIndex, 10),
+        top: rect.top,
+        rightGap: window.innerWidth - rect.right,
+        fullyVisible: rect.top >= 0 && rect.right <= window.innerWidth && rect.width > 0 && rect.height > 0
+      };
+    });
+    assert(settingsBtn !== null, "Settings control exists in the app shell");
+    assert(settingsBtn.position === "fixed", `Settings control remains position:fixed (${settingsBtn.position})`);
+    assert(settingsBtn.zIndex >= 70, `Settings control keeps its elevated z-index (${settingsBtn.zIndex})`);
+    assert(settingsBtn.fullyVisible && settingsBtn.top >= 0, "Settings control stays pinned inside the top-right viewport corner");
+
+    // Celebration effect must honor BOTH reduced-motion sources, and must
+    // always tear itself down (canvas removed, nothing left behind).
+    await page.evaluate(() => { window.NederApp.store.state.settings.reduceMotion = true; });
+    const inAppReduceHonored = await page.evaluate(() => {
+      window.NederApp.launchConfetti(document.querySelector("#app-main"));
+      return !document.querySelector(".np-confetti-canvas");
+    });
+    assert(inAppReduceHonored, "In-app 'Minder beweging' setting suppresses celebration effects");
+
+    const osReduceEmulated = await page.evaluate(() => window.NederApp.store.state.settings.reduceMotion = false)
+      .then(async () => {
+        await page.emulateMediaFeatures([{ name: "prefers-reduced-motion", value: "reduce" }]);
+        const honored = await page.evaluate(() => window.NederApp.prefersReducedMotion() === true);
+        await page.emulateMediaFeatures([]);
+        return honored;
+      });
+    assert(osReduceEmulated, "OS prefers-reduced-motion alone suppresses motion preference checks");
+
+    let confettiCleaned = false;
+    await page.evaluate(() => {
+      const s = window.NederApp.store.state.settings;
+      s.reduceMotion = false;
+      window.NederApp.launchConfetti(document.querySelector("#app-main"));
+    });
+    await page.waitForSelector(".np-confetti-canvas", { timeout: 5000 });
+    await page.waitForFunction(() => !document.querySelector(".np-confetti-canvas"), { timeout: 6000 });
+    confettiCleaned = await page.evaluate(() => !document.querySelector(".np-confetti-canvas"));
+    assert(confettiCleaned, "Celebration canvas removes itself after its lifetime cap");
+
+    // Haptics must be silenced by the persisted hapticFeedback=false setting.
+    const haptics = await page.evaluate(() => {
+      const results = {};
+      let calls = 0;
+      Object.defineProperty(Object.getPrototypeOf(navigator), "vibrate", {
+        configurable: true,
+        value: () => { calls += 1; return true; }
+      });
+      try {
+        const app = window.NederApp;
+        app.store.state.settings.hapticFeedback = true;
+        app.haptic(10);
+        results.enabledFires = calls === 1;
+        app.store.state.settings.hapticFeedback = false;
+        app.haptic(10);
+        results.disabledSilent = calls === 1;
+      } finally {
+        delete Object.getPrototypeOf(navigator).vibrate;
+      }
+      return results;
+    });
+    assert(haptics.enabledFires, "Haptics fire when hapticFeedback is enabled");
+    assert(haptics.disabledSilent, "Persisted hapticFeedback=false silences every vibration");
+
+    await page.evaluate(() => {
+      window.NederApp.store.state.settings.reduceMotion = false;
+      window.NederApp.store.state.settings.hapticFeedback = true;
+    });
+
     assert(errors.length === 0, "No uncaught browser errors in the production staged UI flow", errors.join("; "));
   } catch (error) {
     failed += 1;

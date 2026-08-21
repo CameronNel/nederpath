@@ -26,7 +26,11 @@ const STEPS = [
   ["comprehension", ["node", "tests/comprehension.mjs"]],
   ["exam-integrity", ["node", "tests/exam_integrity.mjs"]],
   ["offline-sw", ["node", "tests/offline.mjs"]],
-  ["browser", ["node", "tests/browser.mjs"]],
+  // browser.mjs asserts the CORE runtime DOM contract; it must be invoked
+  // through browser-core.mjs, which isolates the presentation layer exactly
+  // like `npm test` and CI do. Running it raw races the staged Learn UI.
+  ["browser-core", ["node", "tests/browser-core.mjs"]],
+  ["ui-parity", ["node", "tests/ui-parity.mjs"]],
   ["viewport", ["node", "tests/viewport.mjs"]],
   ["build", ["node", "scripts/build.mjs"]],
   ["audit-artifact", ["node", "scripts/audit-artifact.mjs"]],
