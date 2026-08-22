@@ -1,5 +1,5 @@
-// NederPath Offline Service Worker (Cache version: v9 - aurora experience)
-const CACHE_NAME = "nederpath-v10-cache";
+// NederPath Offline Service Worker (Cache version: v11 - lesson next jumps to top)
+const CACHE_NAME = "nederpath-v11-cache";
 
 // Core App Shell assets only (data files are runtime-cached on first successful visit)
 const SHELL_ASSETS = [

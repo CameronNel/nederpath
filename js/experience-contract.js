@@ -6,8 +6,23 @@
   const LESSON_FORWARD_CONTROLS = new Set([
     "btn-start-grammar-lesson",
     "btn-next-grammar-teach",
+    "btn-prev-grammar-teach",
     "btn-next-grammar-ex",
-    "btn-view-grammar-result"
+    "btn-prev-grammar-ex",
+    "btn-view-grammar-result",
+    "btn-back-to-teaching",
+    "btn-next-drill",
+    "btn-next-spelling",
+    "btn-next-fill-blank",
+    "btn-next-choose",
+    "btn-next-verb",
+    "btn-next-syn",
+    "btn-next-morph",
+    "btn-next-ctx",
+    "btn-srs-again",
+    "btn-srs-hard",
+    "btn-srs-good",
+    "btn-srs-easy"
   ]);
 
   function isNative() {
@@ -41,15 +56,19 @@
         return;
       }
 
-      const prefersReduced =
-        typeof global.matchMedia === "function" &&
-        global.matchMedia("(prefers-reduced-motion: reduce)").matches;
-      global.scrollTo({ top: 0, behavior: prefersReduced ? "auto" : "smooth" });
+      const instant = { top: 0, left: 0, behavior: "auto" };
+      const scroller = document.getElementById("app-main");
+      if (scroller) {
+        scroller.scrollTop = 0;
+        if (typeof scroller.scrollTo === "function") scroller.scrollTo(instant);
+      }
+      if (typeof global.scrollTo === "function") global.scrollTo(instant);
     };
 
-    // The lesson controller replaces the clicked button during render. Starting
-    // the smooth scroll in that same click cycle can be cancelled by mobile
-    // browsers. Wait until the replacement step has painted, then scroll.
+    scroll();
+    // The lesson controller replaces the clicked button during render. Reset
+    // again after the replacement step paints so the pane cannot keep the
+    // previous step's scroll offset.
     if (typeof global.requestAnimationFrame === "function") {
       global.requestAnimationFrame(() => global.requestAnimationFrame(scroll));
     } else {

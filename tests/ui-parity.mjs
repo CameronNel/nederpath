@@ -141,6 +141,23 @@ async function exerciseLearnTiles(page) {
   await page.waitForSelector(".grammar-lesson-card, .grammar-flow-shell", { timeout: 15000 });
   assert(true, "Grammar level and lesson rows are clickable end-to-end");
 
+  const startLesson = await page.$("#btn-start-grammar-lesson");
+  if (startLesson) {
+    await startLesson.click();
+    await page.waitForSelector("#btn-next-grammar-teach", { timeout: 15000 });
+    await page.evaluate(() => {
+      const scroller = document.getElementById("app-main");
+      if (scroller) scroller.scrollTop = 800;
+    });
+    await page.click("#btn-next-grammar-teach");
+    await page.waitForFunction(() => {
+      const scroller = document.getElementById("app-main");
+      return scroller && scroller.scrollTop <= 2;
+    }, { timeout: 15000 });
+    const afterNext = await page.$eval("#app-main", (el) => el.scrollTop);
+    assert(afterNext <= 2, `Lesson Next returns the pane to the top (scrollTop ${afterNext})`);
+  }
+
   await page.click("#nav-learn");
   await waitForHome(page);
 

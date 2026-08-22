@@ -488,12 +488,26 @@
     }
 
     scrollToTop() {
-      if (typeof window !== "undefined") {
-        const prefersReduced =
-          typeof window.matchMedia === "function" &&
-          window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-        const behavior = prefersReduced ? "auto" : "smooth";
-        window.scrollTo({ top: 0, behavior });
+      if (typeof window === "undefined") return;
+
+      // The app shell is position:fixed; the real scroller is #app-main, not
+      // the window. Instant jump so Next never leaves the learner stranded
+      // at the previous step's bottom.
+      const apply = () => {
+        const instant = { top: 0, left: 0, behavior: "auto" };
+        const scroller = document.getElementById("app-main");
+        if (scroller) {
+          scroller.scrollTop = 0;
+          if (typeof scroller.scrollTo === "function") scroller.scrollTo(instant);
+        }
+        window.scrollTo(instant);
+        if (document.documentElement) document.documentElement.scrollTop = 0;
+        if (document.body) document.body.scrollTop = 0;
+      };
+
+      apply();
+      if (typeof window.requestAnimationFrame === "function") {
+        window.requestAnimationFrame(() => window.requestAnimationFrame(apply));
       }
     }
 
@@ -1131,6 +1145,7 @@
         this.focusIntention = "#interactive-flashcard";
       }
       this.render();
+      this.scrollToTop();
     }
 
     renderSessionCompleteScreen() {
@@ -1237,6 +1252,7 @@
           this.session.currentIndex += 1;
           this.session.feedback = null;
           this.render();
+          this.scrollToTop();
         });
       }
     }
@@ -1311,6 +1327,7 @@
           this.session.currentIndex += 1;
           this.session.feedback = null;
           this.render();
+          this.scrollToTop();
         });
       }
     }
@@ -1390,6 +1407,7 @@
           this.session.currentIndex += 1;
           this.session.feedback = null;
           this.render();
+          this.scrollToTop();
         });
       }
     }
@@ -1472,6 +1490,7 @@
           this.session.currentIndex += 1;
           this.session.feedback = null;
           this.render();
+          this.scrollToTop();
         });
       }
     }
@@ -1549,6 +1568,7 @@
           this.session.currentIndex += 1;
           this.session.feedback = null;
           this.render();
+          this.scrollToTop();
         });
       }
     }
@@ -1630,6 +1650,7 @@
           this.session.currentIndex += 1;
           this.session.feedback = null;
           this.render();
+          this.scrollToTop();
         });
       }
     }
@@ -1712,6 +1733,7 @@
           this.session.currentIndex += 1;
           this.session.feedback = null;
           this.render();
+          this.scrollToTop();
         });
       }
     }
@@ -1759,6 +1781,7 @@
           this.session.currentIndex += 1;
           this.session.feedback = null;
           this.render();
+          this.scrollToTop();
         });
       }
     }
@@ -2084,6 +2107,7 @@
             this.activeGrammarExIndex -= 1;
             this.tokenReconstructionPlaced = [];
             this.render();
+            this.scrollToTop();
           }
         });
       }
@@ -2096,6 +2120,7 @@
             this.activeGrammarExIndex += 1;
             this.tokenReconstructionPlaced = [];
             this.render();
+            this.scrollToTop();
           }
         });
       }
