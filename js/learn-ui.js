@@ -14,9 +14,9 @@
   };
 
   const HOME_ITEMS = [
-    { tab: "grammar", icon: ICONS.grammar, title: "Grammatica", sub: "Lessen, uitleg en oefeningen in een duidelijke volgorde." },
-    { tab: "words", icon: ICONS.vocabulary, title: "Woordenschat", sub: "Woorden leren, terugvinden en gericht oefenen." },
-    { tab: "comprehension", icon: ICONS.comprehension, title: "Begrijpend lezen", sub: "Gecureerde teksten met begripsoefeningen per niveau." }
+    { tab: "grammar", icon: ICONS.grammar, title: "Grammar", sub: "Lessons, explanations, and exercises in a clear order." },
+    { tab: "words", icon: ICONS.vocabulary, title: "Vocabulary", sub: "Learn words, look them up, and practise with focus." },
+    { tab: "comprehension", icon: ICONS.comprehension, title: "Reading", sub: "Curated texts with comprehension practice at each level." }
   ];
 
   function text(node) {
@@ -78,7 +78,7 @@
     keptButtons.forEach((button) => tiles.appendChild(button));
 
     home.replaceChildren(
-      makeHeader("Studie & oefening", "Waar wil je aan werken?", "Kies één leerpad. Oefeningen zitten bij elk onderwerp."),
+      makeHeader("Study & practice", "What do you want to work on?", "Pick one path. Practice sits inside each subject."),
       tiles
     );
     home.className = "staged-learn-home";
@@ -87,13 +87,13 @@
 
   function grammarLevelDescription(level) {
     const descriptions = {
-      A1: "Basiszinnen, werkwoorden, lidwoorden en eenvoudige woordvolgorde.",
-      A2: "Meer tijden, verbindingen en dagelijkse grammaticale patronen.",
-      B1: "Zelfstandiger formuleren met complexere zinnen en structuren.",
-      B2: "Nuance, precisie en gevorderde zinsbouw.",
-      C1: "Fijne betekenisverschillen en complexe grammaticale keuzes."
+      A1: "Basic sentences, verbs, articles, and simple word order.",
+      A2: "More tenses, connectors, and everyday grammar patterns.",
+      B1: "More independent wording with longer, more complex sentences.",
+      B2: "Nuance, precision, and advanced sentence building.",
+      C1: "Fine meaning differences and complex grammatical choices."
     };
-    return descriptions[level] || "Grammaticalessen op dit niveau.";
+    return descriptions[level] || "Grammar lessons at this level.";
   }
 
   function transformGrammarCatalog() {
@@ -120,10 +120,10 @@
         button.innerHTML = `
           <span class="unit-dot next">${level}</span>
           <div>
-            <div class="study-row-ko">${level} · Grammatica</div>
+            <div class="study-row-ko">${level} · Grammar</div>
             <div class="study-row-sub">${grammarLevelDescription(level)}</div>
           </div>
-          <span class="pill muted">${total} lessen</span>
+          <span class="pill muted">${total} lessons</span>
         `;
         return button;
       }).filter(Boolean);
@@ -133,10 +133,10 @@
       stageCard.innerHTML = `
         <div class="flex-between mb-12">
           <div>
-            <div class="eyebrow">Niveaus</div>
-            <div class="screen-sub" style="margin-bottom:0;">Open één niveau en werk de lessen in volgorde af.</div>
+            <div class="eyebrow">Levels</div>
+            <div class="screen-sub" style="margin-bottom:0;">Open one level and work through the lessons in order.</div>
           </div>
-          <span class="pill accent" style="white-space:nowrap;">${levelButtons.length} niveaus</span>
+          <span class="pill accent" style="white-space:nowrap;">${levelButtons.length} levels</span>
         </div>
       `;
       const list = document.createElement("div");
@@ -145,7 +145,7 @@
       stageCard.appendChild(list);
 
       catalog.replaceChildren(
-        makeHeader("Grammatica", "Kies een niveau", "Kies eerst je niveau en daarna één les."),
+        makeHeader("Grammar", "Choose a level", "Choose your level first, then one lesson."),
         stageCard
       );
     } else {
@@ -153,7 +153,7 @@
       if (allButton) {
         allButton.className = "button secondary compact";
         allButton.style.marginTop = "18px";
-        allButton.textContent = "‹ Alle niveaus";
+        allButton.textContent = "‹ All levels";
       }
 
       const ruleButtons = [...rulesGrid.querySelectorAll(".grammar-item-card")];
@@ -163,7 +163,7 @@
         const summary = text(button.querySelector(".grammar-summary"));
         const section = text(button.querySelector(".grammar-section"));
         const status = text(button.querySelector(".status-indicator"));
-        const complete = /voltooid|✓/i.test(status);
+        const complete = /voltooid|completed|✓/i.test(status);
         const number = String(index + 1).padStart(2, "0");
         button.className = `study-row stage-row ${complete ? "complete" : "current"}`;
         button.innerHTML = `
@@ -172,7 +172,7 @@
             <div class="study-row-ko">${title}</div>
             <div class="study-row-sub">${[section, nlTitle, summary].filter(Boolean).join(" · ")}</div>
           </div>
-          <span class="pill ${complete ? "green" : "muted"}">${complete ? "Voltooid" : `Les ${number}`}</span>
+          <span class="pill ${complete ? "green" : "muted"}">${complete ? "Completed" : `Lesson ${number}`}</span>
         `;
       });
       rulesGrid.className = "study-list";
@@ -183,14 +183,14 @@
       meta.className = "flex-between mb-12";
       meta.innerHTML = `
         <div>
-          <div class="eyebrow">${activeLevel} grammatica</div>
-          <div class="screen-sub" style="margin-bottom:0;">Kies één les. Je voortgang blijft per les bewaard.</div>
+          <div class="eyebrow">${activeLevel} grammar</div>
+          <div class="screen-sub" style="margin-bottom:0;">Pick one lesson. Progress is saved per lesson.</div>
         </div>
-        <span class="pill accent" style="white-space:nowrap;">${ruleButtons.length} lessen</span>
+        <span class="pill accent" style="white-space:nowrap;">${ruleButtons.length} lessons</span>
       `;
       lessonsCard.append(meta, rulesGrid);
 
-      const cleanHeader = makeHeader("Grammatica", `${activeLevel} · Kies een les`, "Werk de lessen in een duidelijke volgorde af.");
+      const cleanHeader = makeHeader("Grammar", `${activeLevel} · Choose a lesson`, "Work through the lessons in a clear order.");
       if (allButton) cleanHeader.appendChild(allButton);
       catalog.replaceChildren(cleanHeader, lessonsCard);
     }
@@ -200,13 +200,13 @@
 
   function comprehensionLevelDescription(level) {
     const descriptions = {
-      A1: "Korte, concrete teksten met herkenbare dagelijkse taal.",
-      A2: "Eenvoudige verhalen, berichten en praktische teksten.",
-      B1: "Langere teksten met meer context en impliciete informatie.",
-      B2: "Complexere argumenten, stijl en genuanceerde betekenis.",
-      C1: "Dichte, natuurlijke teksten met gevorderde woordenschat."
+      A1: "Short, concrete texts in familiar everyday language.",
+      A2: "Simple stories, notices, and practical texts.",
+      B1: "Longer texts with more context and implied information.",
+      B2: "More complex arguments, style, and nuanced meaning.",
+      C1: "Dense, natural texts with advanced vocabulary."
     };
-    return descriptions[level] || "Leesteksten op dit niveau.";
+    return descriptions[level] || "Reading texts at this level.";
   }
 
   function transformComprehensionCatalog() {
@@ -233,10 +233,10 @@
         button.innerHTML = `
           <span class="unit-dot next">${level}</span>
           <div>
-            <div class="study-row-ko">${level} · Begrijpend lezen</div>
+            <div class="study-row-ko">${level} · Reading</div>
             <div class="study-row-sub">${comprehensionLevelDescription(level)}</div>
           </div>
-          <span class="pill muted">${total} teksten</span>
+          <span class="pill muted">${total} texts</span>
         `;
         return button;
       }).filter(Boolean);
@@ -246,10 +246,10 @@
       stageCard.innerHTML = `
         <div class="flex-between mb-12">
           <div>
-            <div class="eyebrow">Niveaus</div>
-            <div class="screen-sub" style="margin-bottom:0;">Kies eerst je niveau en daarna één tekst.</div>
+            <div class="eyebrow">Levels</div>
+            <div class="screen-sub" style="margin-bottom:0;">Choose your level first, then one text.</div>
           </div>
-          <span class="pill accent" style="white-space:nowrap;">${levelButtons.length} niveaus</span>
+          <span class="pill accent" style="white-space:nowrap;">${levelButtons.length} levels</span>
         </div>
       `;
       const list = document.createElement("div");
@@ -258,7 +258,7 @@
       stageCard.appendChild(list);
 
       catalog.replaceChildren(
-        makeHeader("Begrijpend lezen", "Kies een niveau", "Kies eerst je niveau en daarna één tekst."),
+        makeHeader("Reading", "Choose a level", "Choose your level first, then one text."),
         stageCard
       );
     } else {
@@ -266,7 +266,7 @@
       if (allButton) {
         allButton.className = "button secondary compact";
         allButton.style.marginTop = "18px";
-        allButton.textContent = "‹ Alle niveaus";
+        allButton.textContent = "‹ All levels";
       }
 
       const passageButtons = [...passagesGrid.querySelectorAll(".passage-item-card")];
@@ -275,7 +275,7 @@
         const enTitle = text(button.querySelector(".passage-en-title"));
         const time = text(button.querySelector(".reading-time"));
         const footer = text(button.querySelector(".passage-card-footer"));
-        const complete = /gelezen|✓/i.test(footer);
+        const complete = /gelezen|✓ Read|✓/i.test(footer);
         const number = String(index + 1).padStart(2, "0");
         button.className = `study-row stage-row ${complete ? "complete" : "current"}`;
         button.innerHTML = `
@@ -284,7 +284,7 @@
             <div class="study-row-ko">${title}</div>
             <div class="study-row-sub">${[enTitle, time].filter(Boolean).join(" · ")}</div>
           </div>
-          <span class="pill ${complete ? "green" : "muted"}">${complete ? "Gelezen" : `Tekst ${number}`}</span>
+          <span class="pill ${complete ? "green" : "muted"}">${complete ? "Read" : `Text ${number}`}</span>
         `;
       });
       passagesGrid.className = "study-list";
@@ -295,14 +295,14 @@
       meta.className = "flex-between mb-12";
       meta.innerHTML = `
         <div>
-          <div class="eyebrow">${activeLevel} lezen</div>
-          <div class="screen-sub" style="margin-bottom:0;">Kies één tekst en werk die volledig af.</div>
+          <div class="eyebrow">${activeLevel} reading</div>
+          <div class="screen-sub" style="margin-bottom:0;">Pick one text and finish it in full.</div>
         </div>
-        <span class="pill accent" style="white-space:nowrap;">${passageButtons.length} teksten</span>
+        <span class="pill accent" style="white-space:nowrap;">${passageButtons.length} texts</span>
       `;
       lessonsCard.append(meta, passagesGrid);
 
-      const cleanHeader = makeHeader("Begrijpend lezen", `${activeLevel} · Kies een tekst`, "Werk de teksten per niveau af.");
+      const cleanHeader = makeHeader("Reading", `${activeLevel} · Choose a text`, "Work through the texts at this level.");
       if (allButton) cleanHeader.appendChild(allButton);
       catalog.replaceChildren(cleanHeader, lessonsCard);
     }
@@ -321,7 +321,7 @@
     }
 
     [...settings.querySelectorAll("h1, h2, h3")].forEach((heading) => {
-      if (heading.textContent.includes("Leerdoelen & Sessies")) heading.textContent = "Sessies";
+      if (heading.textContent.includes("Goals & Sessions") || heading.textContent.includes("Leerdoelen & Sessies")) heading.textContent = "Sessions";
     });
   }
 
@@ -331,7 +331,7 @@
 
     const subtitle = progress.querySelector(".catalog-header .page-subtitle");
     if (subtitle && /streak/i.test(subtitle.textContent)) {
-      subtitle.textContent = "Gedetailleerd overzicht van je leercurve en beheerste woorden.";
+      subtitle.textContent = "A detailed view of your learning curve and mastered words.";
     }
 
     [...progress.querySelectorAll(".progress-stats-overview .stat-big-card")].forEach((card) => {
@@ -341,7 +341,7 @@
 
   function cleanCompletionCopy() {
     document.querySelectorAll("#btn-go-today").forEach((button) => {
-      if (button.textContent.trim() !== "Terug naar Leren") button.textContent = "Terug naar Leren";
+      if (button.textContent.trim() !== "Back to Learn") button.textContent = "Back to Learn";
     });
     document.querySelectorAll(".session-complete-card .session-stat-box").forEach((box) => {
       if (/streak/i.test(box.textContent)) box.remove();

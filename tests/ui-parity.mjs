@@ -131,7 +131,7 @@ async function exerciseLearnTiles(page) {
   assert(grammarLessonCount > 0 && grammarLessonCount < 120, `Choosing A1 reveals only that level's grammar lessons (${grammarLessonCount})`);
 
   const grammarRail = await inspectNumberRail(page, ".grammar-catalog-container button[data-rule-id]");
-  assert(grammarRail.label === "Les 01", `First grammar tile says “Les 01” top-left (${grammarRail.label})`);
+  assert(grammarRail.label === "Lesson 01", `First grammar tile says “Lesson 01” top-left (${grammarRail.label})`);
   assert(grammarRail.labelColor === grammarRail.accentColor, "Lesson identifier uses the active accent colour");
   assert(!grammarRail.hasOldPill, "Duplicate bottom Les 01 pill is removed");
   assert(grammarRail.railWidth >= 4, `Number Rail accent edge is present (${grammarRail.railWidth}px)`);
@@ -162,7 +162,7 @@ async function exerciseLearnTiles(page) {
   const passageCount = await page.$$eval(".comprehension-catalog-container button[data-passage-id]", (buttons) => buttons.length);
   assert(passageCount > 0, `Choosing A1 reveals curated reading texts (${passageCount})`);
   const readingRail = await inspectNumberRail(page, ".comprehension-catalog-container button[data-passage-id]");
-  assert(readingRail.label === "Tekst 01", `First reading tile uses the same top-left numbering system (${readingRail.label})`);
+  assert(readingRail.label === "Text 01", `First reading tile uses the same top-left numbering system (${readingRail.label})`);
   assert(!readingRail.hasOldPill, "Reading tile also avoids a duplicate bottom number pill");
   await page.click(".comprehension-catalog-container button[data-passage-id]");
   await page.waitForSelector(".passage-reader-card", { timeout: 15000 });
@@ -221,9 +221,9 @@ async function run() {
     const mobileRail = await inspectNumberRail(page, ".grammar-catalog-container button[data-rule-id]");
     assert(mobileRail.display === "grid", `Mobile Number Rail lesson tile uses grid (${mobileRail.display})`);
     assert(mobileRail.radius >= 18, `Mobile lesson tiles stay rounder (${mobileRail.radius}px radius)`);
-    assert(mobileRail.label === "Les 01", "Mobile lesson number is the accent label at top-left");
-    assert(mobileRail.labelAlignedLeft, "Les 01 aligns with the wide lesson copy beneath it");
-    assert(!mobileRail.hasOldPill, "Mobile lesson tile has no redundant bottom Les 01 pill");
+    assert(mobileRail.label === "Lesson 01", "Mobile lesson number is the accent label at top-left");
+    assert(mobileRail.labelAlignedLeft, "Lesson 01 aligns with the wide lesson copy beneath it");
+    assert(!mobileRail.hasOldPill, "Mobile lesson tile has no redundant bottom Lesson 01 pill");
     assert(mobileRail.copyWidthRatio >= 0.82, `Mobile lesson copy spans most of the tile (${Math.round(mobileRail.copyWidthRatio * 100)}%)`);
     assert(mobileRail.fitsViewport, "Wider Number Rail lesson copy still fits the viewport");
     assert(true, "Staged grammar navigation is touch-operable on mobile");
@@ -260,7 +260,7 @@ async function run() {
       window.NederApp.launchConfetti(document.querySelector("#app-main"));
       return !document.querySelector(".np-confetti-canvas");
     });
-    assert(inAppReduceHonored, "In-app 'Minder beweging' setting suppresses celebration effects");
+    assert(inAppReduceHonored, "In-app 'Reduce motion' setting suppresses celebration effects");
 
     const osReduceEmulated = await page.evaluate(() => window.NederApp.store.state.settings.reduceMotion = false)
       .then(async () => {

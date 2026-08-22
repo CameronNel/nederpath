@@ -40,10 +40,10 @@
   }
 
   function formatSRSDutch(days) {
-    if (!Number.isFinite(days) || days <= 1) return "1 dag";
-    if (days < 30) return `${days} dagen`;
-    if (days < 365) return `${Math.round(days / 30)} mnd (${days} dgn)`;
-    return `${(days / 365).toFixed(1)} jr (${days} dgn)`;
+    if (!Number.isFinite(days) || days <= 1) return "1 day";
+    if (days < 30) return `${days} days`;
+    if (days < 365) return `${Math.round(days / 30)} mo (${days} days)`;
+    return `${(days / 365).toFixed(1)} yr (${days} days)`;
   }
 
   /**

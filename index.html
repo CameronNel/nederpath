@@ -1,10 +1,10 @@
 <!doctype html>
-<html lang="nl" data-theme="violet" data-color-mode="dark">
+<html lang="en" data-theme="violet" data-color-mode="dark">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <title>NederPath</title>
-    <meta name="description" content="NederPath — leer Nederlands met Leren, Examen en Voortgang. Offline-first PWA." />
+    <meta name="description" content="NederPath — learn Dutch with Learn, Exam, and Progress. Offline-first PWA." />
     <meta name="theme-color" content="#000000" />
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self'; font-src 'self'; object-src 'none'; base-uri 'none'; worker-src 'self'; manifest-src 'self';" />
     <link rel="stylesheet" href="./fonts/fonts.css" />
@@ -18,7 +18,7 @@
     <meta name="apple-mobile-web-app-title" content="NederPath" />
   </head>
   <body>
-    <a href="#app-main" class="skip-link">Ga direct naar inhoud</a>
+    <a href="#app-main" class="skip-link">Skip to content</a>
     <div id="live-announcer" class="sr-only" aria-live="polite" aria-atomic="true"></div>
     <div class="bg-orb orb-a" aria-hidden="true"></div>
     <div class="bg-orb orb-b" aria-hidden="true"></div>
@@ -26,7 +26,7 @@
     <div id="onboarding" class="screen-shell" hidden></div>
 
     <div id="app" class="app-shell">
-      <button id="app-settings-button" class="app-settings-button" type="button" aria-label="Open instellingen" title="Instellingen">
+      <button id="app-settings-button" class="app-settings-button" type="button" aria-label="Open settings" title="Settings">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/>
           <circle cx="12" cy="12" r="3"/>
@@ -46,18 +46,18 @@
         <div id="screen-detail" class="screen-pane" data-screen="detail" hidden></div>
       </div>
 
-      <nav class="bottom-nav" role="navigation" aria-label="Hoofdnavigatie">
+      <nav class="bottom-nav" role="navigation" aria-label="Main navigation">
         <button class="nav-btn active" data-nav="learn" id="nav-learn" type="button" aria-current="page">
           <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 3H20v18H6.5A2.5 2.5 0 0 1 4 18.5v-14A2.5 2.5 0 0 1 6.5 2z"/><path d="M8 7h8"/><path d="M8 11h6"/></svg>
-          <span>Leren</span>
+          <span>Learn</span>
         </button>
         <button class="nav-btn" data-nav="exam" id="nav-exam" type="button">
           <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 3h6a1 1 0 0 1 1 1v2H8V4a1 1 0 0 1 1-1z"/><path d="M16 5h2a2 2 0 0 1 2 2v13a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h2"/><path d="m9 13 2 2 4-4"/></svg>
-          <span>Examen</span>
+          <span>Exam</span>
         </button>
         <button class="nav-btn" data-nav="progress" id="nav-progress" type="button">
           <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 20V10"/><path d="M10 20V4"/><path d="M16 20v-7"/><path d="M22 20H2"/></svg>
-          <span>Voortgang</span>
+          <span>Progress</span>
         </button>
       </nav>
     </div>

@@ -184,21 +184,21 @@ async function runBrowserTests() {
     assert(title.includes("NederPath"), "Page title contains 'NederPath'");
     assert(unhandledErrors.length === 0 && jsConsoleErrors.length === 0, "Zero browser console errors or unhandled exceptions on initial load", jsConsoleErrors.join("; "));
 
-    // 1b. Dutch streak noun agrees with the streak count (1 dag, not 1 dagen)
+    // 1b. Streak noun agrees with the streak count (1 day, not 1 days)
     await page.evaluate(() => {
       globalThis.NederStore.state.user.streak = 1;
       globalThis.NederApp.render();
     });
     await page.waitForSelector(".today-subtitle");
     const singleDaySubtitle = await page.$eval(".today-subtitle", (el) => el.textContent);
-    assert(singleDaySubtitle.includes("1 dag") && !singleDaySubtitle.includes("1 dagen"), `Today subtitle uses singular 'dag' for a 1-day streak: '${singleDaySubtitle.trim()}'`);
+    assert(singleDaySubtitle.includes("1 day") && !singleDaySubtitle.includes("1 days"), `Today subtitle uses singular 'day' for a 1-day streak: '${singleDaySubtitle.trim()}'`);
     await page.evaluate(() => {
       globalThis.NederStore.state.user.streak = 0;
       globalThis.NederApp.render();
     });
     await page.waitForSelector(".today-subtitle");
     const zeroDaySubtitle = await page.$eval(".today-subtitle", (el) => el.textContent);
-    assert(zeroDaySubtitle.includes("0 dagen"), `Today subtitle uses plural 'dagen' for a 0-day streak: '${zeroDaySubtitle.trim()}'`);
+    assert(zeroDaySubtitle.includes("0 days"), `Today subtitle uses plural 'days' for a 0-day streak: '${zeroDaySubtitle.trim()}'`);
 
     // Corrupted fractional streak values must never be rounded into the singular noun
     await page.evaluate(() => {
@@ -207,7 +207,7 @@ async function runBrowserTests() {
     });
     await page.waitForSelector(".today-subtitle");
     const fractionalSubtitle = await page.$eval(".today-subtitle", (el) => el.textContent);
-    assert(fractionalSubtitle.includes("0.6 dagen") && !/0\.6 dag(?!en)/.test(fractionalSubtitle), `Fractional streak stays plural and unrounded: '${fractionalSubtitle.trim()}'`);
+    assert(fractionalSubtitle.includes("0.6 days") && !/0\.6 day(?!s)/.test(fractionalSubtitle), `Fractional streak stays plural and unrounded: '${fractionalSubtitle.trim()}'`);
 
     // 2. Lazy Data Loading & Asset Budget Verification
     const requestedWords = requestedUrls.some((u) => u.includes("data/words.js"));
@@ -273,7 +273,7 @@ async function runBrowserTests() {
     assert(countWordsAfter === countWordsBefore + 1, "Navigating to Woorden fetched words.js on-demand");
 
     const wordsPageTitle = await page.$eval(".page-title", (el) => el.textContent);
-    assert(wordsPageTitle.includes("Woordenboek"), "Navigated to Words Dictionary view");
+    assert(wordsPageTitle.toLowerCase().includes("dictionary"), "Navigated to Words Dictionary view");
 
     const activeHeadingTag = await page.evaluate(() => (document.activeElement ? document.activeElement.tagName.toLowerCase() : ""));
     assert(activeHeadingTag === "h1" || activeHeadingTag === "h2", "Primary view navigation sets focus to main heading");
@@ -331,15 +331,15 @@ async function runBrowserTests() {
     const nameBefore = await page.$eval(".btn-star", (el) => el.getAttribute("aria-label"));
     const titleBefore = await page.$eval(".btn-star", (el) => el.getAttribute("title"));
     assert(pressedBefore === "false" || pressedBefore === "true", `Star button announces aria-pressed state ('${pressedBefore}')`);
-    assert(nameBefore === "Favoriet", `Star button accessible name is stable and meaningful ('${nameBefore}')`);
-    assert(titleBefore === "Favoriet opslaan", `Unbookmarked star button title invites adding a favorite ('${titleBefore}')`);
+    assert(nameBefore === "Favourite", `Star button accessible name is stable and meaningful ('${nameBefore}')`);
+    assert(titleBefore === "Save favourite", `Unbookmarked star button title invites adding a favorite ('${titleBefore}')`);
     await starBtn.click();
     const pressedAfter = await page.$eval(".btn-star", (el) => el.getAttribute("aria-pressed"));
     const nameAfter = await page.$eval(".btn-star", (el) => el.getAttribute("aria-label"));
     const titleAfter = await page.$eval(".btn-star", (el) => el.getAttribute("title"));
     assert(pressedAfter === (pressedBefore === "true" ? "false" : "true"), `Star button aria-pressed toggles on click (${pressedBefore} -> ${pressedAfter})`);
     assert(nameAfter === nameBefore, `Star button accessible name does not change with state ('${nameBefore}' -> '${nameAfter}')`);
-    assert(titleAfter === (titleBefore === "Favoriet opslaan" ? "Favoriet verwijderen" : "Favoriet opslaan"), `Star button title follows state dynamically ('${titleBefore}' -> '${titleAfter}')`);
+    assert(titleAfter === (titleBefore === "Save favourite" ? "Remove favourite" : "Save favourite"), `Star button title follows state dynamically ('${titleBefore}' -> '${titleAfter}')`);
 
     // Audit accessible label associations on Words view
     const wordsUnlabeled = await page.evaluate(() => {
@@ -380,7 +380,7 @@ async function runBrowserTests() {
     const pluralGram = await pluralCard.$eval(".word-gram-form", (el) => el.textContent.trim());
     const pluralLemmaLink = await pluralCard.$eval(".word-lemma-link", (el) => el.textContent.trim());
     assert(pluralTitle.includes("de") && pluralTitle.includes("huizen"), `Plural card displays article 'de': '${pluralTitle}'`);
-    assert(pluralBadge.includes("Afgeleide"), `Plural card is badged as derived reference: '${pluralBadge}'`);
+    assert(pluralBadge.includes("Derived"), `Plural card is badged as derived reference: '${pluralBadge}'`);
     assert(pluralGram.includes("meervoud"), `Plural card indicates meervoud grammatical form: '${pluralGram}'`);
     assert(pluralLemmaLink.includes("huis"), `Plural card links back to base lemma 'huis': '${pluralLemmaLink}'`);
 
@@ -403,7 +403,7 @@ async function runBrowserTests() {
     const phraseBadge = await phraseCard.$eval(".badge-tag", (el) => el.textContent.trim());
     const phraseLvl = await phraseCard.$eval(".word-level-badge", (el) => el.textContent.trim());
     assert(phraseTitle === "houden van", `Phrase title matches 'houden van': '${phraseTitle}'`);
-    assert(phraseBadge === "Gecureerde woordgroep", `Phrase card is badged as a curated phrase: '${phraseBadge}'`);
+    assert(phraseBadge === "Curated phrase", `Phrase card is badged as a curated phrase: '${phraseBadge}'`);
     assert(["A1", "A2", "B1", "B2", "C1"].includes(phraseLvl), `Phrase card has valid CEFR level (not 'phrase'): '${phraseLvl}'`);
 
     // 5. Search Ordinal: 'eerste'
@@ -611,7 +611,7 @@ async function runBrowserTests() {
       await passageOpt.click();
       assert(true, "Comprehension quiz question answered and recorded");
       const compAnnounce = await page.$eval("#live-announcer", (el) => el.textContent);
-      assert(compAnnounce.includes("Vraag 1"), `Comprehension quiz result announced to live region: '${compAnnounce}'`);
+      assert(compAnnounce.includes("Question 1"), `Comprehension quiz result announced to live region: '${compAnnounce}'`);
     }
 
     // 7. Navigation: Oefenen (Interactive Practice Modes & Semantic Controls)
@@ -668,7 +668,7 @@ async function runBrowserTests() {
     assert(postFlipHeadingTag !== "h1" && postFlipHeadingTag !== "h2", "Flashcard reveal does not steal focus to page heading");
 
     const flashcardAnnounce = await page.$eval("#live-announcer", (el) => el.textContent);
-    assert(flashcardAnnounce.includes("onthuld"), `Flashcard reveal announced to live region: '${flashcardAnnounce}'`);
+    assert(flashcardAnnounce.includes("revealed"), `Flashcard reveal announced to live region: '${flashcardAnnounce}'`);
 
     // --- Sub-suite 7a: SRS E2E Rating Preview and Persisted Interval Truthfulness ---
     // Test Good (rating 3) preview vs persisted card
@@ -717,7 +717,7 @@ async function runBrowserTests() {
       return window.NederSRS.previewRatings("mature-preview-test-id", "vocab")[3];
     });
     assert(
-      matureCardPreview.interval > 30 && /\(\d+\s*dgn\)/.test(matureCardPreview.formattedDutch),
+      matureCardPreview.interval > 30 && /\(\d+\s*days\)/.test(matureCardPreview.formattedDutch),
       `Mature card interval (${matureCardPreview.interval}d) formats with explicit day count: '${matureCardPreview.formattedDutch}'`
     );
 
@@ -1009,7 +1009,7 @@ async function runBrowserTests() {
     await page.click(".btn-option[data-option='park']");
     await page.waitForSelector(".exercise-feedback");
     const feedbackText = await page.$eval(".exercise-feedback", (el) => el.textContent);
-    assert(feedbackText.includes("Juist"), "Option buttons in hostile-injected card remain fully interactive and evaluate correctly");
+    assert(feedbackText.includes("Correct"), "Option buttons in hostile-injected card remain fully interactive and evaluate correctly");
 
     // 7b. Browser Back restores detail routes
     await page.click("#nav-learn");
@@ -1080,7 +1080,7 @@ async function runBrowserTests() {
     assert(lightTheme === "light", "Appearance switched to light");
 
     const themeAnnounce = await page.$eval("#live-announcer", (el) => el.textContent);
-    assert(themeAnnounce.includes("Licht"), `Theme change announced to live region: '${themeAnnounce}'`);
+    assert(themeAnnounce.includes("Light"), `Theme change announced to live region: '${themeAnnounce}'`);
 
     await page.click("#btn-theme-dark");
     const darkTheme = await page.evaluate(() => document.documentElement.getAttribute("data-color-mode"));

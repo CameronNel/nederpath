@@ -1668,12 +1668,12 @@ test("SRS Display Truthfulness: Interval labels explicitly include exact day cou
 
   // Test various day intervals
   const testCases = [
-    { days: 1, expectedInterval: "1d", expectedDutch: "1 dag" },
-    { days: 6, expectedInterval: "6d", expectedDutch: "6 dagen" },
-    { days: 15, expectedInterval: "15d", expectedDutch: "15 dagen" },
-    { days: 30, expectedInterval: "1m (30d)", expectedDutch: "1 mnd (30 dgn)" },
-    { days: 45, expectedInterval: "2m (45d)", expectedDutch: "2 mnd (45 dgn)" },
-    { days: 400, expectedInterval: "1.1y (400d)", expectedDutch: "1.1 jr (400 dgn)" }
+    { days: 1, expectedInterval: "1d", expectedDutch: "1 day" },
+    { days: 6, expectedInterval: "6d", expectedDutch: "6 days" },
+    { days: 15, expectedInterval: "15d", expectedDutch: "15 days" },
+    { days: 30, expectedInterval: "1m (30d)", expectedDutch: "1 mo (30 days)" },
+    { days: 45, expectedInterval: "2m (45d)", expectedDutch: "2 mo (45 days)" },
+    { days: 400, expectedInterval: "1.1y (400d)", expectedDutch: "1.1 yr (400 days)" }
   ];
 
   for (const tc of testCases) {

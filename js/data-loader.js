@@ -25,7 +25,7 @@
   function loadBank(bankName, timeoutMs = DEFAULT_LOAD_TIMEOUT_MS) {
     const config = DATA_BANKS[bankName];
     if (!config) {
-      return Promise.reject(new Error(`Onbekende databank: ${bankName}`));
+      return Promise.reject(new Error(`Unknown data bank: ${bankName}`));
     }
 
     // Return immediately if already loaded into global scope
@@ -51,7 +51,7 @@
         const timeoutId = setTimeout(() => {
           delete loadPromises[bankName];
           if (script.parentNode) script.parentNode.removeChild(script);
-          reject(new Error(`Time-out bij het laden van ${config.path}. Controleer verbinding.`));
+          reject(new Error(`Time-out loading ${config.path}. Check your connection.`));
         }, effectiveTimeout);
 
         script.onload = () => {
@@ -62,7 +62,7 @@
           } else {
             delete loadPromises[bankName];
             if (script.parentNode) script.parentNode.removeChild(script);
-            reject(new Error(`Databank ${bankName} geladen maar ${config.globalKey} niet gevonden.`));
+            reject(new Error(`Data bank ${bankName} loaded but ${config.globalKey} was not found.`));
           }
         };
 
@@ -70,7 +70,7 @@
           clearTimeout(timeoutId);
           delete loadPromises[bankName];
           if (script.parentNode) script.parentNode.removeChild(script);
-          reject(new Error(`Fout bij het laden van ${config.path}. Controleer verbinding.`));
+          reject(new Error(`Failed to load ${config.path}. Check your connection.`));
         };
 
         doc.head.appendChild(script);

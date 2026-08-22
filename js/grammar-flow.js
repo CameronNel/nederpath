@@ -30,7 +30,7 @@
       .filter((step) => step && typeof step === "object" && cleanText(step.body))
       .slice(0, MAX_TEACHING_STEPS)
       .map((step, index) => ({
-        title: cleanText(step.title) || `Kernidee ${index + 1}`,
+        title: cleanText(step.title) || `Core idea ${index + 1}`,
         body: cleanText(step.body),
         definition: cleanText(step.definition),
         tip: cleanText(step.tip),
@@ -58,7 +58,7 @@
       const example = examples.length ? examples[index % examples.length] : null;
       const isLast = index === sourceRules.length - 1;
       return {
-        title: possibleTitle || `Kernidee ${index + 1}`,
+        title: possibleTitle || `Core idea ${index + 1}`,
         body: cleanText(body),
         definition: "",
         tip: isLast && cleanText(rule.correction)
@@ -135,8 +135,8 @@
         const html = base.renderGrammarView();
         return typeof html === "string"
           ? html.replace(
-              "120 diepgaande regels, structurele formules, voorbeelden en interactieve oefeningen.",
-              "120 korte, interactieve lessen die één idee tegelijk uitleggen en afsluiten met een kleine test."
+              "120 in-depth rules, structural formulas, examples, and interactive exercises.",
+              "120 short, interactive lessons that explain one idea at a time and finish with a short test."
             )
           : html;
       };
@@ -158,25 +158,25 @@
     app.renderProgressiveGrammarIntro = function (rule, teachingSteps, testExercises) {
       return `
         <div class="grammar-detail-container grammar-flow-shell animate-fade">
-          <button class="btn btn-outline btn-sm" id="btn-back-grammar">← Terug naar Grammatica Overzicht</button>
+          <button class="btn btn-outline btn-sm" id="btn-back-grammar">← Back to grammar overview</button>
           <section class="grammar-flow-card grammar-flow-intro" aria-labelledby="grammar-lesson-title">
             <div class="grammar-flow-kicker">
               <span class="grammar-level badge-${escapeHTML(String(rule.level || "A1").toLowerCase())}">${escapeHTML(rule.level || "A1")}</span>
-              <span>Korte les</span>
+              <span>Short lesson</span>
             </div>
-            <h1 class="grammar-flow-title" id="grammar-lesson-title">${escapeHTML(rule.title || "Grammaticales")}</h1>
+            <h1 class="grammar-flow-title" id="grammar-lesson-title">${escapeHTML(rule.title || "Grammar lesson")}</h1>
             <div class="grammar-flow-subtitle">${escapeHTML(rule.titleNl || "")}</div>
-            <p class="grammar-flow-intro-copy">${escapeHTML(rule.summary || "Leer deze grammaticaregel stap voor stap.")}</p>
-            <div class="grammar-flow-meta" aria-label="Lesinformatie">
+            <p class="grammar-flow-intro-copy">${escapeHTML(rule.summary || "Learn this grammar rule one step at a time.")}</p>
+            <div class="grammar-flow-meta" aria-label="Lesson information">
               <span><strong>~${estimateMinutes(rule)}</strong> min</span>
-              <span><strong>${teachingSteps.length}</strong> korte stappen</span>
-              <span><strong>${testExercises.length}</strong> testvragen</span>
+              <span><strong>${teachingSteps.length}</strong> short steps</span>
+              <span><strong>${testExercises.length}</strong> test questions</span>
             </div>
             <div class="grammar-flow-start-note">
-              <strong>Wat gebeurt er?</strong>
-              <span>Eerst krijg je de kern in kleine stukken. Daarna volgt een korte test.</span>
+              <strong>What happens?</strong>
+              <span>First you get the core idea in small pieces. Then a short test follows.</span>
             </div>
-            <button type="button" class="btn btn-primary btn-block grammar-flow-primary" id="btn-start-grammar-lesson">Start les →</button>
+            <button type="button" class="btn btn-primary btn-block grammar-flow-primary" id="btn-start-grammar-lesson">Start lesson →</button>
           </section>
         </div>
       `;
@@ -196,20 +196,20 @@
 
       return `
         <div class="grammar-detail-container grammar-flow-shell animate-fade">
-          <button class="btn btn-outline btn-sm" id="btn-back-grammar">← Grammatica</button>
+          <button class="btn btn-outline btn-sm" id="btn-back-grammar">← Grammar</button>
           <section class="grammar-flow-card grammar-flow-teach" aria-labelledby="grammar-step-title">
-            <div class="grammar-flow-progress-head"><span>Uitleg · ${index + 1}/${teachingSteps.length}</span><span>${progress}%</span></div>
-            <div class="grammar-flow-progress-track" role="progressbar" aria-label="Voortgang uitleg" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${progress}"><span style="width:${progress}%"></span></div>
-            <div class="grammar-flow-step-label">${escapeHTML(rule.titleNl || rule.title || "Grammatica")}</div>
-            <h1 class="grammar-flow-step-title" id="grammar-step-title">${escapeHTML(step.title || `Kernidee ${index + 1}`)}</h1>
+            <div class="grammar-flow-progress-head"><span>Explanation · ${index + 1}/${teachingSteps.length}</span><span>${progress}%</span></div>
+            <div class="grammar-flow-progress-track" role="progressbar" aria-label="Explanation progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${progress}"><span style="width:${progress}%"></span></div>
+            <div class="grammar-flow-step-label">${escapeHTML(rule.titleNl || rule.title || "Grammar")}</div>
+            <h1 class="grammar-flow-step-title" id="grammar-step-title">${escapeHTML(step.title || `Core idea ${index + 1}`)}</h1>
             <p class="grammar-flow-rule">${escapeHTML(step.body || "")}</p>
-            ${step.definition ? `<div class="grammar-flow-definition"><span class="grammar-flow-callout-label">Definitie</span><p>${escapeHTML(step.definition)}</p></div>` : ""}
-            ${example ? `<div class="grammar-flow-example"><span class="grammar-flow-callout-label">Voorbeeld</span>${example.nl ? `<div class="grammar-flow-example-nl">${escapeHTML(example.nl)}</div>` : ""}${example.en ? `<div class="grammar-flow-example-en">${escapeHTML(example.en)}</div>` : ""}</div>` : ""}
+            ${step.definition ? `<div class="grammar-flow-definition"><span class="grammar-flow-callout-label">Definition</span><p>${escapeHTML(step.definition)}</p></div>` : ""}
+            ${example ? `<div class="grammar-flow-example"><span class="grammar-flow-callout-label">Example</span>${example.nl ? `<div class="grammar-flow-example-nl">${escapeHTML(example.nl)}</div>` : ""}${example.en ? `<div class="grammar-flow-example-en">${escapeHTML(example.en)}</div>` : ""}</div>` : ""}
             ${step.tip ? `<div class="grammar-flow-tip"><span aria-hidden="true">💡</span><div><strong>Tip</strong><span>${escapeHTML(step.tip)}</span></div></div>` : ""}
-            ${isLast && (rule.commonMistake || rule.correction) ? `<details class="grammar-flow-more"><summary>Veelgemaakte fout bekijken</summary>${rule.commonMistake ? `<p><strong>Niet doen:</strong> ${escapeHTML(rule.commonMistake)}</p>` : ""}${rule.correction ? `<p><strong>Onthoud:</strong> ${escapeHTML(rule.correction)}</p>` : ""}</details>` : ""}
+            ${isLast && (rule.commonMistake || rule.correction) ? `<details class="grammar-flow-more"><summary>See a common mistake</summary>${rule.commonMistake ? `<p><strong>Don't:</strong> ${escapeHTML(rule.commonMistake)}</p>` : ""}${rule.correction ? `<p><strong>Remember:</strong> ${escapeHTML(rule.correction)}</p>` : ""}</details>` : ""}
             <div class="grammar-flow-actions">
-              <button type="button" class="btn btn-outline" id="btn-prev-grammar-teach" ${index === 0 ? "disabled" : ""}>← Vorige</button>
-              <button type="button" class="btn btn-primary" id="btn-next-grammar-teach">${isLast ? "Naar korte test →" : "Verder →"}</button>
+              <button type="button" class="btn btn-outline" id="btn-prev-grammar-teach" ${index === 0 ? "disabled" : ""}>← Previous</button>
+              <button type="button" class="btn btn-primary" id="btn-next-grammar-teach">${isLast ? "Go to short test →" : "Continue →"}</button>
             </div>
           </section>
         </div>
@@ -218,7 +218,7 @@
 
     app.renderProgressiveGrammarTest = function (rule, exercises) {
       if (!exercises.length) {
-        return `<div class="grammar-detail-container grammar-flow-shell animate-fade"><section class="grammar-flow-card"><h1 class="grammar-flow-step-title">Geen test beschikbaar</h1><p class="grammar-flow-rule">Deze les bevat nog geen toetsbare oefeningen.</p><button type="button" class="btn btn-primary btn-block" id="btn-back-to-teaching">Terug naar uitleg</button></section></div>`;
+        return `<div class="grammar-detail-container grammar-flow-shell animate-fade"><section class="grammar-flow-card"><h1 class="grammar-flow-step-title">No test available</h1><p class="grammar-flow-rule">This lesson does not have testable exercises yet.</p><button type="button" class="btn btn-primary btn-block" id="btn-back-to-teaching">Back to explanation</button></section></div>`;
       }
       const index = Math.max(0, Math.min(this.activeGrammarExIndex || 0, exercises.length - 1));
       this.activeGrammarExIndex = index;
@@ -230,18 +230,18 @@
 
       return `
         <div class="grammar-detail-container grammar-flow-shell animate-fade">
-          <button class="btn btn-outline btn-sm" id="btn-back-to-teaching">← Uitleg terugzien</button>
+          <button class="btn btn-outline btn-sm" id="btn-back-to-teaching">← Review explanation</button>
           <section class="grammar-flow-card grammar-flow-test" aria-labelledby="grammar-test-title">
-            <div class="grammar-flow-progress-head"><span>Korte test · ${index + 1}/${exercises.length}</span><span>${answeredCount}/${exercises.length} beantwoord</span></div>
-            <div class="grammar-flow-progress-track" role="progressbar" aria-label="Voortgang test" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${progress}"><span style="width:${progress}%"></span></div>
-            <div class="grammar-flow-step-label">${escapeHTML(rule.titleNl || rule.title || "Grammatica")}</div>
-            <h1 class="grammar-flow-step-title" id="grammar-test-title">Vraag ${index + 1}</h1>
+            <div class="grammar-flow-progress-head"><span>Short test · ${index + 1}/${exercises.length}</span><span>${answeredCount}/${exercises.length} answered</span></div>
+            <div class="grammar-flow-progress-track" role="progressbar" aria-label="Test progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${progress}"><span style="width:${progress}%"></span></div>
+            <div class="grammar-flow-step-label">${escapeHTML(rule.titleNl || rule.title || "Grammar")}</div>
+            <h1 class="grammar-flow-step-title" id="grammar-test-title">Question ${index + 1}</h1>
             <div class="grammar-flow-exercise-wrap">${this.renderGrammarExercise(exercises[index])}</div>
             <div class="grammar-flow-actions grammar-flow-test-actions">
-              <button type="button" class="btn btn-outline" id="btn-prev-grammar-ex" ${index === 0 ? "disabled" : ""}>← Vorige</button>
+              <button type="button" class="btn btn-outline" id="btn-prev-grammar-ex" ${index === 0 ? "disabled" : ""}>← Previous</button>
               ${isLast
-                ? `<button type="button" class="btn btn-primary" id="btn-view-grammar-result" ${allDone ? "" : "disabled"}>Bekijk resultaat →</button>`
-                : `<button type="button" class="btn btn-primary" id="btn-next-grammar-ex" ${answeredState ? "" : "disabled"}>Volgende →</button>`}
+                ? `<button type="button" class="btn btn-primary" id="btn-view-grammar-result" ${allDone ? "" : "disabled"}>See result →</button>`
+                : `<button type="button" class="btn btn-primary" id="btn-next-grammar-ex" ${answeredState ? "" : "disabled"}>Next →</button>`}
             </div>
           </section>
         </div>
@@ -261,19 +261,19 @@
           <section class="completion-stage ${statusClass} grammar-flow-complete" aria-labelledby="grammar-complete-title">
             <div class="completion-aurora" aria-hidden="true"><i></i><i></i><i></i></div>
             <div class="completion-hero">
-              <div class="completion-kicker"><span></span>Les afgerond<span></span></div>
-              <h1 class="completion-title" id="grammar-complete-title">${escapeHTML(rule.titleNl || rule.title || "Grammaticales")}</h1>
-              <p class="completion-copy">${missed === 0 ? "Alles zat goed. De kern van deze les is binnen." : `Je had ${correct} van de ${exercises.length} vragen goed. Bekijk de uitleg nog eens kort voor de lastige punten.`}</p>
+              <div class="completion-kicker"><span></span>Lesson complete<span></span></div>
+              <h1 class="completion-title" id="grammar-complete-title">${escapeHTML(rule.titleNl || rule.title || "Grammar lesson")}</h1>
+              <p class="completion-copy">${missed === 0 ? "Everything was correct. The core of this lesson is in place." : `You got ${correct} of ${exercises.length} questions right. Review the explanation briefly for the tricky parts.`}</p>
             </div>
-            <div class="completion-score"><strong>${score}%</strong><span>testscore</span></div>
+            <div class="completion-score"><strong>${score}%</strong><span>test score</span></div>
             <div class="completion-stats">
-              <div class="completion-stat"><span class="completion-stat-value">${correct}/${exercises.length}</span><span class="completion-stat-label">juist</span></div>
-              <div class="completion-stat"><span class="completion-stat-value">${this.getActiveGrammarTeachingSteps(rule).length}</span><span class="completion-stat-label">uitlegstappen</span></div>
-              <div class="completion-stat"><span class="completion-stat-value">${missed}</span><span class="completion-stat-label">te herhalen</span></div>
+              <div class="completion-stat"><span class="completion-stat-value">${correct}/${exercises.length}</span><span class="completion-stat-label">correct</span></div>
+              <div class="completion-stat"><span class="completion-stat-value">${this.getActiveGrammarTeachingSteps(rule).length}</span><span class="completion-stat-label">explanation steps</span></div>
+              <div class="completion-stat"><span class="completion-stat-value">${missed}</span><span class="completion-stat-label">to review</span></div>
             </div>
             <div class="grammar-flow-complete-actions">
-              <button type="button" class="btn btn-outline" id="btn-restart-grammar-lesson">Les opnieuw</button>
-              <button type="button" class="btn btn-primary" id="btn-return-grammar-catalog">Terug naar grammatica</button>
+              <button type="button" class="btn btn-outline" id="btn-restart-grammar-lesson">Restart lesson</button>
+              <button type="button" class="btn btn-primary" id="btn-return-grammar-catalog">Back to grammar</button>
             </div>
           </section>
         </div>
@@ -288,7 +288,7 @@
       const exercises = this.getActiveGrammarTestExercises();
       const answers = Object.entries(this.activeGrammarAnswers).filter(([key]) => Number(key) < exercises.length);
 
-      if (typeof this.announce === "function") this.announce(isCorrect ? "Juist antwoord!" : "Helaas niet juist.");
+      if (typeof this.announce === "function") this.announce(isCorrect ? "Correct!" : "Not quite.");
       if (answers.length >= exercises.length && exercises.length) {
         const numCorrect = answers.filter(([, answer]) => answer && answer.isCorrect).length;
         const score = Math.round((numCorrect / exercises.length) * 100);

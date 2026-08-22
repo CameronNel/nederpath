@@ -69,7 +69,7 @@ const fakeApp = {
   openLearnItem: () => {},
   resolveRoutedDetails: () => {},
   openGrammarRule: () => {},
-  renderGrammarView: () => '<p>120 diepgaande regels, structurele formules, voorbeelden en interactieve oefeningen.</p>',
+  renderGrammarView: () => '<p>120 in-depth rules, structural formulas, examples, and interactive exercises.</p>',
   renderGrammarExercise: (exercise) => `<div data-test-exercise>${exercise.type}</div>`,
   attachGrammarListeners: () => {}
 };
@@ -79,7 +79,7 @@ assert.equal(flow.install(fakeApp), true, "flow installs on existing app instanc
 fakeApp.activeGrammarPhase = "intro";
 let html = fakeApp.renderGrammarRuleDetail(first);
 assert.match(html, /btn-start-grammar-lesson/, "lesson opens on a dedicated start screen");
-assert.match(html, /Eerst krijg je de kern in kleine stukken/, "intro explains the short flow");
+assert.match(html, /First you get the core idea in small pieces/, "intro explains the short flow");
 assert.doesNotMatch(html, /Grammaticale Regels/, "intro does not show the old full rules section");
 assert.doesNotMatch(html, /Structurele Zinsopbouw/, "intro does not show the old syntax dump");
 
@@ -88,12 +88,12 @@ fakeApp.activeGrammarTeachIndex = 0;
 html = fakeApp.renderGrammarRuleDetail(first);
 assert.ok(html.includes(first.rules[0]), "teaching screen shows the current rule");
 assert.ok(!html.includes(first.rules[1]), "teaching screen does not expose the next rule early");
-assert.match(html, /Voorbeeld/, "teaching screen includes a compact example");
+assert.match(html, /Example/, "teaching screen includes a compact example");
 
 fakeApp.activeGrammarPhase = "test";
 fakeApp.activeGrammarExIndex = 0;
 html = fakeApp.renderGrammarRuleDetail(first);
-assert.match(html, /Korte test/, "test phase is explicitly short");
+assert.match(html, /Short test/, "test phase is explicitly short");
 assert.match(html, /data-test-exercise/, "test reuses the existing exercise renderer");
 assert.match(html, /id="btn-next-grammar-ex" disabled/, "learner must answer before advancing");
 
@@ -101,7 +101,7 @@ fakeApp.activeGrammarAnswers = Object.fromEntries(first.exercises.map((_, index)
 fakeApp.activeGrammarPhase = "complete";
 html = fakeApp.renderGrammarRuleDetail(first);
 assert.match(html, /100%/, "result phase reports test score");
-assert.match(html, /Les afgerond/, "result phase has a distinct completion screen");
+assert.match(html, /Lesson complete/, "result phase has a distinct completion screen");
 
 fakeApp.activeGrammarAnswers = {};
 fakeApp.activeGrammarExIndex = 0;
@@ -114,6 +114,6 @@ for (let index = 1; index < first.exercises.length; index += 1) {
 assert.equal(completedScore, 100, "existing grammar completion is preserved after the short test");
 
 const catalog = fakeApp.renderGrammarView();
-assert.match(catalog, /120 korte, interactieve lessen/, "catalog copy reflects progressive lessons");
+assert.match(catalog, /120 short, interactive lessons/, "catalog copy reflects progressive lessons");
 
 console.log(`Grammar lesson flow: PASS (${lessons.length} lessons; intro -> micro-teaching -> 4-question test -> result)`);

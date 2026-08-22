@@ -3,7 +3,7 @@
   "name": "NederPath - Dutch Language Learning",
   "short_name": "NederPath",
   "description": "A calm, offline-first Dutch language-learning web app (vocabulary, grammar, comprehension).",
-  "lang": "nl",
+  "lang": "en",
   "dir": "ltr",
   "start_url": "./",
   "scope": "./",

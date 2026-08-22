@@ -2,7 +2,7 @@
 
 An offline-first Dutch language-learning PWA. The application chassis (shell, bottom navigation, design system) is derived from HanaPath. The Dutch brain — lexical IDs, generators, SRS, and backup validation — remains NederPath.
 
-Permanent navigation is **Leren / Examen / Voortgang**. Vocabulary, grammar, reading, and review live inside Leren. Formal Dutch exams are not shipped until source contracts exist.
+Permanent navigation is **Learn / Exam / Progress**. Vocabulary, grammar, reading, and review live inside Learn. Formal Dutch exams are not shipped until source contracts exist.
 
 NederPath stores learner state in local storage under the `nederpath-v1` namespace (never `hanapath-v1`) and deploys automatically to GitHub Pages. Its Service Worker (`nederpath-v4-cache`) keeps the app shell and previously visited data banks available offline; a never-visited bank shows a recoverable retry state until connectivity returns.
 

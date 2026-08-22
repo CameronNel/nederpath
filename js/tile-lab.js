@@ -222,7 +222,7 @@
       const level = row.dataset.filterLvl;
       const copy = captureCopy(row);
       rebuildRow(row, {
-        label: `Niveau ${level}`,
+        label: `Level ${level}`,
         meta: copy.pill
       });
     });
@@ -232,10 +232,10 @@
     const rows = [...document.querySelectorAll(".grammar-catalog-container button[data-rule-id]")];
     rows.forEach((row, index) => {
       const number = String(index + 1).padStart(2, "0");
-      const complete = row.classList.contains("complete") || /voltooid|✓/i.test(row.textContent);
+      const complete = row.classList.contains("complete") || /✓ Completed|voltooid|✓/i.test(row.textContent);
       rebuildRow(row, {
-        label: `Les ${number}`,
-        state: complete ? "✓ Voltooid" : ""
+        label: `Lesson ${number}`,
+        state: complete ? "✓ Completed" : ""
       });
     });
   }
@@ -248,7 +248,7 @@
       const level = row.dataset.filterCompLvl;
       const copy = captureCopy(row);
       rebuildRow(row, {
-        label: `Niveau ${level}`,
+        label: `Level ${level}`,
         meta: copy.pill
       });
     });
@@ -258,10 +258,10 @@
     const rows = [...document.querySelectorAll(".comprehension-catalog-container button[data-passage-id]")];
     rows.forEach((row, index) => {
       const number = String(index + 1).padStart(2, "0");
-      const complete = row.classList.contains("complete") || /gelezen|✓/i.test(row.textContent);
+      const complete = row.classList.contains("complete") || /✓ Read|gelezen|✓/i.test(row.textContent);
       rebuildRow(row, {
-        label: `Tekst ${number}`,
-        state: complete ? "✓ Gelezen" : ""
+        label: `Text ${number}`,
+        state: complete ? "✓ Read" : ""
       });
     });
   }
