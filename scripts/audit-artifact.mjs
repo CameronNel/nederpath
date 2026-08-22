@@ -112,7 +112,7 @@ if (existsSync(join(DIST, "manifest.webmanifest"))) {
   check(manifest.id === "./", "manifest.webmanifest has project-relative id: './'");
   check(manifest.start_url === "./", "manifest.webmanifest has project-relative start_url: './'");
   check(manifest.scope === "./", "manifest.webmanifest has project-relative scope: './'");
-  check(manifest.lang === "nl", "manifest.webmanifest has lang: 'nl'");
+  check(manifest.lang === "en", "manifest.webmanifest has lang: 'en'");
   check(Array.isArray(manifest.categories) && manifest.categories.includes("education"), "manifest.webmanifest categories includes education");
 }
 
